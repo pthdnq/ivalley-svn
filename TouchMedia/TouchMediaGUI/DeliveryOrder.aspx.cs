@@ -23,9 +23,6 @@ namespace TouchMediaGUI
                 Master.PageTitle = "اوامر تشغيل السيارات";
 
 
-                DeliveryOrderBind();
-
-
                 if (getQueryString_DeliveryOrder > 0)
                 {
                     BLL.DeliveryOrder EditDO = new BLL.DeliveryOrder();
@@ -107,7 +104,24 @@ namespace TouchMediaGUI
                 drpDepartment.DataTextField = Department.ColumnNames.DepartmentName;
                 drpDepartment.DataBind();
 
+                DeliveryOrderStatus ss = new DeliveryOrderStatus();
+                ss.LoadAll();
+                drpStatusSearch.DataSource = ss.DefaultView;
+                drpStatusSearch.DataValueField = DeliveryOrderStatus.ColumnNames.DeliveryOrderStatusID;
+                drpStatusSearch.DataTextField = DeliveryOrderStatus.ColumnNames.DeliveryOrderStatusNameAr;
+                drpStatusSearch.DataBind();
+                drpStatusSearch.Items.Insert(0,new ListItem("الكل","0"));
 
+                Department dd = new Department();
+                dd.LoadAll();
+                drpDepartmentSearch.DataSource = dd.DefaultView;
+                drpDepartmentSearch.DataValueField = Department.ColumnNames.DepartmentID;
+                drpDepartmentSearch.DataTextField = Department.ColumnNames.DepartmentName;
+                drpDepartmentSearch.DataBind();
+                drpDepartmentSearch.Items.Insert(0, new ListItem("الكل", "0"));
+
+
+                DeliveryOrderBind();
             }
         }
         protected void addDeliveryOrderDetailsGrd_Click(object sender, EventArgs e)
@@ -239,9 +253,26 @@ namespace TouchMediaGUI
         }
         private void DeliveryOrderBind()
         {
-            BLL.DeliveryOrder DlvO = new BLL.DeliveryOrder();
-            DlvO.getAllDeliveryOrder();
-            GrdDeliveryOrder.DataSource = DlvO.DefaultView;
+            //BLL.DeliveryOrder DlvO = new BLL.DeliveryOrder();
+            //DlvO.getAllDeliveryOrder();
+            //GrdDeliveryOrder.DataSource = DlvO.DefaultView;
+            //GrdDeliveryOrder.DataBind();
+            BLL.DeliveryOrder DSearch = new BLL.DeliveryOrder();
+
+            DateTime from, to;
+            DateTime.TryParseExact(txtDateFromSearch.Text, "dd/MM/yyyy", null, DateTimeStyles.None, out from);
+            DateTime.TryParseExact(txtDateToSearch.Text, "dd/MM/yyyy", null, DateTimeStyles.None, out to);
+            if (from == DateTime.MinValue)
+                from = new DateTime(1950, 1, 1);
+            if (to == DateTime.MinValue)
+                to = new DateTime(2600, 1, 1);
+            DSearch.SearchDeliveryOrder(from,
+                                        to,
+                                        txtDeliveryNumberSearch.Text.Trim(), txtDeliveryNameSearch.Text.Trim(),
+                                        int.Parse(drpStatusSearch.SelectedValue.ToString()),
+                                        int.Parse(drpDepartmentSearch.SelectedValue.ToString()));
+
+            GrdDeliveryOrder.DataSource = DSearch.DefaultView;
             GrdDeliveryOrder.DataBind();
         }
         private void DeliveryOrderDetailsBind()
@@ -351,6 +382,13 @@ namespace TouchMediaGUI
             Response.Redirect("DeliveryOrder.aspx");
 
 
+        }
+
+       
+
+        protected void btnSearchDeliveryOrder_Click(object sender, EventArgs e)
+        {
+            DeliveryOrderBind();
         }
 
 
