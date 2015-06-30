@@ -61,10 +61,14 @@ namespace TouchMediaGUI
             FilterbyStatusTableAdapters.DeliveryOrderReportByStatusTableAdapter DORSTA = new FilterbyStatusTableAdapters.DeliveryOrderReportByStatusTableAdapter();
             DORSTA.ClearBeforeFill = true;
 
-            try 
+            try
+            {
+
+            }
+            catch
             { 
             
-                }
+            }
         }
     }
 }

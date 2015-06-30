@@ -40,6 +40,15 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+    <div class="widget" id="WidGrdGeneralDeliveryOrder" runat="server">
+                <div class="widget-title">
+                    <h4><i class="icon-truck"></i>تقارير</h4>
+                    <span class="tools">
+                        <a href="javascript:;" class="icon-chevron-down"></a>
+                        <a href="javascript:;" class="icon-remove"></a>
+                    </span>
+
+                </div>
     <div class="widget-body">
         <div class="row-fluid">
             <div class="span12">
@@ -99,4 +108,5 @@
             </div>
             </div>
     </div>
+        </div>
 </asp:Content>

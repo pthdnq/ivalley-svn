@@ -43,7 +43,81 @@
     <div class="row-fluid">
         <div class="span12">
             <!-- BEGIN EXAMPLE TABLE widget-->
-           
+            <div class="widget" id="Div1" runat="server" aria-expanded="false">
+                <div class="widget-title">
+                    <h4><i class="icon-search"></i> بحث أوامر تشغيل السيارات </h4>
+                    <span class="tools">
+                        <a href="javascript:;" class="icon-chevron-down"></a>
+                        <a href="javascript:;" class="icon-remove"></a>
+                    </span>
+
+                </div>
+                <div class="widget-body">
+                    <div class="row-fluid">
+                        <asp:Panel runat="server" DefaultButton="btnSearchDeliveryOrder">
+                            <div class="span12">
+                            <div class="form-horizontal">
+                            <div class="block-margin-bottom-5 span12 clearfix">
+                            <div class="span6">
+                                
+
+                                <label class="control-label">التاريخ من</label>
+                                <div class="input-append date date-picker" data-date-format="dd/mm/yyyy" data-date-viewmode="years" >
+                                <asp:TextBox runat="server" CssClass="m-ctrl-medium date-picker" Font-Size="16"  type="text"  ID="txtDateFromSearch" style="direction:ltr"/>
+                                    <span class="add-on">
+                                        <i class="icon-calendar"></i>
+                                    </span>
+                                </div>
+                                
+
+                            </div>
+                            <div class="span6">
+                                <label class="control-label">التاريخ الي</label>
+                                <div class="input-append date date-picker" data-date-format="dd/mm/yyyy" data-date-viewmode="years" >
+                                <asp:TextBox runat="server" CssClass="m-ctrl-medium date-picker" Font-Size="16"  type="text"  ID="txtDateToSearch" style="direction:ltr"/>
+                                    <span class="add-on">
+                                        <i class="icon-calendar"></i>
+                                    </span>
+                                </div>
+                                
+
+                            </div>
+                           
+                        </div>
+                            <div class="block-margin-bottom-5 span12 clearfix">
+                                <div class="span6">
+                                <label class="control-label">كود العملية</label>
+                                <asp:TextBox runat="server" type="text"  ID="txtDeliveryNumberSearch" />
+                            </div> 
+                                <div class="span6">
+                                    <label class="control-label"> أسم المشوار</label>
+                               <asp:TextBox runat="server" type="text"  ID="txtDeliveryNameSearch" />
+                              
+                                    </div>
+                                </div>
+                            <div class="block-margin-bottom-5 span12 clearfix">
+                                <div class="span6">
+                                    <label class="control-label">القسم الطالب</label>
+                               <asp:DropDownList runat="server" type="text"  ID="drpDepartmentSearch" />
+                                </div>
+                                <div class="span6">
+                                  <label class="control-label">الحالة</label>
+                               <asp:DropDownList runat="server" type="text"  ID="drpStatusSearch" />
+                                </div>
+                            </div> 
+                                <div class="block-margin-bottom-5 span12 clearfix">
+                                    <div class="span6">
+                                        <asp:LinkButton runat="server" ID="btnSearchDeliveryOrder" OnClick="btnSearchDeliveryOrder_Click" class="btn btn-success"><i class="icon-search icon-white" ></i>بحث</asp:LinkButton>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </asp:Panel>
+                        
+                    </div>
+                </div>
+            </div>
+
             <div class="widget" id="WidGrdGeneralDeliveryOrder" runat="server">
                 <div class="widget-title">
                     <h4><i class="icon-truck"></i>اوامر تشغيل السيارات </h4>
@@ -59,11 +133,11 @@
                              <div style="margin-bottom: 7px ; " >
                 <asp:LinkButton runat="server"  ID="createNewDeliveryOrder" OnClick="createNewDeliveryOrder_Click" class="btn btn-warning"><i class="icon-plus icon-white"></i>انشاء امر تشغيل سيارة</asp:LinkButton>
             </div>
-                            <asp:GridView ID="GrdDeliveryOrder" CssClass="table table-striped table-bordered" runat="server" AutoGenerateColumns="false" OnRowCommand="GrdDeliveryOrder_RowCommand">
+                            <asp:GridView ID="GrdDeliveryOrder" CssClass="table table-striped table-bordered" runat="server" AutoGenerateColumns="false" OnRowCommand="GrdDeliveryOrder_RowCommand" EmptyDataText="عفواً لا يوجد بيانات متاحة">
                                 <Columns>
                                     <asp:BoundField HeaderText="كود العملية" DataField="GeneralDeliveryCode" />
                                     <asp:BoundField HeaderText="أسم المشوار" DataField="DeliveryOrderName" />
-                                    <asp:BoundField HeaderText="القسم" DataField="Department" />
+                                    <asp:BoundField HeaderText="القسم" DataField="DepartmentName" />
                                     <asp:BoundField HeaderText="التاريخ" DataField="DeliveryOrderDate" DataFormatString="{0:dd/MM/yyyy}"/>
                                     <asp:BoundField HeaderText="رقم السائق" DataField="DriverTelephone" />
                                     <asp:TemplateField HeaderText="الحالة">
