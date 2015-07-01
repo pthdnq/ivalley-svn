@@ -131,6 +131,15 @@ namespace Flights_GUI.Admin
 
                 objData.IsDeleted = true;
                 objData.Save();
+
+                ManualLog mlog = new ManualLog();
+                mlog.AddNew();
+                mlog.ActionID = 3; // delete
+                mlog.ManualID = objData.ManualID;
+                mlog.LogDate = DateTime.Now;
+                mlog.UserID = new Guid(Membership.GetUser().ProviderUserKey.ToString());
+                mlog.Save();
+
                 BindData();
             }
         }
@@ -154,15 +163,23 @@ namespace Flights_GUI.Admin
 
         protected void uiButtonSave_Click(object sender, EventArgs e)
         {
+            ManualLog mlog = new ManualLog();
+            mlog.AddNew();            
+
             Manual objdata = new Manual();
             if (CurrentManual == null)
             {
                 objdata.AddNew();
                 objdata.CreatedBy = new Guid(Membership.GetUser().ProviderUserKey.ToString());
                 objdata.CreatedDate = DateTime.Now;
+
+                mlog.ActionID = 1; // create                
             }
             else
+            {
                 objdata = CurrentManual;
+                mlog.ActionID = 2; // update
+            }
             objdata.Title = uiTextBoxTitle.Text;
 
             objdata.UpdatedBy = new Guid(Membership.GetUser().ProviderUserKey.ToString());
@@ -172,6 +189,12 @@ namespace Flights_GUI.Admin
                 objdata.ManualCategoryID = currentManualCat;
 
             objdata.Save();
+
+            mlog.ManualID = objdata.ManualID;
+            mlog.LogDate = DateTime.Now;
+            mlog.UserID = new Guid(Membership.GetUser().ProviderUserKey.ToString());
+            mlog.Save();
+
             BindData();
             CurrentManual = objdata;
             uiPanelViewAll.Visible = false;
@@ -303,6 +326,14 @@ namespace Flights_GUI.Admin
                 versions.IsDeleted = true;
                 versions.Save();
 
+                ManualLog mlog = new ManualLog();
+                mlog.AddNew();
+                mlog.ActionID = 3;//delete
+                mlog.ManualVersionID = versions.ManualVersionID;
+                mlog.UserID = new Guid(Membership.GetUser().ProviderUserKey.ToString());
+                mlog.LogDate = DateTime.Now;
+                mlog.Save();
+
                 BindData_Versions();
             }
         }
@@ -315,15 +346,21 @@ namespace Flights_GUI.Admin
 
         protected void uiButtonSaveVersion_Click(object sender, EventArgs e)
         {
+            ManualLog mlog = new ManualLog();
+            mlog.AddNew();
             ManualVersion objdata = new ManualVersion();
             if (CurrentManualVersion == null)
             {
                 objdata.AddNew();
                 objdata.CreatedBy = new Guid(Membership.GetUser().ProviderUserKey.ToString());
                 objdata.CreatedDate = DateTime.Now;
+                mlog.ActionID = 1; // create
             }
             else
+            {
                 objdata = CurrentManualVersion;
+                mlog.ActionID = 2;//update
+            }
             objdata.Title = uiTextBoxVersionTitle.Text;
             objdata.Notes = uiTextBoxNotes.Text;
             objdata.UpdatedBy = new Guid(Membership.GetUser().ProviderUserKey.ToString());
@@ -354,6 +391,12 @@ namespace Flights_GUI.Admin
             }
 
             objdata.Save();
+
+            mlog.ManualVersionID = objdata.ManualVersionID;
+            mlog.LogDate = DateTime.Now;
+            mlog.UserID = new Guid(Membership.GetUser().ProviderUserKey.ToString());
+            mlog.Save();
+
             // add new notifications 
             ManualCategory cat = new ManualCategory();
             cat.GetTopMostParent(CurrentManual.ManualCategoryID);

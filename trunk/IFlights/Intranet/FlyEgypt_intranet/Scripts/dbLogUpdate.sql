@@ -49,6 +49,11 @@ create table ManualLog
 )
 GO
 
+
+alter table manuallog
+add ManualCategoryID int foreign key references ManualCategory(ManualCategoryID)
+Go
+
 create table LoginLog
 (
 	LoginLogID int not null identity(1,1) primary key,

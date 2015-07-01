@@ -163,6 +163,14 @@ namespace Flight_DAL
 				}
 			}
 			
+			public static SqlParameter ManualCategoryID
+			{
+				get
+				{
+					return new SqlParameter("@ManualCategoryID", SqlDbType.Int, 0);
+				}
+			}
+			
 		}
 		#endregion		
 	
@@ -177,6 +185,7 @@ namespace Flight_DAL
             public const string UserID = "UserID";
             public const string ActionID = "ActionID";
             public const string LogDate = "LogDate";
+            public const string ManualCategoryID = "ManualCategoryID";
 
 			static public string ToPropertyName(string columnName)
 			{
@@ -192,6 +201,7 @@ namespace Flight_DAL
 					ht[UserID] = _ManualLog.PropertyNames.UserID;
 					ht[ActionID] = _ManualLog.PropertyNames.ActionID;
 					ht[LogDate] = _ManualLog.PropertyNames.LogDate;
+					ht[ManualCategoryID] = _ManualLog.PropertyNames.ManualCategoryID;
 
 				}
 				return (string)ht[columnName];
@@ -212,6 +222,7 @@ namespace Flight_DAL
             public const string UserID = "UserID";
             public const string ActionID = "ActionID";
             public const string LogDate = "LogDate";
+            public const string ManualCategoryID = "ManualCategoryID";
 
 			static public string ToColumnName(string propertyName)
 			{
@@ -227,6 +238,7 @@ namespace Flight_DAL
 					ht[UserID] = _ManualLog.ColumnNames.UserID;
 					ht[ActionID] = _ManualLog.ColumnNames.ActionID;
 					ht[LogDate] = _ManualLog.ColumnNames.LogDate;
+					ht[ManualCategoryID] = _ManualLog.ColumnNames.ManualCategoryID;
 
 				}
 				return (string)ht[propertyName];
@@ -247,6 +259,7 @@ namespace Flight_DAL
             public const string UserID = "s_UserID";
             public const string ActionID = "s_ActionID";
             public const string LogDate = "s_LogDate";
+            public const string ManualCategoryID = "s_ManualCategoryID";
 
 		}
 		#endregion		
@@ -346,6 +359,18 @@ namespace Flight_DAL
 			set
 	        {
 				base.SetDateTime(ColumnNames.LogDate, value);
+			}
+		}
+
+		public virtual int ManualCategoryID
+	    {
+			get
+	        {
+				return base.Getint(ColumnNames.ManualCategoryID);
+			}
+			set
+	        {
+				base.Setint(ColumnNames.ManualCategoryID, value);
 			}
 		}
 
@@ -474,6 +499,21 @@ namespace Flight_DAL
 			}
 		}
 
+		public virtual string s_ManualCategoryID
+	    {
+			get
+	        {
+				return this.IsColumnNull(ColumnNames.ManualCategoryID) ? string.Empty : base.GetintAsString(ColumnNames.ManualCategoryID);
+			}
+			set
+	        {
+				if(string.Empty == value)
+					this.SetColumnNull(ColumnNames.ManualCategoryID);
+				else
+					this.ManualCategoryID = base.SetintAsString(ColumnNames.ManualCategoryID, value);
+			}
+		}
+
 
 		#endregion		
 	
@@ -587,6 +627,16 @@ namespace Flight_DAL
 					}
 				}
 
+				public WhereParameter ManualCategoryID
+				{
+					get
+					{
+							WhereParameter where = new WhereParameter(ColumnNames.ManualCategoryID, Parameters.ManualCategoryID);
+							this._clause._entity.Query.AddWhereParameter(where);
+							return where;
+					}
+				}
+
 
 				private WhereClause _clause;
 			}
@@ -688,6 +738,18 @@ namespace Flight_DAL
 				}
 			}
 
+			public WhereParameter ManualCategoryID
+		    {
+				get
+		        {
+					if(_ManualCategoryID_W == null)
+	        	    {
+						_ManualCategoryID_W = TearOff.ManualCategoryID;
+					}
+					return _ManualCategoryID_W;
+				}
+			}
+
 			private WhereParameter _ManualLogID_W = null;
 			private WhereParameter _ManualID_W = null;
 			private WhereParameter _ManualVersionID_W = null;
@@ -696,6 +758,7 @@ namespace Flight_DAL
 			private WhereParameter _UserID_W = null;
 			private WhereParameter _ActionID_W = null;
 			private WhereParameter _LogDate_W = null;
+			private WhereParameter _ManualCategoryID_W = null;
 
 			public void WhereClauseReset()
 			{
@@ -707,6 +770,7 @@ namespace Flight_DAL
 				_UserID_W = null;
 				_ActionID_W = null;
 				_LogDate_W = null;
+				_ManualCategoryID_W = null;
 
 				this._entity.Query.FlushWhereParameters();
 
@@ -843,6 +907,16 @@ namespace Flight_DAL
 					}
 				}
 
+				public AggregateParameter ManualCategoryID
+				{
+					get
+					{
+							AggregateParameter aggregate = new AggregateParameter(ColumnNames.ManualCategoryID, Parameters.ManualCategoryID);
+							this._clause._entity.Query.AddAggregateParameter(aggregate);
+							return aggregate;
+					}
+				}
+
 
 				private AggregateClause _clause;
 			}
@@ -944,6 +1018,18 @@ namespace Flight_DAL
 				}
 			}
 
+			public AggregateParameter ManualCategoryID
+		    {
+				get
+		        {
+					if(_ManualCategoryID_W == null)
+	        	    {
+						_ManualCategoryID_W = TearOff.ManualCategoryID;
+					}
+					return _ManualCategoryID_W;
+				}
+			}
+
 			private AggregateParameter _ManualLogID_W = null;
 			private AggregateParameter _ManualID_W = null;
 			private AggregateParameter _ManualVersionID_W = null;
@@ -952,6 +1038,7 @@ namespace Flight_DAL
 			private AggregateParameter _UserID_W = null;
 			private AggregateParameter _ActionID_W = null;
 			private AggregateParameter _LogDate_W = null;
+			private AggregateParameter _ManualCategoryID_W = null;
 
 			public void AggregateClauseReset()
 			{
@@ -963,6 +1050,7 @@ namespace Flight_DAL
 				_UserID_W = null;
 				_ActionID_W = null;
 				_LogDate_W = null;
+				_ManualCategoryID_W = null;
 
 				this._entity.Query.FlushAggregateParameters();
 
@@ -1067,6 +1155,10 @@ namespace Flight_DAL
 
 			p = cmd.Parameters.Add(Parameters.LogDate);
 			p.SourceColumn = ColumnNames.LogDate;
+			p.SourceVersion = DataRowVersion.Current;
+
+			p = cmd.Parameters.Add(Parameters.ManualCategoryID);
+			p.SourceColumn = ColumnNames.ManualCategoryID;
 			p.SourceVersion = DataRowVersion.Current;
 
 

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -68,17 +69,29 @@ namespace Flights_GUI.Admin
 
         protected void uiButtonSave_Click(object sender, EventArgs e)
         {
+            ManualLog mlog = new ManualLog();
+            mlog.AddNew();
             ManualCategory cat = new ManualCategory ();
             if (CurrentCat != null)
+            { 
                 cat = CurrentCat;
+                mlog.ActionID = 2; // update
+            }
             else
+            {
                 cat.AddNew();
-
+                mlog.ActionID = 1; // create                
+            }
             cat.Title = uiTextBoxTitle.Text;
             if (currentParentCat != 0)
                 cat.ParentCategoryID = currentParentCat;
 
             cat.Save();
+
+            mlog.ManualCategoryID = cat.ManualCategoryID;
+            mlog.LogDate = DateTime.Now;
+            mlog.UserID = new Guid(Membership.GetUser().ProviderUserKey.ToString());
+            mlog.Save();
             LoadCats();
             LoadSubCats();
 
@@ -111,8 +124,23 @@ namespace Flights_GUI.Admin
             {
                 ManualCategory objData = new ManualCategory();
                 objData.LoadByPrimaryKey(Convert.ToInt32(e.CommandArgument.ToString()));
+                int id = objData.ManualCategoryID;
                 objData.MarkAsDeleted();
-                objData.Save();
+                try
+                {
+                    objData.Save();
+                    ManualLog mlog = new ManualLog();
+                    mlog.AddNew();
+                    mlog.ActionID = 3; // delete
+                    mlog.ManualCategoryID = id;
+                    mlog.UserID = new Guid(Membership.GetUser().ProviderUserKey.ToString());
+                    mlog.LogDate = DateTime.Now;
+                    mlog.Save();
+                }
+                catch (Exception ex)
+                {
+                    
+                }
                 LoadSubCats();
                 LoadCats();
             }
