@@ -95,6 +95,7 @@ namespace Flights_GUI.Admin
                 objData.Save();
 
                 ScheduleLog slog = new ScheduleLog();
+                slog.AddNew();
                 slog.ActionID = 3; // delete
                 slog.ScheduleID = objData.ScheduleID;
                 slog.LogDate = DateTime.Now;
