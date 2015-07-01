@@ -14,7 +14,7 @@ namespace Flight_BLL
 
         public bool GetAllCertificates()
         {
-            return LoadFromRawSql(@"select A.*, U.UserName, U.UserID from certificate A Left join aspnet_users U on A.createdby = u.UserID order by CreatedDate desc");
+            return LoadFromRawSql(@"select A.*, U.UserName, U.UserID from certificate A Left join aspnet_users U on A.createdby = u.UserID WHERE (A.isDeleted is null or A.isDeleted <> 1 ) order by CreatedDate desc");
         }
 	}
 }

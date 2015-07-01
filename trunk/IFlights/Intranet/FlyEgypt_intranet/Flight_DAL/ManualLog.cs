@@ -41,12 +41,12 @@ using MyGeneration.dOOdads;
 
 namespace Flight_DAL
 {
-	public abstract class _ManualForm : SqlClientEntity
+	public abstract class _ManualLog : SqlClientEntity
 	{
-		public _ManualForm()
+		public _ManualLog()
 		{
-			this.QuerySource = "ManualForm";
-			this.MappingName = "ManualForm";
+			this.QuerySource = "ManualLog";
+			this.MappingName = "ManualLog";
 
 		}	
 
@@ -78,7 +78,7 @@ namespace Flight_DAL
 		{
 			ListDictionary parameters = null;
 			
-			return base.LoadFromSql("[" + this.SchemaStoredProcedure + "proc_ManualFormLoadAll]", parameters);
+			return base.LoadFromSql("[" + this.SchemaStoredProcedure + "proc_ManualLogLoadAll]", parameters);
 		}
 	
 		//=================================================================
@@ -86,24 +86,24 @@ namespace Flight_DAL
 		//=================================================================
 		//  Loads a single row of via the primary key
 		//=================================================================
-		public virtual bool LoadByPrimaryKey(int ManualFormID)
+		public virtual bool LoadByPrimaryKey(int ManualLogID)
 		{
 			ListDictionary parameters = new ListDictionary();
-			parameters.Add(Parameters.ManualFormID, ManualFormID);
+			parameters.Add(Parameters.ManualLogID, ManualLogID);
 
 		
-			return base.LoadFromSql("[" + this.SchemaStoredProcedure + "proc_ManualFormLoadByPrimaryKey]", parameters);
+			return base.LoadFromSql("[" + this.SchemaStoredProcedure + "proc_ManualLogLoadByPrimaryKey]", parameters);
 		}
 		
 		#region Parameters
 		protected class Parameters
 		{
 			
-			public static SqlParameter ManualFormID
+			public static SqlParameter ManualLogID
 			{
 				get
 				{
-					return new SqlParameter("@ManualFormID", SqlDbType.Int, 0);
+					return new SqlParameter("@ManualLogID", SqlDbType.Int, 0);
 				}
 			}
 			
@@ -115,51 +115,51 @@ namespace Flight_DAL
 				}
 			}
 			
-			public static SqlParameter Name
+			public static SqlParameter ManualVersionID
 			{
 				get
 				{
-					return new SqlParameter("@Name", SqlDbType.NVarChar, 300);
+					return new SqlParameter("@ManualVersionID", SqlDbType.Int, 0);
 				}
 			}
 			
-			public static SqlParameter CreatedBy
+			public static SqlParameter ManualFormID
 			{
 				get
 				{
-					return new SqlParameter("@CreatedBy", SqlDbType.UniqueIdentifier, 0);
+					return new SqlParameter("@ManualFormID", SqlDbType.Int, 0);
 				}
 			}
 			
-			public static SqlParameter CreatedDate
+			public static SqlParameter FromVersionID
 			{
 				get
 				{
-					return new SqlParameter("@CreatedDate", SqlDbType.DateTime, 0);
+					return new SqlParameter("@FromVersionID", SqlDbType.Int, 0);
 				}
 			}
 			
-			public static SqlParameter UpdatedBy
+			public static SqlParameter UserID
 			{
 				get
 				{
-					return new SqlParameter("@UpdatedBy", SqlDbType.UniqueIdentifier, 0);
+					return new SqlParameter("@UserID", SqlDbType.UniqueIdentifier, 0);
 				}
 			}
 			
-			public static SqlParameter LastUpdatedDate
+			public static SqlParameter ActionID
 			{
 				get
 				{
-					return new SqlParameter("@LastUpdatedDate", SqlDbType.DateTime, 0);
+					return new SqlParameter("@ActionID", SqlDbType.Int, 0);
 				}
 			}
 			
-			public static SqlParameter IsDeleted
+			public static SqlParameter LogDate
 			{
 				get
 				{
-					return new SqlParameter("@IsDeleted", SqlDbType.Bit, 0);
+					return new SqlParameter("@LogDate", SqlDbType.DateTime, 0);
 				}
 			}
 			
@@ -169,14 +169,14 @@ namespace Flight_DAL
 		#region ColumnNames
 		public class ColumnNames
 		{  
-            public const string ManualFormID = "ManualFormID";
+            public const string ManualLogID = "ManualLogID";
             public const string ManualID = "ManualID";
-            public const string Name = "Name";
-            public const string CreatedBy = "CreatedBy";
-            public const string CreatedDate = "CreatedDate";
-            public const string UpdatedBy = "UpdatedBy";
-            public const string LastUpdatedDate = "LastUpdatedDate";
-            public const string IsDeleted = "isDeleted";
+            public const string ManualVersionID = "ManualVersionID";
+            public const string ManualFormID = "ManualFormID";
+            public const string FromVersionID = "FromVersionID";
+            public const string UserID = "UserID";
+            public const string ActionID = "ActionID";
+            public const string LogDate = "LogDate";
 
 			static public string ToPropertyName(string columnName)
 			{
@@ -184,14 +184,14 @@ namespace Flight_DAL
 				{
 					ht = new Hashtable();
 					
-					ht[ManualFormID] = _ManualForm.PropertyNames.ManualFormID;
-					ht[ManualID] = _ManualForm.PropertyNames.ManualID;
-					ht[Name] = _ManualForm.PropertyNames.Name;
-					ht[CreatedBy] = _ManualForm.PropertyNames.CreatedBy;
-					ht[CreatedDate] = _ManualForm.PropertyNames.CreatedDate;
-					ht[UpdatedBy] = _ManualForm.PropertyNames.UpdatedBy;
-					ht[LastUpdatedDate] = _ManualForm.PropertyNames.LastUpdatedDate;
-					ht[IsDeleted] = _ManualForm.PropertyNames.IsDeleted;
+					ht[ManualLogID] = _ManualLog.PropertyNames.ManualLogID;
+					ht[ManualID] = _ManualLog.PropertyNames.ManualID;
+					ht[ManualVersionID] = _ManualLog.PropertyNames.ManualVersionID;
+					ht[ManualFormID] = _ManualLog.PropertyNames.ManualFormID;
+					ht[FromVersionID] = _ManualLog.PropertyNames.FromVersionID;
+					ht[UserID] = _ManualLog.PropertyNames.UserID;
+					ht[ActionID] = _ManualLog.PropertyNames.ActionID;
+					ht[LogDate] = _ManualLog.PropertyNames.LogDate;
 
 				}
 				return (string)ht[columnName];
@@ -204,14 +204,14 @@ namespace Flight_DAL
 		#region PropertyNames
 		public class PropertyNames
 		{  
-            public const string ManualFormID = "ManualFormID";
+            public const string ManualLogID = "ManualLogID";
             public const string ManualID = "ManualID";
-            public const string Name = "Name";
-            public const string CreatedBy = "CreatedBy";
-            public const string CreatedDate = "CreatedDate";
-            public const string UpdatedBy = "UpdatedBy";
-            public const string LastUpdatedDate = "LastUpdatedDate";
-            public const string IsDeleted = "IsDeleted";
+            public const string ManualVersionID = "ManualVersionID";
+            public const string ManualFormID = "ManualFormID";
+            public const string FromVersionID = "FromVersionID";
+            public const string UserID = "UserID";
+            public const string ActionID = "ActionID";
+            public const string LogDate = "LogDate";
 
 			static public string ToColumnName(string propertyName)
 			{
@@ -219,14 +219,14 @@ namespace Flight_DAL
 				{
 					ht = new Hashtable();
 					
-					ht[ManualFormID] = _ManualForm.ColumnNames.ManualFormID;
-					ht[ManualID] = _ManualForm.ColumnNames.ManualID;
-					ht[Name] = _ManualForm.ColumnNames.Name;
-					ht[CreatedBy] = _ManualForm.ColumnNames.CreatedBy;
-					ht[CreatedDate] = _ManualForm.ColumnNames.CreatedDate;
-					ht[UpdatedBy] = _ManualForm.ColumnNames.UpdatedBy;
-					ht[LastUpdatedDate] = _ManualForm.ColumnNames.LastUpdatedDate;
-					ht[IsDeleted] = _ManualForm.ColumnNames.IsDeleted;
+					ht[ManualLogID] = _ManualLog.ColumnNames.ManualLogID;
+					ht[ManualID] = _ManualLog.ColumnNames.ManualID;
+					ht[ManualVersionID] = _ManualLog.ColumnNames.ManualVersionID;
+					ht[ManualFormID] = _ManualLog.ColumnNames.ManualFormID;
+					ht[FromVersionID] = _ManualLog.ColumnNames.FromVersionID;
+					ht[UserID] = _ManualLog.ColumnNames.UserID;
+					ht[ActionID] = _ManualLog.ColumnNames.ActionID;
+					ht[LogDate] = _ManualLog.ColumnNames.LogDate;
 
 				}
 				return (string)ht[propertyName];
@@ -239,29 +239,29 @@ namespace Flight_DAL
 		#region StringPropertyNames
 		public class StringPropertyNames
 		{  
-            public const string ManualFormID = "s_ManualFormID";
+            public const string ManualLogID = "s_ManualLogID";
             public const string ManualID = "s_ManualID";
-            public const string Name = "s_Name";
-            public const string CreatedBy = "s_CreatedBy";
-            public const string CreatedDate = "s_CreatedDate";
-            public const string UpdatedBy = "s_UpdatedBy";
-            public const string LastUpdatedDate = "s_LastUpdatedDate";
-            public const string IsDeleted = "s_IsDeleted";
+            public const string ManualVersionID = "s_ManualVersionID";
+            public const string ManualFormID = "s_ManualFormID";
+            public const string FromVersionID = "s_FromVersionID";
+            public const string UserID = "s_UserID";
+            public const string ActionID = "s_ActionID";
+            public const string LogDate = "s_LogDate";
 
 		}
 		#endregion		
 		
 		#region Properties
 	
-		public virtual int ManualFormID
+		public virtual int ManualLogID
 	    {
 			get
 	        {
-				return base.Getint(ColumnNames.ManualFormID);
+				return base.Getint(ColumnNames.ManualLogID);
 			}
 			set
 	        {
-				base.Setint(ColumnNames.ManualFormID, value);
+				base.Setint(ColumnNames.ManualLogID, value);
 			}
 		}
 
@@ -277,75 +277,75 @@ namespace Flight_DAL
 			}
 		}
 
-		public virtual string Name
+		public virtual int ManualVersionID
 	    {
 			get
 	        {
-				return base.Getstring(ColumnNames.Name);
+				return base.Getint(ColumnNames.ManualVersionID);
 			}
 			set
 	        {
-				base.Setstring(ColumnNames.Name, value);
+				base.Setint(ColumnNames.ManualVersionID, value);
 			}
 		}
 
-		public virtual Guid CreatedBy
+		public virtual int ManualFormID
 	    {
 			get
 	        {
-				return base.GetGuid(ColumnNames.CreatedBy);
+				return base.Getint(ColumnNames.ManualFormID);
 			}
 			set
 	        {
-				base.SetGuid(ColumnNames.CreatedBy, value);
+				base.Setint(ColumnNames.ManualFormID, value);
 			}
 		}
 
-		public virtual DateTime CreatedDate
+		public virtual int FromVersionID
 	    {
 			get
 	        {
-				return base.GetDateTime(ColumnNames.CreatedDate);
+				return base.Getint(ColumnNames.FromVersionID);
 			}
 			set
 	        {
-				base.SetDateTime(ColumnNames.CreatedDate, value);
+				base.Setint(ColumnNames.FromVersionID, value);
 			}
 		}
 
-		public virtual Guid UpdatedBy
+		public virtual Guid UserID
 	    {
 			get
 	        {
-				return base.GetGuid(ColumnNames.UpdatedBy);
+				return base.GetGuid(ColumnNames.UserID);
 			}
 			set
 	        {
-				base.SetGuid(ColumnNames.UpdatedBy, value);
+				base.SetGuid(ColumnNames.UserID, value);
 			}
 		}
 
-		public virtual DateTime LastUpdatedDate
+		public virtual int ActionID
 	    {
 			get
 	        {
-				return base.GetDateTime(ColumnNames.LastUpdatedDate);
+				return base.Getint(ColumnNames.ActionID);
 			}
 			set
 	        {
-				base.SetDateTime(ColumnNames.LastUpdatedDate, value);
+				base.Setint(ColumnNames.ActionID, value);
 			}
 		}
 
-		public virtual bool IsDeleted
+		public virtual DateTime LogDate
 	    {
 			get
 	        {
-				return base.Getbool(ColumnNames.IsDeleted);
+				return base.GetDateTime(ColumnNames.LogDate);
 			}
 			set
 	        {
-				base.Setbool(ColumnNames.IsDeleted, value);
+				base.SetDateTime(ColumnNames.LogDate, value);
 			}
 		}
 
@@ -354,18 +354,18 @@ namespace Flight_DAL
 		
 		#region String Properties
 	
-		public virtual string s_ManualFormID
+		public virtual string s_ManualLogID
 	    {
 			get
 	        {
-				return this.IsColumnNull(ColumnNames.ManualFormID) ? string.Empty : base.GetintAsString(ColumnNames.ManualFormID);
+				return this.IsColumnNull(ColumnNames.ManualLogID) ? string.Empty : base.GetintAsString(ColumnNames.ManualLogID);
 			}
 			set
 	        {
 				if(string.Empty == value)
-					this.SetColumnNull(ColumnNames.ManualFormID);
+					this.SetColumnNull(ColumnNames.ManualLogID);
 				else
-					this.ManualFormID = base.SetintAsString(ColumnNames.ManualFormID, value);
+					this.ManualLogID = base.SetintAsString(ColumnNames.ManualLogID, value);
 			}
 		}
 
@@ -384,93 +384,93 @@ namespace Flight_DAL
 			}
 		}
 
-		public virtual string s_Name
+		public virtual string s_ManualVersionID
 	    {
 			get
 	        {
-				return this.IsColumnNull(ColumnNames.Name) ? string.Empty : base.GetstringAsString(ColumnNames.Name);
+				return this.IsColumnNull(ColumnNames.ManualVersionID) ? string.Empty : base.GetintAsString(ColumnNames.ManualVersionID);
 			}
 			set
 	        {
 				if(string.Empty == value)
-					this.SetColumnNull(ColumnNames.Name);
+					this.SetColumnNull(ColumnNames.ManualVersionID);
 				else
-					this.Name = base.SetstringAsString(ColumnNames.Name, value);
+					this.ManualVersionID = base.SetintAsString(ColumnNames.ManualVersionID, value);
 			}
 		}
 
-		public virtual string s_CreatedBy
+		public virtual string s_ManualFormID
 	    {
 			get
 	        {
-				return this.IsColumnNull(ColumnNames.CreatedBy) ? string.Empty : base.GetGuidAsString(ColumnNames.CreatedBy);
+				return this.IsColumnNull(ColumnNames.ManualFormID) ? string.Empty : base.GetintAsString(ColumnNames.ManualFormID);
 			}
 			set
 	        {
 				if(string.Empty == value)
-					this.SetColumnNull(ColumnNames.CreatedBy);
+					this.SetColumnNull(ColumnNames.ManualFormID);
 				else
-					this.CreatedBy = base.SetGuidAsString(ColumnNames.CreatedBy, value);
+					this.ManualFormID = base.SetintAsString(ColumnNames.ManualFormID, value);
 			}
 		}
 
-		public virtual string s_CreatedDate
+		public virtual string s_FromVersionID
 	    {
 			get
 	        {
-				return this.IsColumnNull(ColumnNames.CreatedDate) ? string.Empty : base.GetDateTimeAsString(ColumnNames.CreatedDate);
+				return this.IsColumnNull(ColumnNames.FromVersionID) ? string.Empty : base.GetintAsString(ColumnNames.FromVersionID);
 			}
 			set
 	        {
 				if(string.Empty == value)
-					this.SetColumnNull(ColumnNames.CreatedDate);
+					this.SetColumnNull(ColumnNames.FromVersionID);
 				else
-					this.CreatedDate = base.SetDateTimeAsString(ColumnNames.CreatedDate, value);
+					this.FromVersionID = base.SetintAsString(ColumnNames.FromVersionID, value);
 			}
 		}
 
-		public virtual string s_UpdatedBy
+		public virtual string s_UserID
 	    {
 			get
 	        {
-				return this.IsColumnNull(ColumnNames.UpdatedBy) ? string.Empty : base.GetGuidAsString(ColumnNames.UpdatedBy);
+				return this.IsColumnNull(ColumnNames.UserID) ? string.Empty : base.GetGuidAsString(ColumnNames.UserID);
 			}
 			set
 	        {
 				if(string.Empty == value)
-					this.SetColumnNull(ColumnNames.UpdatedBy);
+					this.SetColumnNull(ColumnNames.UserID);
 				else
-					this.UpdatedBy = base.SetGuidAsString(ColumnNames.UpdatedBy, value);
+					this.UserID = base.SetGuidAsString(ColumnNames.UserID, value);
 			}
 		}
 
-		public virtual string s_LastUpdatedDate
+		public virtual string s_ActionID
 	    {
 			get
 	        {
-				return this.IsColumnNull(ColumnNames.LastUpdatedDate) ? string.Empty : base.GetDateTimeAsString(ColumnNames.LastUpdatedDate);
+				return this.IsColumnNull(ColumnNames.ActionID) ? string.Empty : base.GetintAsString(ColumnNames.ActionID);
 			}
 			set
 	        {
 				if(string.Empty == value)
-					this.SetColumnNull(ColumnNames.LastUpdatedDate);
+					this.SetColumnNull(ColumnNames.ActionID);
 				else
-					this.LastUpdatedDate = base.SetDateTimeAsString(ColumnNames.LastUpdatedDate, value);
+					this.ActionID = base.SetintAsString(ColumnNames.ActionID, value);
 			}
 		}
 
-		public virtual string s_IsDeleted
+		public virtual string s_LogDate
 	    {
 			get
 	        {
-				return this.IsColumnNull(ColumnNames.IsDeleted) ? string.Empty : base.GetboolAsString(ColumnNames.IsDeleted);
+				return this.IsColumnNull(ColumnNames.LogDate) ? string.Empty : base.GetDateTimeAsString(ColumnNames.LogDate);
 			}
 			set
 	        {
 				if(string.Empty == value)
-					this.SetColumnNull(ColumnNames.IsDeleted);
+					this.SetColumnNull(ColumnNames.LogDate);
 				else
-					this.IsDeleted = base.SetboolAsString(ColumnNames.IsDeleted, value);
+					this.LogDate = base.SetDateTimeAsString(ColumnNames.LogDate, value);
 			}
 		}
 
@@ -507,11 +507,11 @@ namespace Flight_DAL
 				}
 				
 				
-				public WhereParameter ManualFormID
+				public WhereParameter ManualLogID
 				{
 					get
 					{
-							WhereParameter where = new WhereParameter(ColumnNames.ManualFormID, Parameters.ManualFormID);
+							WhereParameter where = new WhereParameter(ColumnNames.ManualLogID, Parameters.ManualLogID);
 							this._clause._entity.Query.AddWhereParameter(where);
 							return where;
 					}
@@ -527,61 +527,61 @@ namespace Flight_DAL
 					}
 				}
 
-				public WhereParameter Name
+				public WhereParameter ManualVersionID
 				{
 					get
 					{
-							WhereParameter where = new WhereParameter(ColumnNames.Name, Parameters.Name);
+							WhereParameter where = new WhereParameter(ColumnNames.ManualVersionID, Parameters.ManualVersionID);
 							this._clause._entity.Query.AddWhereParameter(where);
 							return where;
 					}
 				}
 
-				public WhereParameter CreatedBy
+				public WhereParameter ManualFormID
 				{
 					get
 					{
-							WhereParameter where = new WhereParameter(ColumnNames.CreatedBy, Parameters.CreatedBy);
+							WhereParameter where = new WhereParameter(ColumnNames.ManualFormID, Parameters.ManualFormID);
 							this._clause._entity.Query.AddWhereParameter(where);
 							return where;
 					}
 				}
 
-				public WhereParameter CreatedDate
+				public WhereParameter FromVersionID
 				{
 					get
 					{
-							WhereParameter where = new WhereParameter(ColumnNames.CreatedDate, Parameters.CreatedDate);
+							WhereParameter where = new WhereParameter(ColumnNames.FromVersionID, Parameters.FromVersionID);
 							this._clause._entity.Query.AddWhereParameter(where);
 							return where;
 					}
 				}
 
-				public WhereParameter UpdatedBy
+				public WhereParameter UserID
 				{
 					get
 					{
-							WhereParameter where = new WhereParameter(ColumnNames.UpdatedBy, Parameters.UpdatedBy);
+							WhereParameter where = new WhereParameter(ColumnNames.UserID, Parameters.UserID);
 							this._clause._entity.Query.AddWhereParameter(where);
 							return where;
 					}
 				}
 
-				public WhereParameter LastUpdatedDate
+				public WhereParameter ActionID
 				{
 					get
 					{
-							WhereParameter where = new WhereParameter(ColumnNames.LastUpdatedDate, Parameters.LastUpdatedDate);
+							WhereParameter where = new WhereParameter(ColumnNames.ActionID, Parameters.ActionID);
 							this._clause._entity.Query.AddWhereParameter(where);
 							return where;
 					}
 				}
 
-				public WhereParameter IsDeleted
+				public WhereParameter LogDate
 				{
 					get
 					{
-							WhereParameter where = new WhereParameter(ColumnNames.IsDeleted, Parameters.IsDeleted);
+							WhereParameter where = new WhereParameter(ColumnNames.LogDate, Parameters.LogDate);
 							this._clause._entity.Query.AddWhereParameter(where);
 							return where;
 					}
@@ -592,15 +592,15 @@ namespace Flight_DAL
 			}
 			#endregion
 		
-			public WhereParameter ManualFormID
+			public WhereParameter ManualLogID
 		    {
 				get
 		        {
-					if(_ManualFormID_W == null)
+					if(_ManualLogID_W == null)
 	        	    {
-						_ManualFormID_W = TearOff.ManualFormID;
+						_ManualLogID_W = TearOff.ManualLogID;
 					}
-					return _ManualFormID_W;
+					return _ManualLogID_W;
 				}
 			}
 
@@ -616,97 +616,97 @@ namespace Flight_DAL
 				}
 			}
 
-			public WhereParameter Name
+			public WhereParameter ManualVersionID
 		    {
 				get
 		        {
-					if(_Name_W == null)
+					if(_ManualVersionID_W == null)
 	        	    {
-						_Name_W = TearOff.Name;
+						_ManualVersionID_W = TearOff.ManualVersionID;
 					}
-					return _Name_W;
+					return _ManualVersionID_W;
 				}
 			}
 
-			public WhereParameter CreatedBy
+			public WhereParameter ManualFormID
 		    {
 				get
 		        {
-					if(_CreatedBy_W == null)
+					if(_ManualFormID_W == null)
 	        	    {
-						_CreatedBy_W = TearOff.CreatedBy;
+						_ManualFormID_W = TearOff.ManualFormID;
 					}
-					return _CreatedBy_W;
+					return _ManualFormID_W;
 				}
 			}
 
-			public WhereParameter CreatedDate
+			public WhereParameter FromVersionID
 		    {
 				get
 		        {
-					if(_CreatedDate_W == null)
+					if(_FromVersionID_W == null)
 	        	    {
-						_CreatedDate_W = TearOff.CreatedDate;
+						_FromVersionID_W = TearOff.FromVersionID;
 					}
-					return _CreatedDate_W;
+					return _FromVersionID_W;
 				}
 			}
 
-			public WhereParameter UpdatedBy
+			public WhereParameter UserID
 		    {
 				get
 		        {
-					if(_UpdatedBy_W == null)
+					if(_UserID_W == null)
 	        	    {
-						_UpdatedBy_W = TearOff.UpdatedBy;
+						_UserID_W = TearOff.UserID;
 					}
-					return _UpdatedBy_W;
+					return _UserID_W;
 				}
 			}
 
-			public WhereParameter LastUpdatedDate
+			public WhereParameter ActionID
 		    {
 				get
 		        {
-					if(_LastUpdatedDate_W == null)
+					if(_ActionID_W == null)
 	        	    {
-						_LastUpdatedDate_W = TearOff.LastUpdatedDate;
+						_ActionID_W = TearOff.ActionID;
 					}
-					return _LastUpdatedDate_W;
+					return _ActionID_W;
 				}
 			}
 
-			public WhereParameter IsDeleted
+			public WhereParameter LogDate
 		    {
 				get
 		        {
-					if(_IsDeleted_W == null)
+					if(_LogDate_W == null)
 	        	    {
-						_IsDeleted_W = TearOff.IsDeleted;
+						_LogDate_W = TearOff.LogDate;
 					}
-					return _IsDeleted_W;
+					return _LogDate_W;
 				}
 			}
 
-			private WhereParameter _ManualFormID_W = null;
+			private WhereParameter _ManualLogID_W = null;
 			private WhereParameter _ManualID_W = null;
-			private WhereParameter _Name_W = null;
-			private WhereParameter _CreatedBy_W = null;
-			private WhereParameter _CreatedDate_W = null;
-			private WhereParameter _UpdatedBy_W = null;
-			private WhereParameter _LastUpdatedDate_W = null;
-			private WhereParameter _IsDeleted_W = null;
+			private WhereParameter _ManualVersionID_W = null;
+			private WhereParameter _ManualFormID_W = null;
+			private WhereParameter _FromVersionID_W = null;
+			private WhereParameter _UserID_W = null;
+			private WhereParameter _ActionID_W = null;
+			private WhereParameter _LogDate_W = null;
 
 			public void WhereClauseReset()
 			{
-				_ManualFormID_W = null;
+				_ManualLogID_W = null;
 				_ManualID_W = null;
-				_Name_W = null;
-				_CreatedBy_W = null;
-				_CreatedDate_W = null;
-				_UpdatedBy_W = null;
-				_LastUpdatedDate_W = null;
-				_IsDeleted_W = null;
+				_ManualVersionID_W = null;
+				_ManualFormID_W = null;
+				_FromVersionID_W = null;
+				_UserID_W = null;
+				_ActionID_W = null;
+				_LogDate_W = null;
 
 				this._entity.Query.FlushWhereParameters();
 
@@ -763,11 +763,11 @@ namespace Flight_DAL
 				}
 				
 				
-				public AggregateParameter ManualFormID
+				public AggregateParameter ManualLogID
 				{
 					get
 					{
-							AggregateParameter aggregate = new AggregateParameter(ColumnNames.ManualFormID, Parameters.ManualFormID);
+							AggregateParameter aggregate = new AggregateParameter(ColumnNames.ManualLogID, Parameters.ManualLogID);
 							this._clause._entity.Query.AddAggregateParameter(aggregate);
 							return aggregate;
 					}
@@ -783,61 +783,61 @@ namespace Flight_DAL
 					}
 				}
 
-				public AggregateParameter Name
+				public AggregateParameter ManualVersionID
 				{
 					get
 					{
-							AggregateParameter aggregate = new AggregateParameter(ColumnNames.Name, Parameters.Name);
+							AggregateParameter aggregate = new AggregateParameter(ColumnNames.ManualVersionID, Parameters.ManualVersionID);
 							this._clause._entity.Query.AddAggregateParameter(aggregate);
 							return aggregate;
 					}
 				}
 
-				public AggregateParameter CreatedBy
+				public AggregateParameter ManualFormID
 				{
 					get
 					{
-							AggregateParameter aggregate = new AggregateParameter(ColumnNames.CreatedBy, Parameters.CreatedBy);
+							AggregateParameter aggregate = new AggregateParameter(ColumnNames.ManualFormID, Parameters.ManualFormID);
 							this._clause._entity.Query.AddAggregateParameter(aggregate);
 							return aggregate;
 					}
 				}
 
-				public AggregateParameter CreatedDate
+				public AggregateParameter FromVersionID
 				{
 					get
 					{
-							AggregateParameter aggregate = new AggregateParameter(ColumnNames.CreatedDate, Parameters.CreatedDate);
+							AggregateParameter aggregate = new AggregateParameter(ColumnNames.FromVersionID, Parameters.FromVersionID);
 							this._clause._entity.Query.AddAggregateParameter(aggregate);
 							return aggregate;
 					}
 				}
 
-				public AggregateParameter UpdatedBy
+				public AggregateParameter UserID
 				{
 					get
 					{
-							AggregateParameter aggregate = new AggregateParameter(ColumnNames.UpdatedBy, Parameters.UpdatedBy);
+							AggregateParameter aggregate = new AggregateParameter(ColumnNames.UserID, Parameters.UserID);
 							this._clause._entity.Query.AddAggregateParameter(aggregate);
 							return aggregate;
 					}
 				}
 
-				public AggregateParameter LastUpdatedDate
+				public AggregateParameter ActionID
 				{
 					get
 					{
-							AggregateParameter aggregate = new AggregateParameter(ColumnNames.LastUpdatedDate, Parameters.LastUpdatedDate);
+							AggregateParameter aggregate = new AggregateParameter(ColumnNames.ActionID, Parameters.ActionID);
 							this._clause._entity.Query.AddAggregateParameter(aggregate);
 							return aggregate;
 					}
 				}
 
-				public AggregateParameter IsDeleted
+				public AggregateParameter LogDate
 				{
 					get
 					{
-							AggregateParameter aggregate = new AggregateParameter(ColumnNames.IsDeleted, Parameters.IsDeleted);
+							AggregateParameter aggregate = new AggregateParameter(ColumnNames.LogDate, Parameters.LogDate);
 							this._clause._entity.Query.AddAggregateParameter(aggregate);
 							return aggregate;
 					}
@@ -848,15 +848,15 @@ namespace Flight_DAL
 			}
 			#endregion
 		
-			public AggregateParameter ManualFormID
+			public AggregateParameter ManualLogID
 		    {
 				get
 		        {
-					if(_ManualFormID_W == null)
+					if(_ManualLogID_W == null)
 	        	    {
-						_ManualFormID_W = TearOff.ManualFormID;
+						_ManualLogID_W = TearOff.ManualLogID;
 					}
-					return _ManualFormID_W;
+					return _ManualLogID_W;
 				}
 			}
 
@@ -872,97 +872,97 @@ namespace Flight_DAL
 				}
 			}
 
-			public AggregateParameter Name
+			public AggregateParameter ManualVersionID
 		    {
 				get
 		        {
-					if(_Name_W == null)
+					if(_ManualVersionID_W == null)
 	        	    {
-						_Name_W = TearOff.Name;
+						_ManualVersionID_W = TearOff.ManualVersionID;
 					}
-					return _Name_W;
+					return _ManualVersionID_W;
 				}
 			}
 
-			public AggregateParameter CreatedBy
+			public AggregateParameter ManualFormID
 		    {
 				get
 		        {
-					if(_CreatedBy_W == null)
+					if(_ManualFormID_W == null)
 	        	    {
-						_CreatedBy_W = TearOff.CreatedBy;
+						_ManualFormID_W = TearOff.ManualFormID;
 					}
-					return _CreatedBy_W;
+					return _ManualFormID_W;
 				}
 			}
 
-			public AggregateParameter CreatedDate
+			public AggregateParameter FromVersionID
 		    {
 				get
 		        {
-					if(_CreatedDate_W == null)
+					if(_FromVersionID_W == null)
 	        	    {
-						_CreatedDate_W = TearOff.CreatedDate;
+						_FromVersionID_W = TearOff.FromVersionID;
 					}
-					return _CreatedDate_W;
+					return _FromVersionID_W;
 				}
 			}
 
-			public AggregateParameter UpdatedBy
+			public AggregateParameter UserID
 		    {
 				get
 		        {
-					if(_UpdatedBy_W == null)
+					if(_UserID_W == null)
 	        	    {
-						_UpdatedBy_W = TearOff.UpdatedBy;
+						_UserID_W = TearOff.UserID;
 					}
-					return _UpdatedBy_W;
+					return _UserID_W;
 				}
 			}
 
-			public AggregateParameter LastUpdatedDate
+			public AggregateParameter ActionID
 		    {
 				get
 		        {
-					if(_LastUpdatedDate_W == null)
+					if(_ActionID_W == null)
 	        	    {
-						_LastUpdatedDate_W = TearOff.LastUpdatedDate;
+						_ActionID_W = TearOff.ActionID;
 					}
-					return _LastUpdatedDate_W;
+					return _ActionID_W;
 				}
 			}
 
-			public AggregateParameter IsDeleted
+			public AggregateParameter LogDate
 		    {
 				get
 		        {
-					if(_IsDeleted_W == null)
+					if(_LogDate_W == null)
 	        	    {
-						_IsDeleted_W = TearOff.IsDeleted;
+						_LogDate_W = TearOff.LogDate;
 					}
-					return _IsDeleted_W;
+					return _LogDate_W;
 				}
 			}
 
-			private AggregateParameter _ManualFormID_W = null;
+			private AggregateParameter _ManualLogID_W = null;
 			private AggregateParameter _ManualID_W = null;
-			private AggregateParameter _Name_W = null;
-			private AggregateParameter _CreatedBy_W = null;
-			private AggregateParameter _CreatedDate_W = null;
-			private AggregateParameter _UpdatedBy_W = null;
-			private AggregateParameter _LastUpdatedDate_W = null;
-			private AggregateParameter _IsDeleted_W = null;
+			private AggregateParameter _ManualVersionID_W = null;
+			private AggregateParameter _ManualFormID_W = null;
+			private AggregateParameter _FromVersionID_W = null;
+			private AggregateParameter _UserID_W = null;
+			private AggregateParameter _ActionID_W = null;
+			private AggregateParameter _LogDate_W = null;
 
 			public void AggregateClauseReset()
 			{
-				_ManualFormID_W = null;
+				_ManualLogID_W = null;
 				_ManualID_W = null;
-				_Name_W = null;
-				_CreatedBy_W = null;
-				_CreatedDate_W = null;
-				_UpdatedBy_W = null;
-				_LastUpdatedDate_W = null;
-				_IsDeleted_W = null;
+				_ManualVersionID_W = null;
+				_ManualFormID_W = null;
+				_FromVersionID_W = null;
+				_UserID_W = null;
+				_ActionID_W = null;
+				_LogDate_W = null;
 
 				this._entity.Query.FlushAggregateParameters();
 
@@ -994,12 +994,12 @@ namespace Flight_DAL
 		
 			SqlCommand cmd = new SqlCommand();
 			cmd.CommandType = CommandType.StoredProcedure;
-			cmd.CommandText = "[" + this.SchemaStoredProcedure + "proc_ManualFormInsert]";
+			cmd.CommandText = "[" + this.SchemaStoredProcedure + "proc_ManualLogInsert]";
 	
 			CreateParameters(cmd);
 			
 			SqlParameter p;
-			p = cmd.Parameters[Parameters.ManualFormID.ParameterName];
+			p = cmd.Parameters[Parameters.ManualLogID.ParameterName];
 			p.Direction = ParameterDirection.Output;
     
 			return cmd;
@@ -1010,7 +1010,7 @@ namespace Flight_DAL
 		
 			SqlCommand cmd = new SqlCommand();
 			cmd.CommandType = CommandType.StoredProcedure;
-			cmd.CommandText = "[" + this.SchemaStoredProcedure + "proc_ManualFormUpdate]";
+			cmd.CommandText = "[" + this.SchemaStoredProcedure + "proc_ManualLogUpdate]";
 	
 			CreateParameters(cmd);
 			      
@@ -1022,11 +1022,11 @@ namespace Flight_DAL
 		
 			SqlCommand cmd = new SqlCommand();
 			cmd.CommandType = CommandType.StoredProcedure;
-			cmd.CommandText = "[" + this.SchemaStoredProcedure + "proc_ManualFormDelete]";
+			cmd.CommandText = "[" + this.SchemaStoredProcedure + "proc_ManualLogDelete]";
 	
 			SqlParameter p;
-			p = cmd.Parameters.Add(Parameters.ManualFormID);
-			p.SourceColumn = ColumnNames.ManualFormID;
+			p = cmd.Parameters.Add(Parameters.ManualLogID);
+			p.SourceColumn = ColumnNames.ManualLogID;
 			p.SourceVersion = DataRowVersion.Current;
 
   
@@ -1037,36 +1037,36 @@ namespace Flight_DAL
 		{
 			SqlParameter p;
 		
-			p = cmd.Parameters.Add(Parameters.ManualFormID);
-			p.SourceColumn = ColumnNames.ManualFormID;
+			p = cmd.Parameters.Add(Parameters.ManualLogID);
+			p.SourceColumn = ColumnNames.ManualLogID;
 			p.SourceVersion = DataRowVersion.Current;
 
 			p = cmd.Parameters.Add(Parameters.ManualID);
 			p.SourceColumn = ColumnNames.ManualID;
 			p.SourceVersion = DataRowVersion.Current;
 
-			p = cmd.Parameters.Add(Parameters.Name);
-			p.SourceColumn = ColumnNames.Name;
+			p = cmd.Parameters.Add(Parameters.ManualVersionID);
+			p.SourceColumn = ColumnNames.ManualVersionID;
 			p.SourceVersion = DataRowVersion.Current;
 
-			p = cmd.Parameters.Add(Parameters.CreatedBy);
-			p.SourceColumn = ColumnNames.CreatedBy;
+			p = cmd.Parameters.Add(Parameters.ManualFormID);
+			p.SourceColumn = ColumnNames.ManualFormID;
 			p.SourceVersion = DataRowVersion.Current;
 
-			p = cmd.Parameters.Add(Parameters.CreatedDate);
-			p.SourceColumn = ColumnNames.CreatedDate;
+			p = cmd.Parameters.Add(Parameters.FromVersionID);
+			p.SourceColumn = ColumnNames.FromVersionID;
 			p.SourceVersion = DataRowVersion.Current;
 
-			p = cmd.Parameters.Add(Parameters.UpdatedBy);
-			p.SourceColumn = ColumnNames.UpdatedBy;
+			p = cmd.Parameters.Add(Parameters.UserID);
+			p.SourceColumn = ColumnNames.UserID;
 			p.SourceVersion = DataRowVersion.Current;
 
-			p = cmd.Parameters.Add(Parameters.LastUpdatedDate);
-			p.SourceColumn = ColumnNames.LastUpdatedDate;
+			p = cmd.Parameters.Add(Parameters.ActionID);
+			p.SourceColumn = ColumnNames.ActionID;
 			p.SourceVersion = DataRowVersion.Current;
 
-			p = cmd.Parameters.Add(Parameters.IsDeleted);
-			p.SourceColumn = ColumnNames.IsDeleted;
+			p = cmd.Parameters.Add(Parameters.LogDate);
+			p.SourceColumn = ColumnNames.LogDate;
 			p.SourceVersion = DataRowVersion.Current;
 
 

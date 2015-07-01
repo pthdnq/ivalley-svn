@@ -46,6 +46,7 @@ namespace Flights_GUI.Intranet
                     LoadCurrent();
                     uiPanelViewAll.Visible = false;
                     uiPanelCurrent.Visible = true;
+                    LogBulletinRead(CurrentAnnouncement);
                 }
                 MarkNotificationsAsRead();
 
@@ -56,6 +57,16 @@ namespace Flights_GUI.Intranet
                 grps.LoadByPrimaryKey(userProf.GroupID);
                 lblTabGroup.Text = grps.GroupName + " Bulletins";
             }
+        }
+        private void LogBulletinRead(int ID)
+        {
+            AnnouncementLog objData = new AnnouncementLog();
+            objData.AddNew();
+            objData.AnnouncementID = ID;
+            objData.UserID = new Guid(Membership.GetUser(Page.User.Identity.Name).ProviderUserKey.ToString());
+            objData.ActionID = 4;
+            objData.LogDate = DateTime.Now;
+            objData.Save();
         }
 
         private void LoadCurrent()

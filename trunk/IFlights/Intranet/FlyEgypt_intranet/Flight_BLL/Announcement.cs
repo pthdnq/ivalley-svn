@@ -14,7 +14,7 @@ namespace Flight_BLL
 
         public virtual bool GetAllCirculars()
         {
-            return LoadFromRawSql(@"select A.*, U.UserName, U.UserID from Announcement A Left join aspnet_users U on A.createdby = u.UserID where (IsBulletin is null or IsBulletin <> 1 ) and (IsBlog is null or IsBlog <> 1 ) order by CreatedDate desc");            
+            return LoadFromRawSql(@"select A.*, U.UserName, U.UserID from Announcement A Left join aspnet_users U on A.createdby = u.UserID where (IsBulletin is null or IsBulletin <> 1 ) and (IsBlog is null or IsBlog <> 1 ) and (isDeleted is null or isDeleted <> 1 ) order by CreatedDate desc");            
         }
 
         public virtual bool GetAllCircularsPublic()
@@ -24,21 +24,22 @@ namespace Flight_BLL
                                     Left join aspnet_users U on A.createdby = u.UserID 
                                     where (IsBulletin is null or IsBulletin <> 1 ) and 
                                           (IsBlog is null or IsBlog <> 1 ) and
-										  G.AnnouncementID is null
+										  G.AnnouncementID is null 
+                                          and (isDeleted is null or isDeleted <> 1 )
                                     order by CreatedDate desc");
         }
 
 
         public virtual bool GetAllCircularsGroups(int groupID)
         {
-            return LoadFromRawSql(@"select Announcement.*, U.UserName, U.UserID from Announcement inner join AnnouncementGroup on Announcement.AnnouncementID = AnnouncementGroup.AnnouncementID Left join aspnet_users U on Announcement.createdby = u.UserID where (IsBulletin is null or IsBulletin <> 1 ) and (IsBlog is null or IsBlog <> 1 ) and AnnouncementGroup.GroupID = {0} order by CreatedDate desc", groupID);
+            return LoadFromRawSql(@"select Announcement.*, U.UserName, U.UserID from Announcement inner join AnnouncementGroup on Announcement.AnnouncementID = AnnouncementGroup.AnnouncementID Left join aspnet_users U on Announcement.createdby = u.UserID where (IsBulletin is null or IsBulletin <> 1 ) and (IsBlog is null or IsBlog <> 1 ) and AnnouncementGroup.GroupID = {0} and (isDeleted is null or isDeleted <> 1 ) order by CreatedDate desc", groupID);
                                     
         }
         //--------------------
 
         public virtual bool GetAllBulletins()
         {
-            return LoadFromRawSql(@"select A.*, U.UserName, U.UserID from Announcement A Left join aspnet_users U on A.createdby = u.UserID where (IsBulletin = 1 ) order by CreatedDate desc");            
+            return LoadFromRawSql(@"select A.*, U.UserName, U.UserID from Announcement A Left join aspnet_users U on A.createdby = u.UserID where (IsBulletin = 1 ) and (isDeleted is null or isDeleted <> 1 ) order by CreatedDate desc");            
         }
 
         public virtual bool GetAllBulletinsPublic()
@@ -47,31 +48,32 @@ namespace Flight_BLL
                                     left join AnnouncementGroup G on A.AnnouncementID = G.AnnouncementID                                                 
                                     Left join aspnet_users U on A.createdby = u.UserID 
                                     where (IsBulletin = 1 ) and
-										  G.AnnouncementID is null
+										  G.AnnouncementID is null 
+                                          and (isDeleted is null or isDeleted <> 1 )
                                     order by CreatedDate desc");
         }
 
         public virtual bool GetAllBulletinsGroups(int groupID)
         {
-            return LoadFromRawSql(@"select Announcement.*, U.UserName, U.UserID from Announcement inner join AnnouncementGroup on Announcement.AnnouncementID = AnnouncementGroup.AnnouncementID Left join aspnet_users U on Announcement.createdby = u.UserID where IsBulletin = 1 and AnnouncementGroup.GroupID = {0} order by CreatedDate desc", groupID);
+            return LoadFromRawSql(@"select Announcement.*, U.UserName, U.UserID from Announcement inner join AnnouncementGroup on Announcement.AnnouncementID = AnnouncementGroup.AnnouncementID Left join aspnet_users U on Announcement.createdby = u.UserID where IsBulletin = 1 and AnnouncementGroup.GroupID = {0} and (isDeleted is null or isDeleted <> 1 ) order by CreatedDate desc", groupID);
                                     
         }
         //--------------------
 
         public virtual bool GetTopBulletins()
         {
-            return LoadFromRawSql(@"select top 3 A.*, U.UserName, U.UserID from Announcement A Left join aspnet_users U on A.createdby = u.UserID where (IsBulletin = 1 ) and (A.GroupID is null) order by CreatedDate desc");
+            return LoadFromRawSql(@"select top 3 A.*, U.UserName, U.UserID from Announcement A Left join aspnet_users U on A.createdby = u.UserID where (IsBulletin = 1 ) and (A.GroupID is null) and (isDeleted is null or isDeleted <> 1 ) order by CreatedDate desc");
         }
 
         public virtual bool GetTopCirculars()
         {
 
-            return LoadFromRawSql(@"select top 3 A.*, U.UserName, U.UserID from Announcement A Left join aspnet_users U on A.createdby = u.UserID where (IsBulletin is null or IsBulletin <> 1 ) and (IsBlog is null or IsBlog <> 1 ) and (A.GroupID is null) order by CreatedDate desc");
+            return LoadFromRawSql(@"select top 3 A.*, U.UserName, U.UserID from Announcement A Left join aspnet_users U on A.createdby = u.UserID where (IsBulletin is null or IsBulletin <> 1 ) and (IsBlog is null or IsBlog <> 1 ) and (A.GroupID is null) and (isDeleted is null or isDeleted <> 1 ) order by CreatedDate desc");
         }
 
         public virtual bool GetAllBlogs()
         {
-            return LoadFromRawSql(@"select A.*, U.UserName, U.UserID from Announcement A Left join aspnet_users U on A.createdby = u.UserID where (IsBlog = 1 ) order by CreatedDate desc");
+            return LoadFromRawSql(@"select A.*, U.UserName, U.UserID from Announcement A Left join aspnet_users U on A.createdby = u.UserID where (IsBlog = 1 ) and (isDeleted is null or isDeleted <> 1 ) order by CreatedDate desc");
         }
 
         public virtual bool GetAllBlogsPublic()
@@ -80,18 +82,19 @@ namespace Flight_BLL
                                     left join AnnouncementGroup G on A.AnnouncementID = G.AnnouncementID                                                 
                                     Left join aspnet_users U on A.createdby = u.UserID 
                                     where (IsBlog = 1 ) and
-										  G.AnnouncementID is null
+										  G.AnnouncementID is null 
+                                          and (isDeleted is null or isDeleted <> 1 )
                                     order by CreatedDate desc");
         }
 
         public virtual bool GetAllBlogsGroups(int groupID)
         {
-            return LoadFromRawSql(@"select Announcement.*, U.UserName, U.UserID from Announcement inner join AnnouncementGroup on Announcement.AnnouncementID = AnnouncementGroup.AnnouncementID Left join aspnet_users U on Announcement.createdby = u.UserID where IsBlog = 1 and AnnouncementGroup.GroupID = {0} order by CreatedDate desc", groupID);
+            return LoadFromRawSql(@"select Announcement.*, U.UserName, U.UserID from Announcement inner join AnnouncementGroup on Announcement.AnnouncementID = AnnouncementGroup.AnnouncementID Left join aspnet_users U on Announcement.createdby = u.UserID where IsBlog = 1 and AnnouncementGroup.GroupID = {0} and (isDeleted is null or isDeleted <> 1 ) order by CreatedDate desc", groupID);
         }
 
         public virtual bool GetTopBlogs()
         {
-            return LoadFromRawSql(@"select top 6 A.*, U.UserName, U.UserID from Announcement A Left join aspnet_users U on A.createdby = u.UserID where (IsBlog = 1 ) and (A.GroupID is null) order by CreatedDate desc");
+            return LoadFromRawSql(@"select top 6 A.*, U.UserName, U.UserID from Announcement A Left join aspnet_users U on A.createdby = u.UserID where (IsBlog = 1 ) and (A.GroupID is null) and (isDeleted is null or isDeleted <> 1 ) order by CreatedDate desc");
         }
 	}
 }

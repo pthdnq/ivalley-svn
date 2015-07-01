@@ -17,7 +17,7 @@ namespace Flight_BLL
             return LoadFromRawSql(@"select M.*, U.username UpdatedByName , C.username CreatedByName from ScheduleVersion M
                                     Left join aspnet_users U on M.UpdatedBy = U.UserID
                                     Left join aspnet_users C on M.CreatedBy = C.UserID
-                                    where ScheduleID = {0} order by CreatedDate desc", ScheduleID);
+                                    where ScheduleID = {0} and (isDeleted is null or isDeleted <> 1 ) order by CreatedDate desc", ScheduleID);
         }
 	}
 }

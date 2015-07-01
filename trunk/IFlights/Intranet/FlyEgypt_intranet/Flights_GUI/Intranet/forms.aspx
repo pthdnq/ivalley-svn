@@ -90,6 +90,21 @@
 
         }
     </script>
+
+
+            <script type="text/javascript">
+                function LogFormVersionDownload(FormVersionID) {
+                    var mydata = { 'FormVersionID': FormVersionID };
+                    $.ajax({
+                        type: "post",
+                        url: "../common/IntranetService.asmx/LogFormVersionDownload",
+                        data: JSON.stringify(mydata),
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json"
+                    });
+                }
+    </script>
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     
@@ -126,9 +141,17 @@
                         <telerik:GridBoundColumn DataField="createdDate" HeaderText="Date" DataFormatString="{0:dd/MM/yyyy}"></telerik:GridBoundColumn>
                             <telerik:GridBoundColumn DataField="UpdatedByName" HeaderText="Updated By"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn DataField="LastUpdatedDate" HeaderText="Last Updated Date" DataFormatString="{0:dd/MM/yyyy}"></telerik:GridBoundColumn>
-                            <telerik:GridHyperLinkColumn DataTextField="Name" DataNavigateUrlFields="VersionPath" DataTextFormatString="Download" DataNavigateUrlFormatString="{0}" HeaderText="Last version">
-                    </telerik:GridHyperLinkColumn>
-                    <telerik:GridTemplateColumn HeaderText="Other versions">
+<%--                            <telerik:GridHyperLinkColumn DataTextField="Name" DataNavigateUrlFields="VersionPath" DataTextFormatString="Download" DataNavigateUrlFormatString="{0}" HeaderText="Last version">
+                    </telerik:GridHyperLinkColumn>--%>
+
+                            <telerik:GridTemplateColumn HeaderText="Last Version">
+                                <ItemTemplate>
+                                    <a <%# !string.IsNullOrWhiteSpace(Eval("VersionPath").ToString()) ? "href='" + Eval("VersionPath") + "'" : ""  %> <%# !string.IsNullOrWhiteSpace(Eval("VersionPath").ToString()) ? "onclick='LogFormVersionDownload(" + Eval("FromVersionID") + ")'" : ""  %> target="_blank" <%# !string.IsNullOrWhiteSpace(Eval("VersionPath").ToString()) ? "download='" + Eval("Name") + "'" : ""  %>>Download</a>
+                                </ItemTemplate>
+                            </telerik:GridTemplateColumn>
+
+
+                            <telerik:GridTemplateColumn HeaderText="Other versions">
                         <ItemTemplate>
                             <!-- Button trigger modal -->
                              <div style='position:relative;'>

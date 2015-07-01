@@ -62,6 +62,7 @@ namespace Flights_GUI.Admin
                 UsefulLink objData = new UsefulLink();
                 objData.LoadByPrimaryKey(Convert.ToInt32(e.CommandArgument.ToString()));
                 objData.MarkAsDeleted();
+                //objData.IsDeleted = true;
                 objData.Save();
                 BindData();
             }

@@ -155,6 +155,14 @@ namespace Flight_DAL
 				}
 			}
 			
+			public static SqlParameter IsDeleted
+			{
+				get
+				{
+					return new SqlParameter("@IsDeleted", SqlDbType.Bit, 0);
+				}
+			}
+			
 		}
 		#endregion		
 	
@@ -168,6 +176,7 @@ namespace Flight_DAL
             public const string CreatedDate = "CreatedDate";
             public const string UpdatedBy = "UpdatedBy";
             public const string LastUpdatedDate = "LastUpdatedDate";
+            public const string IsDeleted = "isDeleted";
 
 			static public string ToPropertyName(string columnName)
 			{
@@ -182,6 +191,7 @@ namespace Flight_DAL
 					ht[CreatedDate] = _Certificate.PropertyNames.CreatedDate;
 					ht[UpdatedBy] = _Certificate.PropertyNames.UpdatedBy;
 					ht[LastUpdatedDate] = _Certificate.PropertyNames.LastUpdatedDate;
+					ht[IsDeleted] = _Certificate.PropertyNames.IsDeleted;
 
 				}
 				return (string)ht[columnName];
@@ -201,6 +211,7 @@ namespace Flight_DAL
             public const string CreatedDate = "CreatedDate";
             public const string UpdatedBy = "UpdatedBy";
             public const string LastUpdatedDate = "LastUpdatedDate";
+            public const string IsDeleted = "IsDeleted";
 
 			static public string ToColumnName(string propertyName)
 			{
@@ -215,6 +226,7 @@ namespace Flight_DAL
 					ht[CreatedDate] = _Certificate.ColumnNames.CreatedDate;
 					ht[UpdatedBy] = _Certificate.ColumnNames.UpdatedBy;
 					ht[LastUpdatedDate] = _Certificate.ColumnNames.LastUpdatedDate;
+					ht[IsDeleted] = _Certificate.ColumnNames.IsDeleted;
 
 				}
 				return (string)ht[propertyName];
@@ -234,6 +246,7 @@ namespace Flight_DAL
             public const string CreatedDate = "s_CreatedDate";
             public const string UpdatedBy = "s_UpdatedBy";
             public const string LastUpdatedDate = "s_LastUpdatedDate";
+            public const string IsDeleted = "s_IsDeleted";
 
 		}
 		#endregion		
@@ -321,6 +334,18 @@ namespace Flight_DAL
 			set
 	        {
 				base.SetDateTime(ColumnNames.LastUpdatedDate, value);
+			}
+		}
+
+		public virtual bool IsDeleted
+	    {
+			get
+	        {
+				return base.Getbool(ColumnNames.IsDeleted);
+			}
+			set
+	        {
+				base.Setbool(ColumnNames.IsDeleted, value);
 			}
 		}
 
@@ -434,6 +459,21 @@ namespace Flight_DAL
 			}
 		}
 
+		public virtual string s_IsDeleted
+	    {
+			get
+	        {
+				return this.IsColumnNull(ColumnNames.IsDeleted) ? string.Empty : base.GetboolAsString(ColumnNames.IsDeleted);
+			}
+			set
+	        {
+				if(string.Empty == value)
+					this.SetColumnNull(ColumnNames.IsDeleted);
+				else
+					this.IsDeleted = base.SetboolAsString(ColumnNames.IsDeleted, value);
+			}
+		}
+
 
 		#endregion		
 	
@@ -537,6 +577,16 @@ namespace Flight_DAL
 					}
 				}
 
+				public WhereParameter IsDeleted
+				{
+					get
+					{
+							WhereParameter where = new WhereParameter(ColumnNames.IsDeleted, Parameters.IsDeleted);
+							this._clause._entity.Query.AddWhereParameter(where);
+							return where;
+					}
+				}
+
 
 				private WhereClause _clause;
 			}
@@ -626,6 +676,18 @@ namespace Flight_DAL
 				}
 			}
 
+			public WhereParameter IsDeleted
+		    {
+				get
+		        {
+					if(_IsDeleted_W == null)
+	        	    {
+						_IsDeleted_W = TearOff.IsDeleted;
+					}
+					return _IsDeleted_W;
+				}
+			}
+
 			private WhereParameter _CertificateID_W = null;
 			private WhereParameter _Name_W = null;
 			private WhereParameter _Path_W = null;
@@ -633,6 +695,7 @@ namespace Flight_DAL
 			private WhereParameter _CreatedDate_W = null;
 			private WhereParameter _UpdatedBy_W = null;
 			private WhereParameter _LastUpdatedDate_W = null;
+			private WhereParameter _IsDeleted_W = null;
 
 			public void WhereClauseReset()
 			{
@@ -643,6 +706,7 @@ namespace Flight_DAL
 				_CreatedDate_W = null;
 				_UpdatedBy_W = null;
 				_LastUpdatedDate_W = null;
+				_IsDeleted_W = null;
 
 				this._entity.Query.FlushWhereParameters();
 
@@ -769,6 +833,16 @@ namespace Flight_DAL
 					}
 				}
 
+				public AggregateParameter IsDeleted
+				{
+					get
+					{
+							AggregateParameter aggregate = new AggregateParameter(ColumnNames.IsDeleted, Parameters.IsDeleted);
+							this._clause._entity.Query.AddAggregateParameter(aggregate);
+							return aggregate;
+					}
+				}
+
 
 				private AggregateClause _clause;
 			}
@@ -858,6 +932,18 @@ namespace Flight_DAL
 				}
 			}
 
+			public AggregateParameter IsDeleted
+		    {
+				get
+		        {
+					if(_IsDeleted_W == null)
+	        	    {
+						_IsDeleted_W = TearOff.IsDeleted;
+					}
+					return _IsDeleted_W;
+				}
+			}
+
 			private AggregateParameter _CertificateID_W = null;
 			private AggregateParameter _Name_W = null;
 			private AggregateParameter _Path_W = null;
@@ -865,6 +951,7 @@ namespace Flight_DAL
 			private AggregateParameter _CreatedDate_W = null;
 			private AggregateParameter _UpdatedBy_W = null;
 			private AggregateParameter _LastUpdatedDate_W = null;
+			private AggregateParameter _IsDeleted_W = null;
 
 			public void AggregateClauseReset()
 			{
@@ -875,6 +962,7 @@ namespace Flight_DAL
 				_CreatedDate_W = null;
 				_UpdatedBy_W = null;
 				_LastUpdatedDate_W = null;
+				_IsDeleted_W = null;
 
 				this._entity.Query.FlushAggregateParameters();
 
@@ -975,6 +1063,10 @@ namespace Flight_DAL
 
 			p = cmd.Parameters.Add(Parameters.LastUpdatedDate);
 			p.SourceColumn = ColumnNames.LastUpdatedDate;
+			p.SourceVersion = DataRowVersion.Current;
+
+			p = cmd.Parameters.Add(Parameters.IsDeleted);
+			p.SourceColumn = ColumnNames.IsDeleted;
 			p.SourceVersion = DataRowVersion.Current;
 
 

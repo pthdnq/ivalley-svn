@@ -53,6 +53,7 @@ namespace Flights_GUI.Intranet
                 cat.LoadByPrimaryKey(currentManualCat);
                 uiLabelCat.Text = cat.Title;
                 BindData();
+                LogManualsRead();
 
                 MarkNotificationsAsRead();
             }
@@ -66,6 +67,7 @@ namespace Flights_GUI.Intranet
             uiLabelCat.Text = cat.Title;
             BindData();
             LoadCats();
+            LogManualsRead();
             MarkNotificationsAsRead();
         }
 
@@ -93,15 +95,7 @@ namespace Flights_GUI.Intranet
             objdata.GetManualsByCatID(currentManualCat, new Guid(Membership.GetUser().ProviderUserKey.ToString()));
             uiRadGridmanuals.DataSource = objdata.DefaultView;
             uiRadGridmanuals.DataBind();
-
         }
-
-        //protected void MarkNotificationsAsRead()
-        //{
-        //    UsersNofications userNotif = new UsersNofications();
-        //    userNotif.MarkNotificationsRead((new Guid(Membership.GetUser(Page.User.Identity.Name).ProviderUserKey.ToString())), 3);
-        //}
-
         protected void MarkNotificationsAsRead()
         {
             UsersNofications userNotif = new UsersNofications();
@@ -110,6 +104,27 @@ namespace Flights_GUI.Intranet
             else
                 userNotif.MarkNotificationsReadByManualCategoryID((new Guid(Membership.GetUser(Page.User.Identity.Name).ProviderUserKey.ToString())), 5, currentManualCat);
         }
+        public void LogManualsRead()
+        {
+            UsersNofications objData = new UsersNofications();
+            objData.getUnreadManualsByUserIDAndCatID(new Guid(Membership.GetUser(Page.User.Identity.Name).ProviderUserKey.ToString()),currentManualCat);
+            if (objData.RowCount > 0)
+            {
+                objData.Rewind();
+                for (int i = 0; i < objData.RowCount; i++)
+                {
+                    ManualLog objDataManual = new ManualLog();
+                    objDataManual.AddNew();
+                    objDataManual.UserID = new Guid(Membership.GetUser(Page.User.Identity.Name).ProviderUserKey.ToString());
+                    objDataManual.ManualID = objData.ManualID;
+                    objDataManual.ActionID = 4;
+                    objDataManual.LogDate = DateTime.Now;
+                    objDataManual.Save();
 
+                    objData.MoveNext();
+                }
+            }
+
+        }
     }
 }

@@ -90,6 +90,20 @@
            });
          }
     </script>
+
+    <script type="text/javascript">
+        function LogScheduleDownload(ScheduleVersionID) {
+            var mydata = { 'ScheduleVersionID': ScheduleVersionID };
+            $.ajax({
+                type: "post",
+                url: "../common/IntranetService.asmx/LogScheduleVersionDownload",
+                data: JSON.stringify(mydata),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json"
+            });
+        }
+    </script>
+
     <style type="text/css">
         .RadTreeView .rtIn {
             width: 100%;
@@ -118,13 +132,18 @@
                     <telerik:GridBoundColumn DataField="createdDate" HeaderText="Created Date" DataFormatString="{0:dd/MM/yyyy}"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn DataField="UpdatedByName" HeaderText="Updated By"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn DataField="LastUpdatedDate" HeaderText="Last Updated Date" DataFormatString="{0:dd/MM/yyyy}"></telerik:GridBoundColumn>
-                    <telerik:GridHyperLinkColumn DataTextField="Name" DataNavigateUrlFields="VersionPath" DataTextFormatString="Download" DataNavigateUrlFormatString="{0}" HeaderText="Last version">
-                    </telerik:GridHyperLinkColumn>
+                    <telerik:GridTemplateColumn HeaderText="Last Version">
+                        <ItemTemplate>
+                            <a <%# !string.IsNullOrWhiteSpace(Eval("VersionPath").ToString()) ? "href='" + Eval("VersionPath") + "'" : ""  %> <%# !string.IsNullOrWhiteSpace(Eval("VersionPath").ToString()) ? "onclick='LogScheduleDownload(" + Eval("ScheduleVersionID") + ")'" : ""  %> target="_blank" <%# !string.IsNullOrWhiteSpace(Eval("VersionPath").ToString()) ? "download='" + Eval("Name") + "'" : ""  %>>Download</a>
+                        </ItemTemplate>
+                    </telerik:GridTemplateColumn>
+                    <%--                    <telerik:GridHyperLinkColumn DataTextField="Name" DataNavigateUrlFields="VersionPath" DataTextFormatString="Download" DataNavigateUrlFormatString="{0}" HeaderText="Last version">
+                    </telerik:GridHyperLinkColumn>--%>
                     <telerik:GridTemplateColumn HeaderText="Other versions">
                         <ItemTemplate>
                             <!-- Button trigger modal -->
                             <div style='position: relative;'>
-                                <button type="button" class="btn btn-primary btn-lg viewVersion" data-toggle="modal" data-target="#myModal" data-manualid="<%# Eval("ScheduleID") %> " data-manualName="<%# Eval("Name") %>" >
+                                <button type="button" class="btn btn-primary btn-lg viewVersion" data-toggle="modal" data-target="#myModal" data-manualid="<%# Eval("ScheduleID") %> " data-manualname="<%# Eval("Name") %>">
                                     View versions
                                 </button>
                                 <!-- Modal -->
@@ -132,7 +151,7 @@
                             </div>
                         </ItemTemplate>
                     </telerik:GridTemplateColumn>
-<%--                    <telerik:GridTemplateColumn HeaderText="Forms">
+                    <%--                    <telerik:GridTemplateColumn HeaderText="Forms">
                         <ItemTemplate>
                             <!-- Button trigger modal -->
                             <div style='position: relative;'>

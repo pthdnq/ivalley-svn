@@ -21,7 +21,6 @@ namespace Flights_GUI.Common
     [System.Web.Script.Services.ScriptService]
     public class IntranetService : System.Web.Services.WebService
     {
-
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json, UseHttpGet = true)]
         public void GetAvalName(string term)
@@ -64,6 +63,9 @@ namespace Flights_GUI.Common
                 };
 
             }).ToList();
+
+            LogManualsVersionsRead(ID);
+
             UsersNofications usNot = new UsersNofications();
 
             usNot.MarkNotificationsReadByManualVersionID(new Guid(Membership.GetUser(Context.User.Identity.Name).ProviderUserKey.ToString()),ID);
@@ -74,6 +76,8 @@ namespace Flights_GUI.Common
         [ScriptMethod(ResponseFormat = ResponseFormat.Json, UseHttpGet = true)]
         public void GetScheduleVersions(int ID)
         {
+            LogScheduleVersionsView();
+
             ScheduleVersion versions = new ScheduleVersion();
             versions.GetVersionsByScheduleID(ID);
 
@@ -98,6 +102,58 @@ namespace Flights_GUI.Common
         }
 
         [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public void LogCertificateDownload(int CertificateID)
+        {
+            CertificateLog objData = new CertificateLog();
+            objData.AddNew();
+            objData.CertificateID = int.Parse(CertificateID.ToString());
+            objData.UserID = new Guid(Membership.GetUser(Context.User.Identity.Name).ProviderUserKey.ToString());
+            objData.ActionID = 5;
+            objData.LogDate = DateTime.Now;
+            objData.Save();
+        }
+
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public void LogScheduleVersionDownload(int ScheduleVersionID)
+        {
+            ScheduleLog objData = new ScheduleLog();
+            objData.AddNew();
+            objData.ScheduleVersionID = int.Parse(ScheduleVersionID.ToString());
+            objData.UserID = new Guid(Membership.GetUser(Context.User.Identity.Name).ProviderUserKey.ToString());
+            objData.ActionID = 5;
+            objData.LogDate = DateTime.Now;
+            objData.Save();
+        }
+
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public void LogManualVersionDownload(int ManualVersionID)
+        {
+            ManualLog objData = new ManualLog();
+            objData.AddNew();
+            objData.ManualVersionID = int.Parse(ManualVersionID.ToString());
+            objData.UserID = new Guid(Membership.GetUser(Context.User.Identity.Name).ProviderUserKey.ToString());
+            objData.ActionID = 5;
+            objData.LogDate = DateTime.Now;
+            objData.Save();
+        }
+
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public void LogFormVersionDownload(int FormVersionID)
+        {
+            ManualLog objData = new ManualLog();
+            objData.AddNew();
+            objData.FromVersionID = int.Parse(FormVersionID.ToString());
+            objData.UserID = new Guid(Membership.GetUser(Context.User.Identity.Name).ProviderUserKey.ToString());
+            objData.ActionID = 5;
+            objData.LogDate = DateTime.Now;
+            objData.Save();
+        }
+        
+        [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json, UseHttpGet = true)]
         public void GetFormVersions(int ID)
         {
@@ -119,6 +175,9 @@ namespace Flights_GUI.Common
                 };
 
             }).ToList();
+
+            LogFormsVersionsRead(ID);
+
             UsersNofications usNot = new UsersNofications();
             usNot.MarkNotificationReadByFormVersionID(new Guid(Membership.GetUser(Context.User.Identity.Name).ProviderUserKey.ToString()), ID);
             SetContentResult(AllVersions);
@@ -133,15 +192,80 @@ namespace Flights_GUI.Common
             HttpContext.Current.Response.SuppressContent = true;  // Gets or sets a value indicating whether to send HTTP content to the client.
             HttpContext.Current.ApplicationInstance.CompleteRequest(); // Causes ASP.NET to bypass all events and filtering in the HTTP pipeline chain of execution and directly execute the EndRequest event.
         }
+
+        private void LogScheduleVersionsView()
+        {
+            UsersNofications objData = new UsersNofications();
+            objData.getUnreadSchedulesVersionsByUserID(new Guid(Membership.GetUser(Context.User.Identity.Name).ProviderUserKey.ToString()));
+            if (objData.RowCount > 0)
+            {
+                objData.Rewind();
+                for (int i = 0; i < objData.RowCount; i++)
+                {
+                    ScheduleLog objDataSchedule = new ScheduleLog();
+                    objDataSchedule.AddNew();
+                    objDataSchedule.UserID = new Guid(Membership.GetUser(Context.User.Identity.Name).ProviderUserKey.ToString());
+                    objDataSchedule.ScheduleVersionID = objData.ScheduleVersionID;
+                    objDataSchedule.ActionID = 4;
+                    objDataSchedule.LogDate = DateTime.Now;
+                    objDataSchedule.Save();
+
+                    objData.MoveNext();
+                }
+            }
+        }
+
+        public void LogManualsVersionsRead(int ManualID)
+        {
+            UsersNofications objData = new UsersNofications();
+            objData.getUnreadManualsVersionsByUserIDAndManualID(new Guid(Membership.GetUser(Context.User.Identity.Name).ProviderUserKey.ToString()), ManualID);
+            if (objData.RowCount > 0)
+            {
+                objData.Rewind();
+                for (int i = 0; i < objData.RowCount; i++)
+                {
+                    ManualLog objDataManual = new ManualLog();
+                    objDataManual.AddNew();
+                    objDataManual.UserID = new Guid(Membership.GetUser(Context.User.Identity.Name).ProviderUserKey.ToString());
+                    objDataManual.ManualVersionID = objData.ManualVersionID;
+                    objDataManual.ActionID = 4;
+                    objDataManual.LogDate = DateTime.Now;
+                    objDataManual.Save();
+
+                    objData.MoveNext();
+                }
+            }
+        }
+
+        public void LogFormsVersionsRead(int FormID)
+        {
+            UsersNofications objData = new UsersNofications();
+            objData.getUnreadFormsVersionsByUserIDAndFormID(new Guid(Membership.GetUser(Context.User.Identity.Name).ProviderUserKey.ToString()), FormID);
+            if (objData.RowCount > 0)
+            {
+                objData.Rewind();
+                for (int i = 0; i < objData.RowCount; i++)
+                {
+                    ManualLog objDataManual = new ManualLog();
+                    objDataManual.AddNew();
+                    objDataManual.UserID = new Guid(Membership.GetUser(Context.User.Identity.Name).ProviderUserKey.ToString());
+                    objDataManual.FromVersionID = objData.FromVersionID;
+                    objDataManual.ActionID = 4;
+                    objDataManual.LogDate = DateTime.Now;
+                    objDataManual.Save();
+
+                    objData.MoveNext();
+                }
+            }
+        }
+
     }
 
     public class NameListDetails
     {
-
         public string label { get; set; }
         public string value  { get; set; }
     }
-
 
     public class Version 
     {

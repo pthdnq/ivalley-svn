@@ -15,17 +15,18 @@ namespace Flight_BLL
         public virtual bool GetManualsByCatID(int CatID)
         {
             return LoadFromRawSql(@"select M.*, U.username UpdatedByName , C.username CreatedByName ,
-                                    (Select Top 1 path from ManualVersion MV where MV.ManualID = M.ManualID Order by MV.LastUpdatedDate desc) VersionPath       
+                                    (Select Top 1 path from ManualVersion MV where MV.ManualID = M.ManualID Order by MV.LastUpdatedDate desc) VersionPath
                                     from Manual M
                                     Left join aspnet_users U on M.UpdatedBy = U.UserID
                                     Left join aspnet_users C on M.CreatedBy = C.UserID                                    
-                                    where ManualCategoryID = {0} order by CreatedDate desc", CatID);            
+                                    where ManualCategoryID = {0} and (isDeleted is null or isDeleted <> 1 ) order by CreatedDate desc", CatID);            
         }
 
         public virtual bool GetManualsByCatID(int CatID, Guid UserID)
         {
             return LoadFromRawSql(@"select M.*, U.username UpdatedByName , C.username CreatedByName ,-- ,sum(case when UMV.UserNotificationID is not null then 1 else 0 end) ManualVersionUpdates ,
                                     (Select Top 1 path from ManualVersion MV where MV.ManualID = M.ManualID Order by MV.LastUpdatedDate desc) VersionPath   ,
+                                    (Select Top 1 ManualVersionID from ManualVersion MV where MV.ManualID = M.ManualID Order by MV.LastUpdatedDate desc) ManualVersionID   ,
                                     (select isnull(sum(case when UM.UserNotificationID is not null then 1 else 0 end),0)  from UsersNofications UM where M.ManualID = UM.ManualID and 
 								                                     UM.FormID is null and 
 								                                     UM.ManualVersionID is null and 
@@ -53,7 +54,7 @@ namespace Flight_BLL
                                     from Manual M
                                     Left join aspnet_users U on M.UpdatedBy = U.UserID
                                     Left join aspnet_users C on M.CreatedBy = C.UserID     
-                                    where ManualCategoryID = {0} 
+                                    where ManualCategoryID = {0} and (isDeleted is null or isDeleted <> 1 )
 
                                     order by CreatedDate desc", CatID, UserID);
         }
@@ -64,6 +65,7 @@ namespace Flight_BLL
             this.Where.ManualCategoryID.Operator = MyGeneration.dOOdads.WhereParameter.Operand.Equal;
             this.Where.IsForm.Value = true;
             this.Where.IsForm.Operator = MyGeneration.dOOdads.WhereParameter.Operand.Equal;
+            this.Where.IsForm.Conjuction = MyGeneration.dOOdads.WhereParameter.Conj.And;
             return this.Query.Load();
         }
 	}

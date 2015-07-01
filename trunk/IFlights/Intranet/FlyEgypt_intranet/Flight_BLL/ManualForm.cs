@@ -19,7 +19,7 @@ namespace Flight_BLL
                                     from ManualForm M
                                     Left join aspnet_users U on M.UpdatedBy = U.UserID
                                     Left join aspnet_users C on M.CreatedBy = C.UserID
-                                    where ManualID = {0} order by CreatedDate desc", p);            
+                                    where ManualID = {0} and (isDeleted is null or isDeleted <> 1 ) order by CreatedDate desc", p);            
         }
 
 
@@ -27,6 +27,7 @@ namespace Flight_BLL
         {
             return LoadFromRawSql(@"select M.*, U.username UpdatedByName , C.username CreatedByName,
                                     (Select Top 1 path from FromVersion MV where MV.ManualFromID = M.ManualFormID Order by MV.LastUpdatedDate desc) VersionPath,                                    
+                                    (Select Top 1 FromVersionID from FromVersion MV where MV.ManualFromID = M.ManualFormID Order by MV.LastUpdatedDate desc) FromVersionID,                                    
                                     (select isnull(sum(case when UF.UserNotificationID is not null then 1 else 0 end),0)  from UsersNofications UF where M.ManualID = UF.ManualID and 
 								                                     UF.FormID is not null and 
 								                                     UF.ManualVersionID is null and 
@@ -42,7 +43,7 @@ namespace Flight_BLL
                                     from ManualForm M
                                     Left join aspnet_users U on M.UpdatedBy = U.UserID
                                     Left join aspnet_users C on M.CreatedBy = C.UserID
-                                    where ManualID = {0} order by CreatedDate desc", ManualID, UserID);
+                                    where ManualID = {0} and (isDeleted is null or isDeleted <> 1 ) order by CreatedDate desc", ManualID, UserID);
         }
     }
 }

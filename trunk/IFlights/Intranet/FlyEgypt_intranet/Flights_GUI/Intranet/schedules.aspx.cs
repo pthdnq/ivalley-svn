@@ -17,7 +17,30 @@ namespace Flights_GUI.Intranet
             {
                 Master.PageTitle = "Schedules";
                 BindData();
+                LogScheduleView();
                 MarkNotificationsAsRead();
+            }
+        }
+
+        private void LogScheduleView()
+        {
+            UsersNofications objData = new UsersNofications();
+            objData.getUnreadSchedulesByUserID(new Guid(Membership.GetUser(Page.User.Identity.Name).ProviderUserKey.ToString()));
+            if (objData.RowCount >0)
+            {
+                objData.Rewind();
+                for (int i = 0; i < objData.RowCount; i++)
+                {
+                    ScheduleLog objDataSchedule = new ScheduleLog();
+                    objDataSchedule.AddNew();
+                    objDataSchedule.UserID = new Guid(Membership.GetUser(Page.User.Identity.Name).ProviderUserKey.ToString());
+                    objDataSchedule.ScheduleID = objData.ScheduleID;
+                    objDataSchedule.ActionID = 4;
+                    objDataSchedule.LogDate = DateTime.Now;
+                    objDataSchedule.Save();
+
+                    objData.MoveNext();
+                }
             }
         }
 

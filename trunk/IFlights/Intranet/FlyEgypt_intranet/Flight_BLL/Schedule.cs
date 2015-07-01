@@ -18,13 +18,15 @@ namespace Flight_BLL
                                     (Select Top 1 path from scheduleVersion MV where MV.scheduleID = M.scheduleID Order by MV.LastUpdatedDate desc) VersionPath       
                                     from schedule M
                                     Left join aspnet_users U on M.UpdatedBy = U.UserID
-                                    Left join aspnet_users C on M.CreatedBy = C.UserID                                    
+                                    Left join aspnet_users C on M.CreatedBy = C.UserID 
+                                    WHERE (isDeleted is null or isDeleted <> 1 )                                   
                                     order by CreatedDate desc");  
         }
         public virtual bool GetSchedulesByUserID(Guid UserID)
         {
             return LoadFromRawSql(@"select M.*, U.username UpdatedByName , C.username CreatedByName ,-- ,sum(case when UMV.UserNotificationID is not null then 1 else 0 end) ManualVersionUpdates ,
                                     (Select Top 1 path from ScheduleVersion MV where MV.ScheduleID = M.ScheduleID Order by MV.LastUpdatedDate desc) VersionPath   ,
+                                    (Select Top 1 ScheduleVersionID from ScheduleVersion MV where MV.ScheduleID = M.ScheduleID Order by MV.LastUpdatedDate desc) ScheduleVersionID   ,
                                     (select isnull(sum(case when UM.UserNotificationID is not null then 1 else 0 end),0)  from UsersNofications UM where M.ScheduleID = UM.ScheduleID and 
 								                                     UM.FormID is null and 
 								                                     UM.ManualVersionID is null and 
@@ -43,7 +45,8 @@ namespace Flight_BLL
 								                                     UMV.UserID = {0}) ManualVersionUpdates
                                     from Schedule M
                                     Left join aspnet_users U on M.UpdatedBy = U.UserID
-                                    Left join aspnet_users C on M.CreatedBy = C.UserID     
+                                    Left join aspnet_users C on M.CreatedBy = C.UserID
+                                    WHERE (isDeleted is null or isDeleted <> 1 )
                                     order by CreatedDate desc", UserID);
         }
 	}
