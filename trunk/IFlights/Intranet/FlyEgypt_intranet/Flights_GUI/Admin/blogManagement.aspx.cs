@@ -107,6 +107,8 @@ namespace Flights_GUI.Admin
                 //objData.MarkAsDeleted();
                 objData.IsDeleted = true;
                 objData.Save();
+                LogBlog(objData.AnnouncementID, 3);
+
                 BindData();
             }
         }
@@ -185,6 +187,10 @@ namespace Flights_GUI.Admin
             //}
 
             objdata.Save();
+            if (CurrentAnnouncement == null)
+                LogBlog(objdata.AnnouncementID, 1);
+            else
+                LogBlog(objdata.AnnouncementID, 2);
 
            
             foreach (ListItem item in CheckBoxListGroups.Items)
@@ -260,6 +266,17 @@ namespace Flights_GUI.Admin
             CheckBoxListGroups.DataValueField = Groups.ColumnNames.GroupID.ToString();
             CheckBoxListGroups.DataBind();
             CheckBoxListGroups.Items.Insert(0, new ListItem("Public", "0"));
+        }
+
+        public void LogBlog(int AnnouncementID, int ActionID)
+        {
+            AnnouncementLog objData = new AnnouncementLog();
+            objData.AddNew();
+            objData.AnnouncementID = AnnouncementID;
+            objData.UserID = new Guid(Membership.GetUser(Page.User.Identity.Name).ProviderUserKey.ToString());
+            objData.ActionID = ActionID;
+            objData.LogDate = DateTime.Now;
+            objData.Save();
         }
 
         #endregion
