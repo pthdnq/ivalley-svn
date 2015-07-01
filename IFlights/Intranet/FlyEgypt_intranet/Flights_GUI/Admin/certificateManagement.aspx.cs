@@ -73,6 +73,7 @@ namespace Flights_GUI.Admin
                 //objData.MarkAsDeleted();
                 objData.IsDeleted = true;
                 objData.Save();
+                LogCertificate(objData.CertificateID, 3);
                 BindData();
             }
         }
@@ -122,6 +123,12 @@ namespace Flights_GUI.Admin
 
 
             objdata.Save();
+
+            if (CurrentCertificate == null)
+                LogCertificate(objdata.CertificateID, 1);
+            else
+                LogCertificate(objdata.CertificateID, 2);
+
             BindData();
             CurrentCertificate = null;
             uiPanelViewAll.Visible = true;
@@ -170,7 +177,17 @@ namespace Flights_GUI.Admin
             btnDeleteCurrentFile.Visible = false;
             lblCurrentFile.Visible = false;
         }
-       
+
+        public void LogCertificate(int CertificateID, int ActionID)
+        {
+            CertificateLog objData = new CertificateLog();
+            objData.AddNew();
+            objData.CertificateID = CertificateID;
+            objData.UserID = new Guid(Membership.GetUser(Page.User.Identity.Name).ProviderUserKey.ToString());
+            objData.ActionID = ActionID;
+            objData.LogDate = DateTime.Now;
+            objData.Save();
+        }
 
         #endregion
     }
