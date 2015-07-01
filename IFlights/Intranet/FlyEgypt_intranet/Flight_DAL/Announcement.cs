@@ -187,6 +187,14 @@ namespace Flight_DAL
 				}
 			}
 			
+			public static SqlParameter IsDeleted
+			{
+				get
+				{
+					return new SqlParameter("@IsDeleted", SqlDbType.Bit, 0);
+				}
+			}
+			
 		}
 		#endregion		
 	
@@ -204,6 +212,7 @@ namespace Flight_DAL
             public const string IsBlog = "IsBlog";
             public const string UploadedFile = "UploadedFile";
             public const string GroupID = "GroupID";
+            public const string IsDeleted = "isDeleted";
 
 			static public string ToPropertyName(string columnName)
 			{
@@ -222,6 +231,7 @@ namespace Flight_DAL
 					ht[IsBlog] = _Announcement.PropertyNames.IsBlog;
 					ht[UploadedFile] = _Announcement.PropertyNames.UploadedFile;
 					ht[GroupID] = _Announcement.PropertyNames.GroupID;
+					ht[IsDeleted] = _Announcement.PropertyNames.IsDeleted;
 
 				}
 				return (string)ht[columnName];
@@ -245,6 +255,7 @@ namespace Flight_DAL
             public const string IsBlog = "IsBlog";
             public const string UploadedFile = "UploadedFile";
             public const string GroupID = "GroupID";
+            public const string IsDeleted = "IsDeleted";
 
 			static public string ToColumnName(string propertyName)
 			{
@@ -263,6 +274,7 @@ namespace Flight_DAL
 					ht[IsBlog] = _Announcement.ColumnNames.IsBlog;
 					ht[UploadedFile] = _Announcement.ColumnNames.UploadedFile;
 					ht[GroupID] = _Announcement.ColumnNames.GroupID;
+					ht[IsDeleted] = _Announcement.ColumnNames.IsDeleted;
 
 				}
 				return (string)ht[propertyName];
@@ -286,6 +298,7 @@ namespace Flight_DAL
             public const string IsBlog = "s_IsBlog";
             public const string UploadedFile = "s_UploadedFile";
             public const string GroupID = "s_GroupID";
+            public const string IsDeleted = "s_IsDeleted";
 
 		}
 		#endregion		
@@ -421,6 +434,18 @@ namespace Flight_DAL
 			set
 	        {
 				base.Setint(ColumnNames.GroupID, value);
+			}
+		}
+
+		public virtual bool IsDeleted
+	    {
+			get
+	        {
+				return base.Getbool(ColumnNames.IsDeleted);
+			}
+			set
+	        {
+				base.Setbool(ColumnNames.IsDeleted, value);
 			}
 		}
 
@@ -594,6 +619,21 @@ namespace Flight_DAL
 			}
 		}
 
+		public virtual string s_IsDeleted
+	    {
+			get
+	        {
+				return this.IsColumnNull(ColumnNames.IsDeleted) ? string.Empty : base.GetboolAsString(ColumnNames.IsDeleted);
+			}
+			set
+	        {
+				if(string.Empty == value)
+					this.SetColumnNull(ColumnNames.IsDeleted);
+				else
+					this.IsDeleted = base.SetboolAsString(ColumnNames.IsDeleted, value);
+			}
+		}
+
 
 		#endregion		
 	
@@ -737,6 +777,16 @@ namespace Flight_DAL
 					}
 				}
 
+				public WhereParameter IsDeleted
+				{
+					get
+					{
+							WhereParameter where = new WhereParameter(ColumnNames.IsDeleted, Parameters.IsDeleted);
+							this._clause._entity.Query.AddWhereParameter(where);
+							return where;
+					}
+				}
+
 
 				private WhereClause _clause;
 			}
@@ -874,6 +924,18 @@ namespace Flight_DAL
 				}
 			}
 
+			public WhereParameter IsDeleted
+		    {
+				get
+		        {
+					if(_IsDeleted_W == null)
+	        	    {
+						_IsDeleted_W = TearOff.IsDeleted;
+					}
+					return _IsDeleted_W;
+				}
+			}
+
 			private WhereParameter _AnnouncementID_W = null;
 			private WhereParameter _Title_W = null;
 			private WhereParameter _Content_W = null;
@@ -885,6 +947,7 @@ namespace Flight_DAL
 			private WhereParameter _IsBlog_W = null;
 			private WhereParameter _UploadedFile_W = null;
 			private WhereParameter _GroupID_W = null;
+			private WhereParameter _IsDeleted_W = null;
 
 			public void WhereClauseReset()
 			{
@@ -899,6 +962,7 @@ namespace Flight_DAL
 				_IsBlog_W = null;
 				_UploadedFile_W = null;
 				_GroupID_W = null;
+				_IsDeleted_W = null;
 
 				this._entity.Query.FlushWhereParameters();
 
@@ -1065,6 +1129,16 @@ namespace Flight_DAL
 					}
 				}
 
+				public AggregateParameter IsDeleted
+				{
+					get
+					{
+							AggregateParameter aggregate = new AggregateParameter(ColumnNames.IsDeleted, Parameters.IsDeleted);
+							this._clause._entity.Query.AddAggregateParameter(aggregate);
+							return aggregate;
+					}
+				}
+
 
 				private AggregateClause _clause;
 			}
@@ -1202,6 +1276,18 @@ namespace Flight_DAL
 				}
 			}
 
+			public AggregateParameter IsDeleted
+		    {
+				get
+		        {
+					if(_IsDeleted_W == null)
+	        	    {
+						_IsDeleted_W = TearOff.IsDeleted;
+					}
+					return _IsDeleted_W;
+				}
+			}
+
 			private AggregateParameter _AnnouncementID_W = null;
 			private AggregateParameter _Title_W = null;
 			private AggregateParameter _Content_W = null;
@@ -1213,6 +1299,7 @@ namespace Flight_DAL
 			private AggregateParameter _IsBlog_W = null;
 			private AggregateParameter _UploadedFile_W = null;
 			private AggregateParameter _GroupID_W = null;
+			private AggregateParameter _IsDeleted_W = null;
 
 			public void AggregateClauseReset()
 			{
@@ -1227,6 +1314,7 @@ namespace Flight_DAL
 				_IsBlog_W = null;
 				_UploadedFile_W = null;
 				_GroupID_W = null;
+				_IsDeleted_W = null;
 
 				this._entity.Query.FlushAggregateParameters();
 
@@ -1343,6 +1431,10 @@ namespace Flight_DAL
 
 			p = cmd.Parameters.Add(Parameters.GroupID);
 			p.SourceColumn = ColumnNames.GroupID;
+			p.SourceVersion = DataRowVersion.Current;
+
+			p = cmd.Parameters.Add(Parameters.IsDeleted);
+			p.SourceColumn = ColumnNames.IsDeleted;
 			p.SourceVersion = DataRowVersion.Current;
 
 

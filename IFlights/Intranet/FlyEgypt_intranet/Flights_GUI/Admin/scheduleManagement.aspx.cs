@@ -85,12 +85,13 @@ namespace Flights_GUI.Admin
                 Schedule objData = new Schedule();
                 objData.LoadByPrimaryKey(Convert.ToInt32(e.CommandArgument.ToString()));
 
-                ScheduleVersion versions = new ScheduleVersion();
-                versions.GetVersionsByScheduleID(objData.ScheduleID);
-                versions.DeleteAll();
-                versions.Save();
+                //ScheduleVersion versions = new ScheduleVersion();
+                //versions.GetVersionsByScheduleID(objData.ScheduleID);
+                //versions.DeleteAll();
+                //versions.Save();
 
-                objData.MarkAsDeleted();
+                //objData.MarkAsDeleted();
+                objData.IsDeleted = true;
                 objData.Save();
                 BindData();
             }

@@ -110,26 +110,26 @@ namespace Flights_GUI.Admin
                 Manual objData = new Manual();
                 objData.LoadByPrimaryKey(Convert.ToInt32(e.CommandArgument.ToString()));
 
-                ManualVersion versions = new ManualVersion();
-                versions.GetVersionsByManualID(objData.ManualID);
-                versions.DeleteAll();
-                versions.Save();
+                //ManualVersion versions = new ManualVersion();
+                //versions.GetVersionsByManualID(objData.ManualID);
+                //versions.DeleteAll();
+                //versions.Save();
 
-                ManualForm forms = new ManualForm();
-                forms.GetFormsByManualID(objData.ManualID);
-                for (int i = 0; i < forms.RowCount; i++)
-                {
-                    FromVersion formversions = new FromVersion();
-                    formversions.GetVersionsByFormID(forms.ManualFormID);
-                    formversions.MarkAsDeleted();
-                    formversions.Save();
-                }
+                //ManualForm forms = new ManualForm();
+                //forms.GetFormsByManualID(objData.ManualID);
+                //for (int i = 0; i < forms.RowCount; i++)
+                //{
+                //    FromVersion formversions = new FromVersion();
+                //    formversions.GetVersionsByFormID(forms.ManualFormID);
+                //    formversions.MarkAsDeleted();
+                //    formversions.Save();
+                //}
 
 
-                forms.DeleteAll();
-                forms.Save();
+                //forms.DeleteAll();
+                //forms.Save();
 
-                objData.MarkAsDeleted();
+                objData.IsDeleted = true;
                 objData.Save();
                 BindData();
             }
@@ -299,7 +299,8 @@ namespace Flights_GUI.Admin
 
                 ManualVersion versions = new ManualVersion();
                 versions.LoadByPrimaryKey(Convert.ToInt32(e.CommandArgument.ToString()));
-                versions.MarkAsDeleted();
+                //versions.MarkAsDeleted();
+                versions.IsDeleted = true;
                 versions.Save();
 
                 BindData_Versions();
@@ -329,9 +330,9 @@ namespace Flights_GUI.Admin
             objdata.LastUpdatedDate = DateTime.Now;
             objdata.IssueNumber = uiTextBoxIssueNo.Text;
             objdata.RevisionNumber = uiTextBoxRevisionNo.Text;
-            if (uiRadDatePickerIssueDate.SelectedDate != null) 
+            if (uiRadDatePickerIssueDate.SelectedDate != null)
                 objdata.IssueDate = uiRadDatePickerIssueDate.SelectedDate.Value;
-            if (uiRadDatePickerRevisionDate.SelectedDate != null) 
+            if (uiRadDatePickerRevisionDate.SelectedDate != null)
                 objdata.RevisionDate = uiRadDatePickerRevisionDate.SelectedDate.Value;
             objdata.ManualID = CurrentManual.ManualID;
 

@@ -74,5 +74,30 @@ namespace Flight_BLL
             return LoadFromRawSql("UPDATE UsersNofications SET IsRead = 1 WHERE UserID = {0} AND NotificationType=4 AND FormID = {1} AND ManualVersionID is null", UserID, ManualFormID);
         }
 
+        public virtual bool getUnreadSchedulesByUserID(Guid UserID)
+        {
+            return LoadFromRawSql("SELECT ScheduleID FROM UsersNofications WHERE UserID = {0} AND ScheduleID is not null AND IsRead = 0 AND ScheduleVersionID is null", UserID);
+        }
+        public virtual bool getUnreadSchedulesVersionsByUserID(Guid UserID)
+        {
+            return LoadFromRawSql("SELECT ScheduleVersionID FROM UsersNofications WHERE UserID = {0} AND IsRead = 0 AND ScheduleVersionID is not null", UserID);
+        }
+
+        public virtual bool getUnreadManualsByUserIDAndCatID(Guid UserID, int CatID)
+        {
+            return LoadFromRawSql("SELECT ManualID FROM UsersNofications WHERE UserID = {0} AND ManualID is not null AND CategoryID = {1} AND IsRead = 0 AND ManualVersionID is null AND FormID is null AND FromVersionID is null", UserID, CatID);
+        }
+        public virtual bool getUnreadManualsVersionsByUserIDAndManualID(Guid UserID, int ManualID)
+        {
+            return LoadFromRawSql("SELECT ManualVersionID FROM UsersNofications WHERE UserID = {0} AND ManualID = {1} AND ManualVersionID is not null AND IsRead = 0 AND FormID is null AND FromVersionID is null", UserID, ManualID);
+        }
+        public virtual bool getUnreadFormsByUserIDAndManualID(Guid UserID, int ManualID)
+        {
+            return LoadFromRawSql("SELECT FormID FROM UsersNofications WHERE UserID = {0} AND ManualID = {1} AND FormID is not null AND IsRead = 0 AND ManualVersionID is null AND FromVersionID is null", UserID, ManualID);
+        }
+        public virtual bool getUnreadFormsVersionsByUserIDAndFormID(Guid UserID, int FormID)
+        {
+            return LoadFromRawSql("SELECT FromVersionID FROM UsersNofications WHERE UserID = {0} AND FormID = {1} AND FromVersionID is not null AND IsRead = 0 AND ManualVersionID is null", UserID,FormID);
+        }
     }
 }

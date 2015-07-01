@@ -98,19 +98,18 @@ namespace Flights_GUI.Admin
             {
                 
                 ManualForm forms = new ManualForm();
-                forms.GetFormsByManualID(Convert.ToInt32(e.CommandArgument.ToString()));
-                for (int i = 0; i < forms.RowCount; i++)
-                {
-                    FromVersion formversions = new FromVersion();
-                    formversions.GetVersionsByFormID(forms.ManualFormID);
-                    formversions.MarkAsDeleted();
-                    formversions.Save();
-                }
+                forms.LoadByPrimaryKey(Convert.ToInt32(e.CommandArgument.ToString()));
+                //for (int i = 0; i < forms.RowCount; i++)
+                //{
+                //    FromVersion formversions = new FromVersion();
+                //    formversions.GetVersionsByFormID(forms.ManualFormID);
+                //    formversions.MarkAsDeleted();
+                //    formversions.Save();
+                //}
 
-
-                forms.MarkAsDeleted();
+                //forms.MarkAsDeleted();
+                forms.IsDeleted = true;
                 forms.Save();
-
                 
                 BindData();
             }
@@ -218,7 +217,6 @@ namespace Flights_GUI.Admin
 
         #endregion
 
-
         #region Versions
         protected void uiLinkButtonAddVersion_Click(object sender, EventArgs e)
         {
@@ -258,7 +256,8 @@ namespace Flights_GUI.Admin
 
                 FromVersion versions = new FromVersion();
                 versions.LoadByPrimaryKey(Convert.ToInt32(e.CommandArgument.ToString()));
-                versions.MarkAsDeleted();
+                //versions.MarkAsDeleted();
+                versions.IsDeleted = true;
                 versions.Save();
 
                 BindData_Versions();

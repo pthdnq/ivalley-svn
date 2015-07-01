@@ -52,17 +52,28 @@ namespace Flights_GUI.Intranet
                         uiLabelModule.Text = m.Title;
                     else
                         Response.Redirect("Manuals.aspx");
+
+                    //LogFormsRead(CurrentManual);
                 }
                 else
                     Response.Redirect("Manuals.aspx");
 
                 BindData();
             }
-
+            LogForms();
             MarkNotificationsAsRead();
         }
 
-       
+        //private void LogFormsRead(int ID)
+        //{
+        //    ManualLog objData = new ManualLog();
+        //    objData.AddNew();
+        //    objData.ManualID = ID;
+        //    objData.UserID = new Guid(Membership.GetUser(Page.User.Identity.Name).ProviderUserKey.ToString());
+        //    objData.ActionID = 4;
+        //    objData.LogDate = DateTime.Now;
+        //    objData.Save();
+        //}
 
         protected void uiRadGridmanuals_PageIndexChanged(object sender, Telerik.Web.UI.GridPageChangedEventArgs e)
         {
@@ -70,7 +81,28 @@ namespace Flights_GUI.Intranet
             BindData();
         }
 
-       
+        private void LogForms()
+        {
+            UsersNofications objData = new UsersNofications();
+            objData.getUnreadFormsByUserIDAndManualID(new Guid(Membership.GetUser(Page.User.Identity.Name).ProviderUserKey.ToString()),CurrentManual);
+            if (objData.RowCount > 0)
+            {
+                objData.Rewind();
+                for (int i = 0; i < objData.RowCount; i++)
+                {
+                    ManualLog objDataSchedule = new ManualLog();
+                    objDataSchedule.AddNew();
+                    objDataSchedule.UserID = new Guid(Membership.GetUser(Page.User.Identity.Name).ProviderUserKey.ToString());
+                    objDataSchedule.ManualFormID = objData.FormID;
+                    objDataSchedule.ActionID = 4;
+                    objDataSchedule.LogDate = DateTime.Now;
+                    objDataSchedule.Save();
+
+                    objData.MoveNext();
+                }
+            }
+        }
+
         private void BindData()
         {
             ManualForm objdata = new ManualForm();

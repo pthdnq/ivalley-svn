@@ -203,6 +203,14 @@ namespace Flight_DAL
 				}
 			}
 			
+			public static SqlParameter IsDeleted
+			{
+				get
+				{
+					return new SqlParameter("@IsDeleted", SqlDbType.Bit, 0);
+				}
+			}
+			
 		}
 		#endregion		
 	
@@ -222,6 +230,7 @@ namespace Flight_DAL
             public const string RevisionNumber = "RevisionNumber";
             public const string RevisionDate = "RevisionDate";
             public const string Notes = "Notes";
+            public const string IsDeleted = "isDeleted";
 
 			static public string ToPropertyName(string columnName)
 			{
@@ -242,6 +251,7 @@ namespace Flight_DAL
 					ht[RevisionNumber] = _ManualVersion.PropertyNames.RevisionNumber;
 					ht[RevisionDate] = _ManualVersion.PropertyNames.RevisionDate;
 					ht[Notes] = _ManualVersion.PropertyNames.Notes;
+					ht[IsDeleted] = _ManualVersion.PropertyNames.IsDeleted;
 
 				}
 				return (string)ht[columnName];
@@ -267,6 +277,7 @@ namespace Flight_DAL
             public const string RevisionNumber = "RevisionNumber";
             public const string RevisionDate = "RevisionDate";
             public const string Notes = "Notes";
+            public const string IsDeleted = "IsDeleted";
 
 			static public string ToColumnName(string propertyName)
 			{
@@ -287,6 +298,7 @@ namespace Flight_DAL
 					ht[RevisionNumber] = _ManualVersion.ColumnNames.RevisionNumber;
 					ht[RevisionDate] = _ManualVersion.ColumnNames.RevisionDate;
 					ht[Notes] = _ManualVersion.ColumnNames.Notes;
+					ht[IsDeleted] = _ManualVersion.ColumnNames.IsDeleted;
 
 				}
 				return (string)ht[propertyName];
@@ -312,6 +324,7 @@ namespace Flight_DAL
             public const string RevisionNumber = "s_RevisionNumber";
             public const string RevisionDate = "s_RevisionDate";
             public const string Notes = "s_Notes";
+            public const string IsDeleted = "s_IsDeleted";
 
 		}
 		#endregion		
@@ -471,6 +484,18 @@ namespace Flight_DAL
 			set
 	        {
 				base.Setstring(ColumnNames.Notes, value);
+			}
+		}
+
+		public virtual bool IsDeleted
+	    {
+			get
+	        {
+				return base.Getbool(ColumnNames.IsDeleted);
+			}
+			set
+	        {
+				base.Setbool(ColumnNames.IsDeleted, value);
 			}
 		}
 
@@ -674,6 +699,21 @@ namespace Flight_DAL
 			}
 		}
 
+		public virtual string s_IsDeleted
+	    {
+			get
+	        {
+				return this.IsColumnNull(ColumnNames.IsDeleted) ? string.Empty : base.GetboolAsString(ColumnNames.IsDeleted);
+			}
+			set
+	        {
+				if(string.Empty == value)
+					this.SetColumnNull(ColumnNames.IsDeleted);
+				else
+					this.IsDeleted = base.SetboolAsString(ColumnNames.IsDeleted, value);
+			}
+		}
+
 
 		#endregion		
 	
@@ -832,6 +872,16 @@ namespace Flight_DAL
 					get
 					{
 							WhereParameter where = new WhereParameter(ColumnNames.Notes, Parameters.Notes);
+							this._clause._entity.Query.AddWhereParameter(where);
+							return where;
+					}
+				}
+
+				public WhereParameter IsDeleted
+				{
+					get
+					{
+							WhereParameter where = new WhereParameter(ColumnNames.IsDeleted, Parameters.IsDeleted);
 							this._clause._entity.Query.AddWhereParameter(where);
 							return where;
 					}
@@ -998,6 +1048,18 @@ namespace Flight_DAL
 				}
 			}
 
+			public WhereParameter IsDeleted
+		    {
+				get
+		        {
+					if(_IsDeleted_W == null)
+	        	    {
+						_IsDeleted_W = TearOff.IsDeleted;
+					}
+					return _IsDeleted_W;
+				}
+			}
+
 			private WhereParameter _ManualVersionID_W = null;
 			private WhereParameter _ManualID_W = null;
 			private WhereParameter _Title_W = null;
@@ -1011,6 +1073,7 @@ namespace Flight_DAL
 			private WhereParameter _RevisionNumber_W = null;
 			private WhereParameter _RevisionDate_W = null;
 			private WhereParameter _Notes_W = null;
+			private WhereParameter _IsDeleted_W = null;
 
 			public void WhereClauseReset()
 			{
@@ -1027,6 +1090,7 @@ namespace Flight_DAL
 				_RevisionNumber_W = null;
 				_RevisionDate_W = null;
 				_Notes_W = null;
+				_IsDeleted_W = null;
 
 				this._entity.Query.FlushWhereParameters();
 
@@ -1213,6 +1277,16 @@ namespace Flight_DAL
 					}
 				}
 
+				public AggregateParameter IsDeleted
+				{
+					get
+					{
+							AggregateParameter aggregate = new AggregateParameter(ColumnNames.IsDeleted, Parameters.IsDeleted);
+							this._clause._entity.Query.AddAggregateParameter(aggregate);
+							return aggregate;
+					}
+				}
+
 
 				private AggregateClause _clause;
 			}
@@ -1374,6 +1448,18 @@ namespace Flight_DAL
 				}
 			}
 
+			public AggregateParameter IsDeleted
+		    {
+				get
+		        {
+					if(_IsDeleted_W == null)
+	        	    {
+						_IsDeleted_W = TearOff.IsDeleted;
+					}
+					return _IsDeleted_W;
+				}
+			}
+
 			private AggregateParameter _ManualVersionID_W = null;
 			private AggregateParameter _ManualID_W = null;
 			private AggregateParameter _Title_W = null;
@@ -1387,6 +1473,7 @@ namespace Flight_DAL
 			private AggregateParameter _RevisionNumber_W = null;
 			private AggregateParameter _RevisionDate_W = null;
 			private AggregateParameter _Notes_W = null;
+			private AggregateParameter _IsDeleted_W = null;
 
 			public void AggregateClauseReset()
 			{
@@ -1403,6 +1490,7 @@ namespace Flight_DAL
 				_RevisionNumber_W = null;
 				_RevisionDate_W = null;
 				_Notes_W = null;
+				_IsDeleted_W = null;
 
 				this._entity.Query.FlushAggregateParameters();
 
@@ -1527,6 +1615,10 @@ namespace Flight_DAL
 
 			p = cmd.Parameters.Add(Parameters.Notes);
 			p.SourceColumn = ColumnNames.Notes;
+			p.SourceVersion = DataRowVersion.Current;
+
+			p = cmd.Parameters.Add(Parameters.IsDeleted);
+			p.SourceColumn = ColumnNames.IsDeleted;
 			p.SourceVersion = DataRowVersion.Current;
 
 

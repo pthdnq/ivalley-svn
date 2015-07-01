@@ -29,7 +29,6 @@ namespace Flight_BLL
             return this.Query.Load();
         }
 
-
         public bool GetTopMostParent(int categoryID)
         {
             ListDictionary parameters = new ListDictionary();

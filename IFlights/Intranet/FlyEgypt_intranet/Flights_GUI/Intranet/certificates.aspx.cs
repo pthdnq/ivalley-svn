@@ -28,6 +28,7 @@ namespace Flights_GUI.Intranet
             uiRadListViewCircularsPublic.DataSource = all.DefaultView;
             uiRadListViewCircularsPublic.DataBind();
         }
+
         protected void uiRadListViewCircularsPublic_PageIndexChanged(object sender, Telerik.Web.UI.RadListViewPageChangedEventArgs e)
         {
             uiRadListViewCircularsPublic.CurrentPageIndex = e.NewPageIndex;

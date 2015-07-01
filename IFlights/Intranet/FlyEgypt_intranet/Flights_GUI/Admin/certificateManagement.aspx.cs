@@ -70,7 +70,8 @@ namespace Flights_GUI.Admin
             {
                 Certificate objData = new Certificate();
                 objData.LoadByPrimaryKey(Convert.ToInt32(e.CommandArgument.ToString()));
-                objData.MarkAsDeleted();
+                //objData.MarkAsDeleted();
+                objData.IsDeleted = true;
                 objData.Save();
                 BindData();
             }
