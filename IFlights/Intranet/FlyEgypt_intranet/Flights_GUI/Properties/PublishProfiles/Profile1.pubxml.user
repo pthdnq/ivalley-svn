@@ -2161,7 +2161,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/09/2015 13:31:43</publishTime>
     </File>
     <File Include="bin/Flights_GUI.dll">
-      <publishTime>06/29/2015 00:47:27</publishTime>
+      <publishTime>06/29/2015 12:25:12</publishTime>
     </File>
     <File Include="bin/Flight_BLL.dll">
       <publishTime>06/29/2015 00:47:25</publishTime>
@@ -3055,7 +3055,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/17/2015 14:36:13</publishTime>
     </File>
     <File Include="Intranet/Manuals.aspx">
-      <publishTime>06/25/2015 13:06:43</publishTime>
+      <publishTime>06/29/2015 13:15:47</publishTime>
     </File>
     <File Include="Intranet/schedules.aspx">
       <publishTime>06/28/2015 23:29:26</publishTime>
@@ -5917,7 +5917,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/10/2015 16:43:38</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>06/29/2015 01:19:37</publishTime>
+      <publishTime>06/29/2015 13:41:39</publishTime>
     </File>
     <File Include="Web.sitemap">
       <publishTime>06/09/2015 13:36:19</publishTime>

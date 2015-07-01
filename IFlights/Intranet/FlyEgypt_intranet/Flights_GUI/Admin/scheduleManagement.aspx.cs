@@ -93,6 +93,14 @@ namespace Flights_GUI.Admin
                 //objData.MarkAsDeleted();
                 objData.IsDeleted = true;
                 objData.Save();
+
+                ScheduleLog slog = new ScheduleLog();
+                slog.ActionID = 3; // delete
+                slog.ScheduleID = objData.ScheduleID;
+                slog.LogDate = DateTime.Now;
+                slog.UserID = new Guid(Membership.GetUser().ProviderUserKey.ToString());
+                slog.Save();
+
                 BindData();
             }
         }
@@ -116,15 +124,22 @@ namespace Flights_GUI.Admin
 
         protected void uiButtonSave_Click(object sender, EventArgs e)
         {
+            ScheduleLog slog = new ScheduleLog();
+            slog.AddNew();
+
             Schedule objdata = new Schedule();
             if (CurrentSchedule == null)
             {
                 objdata.AddNew();
                 objdata.CreatedBy = new Guid(Membership.GetUser().ProviderUserKey.ToString());
                 objdata.CreatedDate = DateTime.Now;
+                slog.ActionID = 1; //create
             }
             else
+            {
                 objdata = CurrentSchedule;
+                slog.ActionID = 2; // update
+            }
             objdata.Name = uiTextBoxTitle.Text;
             if (uiRadDatePickerStartDate.SelectedDate != null)
                 objdata.StartDate = uiRadDatePickerStartDate.SelectedDate.Value;
@@ -134,6 +149,12 @@ namespace Flights_GUI.Admin
             objdata.LastUpdatedDate = DateTime.Now;
             
             objdata.Save();
+
+            slog.LogDate = DateTime.Now;
+            slog.ScheduleID = objdata.ScheduleID;
+            slog.UserID = new Guid(Membership.GetUser().ProviderUserKey.ToString());
+            slog.Save();
+
             BindData();
             CurrentSchedule = objdata;
             uiPanelViewAll.Visible = false;
@@ -245,8 +266,17 @@ namespace Flights_GUI.Admin
 
                 ScheduleVersion versions = new ScheduleVersion();
                 versions.LoadByPrimaryKey(Convert.ToInt32(e.CommandArgument.ToString()));
-                versions.MarkAsDeleted();
+                //versions.MarkAsDeleted();
+                versions.IsDeleted = true;
                 versions.Save();
+
+                ScheduleLog slog = new ScheduleLog();
+                slog.AddNew();
+                slog.ActionID = 3; // delete
+                slog.ScheduleVersionID = versions.ScheduleVersionID;
+                slog.UserID = new Guid(Membership.GetUser().ProviderUserKey.ToString());
+                slog.LogDate = DateTime.Now;
+                slog.Save();
 
                 BindData_Versions();
             }
@@ -260,15 +290,22 @@ namespace Flights_GUI.Admin
 
         protected void uiButtonSaveVersion_Click(object sender, EventArgs e)
         {
+            ScheduleLog slog = new ScheduleLog();
+            slog.AddNew();
+            
             ScheduleVersion objdata = new ScheduleVersion();
             if (CurrentScheduleVersion == null)
             {
                 objdata.AddNew();
                 objdata.CreatedBy = new Guid(Membership.GetUser().ProviderUserKey.ToString());
                 objdata.CreatedDate = DateTime.Now;
+                slog.ActionID = 1; // create
             }
             else
+            {
                 objdata = CurrentScheduleVersion;
+                slog.ActionID = 2;// update
+            }
             objdata.Title = uiTextBoxVersionTitle.Text;
             objdata.Notes = uiTextBoxNotes.Text;
             objdata.UpdatedBy = new Guid(Membership.GetUser().ProviderUserKey.ToString());
@@ -299,6 +336,13 @@ namespace Flights_GUI.Admin
             }
 
             objdata.Save();
+
+
+            slog.ScheduleVersionID = objdata.ScheduleVersionID;
+            slog.UserID = new Guid(Membership.GetUser().ProviderUserKey.ToString());
+            slog.LogDate = DateTime.Now;
+            slog.Save();
+
             // add new notifications 
 
             SendingNotifications.sendNotif(8, null, null, null, null, null, CurrentSchedule.ScheduleID ,objdata.ScheduleVersionID);
