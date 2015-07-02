@@ -43,7 +43,7 @@
     <div class="row-fluid">
         <div class="span12">
             <!-- BEGIN EXAMPLE TABLE widget-->
-            <div class="widget" id="Div1" runat="server" aria-expanded="false">
+            <div class="widget" id="widSearchDeliveryOrder" runat="server" aria-expanded="false">
                 <div class="widget-title">
                     <h4><i class="icon-search"></i> بحث أوامر تشغيل السيارات </h4>
                     <span class="tools">

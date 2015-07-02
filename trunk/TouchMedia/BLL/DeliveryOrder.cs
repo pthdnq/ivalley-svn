@@ -24,7 +24,7 @@ namespace BLL
         }
         public bool SearchDeliveryOrder(DateTime DateFrom, DateTime DateTo, string  DeliveryCode, string DeliveryName, int StatusID , int DepartmentID)
         {
-            ListDictionary parameters = new ListDictionary();
+            ListDictionary parameters = new ListDictionary();   
 
 
             parameters.Add(new SqlParameter("@FromDate", SqlDbType.DateTime,0), DateFrom);
