@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.Security;
@@ -18,6 +19,7 @@ namespace TouchMediaGUI
             {
                 Master.PageTitle = "اوامر الشراء";
 
+
                 BindGeneralPurchaseOrder();
 
                 if (getQueryString_PurchaseOrder > 0)
@@ -27,10 +29,10 @@ namespace TouchMediaGUI
                     txtPurchaseOrderNumber.Text = PoG.PurchaseOrderNumber;
                     txtPurchaseOrderDate.Text = PoG.PurchaseOrderDate.ToString("dd/MM/yyyy");
                     txtManagement.Text = PoG.Management;
-                    
+
                     //if(CheckBoxList1.Items.IndexOf(0)
                     //{
-                    
+
                     //}
                     txtDeliveryDate.Text = PoG.DeliveryDate.ToString("dd/MM/yyyy");
                     txtDeliveryPlace.Text = PoG.DeliveryPlace;
@@ -46,9 +48,45 @@ namespace TouchMediaGUI
                     PanelGrdPurcahseOrderDetails.Visible = true;
                     PanelPurchaseOrderDetails.Visible = true;
 
-                    
                 }
-                if(getQueryString_PurchaseOrderDetails > 0)
+                if (getQueryString_IsPrint > 0)
+                {
+                    Microsoft.Reporting.WebForms.ReportDataSource rds = new Microsoft.Reporting.WebForms.ReportDataSource();
+                    PurchaseDateSetTableAdapters.PurchasePrintTableAdapter PurTA = new PurchaseDateSetTableAdapters.PurchasePrintTableAdapter();
+                    PurTA.ClearBeforeFill = true;
+
+                    try
+                    {
+
+
+
+                        rds.Name = "PurchasePrint";
+                        rds.Value = PurTA.GetData(getQueryString_PurchaseOrder);
+                        ReportViewer1.LocalReport.ReportPath = "Reports\\PurchasePrintReport.rdlc";
+                        //ReportViewer1.LocalReport.SetParameters(new Microsoft.Reporting.WebForms.ReportParameter[] { new Microsoft.Reporting.WebForms.ReportParameter("From", txtDateFrom.ToString()) });
+                        ReportViewer1.LocalReport.DataSources.Clear();
+                        ReportViewer1.LocalReport.DataSources.Add(rds);
+                        ReportViewer1.LocalReport.Refresh();
+
+                        PanelReport.Visible = true;
+                        //PanelPurchaseOrdersGrid.Visible = false;
+                        //PanelPurchaseOrderGeneral.Visible = false;
+                        //PanelGrdPurcahseOrderDetails.Visible = false;
+                        //PanelPurchaseOrderDetails.Visible = false;
+                        widPurchaseOrderSearch.Visible = false;
+                        WidPurchaseGeneral.Visible = false;
+                        widPurchaseReport.Visible = true;
+                    }
+                    catch (Exception ex)
+                    {
+                        throw;
+                    }
+
+
+                }
+
+
+                if (getQueryString_PurchaseOrderDetails > 0)
                 {
                     PurchaseOrderDetails POD = new PurchaseOrderDetails();
                     POD.LoadByPrimaryKey(getQueryString_PurchaseOrderDetails);
@@ -58,19 +96,45 @@ namespace TouchMediaGUI
                     txtStockOnHands.Text = POD.StockOnHand.ToString();
                     txtUnit.Text = POD.Unit.ToString();
                     txtDescription.Text = POD.Description;
-                    
+
                 }
-               
+
             }
             //BindGeneralPurchaseOrder();
             //BindDetailsPurchaseOrder();
-            
+
         }
         private void BindGeneralPurchaseOrder()
         {
-            BLL.PurchaseOrder Po = new BLL.PurchaseOrder();
-            Po.LoadAll();
-            GrdViewPurchaseOrders.DataSource = Po.DefaultView;
+            //BLL.PurchaseOrder Po = new BLL.PurchaseOrder();
+            //Po.LoadAll();
+            //GrdViewPurchaseOrders.DataSource = Po.DefaultView;
+            //GrdViewPurchaseOrders.DataBind();
+
+            BLL.PurchaseOrder Psearch = new BLL.PurchaseOrder();
+            DateTime from, to, DeliveryDateFrom, DeliveryDateTo;
+            DateTime.TryParseExact(txtPurDateFromSearch.Text, "dd/MM/yyyy", null, DateTimeStyles.None, out from);
+            DateTime.TryParseExact(txtPurDateToSearch.Text, "dd/MM/yyyy", null, DateTimeStyles.None, out to);
+            DateTime.TryParseExact(txtPurDeliveryDateFromSearch.Text, "dd/MM/yyyy", null, DateTimeStyles.None, out DeliveryDateFrom);
+            DateTime.TryParseExact(TxtPurDeliveryDateToSearch.Text, "dd/MM/yyyy", null, DateTimeStyles.None, out DeliveryDateTo);
+            int no = 0;
+            int.TryParse(txtPurOrderNumber.Text, out no);
+            if (from == DateTime.MinValue)
+                from = new DateTime(1950, 1, 1);
+            if (to == DateTime.MinValue)
+                to = new DateTime(2600, 1, 1);
+            if (DeliveryDateFrom == DateTime.MinValue)
+                DeliveryDateFrom = new DateTime(1950, 1, 1);
+            if (DeliveryDateTo == DateTime.MinValue)
+                DeliveryDateTo = new DateTime(2600, 1, 1);
+            Psearch.SearchPurchaseOrder(from,
+                                        to,
+                                        DeliveryDateFrom,
+                                        DeliveryDateTo,
+                                        no);
+
+
+            GrdViewPurchaseOrders.DataSource = Psearch.DefaultView;
             GrdViewPurchaseOrders.DataBind();
         }
         private void BindDetailsPurchaseOrder()
@@ -81,7 +145,7 @@ namespace TouchMediaGUI
             grdPurchaseOrderDetails.DataBind();
         }
 
-       
+
 
         protected void btnSavePurchaseOrderGeneralGrid_Click(object sender, EventArgs e)
         {
@@ -114,10 +178,10 @@ namespace TouchMediaGUI
             PanelPurchaseOrderGeneral.Visible = false;
             PanelGrdPurcahseOrderDetails.Visible = true;
             PanelPurchaseOrderDetails.Visible = true;
-            
+
             Response.Redirect("PurchaseOrder.aspx?PurchaseOrderID=" + Pur.PurchaseOrderID.ToString());
 
-           
+
         }
 
         protected void btnCancelPurchaseOrderGeneralGrid_Click(object sender, EventArgs e)
@@ -149,10 +213,10 @@ namespace TouchMediaGUI
             Purd.LastUpdatedDate = DateTime.Now;
             Purd.UpdatedBy = new Guid(Membership.GetUser().ProviderUserKey.ToString());
             Purd.Save();
-            
+
             BindDetailsPurchaseOrder();
             cleardetails();
-            
+
         }
 
         protected void btnCancelPurchaseOrderDetails_Click(object sender, EventArgs e)
@@ -173,6 +237,23 @@ namespace TouchMediaGUI
                 }
             }
         }
+
+        private int getQueryString_IsPrint
+        {
+            get
+            {
+                if (!string.IsNullOrEmpty(Request.QueryString["isprint"]))
+                {
+                    return int.Parse(Request.QueryString["isprint"].ToString());
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
+
+
         private int getQueryString_PurchaseOrderDetails
         {
             get
@@ -195,14 +276,22 @@ namespace TouchMediaGUI
                 int ID = int.Parse(e.CommandArgument.ToString());
 
 
-                
+
                 Response.Redirect("PurchaseOrder.aspx?PurchaseOrderID=" + ID.ToString());
 
 
             }
+            else if (e.CommandName == "PrintPurchase")
+            {
+                int IDP = int.Parse(e.CommandArgument.ToString());
+
+                Response.Redirect("PurchaseOrder.aspx?isprint=1&PurchaseOrderID=" + IDP.ToString());
+
+            }
+
             else if (e.CommandName == "deleteGeneralOrder")
             {
-               BLL.PurchaseOrder purdel = new BLL.PurchaseOrder();
+                BLL.PurchaseOrder purdel = new BLL.PurchaseOrder();
                 PurchaseOrderDetails Purddel = new PurchaseOrderDetails();
                 purdel.LoadByPrimaryKey(int.Parse(e.CommandArgument.ToString()));
                 Purddel.getPurchaseDetails(int.Parse(e.CommandArgument.ToString()));
@@ -233,7 +322,7 @@ namespace TouchMediaGUI
 
 
             }
-           
+
         }
         protected void cleardetails()
         {
@@ -253,6 +342,11 @@ namespace TouchMediaGUI
             PanelGrdPurcahseOrderDetails.Visible = false;
             PanelPurchaseOrderDetails.Visible = false;
 
+        }
+
+        protected void btnPurSearch_Click(object sender, EventArgs e)
+        {
+            BindGeneralPurchaseOrder();
         }
     }
 }

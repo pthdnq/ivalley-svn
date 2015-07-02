@@ -2112,6 +2112,11 @@
     <Compile Include="Models\GeneralLookup.cs" />
     <Compile Include="Models\StatusModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PurchaseDateSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PurchaseDateSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="PurchaseOrder.aspx.cs">
       <DependentUpon>PurchaseOrder.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2545,10 +2550,22 @@
       <DependentUpon>FilterbyStatus.xsd</DependentUpon>
     </Content>
     <None Include="Properties\PublishProfiles\publish.pubxml" />
+    <Content Include="PurchaseDateSet.xsc">
+      <DependentUpon>PurchaseDateSet.xsd</DependentUpon>
+    </Content>
+    <None Include="PurchaseDateSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>PurchaseDateSet.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="PurchaseDateSet.xss">
+      <DependentUpon>PurchaseDateSet.xsd</DependentUpon>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Reports\DeliveryReport.rdlc" />
     <EmbeddedResource Include="Reports\DeliveryReportByStatus.rdlc" />
+    <EmbeddedResource Include="Reports\PurchasePrintReport.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
