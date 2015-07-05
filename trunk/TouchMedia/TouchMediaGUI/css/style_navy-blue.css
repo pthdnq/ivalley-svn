@@ -1,5 +1,6 @@
 body {
-    color: #868686;
+    /*color: #868686;*/
+    color:black;
     background: #263849 url(../img/bg-navy-blue.jpg) !important;
 }
 #main-content {

@@ -47,7 +47,7 @@ namespace TouchMediaGUI
                     PanelPurchaseOrderGeneral.Visible = true;
                     PanelGrdPurcahseOrderDetails.Visible = true;
                     PanelPurchaseOrderDetails.Visible = true;
-
+                    widPurchaseOrderSearch.Visible = false;
                 }
                 if (getQueryString_IsPrint > 0)
                 {
