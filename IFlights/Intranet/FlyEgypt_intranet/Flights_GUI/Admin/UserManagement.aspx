@@ -66,12 +66,12 @@
                             <telerik:GridTemplateColumn HeaderText="Actions">
                                 <ItemTemplate>
                                     <asp:LinkButton ID="uiLinkButtonEdit" runat="server" CommandArgument='<%# Eval("UserName") %>'
-                                        CommandName="EditUser">Edit</asp:LinkButton>&nbsp;
+                                        CommandName="EditUser">Edit</asp:LinkButton> | 
                                         <asp:LinkButton ID="uiLinkButtonDelete" runat="server" CommandArgument='<%# Eval("UserName") %>'
-                                            CommandName="DeleteUser" OnClientClick="return confirm('Are you want to delete this record?');">Delete</asp:LinkButton>
+                                            CommandName="DeleteUser" OnClientClick="return confirm('Are you want to delete this record?');">Delete</asp:LinkButton> | 
+                                    <asp:LinkButton ID="LinkButton1" CommandArgument='<%# Eval("UserName") %>' CommandName="LoginReport" runat="server">Report</asp:LinkButton>
                                 </ItemTemplate>
                             </telerik:GridTemplateColumn>
-
                         </Columns>
                     </MasterTableView>
                     <HeaderStyle HorizontalAlign="Center" />
