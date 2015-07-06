@@ -22,6 +22,18 @@
       <FullPath>Copy of Rpt_DeadCaseAccedentGovs.rdl</FullPath>
     </ProjectItem>
     <ProjectItem>
+      <Name>Copy of Rpt_DeadLessThan7Dayes.rdl</Name>
+      <FullPath>Copy of Rpt_DeadLessThan7Dayes.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Copy of Rpt_DeadLessThan7DayesGovs.rdl</Name>
+      <FullPath>Copy of Rpt_DeadLessThan7DayesGovs.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Copy of Rpt_DeadLessThan7DayesOffices.rdl</Name>
+      <FullPath>Copy of Rpt_DeadLessThan7DayesOffices.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
       <Name>Copy of Rpt_PrintBornCase.rdl</Name>
       <FullPath>Copy of Rpt_PrintBornCase.rdl</FullPath>
     </ProjectItem>
@@ -213,18 +225,6 @@
       <Name>Rpt_PrintDeadCase.rdl</Name>
       <FullPath>Rpt_PrintDeadCase.rdl</FullPath>
     </ProjectItem>
-    <ProjectItem>
-      <Name>Copy of Rpt_DeadLessThan7DayesOffices.rdl</Name>
-      <FullPath>Copy of Rpt_DeadLessThan7DayesOffices.rdl</FullPath>
-    </ProjectItem>
-    <ProjectItem>
-      <Name>Copy of Rpt_DeadLessThan7Dayes.rdl</Name>
-      <FullPath>Copy of Rpt_DeadLessThan7Dayes.rdl</FullPath>
-    </ProjectItem>
-    <ProjectItem>
-      <Name>Copy of Rpt_DeadLessThan7DayesGovs.rdl</Name>
-      <FullPath>Copy of Rpt_DeadLessThan7DayesGovs.rdl</FullPath>
-    </ProjectItem>
   </Reports>
   <Configurations>
     <Configuration>
@@ -233,7 +233,7 @@
       <Options>
         <OutputPath>bin\Debug</OutputPath>
         <TargetServerVersion>SSRS2008R2</TargetServerVersion>
-        <TargetServerURL>http://mena-pc:8080/ReportServer</TargetServerURL>
+        <TargetServerURL>http://mena-lap:88/ReportServer</TargetServerURL>
         <TargetFolder>Health</TargetFolder>
         <TargetDataSourceFolder>Health</TargetDataSourceFolder>
         <OverwriteDataSources>true</OverwriteDataSources>

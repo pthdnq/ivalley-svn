@@ -358,7 +358,7 @@ public partial class UserControls_UcDeathInfo : System.Web.UI.UserControl
         {
             if (!MHOCommon.ValidateNationalIDInput(txtNationalId.Text, dropGender.SelectedValue == "2" ? true : false))
             {
-                lblError.Text = "النوع لا يتوافق مع الرقم القومي المدخل";
+                lblError.Text = MHOCommon.NIDValidationMessage;// "النوع لا يتوافق مع الرقم القومي المدخل";
                 dropGender.SelectedIndex = -1;
             }
         }

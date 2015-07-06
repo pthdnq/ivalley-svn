@@ -93,7 +93,11 @@
                                          Operator="DataTypeCheck" Type="Integer" ></asp:CompareValidator>--%>
                                                 <asp:RegularExpressionValidator ID="RegularExpressionValidator5" runat="server" 
                                                     ControlToValidate="txtNationalId" ErrorMessage="أدخل رقم قومى صحيح" 
-                                                    ValidationExpression="^([0])|(\d{14})$"></asp:RegularExpressionValidator>
+                                                    ValidationExpression="^([0])|(\d{14})$" ValidationGroup="GenralValidate"></asp:RegularExpressionValidator>
+                                               <%-- <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" 
+                                                    ControlToValidate="txtNationalId" ErrorMessage="أدخل رقم قومى صحيح" 
+                                                    ValidationExpression="[^-\s]" ValidationGroup="GenralValidate"></asp:RegularExpressionValidator>
+                                                --%>
                                             </td>
                                             <td>
                                                 <asp:Button ID="btnSearch" runat="server" Text="بحث" OnClick="btnSearch_Click" 
