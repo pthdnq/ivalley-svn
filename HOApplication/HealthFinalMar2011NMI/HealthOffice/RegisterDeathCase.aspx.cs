@@ -725,7 +725,7 @@ public partial class RegisterDeathCase : System.Web.UI.Page
             return false;
         }
 
-        if (DateTime.Parse(UcDeathInfo2.EventDeadBirthDate) > DateTime.Parse(UcGeneralDeathInfo1.EventDeadDieDate))
+        if (DateTime.Parse(UcDeathInfo2.EventDeadBirthDate) > DateTime.Parse(UcGeneralDeathInfo1.EventDeadDieDate) && rdTypeList.SelectedValue != "2")
         {
             MHOCommon.ShowMessage("تاريخ الوفاة لابد ان يكون بعد تاريخ الميلاد", this.Page);
             return false;

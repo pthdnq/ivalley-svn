@@ -1200,7 +1200,7 @@
             </Style>
           </Paragraph>
         </Paragraphs>
-        <Top>6.66694in</Top>
+        <Top>6.51694in</Top>
         <Left>4.16867in</Left>
         <Height>0.55621cm</Height>
         <Width>0.98354in</Width>
@@ -1234,7 +1234,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>GovDescr</rd:DefaultName>
-        <Top>16.93402cm</Top>
+        <Top>16.55302cm</Top>
         <Left>7.83266cm</Left>
         <Height>0.54915cm</Height>
         <Width>2.5cm</Width>
@@ -2595,7 +2595,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox16</rd:DefaultName>
-        <Top>14.55002cm</Top>
+        <Top>14.23252cm</Top>
         <Left>11.99937cm</Left>
         <Height>0.6cm</Height>
         <Width>0.78189cm</Width>
@@ -2630,7 +2630,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox16</rd:DefaultName>
-        <Top>14.58546cm</Top>
+        <Top>14.26796cm</Top>
         <Left>15.25745cm</Left>
         <Height>0.6cm</Height>
         <Width>0.95751cm</Width>
@@ -2666,7 +2666,7 @@
             </Style>
           </Paragraph>
         </Paragraphs>
-        <Top>5.98395in</Top>
+        <Top>5.85895in</Top>
         <Left>6.65617in</Left>
         <Height>0.60706cm</Height>
         <Width>1.00643in</Width>
@@ -2700,7 +2700,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>InformerFirstName</rd:DefaultName>
-        <Top>15.18546cm</Top>
+        <Top>14.86796cm</Top>
         <Left>14.1118cm</Left>
         <Height>0.6cm</Height>
         <Width>2.74136cm</Width>
@@ -2754,7 +2754,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>InformerSecondName</rd:DefaultName>
-        <Top>15.18546cm</Top>
+        <Top>14.86796cm</Top>
         <Left>4.96736cm</Left>
         <Height>0.6cm</Height>
         <Width>8.6431cm</Width>
@@ -2812,7 +2812,7 @@
             </Style>
           </Paragraph>
         </Paragraphs>
-        <Top>6.32687in</Top>
+        <Top>6.20187in</Top>
         <Left>6.51269in</Left>
         <Height>0.55621cm</Height>
         <Width>1.14991in</Width>
@@ -2846,10 +2846,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>RelationDescr</rd:DefaultName>
-        <Top>16.07024cm</Top>
-        <Left>13.51874cm</Left>
+        <Top>15.75274cm</Top>
+        <Left>14.1118cm</Left>
         <Height>0.6cm</Height>
-        <Width>2.96606cm</Width>
+        <Width>2.373cm</Width>
         <ZIndex>68</ZIndex>
         <Style>
           <Border>
@@ -2904,8 +2904,8 @@
             </Style>
           </Paragraph>
         </Paragraphs>
-        <Top>6.32687in</Top>
-        <Left>4.21564in</Left>
+        <Top>6.20187in</Top>
+        <Left>4.46564in</Left>
         <Height>0.59999cm</Height>
         <Width>0.97295in</Width>
         <ZIndex>69</ZIndex>
@@ -2938,8 +2938,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>InformerNID</rd:DefaultName>
-        <Top>16.07024cm</Top>
-        <Left>5.95269cm</Left>
+        <Top>15.75274cm</Top>
+        <Left>6.58769cm</Left>
         <Height>0.6cm</Height>
         <Width>4.64922cm</Width>
         <ZIndex>70</ZIndex>
@@ -2996,7 +2996,7 @@
             </Style>
           </Paragraph>
         </Paragraphs>
-        <Top>6.65563in</Top>
+        <Top>6.50563in</Top>
         <Left>6.30579in</Left>
         <Height>0.55621cm</Height>
         <Width>1.35681in</Width>
@@ -3031,7 +3031,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>InformerPhone</rd:DefaultName>
-        <Top>16.90531cm</Top>
+        <Top>16.52431cm</Top>
         <Left>13.3012cm</Left>
         <Height>0.6cm</Height>
         <Width>2.59101cm</Width>
@@ -3089,7 +3089,7 @@
             </Style>
           </Paragraph>
         </Paragraphs>
-        <Top>6.94844in</Top>
+        <Top>7.04844in</Top>
         <Left>3.64467in</Left>
         <Height>0.55621cm</Height>
         <Width>4.01793in</Width>
@@ -3127,7 +3127,7 @@
             </Style>
           </Paragraph>
         </Paragraphs>
-        <Top>6.94844in</Top>
+        <Top>7.03594in</Top>
         <Left>1.62371in</Left>
         <Height>0.55621cm</Height>
         <Width>0.89141in</Width>
@@ -3582,7 +3582,7 @@
             </Style>
           </Paragraph>
         </Paragraphs>
-        <Top>7.19709in</Top>
+        <Top>7.28459in</Top>
         <Left>1.63902in</Left>
         <Height>0.55621cm</Height>
         <Width>0.89141in</Width>
@@ -4425,6 +4425,98 @@
           </Border>
         </Style>
       </Image>
+      <Textbox Name="RelationDescr3">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!InformerAddress.Value, "DataSet1")</Value>
+                <Style>
+                  <FontSize>14pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Right</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>RelationDescr</rd:DefaultName>
+        <Top>17.22161cm</Top>
+        <Left>0.54247cm</Left>
+        <Height>0.6cm</Height>
+        <Width>15.96053cm</Width>
+        <ZIndex>111</ZIndex>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+          <TopBorder>
+            <Color>Black</Color>
+            <Style>Solid</Style>
+            <Width>1pt</Width>
+          </TopBorder>
+          <BottomBorder>
+            <Color>Black</Color>
+            <Style>Solid</Style>
+            <Width>1pt</Width>
+          </BottomBorder>
+          <LeftBorder>
+            <Color>Black</Color>
+            <Style>Solid</Style>
+            <Width>1pt</Width>
+          </LeftBorder>
+          <RightBorder>
+            <Color>Black</Color>
+            <Style>Solid</Style>
+            <Width>1pt</Width>
+          </RightBorder>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="textbox124">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>عنوان المبلغ :</Value>
+                <Style>
+                  <FontSize>14pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                  <Language>ar</Language>
+                  <NumeralLanguage>ar</NumeralLanguage>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <LeftIndent>0cm</LeftIndent>
+            <HangingIndent>0cm</HangingIndent>
+            <Style>
+              <TextAlign>Right</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <Top>6.78017in</Top>
+        <Left>6.51985in</Left>
+        <Height>0.55621cm</Height>
+        <Width>1.14991in</Width>
+        <ZIndex>112</ZIndex>
+        <Style>
+          <Border />
+          <VerticalAlign>Middle</VerticalAlign>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+          <Direction>RTL</Direction>
+        </Style>
+      </Textbox>
     </ReportItems>
     <Height>10.02138in</Height>
     <Style />

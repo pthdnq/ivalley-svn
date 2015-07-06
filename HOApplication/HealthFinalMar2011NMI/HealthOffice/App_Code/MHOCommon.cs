@@ -459,6 +459,11 @@ public class MHOCommon
 
         if (nid.Length == 14)
         {
+            if (nid.Contains(" "))
+            {
+                NIDValidationMessage = "أدخل رقم قومى صحيح";
+                return false;
+            }
             if (nid.Substring(0, 1) == "0" ||
                 // someboy can born at 1/1/2000 year
                 /*nid.Substring(1, 2) == "00" ||*/
