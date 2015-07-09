@@ -13,7 +13,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:Panel runat="server" ID="uiPanelViewAll">
-        <div id="tabs" class="tabs">
+       <%-- <div id="tabs" class="tabs">
             <ul>
                 <li class="active"><a href="#"><i class="fa fa-globe"></i>Public Circulars</a></li>
                 <li><a href="#"><i class="fa fa-group"></i>
@@ -21,8 +21,22 @@
                 </a></li>
             </ul>
             <div class="tabs-pane">
-                <div class="tab-panel active">
+                <div class="tab-panel active">--%>
                     <div class="blog-thumbs no-bar">
+                        <div class="toolsBar">
+									<div class="cell-12 left products-filter-top">
+										<div class="left">
+											<span>View circulars published to : </span>
+                                            <asp:DropDownList ID="uiDropDownListUserGroups" runat="server" AutoPostBack="True" OnSelectedIndexChanged="uiDropDownListUserGroups_SelectedIndexChanged">
+
+                                            </asp:DropDownList>
+										</div>
+										
+										
+									</div>
+									
+									
+								</div>
                         <div class="blog-posts">
                             <telerik:RadListView ID="uiRadListViewCircularsPublic" runat="server" ItemPlaceholderID="CircularsContainer" AllowPaging="true" OnPageIndexChanged="uiRadListViewCircularsPublic_PageIndexChanged">
                                 <LayoutTemplate>
@@ -52,15 +66,16 @@
                                                         <%# Convert.ToDateTime(Eval("createdDate").ToString()).ToString("yyyy") %>
                                                     </div>
                                                 </div>
-                                                <img src='<%# (string.IsNullOrEmpty(Eval("MainPic").ToString()) ? "../img/flyegypt.png" : "../common/thumb.aspx?Image=" + Eval("MainPic")) %>' alt="" style="max-height: 177px; max-width: 300px; width: 300px; margin: 0 auto 10px; display: block">
+                                                <img src='<%# (string.IsNullOrEmpty(Eval("MainPic").ToString()) ? "../img/nesma.png" : "../common/thumb.aspx?Image=" + Eval("MainPic")) %>' alt="" style="max-height: 177px; max-width: 300px; width: 300px; margin: 0 auto 10px; display: block">
                                             </a>
-                                        </div>
+                                        &nbsp;&nbsp;&nbsp;</div>
                                         <article class="post-content">
                                             <div class="post-info-container">
                                                 <div class="post-info">
                                                     <h2><a class="main-color" href='Circulars.aspx?cid=<%# Eval("AnnouncementID") %>'><%# Eval("Title").ToString() %></a></h2>
                                                     <ul class="post-meta">
                                                         <li class="meta-user"><i class="fa fa-user"></i>By: <a href="../Account/Profile.aspx?uid=<%# Eval("UserID") %>" target="_blank"><%# Eval("UserName").ToString() %></a></li>
+                                                        <li><i class="fa fa-folder-open"></i>Published to: <span style="color:#777"><%# Eval("Groups") %></span></li>
 
                                                     </ul>
                                                 </div>
@@ -80,7 +95,7 @@
                             </telerik:RadListView>
                         </div>
                     </div>
-                </div>
+               <%-- </div>
                 <div class="tab-panel">
                     <div class="blog-thumbs no-bar">
                         <div class="blog-posts">
@@ -142,7 +157,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>--%>
 
 
     </asp:Panel>
