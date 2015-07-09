@@ -36,8 +36,9 @@ namespace Flight_BLL
 
         public virtual bool SearchByText(string Username)
         {
-            string query = string.Format(@"SELECT U.*, mem.Username, mem.lastactivitydate
+            string query = string.Format(@"SELECT U.*, mem.Username, mem.lastactivitydate, m.IsLockedOut
                                     from UsersProfiles u inner join aspnet_Users mem  on u.UserID = mem.UserId
+                                     inner join aspnet_membership m on mem.userid =m.userid
                                     WHERE  ((mem.UserName LIKE N'%{0}%') OR (u.FullName LIKE N'%{0}%') OR (u.Email LIKE N'%{0}%'))", Username);
             return LoadFromRawSql(query);
         }
