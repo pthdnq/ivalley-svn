@@ -29,6 +29,8 @@
                                 &nbsp;
                                     <asp:LinkButton ID="uiLinkButtonDelete" runat="server" CommandArgument='<%# Eval("CertificateID") %>' Visible='<%# (Membership.GetUser().ProviderUserKey.ToString() == Eval("CreatedBy").ToString()) %>'
                                         CommandName="DeleteCir" OnClientClick="return confirm('Are you want to delete this record? ');"><img src="../images/delete.png" alt="Delete" title="Delete" style="border:0;float:none;" /></asp:LinkButton>
+                                &nbsp;
+                                    <a href='/BI/reporting.aspx?t=c&cid=<%# Eval("CertificateID") %>'><img src="../images/bar_chart1.png" alt="View report" title="View report" style="border:0;float:none;max-width:24px;" /></a>
                             </ItemTemplate>
                         </telerik:GridTemplateColumn>
                     </Columns>

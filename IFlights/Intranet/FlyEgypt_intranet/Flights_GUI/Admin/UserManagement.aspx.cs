@@ -108,8 +108,28 @@ namespace Flights_GUI.Admin
                 txtTelephone.Text = usPr.Telephone;
                 if (!usPr.IsColumnNull(UsersProfiles.ColumnNames.Photo))
                     userImg.Src = usPr.Photo;
-                if (!usPr.IsColumnNull(UsersProfiles.ColumnNames.GroupID))
-                    DropDownListGroups.SelectedValue = usPr.GroupID.ToString();
+
+                UserGroup groups = new UserGroup();
+                groups.GetUserGroups(new Guid(ObjData.ProviderUserKey.ToString()));
+
+                /*if (!usPr.IsColumnNull(UsersProfiles.ColumnNames.GroupID))
+                    DropDownListGroups.SelectedValue = usPr.GroupID.ToString();*/
+                if (groups.RowCount > 0)
+                {
+                    for (int i = 0; i < groups.RowCount; i++)
+                    {
+                        foreach (ListItem item in uiCheckBoxListGroups.Items)
+                        {
+                            if (groups.GroupId.ToString() == item.Value)
+                            {
+                                item.Selected = true;
+                                break;
+                            }
+                            
+                        }
+                        groups.MoveNext();
+                    }
+                }
 
                 CurrentUser = ObjData;
 
@@ -121,6 +141,12 @@ namespace Flights_GUI.Admin
                 {
                     UsersProfiles usPr = new UsersProfiles();
                     usPr.getUserByGUID(new Guid(ObjData.ProviderUserKey.ToString()));
+
+                    UserGroup groups = new UserGroup();
+                    groups.GetUserGroups(new Guid(ObjData.ProviderUserKey.ToString()));
+                    groups.DeleteAll();
+                    groups.Save();
+
                     usPr.MarkAsDeleted();
                     usPr.Save();
 
@@ -180,7 +206,28 @@ namespace Flights_GUI.Admin
                 usPr.FullName = txtFullName.Text;
                 usPr.Email = txtEmail.Text;
                 usPr.Telephone = txtTelephone.Text;
-                usPr.GroupID = int.Parse(DropDownListGroups.SelectedValue);
+                //usPr.GroupID = int.Parse(DropDownListGroups.SelectedValue);
+
+                UserGroup oldGroups = new UserGroup();
+                oldGroups.GetUserGroups(new Guid(CurrentUser.ProviderUserKey.ToString()));
+                oldGroups.DeleteAll();
+                oldGroups.Save();
+
+                UserGroup newAnnGroup = new UserGroup();
+                foreach (ListItem item in uiCheckBoxListGroups.Items)
+                {
+                    
+                    if (item.Selected)
+                    {
+                       
+                        newAnnGroup.AddNew();
+                        newAnnGroup.UserId = new Guid(CurrentUser.ProviderUserKey.ToString());
+                        newAnnGroup.GroupId = int.Parse(item.Value);
+                        
+                    }
+                }
+                newAnnGroup.Save();
+
                 if (fileUploadPhoto.HasFile)
                 {
                     Bitmap UpImg = (Bitmap)Bitmap.FromStream(fileUploadPhoto.PostedFile.InputStream);
@@ -241,7 +288,23 @@ namespace Flights_GUI.Admin
                     usPr.FullName = txtFullName.Text;
                     usPr.Email = txtEmail.Text;
                     usPr.Telephone = txtTelephone.Text;
-                    usPr.GroupID = int.Parse(DropDownListGroups.SelectedValue);
+                    //usPr.GroupID = int.Parse(DropDownListGroups.SelectedValue);
+
+                    UserGroup newAnnGroup = new UserGroup();
+                    foreach (ListItem item in uiCheckBoxListGroups.Items)
+                    {
+
+                        if (item.Selected)
+                        {
+
+                            newAnnGroup.AddNew();
+                            newAnnGroup.UserId = new Guid(objUser.ProviderUserKey.ToString());
+                            newAnnGroup.GroupId = int.Parse(item.Value);
+
+                        }
+                    }
+                    newAnnGroup.Save();
+
                     if (fileUploadPhoto.HasFile)
                     {
                         Bitmap UpImg = (Bitmap)Bitmap.FromStream(fileUploadPhoto.PostedFile.InputStream);
@@ -308,6 +371,7 @@ namespace Flights_GUI.Admin
         {
             uiCheckBoxListRoles.DataSource = Roles.GetAllRoles();
             uiCheckBoxListRoles.DataBind();
+
         }
 
         private void SearchByText()
@@ -333,21 +397,31 @@ namespace Flights_GUI.Admin
             txtFullName.Text = "";
             txtEmail.Text = "";
             txtTelephone.Text = "";
-            DropDownListGroups.SelectedIndex = 0;
+            //DropDownListGroups.SelectedIndex = 0;
+            uiCheckBoxListGroups.ClearSelection();
             userImg.Src = "../img/noImg.gif";
         }
 
         private void loadGroups()
         {
-            Groups grps = new Groups();
+            /*Groups grps = new Groups();
             grps.LoadAll();
             DropDownListGroups.DataSource = grps.DefaultView;
             DropDownListGroups.DataTextField = Groups.ColumnNames.GroupName.ToString();
             DropDownListGroups.DataValueField = Groups.ColumnNames.GroupID.ToString();
-            DropDownListGroups.DataBind();
+            DropDownListGroups.DataBind();*/
+
+
+            Groups groups = new Groups();
+            groups.LoadAll();
+            uiCheckBoxListGroups.DataSource = groups.DefaultView;
+            uiCheckBoxListGroups.DataTextField = Groups.ColumnNames.GroupName;
+            uiCheckBoxListGroups.DataValueField = Groups.ColumnNames.GroupID;
+            uiCheckBoxListGroups.DataBind();
         }
         #endregion
 
+        
 
        
     }

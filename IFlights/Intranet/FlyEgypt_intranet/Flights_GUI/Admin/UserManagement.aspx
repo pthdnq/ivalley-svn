@@ -13,6 +13,19 @@
             $('.notify-row .btn-inverse').removeClass("active");
             $('#mi_top_Manage_Users').addClass("active");
         });
+
+        function ValidateModuleList(source, args) {
+            var chkListModules = document.getElementById('<%= uiCheckBoxListGroups.ClientID %>');
+            var chkListinputs = chkListModules.getElementsByTagName("input");
+            for (var i = 0; i < chkListinputs.length; i++) {
+                if (chkListinputs[i].checked) {
+                    args.IsValid = true;
+                    return;
+                }
+            }
+            args.IsValid = false;
+        }
+
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -68,8 +81,8 @@
                                     <asp:LinkButton ID="uiLinkButtonEdit" runat="server" CommandArgument='<%# Eval("UserName") %>'
                                         CommandName="EditUser">Edit</asp:LinkButton> | 
                                         <asp:LinkButton ID="uiLinkButtonDelete" runat="server" CommandArgument='<%# Eval("UserName") %>'
-                                            CommandName="DeleteUser" OnClientClick="return confirm('Are you want to delete this record?');">Delete</asp:LinkButton> | 
-                                    <asp:LinkButton ID="LinkButton1" CommandArgument='<%# Eval("UserName") %>' CommandName="LoginReport" runat="server">Report</asp:LinkButton>
+                                            CommandName="DeleteUser" OnClientClick="return confirm('Are you want to delete this record?');">Delete</asp:LinkButton> <%--| 
+                                    <asp:LinkButton ID="LinkButton1" CommandArgument='<%# Eval("UserName") %>' CommandName="LoginReport" runat="server">Report</asp:LinkButton>--%>
                                 </ItemTemplate>
                             </telerik:GridTemplateColumn>
                         </Columns>
@@ -95,8 +108,8 @@
                     &nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="*"
                         ControlToValidate="uiTextBoxUserName" Display="Dynamic" ValidationGroup="EditUser"></asp:RequiredFieldValidator>
                 </div>
-                <div class="cell-2"></div>
-                <div class="cell-4">
+                <div class="cell-3"></div>
+                <div class="cell-3">
                     <img id="userImg" style="position:absolute;max-height:200px"  runat="server" src="../img/noImg.gif" />
                 </div>
             </div>
@@ -164,18 +177,24 @@
                 <div class="cell-4">
                     <asp:FileUpload ID="fileUploadPhoto" runat="server" />
                     &nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ErrorMessage="*"
-                        ControlToValidate="fileUploadPhoto" Display="Dynamic" ValidationGroup="EditUser"></asp:RequiredFieldValidator>
+                        ControlToValidate="fileUploadPhoto" Display="Dynamic" ValidationGroup="EditUser" Enabled="false"></asp:RequiredFieldValidator>
                 </div>
             </div>
             <div style="clear: both; height: 5px;"></div>
             <div class="cell-12 clearfix">
                 <div class="cell-2">
-                    Group : 
+                    User's Groups : 
                 </div>
-                <div class="cell-4">
-                    <asp:DropDownList ID="DropDownListGroups" runat="server"></asp:DropDownList>
+                <div class="cell-7">
+                    <asp:CheckBoxList ID="uiCheckBoxListGroups" runat="server" CellPadding="5" CellSpacing="5"
+                        RepeatColumns="5">
+                    </asp:CheckBoxList>
+                    <asp:CustomValidator runat="server" ID="cvmodulelist"
+                      ClientValidationFunction="ValidateModuleList" Display="Dynamic" ValidationGroup="EditUser"
+                      ErrorMessage="*" ></asp:CustomValidator>
+                   <%-- <asp:DropDownList ID="DropDownListGroups" runat="server"></asp:DropDownList>
                     &nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ErrorMessage="*"
-                        ControlToValidate="DropDownListGroups" Display="Dynamic" ValidationGroup="EditUser"></asp:RequiredFieldValidator>
+                        ControlToValidate="DropDownListGroups" Display="Dynamic" ValidationGroup="EditUser"></asp:RequiredFieldValidator>--%>
                 </div>
             </div>
             <div style="clear: both; height: 5px;"></div>

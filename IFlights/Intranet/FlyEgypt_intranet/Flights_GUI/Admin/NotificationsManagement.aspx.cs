@@ -48,6 +48,7 @@ namespace Flights_GUI.Admin
         protected void LinkButtonSendNotifications_Click(object sender, EventArgs e)
         {
             uiPanelSuccess.Visible = false;
+            uiPanelError.Visible = false;
             UsersProfiles up = new UsersProfiles();
             Groups gr = new Groups();
             List<string> GroupIDs = CheckBoxListGroups.Items.Cast<ListItem>()
@@ -63,7 +64,8 @@ namespace Flights_GUI.Admin
                 string mail = GetLocalResourceObject("FromMail").ToString();
                 for (int i = 0; i < up.RowCount; i++)
                 {
-                    msg.To.Add(up.Email);
+                    if (IsValidEmail(up.Email))
+                        msg.To.Add(up.Email);
                     up.MoveNext();
                 }
                 if (!string.IsNullOrEmpty(uiHiddenFieldmails.Value))
@@ -84,7 +86,20 @@ namespace Flights_GUI.Admin
             }
             catch (Exception ex)
             {
-                throw;
+                uiPanelError.Visible = true;
+            }
+        }
+
+        bool IsValidEmail(string email)
+        {
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == email;
+            }
+            catch
+            {
+                return false;
             }
         }
         

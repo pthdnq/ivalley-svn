@@ -34,7 +34,8 @@
                                     &nbsp;
                                     <asp:LinkButton ID="uiLinkButtonDelete" runat="server" CommandArgument='<%# Eval("ScheduleID") %>' Visible='<%# (Membership.GetUser().ProviderUserKey.ToString() == Eval("CreatedBy").ToString()) %>'
                                         CommandName="DeleteSchedule" OnClientClick="return confirm('Are you want to delete this record? ');"><img src="../images/delete.png" alt="Delete" title="Delete" style="border:0;float:none;" /></asp:LinkButton>
-
+                                    &nbsp;
+                                    <a href='/BI/reporting.aspx?t=s&sid=<%# Eval("ScheduleID") %>'><img src="../images/bar_chart1.png" alt="View report" title="View report" style="border:0;float:none;max-width:24px;" /></a>
                                 </ItemTemplate>
                             </telerik:GridTemplateColumn>
                         </Columns>
@@ -137,7 +138,8 @@
                                 &nbsp;
                                     <asp:LinkButton ID="uiLinkButtonDelete" runat="server" CommandArgument='<%# Eval("ScheduleVersionID") %>' Visible='<%# (Membership.GetUser().ProviderUserKey.ToString() == Eval("CreatedBy").ToString()) %>'
                                         CommandName="DeleteVersion" OnClientClick="return confirm('Are you want to delete this record? ');"><img src="../images/delete.png" alt="Delete" title="Delete" style="border:0;float:none;" /></asp:LinkButton>
-
+                                &nbsp;
+                                    <a href='/BI/reporting.aspx?t=s&svid=<%# Eval("ScheduleVersionID") %>'><img src="../images/bar_chart1.png" alt="View report" title="View report" style="border:0;float:none;max-width:24px;" /></a>
                             </ItemTemplate>
                         </telerik:GridTemplateColumn>
                     </Columns>
