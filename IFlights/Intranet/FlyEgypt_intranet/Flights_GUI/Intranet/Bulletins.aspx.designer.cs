@@ -22,13 +22,13 @@ namespace Flights_GUI.Intranet {
         protected global::System.Web.UI.WebControls.Panel uiPanelViewAll;
         
         /// <summary>
-        /// lblTabGroup control.
+        /// uiDropDownListUserGroups control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTabGroup;
+        protected global::System.Web.UI.WebControls.DropDownList uiDropDownListUserGroups;
         
         /// <summary>
         /// uiRadListViewCircularsPublic control.
@@ -38,15 +38,6 @@ namespace Flights_GUI.Intranet {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadListView uiRadListViewCircularsPublic;
-        
-        /// <summary>
-        /// uiRadListViewCircularsGroup control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadListView uiRadListViewCircularsGroup;
         
         /// <summary>
         /// uiPanelCurrent control.

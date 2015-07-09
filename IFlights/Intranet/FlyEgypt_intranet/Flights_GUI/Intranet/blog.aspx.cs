@@ -34,10 +34,11 @@ namespace Flights_GUI.Intranet
             if (!IsPostBack)
             {
                 Master.PageTitle = "Blog";
+                LoadUserGroups();
                 if (CurrentAnnouncement == 0)
                 {
                     LoadCircularsPublic();
-                    LoadCircularsGroup();
+                    //LoadCircularsGroup();
                     uiPanelViewAll.Visible = true;
                     uiPanelCurrent.Visible = false;
                 }
@@ -53,10 +54,22 @@ namespace Flights_GUI.Intranet
                 UsersProfiles userProf = new UsersProfiles();
                 userProf.getUserByGUID(new Guid(Membership.GetUser(Page.User.Identity.Name).ProviderUserKey.ToString()));
 
-                Groups grps = new Groups();
+                /*Groups grps = new Groups();
                 grps.LoadByPrimaryKey(userProf.GroupID);
-                lblTabGroup.Text = grps.GroupName + " Blogs";
+                lblTabGroup.Text = grps.GroupName + " Blogs";*/
             }
+        }
+        private void LoadUserGroups()
+        {
+            UserGroup groups = new UserGroup();
+            groups.GetUserGroups(new Guid(Membership.GetUser(Page.User.Identity.Name).ProviderUserKey.ToString()));
+            uiDropDownListUserGroups.DataSource = groups.DefaultView;
+            uiDropDownListUserGroups.DataTextField = Groups.ColumnNames.GroupName;
+            uiDropDownListUserGroups.DataValueField = Groups.ColumnNames.GroupID;
+            uiDropDownListUserGroups.DataBind();
+            uiDropDownListUserGroups.Items.Insert(0, new ListItem("Public", "0"));
+            uiDropDownListUserGroups.Items.Insert(0, new ListItem("Select group...", "-1"));
+
         }
         private void LogBlogRead(int ID)
         {
@@ -95,11 +108,16 @@ namespace Flights_GUI.Intranet
         private void LoadCircularsPublic()
         {
             Announcement all = new Announcement();
-            all.GetAllBlogsPublic();
+            if (uiDropDownListUserGroups.SelectedValue == "-1")
+                all.GetAllBlogsPublicAndGroups(new Guid(Membership.GetUser(Page.User.Identity.Name).ProviderUserKey.ToString()));
+            else if (uiDropDownListUserGroups.SelectedValue == "0")
+                all.GetAllBlogsPublic();
+            else
+                all.GetAllBlogsGroups(Convert.ToInt32(uiDropDownListUserGroups.SelectedValue));
             uiRadListViewCircularsPublic.DataSource = all.DefaultView;
             uiRadListViewCircularsPublic.DataBind();
         }
-        private void LoadCircularsGroup()
+        /*private void LoadCircularsGroup()
         {
             UsersProfiles userProf = new UsersProfiles();
             userProf.getUserByGUID(new Guid(Membership.GetUser(Page.User.Identity.Name).ProviderUserKey.ToString()));
@@ -108,18 +126,23 @@ namespace Flights_GUI.Intranet
             all.GetAllBlogsGroups(userProf.GroupID);
             uiRadListViewCircularsGroup.DataSource = all.DefaultView;
             uiRadListViewCircularsGroup.DataBind();
-        }
+        }*/
 
         protected void uiRadListViewCircularsPublic_PageIndexChanged(object sender, Telerik.Web.UI.RadListViewPageChangedEventArgs e)
         {
             uiRadListViewCircularsPublic.CurrentPageIndex = e.NewPageIndex;
             LoadCircularsPublic();
         }
-        protected void uiRadListViewCircularsGroup_PageIndexChanged(object sender, Telerik.Web.UI.RadListViewPageChangedEventArgs e)
+
+        protected void uiDropDownListUserGroups_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadCircularsPublic();
+        }
+        /*protected void uiRadListViewCircularsGroup_PageIndexChanged(object sender, Telerik.Web.UI.RadListViewPageChangedEventArgs e)
         {
             uiRadListViewCircularsGroup.CurrentPageIndex = e.NewPageIndex;
             LoadCircularsGroup();
-        }
+        }*/
 
         protected void MarkNotificationsAsRead()
         {
