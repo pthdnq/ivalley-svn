@@ -21,13 +21,13 @@ namespace Flight_BLL
         public virtual bool getuserEmails(List<string> GroupIDs)
         {
             string joined = string.Join(",", GroupIDs);
-            string query = string.Format("SELECT * from UsersProfiles WHERE GroupID IN ({0})", joined);
+            string query = string.Format("SELECT P.* from UsersProfiles p inner join usergroup g on p.userid = g.userid WHERE g.GroupID IN ({0})", joined);
             return LoadFromRawSql(query);
         }
 
         public virtual bool getNamesList(string queryName)
         {
-            string query = string.Format(@"SELECT Email , FullName 
+            string query = string.Format(@"SELECT u.* 
                                     from UsersProfiles u inner join aspnet_Users mem  on u.UserID = mem.UserId
                                     WHERE  ((mem.UserName LIKE N'%{0}%') OR (u.FullName LIKE N'%{0}%') OR (u.Email LIKE N'%{0}%'))", queryName);
             return LoadFromRawSql(query);
