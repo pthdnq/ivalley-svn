@@ -17,6 +17,13 @@ namespace Flights_GUI
             {
                 Response.Redirect("login.aspx");
             }
+
+            if (!IsPostBack)
+            {
+                AppConfig config = new AppConfig();
+                config.LoadByPrimaryKey(1);                
+                uiLiteralMainTitle.Text = config.Title;
+            }
         }
 
         protected void Login1_LoggedIn(object sender, EventArgs e)

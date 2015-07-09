@@ -27,13 +27,14 @@ namespace Flights_GUI.Common
         {
             UsersProfiles upro = new UsersProfiles();
             upro.getNamesList(term);
-
+            
             List<NameListDetails> Nms = upro.DefaultView.Table.AsEnumerable().Select(row =>
             {
                 return new NameListDetails
                 {
                     label = row["FullName"].ToString(),
-                    value = row["Email"].ToString()
+                    value = row["Email"].ToString(),
+                    UserID = new Guid (row["UserID"].ToString())
                 };
 
             }).ToList();
@@ -265,6 +266,7 @@ namespace Flights_GUI.Common
     {
         public string label { get; set; }
         public string value  { get; set; }
+        public Guid UserID { get; set; }
     }
 
     public class Version 

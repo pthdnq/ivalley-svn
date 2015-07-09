@@ -139,7 +139,7 @@
                         <li>
 						<div class="post-img cell-3" style="padding:0; margin-right:0;">
                             <a href="Intranet/Circulars.aspx?cid=<%# Eval("AnnouncementID") %>">
-							<img src='<%# (string.IsNullOrEmpty(Eval("MainPic").ToString()) ? "img/flyegypt.png" : "common/thumb.aspx?Image=" + Eval("MainPic")) %>' alt="">
+							<img src='<%# (string.IsNullOrEmpty(Eval("MainPic").ToString()) ? "img/nesma.png" : "common/thumb.aspx?Image=" + Eval("MainPic")) %>' alt="">
                                 </a>
 						</div>
 						<div class="widget-post-info cell-9" style="float:left;">
@@ -180,7 +180,7 @@
                         <li>
 						<div class="post-img cell-3" style="padding:0; margin-right:0;">
                             <a href="Intranet/Bulletins.aspx?cid=<%# Eval("AnnouncementID") %>">
-							<img src='<%# (string.IsNullOrEmpty(Eval("MainPic").ToString()) ? "img/flyegypt.png" : "common/thumb.aspx?Image=" + Eval("MainPic")) %>' alt="">
+							<img src='<%# (string.IsNullOrEmpty(Eval("MainPic").ToString()) ? "img/nesma.png" : "common/thumb.aspx?Image=" + Eval("MainPic")) %>' alt="">
                                 </a>
 						</div>
 						<div class="widget-post-info cell-9" style="float:left;">
@@ -231,7 +231,7 @@
 				                                        <div class="cell-3">
 				                                            <div class="row">
 				                                            	 <a href="Intranet/blog.aspx?cid=<%# Eval("AnnouncementID") %>" >
-							                                    <img src='<%# (string.IsNullOrEmpty(Eval("MainPic").ToString()) ? "img/flyegypt.png" : "common/thumb.aspx?Image=" + Eval("MainPic")) %>' alt="">
+							                                    <img src='<%# (string.IsNullOrEmpty(Eval("MainPic").ToString()) ? "img/nesma.png" : "common/thumb.aspx?Image=" + Eval("MainPic")) %>' alt="">
                                                                     </a>
 				                                            </div>
 				                                        </div>

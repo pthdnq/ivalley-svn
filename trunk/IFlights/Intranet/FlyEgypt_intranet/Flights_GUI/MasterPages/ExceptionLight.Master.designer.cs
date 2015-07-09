@@ -13,6 +13,24 @@ namespace Flights_GUI.MasterPages {
     public partial class ExceptionLight {
         
         /// <summary>
+        /// uiLiteralMainTitle control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal uiLiteralMainTitle;
+        
+        /// <summary>
+        /// uiLiteralTheme control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal uiLiteralTheme;
+        
+        /// <summary>
         /// head control.
         /// </summary>
         /// <remarks>

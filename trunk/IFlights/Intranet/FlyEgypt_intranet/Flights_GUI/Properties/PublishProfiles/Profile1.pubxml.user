@@ -37,22 +37,22 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/09/2015 16:55:28</publishTime>
     </File>
     <File Include="Admin/App_LocalResources/NotificationsManagement.aspx.resx">
-      <publishTime>06/11/2015 17:05:26</publishTime>
+      <publishTime>07/09/2015 10:15:40</publishTime>
     </File>
     <File Include="Admin/blogManagement.aspx">
-      <publishTime>06/28/2015 23:29:29</publishTime>
+      <publishTime>07/08/2015 10:46:15</publishTime>
     </File>
     <File Include="Admin/BulletinsManagement.aspx">
-      <publishTime>06/28/2015 23:29:29</publishTime>
+      <publishTime>07/08/2015 10:46:22</publishTime>
     </File>
     <File Include="Admin/certificateManagement.aspx">
-      <publishTime>06/25/2015 15:25:00</publishTime>
+      <publishTime>07/08/2015 12:18:40</publishTime>
     </File>
     <File Include="Admin/circularsManagment.aspx">
-      <publishTime>06/28/2015 23:29:29</publishTime>
+      <publishTime>07/08/2015 10:25:46</publishTime>
     </File>
     <File Include="Admin/FormManagement.aspx">
-      <publishTime>06/25/2015 12:47:47</publishTime>
+      <publishTime>07/08/2015 12:19:30</publishTime>
     </File>
     <File Include="Admin/GeneralSettings.aspx">
       <publishTime>05/27/2015 16:14:12</publishTime>
@@ -64,16 +64,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/25/2015 12:50:00</publishTime>
     </File>
     <File Include="Admin/ManualManagment.aspx">
-      <publishTime>06/25/2015 12:49:11</publishTime>
+      <publishTime>07/08/2015 12:20:12</publishTime>
     </File>
     <File Include="Admin/NotificationsManagement.aspx">
-      <publishTime>06/18/2015 20:50:52</publishTime>
+      <publishTime>07/09/2015 10:44:10</publishTime>
     </File>
     <File Include="Admin/scheduleManagement.aspx">
-      <publishTime>06/25/2015 16:08:37</publishTime>
+      <publishTime>07/08/2015 12:20:50</publishTime>
     </File>
     <File Include="Admin/UserManagement.aspx">
-      <publishTime>06/18/2015 15:27:16</publishTime>
+      <publishTime>07/09/2015 12:42:05</publishTime>
     </File>
     <File Include="assets/bootstrap-colorpicker/css/colorpicker.css">
       <publishTime>06/09/2015 13:04:41</publishTime>
@@ -1200,6 +1200,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="assets/custombootstrap/css/bootstrap.min.css">
       <publishTime>06/11/2015 11:35:44</publishTime>
     </File>
+    <File Include="assets/custombootstrap/css/typeahead.css">
+      <publishTime>07/06/2015 14:50:15</publishTime>
+    </File>
     <File Include="assets/custombootstrap/js/bootstrap.js">
       <publishTime>06/11/2015 11:35:44</publishTime>
     </File>
@@ -2145,6 +2148,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="AvailableAircrafts.aspx">
       <publishTime>06/09/2015 13:36:18</publishTime>
     </File>
+    <File Include="BI/reporting.aspx">
+      <publishTime>07/08/2015 12:28:53</publishTime>
+    </File>
     <File Include="bin/AjaxControlToolkit.dll">
       <publishTime>06/09/2015 13:31:43</publishTime>
     </File>
@@ -2161,13 +2167,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/09/2015 13:31:43</publishTime>
     </File>
     <File Include="bin/Flights_GUI.dll">
-      <publishTime>06/29/2015 12:25:12</publishTime>
+      <publishTime>07/09/2015 12:42:30</publishTime>
     </File>
     <File Include="bin/Flight_BLL.dll">
-      <publishTime>06/29/2015 00:47:25</publishTime>
+      <publishTime>07/09/2015 12:41:19</publishTime>
     </File>
     <File Include="bin/Flight_DAL.dll">
-      <publishTime>06/29/2015 00:47:24</publishTime>
+      <publishTime>07/09/2015 12:41:19</publishTime>
     </File>
     <File Include="bin/fonts/glyphicons-halflings-regular.ttf">
       <publishTime>06/10/2015 16:49:25</publishTime>
@@ -2197,7 +2203,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/09/2015 13:31:44</publishTime>
     </File>
     <File Include="bin/MyGeneration.dOOdads.dll">
-      <publishTime>06/11/2015 17:13:58</publishTime>
+      <publishTime>07/09/2015 12:41:18</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
       <publishTime>06/09/2015 13:22:48</publishTime>
@@ -2515,7 +2521,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/09/2015 13:36:00</publishTime>
     </File>
     <File Include="dashboard.aspx">
-      <publishTime>06/18/2015 12:44:48</publishTime>
+      <publishTime>07/07/2015 07:34:55</publishTime>
     </File>
     <File Include="Default.aspx">
       <publishTime>06/09/2015 13:25:25</publishTime>
@@ -2564,6 +2570,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="images/bar_chart.png">
       <publishTime>06/09/2015 13:32:44</publishTime>
+    </File>
+    <File Include="images/bar_chart1.png">
+      <publishTime>06/09/2015 13:32:07</publishTime>
     </File>
     <File Include="images/contact-info-icon.png">
       <publishTime>06/09/2015 13:32:06</publishTime>
@@ -2675,6 +2684,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="images/MenuLoginBg.png">
       <publishTime>06/09/2015 13:32:45</publishTime>
+    </File>
+    <File Include="images/nesma1.png">
+      <publishTime>07/06/2015 23:24:32</publishTime>
     </File>
     <File Include="images/newLogo.gif">
       <publishTime>06/09/2015 13:32:06</publishTime>
@@ -2988,6 +3000,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="img/menu-selected-bg.png">
       <publishTime>06/09/2015 13:11:29</publishTime>
     </File>
+    <File Include="img/nesma.png">
+      <publishTime>07/07/2015 07:34:17</publishTime>
+    </File>
     <File Include="img/noImg.gif">
       <publishTime>06/09/2015 17:08:58</publishTime>
     </File>
@@ -3031,34 +3046,40 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/09/2015 13:11:29</publishTime>
     </File>
     <File Include="Intranet.sitemap">
-      <publishTime>06/28/2015 23:29:29</publishTime>
+      <publishTime>07/09/2015 10:58:45</publishTime>
     </File>
     <File Include="Intranet/AircraftManuals.aspx">
       <publishTime>06/09/2015 16:55:12</publishTime>
     </File>
     <File Include="Intranet/blog.aspx">
-      <publishTime>06/28/2015 23:46:00</publishTime>
+      <publishTime>07/07/2015 07:35:16</publishTime>
     </File>
     <File Include="Intranet/Bulletins.aspx">
-      <publishTime>06/28/2015 23:47:31</publishTime>
+      <publishTime>07/07/2015 07:35:31</publishTime>
     </File>
     <File Include="Intranet/certificates.aspx">
-      <publishTime>06/25/2015 16:33:44</publishTime>
+      <publishTime>07/01/2015 12:43:57</publishTime>
     </File>
     <File Include="Intranet/Circulars.aspx">
-      <publishTime>06/25/2015 12:40:17</publishTime>
+      <publishTime>07/07/2015 07:35:41</publishTime>
     </File>
     <File Include="Intranet/forms.aspx">
-      <publishTime>06/25/2015 13:06:54</publishTime>
+      <publishTime>07/01/2015 12:43:57</publishTime>
     </File>
     <File Include="Intranet/links.aspx">
       <publishTime>06/17/2015 14:36:13</publishTime>
     </File>
     <File Include="Intranet/Manuals.aspx">
-      <publishTime>06/29/2015 13:15:47</publishTime>
+      <publishTime>07/01/2015 12:43:57</publishTime>
     </File>
     <File Include="Intranet/schedules.aspx">
-      <publishTime>06/28/2015 23:29:26</publishTime>
+      <publishTime>07/01/2015 12:43:57</publishTime>
+    </File>
+    <File Include="IntranetDS.xsc">
+      <publishTime>07/08/2015 14:00:33</publishTime>
+    </File>
+    <File Include="IntranetDS.xss">
+      <publishTime>07/08/2015 14:00:33</publishTime>
     </File>
     <File Include="js/bootstrap.js">
       <publishTime>06/09/2015 14:41:00</publishTime>
@@ -3168,6 +3189,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="js/modernizr.custom.17475.js">
       <publishTime>06/09/2015 14:55:25</publishTime>
     </File>
+    <File Include="js/purl.js">
+      <publishTime>07/07/2015 14:52:27</publishTime>
+    </File>
     <File Include="js/respond.js">
       <publishTime>06/09/2015 13:09:25</publishTime>
     </File>
@@ -3193,7 +3217,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/09/2015 15:17:28</publishTime>
     </File>
     <File Include="Login.aspx">
-      <publishTime>06/18/2015 10:48:58</publishTime>
+      <publishTime>07/06/2015 23:24:44</publishTime>
     </File>
     <File Include="MasterPages/Admin.Master">
       <publishTime>06/09/2015 13:36:19</publishTime>
@@ -3205,7 +3229,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/09/2015 13:36:19</publishTime>
     </File>
     <File Include="MasterPages/ExceptionLight.Master">
-      <publishTime>06/25/2015 16:14:56</publishTime>
+      <publishTime>07/06/2015 16:10:34</publishTime>
     </File>
     <File Include="MasterPages/E_Admin.Master">
       <publishTime>06/09/2015 13:36:19</publishTime>
@@ -3401,6 +3425,36 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Reports/GD.rdlc">
       <publishTime>06/09/2015 13:27:01</publishTime>
+    </File>
+    <File Include="Reports/intranet/AnnouncementReport.rdlc">
+      <publishTime>07/08/2015 10:50:13</publishTime>
+    </File>
+    <File Include="Reports/intranet/CertificateReport.rdlc">
+      <publishTime>07/08/2015 11:33:07</publishTime>
+    </File>
+    <File Include="Reports/intranet/FormReport.rdlc">
+      <publishTime>07/08/2015 11:48:42</publishTime>
+    </File>
+    <File Include="Reports/intranet/FormVersionReport.rdlc">
+      <publishTime>07/08/2015 13:57:56</publishTime>
+    </File>
+    <File Include="Reports/intranet/ManualReport.rdlc">
+      <publishTime>07/08/2015 11:35:15</publishTime>
+    </File>
+    <File Include="Reports/intranet/ManualVersionReport.rdlc">
+      <publishTime>07/08/2015 13:57:44</publishTime>
+    </File>
+    <File Include="Reports/intranet/NotLoggedUsers.rdlc">
+      <publishTime>07/06/2015 15:34:53</publishTime>
+    </File>
+    <File Include="Reports/intranet/ScheduleReport.rdlc">
+      <publishTime>07/08/2015 11:57:18</publishTime>
+    </File>
+    <File Include="Reports/intranet/ScheduleVersionReport.rdlc">
+      <publishTime>07/08/2015 13:58:03</publishTime>
+    </File>
+    <File Include="Reports/intranet/UserLogin.rdlc">
+      <publishTime>07/06/2015 14:53:31</publishTime>
     </File>
     <File Include="Reports/JournyFlightLog.rdlc">
       <publishTime>06/09/2015 13:27:01</publishTime>
@@ -5149,7 +5203,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/09/2015 13:34:27</publishTime>
     </File>
     <File Include="ThemesFiles/ExceptionsLight/css/skins/skin9.css">
-      <publishTime>06/09/2015 13:34:27</publishTime>
+      <publishTime>07/07/2015 07:32:12</publishTime>
     </File>
     <File Include="ThemesFiles/ExceptionsLight/css/slick.css">
       <publishTime>06/09/2015 13:34:39</publishTime>
@@ -5917,7 +5971,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/10/2015 16:43:38</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>06/29/2015 13:41:39</publishTime>
+      <publishTime>07/09/2015 10:59:02</publishTime>
     </File>
     <File Include="Web.sitemap">
       <publishTime>06/09/2015 13:36:19</publishTime>
