@@ -15,7 +15,13 @@ namespace Flights_GUI.MasterPages
         public string ModuleTitle { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            if (!IsPostBack)
+            {
+                AppConfig config = new AppConfig();
+                config.LoadByPrimaryKey(1);
+                uiLiteralTheme.Text = "<link rel='stylesheet' href='" + config.CssPath + "'>";
+                uiLiteralMainTitle.Text = config.Title;
+            }
         }
         protected void uiRepeaterInteranetMenu_ItemDataBound(object sender, RepeaterItemEventArgs e)
         {

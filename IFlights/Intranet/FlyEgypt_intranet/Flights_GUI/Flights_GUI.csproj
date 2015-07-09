@@ -48,8 +48,7 @@
       <HintPath>Reference\AjaxControlToolkit.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Microsoft.ReportViewer.WebForms, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\ReportViewer\Microsoft.ReportViewer.WebForms.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -474,6 +473,7 @@
     <Content Include="assets\custombootstrap\css\bootstrap-theme.min.css" />
     <Content Include="assets\custombootstrap\css\bootstrap.css" />
     <Content Include="assets\custombootstrap\css\bootstrap.min.css" />
+    <Content Include="assets\custombootstrap\css\typeahead.css" />
     <Content Include="assets\custombootstrap\js\bootstrap.js" />
     <Content Include="assets\custombootstrap\js\bootstrap.min.js" />
     <Content Include="assets\data-tables\dataTables.editor.min.css" />
@@ -781,6 +781,7 @@
     <Content Include="assets\uniform\jquery.uniform.js" />
     <Content Include="assets\uniform\jquery.uniform.min.js" />
     <Content Include="AvailableAircrafts.aspx" />
+    <Content Include="BI\reporting.aspx" />
     <Content Include="ChangePassword.aspx" />
     <Content Include="Common\IntranetService.asmx" />
     <Content Include="Common\Safety.aspx" />
@@ -805,6 +806,7 @@
     <Content Include="css\style_responsive.css" />
     <Content Include="dashboard.aspx" />
     <Content Include="images\Accounting.png" />
+    <Content Include="images\bar_chart1.png" />
     <Content Include="images\Courses.png" />
     <Content Include="images\Crew.gif" />
     <Content Include="images\crew2.gif" />
@@ -812,6 +814,7 @@
     <Content Include="images\GrayBigBtnOver2.png" />
     <Content Include="images\GrayBigBtnUp2.png" />
     <Content Include="images\IValley.png" />
+    <Content Include="images\nesma1.png" />
     <Content Include="images\Operation.png" />
     <Content Include="images\pilot.gif" />
     <Content Include="images\Safety.png" />
@@ -862,6 +865,7 @@
     <Content Include="img\logo.png" />
     <Content Include="img\logo2.png" />
     <Content Include="img\menu-selected-bg.png" />
+    <Content Include="img\nesma.png" />
     <Content Include="img\noImg.gif" />
     <Content Include="img\overlay-icon.png" />
     <Content Include="img\photo.jpg" />
@@ -921,6 +925,7 @@
     <Content Include="js\load-image.min.js" />
     <Content Include="js\main.js" />
     <Content Include="js\modernizr.custom.17475.js" />
+    <Content Include="js\purl.js" />
     <Content Include="js\respond.js" />
     <Content Include="js\respond.min.js" />
     <Content Include="js\scripts.js" />
@@ -1974,6 +1979,13 @@
     <Compile Include="AvailableAircrafts.aspx.designer.cs">
       <DependentUpon>AvailableAircrafts.aspx</DependentUpon>
     </Compile>
+    <Compile Include="BI\reporting.aspx.cs">
+      <DependentUpon>reporting.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BI\reporting.aspx.designer.cs">
+      <DependentUpon>reporting.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ChangePassword.aspx.cs">
       <DependentUpon>ChangePassword.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2014,6 +2026,11 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="DashBored.aspx.designer.cs" />
+    <Compile Include="IntranetDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IntranetDS.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Intranet\AircraftManuals.aspx.cs">
       <DependentUpon>AircraftManuals.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2538,6 +2555,17 @@
     <Content Include="Intranet.sitemap">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="IntranetDS.xsc">
+      <DependentUpon>IntranetDS.xsd</DependentUpon>
+    </Content>
+    <None Include="IntranetDS.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>IntranetDS.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="IntranetDS.xss">
+      <DependentUpon>IntranetDS.xsd</DependentUpon>
+    </Content>
     <None Include="js\.DS_Store" />
     <Content Include="MasterPages\E_Start.Master" />
     <Content Include="MasterPages\E_Admin.Master" />
@@ -2796,6 +2824,16 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Admin\Report1.rdlc" />
+    <Content Include="Reports\intranet\NotLoggedUsers.rdlc" />
+    <Content Include="Reports\intranet\UserLogin.rdlc" />
+    <Content Include="Reports\intranet\AnnouncementReport.rdlc" />
+    <Content Include="Reports\intranet\CertificateReport.rdlc" />
+    <Content Include="Reports\intranet\FormReport.rdlc" />
+    <Content Include="Reports\intranet\FormVersionReport.rdlc" />
+    <Content Include="Reports\intranet\ScheduleReport.rdlc" />
+    <Content Include="Reports\intranet\ScheduleVersionReport.rdlc" />
+    <Content Include="Reports\intranet\ManualVersionReport.rdlc" />
+    <Content Include="Reports\intranet\ManualReport.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

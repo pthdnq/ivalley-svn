@@ -6,7 +6,8 @@
 <html>
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>FlyEgypt intranet</title>
+    <title>
+        <asp:Literal ID="uiLiteralMainTitle" runat="server"></asp:Literal></title>
     <meta name="description" content="I-Valley">
     <meta name="author" content="I-Valley">
 
@@ -33,7 +34,7 @@
 
     <!-- Skin style (** you can change the link below with the one you need from skins folder in the css folder **) -->
     <link rel="stylesheet" href="../ThemesFiles/ExceptionsLight/css/skins/default.css">
-    <link rel="stylesheet" href="../ThemesFiles/ExceptionsLight/css/skins/skin6.css">
+    <asp:Literal ID="uiLiteralTheme" runat="server"></asp:Literal>
 
     <!-- Load JS siles -->
     <script type="text/javascript" src="../ThemesFiles/ExceptionsLight/js/jquery.min.js"></script>

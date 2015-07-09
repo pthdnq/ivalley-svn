@@ -11,7 +11,8 @@
 <!-- BEGIN HEAD -->
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>FlyEgypt - Intranet - login</title>
+    <title>
+        <asp:Literal ID="uiLiteralMainTitle" runat="server"></asp:Literal> - login</title>
     <meta name="description" content="I-Valley">
     <meta name="author" content="I-Valley">
 
@@ -38,7 +39,7 @@
 
     <!-- Skin style (** you can change the link below with the one you need from skins folder in the css folder **) -->
     <link rel="stylesheet" href="../ThemesFiles/ExceptionsLight/css/skins/default.css">
-    <link rel="stylesheet" href="../ThemesFiles/ExceptionsLight/css/skins/skin6.css">
+    <link rel="stylesheet" href="../ThemesFiles/ExceptionsLight/css/skins/skin9.css">
     <!-- Load JS siles -->
     <script type="text/javascript" src="../ThemesFiles/ExceptionsLight/js/jquery.min.js"></script>
 
@@ -198,7 +199,7 @@
                     <div class="container">
                         <div class="row">
                             <div class="cell-12">
-                                <h1 class="fx animated fadeInLeft" data-animate="fadeInLeft">Welcome to FlyEgypt Intranet</h1>
+                                <h1 class="fx animated fadeInLeft" data-animate="fadeInLeft">Welcome to Nesma Intranet</h1>
                             </div>
                         </div>
                     </div>
@@ -206,7 +207,7 @@
                 <div class="sectionWrapper" style="padding-top: 40px;">
                     <div class="container">
                         <div class="cell-12">
-                            <img src="images/slide-1-img.png" style="display: block; margin: 0 auto;" data-animate="fadeInLeft" class="fx animated fadeInLeft" />
+                            <img src="images/nesma1.png" style="display: block; margin: 0 auto;" data-animate="fadeInLeft" class="fx animated fadeInLeft" />
                             <asp:Login ID="Login1" runat="server" RenderOuterTable="False" Visible="false">
                                 <LayoutTemplate>
                                     <div class="control-wrap">

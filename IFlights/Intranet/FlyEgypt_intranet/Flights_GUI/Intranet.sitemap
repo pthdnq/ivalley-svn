@@ -5,7 +5,7 @@
         <siteMapNode url="~/Intranet/Circulars.aspx" title="Circulars" description="fa-bullhorn" htmlID="Circulars" />
       
         <siteMapNode url="~/Intranet/bulletins.aspx" title="Bulletins" description="fa-bullhorn" htmlID="Bulletins"/>
-      <siteMapNode url="~/Intranet/blog.aspx" title="FlyEgypt's Blog" description="fa-flag" htmlID="Blogs"/>
+      <siteMapNode url="~/Intranet/blog.aspx" title="Nesma's Blog" description="fa-flag" htmlID="Blogs"/>
       <siteMapNode url="~/Intranet/certificates.aspx" title="certificates" description="fa-certificate" htmlID="Certificates"/>
         <siteMapNode url="~/Intranet/Manuals.aspx" title="Manuals"  description="fa-book" htmlID="Manuals">
           <!--<siteMapNode url="http://www.civilaviation.gov.eg/Regulations/regulation.html" title="ECAR" description="" htmlID="ECAR" roles="*" target="_blank" />
@@ -53,6 +53,7 @@
           <siteMapNode url="~/Admin/linksManagement.aspx" title="Manage Links"  description="fa-group" htmlID="Manage_Links"/>
           <siteMapNode url="~/Admin/UserManagement.aspx" title="Manage Users"  description="fa-group" htmlID="Manage_Users"/>
           <siteMapNode url="~/Admin/NotificationsManagement.aspx" title="Send Notifications"  description="fa-mail" htmlID="Manage_Notifications"/>
+          <siteMapNode url="~/BI/reporting.aspx" title="Reports"  description="fa-charts" htmlID="Manage_reports"/>
           <!--<siteMapNode url="~/Admin/GeneralSettings.aspx" title="General settings"  description="fa-group" htmlID="Manage_Settings"/>-->
           
         </siteMapNode>
