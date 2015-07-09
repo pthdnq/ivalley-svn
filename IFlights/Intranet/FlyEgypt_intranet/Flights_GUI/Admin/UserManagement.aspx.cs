@@ -154,6 +154,15 @@ namespace Flights_GUI.Admin
                 }
                 BindData();
             }
+            else if (e.CommandName == "UnlockUser")
+            {
+                MembershipUser ObjData = Membership.GetUser(e.CommandArgument.ToString());
+                if (ObjData != null)
+                {
+                    ObjData.UnlockUser();
+                }
+                BindData();
+            }
         }
 
        

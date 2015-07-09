@@ -81,7 +81,10 @@
                                     <asp:LinkButton ID="uiLinkButtonEdit" runat="server" CommandArgument='<%# Eval("UserName") %>'
                                         CommandName="EditUser">Edit</asp:LinkButton> | 
                                         <asp:LinkButton ID="uiLinkButtonDelete" runat="server" CommandArgument='<%# Eval("UserName") %>'
-                                            CommandName="DeleteUser" OnClientClick="return confirm('Are you want to delete this record?');">Delete</asp:LinkButton> <%--| 
+                                            CommandName="DeleteUser" OnClientClick="return confirm('Are you want to delete this record?');">Delete</asp:LinkButton> 
+                                      <asp:LinkButton ID="uiLinkButtonLocked" runat="server" CommandArgument='<%# Eval("UserName") %>'
+                                            CommandName="UnlockUser" Visible='<%# (Eval("IsLockedOut").ToString() == "True") ? true : false %>'><span style="color:#777;">|</span> Unlock</asp:LinkButton> 
+                                     <%--| 
                                     <asp:LinkButton ID="LinkButton1" CommandArgument='<%# Eval("UserName") %>' CommandName="LoginReport" runat="server">Report</asp:LinkButton>--%>
                                 </ItemTemplate>
                             </telerik:GridTemplateColumn>
