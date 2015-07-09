@@ -68,6 +68,11 @@
                 Mails sent successfully.
             </div>
         </asp:Panel>
+        <asp:Panel runat="server" ID="uiPanelError" Visible="false">
+            <div class="box error-box " >
+                An error occurred. Please try again later.
+            </div>
+        </asp:Panel>
         <asp:Panel ID="uiPanelNotifications" runat="server">
             <div class="cell-12">
                 <div class="cell-2">

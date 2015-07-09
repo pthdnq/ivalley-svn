@@ -238,22 +238,22 @@ namespace Flights_GUI.Admin {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator6;
         
         /// <summary>
-        /// DropDownListGroups control.
+        /// uiCheckBoxListGroups control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownListGroups;
+        protected global::System.Web.UI.WebControls.CheckBoxList uiCheckBoxListGroups;
         
         /// <summary>
-        /// RequiredFieldValidator7 control.
+        /// cvmodulelist control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator7;
+        protected global::System.Web.UI.WebControls.CustomValidator cvmodulelist;
         
         /// <summary>
         /// uiCheckBoxListRoles control.
