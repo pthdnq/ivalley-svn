@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComboPortal", "ComboPortal\ComboPortal.csproj", "{744BABDC-9066-46A6-A96B-59754DD24AC6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "COMBO_DAL", "COMBO_DAL\COMBO_DAL.csproj", "{BB123F50-2B3B-4FC7-B223-BD34EFF9A892}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "COMBO_BLL", "COMBO_BLL\COMBO_BLL.csproj", "{8123B5D9-6BB0-4B3D-9CD5-E76597792BBD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{744BABDC-9066-46A6-A96B-59754DD24AC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{744BABDC-9066-46A6-A96B-59754DD24AC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{744BABDC-9066-46A6-A96B-59754DD24AC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{744BABDC-9066-46A6-A96B-59754DD24AC6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB123F50-2B3B-4FC7-B223-BD34EFF9A892}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB123F50-2B3B-4FC7-B223-BD34EFF9A892}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB123F50-2B3B-4FC7-B223-BD34EFF9A892}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB123F50-2B3B-4FC7-B223-BD34EFF9A892}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8123B5D9-6BB0-4B3D-9CD5-E76597792BBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8123B5D9-6BB0-4B3D-9CD5-E76597792BBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8123B5D9-6BB0-4B3D-9CD5-E76597792BBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8123B5D9-6BB0-4B3D-9CD5-E76597792BBD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
