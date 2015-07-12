@@ -171,11 +171,11 @@ namespace Pricing.DAL
 				}
 			}
 			
-			public static SqlParameter Generics
+			public static SqlParameter PackDetailes
 			{
 				get
 				{
-					return new SqlParameter("@Generics", SqlDbType.NVarChar, 250);
+					return new SqlParameter("@PackDetailes", SqlDbType.NVarChar, 1500);
 				}
 			}
 			
@@ -235,14 +235,6 @@ namespace Pricing.DAL
 				}
 			}
 			
-			public static SqlParameter FilePath
-			{
-				get
-				{
-					return new SqlParameter("@FilePath", SqlDbType.NVarChar, 250);
-				}
-			}
-			
 			public static SqlParameter Generic
 			{
 				get
@@ -251,11 +243,11 @@ namespace Pricing.DAL
 				}
 			}
 			
-			public static SqlParameter GenericStrength
+			public static SqlParameter Trade_Notes
 			{
 				get
 				{
-					return new SqlParameter("@GenericStrength", SqlDbType.NVarChar, 50);
+					return new SqlParameter("@Trade_Notes", SqlDbType.NVarChar, 1500);
 				}
 			}
 			
@@ -499,6 +491,110 @@ namespace Pricing.DAL
 				}
 			}
 			
+			public static SqlParameter FilePath
+			{
+				get
+				{
+					return new SqlParameter("@FilePath", SqlDbType.NVarChar, 250);
+				}
+			}
+			
+			public static SqlParameter File_CoverLetter
+			{
+				get
+				{
+					return new SqlParameter("@File_CoverLetter", SqlDbType.NVarChar, 250);
+				}
+			}
+			
+			public static SqlParameter File_BoxApproval
+			{
+				get
+				{
+					return new SqlParameter("@File_BoxApproval", SqlDbType.NVarChar, 250);
+				}
+			}
+			
+			public static SqlParameter File_TradeNameApproval
+			{
+				get
+				{
+					return new SqlParameter("@File_TradeNameApproval", SqlDbType.NVarChar, 250);
+				}
+			}
+			
+			public static SqlParameter File_CostSheet
+			{
+				get
+				{
+					return new SqlParameter("@File_CostSheet", SqlDbType.NVarChar, 250);
+				}
+			}
+			
+			public static SqlParameter File_ProformaInvoice
+			{
+				get
+				{
+					return new SqlParameter("@File_ProformaInvoice", SqlDbType.NVarChar, 250);
+				}
+			}
+			
+			public static SqlParameter File_CifPriceToEgypt
+			{
+				get
+				{
+					return new SqlParameter("@File_CifPriceToEgypt", SqlDbType.NVarChar, 250);
+				}
+			}
+			
+			public static SqlParameter File_PriceOriginCountry
+			{
+				get
+				{
+					return new SqlParameter("@File_PriceOriginCountry", SqlDbType.NVarChar, 250);
+				}
+			}
+			
+			public static SqlParameter File_CountryPrices
+			{
+				get
+				{
+					return new SqlParameter("@File_CountryPrices", SqlDbType.NVarChar, 250);
+				}
+			}
+			
+			public static SqlParameter File_PackArtworkLeaflet
+			{
+				get
+				{
+					return new SqlParameter("@File_PackArtworkLeaflet", SqlDbType.NVarChar, 250);
+				}
+			}
+			
+			public static SqlParameter File_Others
+			{
+				get
+				{
+					return new SqlParameter("@File_Others", SqlDbType.NVarChar, 250);
+				}
+			}
+			
+			public static SqlParameter Generics
+			{
+				get
+				{
+					return new SqlParameter("@Generics", SqlDbType.NVarChar, 250);
+				}
+			}
+			
+			public static SqlParameter GenericStrength
+			{
+				get
+				{
+					return new SqlParameter("@GenericStrength", SqlDbType.NVarChar, 250);
+				}
+			}
+			
 		}
 		#endregion		
 	
@@ -514,7 +610,7 @@ namespace Pricing.DAL
             public const string ManufactureID = "ManufactureID";
             public const string AssignedUserID = "AssignedUserID";
             public const string TradeName = "TradeName";
-            public const string Generics = "Generics";
+            public const string PackDetailes = "PackDetailes";
             public const string CompanyPrice = "CompanyPrice";
             public const string CommittePrice = "CommittePrice";
             public const string CommitteDate = "CommitteDate";
@@ -522,9 +618,8 @@ namespace Pricing.DAL
             public const string SubmissionDate = "SubmissionDate";
             public const string Pack = "Pack";
             public const string FileNo = "FileNo";
-            public const string FilePath = "FilePath";
             public const string Generic = "Generic";
-            public const string GenericStrength = "GenericStrength";
+            public const string Trade_Notes = "Trade_Notes";
             public const string ImportedManufacture = "ImportedManufacture";
             public const string RegNo = "RegNo";
             public const string Reference = "Reference";
@@ -555,6 +650,19 @@ namespace Pricing.DAL
             public const string MonthYear = "MonthYear";
             public const string PreviousPrice = "PreviousPrice";
             public const string PreviousPack = "PreviousPack";
+            public const string FilePath = "FilePath";
+            public const string File_CoverLetter = "File_CoverLetter";
+            public const string File_BoxApproval = "File_BoxApproval";
+            public const string File_TradeNameApproval = "File_TradeNameApproval";
+            public const string File_CostSheet = "File_CostSheet";
+            public const string File_ProformaInvoice = "File_ProformaInvoice";
+            public const string File_CifPriceToEgypt = "File_CifPriceToEgypt";
+            public const string File_PriceOriginCountry = "File_PriceOriginCountry";
+            public const string File_CountryPrices = "File_CountryPrices";
+            public const string File_PackArtworkLeaflet = "File_PackArtworkLeaflet";
+            public const string File_Others = "File_Others";
+            public const string Generics = "Generics";
+            public const string GenericStrength = "GenericStrength";
 
 			static public string ToPropertyName(string columnName)
 			{
@@ -571,7 +679,7 @@ namespace Pricing.DAL
 					ht[ManufactureID] = _TradePricing.PropertyNames.ManufactureID;
 					ht[AssignedUserID] = _TradePricing.PropertyNames.AssignedUserID;
 					ht[TradeName] = _TradePricing.PropertyNames.TradeName;
-					ht[Generics] = _TradePricing.PropertyNames.Generics;
+					ht[PackDetailes] = _TradePricing.PropertyNames.PackDetailes;
 					ht[CompanyPrice] = _TradePricing.PropertyNames.CompanyPrice;
 					ht[CommittePrice] = _TradePricing.PropertyNames.CommittePrice;
 					ht[CommitteDate] = _TradePricing.PropertyNames.CommitteDate;
@@ -579,9 +687,8 @@ namespace Pricing.DAL
 					ht[SubmissionDate] = _TradePricing.PropertyNames.SubmissionDate;
 					ht[Pack] = _TradePricing.PropertyNames.Pack;
 					ht[FileNo] = _TradePricing.PropertyNames.FileNo;
-					ht[FilePath] = _TradePricing.PropertyNames.FilePath;
 					ht[Generic] = _TradePricing.PropertyNames.Generic;
-					ht[GenericStrength] = _TradePricing.PropertyNames.GenericStrength;
+					ht[Trade_Notes] = _TradePricing.PropertyNames.Trade_Notes;
 					ht[ImportedManufacture] = _TradePricing.PropertyNames.ImportedManufacture;
 					ht[RegNo] = _TradePricing.PropertyNames.RegNo;
 					ht[Reference] = _TradePricing.PropertyNames.Reference;
@@ -612,6 +719,19 @@ namespace Pricing.DAL
 					ht[MonthYear] = _TradePricing.PropertyNames.MonthYear;
 					ht[PreviousPrice] = _TradePricing.PropertyNames.PreviousPrice;
 					ht[PreviousPack] = _TradePricing.PropertyNames.PreviousPack;
+					ht[FilePath] = _TradePricing.PropertyNames.FilePath;
+					ht[File_CoverLetter] = _TradePricing.PropertyNames.File_CoverLetter;
+					ht[File_BoxApproval] = _TradePricing.PropertyNames.File_BoxApproval;
+					ht[File_TradeNameApproval] = _TradePricing.PropertyNames.File_TradeNameApproval;
+					ht[File_CostSheet] = _TradePricing.PropertyNames.File_CostSheet;
+					ht[File_ProformaInvoice] = _TradePricing.PropertyNames.File_ProformaInvoice;
+					ht[File_CifPriceToEgypt] = _TradePricing.PropertyNames.File_CifPriceToEgypt;
+					ht[File_PriceOriginCountry] = _TradePricing.PropertyNames.File_PriceOriginCountry;
+					ht[File_CountryPrices] = _TradePricing.PropertyNames.File_CountryPrices;
+					ht[File_PackArtworkLeaflet] = _TradePricing.PropertyNames.File_PackArtworkLeaflet;
+					ht[File_Others] = _TradePricing.PropertyNames.File_Others;
+					ht[Generics] = _TradePricing.PropertyNames.Generics;
+					ht[GenericStrength] = _TradePricing.PropertyNames.GenericStrength;
 
 				}
 				return (string)ht[columnName];
@@ -633,7 +753,7 @@ namespace Pricing.DAL
             public const string ManufactureID = "ManufactureID";
             public const string AssignedUserID = "AssignedUserID";
             public const string TradeName = "TradeName";
-            public const string Generics = "Generics";
+            public const string PackDetailes = "PackDetailes";
             public const string CompanyPrice = "CompanyPrice";
             public const string CommittePrice = "CommittePrice";
             public const string CommitteDate = "CommitteDate";
@@ -641,9 +761,8 @@ namespace Pricing.DAL
             public const string SubmissionDate = "SubmissionDate";
             public const string Pack = "Pack";
             public const string FileNo = "FileNo";
-            public const string FilePath = "FilePath";
             public const string Generic = "Generic";
-            public const string GenericStrength = "GenericStrength";
+            public const string Trade_Notes = "Trade_Notes";
             public const string ImportedManufacture = "ImportedManufacture";
             public const string RegNo = "RegNo";
             public const string Reference = "Reference";
@@ -674,6 +793,19 @@ namespace Pricing.DAL
             public const string MonthYear = "MonthYear";
             public const string PreviousPrice = "PreviousPrice";
             public const string PreviousPack = "PreviousPack";
+            public const string FilePath = "FilePath";
+            public const string File_CoverLetter = "File_CoverLetter";
+            public const string File_BoxApproval = "File_BoxApproval";
+            public const string File_TradeNameApproval = "File_TradeNameApproval";
+            public const string File_CostSheet = "File_CostSheet";
+            public const string File_ProformaInvoice = "File_ProformaInvoice";
+            public const string File_CifPriceToEgypt = "File_CifPriceToEgypt";
+            public const string File_PriceOriginCountry = "File_PriceOriginCountry";
+            public const string File_CountryPrices = "File_CountryPrices";
+            public const string File_PackArtworkLeaflet = "File_PackArtworkLeaflet";
+            public const string File_Others = "File_Others";
+            public const string Generics = "Generics";
+            public const string GenericStrength = "GenericStrength";
 
 			static public string ToColumnName(string propertyName)
 			{
@@ -690,7 +822,7 @@ namespace Pricing.DAL
 					ht[ManufactureID] = _TradePricing.ColumnNames.ManufactureID;
 					ht[AssignedUserID] = _TradePricing.ColumnNames.AssignedUserID;
 					ht[TradeName] = _TradePricing.ColumnNames.TradeName;
-					ht[Generics] = _TradePricing.ColumnNames.Generics;
+					ht[PackDetailes] = _TradePricing.ColumnNames.PackDetailes;
 					ht[CompanyPrice] = _TradePricing.ColumnNames.CompanyPrice;
 					ht[CommittePrice] = _TradePricing.ColumnNames.CommittePrice;
 					ht[CommitteDate] = _TradePricing.ColumnNames.CommitteDate;
@@ -698,9 +830,8 @@ namespace Pricing.DAL
 					ht[SubmissionDate] = _TradePricing.ColumnNames.SubmissionDate;
 					ht[Pack] = _TradePricing.ColumnNames.Pack;
 					ht[FileNo] = _TradePricing.ColumnNames.FileNo;
-					ht[FilePath] = _TradePricing.ColumnNames.FilePath;
 					ht[Generic] = _TradePricing.ColumnNames.Generic;
-					ht[GenericStrength] = _TradePricing.ColumnNames.GenericStrength;
+					ht[Trade_Notes] = _TradePricing.ColumnNames.Trade_Notes;
 					ht[ImportedManufacture] = _TradePricing.ColumnNames.ImportedManufacture;
 					ht[RegNo] = _TradePricing.ColumnNames.RegNo;
 					ht[Reference] = _TradePricing.ColumnNames.Reference;
@@ -731,6 +862,19 @@ namespace Pricing.DAL
 					ht[MonthYear] = _TradePricing.ColumnNames.MonthYear;
 					ht[PreviousPrice] = _TradePricing.ColumnNames.PreviousPrice;
 					ht[PreviousPack] = _TradePricing.ColumnNames.PreviousPack;
+					ht[FilePath] = _TradePricing.ColumnNames.FilePath;
+					ht[File_CoverLetter] = _TradePricing.ColumnNames.File_CoverLetter;
+					ht[File_BoxApproval] = _TradePricing.ColumnNames.File_BoxApproval;
+					ht[File_TradeNameApproval] = _TradePricing.ColumnNames.File_TradeNameApproval;
+					ht[File_CostSheet] = _TradePricing.ColumnNames.File_CostSheet;
+					ht[File_ProformaInvoice] = _TradePricing.ColumnNames.File_ProformaInvoice;
+					ht[File_CifPriceToEgypt] = _TradePricing.ColumnNames.File_CifPriceToEgypt;
+					ht[File_PriceOriginCountry] = _TradePricing.ColumnNames.File_PriceOriginCountry;
+					ht[File_CountryPrices] = _TradePricing.ColumnNames.File_CountryPrices;
+					ht[File_PackArtworkLeaflet] = _TradePricing.ColumnNames.File_PackArtworkLeaflet;
+					ht[File_Others] = _TradePricing.ColumnNames.File_Others;
+					ht[Generics] = _TradePricing.ColumnNames.Generics;
+					ht[GenericStrength] = _TradePricing.ColumnNames.GenericStrength;
 
 				}
 				return (string)ht[propertyName];
@@ -752,7 +896,7 @@ namespace Pricing.DAL
             public const string ManufactureID = "s_ManufactureID";
             public const string AssignedUserID = "s_AssignedUserID";
             public const string TradeName = "s_TradeName";
-            public const string Generics = "s_Generics";
+            public const string PackDetailes = "s_PackDetailes";
             public const string CompanyPrice = "s_CompanyPrice";
             public const string CommittePrice = "s_CommittePrice";
             public const string CommitteDate = "s_CommitteDate";
@@ -760,9 +904,8 @@ namespace Pricing.DAL
             public const string SubmissionDate = "s_SubmissionDate";
             public const string Pack = "s_Pack";
             public const string FileNo = "s_FileNo";
-            public const string FilePath = "s_FilePath";
             public const string Generic = "s_Generic";
-            public const string GenericStrength = "s_GenericStrength";
+            public const string Trade_Notes = "s_Trade_Notes";
             public const string ImportedManufacture = "s_ImportedManufacture";
             public const string RegNo = "s_RegNo";
             public const string Reference = "s_Reference";
@@ -793,6 +936,19 @@ namespace Pricing.DAL
             public const string MonthYear = "s_MonthYear";
             public const string PreviousPrice = "s_PreviousPrice";
             public const string PreviousPack = "s_PreviousPack";
+            public const string FilePath = "s_FilePath";
+            public const string File_CoverLetter = "s_File_CoverLetter";
+            public const string File_BoxApproval = "s_File_BoxApproval";
+            public const string File_TradeNameApproval = "s_File_TradeNameApproval";
+            public const string File_CostSheet = "s_File_CostSheet";
+            public const string File_ProformaInvoice = "s_File_ProformaInvoice";
+            public const string File_CifPriceToEgypt = "s_File_CifPriceToEgypt";
+            public const string File_PriceOriginCountry = "s_File_PriceOriginCountry";
+            public const string File_CountryPrices = "s_File_CountryPrices";
+            public const string File_PackArtworkLeaflet = "s_File_PackArtworkLeaflet";
+            public const string File_Others = "s_File_Others";
+            public const string Generics = "s_Generics";
+            public const string GenericStrength = "s_GenericStrength";
 
 		}
 		#endregion		
@@ -907,15 +1063,15 @@ namespace Pricing.DAL
 			}
 		}
 
-		public virtual string Generics
+		public virtual string PackDetailes
 	    {
 			get
 	        {
-				return base.Getstring(ColumnNames.Generics);
+				return base.Getstring(ColumnNames.PackDetailes);
 			}
 			set
 	        {
-				base.Setstring(ColumnNames.Generics, value);
+				base.Setstring(ColumnNames.PackDetailes, value);
 			}
 		}
 
@@ -1003,18 +1159,6 @@ namespace Pricing.DAL
 			}
 		}
 
-		public virtual string FilePath
-	    {
-			get
-	        {
-				return base.Getstring(ColumnNames.FilePath);
-			}
-			set
-	        {
-				base.Setstring(ColumnNames.FilePath, value);
-			}
-		}
-
 		public virtual string Generic
 	    {
 			get
@@ -1027,15 +1171,15 @@ namespace Pricing.DAL
 			}
 		}
 
-		public virtual string GenericStrength
+		public virtual string Trade_Notes
 	    {
 			get
 	        {
-				return base.Getstring(ColumnNames.GenericStrength);
+				return base.Getstring(ColumnNames.Trade_Notes);
 			}
 			set
 	        {
-				base.Setstring(ColumnNames.GenericStrength, value);
+				base.Setstring(ColumnNames.Trade_Notes, value);
 			}
 		}
 
@@ -1399,6 +1543,162 @@ namespace Pricing.DAL
 			}
 		}
 
+		public virtual string FilePath
+	    {
+			get
+	        {
+				return base.Getstring(ColumnNames.FilePath);
+			}
+			set
+	        {
+				base.Setstring(ColumnNames.FilePath, value);
+			}
+		}
+
+		public virtual string File_CoverLetter
+	    {
+			get
+	        {
+				return base.Getstring(ColumnNames.File_CoverLetter);
+			}
+			set
+	        {
+				base.Setstring(ColumnNames.File_CoverLetter, value);
+			}
+		}
+
+		public virtual string File_BoxApproval
+	    {
+			get
+	        {
+				return base.Getstring(ColumnNames.File_BoxApproval);
+			}
+			set
+	        {
+				base.Setstring(ColumnNames.File_BoxApproval, value);
+			}
+		}
+
+		public virtual string File_TradeNameApproval
+	    {
+			get
+	        {
+				return base.Getstring(ColumnNames.File_TradeNameApproval);
+			}
+			set
+	        {
+				base.Setstring(ColumnNames.File_TradeNameApproval, value);
+			}
+		}
+
+		public virtual string File_CostSheet
+	    {
+			get
+	        {
+				return base.Getstring(ColumnNames.File_CostSheet);
+			}
+			set
+	        {
+				base.Setstring(ColumnNames.File_CostSheet, value);
+			}
+		}
+
+		public virtual string File_ProformaInvoice
+	    {
+			get
+	        {
+				return base.Getstring(ColumnNames.File_ProformaInvoice);
+			}
+			set
+	        {
+				base.Setstring(ColumnNames.File_ProformaInvoice, value);
+			}
+		}
+
+		public virtual string File_CifPriceToEgypt
+	    {
+			get
+	        {
+				return base.Getstring(ColumnNames.File_CifPriceToEgypt);
+			}
+			set
+	        {
+				base.Setstring(ColumnNames.File_CifPriceToEgypt, value);
+			}
+		}
+
+		public virtual string File_PriceOriginCountry
+	    {
+			get
+	        {
+				return base.Getstring(ColumnNames.File_PriceOriginCountry);
+			}
+			set
+	        {
+				base.Setstring(ColumnNames.File_PriceOriginCountry, value);
+			}
+		}
+
+		public virtual string File_CountryPrices
+	    {
+			get
+	        {
+				return base.Getstring(ColumnNames.File_CountryPrices);
+			}
+			set
+	        {
+				base.Setstring(ColumnNames.File_CountryPrices, value);
+			}
+		}
+
+		public virtual string File_PackArtworkLeaflet
+	    {
+			get
+	        {
+				return base.Getstring(ColumnNames.File_PackArtworkLeaflet);
+			}
+			set
+	        {
+				base.Setstring(ColumnNames.File_PackArtworkLeaflet, value);
+			}
+		}
+
+		public virtual string File_Others
+	    {
+			get
+	        {
+				return base.Getstring(ColumnNames.File_Others);
+			}
+			set
+	        {
+				base.Setstring(ColumnNames.File_Others, value);
+			}
+		}
+
+		public virtual string Generics
+	    {
+			get
+	        {
+				return base.Getstring(ColumnNames.Generics);
+			}
+			set
+	        {
+				base.Setstring(ColumnNames.Generics, value);
+			}
+		}
+
+		public virtual string GenericStrength
+	    {
+			get
+	        {
+				return base.Getstring(ColumnNames.GenericStrength);
+			}
+			set
+	        {
+				base.Setstring(ColumnNames.GenericStrength, value);
+			}
+		}
+
 
 		#endregion
 		
@@ -1539,18 +1839,18 @@ namespace Pricing.DAL
 			}
 		}
 
-		public virtual string s_Generics
+		public virtual string s_PackDetailes
 	    {
 			get
 	        {
-				return this.IsColumnNull(ColumnNames.Generics) ? string.Empty : base.GetstringAsString(ColumnNames.Generics);
+				return this.IsColumnNull(ColumnNames.PackDetailes) ? string.Empty : base.GetstringAsString(ColumnNames.PackDetailes);
 			}
 			set
 	        {
 				if(string.Empty == value)
-					this.SetColumnNull(ColumnNames.Generics);
+					this.SetColumnNull(ColumnNames.PackDetailes);
 				else
-					this.Generics = base.SetstringAsString(ColumnNames.Generics, value);
+					this.PackDetailes = base.SetstringAsString(ColumnNames.PackDetailes, value);
 			}
 		}
 
@@ -1659,21 +1959,6 @@ namespace Pricing.DAL
 			}
 		}
 
-		public virtual string s_FilePath
-	    {
-			get
-	        {
-				return this.IsColumnNull(ColumnNames.FilePath) ? string.Empty : base.GetstringAsString(ColumnNames.FilePath);
-			}
-			set
-	        {
-				if(string.Empty == value)
-					this.SetColumnNull(ColumnNames.FilePath);
-				else
-					this.FilePath = base.SetstringAsString(ColumnNames.FilePath, value);
-			}
-		}
-
 		public virtual string s_Generic
 	    {
 			get
@@ -1689,18 +1974,18 @@ namespace Pricing.DAL
 			}
 		}
 
-		public virtual string s_GenericStrength
+		public virtual string s_Trade_Notes
 	    {
 			get
 	        {
-				return this.IsColumnNull(ColumnNames.GenericStrength) ? string.Empty : base.GetstringAsString(ColumnNames.GenericStrength);
+				return this.IsColumnNull(ColumnNames.Trade_Notes) ? string.Empty : base.GetstringAsString(ColumnNames.Trade_Notes);
 			}
 			set
 	        {
 				if(string.Empty == value)
-					this.SetColumnNull(ColumnNames.GenericStrength);
+					this.SetColumnNull(ColumnNames.Trade_Notes);
 				else
-					this.GenericStrength = base.SetstringAsString(ColumnNames.GenericStrength, value);
+					this.Trade_Notes = base.SetstringAsString(ColumnNames.Trade_Notes, value);
 			}
 		}
 
@@ -2154,6 +2439,201 @@ namespace Pricing.DAL
 			}
 		}
 
+		public virtual string s_FilePath
+	    {
+			get
+	        {
+				return this.IsColumnNull(ColumnNames.FilePath) ? string.Empty : base.GetstringAsString(ColumnNames.FilePath);
+			}
+			set
+	        {
+				if(string.Empty == value)
+					this.SetColumnNull(ColumnNames.FilePath);
+				else
+					this.FilePath = base.SetstringAsString(ColumnNames.FilePath, value);
+			}
+		}
+
+		public virtual string s_File_CoverLetter
+	    {
+			get
+	        {
+				return this.IsColumnNull(ColumnNames.File_CoverLetter) ? string.Empty : base.GetstringAsString(ColumnNames.File_CoverLetter);
+			}
+			set
+	        {
+				if(string.Empty == value)
+					this.SetColumnNull(ColumnNames.File_CoverLetter);
+				else
+					this.File_CoverLetter = base.SetstringAsString(ColumnNames.File_CoverLetter, value);
+			}
+		}
+
+		public virtual string s_File_BoxApproval
+	    {
+			get
+	        {
+				return this.IsColumnNull(ColumnNames.File_BoxApproval) ? string.Empty : base.GetstringAsString(ColumnNames.File_BoxApproval);
+			}
+			set
+	        {
+				if(string.Empty == value)
+					this.SetColumnNull(ColumnNames.File_BoxApproval);
+				else
+					this.File_BoxApproval = base.SetstringAsString(ColumnNames.File_BoxApproval, value);
+			}
+		}
+
+		public virtual string s_File_TradeNameApproval
+	    {
+			get
+	        {
+				return this.IsColumnNull(ColumnNames.File_TradeNameApproval) ? string.Empty : base.GetstringAsString(ColumnNames.File_TradeNameApproval);
+			}
+			set
+	        {
+				if(string.Empty == value)
+					this.SetColumnNull(ColumnNames.File_TradeNameApproval);
+				else
+					this.File_TradeNameApproval = base.SetstringAsString(ColumnNames.File_TradeNameApproval, value);
+			}
+		}
+
+		public virtual string s_File_CostSheet
+	    {
+			get
+	        {
+				return this.IsColumnNull(ColumnNames.File_CostSheet) ? string.Empty : base.GetstringAsString(ColumnNames.File_CostSheet);
+			}
+			set
+	        {
+				if(string.Empty == value)
+					this.SetColumnNull(ColumnNames.File_CostSheet);
+				else
+					this.File_CostSheet = base.SetstringAsString(ColumnNames.File_CostSheet, value);
+			}
+		}
+
+		public virtual string s_File_ProformaInvoice
+	    {
+			get
+	        {
+				return this.IsColumnNull(ColumnNames.File_ProformaInvoice) ? string.Empty : base.GetstringAsString(ColumnNames.File_ProformaInvoice);
+			}
+			set
+	        {
+				if(string.Empty == value)
+					this.SetColumnNull(ColumnNames.File_ProformaInvoice);
+				else
+					this.File_ProformaInvoice = base.SetstringAsString(ColumnNames.File_ProformaInvoice, value);
+			}
+		}
+
+		public virtual string s_File_CifPriceToEgypt
+	    {
+			get
+	        {
+				return this.IsColumnNull(ColumnNames.File_CifPriceToEgypt) ? string.Empty : base.GetstringAsString(ColumnNames.File_CifPriceToEgypt);
+			}
+			set
+	        {
+				if(string.Empty == value)
+					this.SetColumnNull(ColumnNames.File_CifPriceToEgypt);
+				else
+					this.File_CifPriceToEgypt = base.SetstringAsString(ColumnNames.File_CifPriceToEgypt, value);
+			}
+		}
+
+		public virtual string s_File_PriceOriginCountry
+	    {
+			get
+	        {
+				return this.IsColumnNull(ColumnNames.File_PriceOriginCountry) ? string.Empty : base.GetstringAsString(ColumnNames.File_PriceOriginCountry);
+			}
+			set
+	        {
+				if(string.Empty == value)
+					this.SetColumnNull(ColumnNames.File_PriceOriginCountry);
+				else
+					this.File_PriceOriginCountry = base.SetstringAsString(ColumnNames.File_PriceOriginCountry, value);
+			}
+		}
+
+		public virtual string s_File_CountryPrices
+	    {
+			get
+	        {
+				return this.IsColumnNull(ColumnNames.File_CountryPrices) ? string.Empty : base.GetstringAsString(ColumnNames.File_CountryPrices);
+			}
+			set
+	        {
+				if(string.Empty == value)
+					this.SetColumnNull(ColumnNames.File_CountryPrices);
+				else
+					this.File_CountryPrices = base.SetstringAsString(ColumnNames.File_CountryPrices, value);
+			}
+		}
+
+		public virtual string s_File_PackArtworkLeaflet
+	    {
+			get
+	        {
+				return this.IsColumnNull(ColumnNames.File_PackArtworkLeaflet) ? string.Empty : base.GetstringAsString(ColumnNames.File_PackArtworkLeaflet);
+			}
+			set
+	        {
+				if(string.Empty == value)
+					this.SetColumnNull(ColumnNames.File_PackArtworkLeaflet);
+				else
+					this.File_PackArtworkLeaflet = base.SetstringAsString(ColumnNames.File_PackArtworkLeaflet, value);
+			}
+		}
+
+		public virtual string s_File_Others
+	    {
+			get
+	        {
+				return this.IsColumnNull(ColumnNames.File_Others) ? string.Empty : base.GetstringAsString(ColumnNames.File_Others);
+			}
+			set
+	        {
+				if(string.Empty == value)
+					this.SetColumnNull(ColumnNames.File_Others);
+				else
+					this.File_Others = base.SetstringAsString(ColumnNames.File_Others, value);
+			}
+		}
+
+		public virtual string s_Generics
+	    {
+			get
+	        {
+				return this.IsColumnNull(ColumnNames.Generics) ? string.Empty : base.GetstringAsString(ColumnNames.Generics);
+			}
+			set
+	        {
+				if(string.Empty == value)
+					this.SetColumnNull(ColumnNames.Generics);
+				else
+					this.Generics = base.SetstringAsString(ColumnNames.Generics, value);
+			}
+		}
+
+		public virtual string s_GenericStrength
+	    {
+			get
+	        {
+				return this.IsColumnNull(ColumnNames.GenericStrength) ? string.Empty : base.GetstringAsString(ColumnNames.GenericStrength);
+			}
+			set
+	        {
+				if(string.Empty == value)
+					this.SetColumnNull(ColumnNames.GenericStrength);
+				else
+					this.GenericStrength = base.SetstringAsString(ColumnNames.GenericStrength, value);
+			}
+		}
+
 
 		#endregion		
 	
@@ -2277,11 +2757,11 @@ namespace Pricing.DAL
 					}
 				}
 
-				public WhereParameter Generics
+				public WhereParameter PackDetailes
 				{
 					get
 					{
-							WhereParameter where = new WhereParameter(ColumnNames.Generics, Parameters.Generics);
+							WhereParameter where = new WhereParameter(ColumnNames.PackDetailes, Parameters.PackDetailes);
 							this._clause._entity.Query.AddWhereParameter(where);
 							return where;
 					}
@@ -2357,16 +2837,6 @@ namespace Pricing.DAL
 					}
 				}
 
-				public WhereParameter FilePath
-				{
-					get
-					{
-							WhereParameter where = new WhereParameter(ColumnNames.FilePath, Parameters.FilePath);
-							this._clause._entity.Query.AddWhereParameter(where);
-							return where;
-					}
-				}
-
 				public WhereParameter Generic
 				{
 					get
@@ -2377,11 +2847,11 @@ namespace Pricing.DAL
 					}
 				}
 
-				public WhereParameter GenericStrength
+				public WhereParameter Trade_Notes
 				{
 					get
 					{
-							WhereParameter where = new WhereParameter(ColumnNames.GenericStrength, Parameters.GenericStrength);
+							WhereParameter where = new WhereParameter(ColumnNames.Trade_Notes, Parameters.Trade_Notes);
 							this._clause._entity.Query.AddWhereParameter(where);
 							return where;
 					}
@@ -2687,6 +3157,136 @@ namespace Pricing.DAL
 					}
 				}
 
+				public WhereParameter FilePath
+				{
+					get
+					{
+							WhereParameter where = new WhereParameter(ColumnNames.FilePath, Parameters.FilePath);
+							this._clause._entity.Query.AddWhereParameter(where);
+							return where;
+					}
+				}
+
+				public WhereParameter File_CoverLetter
+				{
+					get
+					{
+							WhereParameter where = new WhereParameter(ColumnNames.File_CoverLetter, Parameters.File_CoverLetter);
+							this._clause._entity.Query.AddWhereParameter(where);
+							return where;
+					}
+				}
+
+				public WhereParameter File_BoxApproval
+				{
+					get
+					{
+							WhereParameter where = new WhereParameter(ColumnNames.File_BoxApproval, Parameters.File_BoxApproval);
+							this._clause._entity.Query.AddWhereParameter(where);
+							return where;
+					}
+				}
+
+				public WhereParameter File_TradeNameApproval
+				{
+					get
+					{
+							WhereParameter where = new WhereParameter(ColumnNames.File_TradeNameApproval, Parameters.File_TradeNameApproval);
+							this._clause._entity.Query.AddWhereParameter(where);
+							return where;
+					}
+				}
+
+				public WhereParameter File_CostSheet
+				{
+					get
+					{
+							WhereParameter where = new WhereParameter(ColumnNames.File_CostSheet, Parameters.File_CostSheet);
+							this._clause._entity.Query.AddWhereParameter(where);
+							return where;
+					}
+				}
+
+				public WhereParameter File_ProformaInvoice
+				{
+					get
+					{
+							WhereParameter where = new WhereParameter(ColumnNames.File_ProformaInvoice, Parameters.File_ProformaInvoice);
+							this._clause._entity.Query.AddWhereParameter(where);
+							return where;
+					}
+				}
+
+				public WhereParameter File_CifPriceToEgypt
+				{
+					get
+					{
+							WhereParameter where = new WhereParameter(ColumnNames.File_CifPriceToEgypt, Parameters.File_CifPriceToEgypt);
+							this._clause._entity.Query.AddWhereParameter(where);
+							return where;
+					}
+				}
+
+				public WhereParameter File_PriceOriginCountry
+				{
+					get
+					{
+							WhereParameter where = new WhereParameter(ColumnNames.File_PriceOriginCountry, Parameters.File_PriceOriginCountry);
+							this._clause._entity.Query.AddWhereParameter(where);
+							return where;
+					}
+				}
+
+				public WhereParameter File_CountryPrices
+				{
+					get
+					{
+							WhereParameter where = new WhereParameter(ColumnNames.File_CountryPrices, Parameters.File_CountryPrices);
+							this._clause._entity.Query.AddWhereParameter(where);
+							return where;
+					}
+				}
+
+				public WhereParameter File_PackArtworkLeaflet
+				{
+					get
+					{
+							WhereParameter where = new WhereParameter(ColumnNames.File_PackArtworkLeaflet, Parameters.File_PackArtworkLeaflet);
+							this._clause._entity.Query.AddWhereParameter(where);
+							return where;
+					}
+				}
+
+				public WhereParameter File_Others
+				{
+					get
+					{
+							WhereParameter where = new WhereParameter(ColumnNames.File_Others, Parameters.File_Others);
+							this._clause._entity.Query.AddWhereParameter(where);
+							return where;
+					}
+				}
+
+				public WhereParameter Generics
+				{
+					get
+					{
+							WhereParameter where = new WhereParameter(ColumnNames.Generics, Parameters.Generics);
+							this._clause._entity.Query.AddWhereParameter(where);
+							return where;
+					}
+				}
+
+				public WhereParameter GenericStrength
+				{
+					get
+					{
+							WhereParameter where = new WhereParameter(ColumnNames.GenericStrength, Parameters.GenericStrength);
+							this._clause._entity.Query.AddWhereParameter(where);
+							return where;
+					}
+				}
+
 
 				private WhereClause _clause;
 			}
@@ -2800,15 +3400,15 @@ namespace Pricing.DAL
 				}
 			}
 
-			public WhereParameter Generics
+			public WhereParameter PackDetailes
 		    {
 				get
 		        {
-					if(_Generics_W == null)
+					if(_PackDetailes_W == null)
 	        	    {
-						_Generics_W = TearOff.Generics;
+						_PackDetailes_W = TearOff.PackDetailes;
 					}
-					return _Generics_W;
+					return _PackDetailes_W;
 				}
 			}
 
@@ -2896,18 +3496,6 @@ namespace Pricing.DAL
 				}
 			}
 
-			public WhereParameter FilePath
-		    {
-				get
-		        {
-					if(_FilePath_W == null)
-	        	    {
-						_FilePath_W = TearOff.FilePath;
-					}
-					return _FilePath_W;
-				}
-			}
-
 			public WhereParameter Generic
 		    {
 				get
@@ -2920,15 +3508,15 @@ namespace Pricing.DAL
 				}
 			}
 
-			public WhereParameter GenericStrength
+			public WhereParameter Trade_Notes
 		    {
 				get
 		        {
-					if(_GenericStrength_W == null)
+					if(_Trade_Notes_W == null)
 	        	    {
-						_GenericStrength_W = TearOff.GenericStrength;
+						_Trade_Notes_W = TearOff.Trade_Notes;
 					}
-					return _GenericStrength_W;
+					return _Trade_Notes_W;
 				}
 			}
 
@@ -3292,6 +3880,162 @@ namespace Pricing.DAL
 				}
 			}
 
+			public WhereParameter FilePath
+		    {
+				get
+		        {
+					if(_FilePath_W == null)
+	        	    {
+						_FilePath_W = TearOff.FilePath;
+					}
+					return _FilePath_W;
+				}
+			}
+
+			public WhereParameter File_CoverLetter
+		    {
+				get
+		        {
+					if(_File_CoverLetter_W == null)
+	        	    {
+						_File_CoverLetter_W = TearOff.File_CoverLetter;
+					}
+					return _File_CoverLetter_W;
+				}
+			}
+
+			public WhereParameter File_BoxApproval
+		    {
+				get
+		        {
+					if(_File_BoxApproval_W == null)
+	        	    {
+						_File_BoxApproval_W = TearOff.File_BoxApproval;
+					}
+					return _File_BoxApproval_W;
+				}
+			}
+
+			public WhereParameter File_TradeNameApproval
+		    {
+				get
+		        {
+					if(_File_TradeNameApproval_W == null)
+	        	    {
+						_File_TradeNameApproval_W = TearOff.File_TradeNameApproval;
+					}
+					return _File_TradeNameApproval_W;
+				}
+			}
+
+			public WhereParameter File_CostSheet
+		    {
+				get
+		        {
+					if(_File_CostSheet_W == null)
+	        	    {
+						_File_CostSheet_W = TearOff.File_CostSheet;
+					}
+					return _File_CostSheet_W;
+				}
+			}
+
+			public WhereParameter File_ProformaInvoice
+		    {
+				get
+		        {
+					if(_File_ProformaInvoice_W == null)
+	        	    {
+						_File_ProformaInvoice_W = TearOff.File_ProformaInvoice;
+					}
+					return _File_ProformaInvoice_W;
+				}
+			}
+
+			public WhereParameter File_CifPriceToEgypt
+		    {
+				get
+		        {
+					if(_File_CifPriceToEgypt_W == null)
+	        	    {
+						_File_CifPriceToEgypt_W = TearOff.File_CifPriceToEgypt;
+					}
+					return _File_CifPriceToEgypt_W;
+				}
+			}
+
+			public WhereParameter File_PriceOriginCountry
+		    {
+				get
+		        {
+					if(_File_PriceOriginCountry_W == null)
+	        	    {
+						_File_PriceOriginCountry_W = TearOff.File_PriceOriginCountry;
+					}
+					return _File_PriceOriginCountry_W;
+				}
+			}
+
+			public WhereParameter File_CountryPrices
+		    {
+				get
+		        {
+					if(_File_CountryPrices_W == null)
+	        	    {
+						_File_CountryPrices_W = TearOff.File_CountryPrices;
+					}
+					return _File_CountryPrices_W;
+				}
+			}
+
+			public WhereParameter File_PackArtworkLeaflet
+		    {
+				get
+		        {
+					if(_File_PackArtworkLeaflet_W == null)
+	        	    {
+						_File_PackArtworkLeaflet_W = TearOff.File_PackArtworkLeaflet;
+					}
+					return _File_PackArtworkLeaflet_W;
+				}
+			}
+
+			public WhereParameter File_Others
+		    {
+				get
+		        {
+					if(_File_Others_W == null)
+	        	    {
+						_File_Others_W = TearOff.File_Others;
+					}
+					return _File_Others_W;
+				}
+			}
+
+			public WhereParameter Generics
+		    {
+				get
+		        {
+					if(_Generics_W == null)
+	        	    {
+						_Generics_W = TearOff.Generics;
+					}
+					return _Generics_W;
+				}
+			}
+
+			public WhereParameter GenericStrength
+		    {
+				get
+		        {
+					if(_GenericStrength_W == null)
+	        	    {
+						_GenericStrength_W = TearOff.GenericStrength;
+					}
+					return _GenericStrength_W;
+				}
+			}
+
 			private WhereParameter _TradePricingID_W = null;
 			private WhereParameter _CompanyID_W = null;
 			private WhereParameter _PricingStatusID_W = null;
@@ -3301,7 +4045,7 @@ namespace Pricing.DAL
 			private WhereParameter _ManufactureID_W = null;
 			private WhereParameter _AssignedUserID_W = null;
 			private WhereParameter _TradeName_W = null;
-			private WhereParameter _Generics_W = null;
+			private WhereParameter _PackDetailes_W = null;
 			private WhereParameter _CompanyPrice_W = null;
 			private WhereParameter _CommittePrice_W = null;
 			private WhereParameter _CommitteDate_W = null;
@@ -3309,9 +4053,8 @@ namespace Pricing.DAL
 			private WhereParameter _SubmissionDate_W = null;
 			private WhereParameter _Pack_W = null;
 			private WhereParameter _FileNo_W = null;
-			private WhereParameter _FilePath_W = null;
 			private WhereParameter _Generic_W = null;
-			private WhereParameter _GenericStrength_W = null;
+			private WhereParameter _Trade_Notes_W = null;
 			private WhereParameter _ImportedManufacture_W = null;
 			private WhereParameter _RegNo_W = null;
 			private WhereParameter _Reference_W = null;
@@ -3342,6 +4085,19 @@ namespace Pricing.DAL
 			private WhereParameter _MonthYear_W = null;
 			private WhereParameter _PreviousPrice_W = null;
 			private WhereParameter _PreviousPack_W = null;
+			private WhereParameter _FilePath_W = null;
+			private WhereParameter _File_CoverLetter_W = null;
+			private WhereParameter _File_BoxApproval_W = null;
+			private WhereParameter _File_TradeNameApproval_W = null;
+			private WhereParameter _File_CostSheet_W = null;
+			private WhereParameter _File_ProformaInvoice_W = null;
+			private WhereParameter _File_CifPriceToEgypt_W = null;
+			private WhereParameter _File_PriceOriginCountry_W = null;
+			private WhereParameter _File_CountryPrices_W = null;
+			private WhereParameter _File_PackArtworkLeaflet_W = null;
+			private WhereParameter _File_Others_W = null;
+			private WhereParameter _Generics_W = null;
+			private WhereParameter _GenericStrength_W = null;
 
 			public void WhereClauseReset()
 			{
@@ -3354,7 +4110,7 @@ namespace Pricing.DAL
 				_ManufactureID_W = null;
 				_AssignedUserID_W = null;
 				_TradeName_W = null;
-				_Generics_W = null;
+				_PackDetailes_W = null;
 				_CompanyPrice_W = null;
 				_CommittePrice_W = null;
 				_CommitteDate_W = null;
@@ -3362,9 +4118,8 @@ namespace Pricing.DAL
 				_SubmissionDate_W = null;
 				_Pack_W = null;
 				_FileNo_W = null;
-				_FilePath_W = null;
 				_Generic_W = null;
-				_GenericStrength_W = null;
+				_Trade_Notes_W = null;
 				_ImportedManufacture_W = null;
 				_RegNo_W = null;
 				_Reference_W = null;
@@ -3395,6 +4150,19 @@ namespace Pricing.DAL
 				_MonthYear_W = null;
 				_PreviousPrice_W = null;
 				_PreviousPack_W = null;
+				_FilePath_W = null;
+				_File_CoverLetter_W = null;
+				_File_BoxApproval_W = null;
+				_File_TradeNameApproval_W = null;
+				_File_CostSheet_W = null;
+				_File_ProformaInvoice_W = null;
+				_File_CifPriceToEgypt_W = null;
+				_File_PriceOriginCountry_W = null;
+				_File_CountryPrices_W = null;
+				_File_PackArtworkLeaflet_W = null;
+				_File_Others_W = null;
+				_Generics_W = null;
+				_GenericStrength_W = null;
 
 				this._entity.Query.FlushWhereParameters();
 
@@ -3541,11 +4309,11 @@ namespace Pricing.DAL
 					}
 				}
 
-				public AggregateParameter Generics
+				public AggregateParameter PackDetailes
 				{
 					get
 					{
-							AggregateParameter aggregate = new AggregateParameter(ColumnNames.Generics, Parameters.Generics);
+							AggregateParameter aggregate = new AggregateParameter(ColumnNames.PackDetailes, Parameters.PackDetailes);
 							this._clause._entity.Query.AddAggregateParameter(aggregate);
 							return aggregate;
 					}
@@ -3621,16 +4389,6 @@ namespace Pricing.DAL
 					}
 				}
 
-				public AggregateParameter FilePath
-				{
-					get
-					{
-							AggregateParameter aggregate = new AggregateParameter(ColumnNames.FilePath, Parameters.FilePath);
-							this._clause._entity.Query.AddAggregateParameter(aggregate);
-							return aggregate;
-					}
-				}
-
 				public AggregateParameter Generic
 				{
 					get
@@ -3641,11 +4399,11 @@ namespace Pricing.DAL
 					}
 				}
 
-				public AggregateParameter GenericStrength
+				public AggregateParameter Trade_Notes
 				{
 					get
 					{
-							AggregateParameter aggregate = new AggregateParameter(ColumnNames.GenericStrength, Parameters.GenericStrength);
+							AggregateParameter aggregate = new AggregateParameter(ColumnNames.Trade_Notes, Parameters.Trade_Notes);
 							this._clause._entity.Query.AddAggregateParameter(aggregate);
 							return aggregate;
 					}
@@ -3951,6 +4709,136 @@ namespace Pricing.DAL
 					}
 				}
 
+				public AggregateParameter FilePath
+				{
+					get
+					{
+							AggregateParameter aggregate = new AggregateParameter(ColumnNames.FilePath, Parameters.FilePath);
+							this._clause._entity.Query.AddAggregateParameter(aggregate);
+							return aggregate;
+					}
+				}
+
+				public AggregateParameter File_CoverLetter
+				{
+					get
+					{
+							AggregateParameter aggregate = new AggregateParameter(ColumnNames.File_CoverLetter, Parameters.File_CoverLetter);
+							this._clause._entity.Query.AddAggregateParameter(aggregate);
+							return aggregate;
+					}
+				}
+
+				public AggregateParameter File_BoxApproval
+				{
+					get
+					{
+							AggregateParameter aggregate = new AggregateParameter(ColumnNames.File_BoxApproval, Parameters.File_BoxApproval);
+							this._clause._entity.Query.AddAggregateParameter(aggregate);
+							return aggregate;
+					}
+				}
+
+				public AggregateParameter File_TradeNameApproval
+				{
+					get
+					{
+							AggregateParameter aggregate = new AggregateParameter(ColumnNames.File_TradeNameApproval, Parameters.File_TradeNameApproval);
+							this._clause._entity.Query.AddAggregateParameter(aggregate);
+							return aggregate;
+					}
+				}
+
+				public AggregateParameter File_CostSheet
+				{
+					get
+					{
+							AggregateParameter aggregate = new AggregateParameter(ColumnNames.File_CostSheet, Parameters.File_CostSheet);
+							this._clause._entity.Query.AddAggregateParameter(aggregate);
+							return aggregate;
+					}
+				}
+
+				public AggregateParameter File_ProformaInvoice
+				{
+					get
+					{
+							AggregateParameter aggregate = new AggregateParameter(ColumnNames.File_ProformaInvoice, Parameters.File_ProformaInvoice);
+							this._clause._entity.Query.AddAggregateParameter(aggregate);
+							return aggregate;
+					}
+				}
+
+				public AggregateParameter File_CifPriceToEgypt
+				{
+					get
+					{
+							AggregateParameter aggregate = new AggregateParameter(ColumnNames.File_CifPriceToEgypt, Parameters.File_CifPriceToEgypt);
+							this._clause._entity.Query.AddAggregateParameter(aggregate);
+							return aggregate;
+					}
+				}
+
+				public AggregateParameter File_PriceOriginCountry
+				{
+					get
+					{
+							AggregateParameter aggregate = new AggregateParameter(ColumnNames.File_PriceOriginCountry, Parameters.File_PriceOriginCountry);
+							this._clause._entity.Query.AddAggregateParameter(aggregate);
+							return aggregate;
+					}
+				}
+
+				public AggregateParameter File_CountryPrices
+				{
+					get
+					{
+							AggregateParameter aggregate = new AggregateParameter(ColumnNames.File_CountryPrices, Parameters.File_CountryPrices);
+							this._clause._entity.Query.AddAggregateParameter(aggregate);
+							return aggregate;
+					}
+				}
+
+				public AggregateParameter File_PackArtworkLeaflet
+				{
+					get
+					{
+							AggregateParameter aggregate = new AggregateParameter(ColumnNames.File_PackArtworkLeaflet, Parameters.File_PackArtworkLeaflet);
+							this._clause._entity.Query.AddAggregateParameter(aggregate);
+							return aggregate;
+					}
+				}
+
+				public AggregateParameter File_Others
+				{
+					get
+					{
+							AggregateParameter aggregate = new AggregateParameter(ColumnNames.File_Others, Parameters.File_Others);
+							this._clause._entity.Query.AddAggregateParameter(aggregate);
+							return aggregate;
+					}
+				}
+
+				public AggregateParameter Generics
+				{
+					get
+					{
+							AggregateParameter aggregate = new AggregateParameter(ColumnNames.Generics, Parameters.Generics);
+							this._clause._entity.Query.AddAggregateParameter(aggregate);
+							return aggregate;
+					}
+				}
+
+				public AggregateParameter GenericStrength
+				{
+					get
+					{
+							AggregateParameter aggregate = new AggregateParameter(ColumnNames.GenericStrength, Parameters.GenericStrength);
+							this._clause._entity.Query.AddAggregateParameter(aggregate);
+							return aggregate;
+					}
+				}
+
 
 				private AggregateClause _clause;
 			}
@@ -4064,15 +4952,15 @@ namespace Pricing.DAL
 				}
 			}
 
-			public AggregateParameter Generics
+			public AggregateParameter PackDetailes
 		    {
 				get
 		        {
-					if(_Generics_W == null)
+					if(_PackDetailes_W == null)
 	        	    {
-						_Generics_W = TearOff.Generics;
+						_PackDetailes_W = TearOff.PackDetailes;
 					}
-					return _Generics_W;
+					return _PackDetailes_W;
 				}
 			}
 
@@ -4160,18 +5048,6 @@ namespace Pricing.DAL
 				}
 			}
 
-			public AggregateParameter FilePath
-		    {
-				get
-		        {
-					if(_FilePath_W == null)
-	        	    {
-						_FilePath_W = TearOff.FilePath;
-					}
-					return _FilePath_W;
-				}
-			}
-
 			public AggregateParameter Generic
 		    {
 				get
@@ -4184,15 +5060,15 @@ namespace Pricing.DAL
 				}
 			}
 
-			public AggregateParameter GenericStrength
+			public AggregateParameter Trade_Notes
 		    {
 				get
 		        {
-					if(_GenericStrength_W == null)
+					if(_Trade_Notes_W == null)
 	        	    {
-						_GenericStrength_W = TearOff.GenericStrength;
+						_Trade_Notes_W = TearOff.Trade_Notes;
 					}
-					return _GenericStrength_W;
+					return _Trade_Notes_W;
 				}
 			}
 
@@ -4556,6 +5432,162 @@ namespace Pricing.DAL
 				}
 			}
 
+			public AggregateParameter FilePath
+		    {
+				get
+		        {
+					if(_FilePath_W == null)
+	        	    {
+						_FilePath_W = TearOff.FilePath;
+					}
+					return _FilePath_W;
+				}
+			}
+
+			public AggregateParameter File_CoverLetter
+		    {
+				get
+		        {
+					if(_File_CoverLetter_W == null)
+	        	    {
+						_File_CoverLetter_W = TearOff.File_CoverLetter;
+					}
+					return _File_CoverLetter_W;
+				}
+			}
+
+			public AggregateParameter File_BoxApproval
+		    {
+				get
+		        {
+					if(_File_BoxApproval_W == null)
+	        	    {
+						_File_BoxApproval_W = TearOff.File_BoxApproval;
+					}
+					return _File_BoxApproval_W;
+				}
+			}
+
+			public AggregateParameter File_TradeNameApproval
+		    {
+				get
+		        {
+					if(_File_TradeNameApproval_W == null)
+	        	    {
+						_File_TradeNameApproval_W = TearOff.File_TradeNameApproval;
+					}
+					return _File_TradeNameApproval_W;
+				}
+			}
+
+			public AggregateParameter File_CostSheet
+		    {
+				get
+		        {
+					if(_File_CostSheet_W == null)
+	        	    {
+						_File_CostSheet_W = TearOff.File_CostSheet;
+					}
+					return _File_CostSheet_W;
+				}
+			}
+
+			public AggregateParameter File_ProformaInvoice
+		    {
+				get
+		        {
+					if(_File_ProformaInvoice_W == null)
+	        	    {
+						_File_ProformaInvoice_W = TearOff.File_ProformaInvoice;
+					}
+					return _File_ProformaInvoice_W;
+				}
+			}
+
+			public AggregateParameter File_CifPriceToEgypt
+		    {
+				get
+		        {
+					if(_File_CifPriceToEgypt_W == null)
+	        	    {
+						_File_CifPriceToEgypt_W = TearOff.File_CifPriceToEgypt;
+					}
+					return _File_CifPriceToEgypt_W;
+				}
+			}
+
+			public AggregateParameter File_PriceOriginCountry
+		    {
+				get
+		        {
+					if(_File_PriceOriginCountry_W == null)
+	        	    {
+						_File_PriceOriginCountry_W = TearOff.File_PriceOriginCountry;
+					}
+					return _File_PriceOriginCountry_W;
+				}
+			}
+
+			public AggregateParameter File_CountryPrices
+		    {
+				get
+		        {
+					if(_File_CountryPrices_W == null)
+	        	    {
+						_File_CountryPrices_W = TearOff.File_CountryPrices;
+					}
+					return _File_CountryPrices_W;
+				}
+			}
+
+			public AggregateParameter File_PackArtworkLeaflet
+		    {
+				get
+		        {
+					if(_File_PackArtworkLeaflet_W == null)
+	        	    {
+						_File_PackArtworkLeaflet_W = TearOff.File_PackArtworkLeaflet;
+					}
+					return _File_PackArtworkLeaflet_W;
+				}
+			}
+
+			public AggregateParameter File_Others
+		    {
+				get
+		        {
+					if(_File_Others_W == null)
+	        	    {
+						_File_Others_W = TearOff.File_Others;
+					}
+					return _File_Others_W;
+				}
+			}
+
+			public AggregateParameter Generics
+		    {
+				get
+		        {
+					if(_Generics_W == null)
+	        	    {
+						_Generics_W = TearOff.Generics;
+					}
+					return _Generics_W;
+				}
+			}
+
+			public AggregateParameter GenericStrength
+		    {
+				get
+		        {
+					if(_GenericStrength_W == null)
+	        	    {
+						_GenericStrength_W = TearOff.GenericStrength;
+					}
+					return _GenericStrength_W;
+				}
+			}
+
 			private AggregateParameter _TradePricingID_W = null;
 			private AggregateParameter _CompanyID_W = null;
 			private AggregateParameter _PricingStatusID_W = null;
@@ -4565,7 +5597,7 @@ namespace Pricing.DAL
 			private AggregateParameter _ManufactureID_W = null;
 			private AggregateParameter _AssignedUserID_W = null;
 			private AggregateParameter _TradeName_W = null;
-			private AggregateParameter _Generics_W = null;
+			private AggregateParameter _PackDetailes_W = null;
 			private AggregateParameter _CompanyPrice_W = null;
 			private AggregateParameter _CommittePrice_W = null;
 			private AggregateParameter _CommitteDate_W = null;
@@ -4573,9 +5605,8 @@ namespace Pricing.DAL
 			private AggregateParameter _SubmissionDate_W = null;
 			private AggregateParameter _Pack_W = null;
 			private AggregateParameter _FileNo_W = null;
-			private AggregateParameter _FilePath_W = null;
 			private AggregateParameter _Generic_W = null;
-			private AggregateParameter _GenericStrength_W = null;
+			private AggregateParameter _Trade_Notes_W = null;
 			private AggregateParameter _ImportedManufacture_W = null;
 			private AggregateParameter _RegNo_W = null;
 			private AggregateParameter _Reference_W = null;
@@ -4606,6 +5637,19 @@ namespace Pricing.DAL
 			private AggregateParameter _MonthYear_W = null;
 			private AggregateParameter _PreviousPrice_W = null;
 			private AggregateParameter _PreviousPack_W = null;
+			private AggregateParameter _FilePath_W = null;
+			private AggregateParameter _File_CoverLetter_W = null;
+			private AggregateParameter _File_BoxApproval_W = null;
+			private AggregateParameter _File_TradeNameApproval_W = null;
+			private AggregateParameter _File_CostSheet_W = null;
+			private AggregateParameter _File_ProformaInvoice_W = null;
+			private AggregateParameter _File_CifPriceToEgypt_W = null;
+			private AggregateParameter _File_PriceOriginCountry_W = null;
+			private AggregateParameter _File_CountryPrices_W = null;
+			private AggregateParameter _File_PackArtworkLeaflet_W = null;
+			private AggregateParameter _File_Others_W = null;
+			private AggregateParameter _Generics_W = null;
+			private AggregateParameter _GenericStrength_W = null;
 
 			public void AggregateClauseReset()
 			{
@@ -4618,7 +5662,7 @@ namespace Pricing.DAL
 				_ManufactureID_W = null;
 				_AssignedUserID_W = null;
 				_TradeName_W = null;
-				_Generics_W = null;
+				_PackDetailes_W = null;
 				_CompanyPrice_W = null;
 				_CommittePrice_W = null;
 				_CommitteDate_W = null;
@@ -4626,9 +5670,8 @@ namespace Pricing.DAL
 				_SubmissionDate_W = null;
 				_Pack_W = null;
 				_FileNo_W = null;
-				_FilePath_W = null;
 				_Generic_W = null;
-				_GenericStrength_W = null;
+				_Trade_Notes_W = null;
 				_ImportedManufacture_W = null;
 				_RegNo_W = null;
 				_Reference_W = null;
@@ -4659,6 +5702,19 @@ namespace Pricing.DAL
 				_MonthYear_W = null;
 				_PreviousPrice_W = null;
 				_PreviousPack_W = null;
+				_FilePath_W = null;
+				_File_CoverLetter_W = null;
+				_File_BoxApproval_W = null;
+				_File_TradeNameApproval_W = null;
+				_File_CostSheet_W = null;
+				_File_ProformaInvoice_W = null;
+				_File_CifPriceToEgypt_W = null;
+				_File_PriceOriginCountry_W = null;
+				_File_CountryPrices_W = null;
+				_File_PackArtworkLeaflet_W = null;
+				_File_Others_W = null;
+				_Generics_W = null;
+				_GenericStrength_W = null;
 
 				this._entity.Query.FlushAggregateParameters();
 
@@ -4769,8 +5825,8 @@ namespace Pricing.DAL
 			p.SourceColumn = ColumnNames.TradeName;
 			p.SourceVersion = DataRowVersion.Current;
 
-			p = cmd.Parameters.Add(Parameters.Generics);
-			p.SourceColumn = ColumnNames.Generics;
+			p = cmd.Parameters.Add(Parameters.PackDetailes);
+			p.SourceColumn = ColumnNames.PackDetailes;
 			p.SourceVersion = DataRowVersion.Current;
 
 			p = cmd.Parameters.Add(Parameters.CompanyPrice);
@@ -4801,16 +5857,12 @@ namespace Pricing.DAL
 			p.SourceColumn = ColumnNames.FileNo;
 			p.SourceVersion = DataRowVersion.Current;
 
-			p = cmd.Parameters.Add(Parameters.FilePath);
-			p.SourceColumn = ColumnNames.FilePath;
-			p.SourceVersion = DataRowVersion.Current;
-
 			p = cmd.Parameters.Add(Parameters.Generic);
 			p.SourceColumn = ColumnNames.Generic;
 			p.SourceVersion = DataRowVersion.Current;
 
-			p = cmd.Parameters.Add(Parameters.GenericStrength);
-			p.SourceColumn = ColumnNames.GenericStrength;
+			p = cmd.Parameters.Add(Parameters.Trade_Notes);
+			p.SourceColumn = ColumnNames.Trade_Notes;
 			p.SourceVersion = DataRowVersion.Current;
 
 			p = cmd.Parameters.Add(Parameters.ImportedManufacture);
@@ -4931,6 +5983,58 @@ namespace Pricing.DAL
 
 			p = cmd.Parameters.Add(Parameters.PreviousPack);
 			p.SourceColumn = ColumnNames.PreviousPack;
+			p.SourceVersion = DataRowVersion.Current;
+
+			p = cmd.Parameters.Add(Parameters.FilePath);
+			p.SourceColumn = ColumnNames.FilePath;
+			p.SourceVersion = DataRowVersion.Current;
+
+			p = cmd.Parameters.Add(Parameters.File_CoverLetter);
+			p.SourceColumn = ColumnNames.File_CoverLetter;
+			p.SourceVersion = DataRowVersion.Current;
+
+			p = cmd.Parameters.Add(Parameters.File_BoxApproval);
+			p.SourceColumn = ColumnNames.File_BoxApproval;
+			p.SourceVersion = DataRowVersion.Current;
+
+			p = cmd.Parameters.Add(Parameters.File_TradeNameApproval);
+			p.SourceColumn = ColumnNames.File_TradeNameApproval;
+			p.SourceVersion = DataRowVersion.Current;
+
+			p = cmd.Parameters.Add(Parameters.File_CostSheet);
+			p.SourceColumn = ColumnNames.File_CostSheet;
+			p.SourceVersion = DataRowVersion.Current;
+
+			p = cmd.Parameters.Add(Parameters.File_ProformaInvoice);
+			p.SourceColumn = ColumnNames.File_ProformaInvoice;
+			p.SourceVersion = DataRowVersion.Current;
+
+			p = cmd.Parameters.Add(Parameters.File_CifPriceToEgypt);
+			p.SourceColumn = ColumnNames.File_CifPriceToEgypt;
+			p.SourceVersion = DataRowVersion.Current;
+
+			p = cmd.Parameters.Add(Parameters.File_PriceOriginCountry);
+			p.SourceColumn = ColumnNames.File_PriceOriginCountry;
+			p.SourceVersion = DataRowVersion.Current;
+
+			p = cmd.Parameters.Add(Parameters.File_CountryPrices);
+			p.SourceColumn = ColumnNames.File_CountryPrices;
+			p.SourceVersion = DataRowVersion.Current;
+
+			p = cmd.Parameters.Add(Parameters.File_PackArtworkLeaflet);
+			p.SourceColumn = ColumnNames.File_PackArtworkLeaflet;
+			p.SourceVersion = DataRowVersion.Current;
+
+			p = cmd.Parameters.Add(Parameters.File_Others);
+			p.SourceColumn = ColumnNames.File_Others;
+			p.SourceVersion = DataRowVersion.Current;
+
+			p = cmd.Parameters.Add(Parameters.Generics);
+			p.SourceColumn = ColumnNames.Generics;
+			p.SourceVersion = DataRowVersion.Current;
+
+			p = cmd.Parameters.Add(Parameters.GenericStrength);
+			p.SourceColumn = ColumnNames.GenericStrength;
 			p.SourceVersion = DataRowVersion.Current;
 
 

@@ -124,7 +124,7 @@ TBODY TR.odd { background-color:#78a5d1; }
                     ValidationGroup="SaveMainPriceData"></asp:RequiredFieldValidator>
             </td>
             <td>
-                <asp:Label ID="Label8" runat="server" Text="File No."></asp:Label>
+                <asp:Label ID="Label8" runat="server" Text="Application No."></asp:Label>
             </td>
             <td>
                 <asp:TextBox ID="ui_txtFileNo" runat="server" Width="220px"></asp:TextBox>

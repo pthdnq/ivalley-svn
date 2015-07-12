@@ -382,6 +382,15 @@ namespace Pricing_GUI {
         protected global::System.Web.UI.WebControls.DropDownList ui_drpManufactures;
         
         /// <summary>
+        /// rquired_local control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rquired_local;
+        
+        /// <summary>
         /// ImportedTR control.
         /// </summary>
         /// <remarks>
@@ -434,6 +443,15 @@ namespace Pricing_GUI {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlTableCell Td3;
+        
+        /// <summary>
+        /// required_Imported control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator required_Imported;
         
         /// <summary>
         /// Td4 control.

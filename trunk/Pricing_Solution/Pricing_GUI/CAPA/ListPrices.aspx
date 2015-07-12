@@ -123,7 +123,7 @@ TBODY TR.odd { background-color:#78a5d1; }
         </tr>
         <tr>
             <td>
-               <asp:Label ID="Label8" runat="server" Text="File No."></asp:Label></td>
+               <asp:Label ID="Label8" runat="server" Text="Application No."></asp:Label></td>
             <td>
               <asp:TextBox ID="ui_txtFileNo" runat="server" Width="220px"></asp:TextBox> 
             </td>
@@ -372,7 +372,7 @@ TBODY TR.odd { background-color:#78a5d1; }
                                                                 </tr>
                                                                 <tr>
                                                                     <td class="style3">
-                                                                        <asp:Label ID="Label16" runat="server" Text="File No:" Font-Bold="True" 
+                                                                        <asp:Label ID="Label16" runat="server" Text="Application No:" Font-Bold="True" 
                                                                             ForeColor="Black"></asp:Label>
                                                                     </td>
                                                                     <td style="text-align: left">
@@ -532,15 +532,15 @@ TBODY TR.odd { background-color:#78a5d1; }
                                                             <HeaderStyle HorizontalAlign="Center" />
                                                         </asp:BoundField>
 
-                                                        <asp:BoundField HeaderText="File No" DataField="FileNo" NullDisplayText="-">
+                                                        <asp:BoundField HeaderText="Application No" DataField="FileNo" NullDisplayText="-">
                                                             <ItemStyle HorizontalAlign="Center" />
                                                             <HeaderStyle HorizontalAlign="Center" />
                                                         </asp:BoundField>
 
-                                                        <asp:BoundField HeaderText="Generic Strength" DataField="GenericStrength" NullDisplayText="-">
+                                                        <%--<asp:BoundField HeaderText="Generic Strength" DataField="GenericStrength" NullDisplayText="-">
                                                             <ItemStyle HorizontalAlign="Center" />
                                                             <HeaderStyle HorizontalAlign="Center" />
-                                                        </asp:BoundField>
+                                                        </asp:BoundField>--%>
 
                                                         <asp:BoundField HeaderText="Generic" DataField="Generic" NullDisplayText="-">
                                                             <ItemStyle HorizontalAlign="Center" />

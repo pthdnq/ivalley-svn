@@ -211,6 +211,14 @@ namespace Pricing.DAL
 				}
 			}
 			
+			public static SqlParameter UserID
+			{
+				get
+				{
+					return new SqlParameter("@UserID", SqlDbType.UniqueIdentifier, 0);
+				}
+			}
+			
 		}
 		#endregion		
 	
@@ -231,6 +239,7 @@ namespace Pricing.DAL
             public const string New_Email_2 = "New_Email_2";
             public const string Phone_Number2 = "Phone_Number2";
             public const string Checked = "checked";
+            public const string UserID = "UserID";
 
 			static public string ToPropertyName(string columnName)
 			{
@@ -252,6 +261,7 @@ namespace Pricing.DAL
 					ht[New_Email_2] = _Companies.PropertyNames.New_Email_2;
 					ht[Phone_Number2] = _Companies.PropertyNames.Phone_Number2;
 					ht[Checked] = _Companies.PropertyNames.Checked;
+					ht[UserID] = _Companies.PropertyNames.UserID;
 
 				}
 				return (string)ht[columnName];
@@ -278,6 +288,7 @@ namespace Pricing.DAL
             public const string New_Email_2 = "New_Email_2";
             public const string Phone_Number2 = "Phone_Number2";
             public const string Checked = "Checked";
+            public const string UserID = "UserID";
 
 			static public string ToColumnName(string propertyName)
 			{
@@ -299,6 +310,7 @@ namespace Pricing.DAL
 					ht[New_Email_2] = _Companies.ColumnNames.New_Email_2;
 					ht[Phone_Number2] = _Companies.ColumnNames.Phone_Number2;
 					ht[Checked] = _Companies.ColumnNames.Checked;
+					ht[UserID] = _Companies.ColumnNames.UserID;
 
 				}
 				return (string)ht[propertyName];
@@ -325,6 +337,7 @@ namespace Pricing.DAL
             public const string New_Email_2 = "s_New_Email_2";
             public const string Phone_Number2 = "s_Phone_Number2";
             public const string Checked = "s_Checked";
+            public const string UserID = "s_UserID";
 
 		}
 		#endregion		
@@ -496,6 +509,18 @@ namespace Pricing.DAL
 			set
 	        {
 				base.Setbool(ColumnNames.Checked, value);
+			}
+		}
+
+		public virtual Guid UserID
+	    {
+			get
+	        {
+				return base.GetGuid(ColumnNames.UserID);
+			}
+			set
+	        {
+				base.SetGuid(ColumnNames.UserID, value);
 			}
 		}
 
@@ -714,6 +739,21 @@ namespace Pricing.DAL
 			}
 		}
 
+		public virtual string s_UserID
+	    {
+			get
+	        {
+				return this.IsColumnNull(ColumnNames.UserID) ? string.Empty : base.GetGuidAsString(ColumnNames.UserID);
+			}
+			set
+	        {
+				if(string.Empty == value)
+					this.SetColumnNull(ColumnNames.UserID);
+				else
+					this.UserID = base.SetGuidAsString(ColumnNames.UserID, value);
+			}
+		}
+
 
 		#endregion		
 	
@@ -882,6 +922,16 @@ namespace Pricing.DAL
 					get
 					{
 							WhereParameter where = new WhereParameter(ColumnNames.Checked, Parameters.Checked);
+							this._clause._entity.Query.AddWhereParameter(where);
+							return where;
+					}
+				}
+
+				public WhereParameter UserID
+				{
+					get
+					{
+							WhereParameter where = new WhereParameter(ColumnNames.UserID, Parameters.UserID);
 							this._clause._entity.Query.AddWhereParameter(where);
 							return where;
 					}
@@ -1060,6 +1110,18 @@ namespace Pricing.DAL
 				}
 			}
 
+			public WhereParameter UserID
+		    {
+				get
+		        {
+					if(_UserID_W == null)
+	        	    {
+						_UserID_W = TearOff.UserID;
+					}
+					return _UserID_W;
+				}
+			}
+
 			private WhereParameter _CompanyID_W = null;
 			private WhereParameter _Login_Code_W = null;
 			private WhereParameter _Login_Password_W = null;
@@ -1074,6 +1136,7 @@ namespace Pricing.DAL
 			private WhereParameter _New_Email_2_W = null;
 			private WhereParameter _Phone_Number2_W = null;
 			private WhereParameter _Checked_W = null;
+			private WhereParameter _UserID_W = null;
 
 			public void WhereClauseReset()
 			{
@@ -1091,6 +1154,7 @@ namespace Pricing.DAL
 				_New_Email_2_W = null;
 				_Phone_Number2_W = null;
 				_Checked_W = null;
+				_UserID_W = null;
 
 				this._entity.Query.FlushWhereParameters();
 
@@ -1287,6 +1351,16 @@ namespace Pricing.DAL
 					}
 				}
 
+				public AggregateParameter UserID
+				{
+					get
+					{
+							AggregateParameter aggregate = new AggregateParameter(ColumnNames.UserID, Parameters.UserID);
+							this._clause._entity.Query.AddAggregateParameter(aggregate);
+							return aggregate;
+					}
+				}
+
 
 				private AggregateClause _clause;
 			}
@@ -1460,6 +1534,18 @@ namespace Pricing.DAL
 				}
 			}
 
+			public AggregateParameter UserID
+		    {
+				get
+		        {
+					if(_UserID_W == null)
+	        	    {
+						_UserID_W = TearOff.UserID;
+					}
+					return _UserID_W;
+				}
+			}
+
 			private AggregateParameter _CompanyID_W = null;
 			private AggregateParameter _Login_Code_W = null;
 			private AggregateParameter _Login_Password_W = null;
@@ -1474,6 +1560,7 @@ namespace Pricing.DAL
 			private AggregateParameter _New_Email_2_W = null;
 			private AggregateParameter _Phone_Number2_W = null;
 			private AggregateParameter _Checked_W = null;
+			private AggregateParameter _UserID_W = null;
 
 			public void AggregateClauseReset()
 			{
@@ -1491,6 +1578,7 @@ namespace Pricing.DAL
 				_New_Email_2_W = null;
 				_Phone_Number2_W = null;
 				_Checked_W = null;
+				_UserID_W = null;
 
 				this._entity.Query.FlushAggregateParameters();
 
@@ -1619,6 +1707,10 @@ namespace Pricing.DAL
 
 			p = cmd.Parameters.Add(Parameters.Checked);
 			p.SourceColumn = ColumnNames.Checked;
+			p.SourceVersion = DataRowVersion.Current;
+
+			p = cmd.Parameters.Add(Parameters.UserID);
+			p.SourceColumn = ColumnNames.UserID;
 			p.SourceVersion = DataRowVersion.Current;
 
 

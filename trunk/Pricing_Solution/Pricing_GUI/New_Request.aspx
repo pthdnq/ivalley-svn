@@ -123,7 +123,7 @@
                                                         </td>
                                                         <td>
                                                             <asp:TextBox runat="server" Width="220px" CssClass="dateSelect" ID="ui_txtSubmissionDate"></asp:TextBox>
-                                                            <cc1:CalendarExtender runat="server" TargetControlID="ui_txtSubmissionDate" ID="ui_calExntener"
+                                                            <cc1:CalendarExtender runat="server" Format="MMMM-dd-yyyy" TargetControlID="ui_txtSubmissionDate" ID="ui_calExntener"
                                                                 Enabled="True">
                                                             </cc1:CalendarExtender>
                                                         </td>
@@ -133,7 +133,7 @@
                                                                 ValidationGroup="SaveMainPriceData"></asp:RequiredFieldValidator>
                                                         </td>
                                                         <td>
-                                                            <asp:Label ID="Label8" runat="server" Text="File No."></asp:Label>
+                                                            <asp:Label ID="Label8" runat="server" Text="Application No."></asp:Label>
                                                         </td>
                                                         <td>
                                                             <asp:TextBox ID="ui_txtFileNo" runat="server" Width="220px"></asp:TextBox>
@@ -178,6 +178,7 @@
                                                             </asp:DropDownList>
                                                         </td>
                                                         <td>
+                                                            <asp:RequiredFieldValidator ID="rquired_local" ValidationGroup="SaveMainPriceData" runat="server" InitialValue="0" ControlToValidate="ui_drpManufactures" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
                                                         </td>
                                                         <td>
                                                             &nbsp;
@@ -198,6 +199,11 @@
                                                                 Width="220px"></asp:TextBox>
                                                         </td>
                                                         <td id="Td3" runat="server">
+
+
+                                                            <asp:RequiredFieldValidator ID="required_Imported" ValidationGroup="SaveMainPriceData" runat="server"  ControlToValidate="ui_txtImportedManufacture" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
+
+
                                                         </td>
                                                         <td id="Td4" runat="server">
                                                         </td>

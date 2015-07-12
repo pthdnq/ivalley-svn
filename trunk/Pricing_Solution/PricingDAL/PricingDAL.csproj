@@ -51,6 +51,8 @@
     <Compile Include="Generic_names.cs" />
     <Compile Include="MailTemplates.cs" />
     <Compile Include="Notifications.cs" />
+    <Compile Include="PackageDetails.cs" />
+    <Compile Include="PackagePricing.cs" />
     <Compile Include="PricingStatus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Registeration_Committee_Type.cs" />
@@ -69,6 +71,10 @@
     <Compile Include="TradePricingStatus.cs" />
     <Compile Include="Unit.cs" />
     <Compile Include="userLogin.cs" />
+    <Compile Include="V_EDDB_DrugGenerics.cs" />
+    <Compile Include="v_EDDB_PackDetailes.cs" />
+    <Compile Include="V_EDDB_Pricing_Companies.cs" />
+    <Compile Include="v_EDDB_TradeDrugDetails.cs" />
     <Compile Include="v_GetAllGenericInfoByDrugID.cs" />
     <Compile Include="v_GetAllNotifications.cs" />
     <Compile Include="v_GetOneGenericInfoByDrugID.cs" />

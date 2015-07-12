@@ -21,7 +21,7 @@ namespace Pricing_GUI
             {
                 if (Request.QueryString["ID"] != null && Request.QueryString["ID"].ToString() != "")
                 {
-                    Session["TradePriceID"] = Request.QueryString["ID"].ToString();
+                    Session["TradePriceID"] = AppCode.CryptorEngine.Decrypt(Request.QueryString["ID"].ToString(),true);
                 }
 
                 if (Session["TradePriceID"] != null)
@@ -133,11 +133,15 @@ namespace Pricing_GUI
             if (ui_drpFileType.SelectedItem.Text == "Imported")
             {
                 LocalTR.Visible = false;
+                rquired_local.Enabled = false;
+                required_Imported.Enabled = true;
                 ImportedTR.Visible = true;
             }
             else
             {
                 LocalTR.Visible = true;
+                rquired_local.Enabled = true;
+                required_Imported.Enabled = false;
                 ImportedTR.Visible = false;
             }
         }

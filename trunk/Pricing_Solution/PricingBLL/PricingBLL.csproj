@@ -53,9 +53,15 @@
     <Compile Include="Companies.cs" />
     <Compile Include="CompanyDescision.cs" />
     <Compile Include="ConvertDate.cs" />
+    <Compile Include="PackageDetails.cs" />
+    <Compile Include="PackagePricing.cs" />
     <Compile Include="SectorType.cs" />
     <Compile Include="TradePricingLicenseType.cs" />
     <Compile Include="TradePricingStatus.cs" />
+    <Compile Include="V_EDDB_DrugGenerics.cs" />
+    <Compile Include="v_EDDB_TradeDrugDetails.cs" />
+    <Compile Include="V_EDDB_Pricing_Companies.cs" />
+    <Compile Include="v_EDDB_PackDetailes.cs" />
     <Compile Include="v_StatusHistory.cs" />
     <Compile Include="v_GetAllNotifications.cs" />
     <Compile Include="StatusHistory.cs" />

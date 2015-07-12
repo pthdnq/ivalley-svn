@@ -70,7 +70,9 @@ namespace Pricing_GUI
             //CodeGlobal.IsDisableMode = true;
             // TODO: Check if this case will open in enabled or isabled mode.
 
-            Response.Redirect("New_Request.aspx?ID=" + btn.CommandArgument);
+
+
+            Response.Redirect("New_Request.aspx?ID=" + AppCode.CryptorEngine.Encrypt(btn.CommandArgument,true));
         }
     }
 }
