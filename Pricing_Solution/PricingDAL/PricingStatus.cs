@@ -123,6 +123,14 @@ namespace Pricing.DAL
 				}
 			}
 			
+			public static SqlParameter StatusHolder
+			{
+				get
+				{
+					return new SqlParameter("@StatusHolder", SqlDbType.NVarChar, 50);
+				}
+			}
+			
 		}
 		#endregion		
 	
@@ -132,6 +140,7 @@ namespace Pricing.DAL
             public const string PricingStatusID = "PricingStatusID";
             public const string Status = "Status";
             public const string Description = "Description";
+            public const string StatusHolder = "StatusHolder";
 
 			static public string ToPropertyName(string columnName)
 			{
@@ -142,6 +151,7 @@ namespace Pricing.DAL
 					ht[PricingStatusID] = _PricingStatus.PropertyNames.PricingStatusID;
 					ht[Status] = _PricingStatus.PropertyNames.Status;
 					ht[Description] = _PricingStatus.PropertyNames.Description;
+					ht[StatusHolder] = _PricingStatus.PropertyNames.StatusHolder;
 
 				}
 				return (string)ht[columnName];
@@ -157,6 +167,7 @@ namespace Pricing.DAL
             public const string PricingStatusID = "PricingStatusID";
             public const string Status = "Status";
             public const string Description = "Description";
+            public const string StatusHolder = "StatusHolder";
 
 			static public string ToColumnName(string propertyName)
 			{
@@ -167,6 +178,7 @@ namespace Pricing.DAL
 					ht[PricingStatusID] = _PricingStatus.ColumnNames.PricingStatusID;
 					ht[Status] = _PricingStatus.ColumnNames.Status;
 					ht[Description] = _PricingStatus.ColumnNames.Description;
+					ht[StatusHolder] = _PricingStatus.ColumnNames.StatusHolder;
 
 				}
 				return (string)ht[propertyName];
@@ -182,6 +194,7 @@ namespace Pricing.DAL
             public const string PricingStatusID = "s_PricingStatusID";
             public const string Status = "s_Status";
             public const string Description = "s_Description";
+            public const string StatusHolder = "s_StatusHolder";
 
 		}
 		#endregion		
@@ -221,6 +234,18 @@ namespace Pricing.DAL
 			set
 	        {
 				base.Setstring(ColumnNames.Description, value);
+			}
+		}
+
+		public virtual string StatusHolder
+	    {
+			get
+	        {
+				return base.Getstring(ColumnNames.StatusHolder);
+			}
+			set
+	        {
+				base.Setstring(ColumnNames.StatusHolder, value);
 			}
 		}
 
@@ -271,6 +296,21 @@ namespace Pricing.DAL
 					this.SetColumnNull(ColumnNames.Description);
 				else
 					this.Description = base.SetstringAsString(ColumnNames.Description, value);
+			}
+		}
+
+		public virtual string s_StatusHolder
+	    {
+			get
+	        {
+				return this.IsColumnNull(ColumnNames.StatusHolder) ? string.Empty : base.GetstringAsString(ColumnNames.StatusHolder);
+			}
+			set
+	        {
+				if(string.Empty == value)
+					this.SetColumnNull(ColumnNames.StatusHolder);
+				else
+					this.StatusHolder = base.SetstringAsString(ColumnNames.StatusHolder, value);
 			}
 		}
 
@@ -337,6 +377,16 @@ namespace Pricing.DAL
 					}
 				}
 
+				public WhereParameter StatusHolder
+				{
+					get
+					{
+							WhereParameter where = new WhereParameter(ColumnNames.StatusHolder, Parameters.StatusHolder);
+							this._clause._entity.Query.AddWhereParameter(where);
+							return where;
+					}
+				}
+
 
 				private WhereClause _clause;
 			}
@@ -378,15 +428,29 @@ namespace Pricing.DAL
 				}
 			}
 
+			public WhereParameter StatusHolder
+		    {
+				get
+		        {
+					if(_StatusHolder_W == null)
+	        	    {
+						_StatusHolder_W = TearOff.StatusHolder;
+					}
+					return _StatusHolder_W;
+				}
+			}
+
 			private WhereParameter _PricingStatusID_W = null;
 			private WhereParameter _Status_W = null;
 			private WhereParameter _Description_W = null;
+			private WhereParameter _StatusHolder_W = null;
 
 			public void WhereClauseReset()
 			{
 				_PricingStatusID_W = null;
 				_Status_W = null;
 				_Description_W = null;
+				_StatusHolder_W = null;
 
 				this._entity.Query.FlushWhereParameters();
 
@@ -473,6 +537,16 @@ namespace Pricing.DAL
 					}
 				}
 
+				public AggregateParameter StatusHolder
+				{
+					get
+					{
+							AggregateParameter aggregate = new AggregateParameter(ColumnNames.StatusHolder, Parameters.StatusHolder);
+							this._clause._entity.Query.AddAggregateParameter(aggregate);
+							return aggregate;
+					}
+				}
+
 
 				private AggregateClause _clause;
 			}
@@ -514,15 +588,29 @@ namespace Pricing.DAL
 				}
 			}
 
+			public AggregateParameter StatusHolder
+		    {
+				get
+		        {
+					if(_StatusHolder_W == null)
+	        	    {
+						_StatusHolder_W = TearOff.StatusHolder;
+					}
+					return _StatusHolder_W;
+				}
+			}
+
 			private AggregateParameter _PricingStatusID_W = null;
 			private AggregateParameter _Status_W = null;
 			private AggregateParameter _Description_W = null;
+			private AggregateParameter _StatusHolder_W = null;
 
 			public void AggregateClauseReset()
 			{
 				_PricingStatusID_W = null;
 				_Status_W = null;
 				_Description_W = null;
+				_StatusHolder_W = null;
 
 				this._entity.Query.FlushAggregateParameters();
 
@@ -607,6 +695,10 @@ namespace Pricing.DAL
 
 			p = cmd.Parameters.Add(Parameters.Description);
 			p.SourceColumn = ColumnNames.Description;
+			p.SourceVersion = DataRowVersion.Current;
+
+			p = cmd.Parameters.Add(Parameters.StatusHolder);
+			p.SourceColumn = ColumnNames.StatusHolder;
 			p.SourceVersion = DataRowVersion.Current;
 
 

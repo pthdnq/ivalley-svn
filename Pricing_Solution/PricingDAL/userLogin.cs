@@ -86,10 +86,12 @@ namespace Pricing.DAL
 		//=================================================================
 		//  Loads a single row of via the primary key
 		//=================================================================
-		public virtual bool LoadByPrimaryKey()
+		public virtual bool LoadByPrimaryKey(int AdminID)
 		{
 			ListDictionary parameters = new ListDictionary();
-					
+			parameters.Add(Parameters.AdminID, AdminID);
+
+		
 			return base.LoadFromSql("[" + this.SchemaStoredProcedure + "proc_userLoginLoadByPrimaryKey]", parameters);
 		}
 		
@@ -643,7 +645,11 @@ namespace Pricing.DAL
 			cmd.CommandText = "[" + this.SchemaStoredProcedure + "proc_userLoginInsert]";
 	
 			CreateParameters(cmd);
-			    
+			
+			SqlParameter p;
+			p = cmd.Parameters[Parameters.AdminID.ParameterName];
+			p.Direction = ParameterDirection.Output;
+    
 			return cmd;
 		}
 	
@@ -667,6 +673,10 @@ namespace Pricing.DAL
 			cmd.CommandText = "[" + this.SchemaStoredProcedure + "proc_userLoginDelete]";
 	
 			SqlParameter p;
+			p = cmd.Parameters.Add(Parameters.AdminID);
+			p.SourceColumn = ColumnNames.AdminID;
+			p.SourceVersion = DataRowVersion.Current;
+
   
 			return cmd;
 		}

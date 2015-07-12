@@ -20,5 +20,12 @@ namespace Pricing.BLL
 
             this.Query.Load();
         }
+
+        public bool GetCompanyByUserID(Guid UserID)
+        {
+            this.Where.UserID.Value = UserID;
+            this.Where.UserID.Operator = MyGeneration.dOOdads.WhereParameter.Operand.Equal;
+            return this.Query.Load();
+        }
 	}
 }
