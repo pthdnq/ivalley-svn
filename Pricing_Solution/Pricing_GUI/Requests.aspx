@@ -68,15 +68,11 @@
             });
         });
 
-        var linkrenderer = function (row, column, value) {            
-            var html = '<a style="display:block;margin:0 auto;" target="_blank" onclick="ToggleDrugInfo('+row+')" class="btn btn-default">Select</a>';
-            return html;
-        }
 
         function SearchDrugs() {
             $('#druginfotabs').fadeOut(200);
             $('#gridHolder').fadeIn(300).delay(500);
-            
+
 
             try {
                 $('#jqxgrid').jqxGrid('destroy');
@@ -116,30 +112,84 @@
                autoheight: true,
                selectionmode: 'none',
                columns: [
-                 { text: 'Trade Name', datafield: 'Trade_name', width: '30%', cellsalign: 'left' ,align : 'left' },
+                 { text: 'Trade Name', datafield: 'Trade_name', width: '30%', cellsalign: 'left', align: 'left' },
                  { text: 'Generics', datafield: 'Generics', width: '30%', cellsalign: 'center', align: 'center' },
                  { text: 'Applicant', datafield: 'Applicant', width: '20%', cellsalign: 'center', align: 'center' },
-                 { text: 'Reg. No.', datafield: 'Drug_license_number', width: '10%', cellsalign: 'center',  align: 'center' },
+                 { text: 'Reg. No.', datafield: 'Drug_license_number', width: '10%', cellsalign: 'center', align: 'center' },
                  { text: '', datafield: 'TradeCode', width: '10%', cellsrenderer: linkrenderer, cellsalign: 'center', align: 'center' }
                ]
            });
 
-         }
-
-        
-        function ToggleDrugInfo()
-        {
-            $('#gridHolder').fadeOut(200);
-
-            getDrugInfo();
-            
-
-            $('#druginfotabs').fadeIn(300).delay(500);            
         }
 
-        function getDrugInfo() {
+        var linkrenderer = function (row, column, value) {            
+            var html = '<a style="display:block;margin:0 auto;" target="_blank" onclick="getPackInfo('+row+')" class="btn btn-default">Select</a>';
+            return html;
+        }        var renderPackLink = function (row, column, value) {
+            var html = '<a style="display:block;margin:0 auto;" target="_blank" onclick="getPricingInfo(' + row + ')" class="btn btn-default">Select</a>';
+            return html;
+        }
+
+        function getPackInfo(row) {
+            $('#PackInfoGrid').show();
+            $('#loadingMsg').html("Loading package details info ...");
+            var datarow = $("#jqxgrid").jqxGrid('getrowdata', row);
+            $('uiHiddenFieldDrugID').val(datarow.TradeCode);
+            try {
+                $('#packagejqxgrid').jqxGrid('destroy');
+            } catch (e) {
+
+            }
+
+            $('#PackInfoGrid').append("<div id='packagejqxgrid'></div>");
+
+            var source =
+            {
+                datatype: "json",
+                datafields: [
+                    { name: 'Pack_unit', type: 'string' },
+                    { name: 'Pack_Unit_Name', type: 'string' },
+                    { name: 'conver_sub', type: 'number' },
+                    { name: 'unit_price', type: 'number' },
+                ],
+                url: "services/PricingService.asmx/GetTradePackgesById",
+                data: {
+                    id: datarow.TradeCode,
+                }
+            };
+            var dataAdapter = new $.jqx.dataAdapter(source);
+            $("#packagejqxgrid").jqxGrid(
+            {
+                width: "100%",
+                source: dataAdapter,
+                enablehover: false,
+                pageable: true,
+                autoheight: true,
+                selectionmode: 'none',
+                columns: [
+                    { text: 'Main unit', datafield: 'Pack_unit', width: '25%', cellsalign: 'left', align: 'left' },
+                    { text: 'Sub Unit', datafield: 'Pack_Unit_Name', width: '25%', cellsalign: 'left', align: 'left' },
+                    { text: 'Conv. To Sub', datafield: 'conver_sub', width: '20%', cellsalign: 'center', align: 'center' },
+                    { text: 'Price', datafield: 'unit_price', width: '20%', cellsalign: 'center', align: 'center' },
+                    { text: '', datafield: 'PackID', width: '10%', cellsrenderer: renderPackLink, cellsalign: 'center', align: 'center' }
+                ]
+            });
+
+            $('#drugloading').hide();
+            $('#loadingMsg').html("");
+
+        }
+
+        function getPricingInfo(row) {
+            $('#gridHolder').fadeOut(200);
+            $('#PackInfoGrid').fadeOut(200);
+
+            var datarow = $("#packagejqxgrid").jqxGrid('getrowdata', row);
+
+            $('#druginfotabs').fadeIn(300).delay(500);
             $('#loadingMsg').html("Loading drug info ...");
             $('#drugloading').show();
+            
             $.ajax({
                 url: 'services/PricingService.asmx/GetTradeDrugById',
                 type: 'POST',
@@ -165,53 +215,7 @@
             });
         }
 
-        function getPackInfo() {
-            $('#loadingMsg').html("Loading package details info ...");
-            
-            
-                try {
-                    $('#packagejqxgrid').jqxGrid('destroy');
-                } catch (e) {
-
-                }
-
-                $('#PackInfoGrid').append("<div id='packagejqxgrid'></div>");
-
-            var source =
-            {
-                datatype: "json",
-                datafields: [
-                    { name: 'Pack_unit', type: 'string' },
-                    { name: 'Pack_Unit_Name', type: 'string' },
-                    { name: 'conver_sub', type: 'number' },
-                    { name: 'unit_price', type: 'number' },
-                ],
-                url: "services/PricingService.asmx/GetTradePackgesById",
-                data: {
-                    id: $('#uiHiddenFieldDrugID').val(),
-                }
-            };
-            var dataAdapter = new $.jqx.dataAdapter(source);
-            $("#packagejqxgrid").jqxGrid(
-            {
-                width: "100%",
-                source: dataAdapter,
-                enablehover: false,
-                pageable: true,
-                autoheight: true,
-                selectionmode: 'none',
-                columns: [
-                    { text: 'Main unit', datafield: 'Pack_unit', width: '30%', cellsalign: 'left', align: 'left' },
-                    { text: 'Sub Unit', datafield: 'Pack_Unit_Name', width: '30%', cellsalign: 'left', align: 'left' },
-                    { text: 'Conv. To Sub', datafield: 'conver_sub', width: '20%', cellsalign: 'center', align: 'center' },
-                    { text: 'Price', datafield: 'unit_price', width: '20%', cellsalign: 'center', align: 'center' },
-                ]
-            });
-            
-            $('#drugloading').hide();
-            $('#loadingMsg').html("");
-            
-        }
+        
 
         function getGenerics() {
             $('#loadingMsg').html("Loading generics info ...");
@@ -253,11 +257,14 @@
                     { text: 'strength unit', datafield: 'strengthunitstr', width: '30%', cellsalign: 'center', align: 'center' },
                 ]
             });
+            $('#drugloading').hide();
+            $('#loadingMsg').html("");
+        }
 
 
-            
-            getPackInfo();
-
+        function SetAttachment(id, value)
+        {            
+            $('#hf' + id).val(value);            
         }
 
     </script>
@@ -327,15 +334,20 @@
                             
                         </div>
 
-                        <div class="span12 clearfix" id="gridHolder" style="margin-left:0px;">
-                            
+                        <div class="span12 clearfix" id="gridHolder" style="margin-left:0px;display:none;">
+                        <h4>Available drugs</h4>    
+                        </div>
+
+                        <div id="PackInfoGrid" class="span12 clearfix block-margin-bottom-5" style="margin-left:0px;display:none;">
+                            <h4>Available packages</h4>    
                         </div>
 
                         <div class="span12 clearfix" id="druginfotabs" style="display:none;margin-left:0px;" >
+                           
                             <div class="tabbable tabbable-custom" style="position:relative;">
                                     <ul class="nav nav-tabs">
                                        <li class="active"><a href="#tab_1_1" data-toggle="tab">Drug info</a></li>
-                                       <li><a href="#tab_1_2" data-toggle="tab">Packages info</a></li>
+                                       <%--<li><a href="#tab_1_2" data-toggle="tab">Packages info</a></li>--%>
                                        <li><a href="#tab_1_3" data-toggle="tab">Attachments</a></li>
                                        <li><a href="#tab_1_4" data-toggle="tab">Status history</a></li>
                                        <li><a href="#tab_1_5" data-toggle="tab">Before comitte</a></li>
@@ -490,10 +502,74 @@
                                                <div id="genericsGrid"></div>
                                            </div>
                                        </div>
-                                       <div class="tab-pane" id="tab_1_2">
-                                          <div id="PackInfoGrid"></div>
-                                       </div>
+                                       <%--<div class="tab-pane" id="tab_1_2">
+                                          
+                                       </div>--%>
                                        <div class="tab-pane" id="tab_1_3">
+                                          <div class="span12 clearfix block-margin-bottom-5" style="margin-left:0">
+                                              <div class="span2">Covering Letter</div>
+                                              <div class="span10">
+                                                  <iframe src="uiUpload.html?id=1" style="border: 0; width: 80%; overflow: hidden; height: 100px;"></iframe>
+                                                  <input type="hidden" id="hf1" />
+                                              </div>
+                                          </div>
+                                          
+                                           <div class="span12 clearfix block-margin-bottom-5" style="margin-left:0">
+                                              <div class="span2">Box Approval Letter</div>
+                                              <div class="span10">
+                                                  <iframe src="uiUpload.html?id=2" style="border: 0; width: 80%; overflow: hidden; height: 100px;"></iframe>
+                                                  <input type="hidden" id="hf2" />
+                                              </div>
+                                          </div>
+                                           <div class="span12 clearfix block-margin-bottom-5" style="margin-left:0">
+                                              <div class="span2">Trade Name Approval Letter</div>
+                                              <div class="span10">
+                                                  <iframe src="uiUpload.html?id=3" style="border: 0; width: 80%; overflow: hidden; height: 100px;"></iframe>
+                                                  <input type="hidden" id="hf3" />
+                                              </div>
+                                          </div>
+                                           <div class="span12 clearfix block-margin-bottom-5" style="margin-left:0">
+                                              <div class="span2">Cost Sheet</div>
+                                              <div class="span10">
+                                                  <iframe src="uiUpload.html?id=4" style="border: 0; width: 80%; overflow: hidden; height: 100px;"></iframe>
+                                                  <input type="hidden" id="hf4" />
+                                              </div>
+                                          </div>
+                                           <div class="span12 clearfix block-margin-bottom-5" style="margin-left:0">
+                                              <div class="span2">Proforma invoice</div>
+                                              <div class="span10">
+                                                  <iframe src="uiUpload.html?id=5" style="border: 0; width: 80%; overflow: hidden; height: 100px;"></iframe>
+                                                  <input type="hidden" id="hf5" />
+                                              </div>
+                                          </div>
+                                           <div class="span12 clearfix block-margin-bottom-5" style="margin-left:0">
+                                              <div class="span2">CIF Price To Egypt </div>
+                                              <div class="span10">
+                                                  <iframe src="uiUpload.html?id=6" style="border: 0; width: 80%; overflow: hidden; height: 100px;"></iframe>
+                                                  <input type="hidden" id="hf6" />
+                                              </div>
+                                          </div>
+                                           <div class="span12 clearfix block-margin-bottom-5" style="margin-left:0">
+                                              <div class="span2">Price of Product in the country of origin</div>
+                                              <div class="span10">
+                                                  <iframe src="uiUpload.html?id=7" style="border: 0; width: 80%; overflow: hidden; height: 100px;"></iframe>
+                                                  <input type="hidden" id="hf7" />
+                                              </div>
+                                          </div> 
+                                           <div class="span12 clearfix block-margin-bottom-5" style="margin-left:0">
+                                              <div class="span2">Country Prices of the Product </div>
+                                              <div class="span10">
+                                                  <iframe src="uiUpload.html?id=8" style="border: 0; width: 80%; overflow: hidden; height: 100px;"></iframe>
+                                                  <input type="hidden" id="hf8" />
+                                              </div>
+                                          </div>
+                                           <div class="span12 clearfix block-margin-bottom-5" style="margin-left:0">
+                                              <div class="span2">Product Pack or Artwork and leaflet</div>
+                                              <div class="span10">
+                                                  <iframe src="uiUpload.html?id=9" style="border: 0; width: 80%; overflow: hidden; height: 100px;"></iframe>
+                                                  <input type="hidden" id="hf9" />
+                                              </div>
+                                          </div>
                                           
                                        </div>
                                         <div class="tab-pane active" id="tab_1_4">

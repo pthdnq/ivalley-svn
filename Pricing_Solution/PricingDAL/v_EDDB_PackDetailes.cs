@@ -96,6 +96,14 @@ namespace View
 				}
 			}
 			
+			public static SqlParameter PackID
+			{
+				get
+				{
+					return new SqlParameter("@PackID", SqlDbType.Int, 0);
+				}
+			}
+			
 		}
 		#endregion	
 	
@@ -108,6 +116,7 @@ namespace View
             public const string Conver_sub = "conver_sub";
             public const string Pack_Unit_Name = "Pack_Unit_Name";
             public const string Unit_price = "unit_price";
+            public const string PackID = "PackID";
 
 			static public string ToPropertyName(string columnName)
 			{
@@ -121,6 +130,7 @@ namespace View
 					ht[Conver_sub] = _v_EDDB_PackDetailes.PropertyNames.Conver_sub;
 					ht[Pack_Unit_Name] = _v_EDDB_PackDetailes.PropertyNames.Pack_Unit_Name;
 					ht[Unit_price] = _v_EDDB_PackDetailes.PropertyNames.Unit_price;
+					ht[PackID] = _v_EDDB_PackDetailes.PropertyNames.PackID;
 
 				}
 				return (string)ht[columnName];
@@ -139,6 +149,7 @@ namespace View
             public const string Conver_sub = "Conver_sub";
             public const string Pack_Unit_Name = "Pack_Unit_Name";
             public const string Unit_price = "Unit_price";
+            public const string PackID = "PackID";
 
 			static public string ToColumnName(string propertyName)
 			{
@@ -152,6 +163,7 @@ namespace View
 					ht[Conver_sub] = _v_EDDB_PackDetailes.ColumnNames.Conver_sub;
 					ht[Pack_Unit_Name] = _v_EDDB_PackDetailes.ColumnNames.Pack_Unit_Name;
 					ht[Unit_price] = _v_EDDB_PackDetailes.ColumnNames.Unit_price;
+					ht[PackID] = _v_EDDB_PackDetailes.ColumnNames.PackID;
 
 				}
 				return (string)ht[propertyName];
@@ -170,6 +182,7 @@ namespace View
             public const string Conver_sub = "s_Conver_sub";
             public const string Pack_Unit_Name = "s_Pack_Unit_Name";
             public const string Unit_price = "s_Unit_price";
+            public const string PackID = "s_PackID";
 
 		}
 		#endregion	
@@ -244,6 +257,18 @@ namespace View
 			set
 	        {
 				base.Setdecimal(ColumnNames.Unit_price, value);
+			}
+		}
+
+		public virtual int PackID
+	    {
+			get
+	        {
+				return base.Getint(ColumnNames.PackID);
+			}
+			set
+	        {
+				base.Setint(ColumnNames.PackID, value);
 			}
 		}
 
@@ -342,6 +367,21 @@ namespace View
 			}
 		}
 
+		public virtual string s_PackID
+	    {
+			get
+	        {
+				return this.IsColumnNull(ColumnNames.PackID) ? string.Empty : base.GetintAsString(ColumnNames.PackID);
+			}
+			set
+	        {
+				if(string.Empty == value)
+					this.SetColumnNull(ColumnNames.PackID);
+				else
+					this.PackID = base.SetintAsString(ColumnNames.PackID, value);
+			}
+		}
+
 
 		#endregion			
 	
@@ -435,6 +475,16 @@ namespace View
 					}
 				}
 
+				public WhereParameter PackID
+				{
+					get
+					{
+							WhereParameter where = new WhereParameter(ColumnNames.PackID, Parameters.PackID);
+							this._clause._entity.Query.AddWhereParameter(where);
+							return where;
+					}
+				}
+
 
 				private WhereClause _clause;
 			}
@@ -512,12 +562,25 @@ namespace View
 				}
 			}
 
+			public WhereParameter PackID
+		    {
+				get
+		        {
+					if(_PackID_W == null)
+	        	    {
+						_PackID_W = TearOff.PackID;
+					}
+					return _PackID_W;
+				}
+			}
+
 			private WhereParameter _TradeCode_W = null;
 			private WhereParameter _Trade_name_W = null;
 			private WhereParameter _Pack_unit_W = null;
 			private WhereParameter _Conver_sub_W = null;
 			private WhereParameter _Pack_Unit_Name_W = null;
 			private WhereParameter _Unit_price_W = null;
+			private WhereParameter _PackID_W = null;
 
 			public void WhereClauseReset()
 			{
@@ -527,6 +590,7 @@ namespace View
 				_Conver_sub_W = null;
 				_Pack_Unit_Name_W = null;
 				_Unit_price_W = null;
+				_PackID_W = null;
 
 				this._entity.Query.FlushWhereParameters();
 
@@ -643,6 +707,16 @@ namespace View
 					}
 				}
 
+				public AggregateParameter PackID
+				{
+					get
+					{
+							AggregateParameter aggregate = new AggregateParameter(ColumnNames.PackID, Parameters.PackID);
+							this._clause._entity.Query.AddAggregateParameter(aggregate);
+							return aggregate;
+					}
+				}
+
 
 				private AggregateClause _clause;
 			}
@@ -720,12 +794,25 @@ namespace View
 				}
 			}
 
+			public AggregateParameter PackID
+		    {
+				get
+		        {
+					if(_PackID_W == null)
+	        	    {
+						_PackID_W = TearOff.PackID;
+					}
+					return _PackID_W;
+				}
+			}
+
 			private AggregateParameter _TradeCode_W = null;
 			private AggregateParameter _Trade_name_W = null;
 			private AggregateParameter _Pack_unit_W = null;
 			private AggregateParameter _Conver_sub_W = null;
 			private AggregateParameter _Pack_Unit_Name_W = null;
 			private AggregateParameter _Unit_price_W = null;
+			private AggregateParameter _PackID_W = null;
 
 			public void AggregateClauseReset()
 			{
@@ -735,6 +822,7 @@ namespace View
 				_Conver_sub_W = null;
 				_Pack_Unit_Name_W = null;
 				_Unit_price_W = null;
+				_PackID_W = null;
 
 				this._entity.Query.FlushAggregateParameters();
 

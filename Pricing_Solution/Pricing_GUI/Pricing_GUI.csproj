@@ -742,12 +742,33 @@
     <Content Include="CAPA\TicketResponse.aspx" />
     <Content Include="CAPA\TradeSearch.aspx" />
     <Content Include="Company_Login.aspx" />
+    <Content Include="css\blueimp-gallery.min.css" />
+    <Content Include="css\bootstrap.min.css" />
+    <Content Include="css\images\ui-bg_diagonals-thick_18_b81900_40x40.png" />
+    <Content Include="css\images\ui-bg_diagonals-thick_20_666666_40x40.png" />
+    <Content Include="css\images\ui-bg_flat_10_000000_40x100.png" />
+    <Content Include="css\images\ui-bg_glass_100_f6f6f6_1x400.png" />
+    <Content Include="css\images\ui-bg_glass_100_fdf5ce_1x400.png" />
+    <Content Include="css\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="css\images\ui-bg_gloss-wave_35_f6a828_500x100.png" />
+    <Content Include="css\images\ui-bg_highlight-soft_100_eeeeee_1x100.png" />
+    <Content Include="css\images\ui-bg_highlight-soft_75_ffe45c_1x100.png" />
+    <Content Include="css\images\ui-icons_222222_256x240.png" />
+    <Content Include="css\images\ui-icons_228ef1_256x240.png" />
+    <Content Include="css\images\ui-icons_ef8c08_256x240.png" />
+    <Content Include="css\images\ui-icons_ffd27a_256x240.png" />
+    <Content Include="css\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="css\jquery.fileupload-noscript.css" />
+    <Content Include="css\jquery.fileupload-ui-noscript.css" />
+    <Content Include="css\jquery.fileupload-ui.css" />
+    <Content Include="css\jquery.fileupload.css" />
     <Content Include="css\style.css" />
     <Content Include="css\style_default.css" />
     <Content Include="css\style_gray.css" />
     <Content Include="css\style_navy-blue.css" />
     <Content Include="css\style_purple.css" />
     <Content Include="css\style_responsive.css" />
+    <Content Include="css\style_upload.css" />
     <Content Include="css\ui-lightness\images\ui-bg_diagonals-thick_18_b81900_40x40.png" />
     <Content Include="css\ui-lightness\images\ui-bg_diagonals-thick_20_666666_40x40.png" />
     <Content Include="css\ui-lightness\images\ui-bg_flat_10_000000_40x100.png" />
@@ -842,6 +863,10 @@
     <Content Include="img\trns-bg.png" />
     <Content Include="img\vector-lab.jpg" />
     <Content Include="Inbox.aspx" />
+    <Content Include="js\bootstrap.min.js" />
+    <Content Include="js\canvas-to-blob.min.js" />
+    <Content Include="js\cors\jquery.postmessage-transport.js" />
+    <Content Include="js\cors\jquery.xdr-transport.js" />
     <Content Include="js\demo.gmaps.js" />
     <Content Include="js\excanvas.js" />
     <Content Include="js\gmaps.js" />
@@ -849,7 +874,19 @@
     <Content Include="js\jquery-1.8.3.min.js" />
     <Content Include="js\jquery-ui-1.8.20.custom.min.js" />
     <Content Include="js\jquery.blockui.js" />
+    <Content Include="js\jquery.blueimp-gallery.min.js" />
     <Content Include="js\jquery.cookie.js" />
+    <Content Include="js\jquery.fileupload-angular.js" />
+    <Content Include="js\jquery.fileupload-audio.js" />
+    <Content Include="js\jquery.fileupload-image.js" />
+    <Content Include="js\jquery.fileupload-jquery-ui.js" />
+    <Content Include="js\jquery.fileupload-process.js" />
+    <Content Include="js\jquery.fileupload-ui.js" />
+    <Content Include="js\jquery.fileupload-validate.js" />
+    <Content Include="js\jquery.fileupload-video.js" />
+    <Content Include="js\jquery.fileupload.js" />
+    <Content Include="js\jquery.iframe-transport.js" />
+    <Content Include="js\jquery.min.js" />
     <Content Include="js\jquery.mtz.monthpicker.js" />
     <Content Include="js\jquery.peity.min.js" />
     <Content Include="js\jquery.pulsate.min.js" />
@@ -1245,10 +1282,15 @@
     <Content Include="js\jqwidgets\styles\jqx.ui-sunny.css" />
     <Content Include="js\jqwidgets\styles\jqx.web.css" />
     <Content Include="js\jqwidgets\styles\jqx.windowsphone.css" />
+    <Content Include="js\load-image.all.min.js" />
+    <Content Include="js\load-image.min.js" />
+    <Content Include="js\main.js" />
     <Content Include="js\respond.js" />
     <Content Include="js\scripts.js" />
+    <Content Include="js\tmpl.min.js" />
     <Content Include="js\ui-nestable.js" />
     <Content Include="js\ui-tree.js" />
+    <Content Include="js\vendor\jquery.ui.widget.js" />
     <Content Include="libs\Newtonsoft.Json.dll" />
     <Content Include="login.aspx" />
     <Content Include="New_Request.aspx" />
@@ -1266,6 +1308,7 @@
     <Content Include="Scripts\jquery-1.4.1.js" />
     <Content Include="Scripts\jquery-1.4.1.min.js" />
     <Content Include="Tickets.aspx" />
+    <Content Include="uiUpload.html" />
     <Content Include="ViewTicket.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -1468,6 +1511,9 @@
     </Compile>
     <Compile Include="Requests.aspx.designer.cs">
       <DependentUpon>Requests.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="services\FileUploader.ashx.cs">
+      <DependentUpon>FileUploader.ashx</DependentUpon>
     </Compile>
     <Compile Include="services\PricingService.asmx.cs">
       <DependentUpon>PricingService.asmx</DependentUpon>
@@ -1752,6 +1798,7 @@
     <Content Include="CAPA\Site.Master" />
     <Content Include="CompaniesMaster.Master" />
     <None Include="css\.DS_Store" />
+    <Content Include="css\images\Thumbs.db" />
     <None Include="font\.DS_Store" />
     <Content Include="font\myriadprobold.eot">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -1804,6 +1851,7 @@
     <Content Include="js\jqwidgets\styles\images\start\Thumbs.db" />
     <Content Include="js\jqwidgets\styles\images\sunny\Thumbs.db" />
     <Content Include="js\jqwidgets\styles\images\Thumbs.db" />
+    <Content Include="services\FileUploader.ashx" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
