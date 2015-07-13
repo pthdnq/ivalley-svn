@@ -86,10 +86,12 @@ namespace Pricing.DAL
 		//=================================================================
 		//  Loads a single row of via the primary key
 		//=================================================================
-		public virtual bool LoadByPrimaryKey()
+		public virtual bool LoadByPrimaryKey(int PackagePricingID)
 		{
 			ListDictionary parameters = new ListDictionary();
-					
+			parameters.Add(Parameters.PackagePricingID, PackagePricingID);
+
+		
 			return base.LoadFromSql("[" + this.SchemaStoredProcedure + "proc_PackagePricingLoadByPrimaryKey]", parameters);
 		}
 		
@@ -97,11 +99,11 @@ namespace Pricing.DAL
 		protected class Parameters
 		{
 			
-			public static SqlParameter TradePricingID
+			public static SqlParameter PackagePricingID
 			{
 				get
 				{
-					return new SqlParameter("@TradePricingID", SqlDbType.Int, 0);
+					return new SqlParameter("@PackagePricingID", SqlDbType.Int, 0);
 				}
 			}
 			
@@ -601,13 +603,61 @@ namespace Pricing.DAL
 				}
 			}
 			
+			public static SqlParameter ApprovedPrice
+			{
+				get
+				{
+					return new SqlParameter("@ApprovedPrice", SqlDbType.NVarChar, 30);
+				}
+			}
+			
+			public static SqlParameter PriceCategory
+			{
+				get
+				{
+					return new SqlParameter("@PriceCategory", SqlDbType.NVarChar, 100);
+				}
+			}
+			
+			public static SqlParameter File_ministerapproval
+			{
+				get
+				{
+					return new SqlParameter("@File_ministerapproval", SqlDbType.NVarChar, 250);
+				}
+			}
+			
+			public static SqlParameter Approvaldate
+			{
+				get
+				{
+					return new SqlParameter("@Approvaldate", SqlDbType.DateTime, 0);
+				}
+			}
+			
+			public static SqlParameter Issuedate
+			{
+				get
+				{
+					return new SqlParameter("@Issuedate", SqlDbType.DateTime, 0);
+				}
+			}
+			
+			public static SqlParameter ApprovalLetters
+			{
+				get
+				{
+					return new SqlParameter("@ApprovalLetters", SqlDbType.NVarChar, 250);
+				}
+			}
+			
 		}
 		#endregion		
 	
 		#region ColumnNames
 		public class ColumnNames
 		{  
-            public const string TradePricingID = "TradePricingID";
+            public const string PackagePricingID = "PackagePricingID";
             public const string PackageDetailID = "PackageDetailID";
             public const string CompanyID = "CompanyID";
             public const string PricingStatusID = "PricingStatusID";
@@ -670,6 +720,12 @@ namespace Pricing.DAL
             public const string File_Others = "File_Others";
             public const string Generics = "Generics";
             public const string GenericStrength = "GenericStrength";
+            public const string ApprovedPrice = "ApprovedPrice";
+            public const string PriceCategory = "PriceCategory";
+            public const string File_ministerapproval = "File_ministerapproval";
+            public const string Approvaldate = "Approvaldate";
+            public const string Issuedate = "Issuedate";
+            public const string ApprovalLetters = "ApprovalLetters";
 
 			static public string ToPropertyName(string columnName)
 			{
@@ -677,7 +733,7 @@ namespace Pricing.DAL
 				{
 					ht = new Hashtable();
 					
-					ht[TradePricingID] = _PackagePricing.PropertyNames.TradePricingID;
+					ht[PackagePricingID] = _PackagePricing.PropertyNames.PackagePricingID;
 					ht[PackageDetailID] = _PackagePricing.PropertyNames.PackageDetailID;
 					ht[CompanyID] = _PackagePricing.PropertyNames.CompanyID;
 					ht[PricingStatusID] = _PackagePricing.PropertyNames.PricingStatusID;
@@ -740,6 +796,12 @@ namespace Pricing.DAL
 					ht[File_Others] = _PackagePricing.PropertyNames.File_Others;
 					ht[Generics] = _PackagePricing.PropertyNames.Generics;
 					ht[GenericStrength] = _PackagePricing.PropertyNames.GenericStrength;
+					ht[ApprovedPrice] = _PackagePricing.PropertyNames.ApprovedPrice;
+					ht[PriceCategory] = _PackagePricing.PropertyNames.PriceCategory;
+					ht[File_ministerapproval] = _PackagePricing.PropertyNames.File_ministerapproval;
+					ht[Approvaldate] = _PackagePricing.PropertyNames.Approvaldate;
+					ht[Issuedate] = _PackagePricing.PropertyNames.Issuedate;
+					ht[ApprovalLetters] = _PackagePricing.PropertyNames.ApprovalLetters;
 
 				}
 				return (string)ht[columnName];
@@ -752,7 +814,7 @@ namespace Pricing.DAL
 		#region PropertyNames
 		public class PropertyNames
 		{  
-            public const string TradePricingID = "TradePricingID";
+            public const string PackagePricingID = "PackagePricingID";
             public const string PackageDetailID = "PackageDetailID";
             public const string CompanyID = "CompanyID";
             public const string PricingStatusID = "PricingStatusID";
@@ -815,6 +877,12 @@ namespace Pricing.DAL
             public const string File_Others = "File_Others";
             public const string Generics = "Generics";
             public const string GenericStrength = "GenericStrength";
+            public const string ApprovedPrice = "ApprovedPrice";
+            public const string PriceCategory = "PriceCategory";
+            public const string File_ministerapproval = "File_ministerapproval";
+            public const string Approvaldate = "Approvaldate";
+            public const string Issuedate = "Issuedate";
+            public const string ApprovalLetters = "ApprovalLetters";
 
 			static public string ToColumnName(string propertyName)
 			{
@@ -822,7 +890,7 @@ namespace Pricing.DAL
 				{
 					ht = new Hashtable();
 					
-					ht[TradePricingID] = _PackagePricing.ColumnNames.TradePricingID;
+					ht[PackagePricingID] = _PackagePricing.ColumnNames.PackagePricingID;
 					ht[PackageDetailID] = _PackagePricing.ColumnNames.PackageDetailID;
 					ht[CompanyID] = _PackagePricing.ColumnNames.CompanyID;
 					ht[PricingStatusID] = _PackagePricing.ColumnNames.PricingStatusID;
@@ -885,6 +953,12 @@ namespace Pricing.DAL
 					ht[File_Others] = _PackagePricing.ColumnNames.File_Others;
 					ht[Generics] = _PackagePricing.ColumnNames.Generics;
 					ht[GenericStrength] = _PackagePricing.ColumnNames.GenericStrength;
+					ht[ApprovedPrice] = _PackagePricing.ColumnNames.ApprovedPrice;
+					ht[PriceCategory] = _PackagePricing.ColumnNames.PriceCategory;
+					ht[File_ministerapproval] = _PackagePricing.ColumnNames.File_ministerapproval;
+					ht[Approvaldate] = _PackagePricing.ColumnNames.Approvaldate;
+					ht[Issuedate] = _PackagePricing.ColumnNames.Issuedate;
+					ht[ApprovalLetters] = _PackagePricing.ColumnNames.ApprovalLetters;
 
 				}
 				return (string)ht[propertyName];
@@ -897,7 +971,7 @@ namespace Pricing.DAL
 		#region StringPropertyNames
 		public class StringPropertyNames
 		{  
-            public const string TradePricingID = "s_TradePricingID";
+            public const string PackagePricingID = "s_PackagePricingID";
             public const string PackageDetailID = "s_PackageDetailID";
             public const string CompanyID = "s_CompanyID";
             public const string PricingStatusID = "s_PricingStatusID";
@@ -960,21 +1034,27 @@ namespace Pricing.DAL
             public const string File_Others = "s_File_Others";
             public const string Generics = "s_Generics";
             public const string GenericStrength = "s_GenericStrength";
+            public const string ApprovedPrice = "s_ApprovedPrice";
+            public const string PriceCategory = "s_PriceCategory";
+            public const string File_ministerapproval = "s_File_ministerapproval";
+            public const string Approvaldate = "s_Approvaldate";
+            public const string Issuedate = "s_Issuedate";
+            public const string ApprovalLetters = "s_ApprovalLetters";
 
 		}
 		#endregion		
 		
 		#region Properties
 	
-		public virtual int TradePricingID
+		public virtual int PackagePricingID
 	    {
 			get
 	        {
-				return base.Getint(ColumnNames.TradePricingID);
+				return base.Getint(ColumnNames.PackagePricingID);
 			}
 			set
 	        {
-				base.Setint(ColumnNames.TradePricingID, value);
+				base.Setint(ColumnNames.PackagePricingID, value);
 			}
 		}
 
@@ -1722,23 +1802,95 @@ namespace Pricing.DAL
 			}
 		}
 
+		public virtual string ApprovedPrice
+	    {
+			get
+	        {
+				return base.Getstring(ColumnNames.ApprovedPrice);
+			}
+			set
+	        {
+				base.Setstring(ColumnNames.ApprovedPrice, value);
+			}
+		}
+
+		public virtual string PriceCategory
+	    {
+			get
+	        {
+				return base.Getstring(ColumnNames.PriceCategory);
+			}
+			set
+	        {
+				base.Setstring(ColumnNames.PriceCategory, value);
+			}
+		}
+
+		public virtual string File_ministerapproval
+	    {
+			get
+	        {
+				return base.Getstring(ColumnNames.File_ministerapproval);
+			}
+			set
+	        {
+				base.Setstring(ColumnNames.File_ministerapproval, value);
+			}
+		}
+
+		public virtual DateTime Approvaldate
+	    {
+			get
+	        {
+				return base.GetDateTime(ColumnNames.Approvaldate);
+			}
+			set
+	        {
+				base.SetDateTime(ColumnNames.Approvaldate, value);
+			}
+		}
+
+		public virtual DateTime Issuedate
+	    {
+			get
+	        {
+				return base.GetDateTime(ColumnNames.Issuedate);
+			}
+			set
+	        {
+				base.SetDateTime(ColumnNames.Issuedate, value);
+			}
+		}
+
+		public virtual string ApprovalLetters
+	    {
+			get
+	        {
+				return base.Getstring(ColumnNames.ApprovalLetters);
+			}
+			set
+	        {
+				base.Setstring(ColumnNames.ApprovalLetters, value);
+			}
+		}
+
 
 		#endregion
 		
 		#region String Properties
 	
-		public virtual string s_TradePricingID
+		public virtual string s_PackagePricingID
 	    {
 			get
 	        {
-				return this.IsColumnNull(ColumnNames.TradePricingID) ? string.Empty : base.GetintAsString(ColumnNames.TradePricingID);
+				return this.IsColumnNull(ColumnNames.PackagePricingID) ? string.Empty : base.GetintAsString(ColumnNames.PackagePricingID);
 			}
 			set
 	        {
 				if(string.Empty == value)
-					this.SetColumnNull(ColumnNames.TradePricingID);
+					this.SetColumnNull(ColumnNames.PackagePricingID);
 				else
-					this.TradePricingID = base.SetintAsString(ColumnNames.TradePricingID, value);
+					this.PackagePricingID = base.SetintAsString(ColumnNames.PackagePricingID, value);
 			}
 		}
 
@@ -2672,6 +2824,96 @@ namespace Pricing.DAL
 			}
 		}
 
+		public virtual string s_ApprovedPrice
+	    {
+			get
+	        {
+				return this.IsColumnNull(ColumnNames.ApprovedPrice) ? string.Empty : base.GetstringAsString(ColumnNames.ApprovedPrice);
+			}
+			set
+	        {
+				if(string.Empty == value)
+					this.SetColumnNull(ColumnNames.ApprovedPrice);
+				else
+					this.ApprovedPrice = base.SetstringAsString(ColumnNames.ApprovedPrice, value);
+			}
+		}
+
+		public virtual string s_PriceCategory
+	    {
+			get
+	        {
+				return this.IsColumnNull(ColumnNames.PriceCategory) ? string.Empty : base.GetstringAsString(ColumnNames.PriceCategory);
+			}
+			set
+	        {
+				if(string.Empty == value)
+					this.SetColumnNull(ColumnNames.PriceCategory);
+				else
+					this.PriceCategory = base.SetstringAsString(ColumnNames.PriceCategory, value);
+			}
+		}
+
+		public virtual string s_File_ministerapproval
+	    {
+			get
+	        {
+				return this.IsColumnNull(ColumnNames.File_ministerapproval) ? string.Empty : base.GetstringAsString(ColumnNames.File_ministerapproval);
+			}
+			set
+	        {
+				if(string.Empty == value)
+					this.SetColumnNull(ColumnNames.File_ministerapproval);
+				else
+					this.File_ministerapproval = base.SetstringAsString(ColumnNames.File_ministerapproval, value);
+			}
+		}
+
+		public virtual string s_Approvaldate
+	    {
+			get
+	        {
+				return this.IsColumnNull(ColumnNames.Approvaldate) ? string.Empty : base.GetDateTimeAsString(ColumnNames.Approvaldate);
+			}
+			set
+	        {
+				if(string.Empty == value)
+					this.SetColumnNull(ColumnNames.Approvaldate);
+				else
+					this.Approvaldate = base.SetDateTimeAsString(ColumnNames.Approvaldate, value);
+			}
+		}
+
+		public virtual string s_Issuedate
+	    {
+			get
+	        {
+				return this.IsColumnNull(ColumnNames.Issuedate) ? string.Empty : base.GetDateTimeAsString(ColumnNames.Issuedate);
+			}
+			set
+	        {
+				if(string.Empty == value)
+					this.SetColumnNull(ColumnNames.Issuedate);
+				else
+					this.Issuedate = base.SetDateTimeAsString(ColumnNames.Issuedate, value);
+			}
+		}
+
+		public virtual string s_ApprovalLetters
+	    {
+			get
+	        {
+				return this.IsColumnNull(ColumnNames.ApprovalLetters) ? string.Empty : base.GetstringAsString(ColumnNames.ApprovalLetters);
+			}
+			set
+	        {
+				if(string.Empty == value)
+					this.SetColumnNull(ColumnNames.ApprovalLetters);
+				else
+					this.ApprovalLetters = base.SetstringAsString(ColumnNames.ApprovalLetters, value);
+			}
+		}
+
 
 		#endregion		
 	
@@ -2705,11 +2947,11 @@ namespace Pricing.DAL
 				}
 				
 				
-				public WhereParameter TradePricingID
+				public WhereParameter PackagePricingID
 				{
 					get
 					{
-							WhereParameter where = new WhereParameter(ColumnNames.TradePricingID, Parameters.TradePricingID);
+							WhereParameter where = new WhereParameter(ColumnNames.PackagePricingID, Parameters.PackagePricingID);
 							this._clause._entity.Query.AddWhereParameter(where);
 							return where;
 					}
@@ -3335,20 +3577,80 @@ namespace Pricing.DAL
 					}
 				}
 
+				public WhereParameter ApprovedPrice
+				{
+					get
+					{
+							WhereParameter where = new WhereParameter(ColumnNames.ApprovedPrice, Parameters.ApprovedPrice);
+							this._clause._entity.Query.AddWhereParameter(where);
+							return where;
+					}
+				}
+
+				public WhereParameter PriceCategory
+				{
+					get
+					{
+							WhereParameter where = new WhereParameter(ColumnNames.PriceCategory, Parameters.PriceCategory);
+							this._clause._entity.Query.AddWhereParameter(where);
+							return where;
+					}
+				}
+
+				public WhereParameter File_ministerapproval
+				{
+					get
+					{
+							WhereParameter where = new WhereParameter(ColumnNames.File_ministerapproval, Parameters.File_ministerapproval);
+							this._clause._entity.Query.AddWhereParameter(where);
+							return where;
+					}
+				}
+
+				public WhereParameter Approvaldate
+				{
+					get
+					{
+							WhereParameter where = new WhereParameter(ColumnNames.Approvaldate, Parameters.Approvaldate);
+							this._clause._entity.Query.AddWhereParameter(where);
+							return where;
+					}
+				}
+
+				public WhereParameter Issuedate
+				{
+					get
+					{
+							WhereParameter where = new WhereParameter(ColumnNames.Issuedate, Parameters.Issuedate);
+							this._clause._entity.Query.AddWhereParameter(where);
+							return where;
+					}
+				}
+
+				public WhereParameter ApprovalLetters
+				{
+					get
+					{
+							WhereParameter where = new WhereParameter(ColumnNames.ApprovalLetters, Parameters.ApprovalLetters);
+							this._clause._entity.Query.AddWhereParameter(where);
+							return where;
+					}
+				}
+
 
 				private WhereClause _clause;
 			}
 			#endregion
 		
-			public WhereParameter TradePricingID
+			public WhereParameter PackagePricingID
 		    {
 				get
 		        {
-					if(_TradePricingID_W == null)
+					if(_PackagePricingID_W == null)
 	        	    {
-						_TradePricingID_W = TearOff.TradePricingID;
+						_PackagePricingID_W = TearOff.PackagePricingID;
 					}
-					return _TradePricingID_W;
+					return _PackagePricingID_W;
 				}
 			}
 
@@ -4096,7 +4398,79 @@ namespace Pricing.DAL
 				}
 			}
 
-			private WhereParameter _TradePricingID_W = null;
+			public WhereParameter ApprovedPrice
+		    {
+				get
+		        {
+					if(_ApprovedPrice_W == null)
+	        	    {
+						_ApprovedPrice_W = TearOff.ApprovedPrice;
+					}
+					return _ApprovedPrice_W;
+				}
+			}
+
+			public WhereParameter PriceCategory
+		    {
+				get
+		        {
+					if(_PriceCategory_W == null)
+	        	    {
+						_PriceCategory_W = TearOff.PriceCategory;
+					}
+					return _PriceCategory_W;
+				}
+			}
+
+			public WhereParameter File_ministerapproval
+		    {
+				get
+		        {
+					if(_File_ministerapproval_W == null)
+	        	    {
+						_File_ministerapproval_W = TearOff.File_ministerapproval;
+					}
+					return _File_ministerapproval_W;
+				}
+			}
+
+			public WhereParameter Approvaldate
+		    {
+				get
+		        {
+					if(_Approvaldate_W == null)
+	        	    {
+						_Approvaldate_W = TearOff.Approvaldate;
+					}
+					return _Approvaldate_W;
+				}
+			}
+
+			public WhereParameter Issuedate
+		    {
+				get
+		        {
+					if(_Issuedate_W == null)
+	        	    {
+						_Issuedate_W = TearOff.Issuedate;
+					}
+					return _Issuedate_W;
+				}
+			}
+
+			public WhereParameter ApprovalLetters
+		    {
+				get
+		        {
+					if(_ApprovalLetters_W == null)
+	        	    {
+						_ApprovalLetters_W = TearOff.ApprovalLetters;
+					}
+					return _ApprovalLetters_W;
+				}
+			}
+
+			private WhereParameter _PackagePricingID_W = null;
 			private WhereParameter _PackageDetailID_W = null;
 			private WhereParameter _CompanyID_W = null;
 			private WhereParameter _PricingStatusID_W = null;
@@ -4159,10 +4533,16 @@ namespace Pricing.DAL
 			private WhereParameter _File_Others_W = null;
 			private WhereParameter _Generics_W = null;
 			private WhereParameter _GenericStrength_W = null;
+			private WhereParameter _ApprovedPrice_W = null;
+			private WhereParameter _PriceCategory_W = null;
+			private WhereParameter _File_ministerapproval_W = null;
+			private WhereParameter _Approvaldate_W = null;
+			private WhereParameter _Issuedate_W = null;
+			private WhereParameter _ApprovalLetters_W = null;
 
 			public void WhereClauseReset()
 			{
-				_TradePricingID_W = null;
+				_PackagePricingID_W = null;
 				_PackageDetailID_W = null;
 				_CompanyID_W = null;
 				_PricingStatusID_W = null;
@@ -4225,6 +4605,12 @@ namespace Pricing.DAL
 				_File_Others_W = null;
 				_Generics_W = null;
 				_GenericStrength_W = null;
+				_ApprovedPrice_W = null;
+				_PriceCategory_W = null;
+				_File_ministerapproval_W = null;
+				_Approvaldate_W = null;
+				_Issuedate_W = null;
+				_ApprovalLetters_W = null;
 
 				this._entity.Query.FlushWhereParameters();
 
@@ -4281,11 +4667,11 @@ namespace Pricing.DAL
 				}
 				
 				
-				public AggregateParameter TradePricingID
+				public AggregateParameter PackagePricingID
 				{
 					get
 					{
-							AggregateParameter aggregate = new AggregateParameter(ColumnNames.TradePricingID, Parameters.TradePricingID);
+							AggregateParameter aggregate = new AggregateParameter(ColumnNames.PackagePricingID, Parameters.PackagePricingID);
 							this._clause._entity.Query.AddAggregateParameter(aggregate);
 							return aggregate;
 					}
@@ -4911,20 +5297,80 @@ namespace Pricing.DAL
 					}
 				}
 
+				public AggregateParameter ApprovedPrice
+				{
+					get
+					{
+							AggregateParameter aggregate = new AggregateParameter(ColumnNames.ApprovedPrice, Parameters.ApprovedPrice);
+							this._clause._entity.Query.AddAggregateParameter(aggregate);
+							return aggregate;
+					}
+				}
+
+				public AggregateParameter PriceCategory
+				{
+					get
+					{
+							AggregateParameter aggregate = new AggregateParameter(ColumnNames.PriceCategory, Parameters.PriceCategory);
+							this._clause._entity.Query.AddAggregateParameter(aggregate);
+							return aggregate;
+					}
+				}
+
+				public AggregateParameter File_ministerapproval
+				{
+					get
+					{
+							AggregateParameter aggregate = new AggregateParameter(ColumnNames.File_ministerapproval, Parameters.File_ministerapproval);
+							this._clause._entity.Query.AddAggregateParameter(aggregate);
+							return aggregate;
+					}
+				}
+
+				public AggregateParameter Approvaldate
+				{
+					get
+					{
+							AggregateParameter aggregate = new AggregateParameter(ColumnNames.Approvaldate, Parameters.Approvaldate);
+							this._clause._entity.Query.AddAggregateParameter(aggregate);
+							return aggregate;
+					}
+				}
+
+				public AggregateParameter Issuedate
+				{
+					get
+					{
+							AggregateParameter aggregate = new AggregateParameter(ColumnNames.Issuedate, Parameters.Issuedate);
+							this._clause._entity.Query.AddAggregateParameter(aggregate);
+							return aggregate;
+					}
+				}
+
+				public AggregateParameter ApprovalLetters
+				{
+					get
+					{
+							AggregateParameter aggregate = new AggregateParameter(ColumnNames.ApprovalLetters, Parameters.ApprovalLetters);
+							this._clause._entity.Query.AddAggregateParameter(aggregate);
+							return aggregate;
+					}
+				}
+
 
 				private AggregateClause _clause;
 			}
 			#endregion
 		
-			public AggregateParameter TradePricingID
+			public AggregateParameter PackagePricingID
 		    {
 				get
 		        {
-					if(_TradePricingID_W == null)
+					if(_PackagePricingID_W == null)
 	        	    {
-						_TradePricingID_W = TearOff.TradePricingID;
+						_PackagePricingID_W = TearOff.PackagePricingID;
 					}
-					return _TradePricingID_W;
+					return _PackagePricingID_W;
 				}
 			}
 
@@ -5672,7 +6118,79 @@ namespace Pricing.DAL
 				}
 			}
 
-			private AggregateParameter _TradePricingID_W = null;
+			public AggregateParameter ApprovedPrice
+		    {
+				get
+		        {
+					if(_ApprovedPrice_W == null)
+	        	    {
+						_ApprovedPrice_W = TearOff.ApprovedPrice;
+					}
+					return _ApprovedPrice_W;
+				}
+			}
+
+			public AggregateParameter PriceCategory
+		    {
+				get
+		        {
+					if(_PriceCategory_W == null)
+	        	    {
+						_PriceCategory_W = TearOff.PriceCategory;
+					}
+					return _PriceCategory_W;
+				}
+			}
+
+			public AggregateParameter File_ministerapproval
+		    {
+				get
+		        {
+					if(_File_ministerapproval_W == null)
+	        	    {
+						_File_ministerapproval_W = TearOff.File_ministerapproval;
+					}
+					return _File_ministerapproval_W;
+				}
+			}
+
+			public AggregateParameter Approvaldate
+		    {
+				get
+		        {
+					if(_Approvaldate_W == null)
+	        	    {
+						_Approvaldate_W = TearOff.Approvaldate;
+					}
+					return _Approvaldate_W;
+				}
+			}
+
+			public AggregateParameter Issuedate
+		    {
+				get
+		        {
+					if(_Issuedate_W == null)
+	        	    {
+						_Issuedate_W = TearOff.Issuedate;
+					}
+					return _Issuedate_W;
+				}
+			}
+
+			public AggregateParameter ApprovalLetters
+		    {
+				get
+		        {
+					if(_ApprovalLetters_W == null)
+	        	    {
+						_ApprovalLetters_W = TearOff.ApprovalLetters;
+					}
+					return _ApprovalLetters_W;
+				}
+			}
+
+			private AggregateParameter _PackagePricingID_W = null;
 			private AggregateParameter _PackageDetailID_W = null;
 			private AggregateParameter _CompanyID_W = null;
 			private AggregateParameter _PricingStatusID_W = null;
@@ -5735,10 +6253,16 @@ namespace Pricing.DAL
 			private AggregateParameter _File_Others_W = null;
 			private AggregateParameter _Generics_W = null;
 			private AggregateParameter _GenericStrength_W = null;
+			private AggregateParameter _ApprovedPrice_W = null;
+			private AggregateParameter _PriceCategory_W = null;
+			private AggregateParameter _File_ministerapproval_W = null;
+			private AggregateParameter _Approvaldate_W = null;
+			private AggregateParameter _Issuedate_W = null;
+			private AggregateParameter _ApprovalLetters_W = null;
 
 			public void AggregateClauseReset()
 			{
-				_TradePricingID_W = null;
+				_PackagePricingID_W = null;
 				_PackageDetailID_W = null;
 				_CompanyID_W = null;
 				_PricingStatusID_W = null;
@@ -5801,6 +6325,12 @@ namespace Pricing.DAL
 				_File_Others_W = null;
 				_Generics_W = null;
 				_GenericStrength_W = null;
+				_ApprovedPrice_W = null;
+				_PriceCategory_W = null;
+				_File_ministerapproval_W = null;
+				_Approvaldate_W = null;
+				_Issuedate_W = null;
+				_ApprovalLetters_W = null;
 
 				this._entity.Query.FlushAggregateParameters();
 
@@ -5837,7 +6367,7 @@ namespace Pricing.DAL
 			CreateParameters(cmd);
 			
 			SqlParameter p;
-			p = cmd.Parameters[Parameters.TradePricingID.ParameterName];
+			p = cmd.Parameters[Parameters.PackagePricingID.ParameterName];
 			p.Direction = ParameterDirection.Output;
     
 			return cmd;
@@ -5863,6 +6393,10 @@ namespace Pricing.DAL
 			cmd.CommandText = "[" + this.SchemaStoredProcedure + "proc_PackagePricingDelete]";
 	
 			SqlParameter p;
+			p = cmd.Parameters.Add(Parameters.PackagePricingID);
+			p.SourceColumn = ColumnNames.PackagePricingID;
+			p.SourceVersion = DataRowVersion.Current;
+
   
 			return cmd;
 		}
@@ -5871,8 +6405,8 @@ namespace Pricing.DAL
 		{
 			SqlParameter p;
 		
-			p = cmd.Parameters.Add(Parameters.TradePricingID);
-			p.SourceColumn = ColumnNames.TradePricingID;
+			p = cmd.Parameters.Add(Parameters.PackagePricingID);
+			p.SourceColumn = ColumnNames.PackagePricingID;
 			p.SourceVersion = DataRowVersion.Current;
 
 			p = cmd.Parameters.Add(Parameters.PackageDetailID);
@@ -6121,6 +6655,30 @@ namespace Pricing.DAL
 
 			p = cmd.Parameters.Add(Parameters.GenericStrength);
 			p.SourceColumn = ColumnNames.GenericStrength;
+			p.SourceVersion = DataRowVersion.Current;
+
+			p = cmd.Parameters.Add(Parameters.ApprovedPrice);
+			p.SourceColumn = ColumnNames.ApprovedPrice;
+			p.SourceVersion = DataRowVersion.Current;
+
+			p = cmd.Parameters.Add(Parameters.PriceCategory);
+			p.SourceColumn = ColumnNames.PriceCategory;
+			p.SourceVersion = DataRowVersion.Current;
+
+			p = cmd.Parameters.Add(Parameters.File_ministerapproval);
+			p.SourceColumn = ColumnNames.File_ministerapproval;
+			p.SourceVersion = DataRowVersion.Current;
+
+			p = cmd.Parameters.Add(Parameters.Approvaldate);
+			p.SourceColumn = ColumnNames.Approvaldate;
+			p.SourceVersion = DataRowVersion.Current;
+
+			p = cmd.Parameters.Add(Parameters.Issuedate);
+			p.SourceColumn = ColumnNames.Issuedate;
+			p.SourceVersion = DataRowVersion.Current;
+
+			p = cmd.Parameters.Add(Parameters.ApprovalLetters);
+			p.SourceColumn = ColumnNames.ApprovalLetters;
 			p.SourceVersion = DataRowVersion.Current;
 
 
