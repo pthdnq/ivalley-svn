@@ -180,12 +180,14 @@ namespace Flights_GUI.Admin
 
         public void LogCertificate(int CertificateID, int ActionID)
         {
+            AppConfig config = new AppConfig();
+            config.LoadByPrimaryKey(1);
             CertificateLog objData = new CertificateLog();
             objData.AddNew();
             objData.CertificateID = CertificateID;
             objData.UserID = new Guid(Membership.GetUser(Page.User.Identity.Name).ProviderUserKey.ToString());
             objData.ActionID = ActionID;
-            objData.LogDate = DateTime.Now;
+            objData.LogDate = config.GetDateTimeUsingLocalZone();
             objData.Save();
         }
 

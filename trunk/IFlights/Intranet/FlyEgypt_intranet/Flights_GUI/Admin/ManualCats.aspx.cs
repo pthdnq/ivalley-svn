@@ -88,8 +88,10 @@ namespace Flights_GUI.Admin
 
             cat.Save();
 
+            AppConfig config = new AppConfig();
+            config.LoadByPrimaryKey(1);
             mlog.ManualCategoryID = cat.ManualCategoryID;
-            mlog.LogDate = DateTime.Now;
+            mlog.LogDate = config.GetDateTimeUsingLocalZone();
             mlog.UserID = new Guid(Membership.GetUser().ProviderUserKey.ToString());
             mlog.Save();
             LoadCats();
@@ -128,13 +130,15 @@ namespace Flights_GUI.Admin
                 objData.MarkAsDeleted();
                 try
                 {
+                    AppConfig config = new AppConfig();
+                    config.LoadByPrimaryKey(1);
                     objData.Save();
                     ManualLog mlog = new ManualLog();
                     mlog.AddNew();
                     mlog.ActionID = 3; // delete
                     mlog.ManualCategoryID = id;
                     mlog.UserID = new Guid(Membership.GetUser().ProviderUserKey.ToString());
-                    mlog.LogDate = DateTime.Now;
+                    mlog.LogDate = config.GetDateTimeUsingLocalZone();
                     mlog.Save();
                 }
                 catch (Exception ex)

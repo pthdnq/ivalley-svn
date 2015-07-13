@@ -94,11 +94,13 @@ namespace Flights_GUI.Admin
                 objData.IsDeleted = true;
                 objData.Save();
 
+                AppConfig config = new AppConfig();
+                config.LoadByPrimaryKey(1);
                 ScheduleLog slog = new ScheduleLog();
                 slog.AddNew();
                 slog.ActionID = 3; // delete
                 slog.ScheduleID = objData.ScheduleID;
-                slog.LogDate = DateTime.Now;
+                slog.LogDate = config.GetDateTimeUsingLocalZone();
                 slog.UserID = new Guid(Membership.GetUser().ProviderUserKey.ToString());
                 slog.Save();
 
@@ -151,7 +153,9 @@ namespace Flights_GUI.Admin
             
             objdata.Save();
 
-            slog.LogDate = DateTime.Now;
+            AppConfig config = new AppConfig();
+            config.LoadByPrimaryKey(1);
+            slog.LogDate = config.GetDateTimeUsingLocalZone();
             slog.ScheduleID = objdata.ScheduleID;
             slog.UserID = new Guid(Membership.GetUser().ProviderUserKey.ToString());
             slog.Save();
@@ -271,12 +275,14 @@ namespace Flights_GUI.Admin
                 versions.IsDeleted = true;
                 versions.Save();
 
+                AppConfig config = new AppConfig();
+                config.LoadByPrimaryKey(1);
                 ScheduleLog slog = new ScheduleLog();
                 slog.AddNew();
                 slog.ActionID = 3; // delete
                 slog.ScheduleVersionID = versions.ScheduleVersionID;
                 slog.UserID = new Guid(Membership.GetUser().ProviderUserKey.ToString());
-                slog.LogDate = DateTime.Now;
+                slog.LogDate = config.GetDateTimeUsingLocalZone();
                 slog.Save();
 
                 BindData_Versions();
@@ -338,10 +344,11 @@ namespace Flights_GUI.Admin
 
             objdata.Save();
 
-
+            AppConfig config = new AppConfig();
+            config.LoadByPrimaryKey(1);
             slog.ScheduleVersionID = objdata.ScheduleVersionID;
             slog.UserID = new Guid(Membership.GetUser().ProviderUserKey.ToString());
-            slog.LogDate = DateTime.Now;
+            slog.LogDate = config.GetDateTimeUsingLocalZone();
             slog.Save();
 
             // add new notifications 

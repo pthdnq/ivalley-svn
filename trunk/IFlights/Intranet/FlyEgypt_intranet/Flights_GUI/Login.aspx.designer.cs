@@ -22,6 +22,15 @@ namespace Flights_GUI {
         protected global::System.Web.UI.WebControls.Literal uiLiteralMainTitle;
         
         /// <summary>
+        /// uiLiteralTheme control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal uiLiteralTheme;
+        
+        /// <summary>
         /// form1 control.
         /// </summary>
         /// <remarks>
@@ -38,6 +47,15 @@ namespace Flights_GUI {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LoginView LoginView1;
+        
+        /// <summary>
+        /// uiLiteralWelcomeText control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal uiLiteralWelcomeText;
         
         /// <summary>
         /// Login1 control.

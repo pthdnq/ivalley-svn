@@ -130,6 +130,7 @@ namespace Flights_GUI.Admin
         protected void uiButtonSave_Click(object sender, EventArgs e)
         {
             Announcement objdata = new Announcement();
+            int action = 1;
             if (CurrentAnnouncement == null)
             {
                 objdata.AddNew();
@@ -138,6 +139,7 @@ namespace Flights_GUI.Admin
             }
             else
             {
+                action = 2;
                 objdata = CurrentAnnouncement;
                 AnnouncementGroup AnnGroup = new AnnouncementGroup();
                 AnnGroup.Where.AnnouncementID.Value = CurrentAnnouncement.AnnouncementID;
@@ -209,9 +211,15 @@ namespace Flights_GUI.Admin
             CurrentAnnouncement = null;
             uiPanelViewAll.Visible = true;
             uiPanelEdit.Visible = false;
-            ClearFields();
+            
 
             SendingNotifications.sendNotif(6, null, null, null, null, null, null, null);
+
+
+            if (uiCheckBoxSendMail.Checked)
+                SendingNotifications.SendMails(objdata.AnnouncementID, action);
+
+            ClearFields();
         }
 
 
@@ -243,6 +251,7 @@ namespace Flights_GUI.Admin
             uiTextBoxBrief.Text = "";
             uiImageMain.ImageUrl = "";
             CheckBoxListGroups.ClearSelection();
+            uiCheckBoxSendMail.Checked = false;
         }
 
         protected void btnDeleteCurrentFile_Click(object sender, EventArgs e)
@@ -270,12 +279,14 @@ namespace Flights_GUI.Admin
 
         public void LogBlog(int AnnouncementID, int ActionID)
         {
+            AppConfig config = new AppConfig();
+            config.LoadByPrimaryKey(1);
             AnnouncementLog objData = new AnnouncementLog();
             objData.AddNew();
             objData.AnnouncementID = AnnouncementID;
             objData.UserID = new Guid(Membership.GetUser(Page.User.Identity.Name).ProviderUserKey.ToString());
             objData.ActionID = ActionID;
-            objData.LogDate = DateTime.Now;
+            objData.LogDate = config.GetDateTimeUsingLocalZone();
             objData.Save();
         }
 

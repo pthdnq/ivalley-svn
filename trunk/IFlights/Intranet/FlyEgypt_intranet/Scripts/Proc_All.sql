@@ -125,16 +125,16 @@ Go
 Create Procedure GetAnnouncementLogReportForGroup @AnnouncementID int							   
 as
 
-Select U.UserID, U.FullName, isnull(A.ActionName, 'Unread') ActionName, L.LogDate, an.*, us.UserName Creator
+Select distinct U.UserID, U.FullName, isnull(A.ActionName, 'Unread') ActionName, L.LogDate, an.*, us.UserName Creator
 from UsersProfiles U
 inner join UserGroup ug on U.UserID = ug.UserId
-Left JOIN AnnouncementLog L on L.UserID = U.UserID 
+Left JOIN AnnouncementLog L on L.UserID = U.UserID and
+							   L.announcementID = @AnnouncementID
 left JOIN Actions A on L.ActionID = A.ActionID
 left join Announcement an on an.AnnouncementID = l.AnnouncementID
 left join aspnet_Users us on us.UserId = an.CreatedBy
 
-where (L.AnnouncementID = @AnnouncementID or L.AnnouncementID is null) and 
-	   ug.GroupId in (select GroupId from AnnouncementGroup where AnnouncementID = @AnnouncementID)
+where ug.GroupId in (select GroupId from AnnouncementGroup where AnnouncementID = @AnnouncementID)
 order by L.LogDate desc
 Go
 

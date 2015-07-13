@@ -106,12 +106,14 @@ namespace Flights_GUI.Common
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public void LogCertificateDownload(int CertificateID)
         {
+            AppConfig config = new AppConfig();
+            config.LoadByPrimaryKey(1);
             CertificateLog objData = new CertificateLog();
             objData.AddNew();
             objData.CertificateID = int.Parse(CertificateID.ToString());
             objData.UserID = new Guid(Membership.GetUser(Context.User.Identity.Name).ProviderUserKey.ToString());
             objData.ActionID = 5;
-            objData.LogDate = DateTime.Now;
+            objData.LogDate = config.GetDateTimeUsingLocalZone();
             objData.Save();
         }
 
@@ -119,12 +121,14 @@ namespace Flights_GUI.Common
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public void LogScheduleVersionDownload(int ScheduleVersionID)
         {
+            AppConfig config = new AppConfig();
+            config.LoadByPrimaryKey(1);
             ScheduleLog objData = new ScheduleLog();
             objData.AddNew();
             objData.ScheduleVersionID = int.Parse(ScheduleVersionID.ToString());
             objData.UserID = new Guid(Membership.GetUser(Context.User.Identity.Name).ProviderUserKey.ToString());
             objData.ActionID = 5;
-            objData.LogDate = DateTime.Now;
+            objData.LogDate = config.GetDateTimeUsingLocalZone();
             objData.Save();
         }
 
@@ -132,12 +136,14 @@ namespace Flights_GUI.Common
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public void LogManualVersionDownload(int ManualVersionID)
         {
+            AppConfig config = new AppConfig();
+            config.LoadByPrimaryKey(1);
             ManualLog objData = new ManualLog();
             objData.AddNew();
             objData.ManualVersionID = int.Parse(ManualVersionID.ToString());
             objData.UserID = new Guid(Membership.GetUser(Context.User.Identity.Name).ProviderUserKey.ToString());
             objData.ActionID = 5;
-            objData.LogDate = DateTime.Now;
+            objData.LogDate = config.GetDateTimeUsingLocalZone();
             objData.Save();
         }
 
@@ -145,12 +151,14 @@ namespace Flights_GUI.Common
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public void LogFormVersionDownload(int FormVersionID)
         {
+            AppConfig config = new AppConfig();
+            config.LoadByPrimaryKey(1);
             ManualLog objData = new ManualLog();
             objData.AddNew();
             objData.FromVersionID = int.Parse(FormVersionID.ToString());
             objData.UserID = new Guid(Membership.GetUser(Context.User.Identity.Name).ProviderUserKey.ToString());
             objData.ActionID = 5;
-            objData.LogDate = DateTime.Now;
+            objData.LogDate = config.GetDateTimeUsingLocalZone();
             objData.Save();
         }
         
@@ -196,6 +204,8 @@ namespace Flights_GUI.Common
 
         private void LogScheduleVersionsView()
         {
+            AppConfig config = new AppConfig();
+            config.LoadByPrimaryKey(1);
             UsersNofications objData = new UsersNofications();
             objData.getUnreadSchedulesVersionsByUserID(new Guid(Membership.GetUser(Context.User.Identity.Name).ProviderUserKey.ToString()));
             if (objData.RowCount > 0)
@@ -208,7 +218,7 @@ namespace Flights_GUI.Common
                     objDataSchedule.UserID = new Guid(Membership.GetUser(Context.User.Identity.Name).ProviderUserKey.ToString());
                     objDataSchedule.ScheduleVersionID = objData.ScheduleVersionID;
                     objDataSchedule.ActionID = 4;
-                    objDataSchedule.LogDate = DateTime.Now;
+                    objDataSchedule.LogDate = config.GetDateTimeUsingLocalZone();
                     objDataSchedule.Save();
 
                     objData.MoveNext();
@@ -218,6 +228,8 @@ namespace Flights_GUI.Common
 
         public void LogManualsVersionsRead(int ManualID)
         {
+            AppConfig config = new AppConfig();
+            config.LoadByPrimaryKey(1);
             UsersNofications objData = new UsersNofications();
             objData.getUnreadManualsVersionsByUserIDAndManualID(new Guid(Membership.GetUser(Context.User.Identity.Name).ProviderUserKey.ToString()), ManualID);
             if (objData.RowCount > 0)
@@ -230,7 +242,7 @@ namespace Flights_GUI.Common
                     objDataManual.UserID = new Guid(Membership.GetUser(Context.User.Identity.Name).ProviderUserKey.ToString());
                     objDataManual.ManualVersionID = objData.ManualVersionID;
                     objDataManual.ActionID = 4;
-                    objDataManual.LogDate = DateTime.Now;
+                    objDataManual.LogDate = config.GetDateTimeUsingLocalZone();
                     objDataManual.Save();
 
                     objData.MoveNext();
@@ -240,6 +252,8 @@ namespace Flights_GUI.Common
 
         public void LogFormsVersionsRead(int FormID)
         {
+            AppConfig config = new AppConfig();
+            config.LoadByPrimaryKey(1);
             UsersNofications objData = new UsersNofications();
             objData.getUnreadFormsVersionsByUserIDAndFormID(new Guid(Membership.GetUser(Context.User.Identity.Name).ProviderUserKey.ToString()), FormID);
             if (objData.RowCount > 0)
@@ -252,7 +266,7 @@ namespace Flights_GUI.Common
                     objDataManual.UserID = new Guid(Membership.GetUser(Context.User.Identity.Name).ProviderUserKey.ToString());
                     objDataManual.FromVersionID = objData.FromVersionID;
                     objDataManual.ActionID = 4;
-                    objDataManual.LogDate = DateTime.Now;
+                    objDataManual.LogDate = config.GetDateTimeUsingLocalZone();
                     objDataManual.Save();
 
                     objData.MoveNext();

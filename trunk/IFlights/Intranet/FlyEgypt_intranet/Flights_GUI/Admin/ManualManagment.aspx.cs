@@ -132,11 +132,13 @@ namespace Flights_GUI.Admin
                 objData.IsDeleted = true;
                 objData.Save();
 
+                AppConfig config = new AppConfig();
+                config.LoadByPrimaryKey(1);
                 ManualLog mlog = new ManualLog();
                 mlog.AddNew();
                 mlog.ActionID = 3; // delete
                 mlog.ManualID = objData.ManualID;
-                mlog.LogDate = DateTime.Now;
+                mlog.LogDate = config.GetDateTimeUsingLocalZone();
                 mlog.UserID = new Guid(Membership.GetUser().ProviderUserKey.ToString());
                 mlog.Save();
 
@@ -190,8 +192,10 @@ namespace Flights_GUI.Admin
 
             objdata.Save();
 
+            AppConfig config = new AppConfig();
+            config.LoadByPrimaryKey(1);
             mlog.ManualID = objdata.ManualID;
-            mlog.LogDate = DateTime.Now;
+            mlog.LogDate = config.GetDateTimeUsingLocalZone();
             mlog.UserID = new Guid(Membership.GetUser().ProviderUserKey.ToString());
             mlog.Save();
 
@@ -326,12 +330,14 @@ namespace Flights_GUI.Admin
                 versions.IsDeleted = true;
                 versions.Save();
 
+                AppConfig config = new AppConfig();
+                config.LoadByPrimaryKey(1);
                 ManualLog mlog = new ManualLog();
                 mlog.AddNew();
                 mlog.ActionID = 3;//delete
                 mlog.ManualVersionID = versions.ManualVersionID;
                 mlog.UserID = new Guid(Membership.GetUser().ProviderUserKey.ToString());
-                mlog.LogDate = DateTime.Now;
+                mlog.LogDate = config.GetDateTimeUsingLocalZone();
                 mlog.Save();
 
                 BindData_Versions();
@@ -392,8 +398,10 @@ namespace Flights_GUI.Admin
 
             objdata.Save();
 
+            AppConfig config = new AppConfig();
+            config.LoadByPrimaryKey(1);
             mlog.ManualVersionID = objdata.ManualVersionID;
-            mlog.LogDate = DateTime.Now;
+            mlog.LogDate = config.GetDateTimeUsingLocalZone();
             mlog.UserID = new Guid(Membership.GetUser().ProviderUserKey.ToString());
             mlog.Save();
 

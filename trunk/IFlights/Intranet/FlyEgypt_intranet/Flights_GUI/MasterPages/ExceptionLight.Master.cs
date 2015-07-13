@@ -106,11 +106,13 @@ namespace Flights_GUI.MasterPages
 
         protected void LoginStatus2_LoggingOut(object sender, LoginCancelEventArgs e)
         {
+            AppConfig config = new AppConfig();
+            config.LoadByPrimaryKey(1);    
             LoginLog objData = new LoginLog();
             objData.AddNew();
             objData.UserID = new Guid(Membership.GetUser(Page.User.Identity.Name).ProviderUserKey.ToString());
             objData.ActionID = 7;
-            objData.LogDate = DateTime.Now;
+            objData.LogDate = config.GetDateTimeUsingLocalZone();
             objData.Save();
         }
     }
