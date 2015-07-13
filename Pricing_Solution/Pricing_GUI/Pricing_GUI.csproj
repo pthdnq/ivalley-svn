@@ -1799,6 +1799,8 @@
     <Content Include="CompaniesMaster.Master" />
     <None Include="css\.DS_Store" />
     <Content Include="css\images\Thumbs.db" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <None Include="font\.DS_Store" />
     <Content Include="font\myriadprobold.eot">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

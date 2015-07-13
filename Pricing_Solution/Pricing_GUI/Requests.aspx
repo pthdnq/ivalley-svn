@@ -349,10 +349,11 @@
                                        <li class="active"><a href="#tab_1_1" data-toggle="tab">Drug info</a></li>
                                        <%--<li><a href="#tab_1_2" data-toggle="tab">Packages info</a></li>--%>
                                        <li><a href="#tab_1_3" data-toggle="tab">Attachments</a></li>
-                                       <li><a href="#tab_1_4" data-toggle="tab">Status history</a></li>
-                                       <li><a href="#tab_1_5" data-toggle="tab">Before comitte</a></li>
-                                       <li><a href="#tab_1_6" data-toggle="tab">After comitte</a></li>
+                                       
+                                       <li><a href="#tab_1_5" data-toggle="tab">Before committe</a></li>
+                                       <li><a href="#tab_1_6" data-toggle="tab">After committe</a></li>
                                        <li><a href="#tab_1_7" data-toggle="tab">After approval</a></li>
+                                        <li><a href="#tab_1_4" data-toggle="tab">Status history</a></li>
                                     </ul>
                                     <div class="tab-content">
                                        <div class="tab-pane active" id="tab_1_1">
@@ -572,16 +573,365 @@
                                           </div>
                                           
                                        </div>
-                                        <div class="tab-pane active" id="tab_1_4">
-                                          
-                                       </div>
+                                       
                                        <div class="tab-pane" id="tab_1_5">
-                                          
+                                           <table style="width: 81%;">
+                                               <tbody>
+                                                   <tr>
+                                                       <td style="width: 16%; height: 24px;">
+                                                           <asp:Label ID="Label7" runat="server" Text="Reg. No."></asp:Label>
+                                                       </td>
+                                                       <td style="width: 19%; height: 24px;">
+                                                           <asp:TextBox ID="uiTextBoxBeforeRegNo" runat="server" Width="220px"></asp:TextBox>
+                                                       </td>
+                                                       <td style="width: 9%; height: 24px;">&nbsp;</td>
+                                                       <td style="width: 15%; height: 24px;">
+                                                           <asp:Label ID="Label9" runat="server" Text="Sector type"></asp:Label>
+                                                       </td>
+                                                       <td>
+                                                           <asp:DropDownList ID="uiDropDownListSectorType_Before" runat="server"
+                                                               Width="225px">
+                                                           </asp:DropDownList>
+                                                       </td>
+                                                       <td>&nbsp;</td>
+                                                   </tr>
+                                                   <tr>
+                                                       <td>
+                                                           <asp:Label ID="Label16" runat="server" Text="License Type"></asp:Label>
+                                                       </td>
+                                                       <td>
+                                                           <asp:DropDownList ID="uiDropDownListLicenseType" runat="server" Width="225px">
+                                                           </asp:DropDownList>
+                                                       </td>
+                                                       <td>&nbsp;</td>
+                                                       <td>
+                                                           <asp:Label ID="Label19" runat="server" Text="Status"></asp:Label>
+                                                       </td>
+                                                       <td>
+                                                           <asp:DropDownList ID="uiDropDownListStatusType" runat="server" Width="225px">
+                                                           </asp:DropDownList>
+                                                       </td>
+                                                       <td>&nbsp;</td>
+                                                   </tr>
+                                                   <tr>
+                                                       <td>Reference</td>
+                                                       <td>
+
+                                                           <asp:TextBox ID="uiTextBoxReference" runat="server" Width="220px"></asp:TextBox>
+                                                       </td>
+                                                       <td>&nbsp;</td>
+                                                       <td>
+                                                           <asp:Label ID="Label22" runat="server" Text="Indication"></asp:Label>
+                                                       </td>
+                                                       <td>
+                                                           <asp:TextBox ID="uiTextBoxIndication" runat="server" Width="220px"></asp:TextBox>
+                                                       </td>
+                                                       <td>&nbsp;</td>
+                                                   </tr>
+                                                   <tr>
+                                                       <td>Submitted to specialized</td>
+                                                       <td>
+                                                           <asp:CheckBox ID="uiCheckBoxSubmittedToSpecialized" runat="server" />
+
+
+                                                       </td>
+                                                       <td>&nbsp;</td>
+                                                       <td>
+                                                           <asp:Label ID="Label23" runat="server" Text="Dose"></asp:Label>
+                                                       </td>
+                                                       <td>
+                                                           <asp:TextBox ID="uiTextBoxDose" runat="server" Width="220px"></asp:TextBox>
+                                                       </td>
+                                                       <td>&nbsp;</td>
+                                                   </tr>
+                                                   <tr>
+                                                       <td>
+                                                           <asp:Label ID="Label24" runat="server" Text="Sales taxes"></asp:Label>
+                                                       </td>
+                                                       <td>
+                                                           <asp:CheckBox ID="uiCheckBoxSalesTaxes" runat="server" />
+                                                       </td>
+                                                       <td>&nbsp;</td>
+                                                       <td>
+                                                           <asp:Label ID="Label25" runat="server" Text="Essential drug list"></asp:Label>
+                                                       </td>
+                                                       <td>
+                                                           <asp:CheckBox ID="uiCheckBoxEssentialDrugList" runat="server" />
+                                                       </td>
+                                                       <td>&nbsp;</td>
+                                                   </tr>
+
+                                                   <tr>
+                                                       <td colspan="4" style="text-align: left">&nbsp;</td>
+                                                       <td colspan="1" style="text-align: right">
+                                                          
+                                                       </td>
+
+                                                       <td style="text-align: right">&nbsp;</td>
+
+                                                   </tr>
+
+                                               </tbody>
+                                           </table>
                                        </div>
                                        <div class="tab-pane" id="tab_1_6">
-                                          
+                                           <table style="width: 81%;">
+                                               <tbody>
+                                                   <tr>
+                                                       <td style="width: 16%; height: 24px;">
+                                                           <asp:Label ID="Label26" runat="server" Text="Reg. No."></asp:Label>
+                                                       </td>
+                                                       <td style="width: 19%; height: 24px;">
+                                                           <asp:TextBox ID="uiTextBoxRegNoAfter" runat="server" Width="220px"></asp:TextBox>
+                                                       </td>
+                                                       <td style="width: 9%; height: 24px;">&nbsp;</td>
+                                                       <td style="width: 15%; height: 24px;">
+                                                           <asp:Label ID="Label27" runat="server" Text="Sector type"></asp:Label>
+                                                       </td>
+                                                       <td>
+                                                           <asp:DropDownList ID="uiDropDownListSectorType" runat="server"
+                                                               Width="225px">
+                                                           </asp:DropDownList>
+                                                       </td>
+                                                       <td>&nbsp;</td>
+                                                   </tr>
+                                                   <tr>
+                                                       <td>
+                                                           <asp:Label ID="Label28" runat="server" Text="Committe price"></asp:Label>
+                                                       </td>
+                                                       <td>
+                                                           <asp:TextBox ID="uiTextBoxCommittePrice" runat="server" Width="220px"></asp:TextBox>
+                                                       </td>
+                                                       <td>&nbsp;</td>
+                                                       <td>
+                                                           <asp:Label ID="Label29" runat="server" Text="Committe date"></asp:Label>
+                                                       </td>
+                                                       <td>
+                                                           <asp:TextBox ID="uiTextBoxCommitteDate" runat="server" Width="220px"></asp:TextBox>
+                                                           
+                                                       </td>
+                                                       <td>&nbsp;</td>
+                                                   </tr>
+                                                   <tr>
+                                                       <td>Rational for pricing</td>
+                                                       <td>
+
+                                                           <asp:TextBox ID="uiTextBoxRationalForPricing" runat="server" Width="220px"></asp:TextBox>
+                                                       </td>
+                                                       <td>&nbsp;</td>
+                                                       <td>
+                                                           <asp:Label ID="Label30" runat="server" Text="No. of it in the box"></asp:Label>
+                                                       </td>
+                                                       <td>
+                                                           <asp:TextBox ID="uiTextBoxNoInBox" runat="server" Width="220px"></asp:TextBox>
+                                                       </td>
+                                                       <td>&nbsp;</td>
+                                                   </tr>
+                                                   <tr>
+                                                       <td>Lowest international Price of brand</td>
+                                                       <td>
+                                                           <asp:TextBox ID="uiTextBoxLowestIntPriceBrand" runat="server" Width="220px"></asp:TextBox>
+
+
+                                                       </td>
+                                                       <td>&nbsp;</td>
+                                                       <td>
+                                                           <asp:Label ID="Label31" runat="server" Text="Brand Price in Egypt"></asp:Label>
+                                                       </td>
+                                                       <td>
+                                                           <asp:TextBox ID="uiTextBoxBrandPriceInEgy" runat="server" Width="220px"></asp:TextBox>
+                                                       </td>
+                                                       <td>&nbsp;</td>
+                                                   </tr>
+                                                   <tr>
+                                                       <td colspan="4">
+                                                           <asp:Label ID="Label32" runat="server" Text="Price after 30% reduction for referenced high tech imported generic"></asp:Label>
+                                                       </td>
+                                                       <td>
+                                                           <asp:TextBox ID="uiTextBoxPriceAfter30" runat="server" Width="220px"></asp:TextBox>
+                                                       </td>
+                                                       <td>&nbsp;</td>
+                                                   </tr>
+                                                   <tr>
+                                                       <td colspan="4">
+                                                           <asp:Label ID="Label33" runat="server" Text="Price after 35% reduction for non referenced high tech imported generic"></asp:Label>
+                                                       </td>
+                                                       <td>
+                                                           <asp:TextBox ID="uiTextBoxPriceAfter35" runat="server" Width="220px"></asp:TextBox>
+                                                       </td>
+                                                       <td>&nbsp;</td>
+                                                   </tr>
+                                                   <tr>
+                                                       <td colspan="4">
+                                                           <asp:Label ID="Label34" runat="server" Text="Price after 35% reduction for imported generic & 1st 5 generic"></asp:Label>
+                                                       </td>
+                                                       <td>
+                                                           <asp:TextBox ID="uiTextBoxPriceAfter35FirstGeneric" runat="server" Width="220px"></asp:TextBox>
+                                                       </td>
+                                                       <td>&nbsp;</td>
+                                                   </tr>
+                                                   <tr>
+                                                       <td colspan="4">
+                                                           <asp:Label ID="Label35" runat="server" Text="Price after 40% reduction for imported generic & 2nd 5 generic"></asp:Label>
+                                                       </td>
+                                                       <td>
+                                                           <asp:TextBox ID="uiTextBoxPriceAfter40ndGeneric" runat="server" Width="220px"></asp:TextBox>
+                                                       </td>
+                                                       <td>&nbsp;</td>
+                                                   </tr>
+                                                   <tr>
+                                                       <td>Lowest Price of the generic </td>
+                                                       <td>
+                                                           <asp:TextBox ID="uiTextBoxLowestPriceGeneric" runat="server" Width="220px"></asp:TextBox>
+
+
+                                                       </td>
+                                                       <td>&nbsp;</td>
+                                                       <td>
+                                                           <asp:Label ID="Label36" runat="server" Text="Final Price"></asp:Label>
+                                                       </td>
+                                                       <td>
+                                                           <asp:TextBox ID="uiTextBoxFinalPrice" runat="server" Width="220px"></asp:TextBox>
+                                                       </td>
+                                                       <td>&nbsp;</td>
+                                                   </tr>
+
+                                                   <tr>
+                                                       <td colspan="4">Is the product priced according to 499 desicion</td>
+                                                       <td>
+                                                           <asp:CheckBox ID="uiCheckBoxIsPricedTo499" runat="server" />
+                                                       </td>
+                                                       <td>&nbsp;</td>
+                                                   </tr>
+
+                                                   <tr>
+                                                       <td>Notes</td>
+                                                       <td>
+                                                           <asp:TextBox ID="uiTextBoxNotes" runat="server" Width="220px"></asp:TextBox>
+
+
+                                                       </td>
+                                                       <td>&nbsp;</td>
+                                                       <td>
+                                                           <asp:Label ID="Label38" runat="server" Text="Main group"></asp:Label>
+                                                       </td>
+                                                       <td>
+                                                           <asp:TextBox ID="uiTextBoxMainGroup" runat="server" Width="220px"></asp:TextBox>
+                                                       </td>
+                                                       <td>&nbsp;</td>
+                                                   </tr>
+                                                   <tr>
+                                                       <td>Month</td>
+                                                       <td>
+                                                           <asp:TextBox ID="uiTextBoxMonth" runat="server" Width="220px"></asp:TextBox>
+
+
+                                                       </td>
+                                                       <td>&nbsp;</td>
+                                                       <td>
+                                                           <asp:Label ID="Label37" runat="server" Text="similar or not"></asp:Label>
+                                                       </td>
+                                                       <td>
+                                                           <asp:CheckBox ID="uiCheckBoxSimilar" runat="server" />
+                                                       </td>
+                                                       <td>&nbsp;</td>
+                                                   </tr>
+                                                   <tr>
+                                                       <td>Previous pack</td>
+                                                       <td>
+                                                           <asp:TextBox ID="uiTextBoxPreviouspack" runat="server" Width="220px"></asp:TextBox>
+
+
+                                                       </td>
+                                                       <td>&nbsp;</td>
+                                                       <td>
+                                                           <asp:Label ID="Label39" runat="server" Text="Previous price"></asp:Label>
+                                                       </td>
+                                                       <td>
+                                                           <asp:TextBox ID="uiTextBoxPreviousPrice" runat="server" Width="220px"></asp:TextBox>
+                                                       </td>
+                                                       <td>&nbsp;</td>
+                                                   </tr>
+                                                   <tr>
+                                                       <td colspan="4" style="text-align: left">&nbsp;</td>
+                                                       <td colspan="1" style="text-align: right">
+                                                         
+
+                                                       </td>
+
+                                                       <td style="text-align: right">&nbsp;</td>
+
+                                                   </tr>
+
+                                               </tbody>
+                                           </table>
                                        </div>
                                         <div class="tab-pane" id="tab_1_7">
+                                          <table style="width: 81%;">
+                                               <tbody>
+                                                   <tr>
+                                                       <td style="width: 16%; height: 24px;">
+                                                           <asp:Label ID="Label8" runat="server" Text="Approved price"></asp:Label>
+                                                       </td>
+                                                       <td style="width: 19%; height: 24px;">
+                                                           <asp:TextBox ID="uiTextBoxApprovedPrice" runat="server" Width="220px"></asp:TextBox>
+                                                       </td>
+                                                       <td style="width: 9%; height: 24px;">&nbsp;</td>
+                                                       <td style="width: 15%; height: 24px;">
+                                                           <asp:Label ID="Label10" runat="server" Text="Price category"></asp:Label>
+                                                       </td>
+                                                       <td>
+                                                           <asp:TextBox ID="uiTextBoxPriceCategory" runat="server" Width="220px"></asp:TextBox>
+                                                       </td>
+                                                       <td>&nbsp;</td>
+                                                   </tr>
+                                                   <tr>
+                                                       <td>
+                                                           <asp:Label ID="Label11" runat="server" Text="Approval date"></asp:Label>
+                                                       </td>
+                                                       <td>
+                                                          <asp:TextBox ID="uiTextBoxApprovalDate" runat="server" Width="220px"></asp:TextBox>
+                                                       </td>
+                                                       <td>&nbsp;</td>
+                                                       <td>
+                                                           <asp:Label ID="Label12" runat="server" Text="Issue date"></asp:Label>
+                                                       </td>
+                                                       <td>
+                                                           <asp:TextBox ID="uiTextBoxIssueDate" runat="server" Width="220px"></asp:TextBox>
+                                                       </td>
+                                                       <td>&nbsp;</td>
+                                                   </tr>
+                                                   <tr>
+                                                       <td>Scanned Sheet after minister approval </td>
+                                                       <td colspan="5">
+
+                                                         
+                                                  <iframe src="uiUpload.html?id=after_1" style="border: 0; width: 80%; overflow: hidden; height: 100px;"></iframe>
+                                                  <input type="hidden" id="hf1_after" />
+                                              
+                                                       </td>
+                                                       
+                                                   </tr>
+                                                   
+                                                   <tr>
+                                                       <td>
+                                                           <asp:Label ID="Label15" runat="server" Text="Scanned Approval Letters "></asp:Label>
+                                                       </td>
+                                                       <td colspan="5">
+                                                               
+                                                  <iframe src="uiUpload.html?id=after_2" style="border: 0; width: 80%; overflow: hidden; height: 100px;"></iframe>
+                                                  <input type="hidden" id="hf2_after" />
+                                               
+                                                       </td>
+                                                       
+                                                   </tr>
+
+                                                   
+
+                                               </tbody>
+                                           </table>
+                                       </div> 
+                                        <div class="tab-pane" id="tab_1_4">
                                           
                                        </div>
                                     </div>

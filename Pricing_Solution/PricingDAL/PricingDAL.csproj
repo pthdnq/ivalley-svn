@@ -53,6 +53,7 @@
     <Compile Include="Notifications.cs" />
     <Compile Include="PackageDetails.cs" />
     <Compile Include="PackagePricing.cs" />
+    <Compile Include="PackageStatusHistory.cs" />
     <Compile Include="PricingStatus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Registeration_Committee_Type.cs" />
