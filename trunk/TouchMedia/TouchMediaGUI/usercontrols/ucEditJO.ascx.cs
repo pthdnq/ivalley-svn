@@ -90,6 +90,14 @@ namespace TouchMediaGUI.usercontrols
             uiCheckBoxListOffsetFinishType.DataValueField = GeneralLookup.ColumnNames.GeneralLookupID;
             uiCheckBoxListOffsetFinishType.DataBind();
 
+            //GeneralLookup productionMaterial = new GeneralLookup();
+            //productionMaterial.LoadByCategoryID(Category.)
+
+        }
+
+        protected void GridViewInOutDoor_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+
         }
     }                            
 }                                
