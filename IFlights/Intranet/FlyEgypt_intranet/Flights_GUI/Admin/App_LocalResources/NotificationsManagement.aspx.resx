@@ -117,8 +117,23 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="BlogLink" xml:space="preserve">
+    <value>http://nesma.i-valley.com/Intranet/blog.aspx?cid={0}</value>
+  </data>
+  <data name="BulletinLink" xml:space="preserve">
+    <value>http://nesma.i-valley.com/Intranet/bulletins.aspx?cid={0}</value>
+  </data>
+  <data name="CircularLink" xml:space="preserve">
+    <value>http://nesma.i-valley.com/Intranet/Circulars.aspx?cid={0}</value>
+  </data>
   <data name="FromMail" xml:space="preserve">
     <value>nesma@i-valley.com</value>
+  </data>
+  <data name="NotificationBody" xml:space="preserve">
+    <value>{0} {1} . &lt;br /&gt; You can browse it by clicking on below link : &lt;br /&gt; {2}</value>
+  </data>
+  <data name="NotificationSubject" xml:space="preserve">
+    <value>Nesma Airlines - {0} {1}</value>
   </data>
   <data name="Password" xml:space="preserve">
     <value>123456</value>
@@ -130,6 +145,6 @@
     <value>mail.i-valley.com</value>
   </data>
   <data name="subject" xml:space="preserve">
-    <value>Nesma airlines - new notifiaction</value>
+    <value>Nesma Airlines - new notifiaction</value>
   </data>
 </root>

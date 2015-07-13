@@ -12,6 +12,15 @@ namespace Flights_GUI
 {
     public partial class DashBored : System.Web.UI.Page
     {
+        public string LogoPath
+        {
+            get
+            {
+                AppConfig config = new AppConfig();
+                config.LoadByPrimaryKey(1);
+                return config.LogoPath;
+            }
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
            
@@ -104,19 +113,19 @@ namespace Flights_GUI
         private void LoadWidgets()
         {
             Announcement all = new Announcement();
-            all.GetTopCirculars();
+            all.GetTopCirculars(new Guid(Membership.GetUser().ProviderUserKey.ToString()));
 
             uiRepeaterCirculars.DataSource = all.DefaultView;
             uiRepeaterCirculars.DataBind();
 
             Announcement Bulletins = new Announcement();
-            Bulletins.GetTopBulletins();
+            Bulletins.GetTopBulletins(new Guid(Membership.GetUser().ProviderUserKey.ToString()));
 
             uiRepeaterBulletins.DataSource = Bulletins.DefaultView;
             uiRepeaterBulletins.DataBind();
 
             Announcement Blogs = new Announcement();
-            Blogs.GetTopBlogs();
+            Blogs.GetTopBlogs(new Guid(Membership.GetUser().ProviderUserKey.ToString()));
 
             uiRepeaterBlogs.DataSource = Blogs.DefaultView;
             uiRepeaterBlogs.DataBind();

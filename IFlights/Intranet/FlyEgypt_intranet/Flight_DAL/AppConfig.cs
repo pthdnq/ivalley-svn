@@ -139,6 +139,22 @@ namespace Flight_DAL
 				}
 			}
 			
+			public static SqlParameter TimeZoneID
+			{
+				get
+				{
+					return new SqlParameter("@TimeZoneID", SqlDbType.Int, 0);
+				}
+			}
+			
+			public static SqlParameter DefaultLoginImagePath
+			{
+				get
+				{
+					return new SqlParameter("@DefaultLoginImagePath", SqlDbType.NVarChar, 300);
+				}
+			}
+			
 		}
 		#endregion		
 	
@@ -150,6 +166,8 @@ namespace Flight_DAL
             public const string Title = "Title";
             public const string LogoPath = "LogoPath";
             public const string CssPath = "CssPath";
+            public const string TimeZoneID = "TimeZoneID";
+            public const string DefaultLoginImagePath = "DefaultLoginImagePath";
 
 			static public string ToPropertyName(string columnName)
 			{
@@ -162,6 +180,8 @@ namespace Flight_DAL
 					ht[Title] = _AppConfig.PropertyNames.Title;
 					ht[LogoPath] = _AppConfig.PropertyNames.LogoPath;
 					ht[CssPath] = _AppConfig.PropertyNames.CssPath;
+					ht[TimeZoneID] = _AppConfig.PropertyNames.TimeZoneID;
+					ht[DefaultLoginImagePath] = _AppConfig.PropertyNames.DefaultLoginImagePath;
 
 				}
 				return (string)ht[columnName];
@@ -179,6 +199,8 @@ namespace Flight_DAL
             public const string Title = "Title";
             public const string LogoPath = "LogoPath";
             public const string CssPath = "CssPath";
+            public const string TimeZoneID = "TimeZoneID";
+            public const string DefaultLoginImagePath = "DefaultLoginImagePath";
 
 			static public string ToColumnName(string propertyName)
 			{
@@ -191,6 +213,8 @@ namespace Flight_DAL
 					ht[Title] = _AppConfig.ColumnNames.Title;
 					ht[LogoPath] = _AppConfig.ColumnNames.LogoPath;
 					ht[CssPath] = _AppConfig.ColumnNames.CssPath;
+					ht[TimeZoneID] = _AppConfig.ColumnNames.TimeZoneID;
+					ht[DefaultLoginImagePath] = _AppConfig.ColumnNames.DefaultLoginImagePath;
 
 				}
 				return (string)ht[propertyName];
@@ -208,6 +232,8 @@ namespace Flight_DAL
             public const string Title = "s_Title";
             public const string LogoPath = "s_LogoPath";
             public const string CssPath = "s_CssPath";
+            public const string TimeZoneID = "s_TimeZoneID";
+            public const string DefaultLoginImagePath = "s_DefaultLoginImagePath";
 
 		}
 		#endregion		
@@ -271,6 +297,30 @@ namespace Flight_DAL
 			set
 	        {
 				base.Setstring(ColumnNames.CssPath, value);
+			}
+		}
+
+		public virtual int TimeZoneID
+	    {
+			get
+	        {
+				return base.Getint(ColumnNames.TimeZoneID);
+			}
+			set
+	        {
+				base.Setint(ColumnNames.TimeZoneID, value);
+			}
+		}
+
+		public virtual string DefaultLoginImagePath
+	    {
+			get
+	        {
+				return base.Getstring(ColumnNames.DefaultLoginImagePath);
+			}
+			set
+	        {
+				base.Setstring(ColumnNames.DefaultLoginImagePath, value);
 			}
 		}
 
@@ -351,6 +401,36 @@ namespace Flight_DAL
 					this.SetColumnNull(ColumnNames.CssPath);
 				else
 					this.CssPath = base.SetstringAsString(ColumnNames.CssPath, value);
+			}
+		}
+
+		public virtual string s_TimeZoneID
+	    {
+			get
+	        {
+				return this.IsColumnNull(ColumnNames.TimeZoneID) ? string.Empty : base.GetintAsString(ColumnNames.TimeZoneID);
+			}
+			set
+	        {
+				if(string.Empty == value)
+					this.SetColumnNull(ColumnNames.TimeZoneID);
+				else
+					this.TimeZoneID = base.SetintAsString(ColumnNames.TimeZoneID, value);
+			}
+		}
+
+		public virtual string s_DefaultLoginImagePath
+	    {
+			get
+	        {
+				return this.IsColumnNull(ColumnNames.DefaultLoginImagePath) ? string.Empty : base.GetstringAsString(ColumnNames.DefaultLoginImagePath);
+			}
+			set
+	        {
+				if(string.Empty == value)
+					this.SetColumnNull(ColumnNames.DefaultLoginImagePath);
+				else
+					this.DefaultLoginImagePath = base.SetstringAsString(ColumnNames.DefaultLoginImagePath, value);
 			}
 		}
 
@@ -437,6 +517,26 @@ namespace Flight_DAL
 					}
 				}
 
+				public WhereParameter TimeZoneID
+				{
+					get
+					{
+							WhereParameter where = new WhereParameter(ColumnNames.TimeZoneID, Parameters.TimeZoneID);
+							this._clause._entity.Query.AddWhereParameter(where);
+							return where;
+					}
+				}
+
+				public WhereParameter DefaultLoginImagePath
+				{
+					get
+					{
+							WhereParameter where = new WhereParameter(ColumnNames.DefaultLoginImagePath, Parameters.DefaultLoginImagePath);
+							this._clause._entity.Query.AddWhereParameter(where);
+							return where;
+					}
+				}
+
 
 				private WhereClause _clause;
 			}
@@ -502,11 +602,37 @@ namespace Flight_DAL
 				}
 			}
 
+			public WhereParameter TimeZoneID
+		    {
+				get
+		        {
+					if(_TimeZoneID_W == null)
+	        	    {
+						_TimeZoneID_W = TearOff.TimeZoneID;
+					}
+					return _TimeZoneID_W;
+				}
+			}
+
+			public WhereParameter DefaultLoginImagePath
+		    {
+				get
+		        {
+					if(_DefaultLoginImagePath_W == null)
+	        	    {
+						_DefaultLoginImagePath_W = TearOff.DefaultLoginImagePath;
+					}
+					return _DefaultLoginImagePath_W;
+				}
+			}
+
 			private WhereParameter _AppConfigId_W = null;
 			private WhereParameter _AppName_W = null;
 			private WhereParameter _Title_W = null;
 			private WhereParameter _LogoPath_W = null;
 			private WhereParameter _CssPath_W = null;
+			private WhereParameter _TimeZoneID_W = null;
+			private WhereParameter _DefaultLoginImagePath_W = null;
 
 			public void WhereClauseReset()
 			{
@@ -515,6 +641,8 @@ namespace Flight_DAL
 				_Title_W = null;
 				_LogoPath_W = null;
 				_CssPath_W = null;
+				_TimeZoneID_W = null;
+				_DefaultLoginImagePath_W = null;
 
 				this._entity.Query.FlushWhereParameters();
 
@@ -621,6 +749,26 @@ namespace Flight_DAL
 					}
 				}
 
+				public AggregateParameter TimeZoneID
+				{
+					get
+					{
+							AggregateParameter aggregate = new AggregateParameter(ColumnNames.TimeZoneID, Parameters.TimeZoneID);
+							this._clause._entity.Query.AddAggregateParameter(aggregate);
+							return aggregate;
+					}
+				}
+
+				public AggregateParameter DefaultLoginImagePath
+				{
+					get
+					{
+							AggregateParameter aggregate = new AggregateParameter(ColumnNames.DefaultLoginImagePath, Parameters.DefaultLoginImagePath);
+							this._clause._entity.Query.AddAggregateParameter(aggregate);
+							return aggregate;
+					}
+				}
+
 
 				private AggregateClause _clause;
 			}
@@ -686,11 +834,37 @@ namespace Flight_DAL
 				}
 			}
 
+			public AggregateParameter TimeZoneID
+		    {
+				get
+		        {
+					if(_TimeZoneID_W == null)
+	        	    {
+						_TimeZoneID_W = TearOff.TimeZoneID;
+					}
+					return _TimeZoneID_W;
+				}
+			}
+
+			public AggregateParameter DefaultLoginImagePath
+		    {
+				get
+		        {
+					if(_DefaultLoginImagePath_W == null)
+	        	    {
+						_DefaultLoginImagePath_W = TearOff.DefaultLoginImagePath;
+					}
+					return _DefaultLoginImagePath_W;
+				}
+			}
+
 			private AggregateParameter _AppConfigId_W = null;
 			private AggregateParameter _AppName_W = null;
 			private AggregateParameter _Title_W = null;
 			private AggregateParameter _LogoPath_W = null;
 			private AggregateParameter _CssPath_W = null;
+			private AggregateParameter _TimeZoneID_W = null;
+			private AggregateParameter _DefaultLoginImagePath_W = null;
 
 			public void AggregateClauseReset()
 			{
@@ -699,6 +873,8 @@ namespace Flight_DAL
 				_Title_W = null;
 				_LogoPath_W = null;
 				_CssPath_W = null;
+				_TimeZoneID_W = null;
+				_DefaultLoginImagePath_W = null;
 
 				this._entity.Query.FlushAggregateParameters();
 
@@ -791,6 +967,14 @@ namespace Flight_DAL
 
 			p = cmd.Parameters.Add(Parameters.CssPath);
 			p.SourceColumn = ColumnNames.CssPath;
+			p.SourceVersion = DataRowVersion.Current;
+
+			p = cmd.Parameters.Add(Parameters.TimeZoneID);
+			p.SourceColumn = ColumnNames.TimeZoneID;
+			p.SourceVersion = DataRowVersion.Current;
+
+			p = cmd.Parameters.Add(Parameters.DefaultLoginImagePath);
+			p.SourceColumn = ColumnNames.DefaultLoginImagePath;
 			p.SourceVersion = DataRowVersion.Current;
 
 

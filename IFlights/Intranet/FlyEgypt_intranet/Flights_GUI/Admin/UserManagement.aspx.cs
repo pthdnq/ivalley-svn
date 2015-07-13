@@ -348,7 +348,7 @@ namespace Flights_GUI.Admin
             ClearFields();
             uiPanelAll.Visible = false;
             uiPanelEdit.Visible = true;
-            RequiredFieldValidator6.Enabled = true;
+            RequiredFieldValidator6.Enabled = false;
             RequiredFieldValidator2.Enabled = true;
             CompareValidator1.Enabled = true;
             CurrentUser = null;

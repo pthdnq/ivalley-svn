@@ -103,3 +103,27 @@ GO
 alter table UsersNofications
 add ScheduleID int, 
 	ScheduleVersionID int
+
+
+
+
+If Exists (select Name 
+		   from sysobjects 
+		   where name = 'TimeZone' and
+		        xtype = 'U')
+Drop Table TimeZone
+GO
+Create Table TimeZone
+(
+	TimeZoneID int not null identity(1,1) primary key,			
+	DisplayName nvarchar(10),
+	Hours int, 
+	Mins int
+)
+
+GO
+
+alter table Appconfig
+add TimeZoneID int foreign key references TimeZone(TimeZoneID),
+	DefaultLoginImagePath nvarchar(300)
+Go

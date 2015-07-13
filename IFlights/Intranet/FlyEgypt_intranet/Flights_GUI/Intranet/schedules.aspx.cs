@@ -24,6 +24,8 @@ namespace Flights_GUI.Intranet
 
         private void LogScheduleView()
         {
+            AppConfig config = new AppConfig();
+            config.LoadByPrimaryKey(1);
             UsersNofications objData = new UsersNofications();
             objData.getUnreadSchedulesByUserID(new Guid(Membership.GetUser(Page.User.Identity.Name).ProviderUserKey.ToString()));
             if (objData.RowCount >0)
@@ -36,7 +38,7 @@ namespace Flights_GUI.Intranet
                     objDataSchedule.UserID = new Guid(Membership.GetUser(Page.User.Identity.Name).ProviderUserKey.ToString());
                     objDataSchedule.ScheduleID = objData.ScheduleID;
                     objDataSchedule.ActionID = 4;
-                    objDataSchedule.LogDate = DateTime.Now;
+                    objDataSchedule.LogDate = config.GetDateTimeUsingLocalZone();
                     objDataSchedule.Save();
 
                     objData.MoveNext();

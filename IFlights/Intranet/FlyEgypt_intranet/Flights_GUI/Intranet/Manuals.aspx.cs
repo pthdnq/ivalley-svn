@@ -106,6 +106,8 @@ namespace Flights_GUI.Intranet
         }
         public void LogManualsRead()
         {
+            AppConfig config = new AppConfig();
+            config.LoadByPrimaryKey(1);
             UsersNofications objData = new UsersNofications();
             objData.getUnreadManualsByUserIDAndCatID(new Guid(Membership.GetUser(Page.User.Identity.Name).ProviderUserKey.ToString()),currentManualCat);
             if (objData.RowCount > 0)
@@ -118,7 +120,7 @@ namespace Flights_GUI.Intranet
                     objDataManual.UserID = new Guid(Membership.GetUser(Page.User.Identity.Name).ProviderUserKey.ToString());
                     objDataManual.ManualID = objData.ManualID;
                     objDataManual.ActionID = 4;
-                    objDataManual.LogDate = DateTime.Now;
+                    objDataManual.LogDate = config.GetDateTimeUsingLocalZone();
                     objDataManual.Save();
 
                     objData.MoveNext();

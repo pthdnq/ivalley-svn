@@ -32,7 +32,7 @@
                         <telerik:GridBoundColumn DataField="createdDate" HeaderText="Created Date" DataFormatString="{0:dd/MM/yyyy}"></telerik:GridBoundColumn>
                         <telerik:GridTemplateColumn HeaderText="Actions">
                             <ItemTemplate>
-                                <asp:LinkButton ID="uiLinkButtonEdit" runat="server" CommandArgument='<%# Eval("AnnouncementID") %>'
+                                <asp:LinkButton ID="uiLinkButtonEdit" runat="server" CommandArgument='<%# Eval("AnnouncementID") %>' Visible='<%# (Membership.GetUser().ProviderUserKey.ToString() == Eval("CreatedBy").ToString()) %>'
                                     CommandName="EditCircular"><img src="../images/edit.png" alt="Edit" title="Edit" style="border:0;float:none;" /></asp:LinkButton>
                                 &nbsp;
                                     <asp:LinkButton ID="uiLinkButtonDelete" runat="server" CommandArgument='<%# Eval("AnnouncementID") %>' Visible='<%# (Membership.GetUser().ProviderUserKey.ToString() == Eval("CreatedBy").ToString()) %>'
@@ -104,7 +104,13 @@
                 <iframe src="../uiUpload.html" style="border: 0; width: 80%; overflow: hidden; height: 100px;"></iframe>
             </div>
         </div>
-
+        <div style="clear: both; height: 5px;"></div>
+        <div class="cell-12 clearfix" style="margin-left: 0;">
+            <div class="cell-2">Notify members via mail</div>
+            <div class="cell-4">
+                <asp:CheckBox ID="uiCheckBoxSendMail" runat="server" />
+            </div>
+        </div>
         <div style="clear: both; height: 5px;"></div>
         <div class="cell-12 clearfix" style="margin-left: 0; display: none;">
             <div class="cell-2">Created By</div>

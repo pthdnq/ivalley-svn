@@ -63,6 +63,7 @@
     <Compile Include="Schedule.cs" />
     <Compile Include="ScheduleLog.cs" />
     <Compile Include="ScheduleVersion.cs" />
+    <Compile Include="TimeZone.cs" />
     <Compile Include="UsefulLink.cs" />
     <Compile Include="UserGroup.cs" />
     <Compile Include="UsersNofications.cs" />

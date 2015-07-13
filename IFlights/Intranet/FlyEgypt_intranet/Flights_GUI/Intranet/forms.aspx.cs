@@ -83,6 +83,8 @@ namespace Flights_GUI.Intranet
 
         private void LogForms()
         {
+            AppConfig config = new AppConfig();
+            config.LoadByPrimaryKey(1);
             UsersNofications objData = new UsersNofications();
             objData.getUnreadFormsByUserIDAndManualID(new Guid(Membership.GetUser(Page.User.Identity.Name).ProviderUserKey.ToString()),CurrentManual);
             if (objData.RowCount > 0)
@@ -95,7 +97,7 @@ namespace Flights_GUI.Intranet
                     objDataSchedule.UserID = new Guid(Membership.GetUser(Page.User.Identity.Name).ProviderUserKey.ToString());
                     objDataSchedule.ManualFormID = objData.FormID;
                     objDataSchedule.ActionID = 4;
-                    objDataSchedule.LogDate = DateTime.Now;
+                    objDataSchedule.LogDate = config.GetDateTimeUsingLocalZone();
                     objDataSchedule.Save();
 
                     objData.MoveNext();

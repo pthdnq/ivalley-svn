@@ -39,7 +39,7 @@
 
     <!-- Skin style (** you can change the link below with the one you need from skins folder in the css folder **) -->
     <link rel="stylesheet" href="../ThemesFiles/ExceptionsLight/css/skins/default.css">
-    <link rel="stylesheet" href="../ThemesFiles/ExceptionsLight/css/skins/skin9.css">
+    <asp:Literal ID="uiLiteralTheme" runat="server"></asp:Literal>
     <!-- Load JS siles -->
     <script type="text/javascript" src="../ThemesFiles/ExceptionsLight/js/jquery.min.js"></script>
 
@@ -199,7 +199,9 @@
                     <div class="container">
                         <div class="row">
                             <div class="cell-12">
-                                <h1 class="fx animated fadeInLeft" data-animate="fadeInLeft">Welcome to Nesma Intranet</h1>
+                                <h1 class="fx animated fadeInLeft" data-animate="fadeInLeft">Welcome to 
+                                    <asp:Literal ID="uiLiteralWelcomeText" runat="server"></asp:Literal>
+                                </h1>
                             </div>
                         </div>
                     </div>
@@ -207,7 +209,7 @@
                 <div class="sectionWrapper" style="padding-top: 40px;">
                     <div class="container">
                         <div class="cell-12">
-                            <img src="images/nesma1.png" style="display: block; margin: 0 auto;" data-animate="fadeInLeft" class="fx animated fadeInLeft" />
+                            <img src="<%= LoginImagePath %>" style="display: block; margin: 0 auto;" data-animate="fadeInLeft" class="fx animated fadeInLeft" />
                             <asp:Login ID="Login1" runat="server" RenderOuterTable="False" Visible="false">
                                 <LayoutTemplate>
                                     <div class="control-wrap">

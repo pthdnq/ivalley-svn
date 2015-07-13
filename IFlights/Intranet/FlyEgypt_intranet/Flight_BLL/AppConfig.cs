@@ -11,5 +11,18 @@ namespace Flight_BLL
 		{
 		
 		}
+
+        public DateTime GetDateTimeUsingLocalZone()
+        {
+            string displayName = "System Local Time";
+            string standardName = "System Local Time";
+
+            TimeZone tz = new TimeZone();
+            tz.LoadByPrimaryKey(this.TimeZoneID);
+
+            TimeSpan offset = new TimeSpan(tz.Hours, tz.Mins, 00);
+            TimeZoneInfo LocalZone = TimeZoneInfo.CreateCustomTimeZone(standardName, offset, displayName, standardName);
+            return TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, LocalZone);
+        }
 	}
 }

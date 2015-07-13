@@ -73,12 +73,14 @@ namespace Flights_GUI.Intranet
         }
         private void LogBlogRead(int ID)
         {
+            AppConfig config = new AppConfig();
+            config.LoadByPrimaryKey(1);
             AnnouncementLog objData = new AnnouncementLog();
             objData.AddNew();
             objData.AnnouncementID = ID;
             objData.UserID = new Guid(Membership.GetUser(Page.User.Identity.Name).ProviderUserKey.ToString());
             objData.ActionID = 4;
-            objData.LogDate = DateTime.Now;
+            objData.LogDate = config.GetDateTimeUsingLocalZone();
             objData.Save();
         }
 
