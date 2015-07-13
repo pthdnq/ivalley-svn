@@ -19,8 +19,7 @@ namespace BLL
          return
             LoadFromRawSql(@"select D.*, S.JobOrderStatusNameAr StatusNameAr, S.JobOrderStatusName StatusName, S.StatusClass  from DeliveryOrder D 
                                     inner join JobOrderStatus S on D.DeliveryOrderStatusID = S.JobOrderStatusID
-                                     
-                                    order by createdDate desc ");
+                                    order by createdDate desc");
         }
         public bool SearchDeliveryOrder(DateTime DateFrom, DateTime DateTo, string  DeliveryCode, string DeliveryName, int StatusID , int DepartmentID)
         {

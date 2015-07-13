@@ -147,10 +147,10 @@ function PrepareDesignTab() {
 
                  },
                 {
-                    text: 'التاريخ : من ', cellsalign: 'center', align: 'center', datafield: 'StartDate', width: '24%', cellsformat: 'dd/MM/yyyy', formatString: 'dd/MM/yyyy', columntype: 'datetimeinput',
+                    text: 'التاريخ : من ', cellsalign: 'center', align: 'center', datafield: 'StartDate', width: '24%', cellsformat: 'dd/MM/yyyy', formatString: 'MM/dd/yyyy', columntype: 'datetimeinput',
                     createEverPresentRowWidget: function (datafield, htmlElement, popup, addCallback) {
                         var inputTag = $("<div style='border: none;'></div>").appendTo(htmlElement);
-                        inputTag.jqxDateTimeInput({ value: null, popupZIndex: 99999999, placeHolder: "إختر التاريخ ", width: '100%', height: 30, formatString: 'dd/MM/yyyy' });
+                        inputTag.jqxDateTimeInput({ value: null, popupZIndex: 99999999, placeHolder: "إختر التاريخ ", width: '100%', height: 30, formatString: 'MM/dd/yyyy' });
                         $(document).on('keydown.date', function (event) {
                             if (event.keyCode == 13) {
                                 if (event.target === inputTag[0]) {
@@ -174,10 +174,10 @@ function PrepareDesignTab() {
                     }
                 },
                 {
-                    text: 'إلى', datafield: 'EndDate', width: '24%', cellsalign: 'center', align: 'center', cellsformat: 'dd/MM/yyyy', formatString: 'dd/MM/yyyy', columntype: 'datetimeinput',
+                    text: 'إلى', datafield: 'EndDate', width: '24%', cellsalign: 'center', align: 'center', cellsformat: 'dd/MM/yyyy', formatString: 'MM/dd/yyyy', columntype: 'datetimeinput',
                     createEverPresentRowWidget: function (datafield, htmlElement, popup, addCallback) {
                         var inputTag = $("<div style='border: none;;float:right;width:100%'></div>").appendTo(htmlElement);
-                        inputTag.jqxDateTimeInput({ value: null, popupZIndex: 99999999, placeHolder: "إختر التاريخ ", width: '100%', height: 30, formatString: 'dd/MM/yyyy' });
+                        inputTag.jqxDateTimeInput({ value: null, popupZIndex: 99999999, placeHolder: "إختر التاريخ ", width: '100%', height: 30, formatString: 'MM/dd/yyyy' });
                         $(document).on('keydown.date', function (event) {
                             if (event.keyCode == 13) {
                                 if (event.target === inputTag[0]) {
@@ -246,7 +246,6 @@ function PrepareDesignTab() {
 
         });
 }
-
 
 function PrepareDigitalTab() {
     var Designersource =
@@ -627,6 +626,112 @@ function ViewSections()
             viewdItemsCounter++;
         }
     });
+}
 
+function SaveJobOrder()
+{
+    var JOdata = new Object();
+     JOdata.JobOrderCode = $('#uiTextBoxJOCode').val();
+     JOdata.JobOrderName = $('#uiTextBoxName').val();
+     JOdata.JobOrderDescription = $('#uiTextBoxDesc').val();
+     JOdata.ClientID = $('#uiDropDownListClient').val();
+     JOdata.JobOrderStatusID = $('#uiDropDownListJOStatus').val();
+     JOdata.JobOrderID = $('#uiHiddenFieldCurrentJO').val();
+
+     var str = { JobOrderMaster: JOdata };
+
+    $.ajax({
+        type: "post",
+        url: "../common/commonMethods.asmx/SaveJobOrder",
+        data: JSON.stringify(str),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (data) {
+            // call other functions
+            if (data.Result == false)
+                alert(data.Message);
+            else {
+                var JOID = data.returnData;
+
+                var SelectedSections = [];
+                $('#DivSections').find('input:checked').each(function () {
+                    SelectedSections.push(this.value);
+                });
+
+                $.each(SelectedSections, function (i, item) {
+                    switch (item) {
+                        case '1':
+                            SaveJODesign(JOID);
+                            break;
+                        case '2':
+                            SaveJODigitalPrint(JOID);
+                            break;
+                        case '3':
+                            SaveJOOffsetPrint(JOID);
+                            break;
+                        case '4':
+                            SaveJOInOutDoorPrint(JOID);
+                            break;
+                        case '5':
+                            SaveJOProduction(JOID);
+                            break;
+                        case '6':
+                            SaveJOGiverAways(JOID);
+                            break;
+                        default:
+                            break;
+                    }
+                });
+            }
+        }
+    });
+}
+
+function SaveJODesign(JOID)
+{
+    var DesignGridData = $('#DesignGrid').jqxGrid('getrows');
+    $.each(DesignGridData, function (i, item) {
+        if (item.DesignDetailsID == null)
+            item.DesignDetailsID = 0;
+    });
+    var str = { DesignData: DesignGridData, JobOrderID : JOID};
+
+    $.ajax({
+        type: "post",
+        url: "../common/commonMethods.asmx/SaveJobOrderDesign",
+        data: JSON.stringify(str),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json"
+    });
+}
+
+function SaveJODigitalPrint(JOID)
+{
+    var JOdata = new Object();
+    //JOdata.PrintingTypeID = many
+    JOdata.IsRAndV = $('#uiRadioButtonListRRV').val(); // not working
+    JOdata.DeliveryDoneTo = $('#uiDropDownListDPDeliveryTo').val();
+    JOdata.JobOrderStatusID = $('#uiDropDownListClient').val();
+    //JOdata.JobOrderStatusID = $('#uiDropDownListJOStatus').val();
+    JOdata.JobOrderID = $('#uiHiddenFieldCurrentJO').val();
+}
+
+function SaveJOOffsetPrint(JOID)
+{
+
+}
+
+function SaveJOInOutDoorPrint(JOID)
+{
+
+}
+
+function SaveJOProduction(JOID)
+{
+
+}
+
+function SaveJOGiverAways(JOID)
+{
 
 }
