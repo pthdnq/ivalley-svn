@@ -134,7 +134,7 @@ var App = function () {
     }
 
 
-
+    /*
     var handleDashboardCalendar = function () {
 
         if (!jQuery().fullCalendar) {
@@ -212,6 +212,7 @@ var App = function () {
         });
 
     }
+    
 
     var handleCalendar = function () {
 
@@ -373,7 +374,7 @@ var App = function () {
         });
 
     }
-
+    */
     var handleChat = function () {
         var cont = $('#chats');
         var list = $('.chats', cont);
@@ -1516,11 +1517,11 @@ var App = function () {
                     // fix layout width
                     fixWidth();
                     // fix calendar width by just reinitializing
-                    handleDashboardCalendar();
+                    //handleDashboardCalendar();
                     if (isMainPage) {
-                        handleDashboardCalendar(); // handles full calendar for main page
+                      //  handleDashboardCalendar(); // handles full calendar for main page
                     } else {
-                        handleCalendar(); // handles full calendars
+                        //handleCalendar(); // handles full calendars
                     }
                     // fix vector maps width
                     if (isMainPage) {
@@ -2177,10 +2178,10 @@ var App = function () {
             if (isMainPage) {
                 handleDashboardCharts(); // handles plot charts for main page
                 handleJQVMAP(); // handles vector maps for home page
-                handleDashboardCalendar(); // handles full calendar for main page
+                //handleDashboardCalendar(); // handles full calendar for main page
                 handleChat() // handles dashboard chat
             } else {
-                handleCalendar(); // handles full calendars
+                //handleCalendar(); // handles full calendars
                 handlePortletSortable(); // handles portlet draggable sorting
             }
 
@@ -2308,13 +2309,13 @@ try{
         return (hours < 10 ? "0"+hours : hours) + ":" + ( mins == 0 ? "00" : mins );
     }});
 } catch (e){
-    errorMessage(e);
+    //errorMessage(e);
 }
 
 
 //knob
 
-$(".knob").knob();
+//$(".knob").knob();
 
 
 
