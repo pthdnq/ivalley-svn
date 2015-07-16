@@ -22,7 +22,7 @@ ul.faq-list li a:hover, ul.faq-list li a.active{
 }
 
 #header .navbar-inner .nav .dropdown-toggle:hover, .navbar-inner .nav .dropdown.open .dropdown-toggle {
-    background-color: #333 !important;
+    background-color: #2c0e4b !important;
 }
 
 #header.navbar-inverse .divider-vertical {

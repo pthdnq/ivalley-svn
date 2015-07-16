@@ -811,6 +811,7 @@
     <Content Include="Admin\css\style.css" />
     <Content Include="Admin\css\style_default.css" />
     <Content Include="Admin\css\style_gray.css" />
+    <Content Include="Admin\css\style_ltr.css" />
     <Content Include="Admin\css\style_navy-blue.css" />
     <Content Include="Admin\css\style_purple.css" />
     <Content Include="Admin\css\style_responsive.css" />
@@ -1146,6 +1147,7 @@
     <Content Include="js\sliders.js" />
     <Content Include="js\sparkline-chart.js" />
     <Content Include="js\tree.js" />
+    <Content Include="Login.aspx" />
     <Content Include="packages.config" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -1565,6 +1567,13 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="MasterPages\MasterEn.Master.cs">
       <DependentUpon>MasterEn.Master</DependentUpon>
