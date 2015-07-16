@@ -3,6 +3,9 @@
 
 using System;
 using COMBO_DAL;
+using System.Collections.Specialized;
+using System.Data.SqlClient;
+using System.Data;
 
 namespace COMBO_BLL
 {
@@ -27,6 +30,12 @@ namespace COMBO_BLL
                 return LoadFromRawSql(sql1);
             else
                 return LoadFromRawSql(sql2);
+        }
+        public virtual bool GetUserStatisticsByUserId(int UserId)
+        {
+            ListDictionary parameters = new ListDictionary();
+            parameters.Add(new SqlParameter("@UserId", SqlDbType.Int, 0), UserId);
+            return LoadFromSql("GetUserStatisticsByUserId", parameters);
         }
 	}
 }

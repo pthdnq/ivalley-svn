@@ -1,6 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/AdminMasterAr.Master" AutoEventWireup="true" CodeBehind="EditUser.aspx.cs" Inherits="ComboPortal.Admin.EditUser" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <link href="assets/bootstrap-datepicker/css/datepicker.css" rel="stylesheet" />
+    <link href="assets/bootstrap-timepicker/compiled/timepicker.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
@@ -9,6 +11,7 @@
             <div class="widget-title">
                 <h4><i class="icon-user"></i>بيانات المستخدم  </h4>
                 <span class="tools">
+                    <asp:LinkButton ID="LinkButton1" PostBackUrl="~/Admin/UserManagement.aspx" OnClick="btnBack_Click" CssClass="btn btn-mini" runat="server"><i class="icon-arrow-right"></i> رجوع الى المستخدمين </asp:LinkButton>
                     <a href="javascript:;" class="icon-chevron-down"></a>
                 </span>
             </div>
@@ -19,17 +22,59 @@
                             <img id="ImgUser" runat="server" src="img/profile-pic.jpg" alt="" />
                         </div>
                         <ul class="nav nav-tabs nav-stacked">
+                            <li style="margin-bottom:15px">
+                                <table style="">
+                                    <tr>
+                                        <td>تاريخ انشاء الحساب : 
+                                        </td>
+                                        <td colspan="2">
+                                            <asp:Label ID="lblCreatedDate" runat="server" Text=""></asp:Label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>عدد المنشورات :
+                                        </td>
+                                        <td>
+                                            <asp:Label ID="lblPostsCounter" CssClass="badge badge-info" runat="server" Text="" />
+                                        </td>
+                                        <td>
+                                            <asp:LinkButton ID="btnDeletePosts" OnClientClick="return confirm('هل تريد مسح كل المنشورات ؟')" OnClick="btnDeletePosts_Click" CssClass="btn btn-danger btn-small" runat="server"><i class="icon-trash mini"></i></asp:LinkButton>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>عدد الفلورز :
+                                        </td>
+                                        <td>
+                                            <asp:Label ID="lblFollowersCounter" CssClass="badge badge-info" runat="server" Text="" />
+                                        </td>
+                                        <td>
+                                            <asp:LinkButton ID="btnDeleteFollowers" OnClientClick="return confirm('هل تريد مسح كل الفلورز ؟')" OnClick="btnDeleteFollowers_Click" CssClass="btn btn-danger btn-small" runat="server"><i class="icon-trash"></i></asp:LinkButton>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>عدد الفلوينج :
+                                        </td>
+                                        <td>
+                                            <asp:Label ID="lblFollowingCounter" CssClass="badge badge-info" runat="server" Text="" />
+                                        </td>
+                                        <td>
+                                            <asp:LinkButton ID="btnDeleteFollowing" OnClientClick="return confirm('هل تريد مسح كل الفلوينج ؟')" OnClick="btnDeleteFollowing_Click" CssClass="btn btn-danger btn-small" runat="server"><i class="icon-trash"></i></asp:LinkButton>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </li>
                             <li>
                                 <asp:LinkButton ID="btnViewPosts" OnClick="btnViewPosts_Click" runat="server"><i class="icon-list-ul"></i>  عرض البوستات  </asp:LinkButton></li>
                             <li class="">
                                 <asp:LinkButton ID="btnResetPass" OnClick="btnResetPass_Click" runat="server"><i class="icon-refresh"></i>  استرجاع كلمة المرور </asp:LinkButton></li>
                             <li>
-                                <asp:LinkButton ID="btnResetSecureWord" runat="server"><i class="icon-refresh"></i>  استرجاع الكلمة السرية  </asp:LinkButton></li>
-                            <li>
-                                <asp:LinkButton ID="btnBan" runat="server"><i class="icon-ban-circle"></i>  حظر  </asp:LinkButton></li>
+                                <asp:LinkButton ID="btnResetSecureWord" OnClick="btnResetSecureWord_Click" runat="server"><i class="icon-refresh"></i>  استرجاع الكلمة السرية  </asp:LinkButton></li>
+                            <li class="disabled">
+                                <asp:LinkButton ID="btnBan" Enabled="false" runat="server"><i class="icon-ban-circle"></i> حظر </asp:LinkButton>
+                                </li>
 
-                            <li>
-                                <asp:LinkButton ID="btnDelete" runat="server"><i class="icon-remove"></i>  مسح  </asp:LinkButton></li>
+<%--                            <li>
+                                <asp:LinkButton ID="btnDelete" runat="server"><i class="icon-remove"></i>  مسح  </asp:LinkButton></li>--%>
                         </ul>
                     </div>
                     <div class="span6">
@@ -59,13 +104,15 @@
                                 <tr>
                                     <td class="span3">النوع :</td>
                                     <td>
-                                        <asp:TextBox ID="lblGender" runat="server" Text=""></asp:TextBox>
+                                        <asp:DropDownList ID="drpDwnGender" runat="server"></asp:DropDownList>
+                                        <%--<asp:TextBox ID="lblGender" runat="server" Text=""></asp:TextBox>--%>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="span3">البلد :</td>
                                     <td>
-                                        <asp:TextBox ID="lblCountry" runat="server" Text=""></asp:TextBox>
+                                        <asp:DropDownList ID="drpDwnCountry" runat="server"></asp:DropDownList>
+                                        <%--<asp:TextBox ID="lblCountry" runat="server" Text=""></asp:TextBox>--%>
                                     </td>
                                 </tr>
                                 <tr>
@@ -83,34 +130,41 @@
                                 <tr>
                                     <td class="span3">تاريخ الميلاد :</td>
                                     <td>
-                                        <asp:TextBox ID="lblBirthday" runat="server" Text=""></asp:TextBox>
+                                        <div class="controls">
+                                            <div class="input-append date date-picker" data-date="12-02-2012" data-date-format="dd/mm/yyyy" data-date-viewmode="years">
+                                                <asp:TextBox ID="lblBirthday" CssClass="" runat="server" Style="direction:ltr" Text=""></asp:TextBox>
+                                                <span class="add-on"><i class="icon-calendar"></i></span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="span3">السيرة الذاتية</td>
+                                    <td>
+                                        <asp:TextBox ID="literalBio" Rows="5" TextMode="MultiLine" Width="100%" runat="server"></asp:TextBox>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>توثيق الحساب</td>
                                     <td>
-                                        <div class="alert alert-success">
+                                        <div id="DivAccountVerified" runat="server" visible="false" class="alert alert-success">
                                             <i class="icon-ok-sign"></i>هذا الحساب موثق
-                                    <asp:LinkButton ID="btnDisableVerification" CssClass="btn btn-danger btn-mini pull-left" runat="server">  الغاء التوثيق  <i class="icon-remove"></i></asp:LinkButton>
+                                    <asp:LinkButton ID="btnDisableVerification" OnClick="btnDisableVerification_Click" OnClientClick="return confirm('هل تريد الغاء توثيق الحساب ؟')" CssClass="btn btn-danger btn-mini pull-left" runat="server">  الغاء التوثيق  <i class="icon-remove"></i></asp:LinkButton>
                                         </div>
-                                        <div class="alert alert-block">
+                                        <div id="DivAccountNotVerified" runat="server" visible="false" class="alert alert-block">
                                             <i class="icon-info-sign"></i>هذا الحساب غير موثق
-                                    <asp:LinkButton ID="btnVerify" CssClass="btn btn-success btn-mini pull-left" runat="server">  توثيق الحساب   <i class="icon-ok"></i></asp:LinkButton>
+                                    <asp:LinkButton ID="btnVerify" OnClick="btnVerify_Click" OnClientClick="return confirm('هل تريد توثيق الحساب ؟')" CssClass="btn btn-success btn-mini pull-left" runat="server">  توثيق الحساب   <i class="icon-ok"></i></asp:LinkButton>
                                         </div>
                                     </td>
                                 </tr>
+
                             </tbody>
                         </table>
-                        <hr />
-                        <h4>السيرة الذاتية</h4>
-                        <p class="push">
-                            <asp:TextBox ID="literalBio" Rows="5" TextMode="MultiLine" Width="500px" runat="server"></asp:TextBox>
-                        </p>
                         <%-- <hr />
                     <asp:LinkButton ID="btnSaveProfile" CssClass="btn btn-success" runat="server">حفظ <i class="icon-ok"></i></asp:LinkButton>--%>
                     </div>
                 </div>
-                <hr />
+<%--                <hr />
                 <div class="row-fluid">
                     <h4 class="">بيانات اخرى</h4>
                     <div class="span12">
@@ -118,12 +172,12 @@
                         <div class="span3">
                             <asp:TextBox ID="TextBox1" runat="server" Text=""></asp:TextBox>
                         </div>
-                        <div style="margin-right:0" class="span2">المستوى :</div>
+                        <div style="margin-right: 0" class="span2">المستوى :</div>
                         <div class="span3">
                             <asp:TextBox ID="TextBox2" runat="server" Text=""></asp:TextBox>
                         </div>
                     </div>
-                </div>
+                </div>--%>
             </div>
         </div>
     </asp:Panel>
@@ -202,6 +256,48 @@
             </div>
         </div>
     </asp:Panel>
+
+    <asp:Panel ID="PanelResetSecretWord" Visible="false" runat="server">
+        <div class="widget">
+            <div class="widget-title">
+                <h4><i class="icon-refresh"></i>استرجاع الكلمة السرية</h4>
+                <span class="tools">
+                    <asp:LinkButton ID="btnBack3" OnClick="btnBack_Click" CssClass="btn btn-mini" runat="server"><i class="icon-arrow-right"></i> رجوع الى البيانات </asp:LinkButton>
+                    <a href="javascript:;" class="icon-chevron-down"></a>
+                </span>
+            </div>
+            <div class="widget-body clearfix">
+                <div class="span12">
+                    <div class="span2 clearfix">
+                        الكلمة السرية
+                    </div>
+                    <div class="span5 clearfix">
+                        <asp:TextBox ID="txtSecretWord" CssClass="form" TextMode="Password" runat="server"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator3" ValidationGroup="resetSecretWord" Font-Bold="true" ControlToValidate="txtUserPassword" runat="server" ForeColor="Red" ErrorMessage="*"></asp:RequiredFieldValidator>
+                    </div>
+                </div>
+                <div class="span12" style="margin-right: 0px">
+                    <div class="span2 clearfix">
+                        تأكيد الكلمة السرية
+                    </div>
+                    <div class="span5 clearfix">
+                        <asp:TextBox ID="txtConfirmSecretWord" TextMode="Password" runat="server"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator4" ValidationGroup="resetSecretWord" Font-Bold="true" ControlToValidate="txtConfirmSecretWord" runat="server" ForeColor="Red" ErrorMessage="*"></asp:RequiredFieldValidator>
+                        <asp:CompareValidator ID="CompareValidator2" runat="server" ValidationGroup="resetSecretWord" ForeColor="Red" ControlToValidate="txtConfirmSecretWord" ControlToCompare="txtSecretWord" ErrorMessage="الكلمة السرية غير متوافقة"></asp:CompareValidator>
+                    </div>
+                </div>
+                <div class="span12" style="margin-right: 0px">
+                    <div class="span1 clearfix">
+                        <asp:LinkButton ID="btnChangeSecretWord" ValidationGroup="resetSecretWord" CssClass="btn btn-success" OnClick="btnChangeSecretWord_Click" runat="server">حفظ<i class="icon-ok"></i></asp:LinkButton>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </asp:Panel>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolderScripts" runat="server">
+    <script src="assets/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+    <script src="assets/bootstrap-daterangepicker/date.js"></script>
+    <script src="assets/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <script src="assets/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
 </asp:Content>

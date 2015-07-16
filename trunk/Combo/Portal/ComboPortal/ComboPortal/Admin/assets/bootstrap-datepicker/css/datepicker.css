@@ -31,6 +31,8 @@
 .datepicker-dropdown {
     top: 0;
     left: 0;
+    right:initial !important;
+    right:auto !important;
 }
 .datepicker-dropdown:before {
     content: '';
