@@ -218,6 +218,16 @@
     <Content Include="Admin\assets\bootstrap-wysihtml5\bootstrap-wysihtml5.css" />
     <Content Include="Admin\assets\bootstrap-wysihtml5\bootstrap-wysihtml5.js" />
     <Content Include="Admin\assets\bootstrap-wysihtml5\wysihtml5-0.3.0.js" />
+    <Content Include="Admin\assets\bootstrap\css\bootstrap-fileupload.css" />
+    <Content Include="Admin\assets\bootstrap\css\bootstrap-responsive.css" />
+    <Content Include="Admin\assets\bootstrap\css\bootstrap-responsive.min.css" />
+    <Content Include="Admin\assets\bootstrap\css\bootstrap.css" />
+    <Content Include="Admin\assets\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Admin\assets\bootstrap\img\glyphicons-halflings-white.png" />
+    <Content Include="Admin\assets\bootstrap\img\glyphicons-halflings.png" />
+    <Content Include="Admin\assets\bootstrap\js\bootstrap-fileupload.js" />
+    <Content Include="Admin\assets\bootstrap\js\bootstrap.js" />
+    <Content Include="Admin\assets\bootstrap\js\bootstrap.min.js" />
     <Content Include="Admin\assets\chosen-bootstrap\chosen\chosen-sprite.png" />
     <Content Include="Admin\assets\chosen-bootstrap\chosen\chosen.css" />
     <Content Include="Admin\assets\chosen-bootstrap\chosen\chosen.jquery.js" />
@@ -882,6 +892,7 @@
     <Content Include="Admin\Login.aspx" />
     <Content Include="Admin\PostsReports.aspx" />
     <Content Include="Admin\UserManagement.aspx" />
+    <Content Include="Admin\VerifyAccount.aspx" />
     <Content Include="assets\bootstrap-colorpicker\css\colorpicker.css" />
     <Content Include="assets\bootstrap-colorpicker\js\bootstrap-colorpicker.js" />
     <Content Include="assets\bootstrap-datepicker\css\datepicker.css" />
@@ -1018,6 +1029,7 @@
     <Content Include="css\style.css" />
     <Content Include="css\style_back.css" />
     <Content Include="css\timeline-component.css" />
+    <Content Include="default.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="font\fontawesome-webfont.svg" />
     <Content Include="font\myriadprobold.svg" />
@@ -1079,6 +1091,16 @@
     <Content Include="img\lock-thumb.jpg" />
     <Content Include="img\logo.png" />
     <Content Include="img\overlay-icon.png" />
+    <Content Include="img\portal\comboText.jpg" />
+    <Content Include="img\portal\comboTitle.png" />
+    <Content Include="img\portal\hand.png" />
+    <Content Include="img\portal\logo.png" />
+    <Content Include="img\portal\play-store.png" />
+    <Content Include="img\portal\slider\homeDoo.jpg" />
+    <Content Include="img\portal\slider\homeDoo2.jpg" />
+    <Content Include="img\portal\slider\homeDoo3.jpg" />
+    <Content Include="img\portal\slider\homeDoo4.jpg" />
+    <Content Include="img\portal\slider\homeDoo5.jpg" />
     <Content Include="img\product1.jpg" />
     <Content Include="img\product2.png" />
     <Content Include="img\product3.png" />
@@ -1109,6 +1131,7 @@
     <Content Include="js\jquery-1.8.3.min.js" />
     <Content Include="js\jquery.blockui.js" />
     <Content Include="js\jquery.cookie.js" />
+    <Content Include="js\jquery.cycle.all.js" />
     <Content Include="js\jQuery.dualListBox-1.3.js" />
     <Content Include="js\jquery.nicescroll.js" />
     <Content Include="js\jquery.peity.min.js" />
@@ -1431,7 +1454,12 @@
     <Content Include="Admin\font\JF-Flat-regular.eot" />
     <Content Include="Admin\font\JF-Flat-regular.ttf" />
     <Content Include="Admin\font\JF-Flat-regular.woff" />
+    <Content Include="Admin\assets\bootstrap\.DS_Store" />
+    <Content Include="Admin\assets\bootstrap\css\.DS_Store" />
+    <Content Include="Admin\assets\bootstrap\img\.DS_Store" />
+    <Content Include="Admin\assets\bootstrap\js\.DS_Store" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="RequestAccountVerification.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -1463,7 +1491,6 @@
     <Content Include="Scripts\_references.js" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <Content Include="Splash.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
@@ -1519,9 +1546,23 @@
     <Compile Include="Admin\UserManagement.aspx.designer.cs">
       <DependentUpon>UserManagement.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\VerifyAccount.aspx.cs">
+      <DependentUpon>VerifyAccount.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\VerifyAccount.aspx.designer.cs">
+      <DependentUpon>VerifyAccount.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="default.aspx.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="default.aspx.designer.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1533,12 +1574,12 @@
       <DependentUpon>MasterEn.Master</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Splash.aspx.cs">
-      <DependentUpon>Splash.aspx</DependentUpon>
+    <Compile Include="RequestAccountVerification.aspx.cs">
+      <DependentUpon>RequestAccountVerification.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Splash.aspx.designer.cs">
-      <DependentUpon>Splash.aspx</DependentUpon>
+    <Compile Include="RequestAccountVerification.aspx.designer.cs">
+      <DependentUpon>RequestAccountVerification.aspx</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
     <Compile Include="ViewSwitcher.ascx.cs">

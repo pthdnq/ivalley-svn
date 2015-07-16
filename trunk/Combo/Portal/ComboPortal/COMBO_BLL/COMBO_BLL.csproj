@@ -31,7 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="MyGeneration.dOOdads">
-      <HintPath>..\..\..\..\..\lib\MyGeneration.dOOdads.dll</HintPath>
+      <HintPath>..\..\..\..\libs\MyGeneration.dOOdads.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -79,6 +79,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserActivityLog.cs" />
     <Compile Include="UserRank.cs" />
+    <Compile Include="VerificationRequest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\COMBO_DAL\COMBO_DAL.csproj">

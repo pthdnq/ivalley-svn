@@ -12,7 +12,7 @@
     <link href="assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
     <link href="assets/fancybox/source/jquery.fancybox.css" rel="stylesheet" />
     <link href="assets/uniform/css/uniform.default.css" rel="stylesheet" />
-    <title>COMBO Portal</title>
+    <title>COMBO - الإدارة</title>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -23,7 +23,7 @@
             <div class="navbar-inner">
                 <div class="container-fluid">
                     <!-- BEGIN LOGO -->
-                    <a class="brand ub" href="Splash.aspx">COMBO
+                    <a class="brand ub" href="../default.aspx">COMBO
                     </a>
                     <!-- END LOGO -->
                     <!-- BEGIN RESPONSIVE MENU TOGGLER -->
@@ -105,7 +105,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="UserManagement.aspx">
+                        <a href="VerifyAccount.aspx">
                             <span class="icon-box">
                                 <i class="icon-ok"></i>
                             </span>
