@@ -4,9 +4,9 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <link href="../admin/assets/bootstrap-rtl/css/bootstrap-rtl.min.css" rel="stylesheet" />
-    <link href="../admin/assets/bootstrap-rtl/css/bootstrap-responsive-rtl.min.css" rel="stylesheet" />
-    <link href="../admin/css/style.css" rel="stylesheet" />
+    <link href="../admin/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../admin/assets/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" />
+    <link href="../admin/css/style_ltr.css" rel="stylesheet" />
     <link href="../admin/css/style_purple.css" rel="stylesheet" />
     <link href="../admin/css/style_responsive.css" rel="stylesheet" />
     <link href="../admin/assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
@@ -16,14 +16,15 @@
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
-<body class="fixed-top JF">
-    <form id="form1" runat="server">
+<body class="fixed-top ub">
+    <form id="form1" runat="server" style="margin:0 !important;">
         <div id="header" class="navbar navbar-inverse navbar-fixed-top">
             <!-- BEGIN TOP NAVIGATION BAR -->
             <div class="navbar-inner">
                 <div class="container-fluid">
                     <!-- BEGIN LOGO -->
-                    <a class="brand ub" href="../default.aspx">COMBO
+                    <a class="brand ub" href="../default.aspx" style="display:block;font-weight:bold">
+                        <img src="../img/portal/logo.png" style="max-width:30%"/>OMBO
                     </a>
                     <!-- END LOGO -->
                     <!-- BEGIN RESPONSIVE MENU TOGGLER -->
@@ -37,10 +38,10 @@
 
                     <!-- END  NOTIFICATION -->
                     <div class="top-nav ">
-                        <ul class="nav pull-left top-menu">
+                        <ul class="nav pull-right top-menu">
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <span class="username">Welcome ،
+                                    <span class="username">Welcome ,
                                    <asp:Label ID="LoginName1" runat="server" CssClass="ub" />
                                     </span>
                                     <b class="caret"></b>
@@ -64,7 +65,7 @@
             <div id="main-content" style="margin:0 !important;">
                 <div class="container-fluid">
                     <h3 class="page-title">
-                        <asp:Label ID="uiLabelTitle" runat="server" CssClass="JF"></asp:Label>
+                        <asp:Label ID="uiLabelTitle" runat="server" ></asp:Label>
                     </h3>
                     <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                     </asp:ContentPlaceHolder>

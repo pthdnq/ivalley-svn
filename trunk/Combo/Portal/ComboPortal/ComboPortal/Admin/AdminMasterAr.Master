@@ -17,7 +17,7 @@
     </asp:ContentPlaceHolder>
 </head>
 <body class="fixed-top JF">
-    <form id="form1" runat="server">
+    <form id="form1" runat="server" style="margin:0 !important;">
         <div id="header" class="navbar navbar-inverse navbar-fixed-top">
             <!-- BEGIN TOP NAVIGATION BAR -->
             <div class="navbar-inner">
