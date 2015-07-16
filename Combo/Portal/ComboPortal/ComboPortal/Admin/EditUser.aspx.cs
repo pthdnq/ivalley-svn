@@ -25,42 +25,7 @@ namespace ComboPortal.Admin
             if (!IsPostBack)
             {
                 if (CurrentUser > 0)
-                {
-                    ComboUser objData = new ComboUser();
-                    objData.LoadByPrimaryKey(CurrentUser);
-
-                    lblUserName.Text = objData.UserName;
-                    lblDisplayName.Text = objData.DisplayName;
-                    lblEmail.Text = objData.Email;
-                    if (!objData.IsColumnNull(ComboUser.ColumnNames.GenderID))
-                    {
-                       switch (objData.GenderID)
-                        {
-                            case 1:
-                                lblGender.Text = "Male";
-                                break;
-                            case 2:
-                                lblGender.Text = "Female";
-                                break;
-                            default:
-                                break;
-                        }
-                    }
-                    lblCountry.Text = objData.Country;
-                    lblTelephone.Text = objData.Phone;
-                    lblWebsite.Text = objData.Website;
-                    if (!objData.IsColumnNull(ComboUser.ColumnNames.BirthDate))
-                    {
-                        lblBirthday.Text = objData.BirthDate.ToShortDateString();
-                    }
-                    literalBio.Text = objData.Bio;
-                    if (!objData.IsColumnNull(ComboUser.ColumnNames.ProfileImgID))
-                    {
-                        Attachment objData2 = new Attachment();
-                        objData2.LoadByPrimaryKey(objData.ProfileImgID);
-                        ImgUser.Src = objData2.Path;
-                    }
-                }
+                    loadUser();
                 else
                     Response.Redirect("UserManagement.aspx");
             }
@@ -68,6 +33,7 @@ namespace ComboPortal.Admin
         protected void btnBack_Click(object sender, EventArgs e)
         {
             PanelProfile.Visible = true;
+            PanelResetSecretWord.Visible = false;
             PanelResetPass.Visible = false;
             PanelPosts.Visible = false;
         }
@@ -79,6 +45,7 @@ namespace ComboPortal.Admin
             objData.Save();
 
             PanelProfile.Visible = true;
+            PanelResetSecretWord.Visible = false;
             PanelResetPass.Visible = false;
             PanelPosts.Visible = false;
 
@@ -105,20 +72,175 @@ namespace ComboPortal.Admin
                     break;
             }
         }
-
         protected void btnViewPosts_Click(object sender, EventArgs e)
         {
             PanelProfile.Visible = false;
             PanelPosts.Visible = true;
+            PanelResetSecretWord.Visible = false;
             PanelResetPass.Visible = false;
             bindPosts();
         }
-
         protected void btnResetPass_Click(object sender, EventArgs e)
         {
             PanelProfile.Visible = false;
             PanelPosts.Visible = false;
+            PanelResetSecretWord.Visible = false;
             PanelResetPass.Visible = true;
+        }
+        protected void btnChangeSecretWord_Click(object sender, EventArgs e)
+        {
+            ComboUser objData = new ComboUser();
+            objData.LoadByPrimaryKey(CurrentUser);
+            objData.SecurityWord = txtSecretWord.Text;
+            objData.Save();
+
+            PanelProfile.Visible = true;
+            PanelResetPass.Visible = false;
+            PanelPosts.Visible = false;
+            PanelResetSecretWord.Visible = false;
+
+        }
+        protected void btnResetSecureWord_Click(object sender, EventArgs e)
+        {
+            PanelProfile.Visible = false;
+            PanelPosts.Visible = false;
+            PanelResetSecretWord.Visible = true;
+            PanelResetPass.Visible = false;
+        }
+        protected void loadUser()
+        {
+            loadCountry();
+            loadGender();
+
+            ComboUser objData = new ComboUser();
+            objData.LoadByPrimaryKey(CurrentUser);
+
+            lblUserName.Text = objData.UserName;
+            lblDisplayName.Text = objData.DisplayName;
+            lblEmail.Text = objData.Email;
+            if (!objData.IsColumnNull(ComboUser.ColumnNames.GenderID))
+                drpDwnGender.SelectedValue = objData.GenderID.ToString();
+
+            if (!objData.IsColumnNull(ComboUser.ColumnNames.CountryID))
+                drpDwnCountry.SelectedValue = objData.CountryID.ToString();
+
+            lblTelephone.Text = objData.Phone;
+            lblWebsite.Text = objData.Website;
+
+            if (!objData.IsColumnNull(ComboUser.ColumnNames.BirthDate))
+                lblBirthday.Text = objData.BirthDate.ToShortDateString();
+
+            literalBio.Text = objData.Bio;
+            if (!objData.IsColumnNull(ComboUser.ColumnNames.ProfileImgID))
+            {
+                Attachment objData2 = new Attachment();
+                objData2.LoadByPrimaryKey(objData.ProfileImgID);
+                ImgUser.Src = objData2.Path;
+            }
+
+            if (!objData.IsColumnNull(ComboUser.ColumnNames.IsVerified))
+            {
+                if (objData.IsVerified == true)
+                {
+                    DivAccountNotVerified.Visible = false;
+                    DivAccountVerified.Visible = true;
+                }
+                else if (objData.IsVerified == false)
+                {
+                    DivAccountNotVerified.Visible = true;
+                    DivAccountVerified.Visible = false;
+                }
+            }
+            else
+            {
+                DivAccountNotVerified.Visible = true;
+                DivAccountVerified.Visible = false;
+            }
+            if (!objData.IsColumnNull(ComboUser.ColumnNames.CreatedDate))
+            {
+                lblCreatedDate.Text = objData.CreatedDate.ToString("DD/mm/YYYY");
+            }
+
+            updateCounters();
+        }
+        protected void loadGender()
+        {
+            Gender objData = new Gender();
+            objData.LoadAll();
+            drpDwnGender.DataTextField = Gender.ColumnNames.Name;
+            drpDwnGender.DataValueField = Gender.ColumnNames.GenderID;
+            drpDwnGender.DataSource = objData.DefaultView;
+            drpDwnGender.DataBind();
+            drpDwnGender.Items.Insert(0, new ListItem("Select Gender", "0"));
+        }
+        protected void loadCountry()
+        {
+            Country objData = new Country();
+            objData.LoadAll();
+            drpDwnCountry.DataTextField = Country.ColumnNames.Name;
+            drpDwnCountry.DataValueField = Country.ColumnNames.CountryID;
+            drpDwnCountry.DataSource = objData.DefaultView;
+            drpDwnCountry.DataBind();
+            drpDwnCountry.Items.Insert(0, new ListItem("Select Country", "0"));
+        }
+        protected void updateCounters()
+        {
+            ComboUser objData = new ComboUser();
+            objData.GetUserStatisticsByUserId(CurrentUser);
+            objData.GetColumn("PostsCount");
+            objData.GetColumn("FollowersCount");
+            objData.GetColumn("FollowingsCount");
+
+            lblPostsCounter.Text = objData.GetColumn("PostsCount").ToString();
+            lblFollowersCounter.Text = objData.GetColumn("FollowersCount").ToString();
+            lblFollowingCounter.Text = objData.GetColumn("FollowingsCount").ToString();
+
+        }
+
+        protected void btnDisableVerification_Click(object sender, EventArgs e)
+        {
+            ComboUser objData = new ComboUser();
+            objData.LoadByPrimaryKey(CurrentUser);
+            objData.IsVerified = false;
+            objData.Save();
+            loadUser();
+        }
+
+        protected void btnVerify_Click(object sender, EventArgs e)
+        {
+            ComboUser objData = new ComboUser();
+            objData.LoadByPrimaryKey(CurrentUser);
+            objData.IsVerified = true;
+            objData.Save();
+            loadUser();
+        }
+
+        protected void btnDeletePosts_Click(object sender, EventArgs e)
+        {
+            ComboPost objData = new ComboPost();
+            objData.Where.ComboUserID.Value = CurrentUser;
+            objData.Where.ComboUserID.Operator = MyGeneration.dOOdads.WhereParameter.Operand.Equal;
+            objData.Query.Load();
+
+            objData.Rewind();
+            for (int i = 0; i < objData.RowCount; i++)
+            {
+                objData.IsDeleted = true;
+                objData.MoveNext();
+            }
+            objData.Save();
+
+            updateCounters();
+        }
+
+        protected void btnDeleteFollowers_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        protected void btnDeleteFollowing_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

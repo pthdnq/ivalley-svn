@@ -45,7 +45,7 @@
                                     <asp:TemplateField HeaderText="العمليات">
                                         <ItemTemplate>
                                             <asp:LinkButton ID="btnViewPosts" CssClass="btn btn-primary" CommandName="viewProfile" PostBackUrl='<%# "~/Admin/EditUser.aspx?uid=" + Eval("ComboUserID")  %>' runat="server"><i class="icon-eye-open icon-white"></i> عرض البروفايل</asp:LinkButton>
-                                            <asp:LinkButton ID="btnDelete" CssClass="btn btn-danger" OnClientClick="return confirm('هل تريد حذف هذا المستخدم؟');" CommandName="deleteAccount" CommandArgument='<%# Eval("ComboUserID") %>' runat="server"><i class="icon-remove icon-white"></i> مسح</asp:LinkButton>
+                                            <%--<asp:LinkButton ID="btnDelete" CssClass="btn btn-danger" OnClientClick="return confirm('هل تريد حذف هذا المستخدم؟');" CommandName="deleteAccount" CommandArgument='<%# Eval("ComboUserID") %>' runat="server"><i class="icon-remove icon-white"></i> مسح</asp:LinkButton>--%>
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                 </Columns>
