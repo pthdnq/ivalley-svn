@@ -2,6 +2,11 @@ body {
     color: #868686;
     /*background: url(../img/bg-purple.jpg) !important;*/
 }
+.purplebg
+{
+background: url(../img/bg-purple.jpg) !important;
+}
+
 #main-content {
     box-shadow: 0 0 10px #3f3861;
     -moz-box-shadow: 0 0 10px #3f3861;
