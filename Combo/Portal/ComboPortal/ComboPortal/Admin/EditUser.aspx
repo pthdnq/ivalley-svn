@@ -19,7 +19,7 @@
                 <div class="row-fluid">
                     <div class="span3">
                         <div class="text-center profile-pic">
-                            <img id="ImgUser" runat="server" src="img/profile-pic.jpg" alt="" />
+                            <img id="ImgUser" runat="server" src="img/profile-pic2.png" alt="" />
                         </div>
                         <ul class="nav nav-tabs nav-stacked">
                             <li style="margin-bottom:15px">
@@ -86,45 +86,49 @@
                                 <tr>
                                     <td class="span3">اسم المستخدم :</td>
                                     <td>
-                                        <asp:TextBox ID="lblUserName" runat="server" Text=""></asp:TextBox>
+                                        <asp:TextBox ID="txtUserName" runat="server" Text=""></asp:TextBox>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="span3">الاسم الظاهر :</td>
                                     <td>
-                                        <asp:TextBox ID="lblDisplayName" runat="server" Text=""></asp:TextBox>
+                                        <asp:TextBox ID="txtDisplayName" runat="server" Text=""></asp:TextBox>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="span3">البريد :</td>
                                     <td>
-                                        <asp:TextBox ID="lblEmail" runat="server" Text=""></asp:TextBox>
+                                        <asp:TextBox ID="txtEmail" runat="server" Text=""></asp:TextBox>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="span3">النوع :</td>
                                     <td>
                                         <asp:DropDownList ID="drpDwnGender" runat="server"></asp:DropDownList>
-                                        <%--<asp:TextBox ID="lblGender" runat="server" Text=""></asp:TextBox>--%>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="span3">البلد :</td>
                                     <td>
                                         <asp:DropDownList ID="drpDwnCountry" runat="server"></asp:DropDownList>
-                                        <%--<asp:TextBox ID="lblCountry" runat="server" Text=""></asp:TextBox>--%>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="span3">المستوى :</td>
+                                    <td>
+                                        <asp:DropDownList ID="drpDwnRank" runat="server"></asp:DropDownList>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="span3">التليفون :</td>
                                     <td>
-                                        <asp:TextBox ID="lblTelephone" runat="server" Text=""></asp:TextBox>
+                                        <asp:TextBox ID="txtTelephone" runat="server" Text=""></asp:TextBox>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="span3">الموقع الالكترونى :</td>
                                     <td>
-                                        <asp:TextBox ID="lblWebsite" runat="server" Text=""></asp:TextBox>
+                                        <asp:TextBox ID="txtWebsite" runat="server" Text=""></asp:TextBox>
                                     </td>
                                 </tr>
                                 <tr>
@@ -132,7 +136,7 @@
                                     <td>
                                         <div class="controls">
                                             <div class="input-append date date-picker" data-date="12-02-2012" data-date-format="dd/mm/yyyy" data-date-viewmode="years">
-                                                <asp:TextBox ID="lblBirthday" CssClass="" runat="server" Style="direction:ltr" Text=""></asp:TextBox>
+                                                <asp:TextBox ID="txtBirthday" CssClass="" runat="server" Style="direction:ltr" Text=""></asp:TextBox>
                                                 <span class="add-on"><i class="icon-calendar"></i></span>
                                             </div>
                                         </div>
@@ -160,8 +164,8 @@
 
                             </tbody>
                         </table>
-                        <%-- <hr />
-                    <asp:LinkButton ID="btnSaveProfile" CssClass="btn btn-success" runat="server">حفظ <i class="icon-ok"></i></asp:LinkButton>--%>
+                         <hr />
+                    <asp:LinkButton ID="btnSaveProfile" CssClass="btn btn-success" OnClick="btnSaveProfile_Click" runat="server">حفظ <i class="icon-ok"></i></asp:LinkButton>
                     </div>
                 </div>
 <%--                <hr />
