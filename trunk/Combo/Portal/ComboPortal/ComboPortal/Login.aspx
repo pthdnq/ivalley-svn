@@ -13,7 +13,7 @@
   <link href="admin/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
   <link href="admin/css/style_ltr.css" rel="stylesheet" />
   <link href="admin/css/style_responsive.css" rel="stylesheet" />
-  <link href="admin/css/style-purple.css" rel="stylesheet" id="style_color" />
+  <link href="admin/css/style_purple.css" rel="stylesheet" id="style_color" />
 </head>
 <body id="login-body" class="row-fluid">
     <form id="form1" runat="server">
@@ -52,11 +52,11 @@
 
           </div>
 
-          <div  class="span1" style="float:none;margin:0 auto">
+          <div class="span2" style="float:none;margin:0 auto;padding:0;text-align:center">
               <input type="submit" id="login-btn" class="btn btn-block login-btn" value="Login" />
           </div>
 
-          <div class="mtop10 span3" style="float:none;margin:20px auto">
+          <div class="mtop10 span4" style="float:none;margin:20px auto">
                       <div class="block-hint pull-left small">
                           <a href="javascript:;" class="" id="forget-password">Forgot Password?</a>
                       </div>
@@ -70,7 +70,7 @@
     </div>
     <!-- END LOGIN FORM -->        
     <!-- BEGIN FORGOT PASSWORD FORM -->
-    <div id="forgotform" class="form-vertical no-padding  hide span4 text-center" style="float:none;margin:0 auto;">
+    <div id="forgotform" class="form-vertical no-padding hide span12 text-center" style="float:none;margin:0 auto;">
       <p class="center ub" style="color:#fff;">Enter your e-mail address below to reset your password.</p>
       <div class="control-group">
         <div class="controls">
@@ -80,7 +80,7 @@
         </div>
         <div class="space20"></div>
       </div>
-         <div  class="span3" style="float:none;margin:0 auto">
+         <div  class="span2" style="float:none;margin:0 auto">
       <input type="button" id="forget-btn" class="btn btn-block login-btn" value="Submit" />
              </div>
     </div>
@@ -89,7 +89,7 @@
   <!-- END LOGIN -->
   <!-- BEGIN COPYRIGHT -->
         <div class="clearfix space5"></div>
-  <div id="login-copyright" style="position:absolute;bottom:10px;left:40%">
+  <div id="login-copyright" style="position:absolute;bottom:auto;bottom:initial;left:40%;padding-bottom:10px;">
       <span class="ub">2015 &copy; I-Valley. All rights reserved.</span>
   </div>
   <!-- END COPYRIGHT -->

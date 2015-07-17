@@ -12,7 +12,7 @@
     <link href="admin/assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
     <link href="admin/assets/fancybox/source/jquery.fancybox.css" rel="stylesheet" />
     <link href="admin/assets/uniform/css/uniform.default.css" rel="stylesheet" />
-    <title>COMBO Portal</title>
+    <title>COMBO</title>
 </head>
 
 <body class="fixed-top JF" style="background:none !important; background-color:#48157C !important">
@@ -24,6 +24,7 @@
                 <div class="span4" style="padding-left:2%;">
                     <div class="span12 clearfix block-margin-bottom-5">
                     <img src="img/portal/comboTitle.png" style="max-width:80%;float:left;margin-top:2%;"/>
+                        
                         </div>
                     <div class="span12 clearfix block-margin-bottom-5" style="margin-top:80px;">
                         <img src="img/portal/comboText.jpg" style="max-width:100%"/>
@@ -42,6 +43,7 @@
                         </div>
                 </div>
                 <div class="span8" style="position:absolute;z-index:15;">
+                    <a href="Login.aspx" class="btn btn-default pull-left" style="margin-top:30px;border-radius:3px;font-size:20px;">Log in</a>
                     <img src="img/portal/hand.png" style="max-width:69.85%"/>
                     <div class="span3" style="position:absolute;font-size:30px;font-weight:bold;color:#48157C;bottom:2%;z-index:16;right:2%;">
                         combomobile.com
