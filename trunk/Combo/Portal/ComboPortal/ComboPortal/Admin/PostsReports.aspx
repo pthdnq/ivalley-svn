@@ -26,7 +26,7 @@
                                     <p>
                                         <asp:GridView ID="GridViewAccountReports" CssClass="table table-striped table-bordered" EmptyDataText="لا يوجد بيانات متاحة" HorizontalAlign="Center" AutoGenerateColumns="false" runat="server">
                                             <Columns>
-                                                <asp:BoundField HeaderText="قائمة البلاغات" DataField="UserName" />
+                                                <asp:BoundField HeaderText="قائمة البلاغات (اسم المستخدم)" DataField="UserName" />
                                                 <asp:BoundField HeaderText="عدد البلاغات" DataField="ReportsCount" />
                                                 <asp:TemplateField HeaderText="العمليات">
                                                     <ItemTemplate>
@@ -41,7 +41,7 @@
                                     <p>
                                         <asp:GridView ID="GridViewPostReports" CssClass="table table-striped table-bordered" EmptyDataText="لا يوجد بيانات متاحة" HorizontalAlign="Center" AutoGenerateColumns="false" runat="server">
                                             <Columns>
-                                                <asp:BoundField HeaderText="قائمة البلاغات" DataField="PostText" />
+                                                <asp:BoundField HeaderText="قائمة البلاغات (محتوى البوست)" DataField="PostText" />
                                                 <asp:BoundField HeaderText="عدد البلاغات" DataField="ReportsCount" />
                                                 <asp:TemplateField HeaderText="العمليات">
                                                     <ItemTemplate>
@@ -56,7 +56,7 @@
                                     <p>
                                         <asp:GridView ID="GridViewCommentReports" CssClass="table table-striped table-bordered" EmptyDataText="لا يوجد بيانات متاحة" HorizontalAlign="Center" AutoGenerateColumns="false" runat="server">
                                             <Columns>
-                                                <asp:BoundField HeaderText="قائمة البلاغات" DataField="CommentText" />
+                                                <asp:BoundField HeaderText="قائمة البلاغات (محتوى التعليق)" DataField="CommentText" />
                                                 <asp:BoundField HeaderText="عدد البلاغات" DataField="ReportsCount" />
                                                 <asp:TemplateField HeaderText="العمليات">
                                                     <ItemTemplate>

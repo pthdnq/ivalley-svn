@@ -111,24 +111,25 @@ namespace ComboPortal.Admin
         {
             loadCountry();
             loadGender();
+            loadRanks();
 
             ComboUser objData = new ComboUser();
             objData.LoadByPrimaryKey(CurrentUser);
 
-            lblUserName.Text = objData.UserName;
-            lblDisplayName.Text = objData.DisplayName;
-            lblEmail.Text = objData.Email;
+            txtUserName.Text = objData.UserName;
+            txtDisplayName.Text = objData.DisplayName;
+            txtEmail.Text = objData.Email;
             if (!objData.IsColumnNull(ComboUser.ColumnNames.GenderID))
                 drpDwnGender.SelectedValue = objData.GenderID.ToString();
 
             if (!objData.IsColumnNull(ComboUser.ColumnNames.CountryID))
                 drpDwnCountry.SelectedValue = objData.CountryID.ToString();
 
-            lblTelephone.Text = objData.Phone;
-            lblWebsite.Text = objData.Website;
+            txtTelephone.Text = objData.Phone;
+            txtWebsite.Text = objData.Website;
 
             if (!objData.IsColumnNull(ComboUser.ColumnNames.BirthDate))
-                lblBirthday.Text = objData.BirthDate.ToShortDateString();
+                txtBirthday.Text = objData.BirthDate.ToShortDateString();
 
             literalBio.Text = objData.Bio;
             if (!objData.IsColumnNull(ComboUser.ColumnNames.ProfileImgID))
@@ -156,10 +157,12 @@ namespace ComboPortal.Admin
                 DivAccountNotVerified.Visible = true;
                 DivAccountVerified.Visible = false;
             }
+
             if (!objData.IsColumnNull(ComboUser.ColumnNames.CreatedDate))
-            {
                 lblCreatedDate.Text = objData.CreatedDate.ToString("DD/mm/YYYY");
-            }
+
+            if (!objData.IsColumnNull(ComboUser.ColumnNames.UserRankID))
+                drpDwnRank.SelectedValue = objData.UserRankID.ToString();
 
             updateCounters();
         }
@@ -183,6 +186,16 @@ namespace ComboPortal.Admin
             drpDwnCountry.DataBind();
             drpDwnCountry.Items.Insert(0, new ListItem("Select Country", "0"));
         }
+        protected void loadRanks()
+        {
+            UserRank objData = new UserRank();
+            objData.LoadAll();
+            drpDwnRank.DataTextField = UserRank.ColumnNames.Name;
+            drpDwnRank.DataValueField = UserRank.ColumnNames.UserRankID;
+            drpDwnRank.DataSource = objData.DefaultView;
+            drpDwnRank.DataBind();
+            drpDwnRank.Items.Insert(0, new ListItem("Select Rank", "0"));
+        }
         protected void updateCounters()
         {
             ComboUser objData = new ComboUser();
@@ -196,7 +209,6 @@ namespace ComboPortal.Admin
             lblFollowingCounter.Text = objData.GetColumn("FollowingsCount").ToString();
 
         }
-
         protected void btnDisableVerification_Click(object sender, EventArgs e)
         {
             ComboUser objData = new ComboUser();
@@ -205,7 +217,6 @@ namespace ComboPortal.Admin
             objData.Save();
             loadUser();
         }
-
         protected void btnVerify_Click(object sender, EventArgs e)
         {
             ComboUser objData = new ComboUser();
@@ -214,7 +225,6 @@ namespace ComboPortal.Admin
             objData.Save();
             loadUser();
         }
-
         protected void btnDeletePosts_Click(object sender, EventArgs e)
         {
             ComboPost objData = new ComboPost();
@@ -232,15 +242,47 @@ namespace ComboPortal.Admin
 
             updateCounters();
         }
-
         protected void btnDeleteFollowers_Click(object sender, EventArgs e)
         {
             
         }
-
         protected void btnDeleteFollowing_Click(object sender, EventArgs e)
         {
 
+        }
+        protected void btnSaveProfile_Click(object sender, EventArgs e)
+        {
+            ComboUser objData = new ComboUser();
+            objData.LoadByPrimaryKey(CurrentUser);
+
+            objData.UserName = txtUserName.Text;
+            objData.DisplayName = txtDisplayName.Text;
+            objData.Email = txtEmail.Text;
+
+            if (drpDwnGender.SelectedValue.ToString() != "0")
+                objData.GenderID = int.Parse(drpDwnGender.SelectedValue.ToString());
+            if (drpDwnCountry.SelectedValue.ToString() != "0")
+                objData.CountryID = int.Parse(drpDwnCountry.SelectedValue.ToString());
+
+            objData.Phone = txtTelephone.Text;
+            objData.Website = txtWebsite.Text;
+            try
+            {
+                objData.BirthDate = DateTime.ParseExact(txtBirthday.Text, "dd/MM/yyyy", null);
+            }
+            catch (Exception)
+            {
+            }
+            objData.Bio = literalBio.Text;
+            if (true)
+            {
+                
+            }
+            objData.Save();
+
+            string script = "alert(\"تم حفظ البيانات بنجاح!\");";
+            ScriptManager.RegisterStartupScript(this, GetType(),
+                                  "ServerControlScript", script, true);
         }
     }
 }

@@ -139,31 +139,31 @@ namespace ComboPortal.Admin {
         protected global::System.Web.UI.WebControls.LinkButton btnBan;
         
         /// <summary>
-        /// lblUserName control.
+        /// txtUserName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox lblUserName;
+        protected global::System.Web.UI.WebControls.TextBox txtUserName;
         
         /// <summary>
-        /// lblDisplayName control.
+        /// txtDisplayName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox lblDisplayName;
+        protected global::System.Web.UI.WebControls.TextBox txtDisplayName;
         
         /// <summary>
-        /// lblEmail control.
+        /// txtEmail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox lblEmail;
+        protected global::System.Web.UI.WebControls.TextBox txtEmail;
         
         /// <summary>
         /// drpDwnGender control.
@@ -184,31 +184,40 @@ namespace ComboPortal.Admin {
         protected global::System.Web.UI.WebControls.DropDownList drpDwnCountry;
         
         /// <summary>
-        /// lblTelephone control.
+        /// drpDwnRank control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox lblTelephone;
+        protected global::System.Web.UI.WebControls.DropDownList drpDwnRank;
         
         /// <summary>
-        /// lblWebsite control.
+        /// txtTelephone control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox lblWebsite;
+        protected global::System.Web.UI.WebControls.TextBox txtTelephone;
         
         /// <summary>
-        /// lblBirthday control.
+        /// txtWebsite control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox lblBirthday;
+        protected global::System.Web.UI.WebControls.TextBox txtWebsite;
+        
+        /// <summary>
+        /// txtBirthday control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtBirthday;
         
         /// <summary>
         /// literalBio control.
@@ -254,6 +263,15 @@ namespace ComboPortal.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton btnVerify;
+        
+        /// <summary>
+        /// btnSaveProfile control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btnSaveProfile;
         
         /// <summary>
         /// PanelPosts control.
