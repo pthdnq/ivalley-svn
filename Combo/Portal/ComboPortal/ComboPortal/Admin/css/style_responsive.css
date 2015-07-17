@@ -466,10 +466,10 @@
     #login .lock{
         display: none !important;
     }
-    #login {
+   /* #login {
         width: 260px !important;
         margin: 50px auto 0 !important;
-    }
+    }*/
     #header .brand {
         margin-top: -5px !important;
         padding: 22px 35px !important;
@@ -502,13 +502,13 @@
     #login .lock{
         display: none !important;
     }
-    #login {
+   /* #login {
         width: 260px !important;
         margin: 50px auto 0 !important;
     }
     #forgotform #input-email {
         width: 203px;
-    }
+    }*/
 	/* page title*/
 	.page-title small {
 		display: block;
@@ -542,13 +542,13 @@
     #login .lock{
         display: none !important;
     }
-    #login {
+    /*#login {
         width: 260px !important;
         margin: 50px auto 0 !important;
     }
     #forgotform #input-email {
         width: 203px;
-    }
+    }*/
     #header .brand {
         margin-top: -5px !important;
         padding: 22px 22px !important;
