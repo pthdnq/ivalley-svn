@@ -35,21 +35,21 @@ namespace ComboPortal.Admin
             if (!IsPostBack)
             {
                 Master.PageTitle = "توثيق الحسابات";
-                if (CurrentRequest>0)
-                {
-                    PanelGeneralRequests.Visible = false;
-                    PanelRequestDetails.Visible = true;
+            }
+            if (CurrentRequest > 0)
+            {
+                PanelGeneralRequests.Visible = false;
+                PanelRequestDetails.Visible = true;
 
-                    loadRequestDetails();
-                }
-                else
-                {
-                    PanelGeneralRequests.Visible = true;
-                    PanelRequestDetails.Visible = false;
-                    loadNewRequests();
-                    loadAcceptedRequests();
-                    loadRefusedRequests();
-                }
+                loadRequestDetails();
+            }
+            else
+            {
+                PanelGeneralRequests.Visible = true;
+                PanelRequestDetails.Visible = false;
+                loadNewRequests();
+                loadAcceptedRequests();
+                loadRefusedRequests();
             }
         }
         protected void loadNewRequests()
