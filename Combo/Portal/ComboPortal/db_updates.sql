@@ -37,3 +37,12 @@ Create Table VerificationRequest
 	Activity nvarchar(500),
 )
 Go
+
+CREATE TABLE AdminLogin
+(
+	AdminLoginID int primary key not null identity(1,1),
+	AdminUserName nvarchar(30),
+	AdminPassword nvarchar(50),
+	AdminName nvarchar(30)
+)
+GO
