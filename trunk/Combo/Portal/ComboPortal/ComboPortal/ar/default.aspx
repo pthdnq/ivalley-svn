@@ -28,7 +28,7 @@
                     <div class="span4 text-center">
                         <a href="#" class="btn btn-default " id="loginBtn" style="margin-top:30px;border-radius:3px;font-size:20px;">الدخول</a>
                     </div>
-                     <div class="span4 pull-left" style="margin-top:5%;text-align:left">
+                     <div class="span2 pull-left" style="margin-top:5%;text-align:left">
                         <a href="../default.aspx" class="ub" style="font-size:20px;color:#fff;font-weight:bold;text-decoration:none">English</a>
                     </div>
                 </div>

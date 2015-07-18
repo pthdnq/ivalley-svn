@@ -894,6 +894,7 @@
     <Content Include="Admin\PostsReports.aspx" />
     <Content Include="Admin\UserManagement.aspx" />
     <Content Include="Admin\VerifyAccount.aspx" />
+    <Content Include="ar\changepassword.aspx" />
     <Content Include="ar\default.aspx" />
     <Content Include="ar\MyAccount.aspx" />
     <Content Include="assets\bootstrap-colorpicker\css\colorpicker.css" />
@@ -1019,6 +1020,7 @@
     <Content Include="assets\uniform\images\bg-input.png" />
     <Content Include="assets\uniform\images\sprite.png" />
     <Content Include="assets\uniform\jquery.uniform.min.js" />
+    <Content Include="changepassword.aspx" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
@@ -1537,6 +1539,13 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="ar\changepassword.aspx.cs">
+      <DependentUpon>changepassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ar\changepassword.aspx.designer.cs">
+      <DependentUpon>changepassword.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ar\default.aspx.cs">
       <DependentUpon>default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1550,6 +1559,13 @@
     </Compile>
     <Compile Include="ar\MyAccount.aspx.designer.cs">
       <DependentUpon>MyAccount.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="changepassword.aspx.cs">
+      <DependentUpon>changepassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="changepassword.aspx.designer.cs">
+      <DependentUpon>changepassword.aspx</DependentUpon>
     </Compile>
     <Compile Include="common\FileUploader.ashx.cs">
       <DependentUpon>FileUploader.ashx</DependentUpon>
