@@ -21,7 +21,7 @@ namespace ComboPortal.ar
         [ScriptMethod(ResponseFormat = ResponseFormat.Json, UseHttpGet = false)]
         public static bool LoginComboUser(string username, string password)
         {
-            System.Threading.Thread.Sleep(1500);
+            
             ComboUser user = new ComboUser();
             if (user.GetUserByUserNameAndPassword(username, password))
             {

@@ -270,9 +270,9 @@ a,a:focus, a:hover, a:active {
 #header .brand {
     /*background:#333333;*/
     margin-top: 0px !important;
-    opacity:0.6;
+    opacity:1;
     filter:alpha(opacity=60);
-    padding: 18px 35.5px;
+    padding: 5px 35.5px;
     width: 144px;
 }
 
@@ -3599,3 +3599,38 @@ ul.amounts li {
        -o-background-size: 40px 40px;
           background-size: 40px 40px;
 }
+
+
+ @-webkit-keyframes bounceInUp {
+            0%, 20%, 50%, 80%, 100% {
+               
+               -webkit-transform: translateY(40px);
+            }
+
+            40% {
+                -webkit-transform: translateY(20px);
+            }
+            60% {               
+               -webkit-transform: translateY(-10px);
+            }
+            
+         }
+         
+         @keyframes bounceInUp {
+            0%, 20%, 50%, 80%, 100% {
+               
+               -webkit-transform: translateY(40px);
+            }
+
+            40% {
+                -webkit-transform: translateY(20px);
+            }
+            60% {               
+               -webkit-transform: translateY(-10px);
+            }
+         }
+         
+         .bounceInUp {
+            -webkit-animation: bounceInUp 2s infinite;
+            animation: bounceInUp 2s infinite;            
+         }

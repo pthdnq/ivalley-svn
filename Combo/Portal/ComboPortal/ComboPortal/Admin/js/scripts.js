@@ -1300,6 +1300,8 @@ var App = function () {
                 success: function (mydata) {
                     if (mydata.d == true) {
                         $('#errorDiv').hide();
+                        var loc = location.origin + location.pathname.substring(0, location.pathname.lastIndexOf("/") + 1);
+                        window.location.href = loc + "myaccount.aspx";
                     }
                     else {
                         $('#errorDiv').show();

@@ -895,6 +895,7 @@
     <Content Include="Admin\UserManagement.aspx" />
     <Content Include="Admin\VerifyAccount.aspx" />
     <Content Include="ar\default.aspx" />
+    <Content Include="ar\MyAccount.aspx" />
     <Content Include="assets\bootstrap-colorpicker\css\colorpicker.css" />
     <Content Include="assets\bootstrap-colorpicker\js\bootstrap-colorpicker.js" />
     <Content Include="assets\bootstrap-datepicker\css\datepicker.css" />
@@ -1187,6 +1188,7 @@
     <Content Include="js\sparkline-chart.js" />
     <Content Include="js\tree.js" />
     <Content Include="Login.aspx" />
+    <Content Include="MyAccount.aspx" />
     <Content Include="packages.config" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -1431,6 +1433,7 @@
     <Content Include="fonts\gothic\gothic.woff">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="MasterPages\MasterAr.Master" />
     <None Include="Properties\PublishProfiles\publish.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="RequestAccountVerification.aspx" />
@@ -1538,6 +1541,13 @@
     <Compile Include="ar\default.aspx.designer.cs">
       <DependentUpon>default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ar\MyAccount.aspx.cs">
+      <DependentUpon>MyAccount.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ar\MyAccount.aspx.designer.cs">
+      <DependentUpon>MyAccount.aspx</DependentUpon>
+    </Compile>
     <Compile Include="common\FileUploader.ashx.cs">
       <DependentUpon>FileUploader.ashx</DependentUpon>
     </Compile>
@@ -1558,12 +1568,26 @@
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="MasterPages\MasterAr.Master.cs">
+      <DependentUpon>MasterAr.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPages\MasterAr.Master.designer.cs">
+      <DependentUpon>MasterAr.Master</DependentUpon>
+    </Compile>
     <Compile Include="MasterPages\MasterEn.Master.cs">
       <DependentUpon>MasterEn.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="MasterPages\MasterEn.Master.designer.cs">
       <DependentUpon>MasterEn.Master</DependentUpon>
+    </Compile>
+    <Compile Include="MyAccount.aspx.cs">
+      <DependentUpon>MyAccount.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MyAccount.aspx.designer.cs">
+      <DependentUpon>MyAccount.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RequestAccountVerification.aspx.cs">

@@ -10,7 +10,7 @@
 namespace ComboPortal.MasterPages {
     
     
-    public partial class MasterEn {
+    public partial class MasterAr {
         
         /// <summary>
         /// head control.
