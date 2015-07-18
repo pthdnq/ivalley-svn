@@ -11,8 +11,17 @@
 
 /* global $, window */
 
+function getParameterByName(name) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+        results = regex.exec(location.search);
+    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
 $(function () {
     'use strict';
+
+    $('#uiHiddenKey').val(getParameterByName('key'));
 
     // Initialize the jQuery File Upload widget:
     $('#fileupload').fileupload({
