@@ -16,7 +16,7 @@ namespace COMBO_BLL
         public bool getGeneralUserReports()
         {
             return LoadFromRawSql(@"SELECT CU.ComboUserID UserID, CU.UserName UserName, COUNT(CUR.ComboUserReportID) ReportsCount
-                                    FROM ComboUser CU JOIN ComboUserReport CUR ON CUR.ComboUserID = CU.ComboUserID
+                                    FROM ComboUser CU JOIN ComboUserReport CUR ON CUR.ComboReportedUserID = CU.ComboUserID
                                     GROUP BY UserName, CU.ComboUserID, CUR.ReportDate
                                     ORDER BY CUR.ReportDate DESC");
         }

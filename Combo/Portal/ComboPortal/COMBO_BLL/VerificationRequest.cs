@@ -11,5 +11,24 @@ namespace COMBO_BLL
 		{
 		
 		}
+
+        public virtual bool getNewRequests()
+        {
+            return LoadFromRawSql(@"SELECT CU.UserName, CU.DisplayName, CU.ComboUserID, CU.Email, VR.RequestTypeID , VR.VerificationRequestID, VR.RequestTypeID
+                                    FROM ComboUser CU JOIN VerificationRequest VR ON CU.ComboUserID = VR.ComboUserID
+                                    WHERE VR.IsAccepted is NULL");
+        }
+        public virtual bool getAcceptedRequests()
+        {
+            return LoadFromRawSql(@"SELECT CU.UserName, CU.DisplayName, CU.ComboUserID, CU.Email, VR.RequestTypeID , VR.VerificationRequestID, VR.RequestTypeID
+                                    FROM ComboUser CU JOIN VerificationRequest VR ON CU.ComboUserID = VR.ComboUserID
+                                    WHERE VR.IsAccepted = 1");
+        }
+        public virtual bool getRefusedRequests()
+        {
+            return LoadFromRawSql(@"SELECT CU.UserName, CU.DisplayName, CU.ComboUserID, CU.Email, VR.RequestTypeID , VR.VerificationRequestID, VR.RequestTypeID
+                                    FROM ComboUser CU JOIN VerificationRequest VR ON CU.ComboUserID = VR.ComboUserID
+                                    WHERE VR.IsAccepted = 0");
+        }
 	}
 }

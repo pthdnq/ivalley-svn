@@ -5,7 +5,6 @@
     <link href="assets/bootstrap-timepicker/compiled/timepicker.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
     <asp:Panel ID="PanelProfile" runat="server">
         <div class="widget">
             <div class="widget-title">
@@ -22,7 +21,7 @@
                             <img id="ImgUser" runat="server" src="img/profile-pic2.png" alt="" />
                         </div>
                         <ul class="nav nav-tabs nav-stacked">
-                            <li style="margin-bottom:15px">
+                            <li style="margin-bottom: 15px">
                                 <table style="">
                                     <tr>
                                         <td>تاريخ انشاء الحساب : 
@@ -32,10 +31,11 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>عدد المنشورات :
+                                        <td>عدد البوستات :
                                         </td>
                                         <td>
                                             <asp:Label ID="lblPostsCounter" CssClass="badge badge-info" runat="server" Text="" />
+                                            -
                                         </td>
                                         <td>
                                             <asp:LinkButton ID="btnDeletePosts" OnClientClick="return confirm('هل تريد مسح كل المنشورات ؟')" OnClick="btnDeletePosts_Click" CssClass="btn btn-danger btn-small" runat="server"><i class="icon-trash mini"></i></asp:LinkButton>
@@ -46,6 +46,7 @@
                                         </td>
                                         <td>
                                             <asp:Label ID="lblFollowersCounter" CssClass="badge badge-info" runat="server" Text="" />
+                                            -
                                         </td>
                                         <td>
                                             <asp:LinkButton ID="btnDeleteFollowers" OnClientClick="return confirm('هل تريد مسح كل الفلورز ؟')" OnClick="btnDeleteFollowers_Click" CssClass="btn btn-danger btn-small" runat="server"><i class="icon-trash"></i></asp:LinkButton>
@@ -56,6 +57,7 @@
                                         </td>
                                         <td>
                                             <asp:Label ID="lblFollowingCounter" CssClass="badge badge-info" runat="server" Text="" />
+                                            -
                                         </td>
                                         <td>
                                             <asp:LinkButton ID="btnDeleteFollowing" OnClientClick="return confirm('هل تريد مسح كل الفلوينج ؟')" OnClick="btnDeleteFollowing_Click" CssClass="btn btn-danger btn-small" runat="server"><i class="icon-trash"></i></asp:LinkButton>
@@ -71,9 +73,9 @@
                                 <asp:LinkButton ID="btnResetSecureWord" OnClick="btnResetSecureWord_Click" runat="server"><i class="icon-refresh"></i>  استرجاع الكلمة السرية  </asp:LinkButton></li>
                             <li class="disabled">
                                 <asp:LinkButton ID="btnBan" Enabled="false" runat="server"><i class="icon-ban-circle"></i> حظر </asp:LinkButton>
-                                </li>
+                            </li>
 
-<%--                            <li>
+                            <%--                            <li>
                                 <asp:LinkButton ID="btnDelete" runat="server"><i class="icon-remove"></i>  مسح  </asp:LinkButton></li>--%>
                         </ul>
                     </div>
@@ -136,7 +138,7 @@
                                     <td>
                                         <div class="controls">
                                             <div class="input-append date date-picker" data-date="12-02-2012" data-date-format="dd/mm/yyyy" data-date-viewmode="years">
-                                                <asp:TextBox ID="txtBirthday" CssClass="" runat="server" Style="direction:ltr" Text=""></asp:TextBox>
+                                                <asp:TextBox ID="txtBirthday" CssClass="" runat="server" Style="direction: ltr" Text=""></asp:TextBox>
                                                 <span class="add-on"><i class="icon-calendar"></i></span>
                                             </div>
                                         </div>
@@ -164,11 +166,11 @@
 
                             </tbody>
                         </table>
-                         <hr />
-                    <asp:LinkButton ID="btnSaveProfile" CssClass="btn btn-success" OnClick="btnSaveProfile_Click" runat="server">حفظ <i class="icon-ok"></i></asp:LinkButton>
+                        <hr />
+                        <asp:LinkButton ID="btnSaveProfile" CssClass="btn btn-success" OnClick="btnSaveProfile_Click" runat="server">حفظ <i class="icon-ok"></i></asp:LinkButton>
                     </div>
                 </div>
-<%--                <hr />
+                <%--                <hr />
                 <div class="row-fluid">
                     <h4 class="">بيانات اخرى</h4>
                     <div class="span12">
@@ -188,7 +190,7 @@
     <asp:Panel ID="PanelPosts" Visible="false" runat="server">
         <div class="widget">
             <div class="widget-title">
-                <h4><i class="icon-list-ul"></i>بوستات المسخدم  </h4>
+                <h4><i class="icon-list-ul"></i>بوستات المستخدم  </h4>
                 <span class="tools">
                     <asp:LinkButton ID="btnBack" OnClick="btnBack_Click" CssClass="btn btn-mini" runat="server"><i class="icon-arrow-right"></i> رجوع الى البيانات </asp:LinkButton>
                     <a href="javascript:;" class="icon-chevron-down"></a>
@@ -196,17 +198,19 @@
             </div>
             <div class="widget-body clearfix">
                 <div class="span12" style="margin-right: 0;">
-                    <asp:Repeater ID="RepeaterUserPosts" OnItemCommand="RepeaterUserPosts_ItemCommand" runat="server">
+                    <asp:Repeater ID="RepeaterUserPosts" OnItemCommand="RepeaterUserPosts_ItemCommand" OnItemDataBound="RepeaterUserPosts_ItemDataBound" runat="server">
                         <ItemTemplate>
                             <div class="span10" style="margin-right: 0px">
                                 <ul class="chats normal-chat">
                                     <li class="in">
-                                        <img class="avatar" alt="" src='<%# Eval("ProfilePic") %>' />
+                                        <img class="avatar" alt="" src='<%# string.IsNullOrWhiteSpace(Eval("ProfilePic").ToString())? "img/profile-pic2.png" : Eval("ProfilePic") %>' />
                                         <div class="message ">
                                             <span class="arrow"></span>
-                                            <a href="#" class="name"><%# Eval("UserName") %></a>
+                                            <a class="name"><%# Eval("UserName") %></a>
                                             <span class="datetime"><%# Eval("PostDate") %></span>
                                             <span style="float: left">
+                                                <asp:HiddenField ID="hfPostID" runat="server" Value='<%# Eval("ComboPostID") %>' />
+                                                <asp:LinkButton ID="btnViewPost" PostBackUrl='<%# "ViewPost.aspx?pid=" + Eval("ComboPostID") %>' CssClass="btn btn-primary btn-mini" runat="server"><i class="icon-eye-open icon-white"></i></asp:LinkButton>
                                                 <asp:LinkButton ID="btnDeletePost" CommandName="deletePost" CommandArgument='<%# Eval("ComboPostID") %>' OnClientClick="return confirm('هل تريد حذف هذا البوست ؟');" CssClass="btn btn-danger btn-mini" runat="server"><i class="icon-remove icon-white"></i> مسح</asp:LinkButton>
                                             </span>
                                             <span class="body">
@@ -222,7 +226,6 @@
             </div>
         </div>
     </asp:Panel>
-
     <asp:Panel ID="PanelResetPass" Visible="false" runat="server">
         <div class="widget">
             <div class="widget-title">
@@ -260,7 +263,6 @@
             </div>
         </div>
     </asp:Panel>
-
     <asp:Panel ID="PanelResetSecretWord" Visible="false" runat="server">
         <div class="widget">
             <div class="widget-title">

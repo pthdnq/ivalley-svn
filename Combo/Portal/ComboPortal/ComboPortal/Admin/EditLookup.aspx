@@ -2,7 +2,7 @@
 <%@ MasterType VirtualPath="~/Admin/AdminMasterAr.Master" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <link href="assets/ckeditor/contents.css" rel="stylesheet" />
+    <%--<link href="assets/ckeditor/contents.css" rel="stylesheet" />--%>
     <script src="assets/ckeditor/ckeditor.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">

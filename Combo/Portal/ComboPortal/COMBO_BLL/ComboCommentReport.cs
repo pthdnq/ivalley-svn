@@ -15,10 +15,10 @@ namespace COMBO_BLL
 
         public bool getGeneralCommentReports()
         {
-            return LoadFromRawSql(@"SELECT CC.CommentText CommentText, CC.ComboCommentID CommentID, COUNT(CCR.ComboCommentReportID) ReportsCount
-                                    FROM ComboUser CU JOIN ComboComment CC ON CC.ComboUserID = CU.ComboUserID JOIN ComboCommentReport CCR ON CCR.ComboCommentID = CC.ComboCommentID
-                                    GROUP BY CommentText, CC.ComboCommentID,CCR.ReportDate
-                                    ORDER BY CCR.ReportDate DESC");
+            return LoadFromRawSql(@"SELECT CC.CommentText CommentText, CC.ComboPostID PostID , CC.ComboCommentID CommentID, COUNT(CCR.ComboCommentReportID) ReportsCount
+                                    FROM ComboComment CC JOIN ComboCommentReport CCR ON CCR.ComboCommentID = CC.ComboCommentID
+                                    GROUP BY CommentText, CC.ComboCommentID, CC.CommentDate, CC.ComboPostID
+                                    ORDER BY CC.CommentDate DESC");
         }
 
         public bool getCommentReportsByCommentID(int CommentID)

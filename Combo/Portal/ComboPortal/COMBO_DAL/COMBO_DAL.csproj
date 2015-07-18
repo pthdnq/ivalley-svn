@@ -31,7 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="MyGeneration.dOOdads">
-      <HintPath>..\..\..\..\libs\MyGeneration.dOOdads.dll</HintPath>
+      <HintPath>..\..\..\..\..\lib\MyGeneration.dOOdads.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminLogin.cs" />
     <Compile Include="Attachment.cs" />
     <Compile Include="AttachmentType.cs" />
     <Compile Include="BlockedUser.cs" />

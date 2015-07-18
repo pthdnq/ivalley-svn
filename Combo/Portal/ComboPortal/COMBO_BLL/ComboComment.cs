@@ -12,5 +12,22 @@ namespace COMBO_BLL
 		{
 		
 		}
+        public virtual bool GetPostCommentsByPostID(int pid)
+        {
+            return LoadFromRawSql(@"Select C.*, U.UserName, A.Path ProfilePic from ComboComment C
+                                    Inner Join ComboUser U on C.ComboUserID = U.ComboUserID and 
+                                                        (U.IsDeactivated <> 1 or U.IsDeactivated is null)
+                                    Left join Attachment A on U.ProfileImgID = A.AttachmentID
+                                    Where C.ComboPostID = {0} and 
+                                          (C.IsDeleted <> 1 or C.IsDeleted is null)
+                                    order by C.CommentDate asc", pid);
+        }
+        public virtual bool GetPostCommentsCount(int pid)
+        {
+            return LoadFromRawSql(@"Select count(C.ComboCommentID) TotalCount from ComboComment C                                    
+                                    Where C.ComboPostID = {0} and 
+                                          (C.IsDeleted <> 1 or C.IsDeleted is null)", pid);
+        }
+
 	}
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using COMBO_BLL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -16,9 +17,18 @@ namespace ComboPortal.Admin
 
         protected void LoginButton_Click(object sender, EventArgs e)
         {
-            if (UserName.Text == "" && Password.Text == "")
-            {
+            AdminLogin objData = new AdminLogin();
+            objData.Where.AdminUserName.Value = UserName.Text;
+            objData.Where.AdminUserName.Operator = MyGeneration.dOOdads.WhereParameter.Operand.Equal;
+            objData.Where.AdminUserName.Conjuction = MyGeneration.dOOdads.WhereParameter.Conj.And;
+            objData.Where.AdminPassword.Value = Password.Text;
+            objData.Where.AdminPassword.Operator = MyGeneration.dOOdads.WhereParameter.Operand.Equal;
+            objData.Query.Load();
 
+            if (objData.RowCount>0)
+            {
+                Session["Admin"] = objData.AdminName;
+                Response.Redirect("EditUser.aspx");
             }
         }
     }

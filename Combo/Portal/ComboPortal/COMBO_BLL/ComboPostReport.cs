@@ -16,18 +16,17 @@ namespace COMBO_BLL
         public bool getGeneralPostReports()
         {
             return LoadFromRawSql(@"SELECT CP.PostText PostText, CP.ComboPostID PostID, COUNT(CPR.ComboPostReportID) ReportsCount
-                                    FROM ComboUser CU JOIN ComboPost CP ON CP.ComboUserID = CU.ComboUserID JOIN ComboPostReport CPR ON CPR.ComboPostID = CP.ComboPostID
-                                    GROUP BY CP.PostText,CP.ComboPostID, CPR.ReportDate
-                                    ORDER BY CPR.ReportDate DESC");
+                                    FROM ComboPost CP JOIN ComboPostReport CPR ON CPR.ComboPostID = CP.ComboPostID
+                                    GROUP BY CP.PostText, CP.ComboPostID, CP.PostDate
+                                    ORDER BY CP.PostDate DESC");
         }
 
         public bool getPostReportsByPostID(int PostID)
         {
             string query = string.Format(@"SELECT CU.UserName UserName , CPR.ReportDate , CPR.ReportText
-                                            FROM ComboUser CU JOIN ComboPostReport CPR ON CPR.ComboUserID = CU.ComboUserID
+                                            FROM ComboUser CU INNER JOIN ComboPostReport CPR ON CPR.ComboUserID = CU.ComboUserID
                                             WHERE CPR.ComboPostID = {0}", PostID);
             return LoadFromRawSql(query);
         }
-
 	}
 }
