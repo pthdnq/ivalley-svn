@@ -1267,8 +1267,8 @@ var App = function () {
 
     var handleLoginForm = function () {
         jQuery('#forget-password').click(function () {
-            jQuery('#loginform').hide();
-            jQuery('#forgotform').show(200);
+            jQuery('#loginform').slideUp(200);
+            jQuery('#forgotform').slideDown(200);
         });
 
         jQuery('#forget-btn').click(function () {
@@ -1276,6 +1276,40 @@ var App = function () {
             jQuery('#loginform').slideDown(200);
             jQuery('#forgotform').slideUp(200);
         });
+
+        jQuery('#loginBtn').click(function () {
+            jQuery('#login').slideDown(200);
+            jQuery('#splash').slideUp(200);
+        });
+        jQuery('#loginClose').click(function () {
+            jQuery('#login').slideUp(200);
+            jQuery('#splash').slideDown(200);
+        });
+
+        jQuery('#login-btn').click(function () {
+            $('#loading').show();
+            $('#errorDiv').hide();
+            _userData = { username: jQuery('#input-username').val(), password: jQuery('#input-password').val() }
+            $.ajax({
+
+                url: "Default.aspx/LoginComboUser",
+                data: JSON.stringify(_userData),
+                type: "Post",
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (mydata) {
+                    if (mydata.d == true) {
+                        $('#errorDiv').hide();
+                    }
+                    else {
+                        $('#errorDiv').show();
+                    }
+                    $('#loading').hide();
+                }
+            });
+
+        });
+        
     }
 
     var handleFixInputPlaceholderForIE = function () {

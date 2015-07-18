@@ -407,8 +407,8 @@ a,a:focus, a:hover, a:active {
 
 /* body container */
 #login-body {
-    background-color: #f7f7f7  !important;
-	background-image: url("../img/body-bg.png") !important;
+    background-color: #48157C  !important;
+	/*background-image: url("../img/body-bg.png") !important;*/
 }
 
 #main-content {
@@ -1691,21 +1691,22 @@ textarea:focus, input[type="text"]:focus, input[type="password"]:focus, input[ty
 
 #login {
 
-    background:#e3e3e3;
+   /* background:#e3e3e3;
     box-shadow: 1px 0 1px #FFFFFF, 0 0 3px rgba(0, 0, 0, 0.2) inset;
     -moz-box-shadow: 1px 0 1px #FFFFFF, 0 0 3px rgba(0, 0, 0, 0.2) inset;
     -webkit-box-shadow: 1px 0 1px #FFFFFF, 0 0 3px rgba(0, 0, 0, 0.2) inset;
-    width: 370px;
-    margin: 150px auto 0;
+    width: 370px;*/
+    margin: 50px auto 0;
     padding: 20px;
 }
 
 .login-btn {
-    background: url("../img/login-btn.jpg");
+     background-color:#8c57c3;
+    /*background: url("../img/login-btn.jpg");*/
     border: none;
-    box-shadow: 1px 0 1px #FFFFFF, 0 0 3px rgba(0, 0, 0, 0.2) inset;
+    /*box-shadow: 1px 0 1px #FFFFFF, 0 0 3px rgba(0, 0, 0, 0.2) inset;
     -moz-box-shadow: 1px 0 1px #FFFFFF, 0 0 3px rgba(0, 0, 0, 0.2) inset;
-    -webkit-box-shadow: 1px 0 1px #FFFFFF, 0 0 3px rgba(0, 0, 0, 0.2) inset;
+    -webkit-box-shadow: 1px 0 1px #FFFFFF, 0 0 3px rgba(0, 0, 0, 0.2) inset;*/
     border-radius: 0;
     -moz-border-radius: 0;
     -webkit-border-radius: 0;
@@ -3582,3 +3583,19 @@ ul.amounts li {
     float: right;
 }
 
+
+
+
+
+.progress-combo .bar {
+  background-color: #48157C;
+  background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(0.25, rgba(255, 255, 255, 0.15)), color-stop(0.25, transparent), color-stop(0.5, transparent), color-stop(0.5, rgba(255, 255, 255, 0.15)), color-stop(0.75, rgba(255, 255, 255, 0.15)), color-stop(0.75, transparent), to(transparent));
+  background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+  background-image: -moz-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+  background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+  -webkit-background-size: 40px 40px;
+     -moz-background-size: 40px 40px;
+       -o-background-size: 40px 40px;
+          background-size: 40px 40px;
+}

@@ -37,5 +37,14 @@ namespace COMBO_BLL
             parameters.Add(new SqlParameter("@UserId", SqlDbType.Int, 0), UserId);
             return LoadFromSql("GetUserStatisticsByUserId", parameters);
         }
+
+        public virtual bool GetUserByUserNameAndPassword(string UserName, string Password)
+        {
+            ListDictionary parameters = new ListDictionary();
+            parameters.Add(new SqlParameter("@UserName", SqlDbType.NVarChar, 200), UserName);
+            parameters.Add(new SqlParameter("@Password", SqlDbType.NVarChar, 200), Password);
+            return LoadFromSql("GetUserByUserNameAndPassword", parameters);
+
+        }
 	}
 }

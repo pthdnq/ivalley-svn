@@ -894,6 +894,7 @@
     <Content Include="Admin\PostsReports.aspx" />
     <Content Include="Admin\UserManagement.aspx" />
     <Content Include="Admin\VerifyAccount.aspx" />
+    <Content Include="ar\default.aspx" />
     <Content Include="assets\bootstrap-colorpicker\css\colorpicker.css" />
     <Content Include="assets\bootstrap-colorpicker\js\bootstrap-colorpicker.js" />
     <Content Include="assets\bootstrap-datepicker\css\datepicker.css" />
@@ -1040,6 +1041,12 @@
     <Content Include="css\timeline-component.css" />
     <Content Include="default.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="fonts\gothic\font.css" />
+    <Content Include="fonts\gothic\gothic-bg.png" />
+    <Content Include="fonts\gothic\gothic-thumb.png" />
+    <Content Include="fonts\gothic\gothic.png" />
+    <Content Include="fonts\gothic\index.html" />
+    <Content Include="fonts\gothic\readme.txt" />
     <Content Include="font\fontawesome-webfont.svg" />
     <Content Include="font\myriadprobold.svg" />
     <Content Include="font\myriadproit.svg" />
@@ -1103,8 +1110,10 @@
     <Content Include="img\portal\comboText.jpg" />
     <Content Include="img\portal\comboTitle.png" />
     <Content Include="img\portal\hand.png" />
+    <Content Include="img\portal\hand_rtl.png" />
     <Content Include="img\portal\logo.png" />
     <Content Include="img\portal\play-store.png" />
+    <Content Include="img\portal\play-store2.png" />
     <Content Include="img\portal\slider\homeDoo.jpg" />
     <Content Include="img\portal\slider\homeDoo2.jpg" />
     <Content Include="img\portal\slider\homeDoo3.jpg" />
@@ -1248,16 +1257,16 @@
     <Content Include="assets\font-awesome-4.3.0\scss\_rotated-flipped.scss" />
     <Content Include="assets\font-awesome-4.3.0\scss\_stacked.scss" />
     <Content Include="assets\font-awesome-4.3.0\scss\_variables.scss" />
-    <Content Include="Admin\AdminMasterAr.Master" />    
-    <Content Include="Admin\assets\bootstrap-colorpicker\less\colorpicker.less" />    
+    <Content Include="Admin\AdminMasterAr.Master" />
+    <Content Include="Admin\assets\bootstrap-colorpicker\less\colorpicker.less" />
     <Content Include="Admin\assets\bootstrap-datepicker\less\datepicker.less" />
-    <Content Include="Admin\assets\bootstrap-daterangepicker\README.md" />    
+    <Content Include="Admin\assets\bootstrap-daterangepicker\README.md" />
     <Content Include="Admin\assets\bootstrap-timepicker\.gitignore" />
     <Content Include="Admin\assets\bootstrap-timepicker\less\timepicker.less" />
-    <Content Include="Admin\assets\bootstrap-timepicker\README.md" />    
+    <Content Include="Admin\assets\bootstrap-timepicker\README.md" />
     <Content Include="Admin\assets\bootstrap-toggle-buttons\.gitignore" />
     <Content Include="Admin\assets\bootstrap-toggle-buttons\LICENSE" />
-    <Content Include="Admin\assets\bootstrap-toggle-buttons\README.md" />    
+    <Content Include="Admin\assets\bootstrap-toggle-buttons\README.md" />
     <Content Include="Admin\assets\bootstrap-toggle-buttons\static\config.rb" />
     <Content Include="Admin\assets\bootstrap-toggle-buttons\static\sass\bootstrap-toggle-buttons.scss" />
     <Content Include="Admin\assets\bootstrap-tree\.gitignore" />
@@ -1265,8 +1274,8 @@
     <Content Include="Admin\assets\bootstrap-tree\README.md" />
     <Content Include="Admin\assets\bootstrap-wizard\README.md" />
     <Content Include="Admin\assets\chosen-bootstrap\.gitignore" />
-    <Content Include="Admin\assets\chosen-bootstrap\Cakefile" />    
-    <Content Include="Admin\assets\chosen-bootstrap\chosen\lib\chosen.less" />   
+    <Content Include="Admin\assets\chosen-bootstrap\Cakefile" />
+    <Content Include="Admin\assets\chosen-bootstrap\chosen\lib\chosen.less" />
     <Content Include="Admin\assets\chosen-bootstrap\coffee\chosen.jquery.coffee" />
     <Content Include="Admin\assets\chosen-bootstrap\coffee\chosen.proto.coffee" />
     <Content Include="Admin\assets\chosen-bootstrap\coffee\lib\abstract-chosen.coffee" />
@@ -1274,7 +1283,7 @@
     <Content Include="Admin\assets\chosen-bootstrap\LICENSE.md" />
     <Content Include="Admin\assets\chosen-bootstrap\package.json" />
     <Content Include="Admin\assets\chosen-bootstrap\README.md" />
-    <Content Include="Admin\assets\chosen-bootstrap\VERSION" />    
+    <Content Include="Admin\assets\chosen-bootstrap\VERSION" />
     <Content Include="Admin\assets\ckeditor\CHANGES.md" />
     <Content Include="Admin\assets\ckeditor\LICENSE.md" />
     <Content Include="Admin\assets\ckeditor\plugins\scayt\LICENSE.md" />
@@ -1285,23 +1294,23 @@
     <Content Include="Admin\assets\ckeditor\samples\assets\posteddata.php" />
     <Content Include="Admin\assets\ckeditor\samples\plugins\htmlwriter\assets\outputforflash\outputforflash.fla" />
     <Content Include="Admin\assets\ckeditor\samples\sample_posteddata.php" />
-    <Content Include="Admin\assets\ckeditor\skins\moono\readme.md" />    
+    <Content Include="Admin\assets\ckeditor\skins\moono\readme.md" />
     <Content Include="Admin\assets\clockface\LICENSE-MIT" />
     <Content Include="Admin\assets\clockface\README.md" />
     <Content Include="Admin\assets\coming-soon-knob\Source\Fonts\Fjalla_One\FjallaOne-Regular.ttf" />
     <Content Include="Admin\assets\coming-soon-knob\Source\Fonts\Monda\Monda-Bold.ttf" />
     <Content Include="Admin\assets\coming-soon-knob\Source\Fonts\Monda\Monda-Regular.ttf" />
     <Content Include="Admin\assets\coming-soon-knob\Source\Fonts\Open Sans\OpenSans-CondLight.ttf" />
-    <Content Include="Admin\assets\coming-soon-knob\Source\Fonts\Roboto\Roboto-Light.ttf" />    
+    <Content Include="Admin\assets\coming-soon-knob\Source\Fonts\Roboto\Roboto-Light.ttf" />
     <Content Include="Admin\assets\coming-soon-knob\Template\css\fonts\opensans-condlight-webfont.eot" />
     <Content Include="Admin\assets\coming-soon-knob\Template\css\fonts\opensans-condlight-webfont.ttf" />
-    <Content Include="Admin\assets\coming-soon-knob\Template\css\fonts\opensans-condlight-webfont.woff" />    
+    <Content Include="Admin\assets\coming-soon-knob\Template\css\fonts\opensans-condlight-webfont.woff" />
     <Content Include="Admin\assets\dropzone\css\stylus\basic.styl" />
     <Content Include="Admin\assets\dropzone\css\stylus\dropzone.styl" />
-    <Content Include="Admin\assets\dropzone\upload.php" />    
+    <Content Include="Admin\assets\dropzone\upload.php" />
     <Content Include="Admin\assets\fancybox\.gitattributes" />
     <Content Include="Admin\assets\fancybox\CHANGELOG.md" />
-    <Content Include="Admin\assets\fancybox\README.md" />    
+    <Content Include="Admin\assets\fancybox\README.md" />
     <Content Include="Admin\assets\flot\examples\data-eu-gdp-growth-1.json" />
     <Content Include="Admin\assets\flot\examples\data-eu-gdp-growth-2.json" />
     <Content Include="Admin\assets\flot\examples\data-eu-gdp-growth-3.json" />
@@ -1310,8 +1319,8 @@
     <Content Include="Admin\assets\flot\examples\data-eu-gdp-growth.json" />
     <Content Include="Admin\assets\flot\examples\data-japan-gdp-growth.json" />
     <Content Include="Admin\assets\flot\examples\data-usa-gdp-growth.json" />
-    <Content Include="Admin\assets\flot\Makefile" />    
-    <Content Include="Admin\assets\font-awesome\.gitignore" />    
+    <Content Include="Admin\assets\flot\Makefile" />
+    <Content Include="Admin\assets\font-awesome\.gitignore" />
     <Content Include="Admin\assets\font-awesome\docs\assets\font\fontawesome-webfont.eot" />
     <Content Include="Admin\assets\font-awesome\docs\assets\font\fontawesome-webfont.ttf" />
     <Content Include="Admin\assets\font-awesome\docs\assets\font\fontawesome-webfont.woff" />
@@ -1324,12 +1333,12 @@
     <Content Include="Admin\assets\font-awesome\docs\assets\font\proximanova-sbold-webfont.ttf" />
     <Content Include="Admin\assets\font-awesome\docs\assets\font\proximanova-webfont.eot" />
     <Content Include="Admin\assets\font-awesome\docs\assets\font\proximanova-webfont.ttf" />
-    <Content Include="Admin\assets\font-awesome\docs\assets\img\icon-flag.pdf" />    
+    <Content Include="Admin\assets\font-awesome\docs\assets\img\icon-flag.pdf" />
     <Content Include="Admin\assets\font-awesome\docs\assets\less\font-awesome-ie7.less" />
     <Content Include="Admin\assets\font-awesome\docs\assets\less\font-awesome.less" />
     <Content Include="Admin\assets\font-awesome\docs\assets\less\font-site.less" />
     <Content Include="Admin\assets\font-awesome\docs\assets\less\mixins.less" />
-    <Content Include="Admin\assets\font-awesome\docs\assets\less\site.less" />    
+    <Content Include="Admin\assets\font-awesome\docs\assets\less\site.less" />
     <Content Include="Admin\assets\font-awesome\docs\assets\less\twbs-222\accordion.less" />
     <Content Include="Admin\assets\font-awesome\docs\assets\less\twbs-222\alerts.less" />
     <Content Include="Admin\assets\font-awesome\docs\assets\less\twbs-222\bootstrap.less" />
@@ -1380,12 +1389,12 @@
     <Content Include="Admin\assets\font-awesome\less\font-awesome.less" />
     <Content Include="Admin\assets\font-awesome\README.md" />
     <Content Include="Admin\assets\font-awesome\sass\font-awesome.sass" />
-    <Content Include="Admin\assets\font-awesome\sass\font-awesome.scss" />    
-    <Content Include="Admin\assets\fullcalendar\demos\json-events.php" />    
-    <Content Include="Admin\assets\gritter\README.markdown" />    
+    <Content Include="Admin\assets\font-awesome\sass\font-awesome.scss" />
+    <Content Include="Admin\assets\fullcalendar\demos\json-events.php" />
+    <Content Include="Admin\assets\gritter\README.markdown" />
     <Content Include="Admin\assets\jquery-knob\README.md" />
     <Content Include="Admin\assets\jquery-slimscroll\README.md" />
-    <Content Include="Admin\assets\jquery-slimscroll\slimScroll.jquery.json" />    
+    <Content Include="Admin\assets\jquery-slimscroll\slimScroll.jquery.json" />
     <Content Include="Admin\assets\jquery-tags-input\README.md" />
     <Content Include="Admin\assets\jqvmap\.gitignore" />
     <Content Include="Admin\assets\jqvmap\README.md" />
@@ -1406,13 +1415,22 @@
     <Content Include="Admin\font\myriadprolight.woff" />
     <Content Include="Admin\font\myriadproregular.eot" />
     <Content Include="Admin\font\myriadproregular.ttf" />
-    <Content Include="Admin\font\myriadproregular.woff" />    
+    <Content Include="Admin\font\myriadproregular.woff" />
     <Content Include="Admin\font\JF-Flat-regular.eot" />
     <Content Include="Admin\font\JF-Flat-regular.ttf" />
-    <Content Include="Admin\font\JF-Flat-regular.woff" />    
+    <Content Include="Admin\font\JF-Flat-regular.woff" />
     <Content Include="css\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="css\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="common\FileUploader.ashx" />
+    <Content Include="fonts\gothic\gothic.eot">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="fonts\gothic\gothic.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="fonts\gothic\gothic.woff">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Properties\PublishProfiles\publish.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="RequestAccountVerification.aspx" />
@@ -1513,6 +1531,13 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="ar\default.aspx.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ar\default.aspx.designer.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+    </Compile>
     <Compile Include="common\FileUploader.ashx.cs">
       <DependentUpon>FileUploader.ashx</DependentUpon>
     </Compile>
