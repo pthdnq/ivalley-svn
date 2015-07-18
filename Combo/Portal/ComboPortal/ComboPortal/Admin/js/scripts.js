@@ -1311,6 +1311,12 @@ var App = function () {
             });
 
         });
+
+        $('#loginform').keypress(function (e) {
+            if (e.keyCode == '13') {
+                $(this).find('#login-btn').click();
+            }
+        });
         
     }
 

@@ -30,5 +30,12 @@ namespace COMBO_BLL
                                     FROM ComboUser CU JOIN VerificationRequest VR ON CU.ComboUserID = VR.ComboUserID
                                     WHERE VR.IsAccepted = 0");
         }
+
+        public virtual bool GetRequestByUserID(int id)
+        {
+            this.Where.ComboUserID.Value = id;
+            this.Where.ComboUserID.Operator = MyGeneration.dOOdads.WhereParameter.Operand.Equal;
+            return this.Query.Load();
+        }
 	}
 }

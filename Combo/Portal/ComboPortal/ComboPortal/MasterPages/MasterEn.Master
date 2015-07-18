@@ -39,6 +39,23 @@
                     <!-- END  NOTIFICATION -->
                     <div class="top-nav ">
                         <ul class="nav pull-right top-menu">
+                            <li class=" mtop5">
+                                <asp:LinkButton ID="uiLinkButtonArabic" runat="server" CssClass="JF" OnClick="uiLinkButtonArabic_Click">                           
+                               العربية
+                                </asp:LinkButton>
+                       </li>
+                             <li class="dropdown mtop5">
+                           <a class="dropdown-toggle element" data-placement="bottom" data-toggle="tooltip" href="#" data-original-title="Notifications">
+                               <i class="icon-bell"></i>
+                           </a>
+                       </li>
+                             <li class="dropdown mtop5">
+
+                           <a class="dropdown-toggle element" data-placement="bottom" data-toggle="tooltip" href="#" data-original-title="News feeds">
+                               <i class="icon-list"></i>
+                           </a>
+                       </li>
+                      
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     <span class="username">Welcome ,

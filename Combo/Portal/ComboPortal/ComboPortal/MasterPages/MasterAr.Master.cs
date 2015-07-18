@@ -31,5 +31,10 @@ namespace ComboPortal.MasterPages
             Session["ComboUser"] = null;
             Response.Redirect("default.aspx");
         }
+
+        protected void uiLinkButtonEnglish_Click(object sender, EventArgs e)
+        {
+            Response.Redirect(Request.RawUrl.Replace("/ar", ""));
+        }
     }
 }

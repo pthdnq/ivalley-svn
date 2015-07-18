@@ -21,12 +21,12 @@
 
         <div id="container" class="row-fluid no-margin" style="min-height:100%">
             <div class="span12 clearfix block-margin-bottom-5 no-padding" style="margin:0 auto;float:none;padding:15px;">
-                <div class="span12" style="background-color:#48157C !important;">
+                <div class="span12" style="background-color:#48157C !important;margin-bottom:10px;">
                     <div class="span4 clearfix block-margin-bottom-5">
-                    <img src="img/portal/comboTitle.png" style="max-width:80%;float:left;margin-top:2%;"/>                        
+                    <img src="img/portal/comboTitle.png" style="max-width:65%;float:left;margin-top:2%;"/>                        
                         </div>
-                    <div class="span2">
-                        <a href="#" class="btn btn-default pull-left" id="loginBtn" style="margin-top:30px;border-radius:3px;font-size:20px;">Log in</a>
+                    <div class="span4 text-center">
+                        <a href="#" class="btn btn-default " id="loginBtn" style="margin-top:30px;border-radius:3px;font-size:20px;">Log in</a>
                     </div>
                     <div class="span3 pull-right" style="margin-top:5%">
                         <a href="ar/default.aspx" class="JF" style="font-size:20px;color:#fff;font-weight:bold;text-decoration:none">العربية</a>

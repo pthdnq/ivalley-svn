@@ -1110,16 +1110,19 @@
     <Content Include="img\overlay-icon.png" />
     <Content Include="img\portal\comboText.jpg" />
     <Content Include="img\portal\comboTitle.png" />
+    <Content Include="img\portal\Egypt.png" />
     <Content Include="img\portal\hand.png" />
     <Content Include="img\portal\hand_rtl.png" />
     <Content Include="img\portal\logo.png" />
     <Content Include="img\portal\play-store.png" />
     <Content Include="img\portal\play-store2.png" />
+    <Content Include="img\portal\Saudi Arabia.png" />
     <Content Include="img\portal\slider\homeDoo.jpg" />
     <Content Include="img\portal\slider\homeDoo2.jpg" />
     <Content Include="img\portal\slider\homeDoo3.jpg" />
     <Content Include="img\portal\slider\homeDoo4.jpg" />
     <Content Include="img\portal\slider\homeDoo5.jpg" />
+    <Content Include="img\portal\United Kingdom%28Great Britain%29.png" />
     <Content Include="img\product1.jpg" />
     <Content Include="img\product2.png" />
     <Content Include="img\product3.png" />
@@ -1608,6 +1611,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="fileuploads\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

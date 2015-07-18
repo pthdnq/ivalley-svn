@@ -61,10 +61,11 @@ namespace ComboPortal.Common
 
 
                 fileName = GetUniqueFileName(fileName, HttpContext.Current.Server.MapPath("~/fileuploads/"), ext).ToLower();
+                string key = context.Request.Form["key"].ToString();
 
                 string FilePath = "/fileuploads/" + fileName + ext;
 
-                Files.Add(fileName, FilePath);
+                Files.Add(key, FilePath);
                 context.Session["CurrentUploadedFiles"] = Files;
 
                 string location = HttpContext.Current.Server.MapPath("~/fileuploads/") + fileName + ext;
@@ -76,7 +77,7 @@ namespace ComboPortal.Common
                     size = context.Request.Files[0].ContentLength,
                     url = FilePath,
                     thumbnailUrl = "",
-                    deleteUrl = "common/fileuploader.ashx?path=/fileuploads/" + fileName + ext + "&key=" + fileName,
+                    deleteUrl = "common/fileuploader.ashx?path=/fileuploads/" + fileName + ext + "&key=" + key,
                     deleteType = "Get"
                 });
 
