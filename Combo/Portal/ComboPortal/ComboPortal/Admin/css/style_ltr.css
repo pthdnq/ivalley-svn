@@ -1,7 +1,38 @@
 @import url(http://fonts.googleapis.com/css?family=Ubuntu:300);
 
+
+
+@font-face {
+    font-family: "JF_Flat_Regular";
+    src: url('../font/JF-Flat-regular.eot');
+    src: url('../font/JF-Flat-regular.eot?#iefix') format('embedded-opentype'),
+    url('../font/JF-Flat-regular.svg#JF Flat Regular') format('svg'),
+    url('../font/JF-Flat-regular.woff') format('woff'),
+    url('../fontF-Flat-regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+.JF {
+    font-family: 'JF_Flat_Regular', elvetica, Arial, sans-serif;
+}
+
+@font-face {
+	font-family: 'gothic';
+	src: url('../../fonts/gothic/gothic.eot');
+	src: local('gothic'), url('../../fonts/gothic/gothic.woff') format('woff'), url('../../fonts/gothic/gothic.ttf') format('truetype');
+}
+
 .ub {
     font-family: 'Ubuntu', sans-serif;
+}
+
+.goth {
+    font-family: 'gothic' !important;
+}
+html {
+    height:100%;
 }
 /* body styles */
 body {
@@ -10,6 +41,7 @@ body {
     padding: 0px !important;
     margin: 0px !important;
     font-size:13px;
+    height:100%;
 }
 
 /* fix for font awesome icon classes */
@@ -1690,8 +1722,9 @@ textarea:focus, input[type="text"]:focus, input[type="password"]:focus, input[ty
 }
 
 .login-btn:hover {
-    opacity: 0.8;
-    color: #fff;
+    opacity: 1;
+    color: #8c57c3;
+    
 }
 
 #login .control-group {
@@ -3489,3 +3522,17 @@ ul.amounts li {
     margin-bottom: 15px;
 }
 
+
+
+.progress-combo .bar {
+  background-color: #48157C;
+  background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(0.25, rgba(255, 255, 255, 0.15)), color-stop(0.25, transparent), color-stop(0.5, transparent), color-stop(0.5, rgba(255, 255, 255, 0.15)), color-stop(0.75, rgba(255, 255, 255, 0.15)), color-stop(0.75, transparent), to(transparent));
+  background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+  background-image: -moz-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+  background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+  -webkit-background-size: 40px 40px;
+     -moz-background-size: 40px 40px;
+       -o-background-size: 40px 40px;
+          background-size: 40px 40px;
+}

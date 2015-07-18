@@ -8,7 +8,7 @@ using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace ComboPortal
+namespace ComboPortal.ar
 {
     public partial class _default : System.Web.UI.Page
     {
@@ -17,13 +17,13 @@ namespace ComboPortal
 
         }
 
-        [WebMethod(EnableSession=true)]
+        [WebMethod(EnableSession = true)]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json, UseHttpGet = false)]
         public static bool LoginComboUser(string username, string password)
         {
             System.Threading.Thread.Sleep(1500);
             ComboUser user = new ComboUser();
-            if(user.GetUserByUserNameAndPassword(username, password))
+            if (user.GetUserByUserNameAndPassword(username, password))
             {
                 HttpContext.Current.Session["ComboUser"] = user;
                 return true;
