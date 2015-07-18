@@ -30,7 +30,8 @@
                                                 <asp:BoundField HeaderText="عدد البلاغات" DataField="ReportsCount" />
                                                 <asp:TemplateField HeaderText="العمليات">
                                                     <ItemTemplate>
-                                                        <asp:LinkButton ID="btnViewPost" CssClass="btn btn-primary" PostBackUrl='<%# "PostsReports.aspx?cur=" + Eval("UserID") %>' runat="server"><i class="icon-eye-open icon-white"></i> عرض البلاغات</asp:LinkButton>
+                                                        <asp:LinkButton ID="btnViewPost" CssClass="btn btn-primary" PostBackUrl='<%# "PostsReports.aspx?cur=" + Eval("UserID") %>' runat="server"><i class="icon-list-ul icon-white"></i> عرض البلاغات</asp:LinkButton>
+                                                        <asp:LinkButton ID="LinkButton3" CssClass="btn btn-info" PostBackUrl='<%# "EditUser.aspx?uid=" + Eval("UserID") %>' runat="server"><i class="icon-eye-open icon-white"></i> عرض البروفايل</asp:LinkButton>
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
                                             </Columns>
@@ -45,7 +46,9 @@
                                                 <asp:BoundField HeaderText="عدد البلاغات" DataField="ReportsCount" />
                                                 <asp:TemplateField HeaderText="العمليات">
                                                     <ItemTemplate>
-                                                        <asp:LinkButton ID="btnViewPost" CssClass="btn btn-primary" PostBackUrl='<%# "PostsReports.aspx?cpr=" + Eval("PostID") %>' runat="server"><i class="icon-eye-open icon-white"></i> عرض البوست</asp:LinkButton>
+                                                        <asp:LinkButton ID="btnViewPost" CssClass="btn btn-primary" PostBackUrl='<%# "PostsReports.aspx?cpr=" + Eval("PostID") %>' runat="server"><i class="icon-list-ul icon-white"></i> عرض البلاغات</asp:LinkButton>
+                                                        <asp:LinkButton ID="LinkButton3" CssClass="btn btn-info" PostBackUrl='<%# "ViewPost.aspx?pid=" + Eval("PostID") %>' runat="server"><i class="icon-eye-open icon-white"></i> عرض البوست</asp:LinkButton>
+
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
                                             </Columns>
@@ -60,7 +63,8 @@
                                                 <asp:BoundField HeaderText="عدد البلاغات" DataField="ReportsCount" />
                                                 <asp:TemplateField HeaderText="العمليات">
                                                     <ItemTemplate>
-                                                        <asp:LinkButton ID="btnViewPost" CssClass="btn btn-primary" PostBackUrl='<%# "PostsReports.aspx?ccr=" + Eval("CommentID") %>' runat="server"><i class="icon-eye-open icon-white"></i> عرض البلاغات</asp:LinkButton>
+                                                        <asp:LinkButton ID="btnViewPost" CssClass="btn btn-primary" PostBackUrl='<%# "PostsReports.aspx?ccr=" + Eval("CommentID") %>' runat="server"><i class="icon-list-ul icon-white"></i> عرض البلاغات</asp:LinkButton>
+                                                        <asp:LinkButton ID="LinkButton3" CssClass="btn btn-info" PostBackUrl='<%# "ViewPost.aspx?pid=" + Eval("PostID") %>' runat="server"><i class="icon-eye-open icon-white"></i> عرض التعليق</asp:LinkButton>
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
                                             </Columns>

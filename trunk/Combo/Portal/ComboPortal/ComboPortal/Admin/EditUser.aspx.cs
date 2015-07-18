@@ -244,11 +244,35 @@ namespace ComboPortal.Admin
         }
         protected void btnDeleteFollowers_Click(object sender, EventArgs e)
         {
-            
+            ProfileFollower objData = new ProfileFollower();
+            objData.Where.ComboUserID.Value = CurrentUser;
+            objData.Where.ComboUserID.Operator = MyGeneration.dOOdads.WhereParameter.Operand.Equal;
+            objData.Query.Load();
+
+            objData.Rewind();
+            for (int i = 0; i < objData.RowCount; i++)
+            {
+                objData.MarkAsDeleted();
+                objData.MoveNext();
+            }
+            objData.Save();
+            updateCounters();
         }
         protected void btnDeleteFollowing_Click(object sender, EventArgs e)
         {
+            ProfileFollower objData = new ProfileFollower();
+            objData.Where.ComboFollowerID.Value = CurrentUser;
+            objData.Where.ComboFollowerID.Operator = MyGeneration.dOOdads.WhereParameter.Operand.Equal;
+            objData.Query.Load();
 
+            objData.Rewind();
+            for (int i = 0; i < objData.RowCount; i++)
+            {
+                objData.MarkAsDeleted();
+                objData.MoveNext();
+            }
+            objData.Save();
+            updateCounters();
         }
         protected void btnSaveProfile_Click(object sender, EventArgs e)
         {
@@ -274,15 +298,23 @@ namespace ComboPortal.Admin
             {
             }
             objData.Bio = literalBio.Text;
-            if (true)
-            {
-                
-            }
+            if (drpDwnRank.SelectedValue.ToString() != "0")
+                objData.UserRankID = int.Parse(drpDwnRank.SelectedValue.ToString());
             objData.Save();
 
             string script = "alert(\"تم حفظ البيانات بنجاح!\");";
             ScriptManager.RegisterStartupScript(this, GetType(),
                                   "ServerControlScript", script, true);
+        }
+        protected void RepeaterUserPosts_ItemDataBound(object sender, RepeaterItemEventArgs e)
+        {
+            HiddenField hfPostID = e.Item.FindControl("hfPostID") as HiddenField;
+            LinkButton btnViewPost = e.Item.FindControl("btnViewPost") as LinkButton;
+
+            ComboComment objData = new ComboComment();
+            objData.GetPostCommentsCount(int.Parse(hfPostID.Value.ToString()));
+            objData.GetColumn("TotalCount");
+            btnViewPost.Text = "عرض التعليقات " + "(" + objData.GetColumn("TotalCount").ToString() + ")";
         }
     }
 }

@@ -16,7 +16,7 @@
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
-<body class="fixed-top JF">
+<body class="fixed-top JF purplebg">
     <form id="form1" runat="server" style="margin:0 !important;">
         <div id="header" class="navbar navbar-inverse navbar-fixed-top">
             <!-- BEGIN TOP NAVIGATION BAR -->
@@ -41,13 +41,13 @@
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     <span class="username">مرحباً ،
-                                   <asp:Label ID="LoginName1" runat="server" CssClass="ub" />
+                                   <asp:Label ID="LoginName" runat="server" CssClass="ub" />
                                     </span>
                                     <b class="caret"></b>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li>
-                                        <asp:LinkButton ID="btnLogOut" runat="server" LogoutText="<i class='icon-key'></i> خروج" /></li>
+                                        <asp:LinkButton ID="btnLogOut" OnClick="btnLogOut_Click" runat="server" Text="<i class='icon-key'></i> خروج" /></li>
                                 </ul>
                             </li>
 

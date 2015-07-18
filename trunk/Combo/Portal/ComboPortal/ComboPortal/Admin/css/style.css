@@ -2739,6 +2739,7 @@ table.fc-header {float: left; direction: rtl}
 
 .normal-chat li.in .name {
     color: #FB9800 !important;
+    text-decoration:none !important;
 }
 .normal-chat li.out .name {
     color: #2FADE7 !important;

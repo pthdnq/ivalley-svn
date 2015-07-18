@@ -15,11 +15,17 @@ namespace ComboPortal.Admin
         {
             if (!IsPostBack)
             {
-                //if (Session["Login"]==null )
-                //{
-                //    Response.Redirect("Login.aspx");
-                //}
+                if (Session["Admin"] == null)
+                    Response.Redirect("Login.aspx");
+                else
+                    LoginName.Text = Session["Admin"].ToString();
             }
+        }
+
+        protected void btnLogOut_Click(object sender, EventArgs e)
+        {
+            Session["Admin"] = null;
+            Response.Redirect("Login.aspx");
         }
     }
 }
