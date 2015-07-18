@@ -19,11 +19,12 @@ namespace ComboPortal.MasterPages
                     ComboUser user = (ComboUser)Session["ComboUser"];
                     uiLoginName.Text = user.UserName;
                 }
+                else
+                {
+                    Response.Redirect("default.aspx");
+                }
             }
-            else
-            {
-                Response.Redirect("default.aspx");
-            }
+            
         }
 
         protected void btnLogOut_Click(object sender, EventArgs e)
