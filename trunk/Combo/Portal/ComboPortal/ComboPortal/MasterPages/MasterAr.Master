@@ -1,22 +1,22 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterEn.master.cs" Inherits="ComboPortal.MasterPages.MasterEn" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterAr.master.cs" Inherits="ComboPortal.MasterPages.MasterAr" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <link href="../admin/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="../admin/assets/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" />
-    <link href="../admin/css/style_ltr.css" rel="stylesheet" />
+     <link href="../admin/assets/bootstrap-rtl/css/bootstrap-rtl.min.css" rel="stylesheet" />
+    <link href="../admin/assets/bootstrap-rtl/css/bootstrap-responsive-rtl.min.css" rel="stylesheet" />
+    <link href="../admin/css/style.css" rel="stylesheet" />
     <link href="../admin/css/style_purple.css" rel="stylesheet" />
     <link href="../admin/css/style_responsive.css" rel="stylesheet" />
     <link href="../admin/assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
     <link href="../admin/assets/fancybox/source/jquery.fancybox.css" rel="stylesheet" />
     <link href="../admin/assets/uniform/css/uniform.default.css" rel="stylesheet" />
-    <title>COMBO</title>
+    <title>COMBO</title>    
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
-<body class="fixed-top ub">
+<body class="fixed-top JF">
     <form id="form1" runat="server" style="margin:0 !important;">
         <div id="header" class="navbar navbar-inverse navbar-fixed-top">
             <!-- BEGIN TOP NAVIGATION BAR -->
@@ -24,7 +24,7 @@
                 <div class="container-fluid">
                     <!-- BEGIN LOGO -->
                     <a class="brand ub" href="../default.aspx" style="display:block;font-weight:bold">
-                        <img src="../img/portal/logo.png" style="max-width:30%"/>OMBO
+                        OMBO<img src="../img/portal/logo.png" style="max-width:30%"/>
                     </a>
                     <!-- END LOGO -->
                     <!-- BEGIN RESPONSIVE MENU TOGGLER -->
@@ -38,22 +38,22 @@
 
                     <!-- END  NOTIFICATION -->
                     <div class="top-nav ">
-                        <ul class="nav pull-right top-menu">
+                        <ul class="nav pull-left top-menu">
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <span class="username">Welcome ,
+                                    <span class="username">مرحباً ,
                                    <asp:Label ID="uiLoginName" runat="server" CssClass="ub" />
                                     </span>
                                     <b class="caret"></b>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li>
-                                        <a href="../RequestAccountVerification.aspx" ><i class='icon-check'></i> Request account verification </a></li>
+                                        <a href="../RequestAccountVerification.aspx" ><i class='icon-check'></i> طلب نوثيق جساب </a></li>
                                     <li>
-                                        <a href="../RequestAccountVerification.aspx" ><i class='icon-lock'></i> Change password </a></li>
+                                        <a href="../RequestAccountVerification.aspx" ><i class='icon-lock'></i> تغيير كلمة المرور </a></li>
 
                                     <li>
-                                        <asp:LinkButton ID="btnLogOut" runat="server" Text="<i class='icon-key'></i> Logout" OnClick="btnLogOut_Click" /></li>
+                                        <asp:LinkButton ID="btnLogOut" runat="server" Text="<i class='icon-key'></i> خروج" OnClick="btnLogOut_Click" /></li>
                                 </ul>
                             </li>
 
@@ -79,7 +79,7 @@
         </div>
 
         <div id="footer">
-            <span class="ub">2015 &copy; I-Valley. All rights reserved.</span>
+            <span class="JF"> جميع الحقوق محفوظة.2015 &copy; I-Valley.</span>
             <div class="span pull-left">
                 <span class="go-top"><i class="icon-arrow-up"></i></span>
             </div>

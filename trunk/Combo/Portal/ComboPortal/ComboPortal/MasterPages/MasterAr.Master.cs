@@ -8,7 +8,7 @@ using System.Web.UI.WebControls;
 
 namespace ComboPortal.MasterPages
 {
-    public partial class MasterEn : System.Web.UI.MasterPage
+    public partial class MasterAr : System.Web.UI.MasterPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -19,9 +19,10 @@ namespace ComboPortal.MasterPages
                     ComboUser user = (ComboUser)Session["ComboUser"];
                     uiLoginName.Text = user.UserName;
                 }
-                else {
-                    Response.Redirect("default.aspx");
-                }
+            }
+            else
+            {
+                Response.Redirect("default.aspx");
             }
         }
 
