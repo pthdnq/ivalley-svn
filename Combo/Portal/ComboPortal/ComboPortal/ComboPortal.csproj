@@ -896,8 +896,10 @@
     <Content Include="Admin\VerifyAccount.aspx" />
     <Content Include="Admin\ViewPost.aspx" />
     <Content Include="ar\changepassword.aspx" />
+    <Content Include="ar\changesecurityword.aspx" />
     <Content Include="ar\default.aspx" />
     <Content Include="ar\MyAccount.aspx" />
+    <Content Include="ar\RequestAccountVerification.aspx" />
     <Content Include="assets\bootstrap-colorpicker\css\colorpicker.css" />
     <Content Include="assets\bootstrap-colorpicker\js\bootstrap-colorpicker.js" />
     <Content Include="assets\bootstrap-datepicker\css\datepicker.css" />
@@ -1022,6 +1024,7 @@
     <Content Include="assets\uniform\images\sprite.png" />
     <Content Include="assets\uniform\jquery.uniform.min.js" />
     <Content Include="changepassword.aspx" />
+    <Content Include="changesecurityword.aspx" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
@@ -1474,6 +1477,7 @@
     <Content Include="Scripts\_references.js" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="uiUpload_ar.html" />
     <Content Include="uiUpload.html" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
@@ -1553,6 +1557,13 @@
     <Compile Include="ar\changepassword.aspx.designer.cs">
       <DependentUpon>changepassword.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ar\changesecurityword.aspx.cs">
+      <DependentUpon>changesecurityword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ar\changesecurityword.aspx.designer.cs">
+      <DependentUpon>changesecurityword.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ar\default.aspx.cs">
       <DependentUpon>default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1567,12 +1578,26 @@
     <Compile Include="ar\MyAccount.aspx.designer.cs">
       <DependentUpon>MyAccount.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ar\RequestAccountVerification.aspx.cs">
+      <DependentUpon>RequestAccountVerification.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ar\RequestAccountVerification.aspx.designer.cs">
+      <DependentUpon>RequestAccountVerification.aspx</DependentUpon>
+    </Compile>
     <Compile Include="changepassword.aspx.cs">
       <DependentUpon>changepassword.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="changepassword.aspx.designer.cs">
       <DependentUpon>changepassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="changesecurityword.aspx.cs">
+      <DependentUpon>changesecurityword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="changesecurityword.aspx.designer.cs">
+      <DependentUpon>changesecurityword.aspx</DependentUpon>
     </Compile>
     <Compile Include="common\FileUploader.ashx.cs">
       <DependentUpon>FileUploader.ashx</DependentUpon>

@@ -1,14 +1,13 @@
-﻿using System;
+﻿using COMBO_BLL;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using COMBO_BLL;
-using System.Collections;
 
-namespace ComboPortal
+namespace ComboPortal.ar
 {
     public partial class RequestAccountVerification : System.Web.UI.Page
     {
@@ -52,10 +51,10 @@ namespace ComboPortal
                     {
                         uiPanelAdd.Visible = true;
                         uiPanelResult.Visible = false;
-                       
+
                     }
 
-                    
+
                 }
             }
         }
@@ -93,7 +92,7 @@ namespace ComboPortal
                     request.PassportNo = uiTextBoxPassNo.Text;
                     request.DateOfBirth = DateTime.ParseExact(uiTextBoxDOB.Text, "dd/MM/yyyy", null);
                     request.GenderID = Convert.ToInt32(uiDropDownListGender.SelectedValue);
-                    
+
                     break;
                 case "3":
                     request.Name = uiTextBoxOrgName.Text;
@@ -134,7 +133,5 @@ namespace ComboPortal
             request.Save();
             Response.Redirect("myaccount.aspx");
         }
-
-      
     }
 }
