@@ -68,6 +68,9 @@
                                         <a href="../RequestAccountVerification.aspx" ><i class='icon-check'></i> Request account verification </a></li>
                                     <li>
                                         <a href="../changepassword.aspx" ><i class='icon-lock'></i> Change password </a></li>
+                                    <li>
+                                        <a href="../changesecurityword.aspx" ><i class='icon-unlock'></i> Change security word </a></li>
+
 
                                     <li>
                                         <asp:LinkButton ID="btnLogOut" runat="server" Text="<i class='icon-key'></i> Logout" OnClick="btnLogOut_Click" /></li>

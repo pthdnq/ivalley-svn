@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ComboPortal {
+namespace ComboPortal.ar {
     
     
     public partial class RequestAccountVerification {

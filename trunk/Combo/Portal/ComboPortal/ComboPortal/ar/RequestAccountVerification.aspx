@@ -1,12 +1,234 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPages/MasterEn.Master" AutoEventWireup="true" CodeBehind="RequestAccountVerification.aspx.cs" Inherits="ComboPortal.RequestAccountVerification" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">    
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPages/MasterAr.Master" AutoEventWireup="true" CodeBehind="RequestAccountVerification.aspx.cs" Inherits="ComboPortal.ar.RequestAccountVerification" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
-<asp:Content ID="Content3" runat="server" ContentPlaceHolderID="ContentPlaceHolderScripts">
-    <link href="Admin/assets/bootstrap-datepicker/css/datepicker.css" rel="stylesheet" />
-     <script src="admin/assets/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
-    <script src="admin/assets/bootstrap-daterangepicker/date.js"></script>
-    <script src="admin/assets/bootstrap-daterangepicker/daterangepicker.js"></script>
-    <script src="admin/assets/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+      <asp:Panel runat="server" ID="uiPanelAdd"> 
+
+    
+   
+    <div class="span12 clearfix no-margin" id="MainInfo">
+        <div class="span5">
+             <div class="span12 clearfix no-margin">
+                <div class="span4">
+                    نوع الحساب
+                </div>
+                <div class="span6">
+                    <select id="AccountType" runat="server" >
+                        <option value="0">إختر نوع الحساب ...</option>
+                        <option value="1">حساب شخصى</option>
+                        <option value="2">حساب رسمى </option>
+                        <option value="3">حساب متاجر</option>
+                    </select>
+                </div>
+                 <div class="span2">
+                    <asp:RequiredFieldValidator Font-Bold="true" ForeColor="Red"  ID="RequiredFieldValidator14" runat="server" ErrorMessage="*" ValidationGroup="add" ControlToValidate="AccountType" InitialValue="0"></asp:RequiredFieldValidator>
+                </div>
+            </div>
+            <div id="noOrg">
+            <div class="span12 clearfix block-margin-bottom-5" style="margin-right: 0" >
+                <div class="span4">الإسم</div>
+                <div class="span6">
+                    <asp:TextBox ID="uiTextBoxName" runat="server"></asp:TextBox></div>
+                <div class="span1">
+                    <asp:RequiredFieldValidator Font-Bold="true" ForeColor="Red"  ID="RequiredFieldValidator1" runat="server" ErrorMessage="*" ValidationGroup="add" ControlToValidate="uiTextBoxName"></asp:RequiredFieldValidator>
+                </div>
+            </div>             
+            <div class="span12 clearfix block-margin-bottom-5" style="margin-right: 0">
+                <div class="span4">رقم الجواز/الهوية</div>
+                <div class="span6"><asp:TextBox ID="uiTextBoxPassNo" runat="server"></asp:TextBox></div>
+                <div class="span1">
+                    <asp:RequiredFieldValidator Font-Bold="true" ForeColor="Red"  ID="RequiredFieldValidator2" runat="server" ErrorMessage="*" ValidationGroup="add" ControlToValidate="uiTextBoxPassNo"></asp:RequiredFieldValidator>
+                </div>
+            </div>
+            <div class="span12 clearfix block-margin-bottom-5" style="margin-right: 0">
+                <div class="span4">تاريخ الميلاد</div>
+                <div class="span6">
+                    <div class="controls">
+                                            <div class="input-append date date-picker" data-date="12-02-2012" data-date-format="dd/mm/yyyy" data-date-viewmode="years">
+                                                <asp:TextBox ID="uiTextBoxDOB" runat="server" Style="direction:ltr"></asp:TextBox>                                                
+                                                <span class="add-on"><i class="icon-calendar"></i></span>
+                                            </div>
+                                        </div>
+                    </div>
+                <div class="span1">
+                    <asp:RequiredFieldValidator Font-Bold="true" ForeColor="Red"  ID="RequiredFieldValidator3" runat="server" ErrorMessage="*" ValidationGroup="add" ControlToValidate="uiTextBoxDOB"></asp:RequiredFieldValidator>
+                </div>
+            </div>
+            <div class="span12 clearfix block-margin-bottom-5" style="margin-right: 0">
+                <div class="span4">النوع</div>
+                <div class="span6">
+                    <asp:DropDownList ID="uiDropDownListGender" runat="server"></asp:DropDownList></div>
+                <div class="span1"></div>
+            </div>
+
+            </div>
+
+            <div id="Org1">
+                <div class="span12 clearfix block-margin-bottom-5" style="margin-right: 0" >
+                <div class="span4">الإسم 
+                    
+                </div>
+                <div class="span8">
+                    <asp:TextBox ID="uiTextBoxOrgName" runat="server"></asp:TextBox>
+                    <br /><sub>
+                      الشركة / المصنع / الفرقة / المؤسسة / حمعية / هيئة حكومية / هيئة خيرية 
+                    </sub>
+                </div>
+                <div class="span1">
+                    <asp:RequiredFieldValidator Font-Bold="true" ForeColor="Red"  ID="RequiredFieldValidator4" runat="server" ErrorMessage="*" ValidationGroup="add" ControlToValidate="uiTextBoxOrgName"></asp:RequiredFieldValidator>
+                </div>
+                </div>
+                
+            </div>
+
+            <div class="span12 clearfix block-margin-bottom-5" style="margin-right: 0">
+                <div class="span4">البلد</div>
+                <div class="span6"><asp:DropDownList ID="uiDropDownListCountry" runat="server"></asp:DropDownList></div>
+                <div class="span1"></div>
+            </div>
+
+            <div id="Org2">
+                <div class="span12 clearfix block-margin-bottom-5" style="margin-right: 0" >
+                <div class="span4">المدينة 
+                    
+                </div>
+                <div class="span8">
+                    <asp:TextBox ID="uiTextBoxCity" runat="server"></asp:TextBox>                    
+                </div>
+                <div class="span1">
+                    <asp:RequiredFieldValidator Font-Bold="true" ForeColor="Red"  ID="RequiredFieldValidator5" runat="server" ErrorMessage="*" ValidationGroup="add" ControlToValidate="uiTextBoxCity"></asp:RequiredFieldValidator>
+                </div>
+                </div>
+                <div class="span12 clearfix block-margin-bottom-5" style="margin-right: 0" >
+                <div class="span4">معلومات أكثر عن العنوان 
+                    
+                </div>
+                <div class="span8">
+                    <asp:TextBox ID="uiTextBoxAddressInfo" runat="server"></asp:TextBox>                    
+                </div>
+                <div class="span1">
+                    <asp:RequiredFieldValidator Font-Bold="true" ForeColor="Red"  ID="RequiredFieldValidator6" runat="server" ErrorMessage="*" ValidationGroup="add" ControlToValidate="uiTextBoxAddressInfo"></asp:RequiredFieldValidator>
+                </div>
+                </div>
+
+                <div class="span12 clearfix block-margin-bottom-5" style="margin-right: 0" >
+                <div class="span4">نشاط الشركة
+                    
+                </div>
+                <div class="span8">
+                    <asp:TextBox ID="uiTextBoxCompanyField" runat="server"></asp:TextBox>                    
+                </div>
+                <div class="span1">
+                    <asp:RequiredFieldValidator Font-Bold="true" ForeColor="Red"  ID="RequiredFieldValidator7" runat="server" ErrorMessage="*" ValidationGroup="add" ControlToValidate="uiTextBoxCompanyField"></asp:RequiredFieldValidator>
+                </div>
+                </div>
+            </div>
+
+            <div class="span12 clearfix block-margin-bottom-5" style="margin-right: 0">
+                <div class="span4">رقم الجوال</div>
+                <div class="span6"><asp:TextBox ID="uiTextBoxMobileNo" runat="server"></asp:TextBox></div>
+                <div class="span1">
+                    <asp:RequiredFieldValidator Font-Bold="true" ForeColor="Red"  ID="RequiredFieldValidator8" runat="server" ErrorMessage="*" ValidationGroup="add" ControlToValidate="uiTextBoxMobileNo"></asp:RequiredFieldValidator>
+                </div>
+            </div>
+            <div class="span12 clearfix block-margin-bottom-5" style="margin-right: 0">
+                <div class="span4">رقم الجوال (2)</div>
+                <div class="span6"><asp:TextBox ID="uiTextBoxMobileNo2" runat="server"></asp:TextBox></div>
+                <div class="span1">
+                    <asp:RequiredFieldValidator Font-Bold="true" ForeColor="Red"  ID="RequiredFieldValidator9" runat="server" ErrorMessage="*" ValidationGroup="add" ControlToValidate="uiTextBoxMobileNo2"></asp:RequiredFieldValidator>
+                </div>
+            </div>
+            <div class="span12 clearfix block-margin-bottom-5" style="margin-right: 0">
+                <div class="span4">إسم الحساب</div>
+                <div class="span6"><asp:TextBox ID="uiTextBoxAccountName" runat="server"></asp:TextBox></div>
+                <div class="span1">
+                    <asp:RequiredFieldValidator Font-Bold="true" ForeColor="Red"  ID="RequiredFieldValidator10" runat="server" ErrorMessage="*" ValidationGroup="add" ControlToValidate="uiTextBoxAccountName"></asp:RequiredFieldValidator>
+                </div>
+            </div>
+            <div class="span12 clearfix block-margin-bottom-5" style="margin-right: 0">
+                <div class="span4">جواب الأمان</div>
+                <div class="span6"><asp:TextBox ID="uiTextBoxSecurityWord" runat="server"></asp:TextBox></div>
+                <div class="span1">
+                    <asp:RequiredFieldValidator Font-Bold="true" ForeColor="Red"  ID="RequiredFieldValidator11" runat="server" ErrorMessage="*" ValidationGroup="add" ControlToValidate="uiTextBoxSecurityWord"></asp:RequiredFieldValidator>
+                </div>
+            </div>
+            <div class="span12 clearfix block-margin-bottom-5" style="margin-right: 0">
+                <div class="span4">البريد الإلكترونى</div>
+                <div class="span6"><asp:TextBox ID="uiTextBoxEmail" runat="server"></asp:TextBox></div>
+                <div class="span1">
+                    <asp:RequiredFieldValidator Font-Bold="true" ForeColor="Red"  ID="RequiredFieldValidator12" runat="server" ErrorMessage="*" ValidationGroup="add" ControlToValidate="uiTextBoxEmail"></asp:RequiredFieldValidator>
+                </div>
+            </div>
+            <div class="span12 clearfix block-margin-bottom-5" style="margin-right: 0">
+                <div class="span4">كلمة المرور</div>
+                <div class="span6"><asp:TextBox ID="uiTextBoxPassword" TextMode="Password" runat="server"></asp:TextBox></div>
+                <div class="span1">
+                    <asp:RequiredFieldValidator Font-Bold="true" ForeColor="Red"  ID="RequiredFieldValidator13" runat="server" ErrorMessage="*" ValidationGroup="add" ControlToValidate="uiTextBoxPassword"></asp:RequiredFieldValidator>
+                </div>
+            </div>
+        </div>
+        <div class="span7">
+            <div class="span12 clearfix block-margin-bottom-5" style="margin-right: 0">
+                <div class="span3">صورة الجواز/ الهوية</div>
+                <div class="span8">
+                     <iframe src="../uiUpload_ar.html?key=passport" style="border: 0; width: 100%; overflow: hidden; height: 100px;"></iframe>
+                </div>
+                
+            </div>
+            <div class="span12 clearfix block-margin-bottom-5" style="margin-right: 0">
+                <div class="span3">صورة شخصية</div>
+                <div class="span8">
+                     <iframe src="../uiUpload_ar.html?key=pic" style="border: 0; width: 100%; overflow: hidden; height: 100px;"></iframe>
+                </div>
+                
+            </div>
+            <div class="span12 clearfix block-margin-bottom-5" style="margin-right: 0">
+
+                <p>
+                  نعم أنا مالك هذا الحساب وجميع البيانات الشخصية وبيانات الحساب وصورة الجواز/الهوية وصاحب الصورة الشخصية صحيحة. 
+                    ولم أنتحل أى شخصية وأكون المسؤول الأول قانونياً عند مخالفتى لما ذكرت . وأكون تحت طائلة المسؤولية فى أى مكان فى العالم وفى أى دولة .
+                     وأتعهد بأن أحافظ على معلومات حسابى هذا وأسقط حقى لتطبيق Combo من أى مسؤولية قانونية فيما تم رفعه من معلومات شخصية وصورة الجواز/الهوية والصورة الشخصية 
+                    وكذلك ما يتم نشره من حسابى وأوافق على نتيجة طلب التوثيق الموافقة أو الرفض 
+                    وكذلك ينص كلامى على من يعملون داخلCombo فى جميع الأقسام والشركة الداعمة
+                     لها وشركات التسويق ومزود خدمة الإنترنت لـ combo
+                </p>
+            </div>
+            <div class="span12 clearfix block-margin-bottom-5" style="margin-right: 0">
+                <div class="span2"><asp:LinkButton ID="uiLinkButtonSave" runat="server" CssClass="btn btn-primary" ValidationGroup="add" OnClick="uiLinkButtonSave_Click">حفظ</asp:LinkButton></div>
+                <div class="span6">
+                    </div>
+                <div class="span2"></div>
+            </div>
+        </div>
+    </div>
+
+        </asp:Panel>
+    <asp:Panel runat="server" ID="uiPanelResult"> 
+        <div class="span12 clearfix">
+            <h3>
+                نتيجة الطلب
+            </h3>
+            <div class="span12 no-margin no-padding alert alert-success" id="accepted" runat="server">
+               تم توثيق حسابك
+            </div>
+            <div class="span12 no-margin no-padding alert alert-success" id="rejected" runat="server">
+                تم رفض طلبك لتوثيق الحساب
+                <p>
+                    <asp:Literal ID="uiLiteralReason" runat="server"></asp:Literal>
+                </p>
+            </div>
+            <div class="span12 no-margin no-padding alert alert-info" id="noresult" runat="server">
+               طلبك تحت المراجعة
+            </div>
+        </div>
+    </asp:Panel>
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolderScripts" runat="server">
+      <link href="../Admin/assets/bootstrap-datepicker/css/datepicker.css" rel="stylesheet" />
+     <script src="../admin/assets/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+    <script src="../admin/assets/bootstrap-daterangepicker/date.js"></script>
+    <script src="../admin/assets/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <script src="../admin/assets/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             $('#<%=AccountType.ClientID%>').change(function () {
@@ -17,8 +239,7 @@
             viewSection($('#<%=AccountType.ClientID%>').val());
         });
 
-        function viewSection(end)
-        {
+        function viewSection(end) {
             switch (end) {
                 case '0':
                 case '1':
@@ -51,223 +272,4 @@
             }
         }
     </script>
-</asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <asp:Panel runat="server" ID="uiPanelAdd"> 
-
-    
-   
-    <div class="span12 clearfix no-margin" id="MainInfo">
-        <div class="span5">
-             <div class="span12 clearfix no-margin">
-                <div class="span3">
-                    Account Type 
-                </div>
-                <div class="span6">
-                    <select id="AccountType" runat="server" >
-                        <option value="0">Select type...</option>
-                        <option value="1">Personal account</option>
-                        <option value="2">Organization account</option>
-                        <option value="3">Shop account</option>
-                    </select>
-                </div>
-                 <div class="span2">
-                    <asp:RequiredFieldValidator Font-Bold="true" ForeColor="Red"  ID="RequiredFieldValidator14" runat="server" ErrorMessage="*" ValidationGroup="add" ControlToValidate="AccountType" InitialValue="0"></asp:RequiredFieldValidator>
-                </div>
-            </div>
-            <div id="noOrg">
-            <div class="span12 clearfix block-margin-bottom-5" style="margin-left: 0" >
-                <div class="span3">Name</div>
-                <div class="span6">
-                    <asp:TextBox ID="uiTextBoxName" runat="server"></asp:TextBox></div>
-                <div class="span1">
-                    <asp:RequiredFieldValidator Font-Bold="true" ForeColor="Red"  ID="RequiredFieldValidator1" runat="server" ErrorMessage="*" ValidationGroup="add" ControlToValidate="uiTextBoxName"></asp:RequiredFieldValidator>
-                </div>
-            </div>             
-            <div class="span12 clearfix block-margin-bottom-5" style="margin-left: 0">
-                <div class="span3">Passport No.</div>
-                <div class="span6"><asp:TextBox ID="uiTextBoxPassNo" runat="server"></asp:TextBox></div>
-                <div class="span1">
-                    <asp:RequiredFieldValidator Font-Bold="true" ForeColor="Red"  ID="RequiredFieldValidator2" runat="server" ErrorMessage="*" ValidationGroup="add" ControlToValidate="uiTextBoxPassNo"></asp:RequiredFieldValidator>
-                </div>
-            </div>
-            <div class="span12 clearfix block-margin-bottom-5" style="margin-left: 0">
-                <div class="span3">Date of birth</div>
-                <div class="span6">
-                    <div class="controls">
-                                            <div class="input-append date date-picker" data-date="12-02-2012" data-date-format="dd/mm/yyyy" data-date-viewmode="years">
-                                                <asp:TextBox ID="uiTextBoxDOB" runat="server" Style="direction:ltr"></asp:TextBox>                                                
-                                                <span class="add-on"><i class="icon-calendar"></i></span>
-                                            </div>
-                                        </div>
-                    </div>
-                <div class="span1">
-                    <asp:RequiredFieldValidator Font-Bold="true" ForeColor="Red"  ID="RequiredFieldValidator3" runat="server" ErrorMessage="*" ValidationGroup="add" ControlToValidate="uiTextBoxDOB"></asp:RequiredFieldValidator>
-                </div>
-            </div>
-            <div class="span12 clearfix block-margin-bottom-5" style="margin-left: 0">
-                <div class="span3">Gender</div>
-                <div class="span6">
-                    <asp:DropDownList ID="uiDropDownListGender" runat="server"></asp:DropDownList></div>
-                <div class="span1"></div>
-            </div>
-
-            </div>
-
-            <div id="Org1">
-                <div class="span12 clearfix block-margin-bottom-5" style="margin-left: 0" >
-                <div class="span3">Name 
-                    
-                </div>
-                <div class="span8">
-                    <asp:TextBox ID="uiTextBoxOrgName" runat="server"></asp:TextBox>
-                    <br /><sub>
-                      Company / Factory / Team / Organization / Association / Governmental organizaton / Charity 
-                    </sub>
-                </div>
-                <div class="span1">
-                    <asp:RequiredFieldValidator Font-Bold="true" ForeColor="Red"  ID="RequiredFieldValidator4" runat="server" ErrorMessage="*" ValidationGroup="add" ControlToValidate="uiTextBoxOrgName"></asp:RequiredFieldValidator>
-                </div>
-                </div>
-                
-            </div>
-
-            <div class="span12 clearfix block-margin-bottom-5" style="margin-left: 0">
-                <div class="span3">Country</div>
-                <div class="span6"><asp:DropDownList ID="uiDropDownListCountry" runat="server"></asp:DropDownList></div>
-                <div class="span1"></div>
-            </div>
-
-            <div id="Org2">
-                <div class="span12 clearfix block-margin-bottom-5" style="margin-left: 0" >
-                <div class="span3">City 
-                    
-                </div>
-                <div class="span8">
-                    <asp:TextBox ID="uiTextBoxCity" runat="server"></asp:TextBox>                    
-                </div>
-                <div class="span1">
-                    <asp:RequiredFieldValidator Font-Bold="true" ForeColor="Red"  ID="RequiredFieldValidator5" runat="server" ErrorMessage="*" ValidationGroup="add" ControlToValidate="uiTextBoxCity"></asp:RequiredFieldValidator>
-                </div>
-                </div>
-                <div class="span12 clearfix block-margin-bottom-5" style="margin-left: 0" >
-                <div class="span3">Address Info 
-                    
-                </div>
-                <div class="span8">
-                    <asp:TextBox ID="uiTextBoxAddressInfo" runat="server"></asp:TextBox>                    
-                </div>
-                <div class="span1">
-                    <asp:RequiredFieldValidator Font-Bold="true" ForeColor="Red"  ID="RequiredFieldValidator6" runat="server" ErrorMessage="*" ValidationGroup="add" ControlToValidate="uiTextBoxAddressInfo"></asp:RequiredFieldValidator>
-                </div>
-                </div>
-
-                <div class="span12 clearfix block-margin-bottom-5" style="margin-left: 0" >
-                <div class="span3">Company field 
-                    
-                </div>
-                <div class="span8">
-                    <asp:TextBox ID="uiTextBoxCompanyField" runat="server"></asp:TextBox>                    
-                </div>
-                <div class="span1">
-                    <asp:RequiredFieldValidator Font-Bold="true" ForeColor="Red"  ID="RequiredFieldValidator7" runat="server" ErrorMessage="*" ValidationGroup="add" ControlToValidate="uiTextBoxCompanyField"></asp:RequiredFieldValidator>
-                </div>
-                </div>
-            </div>
-
-            <div class="span12 clearfix block-margin-bottom-5" style="margin-left: 0">
-                <div class="span3">Mobile No.</div>
-                <div class="span6"><asp:TextBox ID="uiTextBoxMobileNo" runat="server"></asp:TextBox></div>
-                <div class="span1">
-                    <asp:RequiredFieldValidator Font-Bold="true" ForeColor="Red"  ID="RequiredFieldValidator8" runat="server" ErrorMessage="*" ValidationGroup="add" ControlToValidate="uiTextBoxMobileNo"></asp:RequiredFieldValidator>
-                </div>
-            </div>
-            <div class="span12 clearfix block-margin-bottom-5" style="margin-left: 0">
-                <div class="span3">Mobile No.(2)</div>
-                <div class="span6"><asp:TextBox ID="uiTextBoxMobileNo2" runat="server"></asp:TextBox></div>
-                <div class="span1">
-                    <asp:RequiredFieldValidator Font-Bold="true" ForeColor="Red"  ID="RequiredFieldValidator9" runat="server" ErrorMessage="*" ValidationGroup="add" ControlToValidate="uiTextBoxMobileNo2"></asp:RequiredFieldValidator>
-                </div>
-            </div>
-            <div class="span12 clearfix block-margin-bottom-5" style="margin-left: 0">
-                <div class="span3">Account name</div>
-                <div class="span6"><asp:TextBox ID="uiTextBoxAccountName" runat="server"></asp:TextBox></div>
-                <div class="span1">
-                    <asp:RequiredFieldValidator Font-Bold="true" ForeColor="Red"  ID="RequiredFieldValidator10" runat="server" ErrorMessage="*" ValidationGroup="add" ControlToValidate="uiTextBoxAccountName"></asp:RequiredFieldValidator>
-                </div>
-            </div>
-            <div class="span12 clearfix block-margin-bottom-5" style="margin-left: 0">
-                <div class="span3">Security word</div>
-                <div class="span6"><asp:TextBox ID="uiTextBoxSecurityWord" runat="server"></asp:TextBox></div>
-                <div class="span1">
-                    <asp:RequiredFieldValidator Font-Bold="true" ForeColor="Red"  ID="RequiredFieldValidator11" runat="server" ErrorMessage="*" ValidationGroup="add" ControlToValidate="uiTextBoxSecurityWord"></asp:RequiredFieldValidator>
-                </div>
-            </div>
-            <div class="span12 clearfix block-margin-bottom-5" style="margin-left: 0">
-                <div class="span3">Email</div>
-                <div class="span6"><asp:TextBox ID="uiTextBoxEmail" runat="server"></asp:TextBox></div>
-                <div class="span1">
-                    <asp:RequiredFieldValidator Font-Bold="true" ForeColor="Red"  ID="RequiredFieldValidator12" runat="server" ErrorMessage="*" ValidationGroup="add" ControlToValidate="uiTextBoxEmail"></asp:RequiredFieldValidator>
-                </div>
-            </div>
-            <div class="span12 clearfix block-margin-bottom-5" style="margin-left: 0">
-                <div class="span3">Password</div>
-                <div class="span6"><asp:TextBox ID="uiTextBoxPassword" TextMode="Password" runat="server"></asp:TextBox></div>
-                <div class="span1">
-                    <asp:RequiredFieldValidator Font-Bold="true" ForeColor="Red"  ID="RequiredFieldValidator13" runat="server" ErrorMessage="*" ValidationGroup="add" ControlToValidate="uiTextBoxPassword"></asp:RequiredFieldValidator>
-                </div>
-            </div>
-        </div>
-        <div class="span7">
-            <div class="span12 clearfix block-margin-bottom-5" style="margin-left: 0">
-                <div class="span3">Passport copy</div>
-                <div class="span9">
-                     <iframe src="uiUpload.html?key=passport" style="border: 0; width: 100%; overflow: hidden; height: 100px;"></iframe>
-                </div>
-                
-            </div>
-            <div class="span12 clearfix block-margin-bottom-5" style="margin-left: 0">
-                <div class="span3">Personal picture</div>
-                <div class="span9">
-                     <iframe src="uiUpload.html?key=pic" style="border: 0; width: 100%; overflow: hidden; height: 100px;"></iframe>
-                </div>
-                
-            </div>
-            <div class="span12 clearfix block-margin-bottom-5" style="margin-left: 0">
-
-                <p>
-                   Yes I am the owner of this account and all personal data, account data and Passport/ID holder and profile picture is correct. 
-                    not plagiarize any personality and be legally responsible . And I'm culpable in any place in the world and in any State. 
-                    I promise to keep my account information for this application and Combo of any legal responsibility with raised from personal information and Passport/ID photo and profile as well as what is published from my account and agree to the result of the authentication request,
-                     approval or rejection, as well as providing for all who working inside Combo in all departments and the supporting company and marketing firms and ISP for combo</p>
-            </div>
-            <div class="span12 clearfix block-margin-bottom-5" style="margin-left: 0">
-                <div class="span2"><asp:LinkButton ID="uiLinkButtonSave" runat="server" CssClass="btn btn-primary" ValidationGroup="add" OnClick="uiLinkButtonSave_Click">Save</asp:LinkButton></div>
-                <div class="span6">
-                    </div>
-                <div class="span2"></div>
-            </div>
-        </div>
-    </div>
-
-        </asp:Panel>
-    <asp:Panel runat="server" ID="uiPanelResult"> 
-        <div class="span12 clearfix">
-            <h3>
-                Request result
-            </h3>
-            <div class="span12 no-margin no-padding alert alert-success" id="accepted" runat="server">
-                Your account has been verified.
-            </div>
-            <div class="span12 no-margin no-padding alert alert-success" id="rejected" runat="server">
-                Your request has been rejected.
-                <p>
-                    <asp:Literal ID="uiLiteralReason" runat="server"></asp:Literal>
-                </p>
-            </div>
-            <div class="span12 no-margin no-padding alert alert-info" id="noresult" runat="server">
-                Your request is under reviewing.
-            </div>
-        </div>
-    </asp:Panel>
 </asp:Content>

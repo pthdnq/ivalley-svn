@@ -67,6 +67,8 @@
                                         <a href="../ar/RequestAccountVerification.aspx" ><i class='icon-check'></i> طلب نوثيق جساب </a></li>
                                     <li>
                                         <a href="../ar/changepassword.aspx" ><i class='icon-lock'></i> تغيير كلمة المرور </a></li>
+                                     <li>
+                                        <a href="../ar/changesecurityword.aspx" ><i class='icon-unlock'></i> تغيير جواب الأمان </a></li>
 
                                     <li>
                                         <asp:LinkButton ID="btnLogOut" runat="server" Text="<i class='icon-key'></i> خروج" OnClick="btnLogOut_Click" /></li>
