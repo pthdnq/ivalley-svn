@@ -11,6 +11,35 @@
     <link href="css/style_gray.css" rel="stylesheet" />
     <link href="css/style_responsive.css" rel="stylesheet" />
     <title>COMBO Admin Login</title>
+    <style type="text/css">
+        
+#login {
+
+    background:#e3e3e3;
+    box-shadow: 1px 0 1px #FFFFFF, 0 0 3px rgba(0, 0, 0, 0.2) inset;
+    -moz-box-shadow: 1px 0 1px #FFFFFF, 0 0 3px rgba(0, 0, 0, 0.2) inset;
+    -webkit-box-shadow: 1px 0 1px #FFFFFF, 0 0 3px rgba(0, 0, 0, 0.2) inset;
+    width: 370px;
+    margin: 50px auto 0;
+    padding: 20px;
+}
+
+.login-btn {
+     background-color:#8c57c3;
+    background: url("../img/login-btn.jpg");
+    border: none;
+    box-shadow: 1px 0 1px #FFFFFF, 0 0 3px rgba(0, 0, 0, 0.2) inset;
+    -moz-box-shadow: 1px 0 1px #FFFFFF, 0 0 3px rgba(0, 0, 0, 0.2) inset;
+    -webkit-box-shadow: 1px 0 1px #FFFFFF, 0 0 3px rgba(0, 0, 0, 0.2) inset;
+    border-radius: 0;
+    -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    font-size: 16px;
+    color: #fff;
+    text-shadow: none;
+    padding: 10px 0;
+}
+    </style>
 </head>
 <body id="login-body">
     <form id="form1" runat="server">
