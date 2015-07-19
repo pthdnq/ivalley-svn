@@ -45,48 +45,56 @@ namespace ComboPortal.Admin
         {
             if (!IsPostBack)
             {
-                if (CurrentCommentReport > 0)
-                {
-                    ComboCommentReport objData = new ComboCommentReport();
-                    objData.getCommentReportsByCommentID(CurrentCommentReport);
-                    GridCommentReports.DataSource = objData.DefaultView;
-                    GridCommentReports.DataBind();
-
-                    PanelGridGeneralReports.Visible = false;
-                    PanelGridCommentReports.Visible = true;
-                    PanelGridPostReports.Visible = false;
-                    PanelGridUserReports.Visible = false;
-                }
-                else if (CurrentPostReport > 0)
-                {
-                    ComboPostReport objData = new ComboPostReport();
-                    objData.getPostReportsByPostID(CurrentPostReport);
-                    GridPostReports.DataSource = objData.DefaultView;
-                    GridPostReports.DataBind();
-
-                    PanelGridGeneralReports.Visible = false;
-                    PanelGridCommentReports.Visible = false;
-                    PanelGridPostReports.Visible = true;
-                    PanelGridUserReports.Visible = false;
-                }
-                else if (CurrentUserReport > 0)
-                {
-                    ComboUserReport objData = new ComboUserReport();
-                    objData.getReportsByUserID(CurrentUserReport);
-                    GridViewUserReports.DataSource = objData.DefaultView;
-                    GridViewUserReports.DataBind();
-
-                    PanelGridGeneralReports.Visible = false;
-                    PanelGridCommentReports.Visible = false;
-                    PanelGridPostReports.Visible = false;
-                    PanelGridUserReports.Visible = true;
-                }
-
                 Master.PageTitle = "البلاغات";
                 bindUserReports();
                 bindCommentReports();
                 bindPostReports();
+
             }
+            if (CurrentCommentReport > 0)
+            {
+                ComboCommentReport objData = new ComboCommentReport();
+                objData.getCommentReportsByCommentID(CurrentCommentReport);
+                GridCommentReports.DataSource = objData.DefaultView;
+                GridCommentReports.DataBind();
+
+                PanelGridGeneralReports.Visible = false;
+                PanelGridCommentReports.Visible = true;
+                PanelGridPostReports.Visible = false;
+                PanelGridUserReports.Visible = false;
+            }
+            else if (CurrentPostReport > 0)
+            {
+                ComboPostReport objData = new ComboPostReport();
+                objData.getPostReportsByPostID(CurrentPostReport);
+                GridPostReports.DataSource = objData.DefaultView;
+                GridPostReports.DataBind();
+
+                PanelGridGeneralReports.Visible = false;
+                PanelGridCommentReports.Visible = false;
+                PanelGridPostReports.Visible = true;
+                PanelGridUserReports.Visible = false;
+            }
+            else if (CurrentUserReport > 0)
+            {
+                ComboUserReport objData = new ComboUserReport();
+                objData.getReportsByUserID(CurrentUserReport);
+                GridViewUserReports.DataSource = objData.DefaultView;
+                GridViewUserReports.DataBind();
+
+                PanelGridGeneralReports.Visible = false;
+                PanelGridCommentReports.Visible = false;
+                PanelGridPostReports.Visible = false;
+                PanelGridUserReports.Visible = true;
+            }
+            else
+            {
+                PanelGridGeneralReports.Visible = true;
+                PanelGridCommentReports.Visible = false;
+                PanelGridPostReports.Visible = false;
+                PanelGridUserReports.Visible = false;
+            }
+
         }
 
         public void bindUserReports()
