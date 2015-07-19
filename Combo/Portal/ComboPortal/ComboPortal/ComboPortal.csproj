@@ -894,7 +894,6 @@
     <Content Include="Admin\PostsReports.aspx" />
     <Content Include="Admin\UserManagement.aspx" />
     <Content Include="Admin\VerifyAccount.aspx" />
-    <Content Include="Admin\ViewPost.aspx" />
     <Content Include="ar\changepassword.aspx" />
     <Content Include="ar\changesecurityword.aspx" />
     <Content Include="ar\default.aspx" />
@@ -1540,12 +1539,6 @@
     </Compile>
     <Compile Include="Admin\VerifyAccount.aspx.designer.cs">
       <DependentUpon>VerifyAccount.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\ViewPost.aspx.cs">
-      <DependentUpon>ViewPost.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\ViewPost.aspx.designer.cs">
-      <DependentUpon>ViewPost.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
