@@ -46,3 +46,18 @@ CREATE TABLE AdminLogin
 	AdminName nvarchar(30)
 )
 GO
+
+
+If Exists (select Name 
+		   from sysobjects 
+		   where name = 'GetUserByPassCode' and
+		        xtype = 'P')
+Drop Procedure GetUserByPassCode
+Go
+Create Procedure GetUserByPassCode @Code uniqueidentifier
+as
+Select CU.*, A.Path ProfilePic                                    
+from ComboUser CU                                                              
+Left join Attachment A on CU.ProfileImgID = A.AttachmentID                                    
+where CU.PassResetCode = @Code
+Go 

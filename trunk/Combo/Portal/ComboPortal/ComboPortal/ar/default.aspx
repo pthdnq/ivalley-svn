@@ -97,6 +97,12 @@
                             <!-- END LOGIN FORM -->        
                             <!-- BEGIN FORGOT PASSWORD FORM -->
                             <div id="forgotform" class="form-vertical no-padding hide span12 text-center" style="float:none;margin:0 auto;">
+                                <div class="hide alert alert-danger" id="errorDiv_forget">
+                                        خطأ. البريد الإلكترونى غير موجود. من فضلك أعد المحاولة
+                                    </div>
+                                <div class="hide alert alert-success" id="successDiv_forget">
+                                        تم إرسال المعلومات الخاصة لإسترجاع كلمة المرور إلى بريدك الإلكترونى بنجاح.
+                                    </div>
                               <p class="center ub" style="color:#48157C;">أكتب البريد الإلكترونى الخاص بك لإعادة كلمة المرور</p>
                               <div class="control-group">
                                 <div class="controls">
@@ -106,8 +112,11 @@
                                 </div>
                                 <div class="space20"></div>
                               </div>
-                                 <div  class="span4" style="float:none;margin:0 auto">
-                              <input type="button" id="forget-btn" class="btn btn-block login-btn" value="إرسال" />
+                                 <div  class="span5" style="float:none;margin:0 auto">
+                                     <div class="span6"><input type="button" id="forget-btn" class="btn btn-block login-btn" value="إرسال" /></div>
+                                     <div class="span6"><input type="button" id="forget-back-btn" class="btn btn-block login-btn" value="العودة إلى الدخول" /></div>
+                              
+                                     
                                      </div>
                             </div>
                             <!-- END FORGOT PASSWORD FORM -->

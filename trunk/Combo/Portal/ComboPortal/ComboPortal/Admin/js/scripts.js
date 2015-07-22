@@ -1272,7 +1272,32 @@ var App = function () {
         });
 
         jQuery('#forget-btn').click(function () {
+            $('#loading').show();
+            $('#errorDiv_forget').hide();
+            _userData = { email: jQuery('#input-email').val() }
+            $.ajax({
 
+                url: "Default.aspx/ForgetPass",
+                data: JSON.stringify(_userData),
+                type: "Post",
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (mydata) {
+                    if (mydata.d == true) {
+                        $('#errorDiv_forget').hide();
+                        $('#successDiv_forget').show();
+                    }
+                    else {
+                        $('#errorDiv_forget').show();
+                    }
+                    $('#loading').hide();
+                }
+            });
+            //jQuery('#loginform').slideDown(200);
+            //jQuery('#forgotform').slideUp(200);
+        });
+
+        jQuery('#forget-back-btn').click(function () {
             jQuery('#loginform').slideDown(200);
             jQuery('#forgotform').slideUp(200);
         });
