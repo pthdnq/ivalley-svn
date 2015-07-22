@@ -125,13 +125,13 @@
 Combo team.</value>
   </data>
   <data name="mail" xml:space="preserve">
-    <value>noreply@combomobile.com</value>
+    <value>combo@i-valley.com</value>
   </data>
   <data name="mailpass" xml:space="preserve">
     <value>123456</value>
   </data>
   <data name="mailserver" xml:space="preserve">
-    <value>mail.combomobile.com</value>
+    <value>mail.i-valley.com</value>
   </data>
   <data name="port" xml:space="preserve">
     <value>25</value>

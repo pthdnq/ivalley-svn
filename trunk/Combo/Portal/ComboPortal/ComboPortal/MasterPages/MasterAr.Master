@@ -46,13 +46,19 @@
                        </li>
                              <li class="dropdown mtop5">
                            <a class="dropdown-toggle element" data-placement="bottom" data-toggle="tooltip" href="#" data-original-title="الإخطارات">
-                               <i class="icon-bell"></i>
+                               <i class="icon-bell" data-toggle="modal" data-target="#SoonModal"></i>
                            </a>
                        </li>
                              <li class="dropdown mtop5">
 
                            <a class="dropdown-toggle element" data-placement="bottom" data-toggle="tooltip" href="#" data-original-title="المنشورات">
-                               <i class="icon-list"></i>
+                               <i class="icon-list" data-toggle="modal" data-target="#SoonModal"></i>
+                           </a>
+                       </li>
+                            <li class="dropdown mtop5">
+
+                           <a class="dropdown-toggle element" data-placement="bottom" data-toggle="tooltip" href="#" data-original-title="الملف الشخصى">
+                               <i class="icon-user" data-toggle="modal" data-target="#SoonModal"></i>
                            </a>
                        </li>
                             <li class="dropdown">
@@ -64,7 +70,7 @@
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li>
-                                        <a href="../ar/RequestAccountVerification.aspx" ><i class='icon-check'></i> طلب نوثيق جساب </a></li>
+                                        <a href="../ar/RequestAccountVerification.aspx" ><i class='icon-check'></i> طلب توثيق حساب </a></li>
                                     <li>
                                         <a href="../ar/changepassword.aspx" ><i class='icon-lock'></i> تغيير كلمة المرور </a></li>
                                      <li>
@@ -101,6 +107,25 @@
             <div class="span pull-left">
                 <span class="go-top"><i class="icon-arrow-up"></i></span>
             </div>
+        </div>
+
+        <div class="modal fade hide" id="SoonModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">                    
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="SoonModalLabel">Combo</h4>
+                    </div>
+                    <div class="modal-body" style="background-color:#48157C;">
+                              <div class="text-center no-margin JF" style="color:#fff;font-size:40px;font-weight:bold;padding-bottom:10px;">
+                                  <img src="../img/portal/logo.png" style="max-width:20%"/><br /><br />
+                                  قريباً
+                              </div>        
+                        </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
         </div>
 
         <script src="../admin/js/jquery-1.8.3.min.js"></script>
