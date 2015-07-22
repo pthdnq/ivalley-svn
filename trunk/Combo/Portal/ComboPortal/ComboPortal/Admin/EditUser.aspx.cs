@@ -296,11 +296,36 @@ namespace ComboPortal.Admin
             }
             catch (Exception)
             {
+
             }
             objData.Bio = literalBio.Text;
             if (drpDwnRank.SelectedValue.ToString() != "0")
                 objData.UserRankID = int.Parse(drpDwnRank.SelectedValue.ToString());
             objData.Save();
+
+            ComboUserLog objDataLog = new ComboUserLog();
+            objDataLog.AddNew();
+            objDataLog.ComboUserID = CurrentUser;
+            objDataLog.LogDate = DateTime.Now;
+            objDataLog.UserName = txtUserName.Text;
+            objDataLog.DisplayName = txtDisplayName.Text;
+            objDataLog.Email = txtEmail.Text;
+            if (drpDwnCountry.SelectedValue.ToString() != "0")
+                objDataLog.CountryID = int.Parse(drpDwnCountry.SelectedValue.ToString());
+
+            objDataLog.Phone = txtTelephone.Text;
+            objDataLog.Website = txtWebsite.Text;
+            try
+            {
+                objDataLog.BirthDate = DateTime.ParseExact(txtBirthday.Text, "dd/MM/yyyy", null);
+            }
+            catch (Exception)
+            {
+            }
+            if (drpDwnRank.SelectedValue.ToString() != "0")
+                objDataLog.UserRankID = int.Parse(drpDwnRank.SelectedValue.ToString());
+
+            objDataLog.Save();
 
             string script = "alert(\"تم حفظ البيانات بنجاح!\");";
             ScriptManager.RegisterStartupScript(this, GetType(),

@@ -892,6 +892,7 @@
     <Content Include="Admin\js\ui-tree.js" />
     <Content Include="Admin\Login.aspx" />
     <Content Include="Admin\PostsReports.aspx" />
+    <Content Include="Admin\UserLog.aspx" />
     <Content Include="Admin\UserManagement.aspx" />
     <Content Include="Admin\VerifyAccount.aspx" />
     <Content Include="Admin\ViewPost.aspx" />
@@ -1529,6 +1530,13 @@
     </Compile>
     <Compile Include="Admin\PostsReports.aspx.designer.cs">
       <DependentUpon>PostsReports.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\UserLog.aspx.cs">
+      <DependentUpon>UserLog.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\UserLog.aspx.designer.cs">
+      <DependentUpon>UserLog.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\UserManagement.aspx.cs">
       <DependentUpon>UserManagement.aspx</DependentUpon>
