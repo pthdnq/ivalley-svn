@@ -62,7 +62,7 @@
                                    <asp:Label ID="uiLoginName" runat="server" CssClass="ub" />
                                     </span>
                                     <b class="caret"></b>
-                                </a>
+                                </a> 
                                 <ul class="dropdown-menu">
                                     <li>
                                         <a href="../RequestAccountVerification.aspx" ><i class='icon-check'></i> Request account verification </a></li>

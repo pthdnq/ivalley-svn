@@ -46,5 +46,24 @@ namespace COMBO_BLL
             return LoadFromSql("GetUserByUserNameAndPassword", parameters);
 
         }
+
+        public virtual bool GetUserByPasscode(string passcode)
+        {
+            /*this.Where.PassResetCode.Value = new Guid(passcode);
+            this.Where.PassResetCode.Operator = MyGeneration.dOOdads.WhereParameter.Operand.Equal;
+            return this.Query.Load();*/
+            //return LoadFromRawSql(@"Select CU.*, A.Path ProfilePic from ComboUser CU Left join Attachment A on CU.ProfileImgID = A.AttachmentID where CU.PassResetCode = {0}", new Guid(passcode));
+            ListDictionary parameters = new ListDictionary();
+            parameters.Add(new SqlParameter("@Code", SqlDbType.UniqueIdentifier, 0), new Guid(passcode));
+            return LoadFromSql("GetUserByPassCode", parameters);
+        }
+
+        public virtual bool GetUserByUserName(string UserName)
+        {
+            ListDictionary parameters = new ListDictionary();
+            parameters.Add(new SqlParameter("@UserName", SqlDbType.NVarChar, 200), UserName);
+            return LoadFromSql("GetUserByUserName", parameters);
+
+        }
 	}
 }

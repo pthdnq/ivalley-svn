@@ -99,6 +99,12 @@
                             <!-- END LOGIN FORM -->        
                             <!-- BEGIN FORGOT PASSWORD FORM -->
                             <div id="forgotform" class="form-vertical no-padding hide span12 text-center" style="float:none;margin:0 auto;">
+                                 <div class="hide alert alert-danger" id="errorDiv_forget">
+                                        Error. Email doesn't exist in our database, please try again.
+                                    </div>
+                                <div class="hide alert alert-success" id="successDiv_forget">
+                                        Email sent successfully to you with info to reset your password.
+                                    </div>
                               <p class="center ub" style="color:#48157C;">Enter your e-mail address below to reset your password.</p>
                               <div class="control-group">
                                 <div class="controls">
@@ -108,8 +114,15 @@
                                 </div>
                                 <div class="space20"></div>
                               </div>
-                                 <div  class="span4" style="float:none;margin:0 auto">
-                              <input type="button" id="forget-btn" class="btn btn-block login-btn" value="Submit" />
+                                 <div class="span5" style="float:none;margin:0 auto">
+                                     <div class="span6">
+                                         <input type="button" id="forget-btn" class="btn btn-block login-btn" value="Submit" />
+                                     </div>
+                                     <div class="span6">
+                                         <input type="button" id="forget-back-btn" class="btn btn-block login-btn" value="Back to login" />
+                                     </div>
+                              
+                                     
                                      </div>
                             </div>
                             <!-- END FORGOT PASSWORD FORM -->
