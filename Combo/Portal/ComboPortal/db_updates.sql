@@ -61,3 +61,21 @@ from ComboUser CU
 Left join Attachment A on CU.ProfileImgID = A.AttachmentID                                    
 where CU.PassResetCode = @Code
 Go 
+GO
+
+CREATE TABLE ComboUserLog
+(
+ComboUserLogID int primary key not null identity(1,1),
+ComboUserID int foreign key references ComboUser(ComboUserID),
+UserName nvarchar(30),
+DisplayName nvarchar(30),
+Email nvarchar(30),
+BirthDate datetime,
+Bio nvarchar(max),
+CountryID int foreign key references Country(CountryID),
+UserRankID int foreign key references UserRank(UserRankID),
+Phone nvarchar(20),
+Website nvarchar(20),
+LogDate datetime
+)
+GO
