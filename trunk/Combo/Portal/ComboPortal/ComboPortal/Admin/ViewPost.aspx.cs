@@ -135,7 +135,7 @@ namespace ComboPortal.Admin
                     objDataAttachment.LoadByPrimaryKey(objDataCommentAttachment.AttachmentID);
 
                     HtmlAudio audioAttachment = e.Item.FindControl("audioAttachment") as HtmlAudio;
-                    audioAttachment.Src = "api.combomobile.com" + objDataAttachment.Path;
+                    audioAttachment.Src = "http://api.combomobile.com" + objDataAttachment.Path;
                     audioAttachment.Visible = true;
                 }
             }
