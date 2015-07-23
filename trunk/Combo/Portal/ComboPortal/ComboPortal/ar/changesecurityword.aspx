@@ -2,6 +2,9 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <div class="span12 no-margin rounded" >
+        <h3>تغيير جواب الأمان</h3>
+    
     <asp:Panel ID="uiPanelReset" runat="server" CssClass="span12 no-margin no-padding">
              <div class="span12 clearfix no-margin no-padding">
                 <div class="span2">جواب الأمان : </div>
@@ -18,11 +21,10 @@
             </div>
         </asp:Panel>
         
-
          <asp:Panel ID="uiPanelsuccess" runat="server" CssClass="span12 alert alert-success no-margin">
             تم تغيير جواب الأمان بنجاح
         </asp:Panel>
-   
+   </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolderScripts" runat="server">
 </asp:Content>

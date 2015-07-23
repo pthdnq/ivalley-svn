@@ -22,10 +22,20 @@ namespace ComboPortal
         protected void uiButtonSave_Click(object sender, EventArgs e)
         {
             ComboUser user = (ComboUser)Session["ComboUser"];
-            user.Password = uiTextBoxPass.Text;
-            user.Save();
-            uiPanelsuccess.Visible = true;            
-            uiPanelReset.Visible = false;
+            if (user.SecurityWord == uiTextBoxSecurityWord.Text)
+            {
+                user.Password = uiTextBoxPass.Text;
+                user.Save();
+                uiPanelsuccess.Visible = true;
+                uiPanelReset.Visible = false;
+                uiPanelError.Visible = false;
+            }
+            else
+            {
+                uiPanelReset.Visible = true;
+                uiPanelsuccess.Visible = false;
+                uiPanelError.Visible = true;
+            }
         }
     }
 }

@@ -53,6 +53,9 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <div class="span12 no-margin rounded">
+        <h3>Request account verification</h3>
+    
     <asp:Panel runat="server" ID="uiPanelAdd"> 
 
     
@@ -253,9 +256,9 @@
         </asp:Panel>
     <asp:Panel runat="server" ID="uiPanelResult"> 
         <div class="span12 clearfix">
-            <h3>
+            <h4>
                 Request result
-            </h3>
+            </h4>
             <div class="span12 no-margin no-padding alert alert-success" id="accepted" runat="server">
                 Your account has been verified.
             </div>
@@ -270,4 +273,6 @@
             </div>
         </div>
     </asp:Panel>
+        </div>
+    <div class="space10"></div>
 </asp:Content>
