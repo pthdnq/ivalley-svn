@@ -5,11 +5,15 @@ using System;
 using DAL;
 namespace BLL
 {
-	public class Clients : _Clients
-	{
-		public Clients()
-		{
-		
-		}
-	}
+    public class Clients : _Clients
+    {
+        public Clients()
+        {
+
+        }
+        public void GetAllClients(string clientSearch)
+        {
+           LoadFromRawSql(@"select * from Clients where ClientName like'%{0}%' or ClientCode like '%{0}%' ", clientSearch);
+        }
+    }
 }

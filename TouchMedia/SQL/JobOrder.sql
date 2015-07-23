@@ -1,5 +1,5 @@
 
-/****** Object:  StoredProcedure [proc_JobOrderLoadByPrimaryKey]    Script Date: 6/28/2015 1:14:11 PM ******/
+/****** Object:  StoredProcedure [proc_JobOrderLoadByPrimaryKey]    Script Date: 7/23/2015 12:52:38 PM ******/
 IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[proc_JobOrderLoadByPrimaryKey]') AND OBJECTPROPERTY(id,N'IsProcedure') = 1)
     DROP PROCEDURE [proc_JobOrderLoadByPrimaryKey];
 GO
@@ -40,7 +40,7 @@ IF (@@Error = 0) PRINT 'Procedure Creation: proc_JobOrderLoadByPrimaryKey Succee
 ELSE PRINT 'Procedure Creation: proc_JobOrderLoadByPrimaryKey Error on Creation'
 GO
 
-/****** Object:  StoredProcedure [proc_JobOrderLoadAll]    Script Date: 6/28/2015 1:14:11 PM ******/
+/****** Object:  StoredProcedure [proc_JobOrderLoadAll]    Script Date: 7/23/2015 12:52:38 PM ******/
 IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[proc_JobOrderLoadAll]') AND OBJECTPROPERTY(id,N'IsProcedure') = 1)
     DROP PROCEDURE [proc_JobOrderLoadAll];
 GO
@@ -77,7 +77,7 @@ IF (@@Error = 0) PRINT 'Procedure Creation: proc_JobOrderLoadAll Succeeded'
 ELSE PRINT 'Procedure Creation: proc_JobOrderLoadAll Error on Creation'
 GO
 
-/****** Object:  StoredProcedure [proc_JobOrderUpdate]    Script Date: 6/28/2015 1:14:11 PM ******/
+/****** Object:  StoredProcedure [proc_JobOrderUpdate]    Script Date: 7/23/2015 12:52:38 PM ******/
 IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[proc_JobOrderUpdate]') AND OBJECTPROPERTY(id,N'IsProcedure') = 1)
     DROP PROCEDURE [proc_JobOrderUpdate];
 GO
@@ -132,7 +132,7 @@ GO
 
 
 
-/****** Object:  StoredProcedure [proc_JobOrderInsert]    Script Date: 6/28/2015 1:14:11 PM ******/
+/****** Object:  StoredProcedure [proc_JobOrderInsert]    Script Date: 7/23/2015 12:52:38 PM ******/
 IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[proc_JobOrderInsert]') AND OBJECTPROPERTY(id,N'IsProcedure') = 1)
     DROP PROCEDURE [proc_JobOrderInsert];
 GO
@@ -196,7 +196,7 @@ IF (@@Error = 0) PRINT 'Procedure Creation: proc_JobOrderInsert Succeeded'
 ELSE PRINT 'Procedure Creation: proc_JobOrderInsert Error on Creation'
 GO
 
-/****** Object:  StoredProcedure [proc_JobOrderDelete]    Script Date: 6/28/2015 1:14:11 PM ******/
+/****** Object:  StoredProcedure [proc_JobOrderDelete]    Script Date: 7/23/2015 12:52:38 PM ******/
 IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[proc_JobOrderDelete]') AND OBJECTPROPERTY(id,N'IsProcedure') = 1)
     DROP PROCEDURE [proc_JobOrderDelete];
 GO

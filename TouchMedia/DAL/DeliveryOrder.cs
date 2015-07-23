@@ -291,6 +291,22 @@ namespace DAL
 				}
 			}
 			
+			public static SqlParameter JobOrderID
+			{
+				get
+				{
+					return new SqlParameter("@JobOrderID", SqlDbType.Int, 0);
+				}
+			}
+			
+			public static SqlParameter ClientID
+			{
+				get
+				{
+					return new SqlParameter("@ClientID", SqlDbType.Int, 0);
+				}
+			}
+			
 		}
 		#endregion		
 	
@@ -321,6 +337,8 @@ namespace DAL
             public const string DepartmentResponsableName = "DepartmentResponsableName";
             public const string CarType = "CarType";
             public const string DepartmentID = "DepartmentID";
+            public const string JobOrderID = "JobOrderID";
+            public const string ClientID = "ClientID";
 
 			static public string ToPropertyName(string columnName)
 			{
@@ -352,6 +370,8 @@ namespace DAL
 					ht[DepartmentResponsableName] = _DeliveryOrder.PropertyNames.DepartmentResponsableName;
 					ht[CarType] = _DeliveryOrder.PropertyNames.CarType;
 					ht[DepartmentID] = _DeliveryOrder.PropertyNames.DepartmentID;
+					ht[JobOrderID] = _DeliveryOrder.PropertyNames.JobOrderID;
+					ht[ClientID] = _DeliveryOrder.PropertyNames.ClientID;
 
 				}
 				return (string)ht[columnName];
@@ -388,6 +408,8 @@ namespace DAL
             public const string DepartmentResponsableName = "DepartmentResponsableName";
             public const string CarType = "CarType";
             public const string DepartmentID = "DepartmentID";
+            public const string JobOrderID = "JobOrderID";
+            public const string ClientID = "ClientID";
 
 			static public string ToColumnName(string propertyName)
 			{
@@ -419,6 +441,8 @@ namespace DAL
 					ht[DepartmentResponsableName] = _DeliveryOrder.ColumnNames.DepartmentResponsableName;
 					ht[CarType] = _DeliveryOrder.ColumnNames.CarType;
 					ht[DepartmentID] = _DeliveryOrder.ColumnNames.DepartmentID;
+					ht[JobOrderID] = _DeliveryOrder.ColumnNames.JobOrderID;
+					ht[ClientID] = _DeliveryOrder.ColumnNames.ClientID;
 
 				}
 				return (string)ht[propertyName];
@@ -455,6 +479,8 @@ namespace DAL
             public const string DepartmentResponsableName = "s_DepartmentResponsableName";
             public const string CarType = "s_CarType";
             public const string DepartmentID = "s_DepartmentID";
+            public const string JobOrderID = "s_JobOrderID";
+            public const string ClientID = "s_ClientID";
 
 		}
 		#endregion		
@@ -746,6 +772,30 @@ namespace DAL
 			set
 	        {
 				base.Setint(ColumnNames.DepartmentID, value);
+			}
+		}
+
+		public virtual int JobOrderID
+	    {
+			get
+	        {
+				return base.Getint(ColumnNames.JobOrderID);
+			}
+			set
+	        {
+				base.Setint(ColumnNames.JobOrderID, value);
+			}
+		}
+
+		public virtual int ClientID
+	    {
+			get
+	        {
+				return base.Getint(ColumnNames.ClientID);
+			}
+			set
+	        {
+				base.Setint(ColumnNames.ClientID, value);
 			}
 		}
 
@@ -1114,6 +1164,36 @@ namespace DAL
 			}
 		}
 
+		public virtual string s_JobOrderID
+	    {
+			get
+	        {
+				return this.IsColumnNull(ColumnNames.JobOrderID) ? string.Empty : base.GetintAsString(ColumnNames.JobOrderID);
+			}
+			set
+	        {
+				if(string.Empty == value)
+					this.SetColumnNull(ColumnNames.JobOrderID);
+				else
+					this.JobOrderID = base.SetintAsString(ColumnNames.JobOrderID, value);
+			}
+		}
+
+		public virtual string s_ClientID
+	    {
+			get
+	        {
+				return this.IsColumnNull(ColumnNames.ClientID) ? string.Empty : base.GetintAsString(ColumnNames.ClientID);
+			}
+			set
+	        {
+				if(string.Empty == value)
+					this.SetColumnNull(ColumnNames.ClientID);
+				else
+					this.ClientID = base.SetintAsString(ColumnNames.ClientID, value);
+			}
+		}
+
 
 		#endregion		
 	
@@ -1382,6 +1462,26 @@ namespace DAL
 					get
 					{
 							WhereParameter where = new WhereParameter(ColumnNames.DepartmentID, Parameters.DepartmentID);
+							this._clause._entity.Query.AddWhereParameter(where);
+							return where;
+					}
+				}
+
+				public WhereParameter JobOrderID
+				{
+					get
+					{
+							WhereParameter where = new WhereParameter(ColumnNames.JobOrderID, Parameters.JobOrderID);
+							this._clause._entity.Query.AddWhereParameter(where);
+							return where;
+					}
+				}
+
+				public WhereParameter ClientID
+				{
+					get
+					{
+							WhereParameter where = new WhereParameter(ColumnNames.ClientID, Parameters.ClientID);
 							this._clause._entity.Query.AddWhereParameter(where);
 							return where;
 					}
@@ -1680,6 +1780,30 @@ namespace DAL
 				}
 			}
 
+			public WhereParameter JobOrderID
+		    {
+				get
+		        {
+					if(_JobOrderID_W == null)
+	        	    {
+						_JobOrderID_W = TearOff.JobOrderID;
+					}
+					return _JobOrderID_W;
+				}
+			}
+
+			public WhereParameter ClientID
+		    {
+				get
+		        {
+					if(_ClientID_W == null)
+	        	    {
+						_ClientID_W = TearOff.ClientID;
+					}
+					return _ClientID_W;
+				}
+			}
+
 			private WhereParameter _DeliveryOrderID_W = null;
 			private WhereParameter _KilometerCounterBefore_W = null;
 			private WhereParameter _KilometerCounterAfter_W = null;
@@ -1704,6 +1828,8 @@ namespace DAL
 			private WhereParameter _DepartmentResponsableName_W = null;
 			private WhereParameter _CarType_W = null;
 			private WhereParameter _DepartmentID_W = null;
+			private WhereParameter _JobOrderID_W = null;
+			private WhereParameter _ClientID_W = null;
 
 			public void WhereClauseReset()
 			{
@@ -1731,6 +1857,8 @@ namespace DAL
 				_DepartmentResponsableName_W = null;
 				_CarType_W = null;
 				_DepartmentID_W = null;
+				_JobOrderID_W = null;
+				_ClientID_W = null;
 
 				this._entity.Query.FlushWhereParameters();
 
@@ -2022,6 +2150,26 @@ namespace DAL
 					get
 					{
 							AggregateParameter aggregate = new AggregateParameter(ColumnNames.DepartmentID, Parameters.DepartmentID);
+							this._clause._entity.Query.AddAggregateParameter(aggregate);
+							return aggregate;
+					}
+				}
+
+				public AggregateParameter JobOrderID
+				{
+					get
+					{
+							AggregateParameter aggregate = new AggregateParameter(ColumnNames.JobOrderID, Parameters.JobOrderID);
+							this._clause._entity.Query.AddAggregateParameter(aggregate);
+							return aggregate;
+					}
+				}
+
+				public AggregateParameter ClientID
+				{
+					get
+					{
+							AggregateParameter aggregate = new AggregateParameter(ColumnNames.ClientID, Parameters.ClientID);
 							this._clause._entity.Query.AddAggregateParameter(aggregate);
 							return aggregate;
 					}
@@ -2320,6 +2468,30 @@ namespace DAL
 				}
 			}
 
+			public AggregateParameter JobOrderID
+		    {
+				get
+		        {
+					if(_JobOrderID_W == null)
+	        	    {
+						_JobOrderID_W = TearOff.JobOrderID;
+					}
+					return _JobOrderID_W;
+				}
+			}
+
+			public AggregateParameter ClientID
+		    {
+				get
+		        {
+					if(_ClientID_W == null)
+	        	    {
+						_ClientID_W = TearOff.ClientID;
+					}
+					return _ClientID_W;
+				}
+			}
+
 			private AggregateParameter _DeliveryOrderID_W = null;
 			private AggregateParameter _KilometerCounterBefore_W = null;
 			private AggregateParameter _KilometerCounterAfter_W = null;
@@ -2344,6 +2516,8 @@ namespace DAL
 			private AggregateParameter _DepartmentResponsableName_W = null;
 			private AggregateParameter _CarType_W = null;
 			private AggregateParameter _DepartmentID_W = null;
+			private AggregateParameter _JobOrderID_W = null;
+			private AggregateParameter _ClientID_W = null;
 
 			public void AggregateClauseReset()
 			{
@@ -2371,6 +2545,8 @@ namespace DAL
 				_DepartmentResponsableName_W = null;
 				_CarType_W = null;
 				_DepartmentID_W = null;
+				_JobOrderID_W = null;
+				_ClientID_W = null;
 
 				this._entity.Query.FlushAggregateParameters();
 
@@ -2539,6 +2715,14 @@ namespace DAL
 
 			p = cmd.Parameters.Add(Parameters.DepartmentID);
 			p.SourceColumn = ColumnNames.DepartmentID;
+			p.SourceVersion = DataRowVersion.Current;
+
+			p = cmd.Parameters.Add(Parameters.JobOrderID);
+			p.SourceColumn = ColumnNames.JobOrderID;
+			p.SourceVersion = DataRowVersion.Current;
+
+			p = cmd.Parameters.Add(Parameters.ClientID);
+			p.SourceColumn = ColumnNames.ClientID;
 			p.SourceVersion = DataRowVersion.Current;
 
 

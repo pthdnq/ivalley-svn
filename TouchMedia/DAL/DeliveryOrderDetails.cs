@@ -235,6 +235,22 @@ namespace DAL
 				}
 			}
 			
+			public static SqlParameter GeneralLookUpID
+			{
+				get
+				{
+					return new SqlParameter("@GeneralLookUpID", SqlDbType.Int, 0);
+				}
+			}
+			
+			public static SqlParameter ClientID
+			{
+				get
+				{
+					return new SqlParameter("@ClientID", SqlDbType.Int, 0);
+				}
+			}
+			
 		}
 		#endregion		
 	
@@ -258,6 +274,8 @@ namespace DAL
             public const string UpdatedBy = "UpdatedBy";
             public const string LastUpdatedDate = "LastUpdatedDate";
             public const string WatingHours = "WatingHours";
+            public const string GeneralLookUpID = "GeneralLookUpID";
+            public const string ClientID = "ClientID";
 
 			static public string ToPropertyName(string columnName)
 			{
@@ -282,6 +300,8 @@ namespace DAL
 					ht[UpdatedBy] = _DeliveryOrderDetails.PropertyNames.UpdatedBy;
 					ht[LastUpdatedDate] = _DeliveryOrderDetails.PropertyNames.LastUpdatedDate;
 					ht[WatingHours] = _DeliveryOrderDetails.PropertyNames.WatingHours;
+					ht[GeneralLookUpID] = _DeliveryOrderDetails.PropertyNames.GeneralLookUpID;
+					ht[ClientID] = _DeliveryOrderDetails.PropertyNames.ClientID;
 
 				}
 				return (string)ht[columnName];
@@ -311,6 +331,8 @@ namespace DAL
             public const string UpdatedBy = "UpdatedBy";
             public const string LastUpdatedDate = "LastUpdatedDate";
             public const string WatingHours = "WatingHours";
+            public const string GeneralLookUpID = "GeneralLookUpID";
+            public const string ClientID = "ClientID";
 
 			static public string ToColumnName(string propertyName)
 			{
@@ -335,6 +357,8 @@ namespace DAL
 					ht[UpdatedBy] = _DeliveryOrderDetails.ColumnNames.UpdatedBy;
 					ht[LastUpdatedDate] = _DeliveryOrderDetails.ColumnNames.LastUpdatedDate;
 					ht[WatingHours] = _DeliveryOrderDetails.ColumnNames.WatingHours;
+					ht[GeneralLookUpID] = _DeliveryOrderDetails.ColumnNames.GeneralLookUpID;
+					ht[ClientID] = _DeliveryOrderDetails.ColumnNames.ClientID;
 
 				}
 				return (string)ht[propertyName];
@@ -364,6 +388,8 @@ namespace DAL
             public const string UpdatedBy = "s_UpdatedBy";
             public const string LastUpdatedDate = "s_LastUpdatedDate";
             public const string WatingHours = "s_WatingHours";
+            public const string GeneralLookUpID = "s_GeneralLookUpID";
+            public const string ClientID = "s_ClientID";
 
 		}
 		#endregion		
@@ -571,6 +597,30 @@ namespace DAL
 			set
 	        {
 				base.Setdouble(ColumnNames.WatingHours, value);
+			}
+		}
+
+		public virtual int GeneralLookUpID
+	    {
+			get
+	        {
+				return base.Getint(ColumnNames.GeneralLookUpID);
+			}
+			set
+	        {
+				base.Setint(ColumnNames.GeneralLookUpID, value);
+			}
+		}
+
+		public virtual int ClientID
+	    {
+			get
+	        {
+				return base.Getint(ColumnNames.ClientID);
+			}
+			set
+	        {
+				base.Setint(ColumnNames.ClientID, value);
 			}
 		}
 
@@ -834,6 +884,36 @@ namespace DAL
 			}
 		}
 
+		public virtual string s_GeneralLookUpID
+	    {
+			get
+	        {
+				return this.IsColumnNull(ColumnNames.GeneralLookUpID) ? string.Empty : base.GetintAsString(ColumnNames.GeneralLookUpID);
+			}
+			set
+	        {
+				if(string.Empty == value)
+					this.SetColumnNull(ColumnNames.GeneralLookUpID);
+				else
+					this.GeneralLookUpID = base.SetintAsString(ColumnNames.GeneralLookUpID, value);
+			}
+		}
+
+		public virtual string s_ClientID
+	    {
+			get
+	        {
+				return this.IsColumnNull(ColumnNames.ClientID) ? string.Empty : base.GetintAsString(ColumnNames.ClientID);
+			}
+			set
+	        {
+				if(string.Empty == value)
+					this.SetColumnNull(ColumnNames.ClientID);
+				else
+					this.ClientID = base.SetintAsString(ColumnNames.ClientID, value);
+			}
+		}
+
 
 		#endregion		
 	
@@ -1032,6 +1112,26 @@ namespace DAL
 					get
 					{
 							WhereParameter where = new WhereParameter(ColumnNames.WatingHours, Parameters.WatingHours);
+							this._clause._entity.Query.AddWhereParameter(where);
+							return where;
+					}
+				}
+
+				public WhereParameter GeneralLookUpID
+				{
+					get
+					{
+							WhereParameter where = new WhereParameter(ColumnNames.GeneralLookUpID, Parameters.GeneralLookUpID);
+							this._clause._entity.Query.AddWhereParameter(where);
+							return where;
+					}
+				}
+
+				public WhereParameter ClientID
+				{
+					get
+					{
+							WhereParameter where = new WhereParameter(ColumnNames.ClientID, Parameters.ClientID);
 							this._clause._entity.Query.AddWhereParameter(where);
 							return where;
 					}
@@ -1246,6 +1346,30 @@ namespace DAL
 				}
 			}
 
+			public WhereParameter GeneralLookUpID
+		    {
+				get
+		        {
+					if(_GeneralLookUpID_W == null)
+	        	    {
+						_GeneralLookUpID_W = TearOff.GeneralLookUpID;
+					}
+					return _GeneralLookUpID_W;
+				}
+			}
+
+			public WhereParameter ClientID
+		    {
+				get
+		        {
+					if(_ClientID_W == null)
+	        	    {
+						_ClientID_W = TearOff.ClientID;
+					}
+					return _ClientID_W;
+				}
+			}
+
 			private WhereParameter _DeliveryOrderDetailsID_W = null;
 			private WhereParameter _DeliveryOrderID_W = null;
 			private WhereParameter _DeliveryOrderStatusID_W = null;
@@ -1263,6 +1387,8 @@ namespace DAL
 			private WhereParameter _UpdatedBy_W = null;
 			private WhereParameter _LastUpdatedDate_W = null;
 			private WhereParameter _WatingHours_W = null;
+			private WhereParameter _GeneralLookUpID_W = null;
+			private WhereParameter _ClientID_W = null;
 
 			public void WhereClauseReset()
 			{
@@ -1283,6 +1409,8 @@ namespace DAL
 				_UpdatedBy_W = null;
 				_LastUpdatedDate_W = null;
 				_WatingHours_W = null;
+				_GeneralLookUpID_W = null;
+				_ClientID_W = null;
 
 				this._entity.Query.FlushWhereParameters();
 
@@ -1509,6 +1637,26 @@ namespace DAL
 					}
 				}
 
+				public AggregateParameter GeneralLookUpID
+				{
+					get
+					{
+							AggregateParameter aggregate = new AggregateParameter(ColumnNames.GeneralLookUpID, Parameters.GeneralLookUpID);
+							this._clause._entity.Query.AddAggregateParameter(aggregate);
+							return aggregate;
+					}
+				}
+
+				public AggregateParameter ClientID
+				{
+					get
+					{
+							AggregateParameter aggregate = new AggregateParameter(ColumnNames.ClientID, Parameters.ClientID);
+							this._clause._entity.Query.AddAggregateParameter(aggregate);
+							return aggregate;
+					}
+				}
+
 
 				private AggregateClause _clause;
 			}
@@ -1718,6 +1866,30 @@ namespace DAL
 				}
 			}
 
+			public AggregateParameter GeneralLookUpID
+		    {
+				get
+		        {
+					if(_GeneralLookUpID_W == null)
+	        	    {
+						_GeneralLookUpID_W = TearOff.GeneralLookUpID;
+					}
+					return _GeneralLookUpID_W;
+				}
+			}
+
+			public AggregateParameter ClientID
+		    {
+				get
+		        {
+					if(_ClientID_W == null)
+	        	    {
+						_ClientID_W = TearOff.ClientID;
+					}
+					return _ClientID_W;
+				}
+			}
+
 			private AggregateParameter _DeliveryOrderDetailsID_W = null;
 			private AggregateParameter _DeliveryOrderID_W = null;
 			private AggregateParameter _DeliveryOrderStatusID_W = null;
@@ -1735,6 +1907,8 @@ namespace DAL
 			private AggregateParameter _UpdatedBy_W = null;
 			private AggregateParameter _LastUpdatedDate_W = null;
 			private AggregateParameter _WatingHours_W = null;
+			private AggregateParameter _GeneralLookUpID_W = null;
+			private AggregateParameter _ClientID_W = null;
 
 			public void AggregateClauseReset()
 			{
@@ -1755,6 +1929,8 @@ namespace DAL
 				_UpdatedBy_W = null;
 				_LastUpdatedDate_W = null;
 				_WatingHours_W = null;
+				_GeneralLookUpID_W = null;
+				_ClientID_W = null;
 
 				this._entity.Query.FlushAggregateParameters();
 
@@ -1895,6 +2071,14 @@ namespace DAL
 
 			p = cmd.Parameters.Add(Parameters.WatingHours);
 			p.SourceColumn = ColumnNames.WatingHours;
+			p.SourceVersion = DataRowVersion.Current;
+
+			p = cmd.Parameters.Add(Parameters.GeneralLookUpID);
+			p.SourceColumn = ColumnNames.GeneralLookUpID;
+			p.SourceVersion = DataRowVersion.Current;
+
+			p = cmd.Parameters.Add(Parameters.ClientID);
+			p.SourceColumn = ColumnNames.ClientID;
 			p.SourceVersion = DataRowVersion.Current;
 
 
