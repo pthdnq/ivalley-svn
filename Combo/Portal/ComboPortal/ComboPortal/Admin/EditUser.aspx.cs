@@ -376,17 +376,17 @@ namespace ComboPortal.Admin
                     {
                         case 1:
                             HtmlImage imgAttachment = e.Item.FindControl("imgAttachment") as HtmlImage;
-                            imgAttachment.Src = "api.combomobile.com" + objDataAttachment.Path;
+                            imgAttachment.Src = "http://api.combomobile.com" + objDataAttachment.Path;
                             imgAttachment.Visible = true;
                             break;
                         case 2:
                             HtmlAudio audioAttachment = e.Item.FindControl("audioAttachment") as HtmlAudio;
-                            audioAttachment.Src = "api.combomobile.com" + objDataAttachment.Path;
+                            audioAttachment.Src = "http://api.combomobile.com" + objDataAttachment.Path;
                             audioAttachment.Visible = true;
                             break;
                         case 3:
                             HtmlVideo videoAttachment = e.Item.FindControl("videoAttachment") as HtmlVideo;
-                            videoAttachment.Src = "api.combomobile.com" + objDataAttachment.Path;
+                            videoAttachment.Src = "http://api.combomobile.com" + objDataAttachment.Path;
                             videoAttachment.Visible = true;
                             break;
                         default:
