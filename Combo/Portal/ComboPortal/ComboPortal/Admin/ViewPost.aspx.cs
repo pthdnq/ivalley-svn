@@ -67,7 +67,7 @@ namespace ComboPortal.Admin
             {
                 Attachment objDataAttach = new Attachment();
                 objDataAttach.LoadByPrimaryKey(objDataName.ProfileImgID);
-                imgUserProfile.Src = objDataAttach.Path;
+                imgUserProfile.Src = "http://api.combomobile.com" + objDataAttach.Path;
             }
             // Attachment 
             ComboPost objDataPost = new ComboPost();
