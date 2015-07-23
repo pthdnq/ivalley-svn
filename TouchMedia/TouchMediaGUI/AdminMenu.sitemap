@@ -9,7 +9,11 @@
         <siteMapNode url="~/admin/ManageTransformationSupplier.aspx" title="Manage Transformation Suppliers" titleAr="ادارة مقاولين النقل"/>
         <siteMapNode url="~/admin/ManageDeliveryOrderStatus.aspx" title="Manage Delivery Order Status" titleAr="ادارة حالة طلب النقل"/>
         <siteMapNode url="~/admin/ManageJobOrderStatus.aspx" title="Manage Job Order Status" titleAr="ادارة حالة طلب الشغل"/>
+        <siteMapNode url="~/admin/ManageClients.aspx" title="Manage Clients" titleAr="ادارة العملاء"/>
         <siteMapNode url="~/admin/ManageDesigners.aspx" title="Manage Designers" titleAr="ادارة المصممين"/>
+       <siteMapNode url="~/admin/ManagePrints.aspx" title="Manage Print" titleAr="ادارة الطباعة"/>
+       <siteMapNode url="~/admin/ManageNeeds.aspx" title="Manage Designers" titleAr="ادارة المستلزمات"/>
+      <siteMapNode url="~/admin/ManageAfterPurchase.aspx" title="Manage After Purchase" titleAr="ادارة أعمال ما بعد الشراء"/>
       </siteMapNode>
       <siteMapNode url="~/admin/admin" title="Reports" icon="icon-bar-chart" titleAr="تقارير">
         </siteMapNode>

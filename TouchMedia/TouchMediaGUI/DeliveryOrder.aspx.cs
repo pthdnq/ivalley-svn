@@ -28,7 +28,7 @@ namespace TouchMediaGUI
                     BLL.DeliveryOrder EditDO = new BLL.DeliveryOrder();
                     EditDO.LoadByPrimaryKey(getQueryString_DeliveryOrder);
                     txtCarNumber.Text = EditDO.CarNumber;
-                    txtClientCode.Text = (EditDO.ClientCode).ToString();
+                    drpClientName.Text = (EditDO.ClientID).ToString();
                     txtkiloMeterAfter.Text = EditDO.KilometerCounterAfter.ToString();
                     txtKiloMeterBefore.Text = EditDO.KilometerCounterBefore.ToString();
                     txtTotalPrice.Text = EditDO.TotalPrice.ToString();
@@ -52,7 +52,41 @@ namespace TouchMediaGUI
                     PanelDeliveryOrderDetails.Visible = true;
                     createNewDeliveryOrder.Visible = false;
                 }
+                if (getQueryString_IsPrint > 0)
+                {
+                    Microsoft.Reporting.WebForms.ReportDataSource rds = new Microsoft.Reporting.WebForms.ReportDataSource();
+                    DeliveryDriverPrintTableAdapters.DeliveryDriverPrintTableAdapter DelTA = new DeliveryDriverPrintTableAdapters.DeliveryDriverPrintTableAdapter();
+                    DelTA.ClearBeforeFill = true;
 
+                    try
+                    {
+
+
+
+                        rds.Name = "DeliveryDriverPrint";
+                        rds.Value = DelTA.GetData(getQueryString_DeliveryOrder);
+                        ReportViewer1.LocalReport.ReportPath = "Reports\\DeliveryDriverPrint.rdlc";
+                        //ReportViewer1.LocalReport.SetParameters(new Microsoft.Reporting.WebForms.ReportParameter[] { new Microsoft.Reporting.WebForms.ReportParameter("From", txtDateFrom.ToString()) });
+                        ReportViewer1.LocalReport.DataSources.Clear();
+                        ReportViewer1.LocalReport.DataSources.Add(rds);
+                        ReportViewer1.LocalReport.Refresh();
+
+                        PanelReport.Visible = true;
+                        //PanelPurchaseOrdersGrid.Visible = false;
+                        //PanelPurchaseOrderGeneral.Visible = false;
+                        //PanelGrdPurcahseOrderDetails.Visible = false;
+                        //PanelPurchaseOrderDetails.Visible = false;
+                        widSearchDeliveryOrder.Visible = true;
+                        WidGrdGeneralDeliveryOrder.Visible = true;
+                        widPurchaseReport.Visible = true;
+                    }
+                    catch (Exception ex)
+                    {
+                        throw;
+                    }
+
+
+                }
                 if (getQueryString_DeliveryOrderDetails > 0)
                 {
                     DeliveryOrderDetails DODEdit = new DeliveryOrderDetails();
@@ -90,6 +124,13 @@ namespace TouchMediaGUI
                 drpStatusGeneral.DataTextField = DeliveryOrderStatus.ColumnNames.DeliveryOrderStatusNameAr;
                 drpStatusGeneral.DataBind();
 
+                BLL.Clients Cl = new Clients();
+                Cl.LoadAll();
+                drpClientName.DataSource = Cl.DefaultView;
+                drpClientName.DataValueField = Clients.ColumnNames.ClientID;
+                drpClientName.DataTextField = Clients.ColumnNames.ClientName;
+                drpClientName.DataBind();
+
                 BLL.TransformationSupplier DOO = new BLL.TransformationSupplier();
                 DOO.LoadAll();
                 drpTransformationSupplier.DataSource = DOO.DefaultView;
@@ -103,7 +144,7 @@ namespace TouchMediaGUI
                 drpDepartment.DataValueField = Department.ColumnNames.DepartmentID;
                 drpDepartment.DataTextField = Department.ColumnNames.DepartmentName;
                 drpDepartment.DataBind();
-
+                
                 DeliveryOrderStatus ss = new DeliveryOrderStatus();
                 ss.LoadAll();
                 drpStatusSearch.DataSource = ss.DefaultView;
@@ -200,7 +241,7 @@ namespace TouchMediaGUI
                 DO.CreatedDate = DateTime.Now;
             }
 
-            DO.ClientCode = int.Parse(txtClientCode.Text);
+            DO.ClientID = int.Parse(drpClientName.SelectedItem.Value);
             DO.DeliveryOrderName = txtDeliveryOrderName.Text;
             DO.DepartmentID = int.Parse(drpDepartment.SelectedValue);
             if (txtPermission.Text != "")
@@ -315,6 +356,20 @@ namespace TouchMediaGUI
                 }
             }
         }
+        private int getQueryString_IsPrint
+        {
+            get
+            {
+                if (!string.IsNullOrEmpty(Request.QueryString["isprint"]))
+                {
+                    return int.Parse(Request.QueryString["isprint"].ToString());
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         protected void GrdDeliveryOrder_RowCommand(object sender, GridViewCommandEventArgs e)
         {
@@ -330,6 +385,13 @@ namespace TouchMediaGUI
                 DelDO.MarkAsDeleted();
                 DelDO.Save();
 
+
+            }
+            else if (e.CommandName == "PrintDO")
+            {
+                int IDP = int.Parse(e.CommandArgument.ToString());
+
+                Response.Redirect("DeliveryOrder.aspx?isprint=1&DeliveryOrderID=" + IDP.ToString());
 
             }
             else if (e.CommandName == "EditGrdDO")
