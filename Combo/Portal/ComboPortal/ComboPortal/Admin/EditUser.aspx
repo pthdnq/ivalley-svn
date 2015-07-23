@@ -8,7 +8,7 @@
     <asp:Panel ID="PanelProfile" runat="server">
         <div class="widget">
             <div class="widget-title">
-                <h4><i class="icon-user"></i>بيانات المستخدم  </h4>
+                <h4><i class="icon-user"></i>بيانات المستخدم : <asp:Label ID="lblProfileUserName" runat="server" Text=""/>  </h4>
                 <span class="tools">
                     <asp:LinkButton ID="LinkButton1" PostBackUrl="~/Admin/UserManagement.aspx" OnClick="btnBack_Click" CssClass="btn btn-mini" runat="server"><i class="icon-arrow-right"></i> رجوع الى المستخدمين </asp:LinkButton>
                     <a href="javascript:;" class="icon-chevron-down"></a>
@@ -190,7 +190,7 @@
     <asp:Panel ID="PanelPosts" Visible="false" runat="server">
         <div class="widget">
             <div class="widget-title">
-                <h4><i class="icon-list-ul"></i>بوستات المستخدم  </h4>
+                <h4><i class="icon-list-ul"></i>بوستات المستخدم : <asp:Label ID="lblPostsUserName" runat="server" Text=""/>  </h4>
                 <span class="tools">
                     <asp:LinkButton ID="btnBack" OnClick="btnBack_Click" CssClass="btn btn-mini" runat="server"><i class="icon-arrow-right"></i> رجوع الى البيانات </asp:LinkButton>
                     <a href="javascript:;" class="icon-chevron-down"></a>
@@ -215,6 +215,12 @@
                                             </span>
                                             <span class="body">
                                                 <%# Eval("PostText") %>
+                                                <asp:Panel ID="PanelAttachment" Visible="false" runat="server">
+                                                    <hr />
+                                                    <img id="imgAttachment" runat="server" style="max-height:200px" visible="false" src="#" />
+                                                    <audio id="audioAttachment" runat="server" visible="false" src="#" />
+                                                    <video id="videoAttachment" runat="server" style="max-height:200px" visible="false" src="#" />
+                                                </asp:Panel>
                                             </span>
                                         </div>
                                     </li>
@@ -229,7 +235,7 @@
     <asp:Panel ID="PanelResetPass" Visible="false" runat="server">
         <div class="widget">
             <div class="widget-title">
-                <h4><i class="icon-refresh"></i>استرجاع كلمة السر</h4>
+                <h4><i class="icon-refresh"></i>استرجاع كلمة السر : <asp:Label ID="lblPasswordUserName" runat="server" Text=""/></h4>
                 <span class="tools">
                     <asp:LinkButton ID="btnBack2" OnClick="btnBack_Click" CssClass="btn btn-mini" runat="server"><i class="icon-arrow-right"></i> رجوع الى البيانات </asp:LinkButton>
                     <a href="javascript:;" class="icon-chevron-down"></a>
@@ -266,7 +272,7 @@
     <asp:Panel ID="PanelResetSecretWord" Visible="false" runat="server">
         <div class="widget">
             <div class="widget-title">
-                <h4><i class="icon-refresh"></i>استرجاع الكلمة السرية</h4>
+                <h4><i class="icon-refresh"></i>استرجاع الكلمة السرية : <asp:Label ID="lblSecWordUserName" runat="server" Text=""/></h4>
                 <span class="tools">
                     <asp:LinkButton ID="btnBack3" OnClick="btnBack_Click" CssClass="btn btn-mini" runat="server"><i class="icon-arrow-right"></i> رجوع الى البيانات </asp:LinkButton>
                     <a href="javascript:;" class="icon-chevron-down"></a>

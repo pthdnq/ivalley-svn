@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 
 namespace ComboPortal.Admin
@@ -28,6 +29,8 @@ namespace ComboPortal.Admin
                     loadUser();
                 else
                     Response.Redirect("UserManagement.aspx");
+
+                loadUserName();
             }
         }
         protected void btnBack_Click(object sender, EventArgs e)
@@ -165,6 +168,16 @@ namespace ComboPortal.Admin
                 drpDwnRank.SelectedValue = objData.UserRankID.ToString();
 
             updateCounters();
+        }
+        protected void loadUserName()
+        {
+            ComboUser objData = new ComboUser();
+            objData.LoadByPrimaryKey(CurrentUser);
+
+            lblProfileUserName.Text = objData.UserName;
+            lblPostsUserName.Text = objData.UserName;
+            lblPasswordUserName.Text = objData.UserName;
+            lblSecWordUserName.Text = objData.UserName;
         }
         protected void loadGender()
         {
@@ -333,13 +346,54 @@ namespace ComboPortal.Admin
         }
         protected void RepeaterUserPosts_ItemDataBound(object sender, RepeaterItemEventArgs e)
         {
-            HiddenField hfPostID = e.Item.FindControl("hfPostID") as HiddenField;
-            LinkButton btnViewPost = e.Item.FindControl("btnViewPost") as LinkButton;
+            if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
+            {
+                HiddenField hfPostID = e.Item.FindControl("hfPostID") as HiddenField;
+                LinkButton btnViewPost = e.Item.FindControl("btnViewPost") as LinkButton;
 
-            ComboComment objData = new ComboComment();
-            objData.GetPostCommentsCount(int.Parse(hfPostID.Value.ToString()));
-            objData.GetColumn("TotalCount");
-            btnViewPost.Text = "عرض التعليقات " + "(" + objData.GetColumn("TotalCount").ToString() + ")";
+                ComboComment objData = new ComboComment();
+                objData.GetPostCommentsCount(int.Parse(hfPostID.Value.ToString()));
+                objData.GetColumn("TotalCount");
+                btnViewPost.Text = "عرض التعليقات " + "(" + objData.GetColumn("TotalCount").ToString() + ")";
+
+                ComboPost objDataPost = new ComboPost();
+                objDataPost.LoadByPrimaryKey(int.Parse(hfPostID.Value.ToString()));
+
+                ComboPostAttachment objDataPostAttachment = new ComboPostAttachment();
+                objDataPostAttachment.Where.ComboPostID.Value = (int.Parse(hfPostID.Value.ToString()));
+                objDataPostAttachment.Where.ComboPostID.Operator = MyGeneration.dOOdads.WhereParameter.Operand.Equal;
+                objDataPostAttachment.Query.Load();
+
+                if (objDataPostAttachment.RowCount > 0)
+                {
+                    Panel PanelAttachment = e.Item.FindControl("PanelAttachment") as Panel;
+                    PanelAttachment.Visible = true;
+
+                    Attachment objDataAttachment = new Attachment();
+                    objDataAttachment.LoadByPrimaryKey(objDataPostAttachment.AttachmentID);
+
+                    switch (objDataAttachment.AttachmentTypeID)
+                    {
+                        case 1:
+                            HtmlImage imgAttachment = e.Item.FindControl("imgAttachment") as HtmlImage;
+                            imgAttachment.Src = objDataAttachment.Path;
+                            imgAttachment.Visible = true;
+                            break;
+                        case 2:
+                            HtmlAudio audioAttachment = e.Item.FindControl("audioAttachment") as HtmlAudio;
+                            audioAttachment.Src = objDataAttachment.Path;
+                            audioAttachment.Visible = true;
+                            break;
+                        case 3:
+                            HtmlVideo videoAttachment = e.Item.FindControl("videoAttachment") as HtmlVideo;
+                            videoAttachment.Src = objDataAttachment.Path;
+                            videoAttachment.Visible = true;
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            }
         }
     }
 }

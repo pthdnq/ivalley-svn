@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using COMBO_BLL;
+using System.Web.UI.HtmlControls;
 
 namespace ComboPortal.Admin
 {
@@ -68,6 +69,40 @@ namespace ComboPortal.Admin
                 objDataAttach.LoadByPrimaryKey(objDataName.ProfileImgID);
                 imgUserProfile.Src = objDataAttach.Path;
             }
+            // Attachment 
+            ComboPost objDataPost = new ComboPost();
+            objDataPost.LoadByPrimaryKey(CurrentPost);
+
+            ComboPostAttachment objDataPostAttachment = new ComboPostAttachment();
+            objDataPostAttachment.Where.ComboPostID.Value = CurrentPost;
+            objDataPostAttachment.Where.ComboPostID.Operator = MyGeneration.dOOdads.WhereParameter.Operand.Equal;
+            objDataPostAttachment.Query.Load();
+
+            if (objDataPostAttachment.RowCount > 0)
+            {
+                PanelAttachment.Visible = true;
+
+                Attachment objDataAttachment = new Attachment();
+                objDataAttachment.LoadByPrimaryKey(objDataPostAttachment.AttachmentID);
+
+                switch (objDataAttachment.AttachmentTypeID)
+                {
+                    case 1:
+                        imgAttachment.Src = objDataAttachment.Path;
+                        imgAttachment.Visible = true;
+                        break;
+                    case 2:
+                        audioAttachment.Src = objDataAttachment.Path;
+                        audioAttachment.Visible = true;
+                        break;
+                    case 3:
+                        videoAttachment.Src = objDataAttachment.Path;
+                        videoAttachment.Visible = true;
+                        break;
+                    default:
+                        break;
+                }
+            }
         }
         protected void loadComments()
         {
@@ -75,6 +110,35 @@ namespace ComboPortal.Admin
             objData.GetPostCommentsByPostID(CurrentPost);
             RepeaterComments.DataSource = objData.DefaultView;
             RepeaterComments.DataBind();
+        }
+        protected void RepeaterComments_ItemDataBound(object sender, RepeaterItemEventArgs e)
+        {
+            if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
+            {
+                HiddenField hfCommentID = e.Item.FindControl("hfCommentID") as HiddenField;
+                LinkButton btnViewPost = e.Item.FindControl("btnViewPost") as LinkButton;
+
+                ComboComment objDataPost = new ComboComment();
+                objDataPost.LoadByPrimaryKey(int.Parse(hfCommentID.Value.ToString()));
+
+                ComboCommentAttachment objDataCommentAttachment = new ComboCommentAttachment();
+                objDataCommentAttachment.Where.ComboCommnetID.Value = (int.Parse(hfCommentID.Value.ToString()));
+                objDataCommentAttachment.Where.ComboCommnetID.Operator = MyGeneration.dOOdads.WhereParameter.Operand.Equal;
+                objDataCommentAttachment.Query.Load();
+
+                if (objDataCommentAttachment.RowCount > 0)
+                {
+                    Panel PanelAttachment = e.Item.FindControl("PanelAttachment") as Panel;
+                    PanelAttachment.Visible = true;
+
+                    Attachment objDataAttachment = new Attachment();
+                    objDataAttachment.LoadByPrimaryKey(objDataCommentAttachment.AttachmentID);
+
+                    HtmlAudio audioAttachment = e.Item.FindControl("audioAttachment") as HtmlAudio;
+                    audioAttachment.Src = objDataAttachment.Path;
+                    audioAttachment.Visible = true;
+                }
+            }
         }
     }
 }

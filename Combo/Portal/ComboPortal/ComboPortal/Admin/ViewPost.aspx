@@ -24,6 +24,12 @@
                                         <asp:Label ID="lblPostDate" runat="server" Text="" /></span>
                                     <span class="body">
                                         <asp:Label ID="lblPostText" runat="server" Text="" /></span>
+                                    <asp:Panel ID="PanelAttachment" Visible="false" runat="server">
+                                        <hr />
+                                        <img id="imgAttachment" runat="server" style="max-height: 200px" visible="false" src="#" />
+                                        <audio id="audioAttachment" runat="server" visible="false" src="#" />
+                                        <video id="videoAttachment" runat="server" style="max-height:200px" visible="false" src="#" />
+                                    </asp:Panel>
                                 </div>
                             </li>
                         </ul>
@@ -32,7 +38,7 @@
                 <div class="row-fluid">
                     <div class="span1"></div>
                     <div class="span10">
-                        <asp:Repeater ID="RepeaterComments" OnItemCommand="RepeaterComments_ItemCommand" runat="server">
+                        <asp:Repeater ID="RepeaterComments" OnItemCommand="RepeaterComments_ItemCommand" OnItemDataBound="RepeaterComments_ItemDataBound" runat="server">
                             <ItemTemplate>
                                 <div class="span12" style="margin-right: 0px">
                                     <ul class="chats normal-chat">
@@ -47,6 +53,13 @@
                                                 </span>
                                                 <span class="body">
                                                     <%# Eval("CommentText") %>
+                                                    <asp:Panel ID="PanelAttachment" Visible="false" runat="server">
+                                                        <hr />
+                                                        <asp:HiddenField ID="hfCommentID" runat="server" Value='<%# Eval("ComboCommentID") %>' />
+                                                        <%--<img id="imgAttachment" runat="server" style="max-height: 200px" visible="false" src="#" />--%>
+                                                        <audio id="audioAttachment" runat="server" visible="false" src="#" />
+                                                        <%--<video id="videoAttachment" runat="server" visible="false" src="#" />--%>
+                                                    </asp:Panel>
                                                 </span>
                                             </div>
                                         </li>

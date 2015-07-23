@@ -34,7 +34,7 @@
                             <div class="tab-content">
                                 <div class="tab-pane active" id="tab_1_1">
                                     <p>
-                                        <asp:GridView ID="GridViewNewRequests" OnRowDataBound="GridViewNewRequests_RowDataBound" CssClass="table table-striped table-bordered" EmptyDataText="لا يوجد بيانات متاحة" HorizontalAlign="Center" AutoGenerateColumns="false" runat="server">
+                                        <asp:GridView ID="GridViewNewRequests" AllowPaging="true" PageSize="10" OnPageIndexChanging="GridViewNewRequests_PageIndexChanging" OnRowDataBound="GridViewNewRequests_RowDataBound" CssClass="table table-striped table-bordered" EmptyDataText="لا يوجد بيانات متاحة" HorizontalAlign="Center" AutoGenerateColumns="false" runat="server">
                                             <Columns>
                                                 <asp:BoundField HeaderText="اسم المستخدم" DataField="UserName" />
                                                 <asp:BoundField HeaderText="الاسم الظاهر" DataField="DisplayName" />
@@ -56,7 +56,7 @@
                                 </div>
                                 <div class="tab-pane" id="tab_1_2">
                                     <p>
-                                        <asp:GridView ID="GridViewAcceptedRequests" OnRowDataBound="GridViewAcceptedRequests_RowDataBound" CssClass="table table-striped table-bordered" EmptyDataText="لا يوجد بيانات متاحة" HorizontalAlign="Center" AutoGenerateColumns="false" runat="server">
+                                        <asp:GridView ID="GridViewAcceptedRequests" AllowPaging="true" PageSize="10" OnPageIndexChanging="GridViewAcceptedRequests_PageIndexChanging" OnRowDataBound="GridViewAcceptedRequests_RowDataBound" CssClass="table table-striped table-bordered" EmptyDataText="لا يوجد بيانات متاحة" HorizontalAlign="Center" AutoGenerateColumns="false" runat="server">
                                             <Columns>
                                                 <asp:BoundField HeaderText="اسم المستخدم" DataField="UserName" />
                                                 <asp:BoundField HeaderText="الاسم الظاهر" DataField="DisplayName" />
@@ -78,7 +78,7 @@
                                 </div>
                                 <div class="tab-pane" id="tab_1_3">
                                     <p>
-                                        <asp:GridView ID="GridViewRefusedRequests" OnRowDataBound="GridViewRefusedRequests_RowDataBound" CssClass="table table-striped table-bordered" EmptyDataText="لا يوجد بيانات متاحة" HorizontalAlign="Center" AutoGenerateColumns="false" runat="server">
+                                        <asp:GridView ID="GridViewRefusedRequests" AllowPaging="true" PageSize="10" OnPageIndexChanging="GridViewRefusedRequests_PageIndexChanging" OnRowDataBound="GridViewRefusedRequests_RowDataBound" CssClass="table table-striped table-bordered" EmptyDataText="لا يوجد بيانات متاحة" HorizontalAlign="Center" AutoGenerateColumns="false" runat="server">
                                             <Columns>
                                                 <asp:BoundField HeaderText="اسم المستخدم" DataField="UserName" />
                                                 <asp:BoundField HeaderText="الاسم الظاهر" DataField="DisplayName" />

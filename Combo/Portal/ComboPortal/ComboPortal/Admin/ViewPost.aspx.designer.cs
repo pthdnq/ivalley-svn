@@ -58,6 +58,42 @@ namespace ComboPortal.Admin {
         protected global::System.Web.UI.WebControls.Label lblPostText;
         
         /// <summary>
+        /// PanelAttachment control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel PanelAttachment;
+        
+        /// <summary>
+        /// imgAttachment control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlImage imgAttachment;
+        
+        /// <summary>
+        /// audioAttachment control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAudio audioAttachment;
+        
+        /// <summary>
+        /// videoAttachment control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlVideo videoAttachment;
+        
+        /// <summary>
         /// RepeaterComments control.
         /// </summary>
         /// <remarks>

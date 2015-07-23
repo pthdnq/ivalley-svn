@@ -23,7 +23,8 @@
             <div class="navbar-inner">
                 <div class="container-fluid">
                     <!-- BEGIN LOGO -->
-                    <a class="brand ub" href="../default.aspx">COMBO
+                    <a class="brand ub" href="../default.aspx" style="display:block;font-weight:bold">
+                        OMBO<img src="../img/portal/logo.png" style="max-width:30%"/>
                     </a>
                     <!-- END LOGO -->
                     <!-- BEGIN RESPONSIVE MENU TOGGLER -->
