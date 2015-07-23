@@ -3635,3 +3635,14 @@ ul.amounts li {
             -webkit-animation: bounceInUp 2s infinite;
             animation: bounceInUp 2s infinite;            
          }
+
+
+.rounded {
+    border:1px solid #3b0064;
+    border-radius:5px;
+    -moz-border-radius:5px;
+    -webkit-border-radius:5px;
+    -ms-border-radius:5px;
+    background-color:#fff;
+    padding:20px;
+}

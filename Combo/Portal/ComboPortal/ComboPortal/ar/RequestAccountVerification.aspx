@@ -2,6 +2,9 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <div class="span12 no-margin rounded" >
+        <h3>طلب توثيق حساب</h3>
+    
       <asp:Panel runat="server" ID="uiPanelAdd"> 
 
     
@@ -222,6 +225,8 @@
             </div>
         </div>
     </asp:Panel>
+        </div>
+    <div class="space10"></div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolderScripts" runat="server">
       <link href="../Admin/assets/bootstrap-datepicker/css/datepicker.css" rel="stylesheet" />
