@@ -139,7 +139,7 @@ namespace ComboPortal.Admin
             {
                 Attachment objData2 = new Attachment();
                 objData2.LoadByPrimaryKey(objData.ProfileImgID);
-                ImgUser.Src = "www.api.combomobile.com" + objData2.Path;
+                ImgUser.Src = "http://api.combomobile.com" + objData2.Path;
             }
 
             if (!objData.IsColumnNull(ComboUser.ColumnNames.IsVerified))
