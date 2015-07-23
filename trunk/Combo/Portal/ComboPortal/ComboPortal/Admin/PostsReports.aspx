@@ -24,7 +24,7 @@
                             <div class="tab-content">
                                 <div class="tab-pane active" id="tab_1_1">
                                     <p>
-                                        <asp:GridView ID="GridViewAccountReports" CssClass="table table-striped table-bordered" EmptyDataText="لا يوجد بيانات متاحة" HorizontalAlign="Center" AutoGenerateColumns="false" runat="server">
+                                        <asp:GridView ID="GridViewAccountReports" AllowPaging="true" PageSize="10" OnPageIndexChanging="GridViewAccountReports_PageIndexChanging" CssClass="table table-striped table-bordered" EmptyDataText="لا يوجد بيانات متاحة" HorizontalAlign="Center" AutoGenerateColumns="false" runat="server">
                                             <Columns>
                                                 <asp:BoundField HeaderText="قائمة البلاغات (اسم المستخدم)" DataField="UserName" />
                                                 <asp:BoundField HeaderText="عدد البلاغات" DataField="ReportsCount" />
@@ -40,7 +40,7 @@
                                 </div>
                                 <div class="tab-pane" id="tab_1_2">
                                     <p>
-                                        <asp:GridView ID="GridViewPostReports" CssClass="table table-striped table-bordered" EmptyDataText="لا يوجد بيانات متاحة" HorizontalAlign="Center" AutoGenerateColumns="false" runat="server">
+                                        <asp:GridView ID="GridViewPostReports"  AllowPaging="true" PageSize="10" OnPageIndexChanging="GridViewPostReports_PageIndexChanging" CssClass="table table-striped table-bordered" EmptyDataText="لا يوجد بيانات متاحة" HorizontalAlign="Center" AutoGenerateColumns="false" runat="server">
                                             <Columns>
                                                 <asp:BoundField HeaderText="قائمة البلاغات (محتوى البوست)" DataField="PostText" />
                                                 <asp:BoundField HeaderText="عدد البلاغات" DataField="ReportsCount" />
@@ -57,7 +57,7 @@
                                 </div>
                                 <div class="tab-pane" id="tab_1_3">
                                     <p>
-                                        <asp:GridView ID="GridViewCommentReports" CssClass="table table-striped table-bordered" EmptyDataText="لا يوجد بيانات متاحة" HorizontalAlign="Center" AutoGenerateColumns="false" runat="server">
+                                        <asp:GridView ID="GridViewCommentReports" AllowPaging="true" PageSize="10" OnPageIndexChanging="GridViewCommentReports_PageIndexChanging" CssClass="table table-striped table-bordered" EmptyDataText="لا يوجد بيانات متاحة" HorizontalAlign="Center" AutoGenerateColumns="false" runat="server">
                                             <Columns>
                                                 <asp:BoundField HeaderText="قائمة البلاغات (محتوى التعليق)" DataField="CommentText" />
                                                 <asp:BoundField HeaderText="عدد البلاغات" DataField="ReportsCount" />
@@ -76,7 +76,7 @@
                     </asp:Panel>
                     <asp:Panel ID="PanelGridUserReports" Visible="false" runat="server">
                         <asp:LinkButton ID="btnBack" PostBackUrl="~/Admin/PostsReports.aspx" CssClass="btn block-margin-bottom-5" runat="server"><i class="icon-forward"></i> رجوع الى البلاغات </asp:LinkButton>
-                        <asp:GridView ID="GridViewUserReports" CssClass="table table-striped table-bordered" EmptyDataText="لا يوجد بيانات متاحة" HorizontalAlign="Center" AutoGenerateColumns="false" runat="server">
+                        <asp:GridView ID="GridViewUserReports" CssClass="table table-striped table-bordered" AllowPaging="true" PageSize="10" OnPageIndexChanging="GridViewUserReports_PageIndexChanging" EmptyDataText="لا يوجد بيانات متاحة" HorizontalAlign="Center" AutoGenerateColumns="false" runat="server">
                             <Columns>
                                 <asp:BoundField HeaderText="اسم المبلغ" DataField="UserName" />
                                 <asp:BoundField HeaderText="التاريخ" DataField="ReportDate" />
@@ -86,7 +86,7 @@
                     </asp:Panel>
                     <asp:Panel ID="PanelGridCommentReports" Visible="false" runat="server">
                         <asp:LinkButton ID="LinkButton1" PostBackUrl="~/Admin/PostsReports.aspx" CssClass="btn block-margin-bottom-5" runat="server"><i class="icon-forward"></i> رجوع الى البلاغات </asp:LinkButton>
-                        <asp:GridView ID="GridCommentReports" CssClass="table table-striped table-bordered" EmptyDataText="لا يوجد بيانات متاحة" HorizontalAlign="Center" AutoGenerateColumns="false" runat="server">
+                        <asp:GridView ID="GridCommentReports" CssClass="table table-striped table-bordered" AllowPaging="true" PageSize="10" OnPageIndexChanging="GridCommentReports_PageIndexChanging" EmptyDataText="لا يوجد بيانات متاحة" HorizontalAlign="Center" AutoGenerateColumns="false" runat="server">
                             <Columns>
                                 <asp:BoundField HeaderText="اسم المبلغ" DataField="UserName" />
                                 <asp:BoundField HeaderText="التاريخ" DataField="ReportDate" />
@@ -96,7 +96,7 @@
                     </asp:Panel>
                     <asp:Panel ID="PanelGridPostReports" Visible="false" runat="server">
                         <asp:LinkButton ID="LinkButton2" PostBackUrl="~/Admin/PostsReports.aspx" CssClass="btn block-margin-bottom-5" runat="server"><i class="icon-forward"></i> رجوع الى البلاغات </asp:LinkButton>
-                        <asp:GridView ID="GridPostReports" CssClass="table table-striped table-bordered" EmptyDataText="لا يوجد بيانات متاحة" HorizontalAlign="Center" AutoGenerateColumns="false" runat="server">
+                        <asp:GridView ID="GridPostReports" CssClass="table table-striped table-bordered" AllowPaging="true" PageSize="10" OnPageIndexChanging="GridPostReports_PageIndexChanging" EmptyDataText="لا يوجد بيانات متاحة" HorizontalAlign="Center" AutoGenerateColumns="false" runat="server">
                             <Columns>
                                 <asp:BoundField HeaderText="اسم المبلغ" DataField="UserName" />
                                 <asp:BoundField HeaderText="التاريخ" DataField="ReportDate" />

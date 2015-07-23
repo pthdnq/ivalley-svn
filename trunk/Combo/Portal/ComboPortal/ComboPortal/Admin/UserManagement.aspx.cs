@@ -16,11 +16,7 @@ namespace ComboPortal.Admin
             {
                 Master.PageTitle = "ادارة المستخدمين";
                 bindRanks();
-
-                ComboUser objData = new ComboUser();
-                objData.getAllUsers();
-                GridViewUsers.DataSource = objData.DefaultView;
-                GridViewUsers.DataBind();
+                loadUsers();
             }
         }
         protected void btnSearchUser_Click(object sender, EventArgs e)
@@ -50,30 +46,6 @@ namespace ComboPortal.Admin
         {
             switch (e.CommandName)
             {
-                //case "viewPosts":
-                //    CurrentUser = int.Parse(e.CommandArgument.ToString());
-                //    bindPosts();
-                //    PanelSearch.Visible = false;
-                //    PanelResetPass.Visible = false;
-                //    PanelPosts.Visible = true;
-                //    break;
-
-                //case "resetPass":
-                //    CurrentUser = int.Parse(e.CommandArgument.ToString());
-                //    PanelSearch.Visible = false;
-                //    PanelResetPass.Visible = true;
-                //    PanelPosts.Visible = false;
-                //    break;
-
-                //case "banAccount":
-                //    ComboUser objData = new ComboUser();
-                //    objData.LoadByPrimaryKey(int.Parse(e.CommandArgument.ToString()));
-                //    //objData.IsActivated = false;
-                //    //objData.IsDeactivated = true;
-                //    objData.Save();
-                //    btnSearchUser_Click(sender, e);
-                //    break;
-
                 case "deleteAccount":
                     ComboUser objData2 = new ComboUser();
                     objData2.LoadByPrimaryKey(int.Parse(e.CommandArgument.ToString()));
@@ -87,5 +59,24 @@ namespace ComboPortal.Admin
                     break;
             }
         }
+
+        protected void loadUsers()
+        {
+            ComboUser objData = new ComboUser();
+            objData.getAllUsers();
+            GridViewUsers.DataSource = objData.DefaultView;
+            GridViewUsers.DataBind();
+        }
+
+        protected void GridViewUsers_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridViewUsers.PageIndex = e.NewPageIndex;
+            loadUsers();
+        }
+
+      
+
+
+      
     }
 }

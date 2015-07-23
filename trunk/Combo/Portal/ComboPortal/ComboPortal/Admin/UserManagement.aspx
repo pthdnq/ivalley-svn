@@ -22,9 +22,6 @@
                             <div class="span2 clearfix">
                                 <asp:TextBox ID="txtSearch" CssClass="form" runat="server"></asp:TextBox>
                             </div>
-                            <div class="span2 clearfix">
-                                <asp:LinkButton ID="btnSearchUser" OnClick="btnSearchUser_Click" CssClass="btn btn-primary" runat="server">بحث <i class="icon-search"></i></asp:LinkButton>
-                            </div>
                         </div>
                         <div class="span12" style="margin-right: 0;">
                             <div class="span1 clearfix">
@@ -33,10 +30,13 @@
                             <div class="span2 clearfix">
                                 <asp:DropDownList ID="DropDownUserRank" runat="server"></asp:DropDownList>
                             </div>
+                            <div class="span2 clearfix">
+                                <asp:LinkButton ID="btnSearchUser" OnClick="btnSearchUser_Click" CssClass="btn btn-primary" runat="server">بحث <i class="icon-search"></i></asp:LinkButton>
+                            </div>
                         </div>
 
                         <div class="span12" style="margin-right: 0;">
-                            <asp:GridView ID="GridViewUsers" CssClass="table table-striped table-bordered" OnRowCommand="GridViewUsers_RowCommand" EmptyDataText="لا يوجد بيانات متاحة" HorizontalAlign="Center" AutoGenerateColumns="false" runat="server">
+                            <asp:GridView ID="GridViewUsers" CssClass="table table-striped table-bordered" AllowPaging="true"  PageSize="10"  OnRowCommand="GridViewUsers_RowCommand" EmptyDataText="لا يوجد بيانات متاحة" HorizontalAlign="Center" AutoGenerateColumns="false" runat="server" OnPageIndexChanging="GridViewUsers_PageIndexChanging"  >
                                 <Columns>
                                     <asp:BoundField HeaderText="اسم المستخدم" DataField="UserName" />
                                     <asp:BoundField HeaderText="الاسم الظاهر" DataField="DisplayName" />

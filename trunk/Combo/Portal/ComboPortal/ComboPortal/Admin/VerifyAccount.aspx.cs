@@ -142,63 +142,72 @@ namespace ComboPortal.Admin
         }
         protected void GridViewNewRequests_RowDataBound(object sender, GridViewRowEventArgs e)
         {
-            //HiddenField hfRequestTypeID = e.Row.FindControl("hfRequestTypeID") as HiddenField;
-            //Label lblRequestType = e.Row.FindControl("lblRequestType") as Label;
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                HiddenField hfRequestTypeID = e.Row.FindControl("hfRequestTypeID") as HiddenField;
+                Label lblRequestType = e.Row.FindControl("lblRequestType") as Label;
 
-            //switch (hfRequestTypeID.Value.ToString())
-            //{
-            //    case "1":
-            //        lblRequestType.Text = "حساب شخصى";
-            //        break;
-            //    case "2":
-            //        lblRequestType.Text = "حساب رسمى";
-            //        break;
-            //    case "3":
-            //        lblRequestType.Text = "حساب متجر";
-            //        break;
-            //    default:
-            //        break;
-            //}
+                switch (hfRequestTypeID.Value.ToString())
+                {
+                    case "1":
+                        lblRequestType.Text = "حساب شخصى";
+                        break;
+                    case "2":
+                        lblRequestType.Text = "حساب رسمى";
+                        break;
+                    case "3":
+                        lblRequestType.Text = "حساب متجر";
+                        break;
+                    default:
+                        break;
+                }
+            }
         }
         protected void GridViewAcceptedRequests_RowDataBound(object sender, GridViewRowEventArgs e)
         {
-            //HiddenField hfRequestTypeID = e.Row.FindControl("hfRequestTypeID") as HiddenField;
-            //Label lblRequestType = e.Row.FindControl("lblRequestType") as Label;
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                HiddenField hfRequestTypeID = e.Row.FindControl("hfRequestTypeID") as HiddenField;
+                Label lblRequestType = e.Row.FindControl("lblRequestType") as Label;
 
-            //switch (hfRequestTypeID.Value.ToString())
-            //{
-            //    case "1":
-            //        lblRequestType.Text = "حساب شخصى";
-            //        break;
-            //    case "2":
-            //        lblRequestType.Text = "حساب رسمى";
-            //        break;
-            //    case "3":
-            //        lblRequestType.Text = "حساب متجر";
-            //        break;
-            //    default:
-            //        break;
-            //}
+                switch (hfRequestTypeID.Value.ToString())
+                {
+                    case "1":
+                        lblRequestType.Text = "حساب شخصى";
+                        break;
+                    case "2":
+                        lblRequestType.Text = "حساب رسمى";
+                        break;
+                    case "3":
+                        lblRequestType.Text = "حساب متجر";
+                        break;
+                    default:
+                        break;
+                }
+            }
         }
         protected void GridViewRefusedRequests_RowDataBound(object sender, GridViewRowEventArgs e)
         {
-            //HiddenField hfRequestTypeID = e.Row.FindControl("hfRequestTypeID") as HiddenField;
-            //Label lblRequestType = e.Row.FindControl("lblRequestType") as Label;
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                HiddenField hfRequestTypeID = e.Row.FindControl("hfRequestTypeID") as HiddenField;
+                Label lblRequestType = e.Row.FindControl("lblRequestType") as Label;
 
-            //switch (hfRequestTypeID.Value.ToString())
-            //{
-            //    case "1":
-            //        lblRequestType.Text = "حساب شخصى";
-            //        break;
-            //    case "2":
-            //        lblRequestType.Text = "حساب رسمى";
-            //        break;
-            //    case "3":
-            //        lblRequestType.Text = "حساب متجر";
-            //        break;
-            //    default:
-            //        break;
-            //}
+                switch (hfRequestTypeID.Value.ToString())
+                {
+                    case "1":
+                        lblRequestType.Text = "حساب شخصى";
+                        break;
+                    case "2":
+                        lblRequestType.Text = "حساب رسمى";
+                        break;
+                    case "3":
+                        lblRequestType.Text = "حساب متجر";
+                        break;
+                    default:
+                        break;
+                }
+            }
         }
         protected void btnRefuseVerify_Click(object sender, EventArgs e)
         {
@@ -232,6 +241,24 @@ namespace ComboPortal.Admin
             objDataUser.Save();
 
             Response.Redirect("VerifyAccount.aspx");
+        }
+
+        protected void GridViewNewRequests_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridViewNewRequests.PageIndex = e.NewPageIndex;
+            loadNewRequests();
+        }
+
+        protected void GridViewAcceptedRequests_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridViewAcceptedRequests.PageIndex = e.NewPageIndex;
+            loadAcceptedRequests();
+        }
+
+        protected void GridViewRefusedRequests_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridViewRefusedRequests.PageIndex = e.NewPageIndex;
+            loadRequestDetails();
         }
     }
 }

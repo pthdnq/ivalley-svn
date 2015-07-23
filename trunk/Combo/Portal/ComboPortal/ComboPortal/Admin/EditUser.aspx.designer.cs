@@ -22,6 +22,15 @@ namespace ComboPortal.Admin {
         protected global::System.Web.UI.WebControls.Panel PanelProfile;
         
         /// <summary>
+        /// lblProfileUserName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblProfileUserName;
+        
+        /// <summary>
         /// LinkButton1 control.
         /// </summary>
         /// <remarks>
@@ -283,6 +292,15 @@ namespace ComboPortal.Admin {
         protected global::System.Web.UI.WebControls.Panel PanelPosts;
         
         /// <summary>
+        /// lblPostsUserName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblPostsUserName;
+        
+        /// <summary>
         /// btnBack control.
         /// </summary>
         /// <remarks>
@@ -308,6 +326,15 @@ namespace ComboPortal.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel PanelResetPass;
+        
+        /// <summary>
+        /// lblPasswordUserName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblPasswordUserName;
         
         /// <summary>
         /// btnBack2 control.
@@ -380,6 +407,15 @@ namespace ComboPortal.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel PanelResetSecretWord;
+        
+        /// <summary>
+        /// lblSecWordUserName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblSecWordUserName;
         
         /// <summary>
         /// btnBack3 control.
