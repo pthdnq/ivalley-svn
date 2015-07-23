@@ -1,5 +1,5 @@
 
-/****** Object:  StoredProcedure [proc_PurchaseOrderLoadByPrimaryKey]    Script Date: 6/28/2015 1:14:12 PM ******/
+/****** Object:  StoredProcedure [proc_PurchaseOrderLoadByPrimaryKey]    Script Date: 7/23/2015 12:52:38 PM ******/
 IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[proc_PurchaseOrderLoadByPrimaryKey]') AND OBJECTPROPERTY(id,N'IsProcedure') = 1)
     DROP PROCEDURE [proc_PurchaseOrderLoadByPrimaryKey];
 GO
@@ -29,7 +29,8 @@ BEGIN
 		[CreatedBy],
 		[CreatedDate],
 		[UpdatedBy],
-		[LastUpdatedDate]
+		[LastUpdatedDate],
+		[JobOrderID]
 	FROM [PurchaseOrder]
 	WHERE
 		([PurchaseOrderID] = @PurchaseOrderID)
@@ -46,7 +47,7 @@ IF (@@Error = 0) PRINT 'Procedure Creation: proc_PurchaseOrderLoadByPrimaryKey S
 ELSE PRINT 'Procedure Creation: proc_PurchaseOrderLoadByPrimaryKey Error on Creation'
 GO
 
-/****** Object:  StoredProcedure [proc_PurchaseOrderLoadAll]    Script Date: 6/28/2015 1:14:12 PM ******/
+/****** Object:  StoredProcedure [proc_PurchaseOrderLoadAll]    Script Date: 7/23/2015 12:52:38 PM ******/
 IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[proc_PurchaseOrderLoadAll]') AND OBJECTPROPERTY(id,N'IsProcedure') = 1)
     DROP PROCEDURE [proc_PurchaseOrderLoadAll];
 GO
@@ -74,7 +75,8 @@ BEGIN
 		[CreatedBy],
 		[CreatedDate],
 		[UpdatedBy],
-		[LastUpdatedDate]
+		[LastUpdatedDate],
+		[JobOrderID]
 	FROM [PurchaseOrder]
 
 	SET @Err = @@Error
@@ -89,7 +91,7 @@ IF (@@Error = 0) PRINT 'Procedure Creation: proc_PurchaseOrderLoadAll Succeeded'
 ELSE PRINT 'Procedure Creation: proc_PurchaseOrderLoadAll Error on Creation'
 GO
 
-/****** Object:  StoredProcedure [proc_PurchaseOrderUpdate]    Script Date: 6/28/2015 1:14:12 PM ******/
+/****** Object:  StoredProcedure [proc_PurchaseOrderUpdate]    Script Date: 7/23/2015 12:52:38 PM ******/
 IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[proc_PurchaseOrderUpdate]') AND OBJECTPROPERTY(id,N'IsProcedure') = 1)
     DROP PROCEDURE [proc_PurchaseOrderUpdate];
 GO
@@ -111,7 +113,8 @@ CREATE PROCEDURE [proc_PurchaseOrderUpdate]
 	@CreatedBy uniqueidentifier = NULL,
 	@CreatedDate datetime = NULL,
 	@UpdatedBy uniqueidentifier = NULL,
-	@LastUpdatedDate datetime = NULL
+	@LastUpdatedDate datetime = NULL,
+	@JobOrderID int = NULL
 )
 AS
 BEGIN
@@ -135,7 +138,8 @@ BEGIN
 		[CreatedBy] = @CreatedBy,
 		[CreatedDate] = @CreatedDate,
 		[UpdatedBy] = @UpdatedBy,
-		[LastUpdatedDate] = @LastUpdatedDate
+		[LastUpdatedDate] = @LastUpdatedDate,
+		[JobOrderID] = @JobOrderID
 	WHERE
 		[PurchaseOrderID] = @PurchaseOrderID
 
@@ -156,7 +160,7 @@ GO
 
 
 
-/****** Object:  StoredProcedure [proc_PurchaseOrderInsert]    Script Date: 6/28/2015 1:14:12 PM ******/
+/****** Object:  StoredProcedure [proc_PurchaseOrderInsert]    Script Date: 7/23/2015 12:52:38 PM ******/
 IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[proc_PurchaseOrderInsert]') AND OBJECTPROPERTY(id,N'IsProcedure') = 1)
     DROP PROCEDURE [proc_PurchaseOrderInsert];
 GO
@@ -178,7 +182,8 @@ CREATE PROCEDURE [proc_PurchaseOrderInsert]
 	@CreatedBy uniqueidentifier = NULL,
 	@CreatedDate datetime = NULL,
 	@UpdatedBy uniqueidentifier = NULL,
-	@LastUpdatedDate datetime = NULL
+	@LastUpdatedDate datetime = NULL,
+	@JobOrderID int = NULL
 )
 AS
 BEGIN
@@ -203,7 +208,8 @@ BEGIN
 		[CreatedBy],
 		[CreatedDate],
 		[UpdatedBy],
-		[LastUpdatedDate]
+		[LastUpdatedDate],
+		[JobOrderID]
 	)
 	VALUES
 	(
@@ -221,7 +227,8 @@ BEGIN
 		@CreatedBy,
 		@CreatedDate,
 		@UpdatedBy,
-		@LastUpdatedDate
+		@LastUpdatedDate,
+		@JobOrderID
 	)
 
 	SET @Err = @@Error
@@ -238,7 +245,7 @@ IF (@@Error = 0) PRINT 'Procedure Creation: proc_PurchaseOrderInsert Succeeded'
 ELSE PRINT 'Procedure Creation: proc_PurchaseOrderInsert Error on Creation'
 GO
 
-/****** Object:  StoredProcedure [proc_PurchaseOrderDelete]    Script Date: 6/28/2015 1:14:12 PM ******/
+/****** Object:  StoredProcedure [proc_PurchaseOrderDelete]    Script Date: 7/23/2015 12:52:38 PM ******/
 IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[proc_PurchaseOrderDelete]') AND OBJECTPROPERTY(id,N'IsProcedure') = 1)
     DROP PROCEDURE [proc_PurchaseOrderDelete];
 GO

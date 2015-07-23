@@ -1,5 +1,5 @@
 
-/****** Object:  StoredProcedure [proc_DepartmentLoadByPrimaryKey]    Script Date: 6/28/2015 1:14:11 PM ******/
+/****** Object:  StoredProcedure [proc_DepartmentLoadByPrimaryKey]    Script Date: 7/23/2015 12:52:37 PM ******/
 IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[proc_DepartmentLoadByPrimaryKey]') AND OBJECTPROPERTY(id,N'IsProcedure') = 1)
     DROP PROCEDURE [proc_DepartmentLoadByPrimaryKey];
 GO
@@ -32,7 +32,7 @@ IF (@@Error = 0) PRINT 'Procedure Creation: proc_DepartmentLoadByPrimaryKey Succ
 ELSE PRINT 'Procedure Creation: proc_DepartmentLoadByPrimaryKey Error on Creation'
 GO
 
-/****** Object:  StoredProcedure [proc_DepartmentLoadAll]    Script Date: 6/28/2015 1:14:11 PM ******/
+/****** Object:  StoredProcedure [proc_DepartmentLoadAll]    Script Date: 7/23/2015 12:52:37 PM ******/
 IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[proc_DepartmentLoadAll]') AND OBJECTPROPERTY(id,N'IsProcedure') = 1)
     DROP PROCEDURE [proc_DepartmentLoadAll];
 GO
@@ -61,7 +61,7 @@ IF (@@Error = 0) PRINT 'Procedure Creation: proc_DepartmentLoadAll Succeeded'
 ELSE PRINT 'Procedure Creation: proc_DepartmentLoadAll Error on Creation'
 GO
 
-/****** Object:  StoredProcedure [proc_DepartmentUpdate]    Script Date: 6/28/2015 1:14:11 PM ******/
+/****** Object:  StoredProcedure [proc_DepartmentUpdate]    Script Date: 7/23/2015 12:52:37 PM ******/
 IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[proc_DepartmentUpdate]') AND OBJECTPROPERTY(id,N'IsProcedure') = 1)
     DROP PROCEDURE [proc_DepartmentUpdate];
 GO
@@ -100,7 +100,7 @@ GO
 
 
 
-/****** Object:  StoredProcedure [proc_DepartmentInsert]    Script Date: 6/28/2015 1:14:11 PM ******/
+/****** Object:  StoredProcedure [proc_DepartmentInsert]    Script Date: 7/23/2015 12:52:37 PM ******/
 IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[proc_DepartmentInsert]') AND OBJECTPROPERTY(id,N'IsProcedure') = 1)
     DROP PROCEDURE [proc_DepartmentInsert];
 GO
@@ -140,7 +140,7 @@ IF (@@Error = 0) PRINT 'Procedure Creation: proc_DepartmentInsert Succeeded'
 ELSE PRINT 'Procedure Creation: proc_DepartmentInsert Error on Creation'
 GO
 
-/****** Object:  StoredProcedure [proc_DepartmentDelete]    Script Date: 6/28/2015 1:14:11 PM ******/
+/****** Object:  StoredProcedure [proc_DepartmentDelete]    Script Date: 7/23/2015 12:52:37 PM ******/
 IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[proc_DepartmentDelete]') AND OBJECTPROPERTY(id,N'IsProcedure') = 1)
     DROP PROCEDURE [proc_DepartmentDelete];
 GO

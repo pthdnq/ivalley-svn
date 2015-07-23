@@ -227,6 +227,14 @@ namespace DAL
 				}
 			}
 			
+			public static SqlParameter JobOrderID
+			{
+				get
+				{
+					return new SqlParameter("@JobOrderID", SqlDbType.Int, 0);
+				}
+			}
+			
 		}
 		#endregion		
 	
@@ -249,6 +257,7 @@ namespace DAL
             public const string CreatedDate = "CreatedDate";
             public const string UpdatedBy = "UpdatedBy";
             public const string LastUpdatedDate = "LastUpdatedDate";
+            public const string JobOrderID = "JobOrderID";
 
 			static public string ToPropertyName(string columnName)
 			{
@@ -272,6 +281,7 @@ namespace DAL
 					ht[CreatedDate] = _PurchaseOrder.PropertyNames.CreatedDate;
 					ht[UpdatedBy] = _PurchaseOrder.PropertyNames.UpdatedBy;
 					ht[LastUpdatedDate] = _PurchaseOrder.PropertyNames.LastUpdatedDate;
+					ht[JobOrderID] = _PurchaseOrder.PropertyNames.JobOrderID;
 
 				}
 				return (string)ht[columnName];
@@ -300,6 +310,7 @@ namespace DAL
             public const string CreatedDate = "CreatedDate";
             public const string UpdatedBy = "UpdatedBy";
             public const string LastUpdatedDate = "LastUpdatedDate";
+            public const string JobOrderID = "JobOrderID";
 
 			static public string ToColumnName(string propertyName)
 			{
@@ -323,6 +334,7 @@ namespace DAL
 					ht[CreatedDate] = _PurchaseOrder.ColumnNames.CreatedDate;
 					ht[UpdatedBy] = _PurchaseOrder.ColumnNames.UpdatedBy;
 					ht[LastUpdatedDate] = _PurchaseOrder.ColumnNames.LastUpdatedDate;
+					ht[JobOrderID] = _PurchaseOrder.ColumnNames.JobOrderID;
 
 				}
 				return (string)ht[propertyName];
@@ -351,6 +363,7 @@ namespace DAL
             public const string CreatedDate = "s_CreatedDate";
             public const string UpdatedBy = "s_UpdatedBy";
             public const string LastUpdatedDate = "s_LastUpdatedDate";
+            public const string JobOrderID = "s_JobOrderID";
 
 		}
 		#endregion		
@@ -546,6 +559,18 @@ namespace DAL
 			set
 	        {
 				base.SetDateTime(ColumnNames.LastUpdatedDate, value);
+			}
+		}
+
+		public virtual int JobOrderID
+	    {
+			get
+	        {
+				return base.Getint(ColumnNames.JobOrderID);
+			}
+			set
+	        {
+				base.Setint(ColumnNames.JobOrderID, value);
 			}
 		}
 
@@ -794,6 +819,21 @@ namespace DAL
 			}
 		}
 
+		public virtual string s_JobOrderID
+	    {
+			get
+	        {
+				return this.IsColumnNull(ColumnNames.JobOrderID) ? string.Empty : base.GetintAsString(ColumnNames.JobOrderID);
+			}
+			set
+	        {
+				if(string.Empty == value)
+					this.SetColumnNull(ColumnNames.JobOrderID);
+				else
+					this.JobOrderID = base.SetintAsString(ColumnNames.JobOrderID, value);
+			}
+		}
+
 
 		#endregion		
 	
@@ -982,6 +1022,16 @@ namespace DAL
 					get
 					{
 							WhereParameter where = new WhereParameter(ColumnNames.LastUpdatedDate, Parameters.LastUpdatedDate);
+							this._clause._entity.Query.AddWhereParameter(where);
+							return where;
+					}
+				}
+
+				public WhereParameter JobOrderID
+				{
+					get
+					{
+							WhereParameter where = new WhereParameter(ColumnNames.JobOrderID, Parameters.JobOrderID);
 							this._clause._entity.Query.AddWhereParameter(where);
 							return where;
 					}
@@ -1184,6 +1234,18 @@ namespace DAL
 				}
 			}
 
+			public WhereParameter JobOrderID
+		    {
+				get
+		        {
+					if(_JobOrderID_W == null)
+	        	    {
+						_JobOrderID_W = TearOff.JobOrderID;
+					}
+					return _JobOrderID_W;
+				}
+			}
+
 			private WhereParameter _PurchaseOrderID_W = null;
 			private WhereParameter _PurchaseOrderNumber_W = null;
 			private WhereParameter _PurchaseOrderDate_W = null;
@@ -1200,6 +1262,7 @@ namespace DAL
 			private WhereParameter _CreatedDate_W = null;
 			private WhereParameter _UpdatedBy_W = null;
 			private WhereParameter _LastUpdatedDate_W = null;
+			private WhereParameter _JobOrderID_W = null;
 
 			public void WhereClauseReset()
 			{
@@ -1219,6 +1282,7 @@ namespace DAL
 				_CreatedDate_W = null;
 				_UpdatedBy_W = null;
 				_LastUpdatedDate_W = null;
+				_JobOrderID_W = null;
 
 				this._entity.Query.FlushWhereParameters();
 
@@ -1435,6 +1499,16 @@ namespace DAL
 					}
 				}
 
+				public AggregateParameter JobOrderID
+				{
+					get
+					{
+							AggregateParameter aggregate = new AggregateParameter(ColumnNames.JobOrderID, Parameters.JobOrderID);
+							this._clause._entity.Query.AddAggregateParameter(aggregate);
+							return aggregate;
+					}
+				}
+
 
 				private AggregateClause _clause;
 			}
@@ -1632,6 +1706,18 @@ namespace DAL
 				}
 			}
 
+			public AggregateParameter JobOrderID
+		    {
+				get
+		        {
+					if(_JobOrderID_W == null)
+	        	    {
+						_JobOrderID_W = TearOff.JobOrderID;
+					}
+					return _JobOrderID_W;
+				}
+			}
+
 			private AggregateParameter _PurchaseOrderID_W = null;
 			private AggregateParameter _PurchaseOrderNumber_W = null;
 			private AggregateParameter _PurchaseOrderDate_W = null;
@@ -1648,6 +1734,7 @@ namespace DAL
 			private AggregateParameter _CreatedDate_W = null;
 			private AggregateParameter _UpdatedBy_W = null;
 			private AggregateParameter _LastUpdatedDate_W = null;
+			private AggregateParameter _JobOrderID_W = null;
 
 			public void AggregateClauseReset()
 			{
@@ -1667,6 +1754,7 @@ namespace DAL
 				_CreatedDate_W = null;
 				_UpdatedBy_W = null;
 				_LastUpdatedDate_W = null;
+				_JobOrderID_W = null;
 
 				this._entity.Query.FlushAggregateParameters();
 
@@ -1803,6 +1891,10 @@ namespace DAL
 
 			p = cmd.Parameters.Add(Parameters.LastUpdatedDate);
 			p.SourceColumn = ColumnNames.LastUpdatedDate;
+			p.SourceVersion = DataRowVersion.Current;
+
+			p = cmd.Parameters.Add(Parameters.JobOrderID);
+			p.SourceColumn = ColumnNames.JobOrderID;
 			p.SourceVersion = DataRowVersion.Current;
 
 

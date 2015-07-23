@@ -1,5 +1,5 @@
 
-/****** Object:  StoredProcedure [proc_DeliveryOrderStatusLoadByPrimaryKey]    Script Date: 6/28/2015 1:14:11 PM ******/
+/****** Object:  StoredProcedure [proc_DeliveryOrderStatusLoadByPrimaryKey]    Script Date: 7/23/2015 12:52:37 PM ******/
 IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[proc_DeliveryOrderStatusLoadByPrimaryKey]') AND OBJECTPROPERTY(id,N'IsProcedure') = 1)
     DROP PROCEDURE [proc_DeliveryOrderStatusLoadByPrimaryKey];
 GO
@@ -34,7 +34,7 @@ IF (@@Error = 0) PRINT 'Procedure Creation: proc_DeliveryOrderStatusLoadByPrimar
 ELSE PRINT 'Procedure Creation: proc_DeliveryOrderStatusLoadByPrimaryKey Error on Creation'
 GO
 
-/****** Object:  StoredProcedure [proc_DeliveryOrderStatusLoadAll]    Script Date: 6/28/2015 1:14:11 PM ******/
+/****** Object:  StoredProcedure [proc_DeliveryOrderStatusLoadAll]    Script Date: 7/23/2015 12:52:37 PM ******/
 IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[proc_DeliveryOrderStatusLoadAll]') AND OBJECTPROPERTY(id,N'IsProcedure') = 1)
     DROP PROCEDURE [proc_DeliveryOrderStatusLoadAll];
 GO
@@ -65,7 +65,7 @@ IF (@@Error = 0) PRINT 'Procedure Creation: proc_DeliveryOrderStatusLoadAll Succ
 ELSE PRINT 'Procedure Creation: proc_DeliveryOrderStatusLoadAll Error on Creation'
 GO
 
-/****** Object:  StoredProcedure [proc_DeliveryOrderStatusUpdate]    Script Date: 6/28/2015 1:14:11 PM ******/
+/****** Object:  StoredProcedure [proc_DeliveryOrderStatusUpdate]    Script Date: 7/23/2015 12:52:37 PM ******/
 IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[proc_DeliveryOrderStatusUpdate]') AND OBJECTPROPERTY(id,N'IsProcedure') = 1)
     DROP PROCEDURE [proc_DeliveryOrderStatusUpdate];
 GO
@@ -108,7 +108,7 @@ GO
 
 
 
-/****** Object:  StoredProcedure [proc_DeliveryOrderStatusInsert]    Script Date: 6/28/2015 1:14:11 PM ******/
+/****** Object:  StoredProcedure [proc_DeliveryOrderStatusInsert]    Script Date: 7/23/2015 12:52:37 PM ******/
 IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[proc_DeliveryOrderStatusInsert]') AND OBJECTPROPERTY(id,N'IsProcedure') = 1)
     DROP PROCEDURE [proc_DeliveryOrderStatusInsert];
 GO
@@ -154,7 +154,7 @@ IF (@@Error = 0) PRINT 'Procedure Creation: proc_DeliveryOrderStatusInsert Succe
 ELSE PRINT 'Procedure Creation: proc_DeliveryOrderStatusInsert Error on Creation'
 GO
 
-/****** Object:  StoredProcedure [proc_DeliveryOrderStatusDelete]    Script Date: 6/28/2015 1:14:11 PM ******/
+/****** Object:  StoredProcedure [proc_DeliveryOrderStatusDelete]    Script Date: 7/23/2015 12:52:37 PM ******/
 IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[proc_DeliveryOrderStatusDelete]') AND OBJECTPROPERTY(id,N'IsProcedure') = 1)
     DROP PROCEDURE [proc_DeliveryOrderStatusDelete];
 GO
