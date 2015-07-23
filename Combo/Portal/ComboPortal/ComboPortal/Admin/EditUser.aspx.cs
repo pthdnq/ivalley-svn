@@ -139,7 +139,7 @@ namespace ComboPortal.Admin
             {
                 Attachment objData2 = new Attachment();
                 objData2.LoadByPrimaryKey(objData.ProfileImgID);
-                ImgUser.Src = objData2.Path;
+                ImgUser.Src = "www.api.combomobile.com" + objData2.Path;
             }
 
             if (!objData.IsColumnNull(ComboUser.ColumnNames.IsVerified))
@@ -376,17 +376,17 @@ namespace ComboPortal.Admin
                     {
                         case 1:
                             HtmlImage imgAttachment = e.Item.FindControl("imgAttachment") as HtmlImage;
-                            imgAttachment.Src = objDataAttachment.Path;
+                            imgAttachment.Src = "api.combomobile.com" + objDataAttachment.Path;
                             imgAttachment.Visible = true;
                             break;
                         case 2:
                             HtmlAudio audioAttachment = e.Item.FindControl("audioAttachment") as HtmlAudio;
-                            audioAttachment.Src = objDataAttachment.Path;
+                            audioAttachment.Src = "api.combomobile.com" + objDataAttachment.Path;
                             audioAttachment.Visible = true;
                             break;
                         case 3:
                             HtmlVideo videoAttachment = e.Item.FindControl("videoAttachment") as HtmlVideo;
-                            videoAttachment.Src = objDataAttachment.Path;
+                            videoAttachment.Src = "api.combomobile.com" + objDataAttachment.Path;
                             videoAttachment.Visible = true;
                             break;
                         default:
