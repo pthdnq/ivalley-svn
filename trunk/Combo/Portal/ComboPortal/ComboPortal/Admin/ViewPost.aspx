@@ -43,7 +43,7 @@
                                 <div class="span12" style="margin-right: 0px">
                                     <ul class="chats normal-chat">
                                         <li class="in">
-                                            <img class="avatar" id="imgUserProfile" runat="server" alt="" src='<%# string.IsNullOrWhiteSpace(Eval("ProfilePic").ToString())? "img/profile-pic2.png" : Eval("ProfilePic") %>' />
+                                            <img class="avatar" id="imgUserProfile" runat="server" alt="" src='<%# string.IsNullOrWhiteSpace(Eval("ProfilePic").ToString())? "img/profile-pic2.png" : "api.combomobile.com" +  Eval("ProfilePic") %>' />
                                             <div class="message">
                                                 <span class="arrow"></span>
                                                 <a class="name"><%# Eval("UserName") %></a>
