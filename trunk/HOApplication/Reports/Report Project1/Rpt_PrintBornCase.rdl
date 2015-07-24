@@ -4682,8 +4682,9 @@
         </Style>
       </Textbox>
       <Image Name="Image1">
-        <Source>External</Source>
-        <Value>="http://192.168.90.91/HoApplication_mick/HealthReports/Viewer/images.aspx?Born=1&amp;Image=" &amp; Parameters!BornID.Value</Value>
+        <Source>Database</Source>
+        <Value>=First(Fields!QrCode.Value, "DataSet1")</Value>
+        <MIMEType>image/jpeg</MIMEType>
         <Top>0.10266cm</Top>
         <Left>0.09525cm</Left>
         <Height>3.8cm</Height>

@@ -4398,8 +4398,9 @@
         </Style>
       </Textbox>
       <Image Name="Image1">
-        <Source>External</Source>
-        <Value>="http://192.168.90.91/HoApplication_mick/HealthReports/Viewer/images.aspx?Dead=1&amp;Image=" &amp; Parameters!DeadID.Value</Value>
+        <Source>Database</Source>
+        <Value>=First(Fields!QrCode.Value, "DataSet1")</Value>
+        <MIMEType>image/jpeg</MIMEType>
         <Top>0.15875cm</Top>
         <Left>0.24223cm</Left>
         <Height>3.8cm</Height>
@@ -4826,6 +4827,10 @@
         <Field Name="DoctorName">
           <DataField>DoctorName</DataField>
           <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="QrCode">
+          <DataField>QrCode</DataField>
+          <rd:TypeName>System.Byte[]</rd:TypeName>
         </Field>
       </Fields>
     </DataSet>
