@@ -171,6 +171,14 @@ namespace Pricing.DAL
 				}
 			}
 			
+			public static SqlParameter IsSync
+			{
+				get
+				{
+					return new SqlParameter("@IsSync", SqlDbType.Bit, 0);
+				}
+			}
+			
 		}
 		#endregion		
 	
@@ -186,6 +194,7 @@ namespace Pricing.DAL
             public const string Unit_price = "unit_price";
             public const string SuggestedPrice = "SuggestedPrice";
             public const string FinalPrice = "FinalPrice";
+            public const string IsSync = "IsSync";
 
 			static public string ToPropertyName(string columnName)
 			{
@@ -202,6 +211,7 @@ namespace Pricing.DAL
 					ht[Unit_price] = _PackageDetails.PropertyNames.Unit_price;
 					ht[SuggestedPrice] = _PackageDetails.PropertyNames.SuggestedPrice;
 					ht[FinalPrice] = _PackageDetails.PropertyNames.FinalPrice;
+					ht[IsSync] = _PackageDetails.PropertyNames.IsSync;
 
 				}
 				return (string)ht[columnName];
@@ -223,6 +233,7 @@ namespace Pricing.DAL
             public const string Unit_price = "Unit_price";
             public const string SuggestedPrice = "SuggestedPrice";
             public const string FinalPrice = "FinalPrice";
+            public const string IsSync = "IsSync";
 
 			static public string ToColumnName(string propertyName)
 			{
@@ -239,6 +250,7 @@ namespace Pricing.DAL
 					ht[Unit_price] = _PackageDetails.ColumnNames.Unit_price;
 					ht[SuggestedPrice] = _PackageDetails.ColumnNames.SuggestedPrice;
 					ht[FinalPrice] = _PackageDetails.ColumnNames.FinalPrice;
+					ht[IsSync] = _PackageDetails.ColumnNames.IsSync;
 
 				}
 				return (string)ht[propertyName];
@@ -260,6 +272,7 @@ namespace Pricing.DAL
             public const string Unit_price = "s_Unit_price";
             public const string SuggestedPrice = "s_SuggestedPrice";
             public const string FinalPrice = "s_FinalPrice";
+            public const string IsSync = "s_IsSync";
 
 		}
 		#endregion		
@@ -371,6 +384,18 @@ namespace Pricing.DAL
 			set
 	        {
 				base.Setdecimal(ColumnNames.FinalPrice, value);
+			}
+		}
+
+		public virtual bool IsSync
+	    {
+			get
+	        {
+				return base.Getbool(ColumnNames.IsSync);
+			}
+			set
+	        {
+				base.Setbool(ColumnNames.IsSync, value);
 			}
 		}
 
@@ -514,6 +539,21 @@ namespace Pricing.DAL
 			}
 		}
 
+		public virtual string s_IsSync
+	    {
+			get
+	        {
+				return this.IsColumnNull(ColumnNames.IsSync) ? string.Empty : base.GetboolAsString(ColumnNames.IsSync);
+			}
+			set
+	        {
+				if(string.Empty == value)
+					this.SetColumnNull(ColumnNames.IsSync);
+				else
+					this.IsSync = base.SetboolAsString(ColumnNames.IsSync, value);
+			}
+		}
+
 
 		#endregion		
 	
@@ -637,6 +677,16 @@ namespace Pricing.DAL
 					}
 				}
 
+				public WhereParameter IsSync
+				{
+					get
+					{
+							WhereParameter where = new WhereParameter(ColumnNames.IsSync, Parameters.IsSync);
+							this._clause._entity.Query.AddWhereParameter(where);
+							return where;
+					}
+				}
+
 
 				private WhereClause _clause;
 			}
@@ -750,6 +800,18 @@ namespace Pricing.DAL
 				}
 			}
 
+			public WhereParameter IsSync
+		    {
+				get
+		        {
+					if(_IsSync_W == null)
+	        	    {
+						_IsSync_W = TearOff.IsSync;
+					}
+					return _IsSync_W;
+				}
+			}
+
 			private WhereParameter _PackID_W = null;
 			private WhereParameter _Trade_Code_W = null;
 			private WhereParameter _PackageDetailsID_W = null;
@@ -759,6 +821,7 @@ namespace Pricing.DAL
 			private WhereParameter _Unit_price_W = null;
 			private WhereParameter _SuggestedPrice_W = null;
 			private WhereParameter _FinalPrice_W = null;
+			private WhereParameter _IsSync_W = null;
 
 			public void WhereClauseReset()
 			{
@@ -771,6 +834,7 @@ namespace Pricing.DAL
 				_Unit_price_W = null;
 				_SuggestedPrice_W = null;
 				_FinalPrice_W = null;
+				_IsSync_W = null;
 
 				this._entity.Query.FlushWhereParameters();
 
@@ -917,6 +981,16 @@ namespace Pricing.DAL
 					}
 				}
 
+				public AggregateParameter IsSync
+				{
+					get
+					{
+							AggregateParameter aggregate = new AggregateParameter(ColumnNames.IsSync, Parameters.IsSync);
+							this._clause._entity.Query.AddAggregateParameter(aggregate);
+							return aggregate;
+					}
+				}
+
 
 				private AggregateClause _clause;
 			}
@@ -1030,6 +1104,18 @@ namespace Pricing.DAL
 				}
 			}
 
+			public AggregateParameter IsSync
+		    {
+				get
+		        {
+					if(_IsSync_W == null)
+	        	    {
+						_IsSync_W = TearOff.IsSync;
+					}
+					return _IsSync_W;
+				}
+			}
+
 			private AggregateParameter _PackID_W = null;
 			private AggregateParameter _Trade_Code_W = null;
 			private AggregateParameter _PackageDetailsID_W = null;
@@ -1039,6 +1125,7 @@ namespace Pricing.DAL
 			private AggregateParameter _Unit_price_W = null;
 			private AggregateParameter _SuggestedPrice_W = null;
 			private AggregateParameter _FinalPrice_W = null;
+			private AggregateParameter _IsSync_W = null;
 
 			public void AggregateClauseReset()
 			{
@@ -1051,6 +1138,7 @@ namespace Pricing.DAL
 				_Unit_price_W = null;
 				_SuggestedPrice_W = null;
 				_FinalPrice_W = null;
+				_IsSync_W = null;
 
 				this._entity.Query.FlushAggregateParameters();
 
@@ -1159,6 +1247,10 @@ namespace Pricing.DAL
 
 			p = cmd.Parameters.Add(Parameters.FinalPrice);
 			p.SourceColumn = ColumnNames.FinalPrice;
+			p.SourceVersion = DataRowVersion.Current;
+
+			p = cmd.Parameters.Add(Parameters.IsSync);
+			p.SourceColumn = ColumnNames.IsSync;
 			p.SourceVersion = DataRowVersion.Current;
 
 

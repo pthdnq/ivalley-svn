@@ -7,6 +7,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System.Web.Script.Services;
 using PricingBLL;
+using Pricing.BLL;
 using System.Data;
 namespace Pricing_GUI.services
 {
@@ -96,7 +97,7 @@ namespace Pricing_GUI.services
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public void GetTradeDrugById(int id)
         {
-            System.Threading.Thread.Sleep(1500);
+            
             v_EDDB_TradeDrugDetails details = new v_EDDB_TradeDrugDetails();
             details.GetDrugById(id);
 
@@ -128,7 +129,7 @@ namespace Pricing_GUI.services
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public void GetTradeGenericsById(int id)
         {
-            System.Threading.Thread.Sleep(1500);
+            
             V_EDDB_DrugGenerics details = new V_EDDB_DrugGenerics();
             details.GetDrugById(id);
 
@@ -168,14 +169,18 @@ namespace Pricing_GUI.services
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public void GetTradePackgesById(int id)
         {
-            System.Threading.Thread.Sleep(1500);
+
+            PackageDetails details = new PackageDetails();
+            details.GetPackagesByTradeID(id);
+            /*
             v_EDDB_PackDetailes details = new v_EDDB_PackDetailes();
-            details.GetDrugById(id);
+            details.GetPacksByTradeId(id);*/
 
             List<Models.PackageModel> Alldetails = details.DefaultView.Table.AsEnumerable().Select(row =>
             {
                 return new Models.PackageModel
                 {
+                    PackID = Convert.IsDBNull(row["PackID"]) ? 0 : Convert.ToInt32(row["PackID"].ToString()),
                     Pack_unit = row["Pack_unit"].ToString(),
                     Pack_Unit_Name = row["Pack_Unit_Name"].ToString(),
                     conver_sub = Convert.IsDBNull(row["conver_sub"]) ? 0 : Convert.ToDecimal(row["conver_sub"].ToString()),
@@ -185,6 +190,313 @@ namespace Pricing_GUI.services
             SetContentResult(Alldetails);
             //return _response;
         }
+
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public void GetTradePackgesByPackId(int id)
+        {
+
+            PackageDetails details = new PackageDetails();
+            details.GetPackagesByPackID(id);
+            /*
+            v_EDDB_PackDetailes details = new v_EDDB_PackDetailes();
+            details.GetPacksByTradeId(id);*/
+
+            Models.PackageModel Alldetails = new Models.PackageModel (); 
+            Alldetails.PackID = details.PackID;
+            Alldetails.Pack_unit = details.GetColumn("Pack_unit").ToString();
+            Alldetails.Pack_Unit_Name = details.GetColumn("Pack_Unit_Name").ToString();
+            Alldetails.conver_sub = details.Conver_sub;
+            Alldetails.unit_price = details.Unit_price;
+            
+            SetContentResult(Alldetails);
+            //return _response;
+        }
+
+
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public void GetPricingInfoByPackageId(int id)
+        {
+
+            PackagePricing pricingDetails = new PackagePricing();
+            pricingDetails.GetPricingInfoByPackageID(id);
+
+            Models.PackgePricingModel Alldetails = new Models.PackgePricingModel();
+            if (pricingDetails.RowCount > 0)
+            {
+                Alldetails.PackagePricingID = pricingDetails.PackagePricingID;
+                Alldetails.PackID = pricingDetails.PackID;
+                Alldetails.CompanyID = pricingDetails.IsColumnNull("CompanyID") ? 0 : pricingDetails.CompanyID;
+                Alldetails.PricingStatusID = pricingDetails.IsColumnNull("PricingStatusID") ? 0 : pricingDetails.PricingStatusID;
+                Alldetails.RegistrationCommitteTypeID = pricingDetails.IsColumnNull("RegistrationCommitteTypeID") ? 0 : pricingDetails.RegistrationCommitteTypeID;
+                Alldetails.DosageFormID = pricingDetails.IsColumnNull("DosageFormID") ? 0 : pricingDetails.DosageFormID;
+                Alldetails.FileTypeID = pricingDetails.IsColumnNull("FileTypeID") ? 0 : pricingDetails.FileTypeID;
+                Alldetails.ManufactureID = pricingDetails.IsColumnNull("ManufactureID") ? 0 : pricingDetails.ManufactureID;
+                Alldetails.AssignedUserID = pricingDetails.IsColumnNull("AssignedUserID") ? 0 : pricingDetails.AssignedUserID;
+                Alldetails.TradeName = pricingDetails.TradeName;
+                Alldetails.PackDetailes = pricingDetails.PackDetailes;
+                Alldetails.CompanyPrice = pricingDetails.IsColumnNull("CompanyPrice") ? 0 : pricingDetails.CompanyPrice;
+                Alldetails.CommittePrice = pricingDetails.IsColumnNull("CommittePrice") ? 0 : pricingDetails.CommittePrice;
+                Alldetails.CommitteDate = pricingDetails.CommitteDate;
+                Alldetails.DiscussionDate = pricingDetails.DiscussionDate;
+                Alldetails.SubmissionDate = pricingDetails.SubmissionDate;
+                Alldetails.Pack = pricingDetails.Pack;
+                Alldetails.FileNo = pricingDetails.FileNo;
+                Alldetails.Generic = pricingDetails.Generic;
+                Alldetails.Trade_Notes = pricingDetails.Trade_Notes;
+                Alldetails.ImportedManufacture = pricingDetails.ImportedManufacture;
+                Alldetails.RegNo = pricingDetails.RegNo;
+                Alldetails.Reference = pricingDetails.Reference;
+                Alldetails.Indication = pricingDetails.Indication;
+                Alldetails.Dose = pricingDetails.Dose;
+                Alldetails.SubmittedToSpecialized = pricingDetails.IsColumnNull("SubmittedToSpecialized") ? false : pricingDetails.SubmittedToSpecialized;
+                Alldetails.SalesTaxes = pricingDetails.IsColumnNull("SalesTaxes") ? false : pricingDetails.SalesTaxes;
+                Alldetails.EssentialDrugList = pricingDetails.IsColumnNull("EssentialDrugList") ? false : pricingDetails.EssentialDrugList;
+                Alldetails.TradePricingStatusID = pricingDetails.IsColumnNull("TradePricingStatusID") ? 0 : pricingDetails.TradePricingStatusID;
+                Alldetails.TradePricingLicenseTypeID = pricingDetails.IsColumnNull("TradePricingLicenseTypeID") ? 0 : pricingDetails.TradePricingLicenseTypeID;
+                Alldetails.SectorTypeID = pricingDetails.IsColumnNull("SectorTypeID") ? 0 : pricingDetails.SectorTypeID;
+                Alldetails.CommitteePrice = pricingDetails.CommitteePrice;
+                Alldetails.CommiteeDate = pricingDetails.IsColumnNull("CommiteeDate") ? DateTime.MinValue : pricingDetails.CommiteeDate;
+                Alldetails.RationalForPricing = pricingDetails.RationalForPricing;
+                Alldetails.NoInBox = pricingDetails.IsColumnNull("NoInBox") ? 0 : pricingDetails.NoInBox;
+                Alldetails.LowestIntPrice = pricingDetails.LowestIntPrice;
+                Alldetails.PriceInEgy = pricingDetails.PriceInEgy;
+                Alldetails.PriceAfter30 = pricingDetails.PriceAfter30;
+                Alldetails.PriceAfter35HighTech = pricingDetails.PriceAfter35HighTech;
+                Alldetails.PriceAfter35FirstGeneric = pricingDetails.PriceAfter35FirstGeneric;
+                Alldetails.PriceAfter40SecondGeneric = pricingDetails.PriceAfter40SecondGeneric;
+                Alldetails.LowestPriceGeneric = pricingDetails.LowestPriceGeneric;
+                Alldetails.FinalPrice = pricingDetails.FinalPrice;
+                Alldetails.IsPricedTo499 = pricingDetails.IsColumnNull("IsPricedTo499") ? false : pricingDetails.IsPricedTo499;
+                Alldetails.Notes = pricingDetails.Notes;
+                Alldetails.MainGroup = pricingDetails.MainGroup;
+                Alldetails.Similar = pricingDetails.IsColumnNull("Similar") ? false : pricingDetails.Similar;
+                Alldetails.MonthYear = pricingDetails.MonthYear;
+                Alldetails.PreviousPrice = pricingDetails.PreviousPrice;
+                Alldetails.PreviousPack = pricingDetails.PreviousPack;
+                Alldetails.FilePath = pricingDetails.FilePath;
+                Alldetails.File_CoverLetter = pricingDetails.File_CoverLetter;
+                Alldetails.File_BoxApproval = pricingDetails.File_BoxApproval;
+                Alldetails.File_TradeNameApproval = pricingDetails.File_TradeNameApproval;
+                Alldetails.File_CostSheet = pricingDetails.File_CostSheet;
+                Alldetails.File_ProformaInvoice = pricingDetails.File_ProformaInvoice;
+                Alldetails.File_CifPriceToEgypt = pricingDetails.File_CifPriceToEgypt;
+                Alldetails.File_PriceOriginCountry = pricingDetails.File_PriceOriginCountry;
+                Alldetails.File_CountryPrices = pricingDetails.File_CountryPrices;
+                Alldetails.File_PackArtworkLeaflet = pricingDetails.File_PackArtworkLeaflet;
+                Alldetails.File_Others = pricingDetails.File_Others;
+                Alldetails.Generics = pricingDetails.Generics;
+                Alldetails.GenericStrength = pricingDetails.GenericStrength;
+                Alldetails.ApprovedPrice = pricingDetails.ApprovedPrice;
+                Alldetails.PriceCategory = pricingDetails.PriceCategory;
+                Alldetails.File_ministerapproval = pricingDetails.File_ministerapproval;
+                Alldetails.Approvaldate = pricingDetails.IsColumnNull("Approvaldate") ? DateTime.MinValue : pricingDetails.Approvaldate;
+                Alldetails.Issuedate = pricingDetails.IsColumnNull("Issuedate") ? DateTime.MinValue : pricingDetails.Issuedate;
+                Alldetails.ApprovalLetters = pricingDetails.ApprovalLetters;
+                Alldetails.Trade_Code = pricingDetails.IsColumnNull("Trade_Code") ? 0 : pricingDetails.Trade_Code;
+            }
+            SetContentResult(Alldetails);
+            //return _response;
+        }
+
+
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public void GetPricingInfoByID(int ppid)
+        {
+
+            PackagePricing pricingDetails = new PackagePricing();
+            pricingDetails.LoadByPrimaryKey(ppid);
+
+            Models.PackgePricingModel Alldetails = new Models.PackgePricingModel();
+            if (pricingDetails.RowCount > 0)
+            {
+                Alldetails.PackagePricingID = pricingDetails.PackagePricingID;
+                Alldetails.PackID = pricingDetails.PackID;
+                Alldetails.CompanyID = pricingDetails.IsColumnNull("CompanyID") ? 0 : pricingDetails.CompanyID;
+                Alldetails.PricingStatusID = pricingDetails.IsColumnNull("PricingStatusID") ? 0 : pricingDetails.PricingStatusID;
+                Alldetails.RegistrationCommitteTypeID = pricingDetails.IsColumnNull("RegistrationCommitteTypeID") ? 0 : pricingDetails.RegistrationCommitteTypeID;
+                Alldetails.DosageFormID = pricingDetails.IsColumnNull("DosageFormID") ? 0 : pricingDetails.DosageFormID;
+                Alldetails.FileTypeID = pricingDetails.IsColumnNull("FileTypeID") ? 0 : pricingDetails.FileTypeID;
+                Alldetails.ManufactureID = pricingDetails.IsColumnNull("ManufactureID") ? 0 : pricingDetails.ManufactureID;
+                Alldetails.AssignedUserID = pricingDetails.IsColumnNull("AssignedUserID") ? 0 : pricingDetails.AssignedUserID;
+                Alldetails.TradeName = pricingDetails.TradeName;
+                Alldetails.PackDetailes = pricingDetails.PackDetailes;
+                Alldetails.CompanyPrice = pricingDetails.IsColumnNull("CompanyPrice") ? 0 : pricingDetails.CompanyPrice;
+                Alldetails.CommittePrice = pricingDetails.IsColumnNull("CommittePrice") ? 0 : pricingDetails.CommittePrice;
+                Alldetails.CommitteDate = pricingDetails.CommitteDate;
+                Alldetails.DiscussionDate = pricingDetails.DiscussionDate;
+                Alldetails.SubmissionDate = pricingDetails.SubmissionDate;
+                Alldetails.Pack = pricingDetails.Pack;
+                Alldetails.FileNo = pricingDetails.FileNo;
+                Alldetails.Generic = pricingDetails.Generic;
+                Alldetails.Trade_Notes = pricingDetails.Trade_Notes;
+                Alldetails.ImportedManufacture = pricingDetails.ImportedManufacture;
+                Alldetails.RegNo = pricingDetails.RegNo;
+                Alldetails.Reference = pricingDetails.Reference;
+                Alldetails.Indication = pricingDetails.Indication;
+                Alldetails.Dose = pricingDetails.Dose;
+                Alldetails.SubmittedToSpecialized = pricingDetails.IsColumnNull("SubmittedToSpecialized") ? false : pricingDetails.SubmittedToSpecialized;
+                Alldetails.SalesTaxes = pricingDetails.IsColumnNull("SalesTaxes") ? false : pricingDetails.SalesTaxes;
+                Alldetails.EssentialDrugList = pricingDetails.IsColumnNull("EssentialDrugList") ? false : pricingDetails.EssentialDrugList;
+                Alldetails.TradePricingStatusID = pricingDetails.IsColumnNull("TradePricingStatusID") ? 0 : pricingDetails.TradePricingStatusID;
+                Alldetails.TradePricingLicenseTypeID = pricingDetails.IsColumnNull("TradePricingLicenseTypeID") ? 0 : pricingDetails.TradePricingLicenseTypeID;
+                Alldetails.SectorTypeID = pricingDetails.IsColumnNull("SectorTypeID") ? 0 : pricingDetails.SectorTypeID;
+                Alldetails.CommitteePrice = pricingDetails.CommitteePrice;
+                Alldetails.CommiteeDate = pricingDetails.IsColumnNull("CommiteeDate") ? DateTime.MinValue : pricingDetails.CommiteeDate;
+                Alldetails.RationalForPricing = pricingDetails.RationalForPricing;
+                Alldetails.NoInBox = pricingDetails.IsColumnNull("NoInBox") ? 0 : pricingDetails.NoInBox;
+                Alldetails.LowestIntPrice = pricingDetails.LowestIntPrice;
+                Alldetails.PriceInEgy = pricingDetails.PriceInEgy;
+                Alldetails.PriceAfter30 = pricingDetails.PriceAfter30;
+                Alldetails.PriceAfter35HighTech = pricingDetails.PriceAfter35HighTech;
+                Alldetails.PriceAfter35FirstGeneric = pricingDetails.PriceAfter35FirstGeneric;
+                Alldetails.PriceAfter40SecondGeneric = pricingDetails.PriceAfter40SecondGeneric;
+                Alldetails.LowestPriceGeneric = pricingDetails.LowestPriceGeneric;
+                Alldetails.FinalPrice = pricingDetails.FinalPrice;
+                Alldetails.IsPricedTo499 = pricingDetails.IsColumnNull("IsPricedTo499") ? false : pricingDetails.IsPricedTo499;
+                Alldetails.Notes = pricingDetails.Notes;
+                Alldetails.MainGroup = pricingDetails.MainGroup;
+                Alldetails.Similar = pricingDetails.IsColumnNull("Similar") ? false : pricingDetails.Similar;
+                Alldetails.MonthYear = pricingDetails.MonthYear;
+                Alldetails.PreviousPrice = pricingDetails.PreviousPrice;
+                Alldetails.PreviousPack = pricingDetails.PreviousPack;
+                Alldetails.FilePath = pricingDetails.FilePath;
+                Alldetails.File_CoverLetter = pricingDetails.File_CoverLetter;
+                Alldetails.File_BoxApproval = pricingDetails.File_BoxApproval;
+                Alldetails.File_TradeNameApproval = pricingDetails.File_TradeNameApproval;
+                Alldetails.File_CostSheet = pricingDetails.File_CostSheet;
+                Alldetails.File_ProformaInvoice = pricingDetails.File_ProformaInvoice;
+                Alldetails.File_CifPriceToEgypt = pricingDetails.File_CifPriceToEgypt;
+                Alldetails.File_PriceOriginCountry = pricingDetails.File_PriceOriginCountry;
+                Alldetails.File_CountryPrices = pricingDetails.File_CountryPrices;
+                Alldetails.File_PackArtworkLeaflet = pricingDetails.File_PackArtworkLeaflet;
+                Alldetails.File_Others = pricingDetails.File_Others;
+                Alldetails.Generics = pricingDetails.Generics;
+                Alldetails.GenericStrength = pricingDetails.GenericStrength;
+                Alldetails.ApprovedPrice = pricingDetails.ApprovedPrice;
+                Alldetails.PriceCategory = pricingDetails.PriceCategory;
+                Alldetails.File_ministerapproval = pricingDetails.File_ministerapproval;
+                Alldetails.Approvaldate = pricingDetails.IsColumnNull("Approvaldate") ? DateTime.MinValue : pricingDetails.Approvaldate;
+                Alldetails.Issuedate = pricingDetails.IsColumnNull("Issuedate") ? DateTime.MinValue : pricingDetails.Issuedate;
+                Alldetails.ApprovalLetters = pricingDetails.ApprovalLetters;
+                Alldetails.Trade_Code = pricingDetails.IsColumnNull("Trade_Code") ? 0 : pricingDetails.Trade_Code;
+            }
+            SetContentResult(Alldetails);
+            //return _response;
+        }
+
+
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public void GetStatusHistoryByPackageId(int id)
+        {
+
+            PackageStatusHistory statuses = new PackageStatusHistory();
+            statuses.GetStatusHistoryByPackId(id);
+
+            List<Models.PackageStatusHistoryModel> Alldetails = statuses.DefaultView.Table.AsEnumerable().Select(row =>
+            {
+                return new Models.PackageStatusHistoryModel
+                {
+                    StatusHistoryID  = Convert.ToInt32(row["StatusHistoryID"].ToString()),
+                    TradePricingID = Convert.IsDBNull(row["TradePricingID"]) ? 0 : Convert.ToInt32(row["TradePricingID"].ToString()),
+                    PackageDetailID = Convert.IsDBNull(row["PackageDetailID"]) ? 0 : Convert.ToInt32(row["PackageDetailID"].ToString()),
+                    CommitteeTypeID = Convert.IsDBNull(row["CommitteeTypeID"]) ? 0 : Convert.IsDBNull(row["CommitteeTypeID"]) ? 0 : Convert.ToInt32(row["CommitteeTypeID"].ToString()),
+                    CommitteeDescisionID = Convert.IsDBNull(row["CommitteeDescisionID"]) ? 0 : Convert.ToInt32(row["CommitteeDescisionID"].ToString()),
+                    CompanyDescisionID = Convert.IsDBNull(row["CompanyDescisionID"]) ? 0 : Convert.ToInt32(row["CompanyDescisionID"].ToString()),
+                    PricingStatusID = Convert.IsDBNull(row["PricingStatusID"]) ? 0 : Convert.ToInt32(row["PricingStatusID"].ToString()),
+                    CommitteDate = Convert.IsDBNull(row["CommitteDate"]) ? DateTime.MinValue : Convert.ToDateTime(row["CommitteDate"].ToString()),
+                    CurrentPrice = Convert.IsDBNull(row["CurrentPrice"]) ? 0 : Convert.ToDecimal(row["CurrentPrice"].ToString()),
+                    Comment  = row["Comment"].ToString(),
+                    AttachementPath = row["AttachementPath"].ToString(),
+                    StatusDate = Convert.IsDBNull(row["StatusDate"]) ? DateTime.MinValue : Convert.ToDateTime(row["StatusDate"].ToString()),
+                    StatusHolder = row["StatusHolder"].ToString(),
+                    Status = row["Status"].ToString(),
+                    StatusDescription = row["StatusDescription"].ToString(),
+                    TypeText = row["TypeText"].ToString(),
+                    CssClass = getCssClass(Convert.IsDBNull(row["PricingStatusID"]) ? 0 : Convert.ToInt32(row["PricingStatusID"].ToString())),
+                    PackID = Convert.IsDBNull(row["PackID"]) ? 0 : Convert.ToInt32(row["PackID"].ToString()),
+                };
+
+            }).ToList();
+            SetContentResult(Alldetails);
+            //return _response;
+        }
+
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public void GetNextStatuses(int currentStatusID)
+        {
+            PricingStatus statuses = new PricingStatus();
+            statuses.GetStatusByParentID(currentStatusID);
+
+            List<Models.StatusModel> Alldetails = statuses.DefaultView.Table.AsEnumerable().Select(row =>
+            {
+                return new Models.StatusModel
+                {                    
+                    PricingStatusID = Convert.IsDBNull(row["PricingStatusID"]) ? 0 : Convert.ToInt32(row["PricingStatusID"].ToString()),                    
+                    StatusHolder = row["StatusHolder"].ToString(),
+                    Status = row["Status"].ToString(),
+                    Description = row["Description"].ToString(),                    
+                };
+
+            }).ToList();
+            SetContentResult(Alldetails);
+            //return _response;
+        }
+
+
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public void AddNewStatusHistory(Models.PackageStatusHistoryModel status)
+        {
+            PricingStatus st = new PricingStatus();
+            st.LoadByPrimaryKey(status.PricingStatusID);
+            PackageStatusHistory sh = new PackageStatusHistory();
+            sh.AddNew();
+            sh.TradePricingID = status.TradePricingID;
+            sh.PackID = status.PackID;
+            sh.Comment = status.Comment;
+            sh.PricingStatusID = status.PricingStatusID;
+            sh.StatusDate = DateTime.Now;
+            sh.StatusHolder = st.StatusHolder;
+            sh.Save();
+
+            PackagePricing pp = new PackagePricing();
+            pp.GetPricingInfoByPackageID(status.PackID);
+            pp.PricingStatusID = sh.PricingStatusID;
+            pp.Save();
+            //return _response;
+        }
+
+
+        private string getCssClass(int statusid)
+        {
+            string cssclass="";
+            switch (statusid)
+            {
+                case 1: // initiated
+                    cssclass= "Initiated";
+                    break;
+                case 4: // Need More Info / Complete
+                case 10: //Committee Postponded / Need More Info / Complete
+                    cssclass = "Complete";
+                    break;
+                case 5: // Need More Info / Complete
+                    cssclass = "CommitteeDateInformed";
+                    break;
+                case 2:
+                    cssclass = "Accepted";
+                    break;
+                default:
+                    cssclass = "default_Status";
+                    break;
+            }
+            return cssclass;
+        }
+
 
         private void SetContentResult(dynamic data)
         {

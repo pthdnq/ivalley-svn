@@ -76,6 +76,7 @@
     <Content Include="Account\ChangePasswordSuccess.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
+    <Content Include="addpackage.aspx" />
     <Content Include="assets\bootstrap-colorpicker\css\colorpicker.css" />
     <Content Include="assets\bootstrap-colorpicker\img\alpha.png" />
     <Content Include="assets\bootstrap-colorpicker\img\hue.png" />
@@ -1287,12 +1288,14 @@
     <Content Include="js\main.js" />
     <Content Include="js\respond.js" />
     <Content Include="js\scripts.js" />
+    <Content Include="js\tempo.min.js" />
     <Content Include="js\tmpl.min.js" />
     <Content Include="js\ui-nestable.js" />
     <Content Include="js\ui-tree.js" />
     <Content Include="js\vendor\jquery.ui.widget.js" />
     <Content Include="libs\Newtonsoft.Json.dll" />
     <Content Include="login.aspx" />
+    <Content Include="newInbox.aspx" />
     <Content Include="New_Request.aspx" />
     <Content Include="Notifications.aspx" />
     <Content Include="Requests.aspx" />
@@ -1348,6 +1351,13 @@
     </Compile>
     <Compile Include="Account\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="addpackage.aspx.cs">
+      <DependentUpon>addpackage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="addpackage.aspx.designer.cs">
+      <DependentUpon>addpackage.aspx</DependentUpon>
     </Compile>
     <Compile Include="AppCode\CodeGlobal.cs" />
     <Compile Include="AppCode\Encrypter.cs" />
@@ -1482,7 +1492,17 @@
     </Compile>
     <Compile Include="Models\GenericModel.cs" />
     <Compile Include="Models\PackageModel.cs" />
+    <Compile Include="Models\PackageStatusHistoryModel.cs" />
+    <Compile Include="Models\PackgePricingModel.cs" />
+    <Compile Include="Models\StatusModel.cs" />
     <Compile Include="Models\TradeDrugModel.cs" />
+    <Compile Include="newInbox.aspx.cs">
+      <DependentUpon>newInbox.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="newInbox.aspx.designer.cs">
+      <DependentUpon>newInbox.aspx</DependentUpon>
+    </Compile>
     <Compile Include="New_Request.aspx.cs">
       <DependentUpon>New_Request.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

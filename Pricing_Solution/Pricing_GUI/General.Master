@@ -143,7 +143,7 @@
 					</a>					
 				</li>
 				<li class="">
-					<a href="New_Request.aspx" class="">
+					<a href="Requests.aspx" class="">
 					<span class="icon-box"><i class="icon-file"></i></span> New Request					
 					</a>
 					

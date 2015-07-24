@@ -12,5 +12,12 @@ namespace Pricing.BLL
 		{
 		
 		}
+
+        public bool GetStatusByParentID(int PID)
+        {
+            return LoadFromRawSql(@"Select PS.* from PricingStatus PS 
+                                    inner join StatusHierarchy SH on PS.PricingStatusID = SH.StatusID 
+                                    where SH.ParentStatusID = {0}", PID);
+        }
 	}
 }

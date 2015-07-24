@@ -39,7 +39,7 @@ using System.Collections.Specialized;
 
 using MyGeneration.dOOdads;
 
-namespace Pricing.DAL
+namespace PricingDAL
 {
 	public abstract class _PackagePricing : SqlClientEntity
 	{
@@ -107,11 +107,11 @@ namespace Pricing.DAL
 				}
 			}
 			
-			public static SqlParameter PackageDetailID
+			public static SqlParameter PackID
 			{
 				get
 				{
-					return new SqlParameter("@PackageDetailID", SqlDbType.Int, 0);
+					return new SqlParameter("@PackID", SqlDbType.Int, 0);
 				}
 			}
 			
@@ -651,6 +651,22 @@ namespace Pricing.DAL
 				}
 			}
 			
+			public static SqlParameter Trade_Code
+			{
+				get
+				{
+					return new SqlParameter("@Trade_Code", SqlDbType.Int, 0);
+				}
+			}
+			
+			public static SqlParameter CreatedDate
+			{
+				get
+				{
+					return new SqlParameter("@CreatedDate", SqlDbType.DateTime, 0);
+				}
+			}
+			
 		}
 		#endregion		
 	
@@ -658,7 +674,7 @@ namespace Pricing.DAL
 		public class ColumnNames
 		{  
             public const string PackagePricingID = "PackagePricingID";
-            public const string PackageDetailID = "PackageDetailID";
+            public const string PackID = "PackID";
             public const string CompanyID = "CompanyID";
             public const string PricingStatusID = "PricingStatusID";
             public const string RegistrationCommitteTypeID = "RegistrationCommitteTypeID";
@@ -726,6 +742,8 @@ namespace Pricing.DAL
             public const string Approvaldate = "Approvaldate";
             public const string Issuedate = "Issuedate";
             public const string ApprovalLetters = "ApprovalLetters";
+            public const string Trade_Code = "Trade_Code";
+            public const string CreatedDate = "CreatedDate";
 
 			static public string ToPropertyName(string columnName)
 			{
@@ -734,7 +752,7 @@ namespace Pricing.DAL
 					ht = new Hashtable();
 					
 					ht[PackagePricingID] = _PackagePricing.PropertyNames.PackagePricingID;
-					ht[PackageDetailID] = _PackagePricing.PropertyNames.PackageDetailID;
+					ht[PackID] = _PackagePricing.PropertyNames.PackID;
 					ht[CompanyID] = _PackagePricing.PropertyNames.CompanyID;
 					ht[PricingStatusID] = _PackagePricing.PropertyNames.PricingStatusID;
 					ht[RegistrationCommitteTypeID] = _PackagePricing.PropertyNames.RegistrationCommitteTypeID;
@@ -802,6 +820,8 @@ namespace Pricing.DAL
 					ht[Approvaldate] = _PackagePricing.PropertyNames.Approvaldate;
 					ht[Issuedate] = _PackagePricing.PropertyNames.Issuedate;
 					ht[ApprovalLetters] = _PackagePricing.PropertyNames.ApprovalLetters;
+					ht[Trade_Code] = _PackagePricing.PropertyNames.Trade_Code;
+					ht[CreatedDate] = _PackagePricing.PropertyNames.CreatedDate;
 
 				}
 				return (string)ht[columnName];
@@ -815,7 +835,7 @@ namespace Pricing.DAL
 		public class PropertyNames
 		{  
             public const string PackagePricingID = "PackagePricingID";
-            public const string PackageDetailID = "PackageDetailID";
+            public const string PackID = "PackID";
             public const string CompanyID = "CompanyID";
             public const string PricingStatusID = "PricingStatusID";
             public const string RegistrationCommitteTypeID = "RegistrationCommitteTypeID";
@@ -883,6 +903,8 @@ namespace Pricing.DAL
             public const string Approvaldate = "Approvaldate";
             public const string Issuedate = "Issuedate";
             public const string ApprovalLetters = "ApprovalLetters";
+            public const string Trade_Code = "Trade_Code";
+            public const string CreatedDate = "CreatedDate";
 
 			static public string ToColumnName(string propertyName)
 			{
@@ -891,7 +913,7 @@ namespace Pricing.DAL
 					ht = new Hashtable();
 					
 					ht[PackagePricingID] = _PackagePricing.ColumnNames.PackagePricingID;
-					ht[PackageDetailID] = _PackagePricing.ColumnNames.PackageDetailID;
+					ht[PackID] = _PackagePricing.ColumnNames.PackID;
 					ht[CompanyID] = _PackagePricing.ColumnNames.CompanyID;
 					ht[PricingStatusID] = _PackagePricing.ColumnNames.PricingStatusID;
 					ht[RegistrationCommitteTypeID] = _PackagePricing.ColumnNames.RegistrationCommitteTypeID;
@@ -959,6 +981,8 @@ namespace Pricing.DAL
 					ht[Approvaldate] = _PackagePricing.ColumnNames.Approvaldate;
 					ht[Issuedate] = _PackagePricing.ColumnNames.Issuedate;
 					ht[ApprovalLetters] = _PackagePricing.ColumnNames.ApprovalLetters;
+					ht[Trade_Code] = _PackagePricing.ColumnNames.Trade_Code;
+					ht[CreatedDate] = _PackagePricing.ColumnNames.CreatedDate;
 
 				}
 				return (string)ht[propertyName];
@@ -972,7 +996,7 @@ namespace Pricing.DAL
 		public class StringPropertyNames
 		{  
             public const string PackagePricingID = "s_PackagePricingID";
-            public const string PackageDetailID = "s_PackageDetailID";
+            public const string PackID = "s_PackID";
             public const string CompanyID = "s_CompanyID";
             public const string PricingStatusID = "s_PricingStatusID";
             public const string RegistrationCommitteTypeID = "s_RegistrationCommitteTypeID";
@@ -1040,6 +1064,8 @@ namespace Pricing.DAL
             public const string Approvaldate = "s_Approvaldate";
             public const string Issuedate = "s_Issuedate";
             public const string ApprovalLetters = "s_ApprovalLetters";
+            public const string Trade_Code = "s_Trade_Code";
+            public const string CreatedDate = "s_CreatedDate";
 
 		}
 		#endregion		
@@ -1058,15 +1084,15 @@ namespace Pricing.DAL
 			}
 		}
 
-		public virtual int PackageDetailID
+		public virtual int PackID
 	    {
 			get
 	        {
-				return base.Getint(ColumnNames.PackageDetailID);
+				return base.Getint(ColumnNames.PackID);
 			}
 			set
 	        {
-				base.Setint(ColumnNames.PackageDetailID, value);
+				base.Setint(ColumnNames.PackID, value);
 			}
 		}
 
@@ -1874,6 +1900,30 @@ namespace Pricing.DAL
 			}
 		}
 
+		public virtual int Trade_Code
+	    {
+			get
+	        {
+				return base.Getint(ColumnNames.Trade_Code);
+			}
+			set
+	        {
+				base.Setint(ColumnNames.Trade_Code, value);
+			}
+		}
+
+		public virtual DateTime CreatedDate
+	    {
+			get
+	        {
+				return base.GetDateTime(ColumnNames.CreatedDate);
+			}
+			set
+	        {
+				base.SetDateTime(ColumnNames.CreatedDate, value);
+			}
+		}
+
 
 		#endregion
 		
@@ -1894,18 +1944,18 @@ namespace Pricing.DAL
 			}
 		}
 
-		public virtual string s_PackageDetailID
+		public virtual string s_PackID
 	    {
 			get
 	        {
-				return this.IsColumnNull(ColumnNames.PackageDetailID) ? string.Empty : base.GetintAsString(ColumnNames.PackageDetailID);
+				return this.IsColumnNull(ColumnNames.PackID) ? string.Empty : base.GetintAsString(ColumnNames.PackID);
 			}
 			set
 	        {
 				if(string.Empty == value)
-					this.SetColumnNull(ColumnNames.PackageDetailID);
+					this.SetColumnNull(ColumnNames.PackID);
 				else
-					this.PackageDetailID = base.SetintAsString(ColumnNames.PackageDetailID, value);
+					this.PackID = base.SetintAsString(ColumnNames.PackID, value);
 			}
 		}
 
@@ -2914,6 +2964,36 @@ namespace Pricing.DAL
 			}
 		}
 
+		public virtual string s_Trade_Code
+	    {
+			get
+	        {
+				return this.IsColumnNull(ColumnNames.Trade_Code) ? string.Empty : base.GetintAsString(ColumnNames.Trade_Code);
+			}
+			set
+	        {
+				if(string.Empty == value)
+					this.SetColumnNull(ColumnNames.Trade_Code);
+				else
+					this.Trade_Code = base.SetintAsString(ColumnNames.Trade_Code, value);
+			}
+		}
+
+		public virtual string s_CreatedDate
+	    {
+			get
+	        {
+				return this.IsColumnNull(ColumnNames.CreatedDate) ? string.Empty : base.GetDateTimeAsString(ColumnNames.CreatedDate);
+			}
+			set
+	        {
+				if(string.Empty == value)
+					this.SetColumnNull(ColumnNames.CreatedDate);
+				else
+					this.CreatedDate = base.SetDateTimeAsString(ColumnNames.CreatedDate, value);
+			}
+		}
+
 
 		#endregion		
 	
@@ -2957,11 +3037,11 @@ namespace Pricing.DAL
 					}
 				}
 
-				public WhereParameter PackageDetailID
+				public WhereParameter PackID
 				{
 					get
 					{
-							WhereParameter where = new WhereParameter(ColumnNames.PackageDetailID, Parameters.PackageDetailID);
+							WhereParameter where = new WhereParameter(ColumnNames.PackID, Parameters.PackID);
 							this._clause._entity.Query.AddWhereParameter(where);
 							return where;
 					}
@@ -3637,6 +3717,26 @@ namespace Pricing.DAL
 					}
 				}
 
+				public WhereParameter Trade_Code
+				{
+					get
+					{
+							WhereParameter where = new WhereParameter(ColumnNames.Trade_Code, Parameters.Trade_Code);
+							this._clause._entity.Query.AddWhereParameter(where);
+							return where;
+					}
+				}
+
+				public WhereParameter CreatedDate
+				{
+					get
+					{
+							WhereParameter where = new WhereParameter(ColumnNames.CreatedDate, Parameters.CreatedDate);
+							this._clause._entity.Query.AddWhereParameter(where);
+							return where;
+					}
+				}
+
 
 				private WhereClause _clause;
 			}
@@ -3654,15 +3754,15 @@ namespace Pricing.DAL
 				}
 			}
 
-			public WhereParameter PackageDetailID
+			public WhereParameter PackID
 		    {
 				get
 		        {
-					if(_PackageDetailID_W == null)
+					if(_PackID_W == null)
 	        	    {
-						_PackageDetailID_W = TearOff.PackageDetailID;
+						_PackID_W = TearOff.PackID;
 					}
-					return _PackageDetailID_W;
+					return _PackID_W;
 				}
 			}
 
@@ -4470,8 +4570,32 @@ namespace Pricing.DAL
 				}
 			}
 
+			public WhereParameter Trade_Code
+		    {
+				get
+		        {
+					if(_Trade_Code_W == null)
+	        	    {
+						_Trade_Code_W = TearOff.Trade_Code;
+					}
+					return _Trade_Code_W;
+				}
+			}
+
+			public WhereParameter CreatedDate
+		    {
+				get
+		        {
+					if(_CreatedDate_W == null)
+	        	    {
+						_CreatedDate_W = TearOff.CreatedDate;
+					}
+					return _CreatedDate_W;
+				}
+			}
+
 			private WhereParameter _PackagePricingID_W = null;
-			private WhereParameter _PackageDetailID_W = null;
+			private WhereParameter _PackID_W = null;
 			private WhereParameter _CompanyID_W = null;
 			private WhereParameter _PricingStatusID_W = null;
 			private WhereParameter _RegistrationCommitteTypeID_W = null;
@@ -4539,11 +4663,13 @@ namespace Pricing.DAL
 			private WhereParameter _Approvaldate_W = null;
 			private WhereParameter _Issuedate_W = null;
 			private WhereParameter _ApprovalLetters_W = null;
+			private WhereParameter _Trade_Code_W = null;
+			private WhereParameter _CreatedDate_W = null;
 
 			public void WhereClauseReset()
 			{
 				_PackagePricingID_W = null;
-				_PackageDetailID_W = null;
+				_PackID_W = null;
 				_CompanyID_W = null;
 				_PricingStatusID_W = null;
 				_RegistrationCommitteTypeID_W = null;
@@ -4611,6 +4737,8 @@ namespace Pricing.DAL
 				_Approvaldate_W = null;
 				_Issuedate_W = null;
 				_ApprovalLetters_W = null;
+				_Trade_Code_W = null;
+				_CreatedDate_W = null;
 
 				this._entity.Query.FlushWhereParameters();
 
@@ -4677,11 +4805,11 @@ namespace Pricing.DAL
 					}
 				}
 
-				public AggregateParameter PackageDetailID
+				public AggregateParameter PackID
 				{
 					get
 					{
-							AggregateParameter aggregate = new AggregateParameter(ColumnNames.PackageDetailID, Parameters.PackageDetailID);
+							AggregateParameter aggregate = new AggregateParameter(ColumnNames.PackID, Parameters.PackID);
 							this._clause._entity.Query.AddAggregateParameter(aggregate);
 							return aggregate;
 					}
@@ -5357,6 +5485,26 @@ namespace Pricing.DAL
 					}
 				}
 
+				public AggregateParameter Trade_Code
+				{
+					get
+					{
+							AggregateParameter aggregate = new AggregateParameter(ColumnNames.Trade_Code, Parameters.Trade_Code);
+							this._clause._entity.Query.AddAggregateParameter(aggregate);
+							return aggregate;
+					}
+				}
+
+				public AggregateParameter CreatedDate
+				{
+					get
+					{
+							AggregateParameter aggregate = new AggregateParameter(ColumnNames.CreatedDate, Parameters.CreatedDate);
+							this._clause._entity.Query.AddAggregateParameter(aggregate);
+							return aggregate;
+					}
+				}
+
 
 				private AggregateClause _clause;
 			}
@@ -5374,15 +5522,15 @@ namespace Pricing.DAL
 				}
 			}
 
-			public AggregateParameter PackageDetailID
+			public AggregateParameter PackID
 		    {
 				get
 		        {
-					if(_PackageDetailID_W == null)
+					if(_PackID_W == null)
 	        	    {
-						_PackageDetailID_W = TearOff.PackageDetailID;
+						_PackID_W = TearOff.PackID;
 					}
-					return _PackageDetailID_W;
+					return _PackID_W;
 				}
 			}
 
@@ -6190,8 +6338,32 @@ namespace Pricing.DAL
 				}
 			}
 
+			public AggregateParameter Trade_Code
+		    {
+				get
+		        {
+					if(_Trade_Code_W == null)
+	        	    {
+						_Trade_Code_W = TearOff.Trade_Code;
+					}
+					return _Trade_Code_W;
+				}
+			}
+
+			public AggregateParameter CreatedDate
+		    {
+				get
+		        {
+					if(_CreatedDate_W == null)
+	        	    {
+						_CreatedDate_W = TearOff.CreatedDate;
+					}
+					return _CreatedDate_W;
+				}
+			}
+
 			private AggregateParameter _PackagePricingID_W = null;
-			private AggregateParameter _PackageDetailID_W = null;
+			private AggregateParameter _PackID_W = null;
 			private AggregateParameter _CompanyID_W = null;
 			private AggregateParameter _PricingStatusID_W = null;
 			private AggregateParameter _RegistrationCommitteTypeID_W = null;
@@ -6259,11 +6431,13 @@ namespace Pricing.DAL
 			private AggregateParameter _Approvaldate_W = null;
 			private AggregateParameter _Issuedate_W = null;
 			private AggregateParameter _ApprovalLetters_W = null;
+			private AggregateParameter _Trade_Code_W = null;
+			private AggregateParameter _CreatedDate_W = null;
 
 			public void AggregateClauseReset()
 			{
 				_PackagePricingID_W = null;
-				_PackageDetailID_W = null;
+				_PackID_W = null;
 				_CompanyID_W = null;
 				_PricingStatusID_W = null;
 				_RegistrationCommitteTypeID_W = null;
@@ -6331,6 +6505,8 @@ namespace Pricing.DAL
 				_Approvaldate_W = null;
 				_Issuedate_W = null;
 				_ApprovalLetters_W = null;
+				_Trade_Code_W = null;
+				_CreatedDate_W = null;
 
 				this._entity.Query.FlushAggregateParameters();
 
@@ -6409,8 +6585,8 @@ namespace Pricing.DAL
 			p.SourceColumn = ColumnNames.PackagePricingID;
 			p.SourceVersion = DataRowVersion.Current;
 
-			p = cmd.Parameters.Add(Parameters.PackageDetailID);
-			p.SourceColumn = ColumnNames.PackageDetailID;
+			p = cmd.Parameters.Add(Parameters.PackID);
+			p.SourceColumn = ColumnNames.PackID;
 			p.SourceVersion = DataRowVersion.Current;
 
 			p = cmd.Parameters.Add(Parameters.CompanyID);
@@ -6679,6 +6855,14 @@ namespace Pricing.DAL
 
 			p = cmd.Parameters.Add(Parameters.ApprovalLetters);
 			p.SourceColumn = ColumnNames.ApprovalLetters;
+			p.SourceVersion = DataRowVersion.Current;
+
+			p = cmd.Parameters.Add(Parameters.Trade_Code);
+			p.SourceColumn = ColumnNames.Trade_Code;
+			p.SourceVersion = DataRowVersion.Current;
+
+			p = cmd.Parameters.Add(Parameters.CreatedDate);
+			p.SourceColumn = ColumnNames.CreatedDate;
 			p.SourceVersion = DataRowVersion.Current;
 
 

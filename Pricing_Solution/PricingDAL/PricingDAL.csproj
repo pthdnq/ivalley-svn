@@ -59,6 +59,7 @@
     <Compile Include="Registeration_Committee_Type.cs" />
     <Compile Include="SectorType.cs" />
     <Compile Include="SQLHelper.cs" />
+    <Compile Include="StatusHierarchy.cs" />
     <Compile Include="StatusHistory.cs" />
     <Compile Include="Substances.cs" />
     <Compile Include="SubstancesReference.cs" />

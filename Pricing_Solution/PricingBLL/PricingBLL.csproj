@@ -55,7 +55,9 @@
     <Compile Include="ConvertDate.cs" />
     <Compile Include="PackageDetails.cs" />
     <Compile Include="PackagePricing.cs" />
+    <Compile Include="PackageStatusHistory.cs" />
     <Compile Include="SectorType.cs" />
+    <Compile Include="StatusHierarchy.cs" />
     <Compile Include="TradePricingLicenseType.cs" />
     <Compile Include="TradePricingStatus.cs" />
     <Compile Include="V_EDDB_DrugGenerics.cs" />

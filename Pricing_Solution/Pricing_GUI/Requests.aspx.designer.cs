@@ -67,6 +67,42 @@ namespace Pricing_GUI {
         protected global::System.Web.UI.WebControls.TextBox uiTextBoxRegNo;
         
         /// <summary>
+        /// uiHiddenFieldCurrentDrugID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField uiHiddenFieldCurrentDrugID;
+        
+        /// <summary>
+        /// uiHiddenFieldCurrentPackID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField uiHiddenFieldCurrentPackID;
+        
+        /// <summary>
+        /// uiHiddenFieldCurrentPPID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField uiHiddenFieldCurrentPPID;
+        
+        /// <summary>
+        /// uiCustomValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator uiCustomValidator;
+        
+        /// <summary>
         /// Label1 control.
         /// </summary>
         /// <remarks>
@@ -146,6 +182,24 @@ namespace Pricing_GUI {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txt_prodType;
+        
+        /// <summary>
+        /// Label16 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label16;
+        
+        /// <summary>
+        /// uiDropDownListLicenseType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList uiDropDownListLicenseType;
         
         /// <summary>
         /// TextBox1_comp control.
@@ -229,22 +283,103 @@ namespace Pricing_GUI {
         protected global::System.Web.UI.WebControls.TextBox txt_regType;
         
         /// <summary>
-        /// Label7 control.
+        /// uiDropDownListCommitteType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label7;
+        protected global::System.Web.UI.WebControls.DropDownList uiDropDownListCommitteType;
         
         /// <summary>
-        /// uiTextBoxBeforeRegNo control.
+        /// uiTextBoxNotes control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox uiTextBoxBeforeRegNo;
+        protected global::System.Web.UI.WebControls.TextBox uiTextBoxNotes;
+        
+        /// <summary>
+        /// hf1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hf1;
+        
+        /// <summary>
+        /// hf2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hf2;
+        
+        /// <summary>
+        /// hf3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hf3;
+        
+        /// <summary>
+        /// hf4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hf4;
+        
+        /// <summary>
+        /// hf5 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hf5;
+        
+        /// <summary>
+        /// hf6 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hf6;
+        
+        /// <summary>
+        /// hf7 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hf7;
+        
+        /// <summary>
+        /// hf8 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hf8;
+        
+        /// <summary>
+        /// hf9 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hf9;
         
         /// <summary>
         /// Label9 control.
@@ -263,24 +398,6 @@ namespace Pricing_GUI {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList uiDropDownListSectorType_Before;
-        
-        /// <summary>
-        /// Label16 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label16;
-        
-        /// <summary>
-        /// uiDropDownListLicenseType control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList uiDropDownListLicenseType;
         
         /// <summary>
         /// Label19 control.
@@ -389,24 +506,6 @@ namespace Pricing_GUI {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox uiCheckBoxEssentialDrugList;
-        
-        /// <summary>
-        /// Label26 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label26;
-        
-        /// <summary>
-        /// uiTextBoxRegNoAfter control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox uiTextBoxRegNoAfter;
         
         /// <summary>
         /// Label27 control.
@@ -598,24 +697,6 @@ namespace Pricing_GUI {
         protected global::System.Web.UI.WebControls.TextBox uiTextBoxLowestPriceGeneric;
         
         /// <summary>
-        /// Label36 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label36;
-        
-        /// <summary>
-        /// uiTextBoxFinalPrice control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox uiTextBoxFinalPrice;
-        
-        /// <summary>
         /// uiCheckBoxIsPricedTo499 control.
         /// </summary>
         /// <remarks>
@@ -625,13 +706,13 @@ namespace Pricing_GUI {
         protected global::System.Web.UI.WebControls.CheckBox uiCheckBoxIsPricedTo499;
         
         /// <summary>
-        /// uiTextBoxNotes control.
+        /// uiTextBoxNotes_After control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox uiTextBoxNotes;
+        protected global::System.Web.UI.WebControls.TextBox uiTextBoxNotes_After;
         
         /// <summary>
         /// Label38 control.
@@ -650,15 +731,6 @@ namespace Pricing_GUI {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox uiTextBoxMainGroup;
-        
-        /// <summary>
-        /// uiTextBoxMonth control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox uiTextBoxMonth;
         
         /// <summary>
         /// Label37 control.
@@ -778,6 +850,15 @@ namespace Pricing_GUI {
         protected global::System.Web.UI.WebControls.TextBox uiTextBoxIssueDate;
         
         /// <summary>
+        /// hf10 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hf10;
+        
+        /// <summary>
         /// Label15 control.
         /// </summary>
         /// <remarks>
@@ -785,6 +866,24 @@ namespace Pricing_GUI {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label15;
+        
+        /// <summary>
+        /// hf11 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hf11;
+        
+        /// <summary>
+        /// uiLinkButtonSave control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton uiLinkButtonSave;
         
         /// <summary>
         /// Master property.
