@@ -2575,7 +2575,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox16</rd:DefaultName>
-        <Top>15.2093cm</Top>
+        <Top>14.92355cm</Top>
         <Left>11.79895cm</Left>
         <Height>0.6cm</Height>
         <Width>0.78189cm</Width>
@@ -2610,7 +2610,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox16</rd:DefaultName>
-        <Top>15.24473cm</Top>
+        <Top>14.95898cm</Top>
         <Left>14.77299cm</Left>
         <Height>0.6cm</Height>
         <Width>0.95751cm</Width>
@@ -2646,7 +2646,7 @@
             </Style>
           </Paragraph>
         </Paragraphs>
-        <Top>6.20601in</Top>
+        <Top>6.09351in</Top>
         <Left>6.5602in</Left>
         <Height>0.60706cm</Height>
         <Width>1.14102in</Width>
@@ -2680,7 +2680,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>InformerFirstName</rd:DefaultName>
-        <Top>15.81365cm</Top>
+        <Top>15.5279cm</Top>
         <Left>13.8687cm</Left>
         <Height>0.6cm</Height>
         <Width>2.5cm</Width>
@@ -2734,7 +2734,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>InformerSecondName</rd:DefaultName>
-        <Top>15.81365cm</Top>
+        <Top>15.5279cm</Top>
         <Left>5.21658cm</Left>
         <Height>0.6cm</Height>
         <Width>8.1102cm</Width>
@@ -2792,7 +2792,7 @@
             </Style>
           </Paragraph>
         </Paragraphs>
-        <Top>6.49893in</Top>
+        <Top>6.38643in</Top>
         <Left>6.55687in</Left>
         <Height>0.55621cm</Height>
         <Width>1.14435in</Width>
@@ -2830,7 +2830,7 @@
             </Style>
           </Paragraph>
         </Paragraphs>
-        <Top>6.49893in</Top>
+        <Top>6.38643in</Top>
         <Left>3.13831in</Left>
         <Height>0.59999cm</Height>
         <Width>0.97295in</Width>
@@ -2864,7 +2864,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>RelationDescr</rd:DefaultName>
-        <Top>16.50726cm</Top>
+        <Top>16.22151cm</Top>
         <Left>13.84959cm</Left>
         <Height>0.6cm</Height>
         <Width>2.5cm</Width>
@@ -2918,7 +2918,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>InformerNID</rd:DefaultName>
-        <Top>16.50726cm</Top>
+        <Top>16.22151cm</Top>
         <Left>3.34098cm</Left>
         <Height>0.6cm</Height>
         <Width>4.64922cm</Width>
@@ -2976,7 +2976,7 @@
             </Style>
           </Paragraph>
         </Paragraphs>
-        <Top>6.79703in</Top>
+        <Top>6.68453in</Top>
         <Left>6.55687in</Left>
         <Height>0.55621cm</Height>
         <Width>1.14435in</Width>
@@ -3011,7 +3011,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>InformerPhone</rd:DefaultName>
-        <Top>17.20575cm</Top>
+        <Top>16.92cm</Top>
         <Left>12.57122cm</Left>
         <Height>0.6cm</Height>
         <Width>3.83341cm</Width>
@@ -3106,7 +3106,7 @@
             </Style>
           </Paragraph>
         </Paragraphs>
-        <Top>7.07049in</Top>
+        <Top>7.22049in</Top>
         <Left>3.666in</Left>
         <Height>0.55621cm</Height>
         <Width>4.01793in</Width>
@@ -3736,11 +3736,14 @@
             </Style>
           </Paragraph>
         </Paragraphs>
-        <Top>6.80079in</Top>
+        <Top>6.68829in</Top>
         <Left>3.25927in</Left>
         <Height>0.55621cm</Height>
         <Width>0.85199in</Width>
         <ZIndex>93</ZIndex>
+        <Visibility>
+          <Hidden>true</Hidden>
+        </Visibility>
         <Style>
           <Border />
           <VerticalAlign>Top</VerticalAlign>
@@ -3771,35 +3774,18 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>InformerPhone</rd:DefaultName>
-        <Top>17.21532cm</Top>
+        <Top>16.92957cm</Top>
         <Left>5.49455cm</Left>
         <Height>0.6cm</Height>
         <Width>2.5cm</Width>
         <ZIndex>94</ZIndex>
+        <Visibility>
+          <Hidden>true</Hidden>
+        </Visibility>
         <Style>
           <Border>
             <Style>Solid</Style>
           </Border>
-          <TopBorder>
-            <Color>Black</Color>
-            <Style>Solid</Style>
-            <Width>1pt</Width>
-          </TopBorder>
-          <BottomBorder>
-            <Color>Black</Color>
-            <Style>Solid</Style>
-            <Width>1pt</Width>
-          </BottomBorder>
-          <LeftBorder>
-            <Color>Black</Color>
-            <Style>Solid</Style>
-            <Width>1pt</Width>
-          </LeftBorder>
-          <RightBorder>
-            <Color>Black</Color>
-            <Style>Solid</Style>
-            <Width>1pt</Width>
-          </RightBorder>
           <PaddingLeft>2pt</PaddingLeft>
           <PaddingRight>2pt</PaddingRight>
           <PaddingTop>2pt</PaddingTop>
@@ -4709,6 +4695,153 @@
           </Border>
         </Style>
       </Image>
+      <Textbox Name="FatherSureName4">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value />
+                <Style>
+                  <FontSize>14pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>FatherSureName</rd:DefaultName>
+        <Top>5.11015cm</Top>
+        <Left>0.54383cm</Left>
+        <Height>0.6cm</Height>
+        <Width>3.35142cm</Width>
+        <ZIndex>122</ZIndex>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+          <TopBorder>
+            <Color>Black</Color>
+            <Style>Solid</Style>
+            <Width>1pt</Width>
+          </TopBorder>
+          <BottomBorder>
+            <Color>Black</Color>
+            <Style>Solid</Style>
+            <Width>1pt</Width>
+          </BottomBorder>
+          <LeftBorder>
+            <Color>Black</Color>
+            <Style>Solid</Style>
+            <Width>1pt</Width>
+          </LeftBorder>
+          <RightBorder>
+            <Color>Black</Color>
+            <Style>Solid</Style>
+            <Width>1pt</Width>
+          </RightBorder>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="textbox71">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>عنوان المبلغ</Value>
+                <Style>
+                  <FontSize>12pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                  <Language>ar</Language>
+                  <NumeralLanguage>ar</NumeralLanguage>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <LeftIndent>0cm</LeftIndent>
+            <HangingIndent>0cm</HangingIndent>
+            <Style>
+              <TextAlign>Right</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <Top>6.95212in</Top>
+        <Left>6.55267in</Left>
+        <Height>0.55621cm</Height>
+        <Width>1.14435in</Width>
+        <ZIndex>123</ZIndex>
+        <Style>
+          <Border />
+          <VerticalAlign>Top</VerticalAlign>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+          <Direction>RTL</Direction>
+        </Style>
+      </Textbox>
+      <Textbox Name="InformerPhone3">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!InformerAddress.Value, "DataSet1")</Value>
+                <Style>
+                  <FontSize>12pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Right</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>InformerPhone</rd:DefaultName>
+        <Top>17.59967cm</Top>
+        <Left>5.50221cm</Left>
+        <Height>0.6cm</Height>
+        <Width>10.89175cm</Width>
+        <ZIndex>124</ZIndex>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+          <TopBorder>
+            <Color>Black</Color>
+            <Style>Solid</Style>
+            <Width>1pt</Width>
+          </TopBorder>
+          <BottomBorder>
+            <Color>Black</Color>
+            <Style>Solid</Style>
+            <Width>1pt</Width>
+          </BottomBorder>
+          <LeftBorder>
+            <Color>Black</Color>
+            <Style>Solid</Style>
+            <Width>1pt</Width>
+          </LeftBorder>
+          <RightBorder>
+            <Color>Black</Color>
+            <Style>Solid</Style>
+            <Width>1pt</Width>
+          </RightBorder>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
     </ReportItems>
     <Height>9.5501in</Height>
     <Style />
@@ -4949,6 +5082,10 @@
           <DataField>InformerSecondName</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="InformerAddress">
+          <DataField>InformerAddress</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
         <Field Name="InformerPhone">
           <DataField>InformerPhone</DataField>
           <rd:TypeName>System.String</rd:TypeName>
@@ -4988,6 +5125,10 @@
         <Field Name="DoctorName">
           <DataField>DoctorName</DataField>
           <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="QrCode">
+          <DataField>QrCode</DataField>
+          <rd:TypeName>System.Byte[]</rd:TypeName>
         </Field>
       </Fields>
     </DataSet>
