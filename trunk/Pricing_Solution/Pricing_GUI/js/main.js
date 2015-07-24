@@ -31,7 +31,7 @@ $(function () {
     });
 
     $('#fileupload').bind('fileuploaddone', function (e, data) {
-        parent.SetAttachment(getParameterByName('id'), "1");
+        parent.SetAttachment(getParameterByName('id'), data._response.result.files[0].url);
     })
 
     // Enable iframe cross-domain access via redirect option:

@@ -11,5 +11,40 @@ namespace Pricing.BLL
 		{
 		
 		}
-	}
+
+        public bool GetPackagesByTradeID(int TradeCode)
+        {
+            return LoadFromRawSql(@"select * from 
+                                    (select TradeCode,PackID,unit_price,Pack_Unit_Name, conver_sub, Pack_unit from v_EDDB_PackDetailes
+                                     union
+                                    Select Trade_Code,PackID,unit_price,pu.Pack_unit pack_Unit_name,conver_sub,pu2.Pack_unit  from PackageDetails pd
+                                    inner join eddb.[dbo].[PackUnit] pu on pu.Sys_Key = pd.unit_key
+                                    inner join eddb.[dbo].[PackUnit] pu2 on pu2.Sys_Key = pd.sub_unit
+                                    where pd.issync <> 1 or pd.issync is null) a
+                                    where a.TradeCode = {0}", TradeCode);
+        }
+
+        public bool GetPackageUnits()
+        {
+            return LoadFromRawSql(@"select * from eddb.[dbo].[PackUnit]");
+        }
+
+        public int getMaxID()
+        {
+            LoadFromRawSql(@"select isnull(max(PackID),0) MaxID from PackageDetails");
+            return Convert.ToInt32(GetColumn("MaxID").ToString()) + 1;
+        }
+
+        public bool GetPackagesByPackID(int id)
+        {
+            return LoadFromRawSql(@"select * from 
+                                    (select TradeCode,PackID,unit_price,Pack_Unit_Name, conver_sub, Pack_unit from v_EDDB_PackDetailes
+                                     union
+                                    Select Trade_Code,PackID,unit_price,pu.Pack_unit pack_Unit_name,conver_sub,pu2.Pack_unit  from PackageDetails pd
+                                    inner join eddb.[dbo].[PackUnit] pu on pu.Sys_Key = pd.unit_key
+                                    inner join eddb.[dbo].[PackUnit] pu2 on pu2.Sys_Key = pd.sub_unit
+                                    where pd.issync <> 1 or pd.issync is null) a
+                                    where a.PackID = {0}", id);
+        }
+    }
 }

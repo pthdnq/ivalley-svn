@@ -7,6 +7,7 @@ namespace Pricing_GUI.Models
 {
     public class PackageModel
     {
+        public int PackID { get; set; }
         public string Pack_unit { get; set; }
         public string Pack_Unit_Name { get; set; }
         public decimal conver_sub { get; set; }
