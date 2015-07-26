@@ -115,14 +115,17 @@ namespace Flights_GUI.Intranet
                 objData.Rewind();
                 for (int i = 0; i < objData.RowCount; i++)
                 {
-                    ManualLog objDataManual = new ManualLog();
-                    objDataManual.AddNew();
-                    objDataManual.UserID = new Guid(Membership.GetUser(Page.User.Identity.Name).ProviderUserKey.ToString());
-                    objDataManual.ManualID = objData.ManualID;
-                    objDataManual.ActionID = 4;
-                    objDataManual.LogDate = config.GetDateTimeUsingLocalZone();
-                    objDataManual.Save();
-
+                    Manual objDataManualTest = new Manual();
+                    if (objDataManualTest.LoadByPrimaryKey(objData.ManualID))
+                    {
+                        ManualLog objDataManual = new ManualLog();
+                        objDataManual.AddNew();
+                        objDataManual.UserID = new Guid(Membership.GetUser(Page.User.Identity.Name).ProviderUserKey.ToString());
+                        objDataManual.ManualID = objData.ManualID;
+                        objDataManual.ActionID = 4;
+                        objDataManual.LogDate = config.GetDateTimeUsingLocalZone();
+                        objDataManual.Save();
+                    }
                     objData.MoveNext();
                 }
             }

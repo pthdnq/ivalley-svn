@@ -22,21 +22,26 @@
             </ul>
             <div class="tabs-pane">
                 <div class="tab-panel active">--%>
-                    <div class="blog-thumbs no-bar">
-                        <div class="toolsBar">
-									<div class="cell-12 left products-filter-top">
-										<div class="left">
-											<span>View circulars published to : </span>
-                                            <asp:DropDownList ID="uiDropDownListUserGroups" runat="server" AutoPostBack="True" OnSelectedIndexChanged="uiDropDownListUserGroups_SelectedIndexChanged">
+        <div class="blog-thumbs no-bar">
+            <div class="toolsBar">
+                <div class="products-filter-top">
+                    <div class="left" style="margin-left:15px">
+                        <span>View circulars published to : </span>
+                        <asp:DropDownList ID="uiDropDownListUserGroups" runat="server" AutoPostBack="True" OnSelectedIndexChanged="uiDropDownListUserGroups_SelectedIndexChanged">
+                        </asp:DropDownList>
+                    </div>
+                    <div style="position: absolute; right: 250px">
+                        <span>Search : </span>
+                        <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                        <asp:LinkButton ID="LinkButton1" CssClass="btn btn-small" runat="server">Search <i class="fa fa-search"></i></asp:LinkButton>
+                    </div>
+                </div>
+            </div>
+<%--            <div class="toolsBar">
+                <div class="cell-12 left products-filter-top">
+                </div>
+            </div>--%>
 
-                                            </asp:DropDownList>
-										</div>
-										
-										
-									</div>
-									
-									
-								</div>
                         <div class="blog-posts">
                             <telerik:RadListView ID="uiRadListViewCircularsPublic" runat="server" ItemPlaceholderID="CircularsContainer" AllowPaging="true" OnPageIndexChanged="uiRadListViewCircularsPublic_PageIndexChanged">
                                 <LayoutTemplate>
