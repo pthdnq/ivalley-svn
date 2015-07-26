@@ -473,7 +473,6 @@
     <Content Include="assets\custombootstrap\css\bootstrap-theme.min.css" />
     <Content Include="assets\custombootstrap\css\bootstrap.css" />
     <Content Include="assets\custombootstrap\css\bootstrap.min.css" />
-    <Content Include="assets\custombootstrap\css\typeahead.css" />
     <Content Include="assets\custombootstrap\js\bootstrap.js" />
     <Content Include="assets\custombootstrap\js\bootstrap.min.js" />
     <Content Include="assets\data-tables\dataTables.editor.min.css" />
@@ -2087,6 +2086,7 @@
     <Compile Include="Intranet\Manuals.aspx.designer.cs">
       <DependentUpon>Manuals.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Intranet\PageLoadLog.cs" />
     <Compile Include="Intranet\schedules.aspx.cs">
       <DependentUpon>schedules.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
