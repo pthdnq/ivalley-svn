@@ -73,7 +73,7 @@
                                                         <%# Convert.ToDateTime(Eval("createdDate").ToString()).ToString("yyyy") %>
                                                     </div>
                                                 </div>
-                                                <img src='<%# (string.IsNullOrEmpty(Eval("MainPic").ToString()) ? "../img/nesma.png" : "../common/thumb.aspx?Image=" + Eval("MainPic")) %>' alt="" style="max-height: 177px; max-width: 300px; width: 300px; margin: 0 auto 10px; display: block">
+                                                <img src='<%# (string.IsNullOrEmpty(Eval("MainPic").ToString()) ? "../img/flyegypt.png" : "../common/thumb.aspx?Image=" + Eval("MainPic")) %>' alt="" style="max-height: 177px; max-width: 300px; width: 300px; margin: 0 auto 10px; display: block">
                                             </a>
                                         &nbsp;&nbsp;&nbsp;</div>
                                         <article class="post-content">

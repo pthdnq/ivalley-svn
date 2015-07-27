@@ -55,9 +55,9 @@ namespace Flights_GUI.Common
                 {
                     Title = row["Title"].ToString(),
                     IssueNumber = row["IssueNumber"].ToString(),
-                    IssueDate = DateTime.Parse(row["IssueDate"].ToString()),
+                    IssueDate = (!row.IsNull("IssueDate")) ? DateTime.Parse(row["IssueDate"].ToString()) : (DateTime?)null,
                     RevisionNumber = row["RevisionNumber"].ToString(),
-                    RevisionDate = DateTime.Parse(row["RevisionDate"].ToString()),
+                    RevisionDate = (!row.IsNull("RevisionDate")) ? DateTime.Parse(row["RevisionDate"].ToString()) : (DateTime?)null,
                     UpdatedByName = row["UpdatedByName"].ToString(),
                     LastUpdatedDate = DateTime.Parse(row["LastUpdatedDate"].ToString()),
                     Path = row["Path"].ToString()
@@ -68,8 +68,27 @@ namespace Flights_GUI.Common
             LogManualsVersionsRead(ID);
 
             UsersNofications usNot = new UsersNofications();
+            Manual man = new Manual();
+            man.LoadByPrimaryKey(ID);
 
-            usNot.MarkNotificationsReadByManualVersionID(new Guid(Membership.GetUser(Context.User.Identity.Name).ProviderUserKey.ToString()),ID);
+            ManualCategory currentManualCat = new ManualCategory();
+            currentManualCat.GetTopMostParent(man.ManualCategoryID);
+
+            if (!currentManualCat.IsColumnNull(ManualCategory.ColumnNames.ParentCategoryID))
+            {
+                if (currentManualCat.ParentCategoryID == 12)
+                    usNot.MarkNotificationsReadByAirCraftManualVersionID(new Guid(Membership.GetUser(Context.User.Identity.Name).ProviderUserKey.ToString()), ID);
+                else
+                    usNot.MarkNotificationsReadByManualVersionID(new Guid(Membership.GetUser(Context.User.Identity.Name).ProviderUserKey.ToString()), ID);
+            }
+            else
+            {
+                if (currentManualCat.ManualCategoryID == 12)
+                    usNot.MarkNotificationsReadByAirCraftManualVersionID(new Guid(Membership.GetUser(Context.User.Identity.Name).ProviderUserKey.ToString()), ID);
+                else
+                    usNot.MarkNotificationsReadByManualVersionID(new Guid(Membership.GetUser(Context.User.Identity.Name).ProviderUserKey.ToString()), ID);
+                
+            }
             SetContentResult(AllVersions);
         }
 
@@ -88,9 +107,9 @@ namespace Flights_GUI.Common
                 {
                     Title = row["Title"].ToString(),
                     IssueNumber = row["IssueNumber"].ToString(),
-                    IssueDate = DateTime.Parse(row["IssueDate"].ToString()),
+                    IssueDate = (!row.IsNull("IssueDate")) ? DateTime.Parse(row["IssueDate"].ToString()) : (DateTime?)null,
                     RevisionNumber = row["RevisionNumber"].ToString(),
-                    RevisionDate = DateTime.Parse(row["RevisionDate"].ToString()),
+                    RevisionDate = (!row.IsNull("RevisionDate")) ? DateTime.Parse(row["RevisionDate"].ToString()) : (DateTime?)null,
                     UpdatedByName = row["UpdatedByName"].ToString(),
                     LastUpdatedDate = DateTime.Parse(row["LastUpdatedDate"].ToString()),
                     Path = row["Path"].ToString()
@@ -175,9 +194,9 @@ namespace Flights_GUI.Common
                 {
                     Title = row["Title"].ToString(),
                     IssueNumber = row["IssueNumber"].ToString(),
-                    IssueDate = DateTime.Parse(row["IssueDate"].ToString()),
+                    IssueDate = (!row.IsNull("IssueDate")) ? DateTime.Parse(row["IssueDate"].ToString()) : (DateTime?)null,
                     RevisionNumber = row["RevisionNumber"].ToString(),
-                    RevisionDate = DateTime.Parse(row["RevisionDate"].ToString()),
+                    RevisionDate = (!row.IsNull("RevisionDate")) ? DateTime.Parse(row["RevisionDate"].ToString()) : (DateTime?)null,
                     UpdatedByName = row["UpdatedByName"].ToString(),
                     LastUpdatedDate = DateTime.Parse(row["LastUpdatedDate"].ToString()),
                     Path = row["Path"].ToString()
@@ -287,9 +306,9 @@ namespace Flights_GUI.Common
     {
         public string Title { get; set; }
         public string IssueNumber { get; set; }
-        public DateTime IssueDate { get; set; }
+        public DateTime? IssueDate { get; set; }
         public string RevisionNumber { get; set; }
-        public DateTime RevisionDate { get; set; }
+        public DateTime? RevisionDate { get; set; }
         public string UpdatedByName { get; set; }
         public DateTime LastUpdatedDate { get; set; }
         public string Path { get; set; }
