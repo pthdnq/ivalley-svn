@@ -79,7 +79,26 @@ namespace Flight_BLL
 
         public virtual bool GetAllBulletinsPublicAndGroups(Guid UserID, string query)
         {
-            string qry = string.Format(@"", UserID,query);
+            string qry = string.Format(@"select A.*, U.UserName, U.UserID, 'Public' as Groups from Announcement A 
+                                    left join AnnouncementGroup G on A.AnnouncementID = G.AnnouncementID                                                 
+                                    Left join aspnet_users U on A.createdby = u.UserID 
+                                    where (IsBulletin = 1 ) and                                             
+		                                    G.AnnouncementID is null 
+                                            and (isDeleted is null or isDeleted <> 1 )
+                                            AND ((A.Title LIKE '%{1}%') OR (A.Code LIKE '%{1}%'))
+
+                                    union 
+
+                                    select distinct A.*, U.UserName, U.UserID, 
+									Stuff((select ' , ' + GroupName from groups gs left join AnnouncementGroup G on gs.GroupID = G.GroupID where g.AnnouncementID = a.AnnouncementID for XML path('')),1,3,'')                                    
+                                    from Announcement A 
+                                    left join AnnouncementGroup G2 on A.AnnouncementID = G2.AnnouncementID                                                 
+                                    Left join aspnet_users U on A.createdby = u.UserID 
+                                    where (IsBulletin = 1 ) and                                             
+		                                    G2.GroupID in (select groupid from usergroup where userid = '{0}')
+                                            and (isDeleted is null or isDeleted <> 1 )
+                                            AND ((A.Title LIKE '%{1}%') OR (A.Code LIKE '%{1}%'))
+                                    order by CreatedDate desc", UserID,query);
 
             return LoadFromRawSql(qry);
         }
