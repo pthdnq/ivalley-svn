@@ -463,7 +463,7 @@ namespace Flights_GUI.Admin
 
         protected void uiLinkButtonSearch_Click(object sender, EventArgs e)
         {
-
+            BindData_Versions();
         }
 
 
