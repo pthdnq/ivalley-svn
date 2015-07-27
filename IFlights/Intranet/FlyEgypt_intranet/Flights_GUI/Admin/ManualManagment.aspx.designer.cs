@@ -40,6 +40,24 @@ namespace Flights_GUI.Admin {
         protected global::Telerik.Web.UI.RadTreeView uiRadTreeViewCats;
         
         /// <summary>
+        /// txtSearch control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtSearch;
+        
+        /// <summary>
+        /// btnSearch control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btnSearch;
+        
+        /// <summary>
         /// uiRadGridmanuals control.
         /// </summary>
         /// <remarks>
@@ -119,6 +137,24 @@ namespace Flights_GUI.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton uiLinkButtonAddVersion;
+        
+        /// <summary>
+        /// uiTextBoxSearchversions control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox uiTextBoxSearchversions;
+        
+        /// <summary>
+        /// uiLinkButtonSearch control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton uiLinkButtonSearch;
         
         /// <summary>
         /// uiRadGridVersions control.

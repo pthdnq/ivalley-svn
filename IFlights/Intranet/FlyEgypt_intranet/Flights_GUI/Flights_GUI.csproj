@@ -2086,7 +2086,6 @@
     <Compile Include="Intranet\Manuals.aspx.designer.cs">
       <DependentUpon>Manuals.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Intranet\PageLoadLog.cs" />
     <Compile Include="Intranet\schedules.aspx.cs">
       <DependentUpon>schedules.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

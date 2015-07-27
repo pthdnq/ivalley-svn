@@ -228,7 +228,7 @@ namespace Flights_GUI.Admin
         private void BindData()
         {
             ManualForm objdata = new ManualForm();
-            objdata.GetFormsByManualID(CurrentManual.ManualID);
+            objdata.GetFormsByManualID(CurrentManual.ManualID,uiTextBoxSearch.Text);
             uiRadGridmanuals.DataSource = objdata.DefaultView;
             uiRadGridmanuals.DataBind();
 
@@ -409,7 +409,7 @@ namespace Flights_GUI.Admin
         private void BindData_Versions()
         {
             FromVersion objdata = new FromVersion();
-            objdata.GetVersionsByFormID(CurrentForm.ManualFormID);
+            objdata.GetVersionsByFormID(CurrentForm.ManualFormID, uiTextBoxSearchVersions.Text);
             uiRadGridVersions.DataSource = objdata.DefaultView;
             uiRadGridVersions.DataBind();
 
@@ -425,6 +425,16 @@ namespace Flights_GUI.Admin
             uiTextBoxNotes.Text = "";
         }
         #endregion
+
+        protected void uiLinkButtonSearch_Click(object sender, EventArgs e)
+        {
+            BindData();
+        }
+
+        protected void uiLinkButtonSearchVersions_Click(object sender, EventArgs e)
+        {
+            BindData_Versions();
+        }
 
 
     }

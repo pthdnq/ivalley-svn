@@ -3,6 +3,9 @@
 
 using System;
 using Flight_DAL;
+using System.Collections.Specialized;
+using System.Data.SqlClient;
+using System.Data;
 namespace Flight_BLL
 {
 	public class FromVersion : _FromVersion
@@ -12,12 +15,15 @@ namespace Flight_BLL
 		
 		}
 
-        public bool GetVersionsByFormID(int p)
-        {            
-            return LoadFromRawSql(@"select M.*, U.username UpdatedByName , C.username CreatedByName from FromVersion M
-                                    Left join aspnet_users U on M.UpdatedBy = U.UserID
-                                    Left join aspnet_users C on M.CreatedBy = C.UserID
-                                    where ManualFromID = {0} and (isDeleted is null or isDeleted <> 1 ) order by CreatedDate desc", p);            
+        public bool GetVersionsByFormID(int FormID, string filterText)
+        {
+            ListDictionary parameters = new ListDictionary();
+
+            parameters.Add(new SqlParameter("@FormID", SqlDbType.Int, 0), FormID);
+            parameters.Add(new SqlParameter("@filterText", SqlDbType.NVarChar, 50), filterText);
+
+            return LoadFromSql("GetVersionsByFormID", parameters);
+            
         }
     }
 }

@@ -24,6 +24,19 @@
         </div>
         <div class="cell-12 clearfix" style="padding-left:0px;">            
             <div class="cell-12" style="padding-left:0px;">
+                <asp:Panel runat="server" DefaultButton="uiLinkButtonSearch">
+
+                    <div class="toolsBar">
+                        <div class="products-filter-top">                                
+                            <div class="cell-12">
+                                <span>Search : </span>
+                                <asp:TextBox ID="uiTextBoxSearch" runat="server" style="vertical-align:middle;"></asp:TextBox>
+                                <asp:LinkButton ID="uiLinkButtonSearch" OnClick="uiLinkButtonSearch_Click" CssClass="btn" runat="server" style="height:24px;line-height:normal;line-height:initial;padding-top:5px;">Search <i class="fa fa-search"></i></asp:LinkButton>
+                            </div>
+                        </div>
+                    </div>
+                
+                </asp:Panel>
                 <telerik:RadGrid ID="uiRadGridmanuals" runat="server" AllowPaging="True"
                     AutoGenerateColumns="False" CellSpacing="0"
                     HorizontalAlign="Center" EnableEmbeddedSkins="False" Width="100%"
@@ -122,6 +135,19 @@
             <div class="clearfix">&nbsp;  </div>
         </div>
         <div class="cell-12 clearfix">
+             <asp:Panel runat="server" DefaultButton="uiLinkButtonSearchVersions">
+
+                    <div class="toolsBar">
+                        <div class="products-filter-top">                                
+                            <div class="cell-12">
+                                <span>Search : </span>
+                                <asp:TextBox ID="uiTextBoxSearchVersions" runat="server" style="vertical-align:middle;"></asp:TextBox>
+                                <asp:LinkButton ID="uiLinkButtonSearchVersions" OnClick="uiLinkButtonSearchVersions_Click" CssClass="btn" runat="server" style="height:24px;line-height:normal;line-height:initial;padding-top:5px;">Search <i class="fa fa-search"></i></asp:LinkButton>
+                            </div>
+                        </div>
+                    </div>
+                
+                </asp:Panel>
             <telerik:RadGrid ID="uiRadGridVersions" runat="server" AllowPaging="True"
                 AutoGenerateColumns="False" CellSpacing="0"
                 HorizontalAlign="Center" EnableEmbeddedSkins="False" Width="100%"
