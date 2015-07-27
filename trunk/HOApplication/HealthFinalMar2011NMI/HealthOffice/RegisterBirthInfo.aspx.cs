@@ -729,6 +729,35 @@ public partial class RegisterBirthdayInfo : System.Web.UI.Page
             MHOCommon.ShowMessage(MHOCommon.NIDValidationMessage + "\\nبيانات الأم", this.Page);
             return false;
         }
+
+        if ((UcFatherInfo2.ParentNID != UcNotifierInfo1.NotifierNID) && UcNotifierInfo1.NotifierRelation == 1)
+        {
+            MHOCommon.ShowMessage("لقد قمت بادخال الرقم القومى للمبلغ مختلف عن بيانات الأب فى حين ان المبلغ الأب", this.Page);
+            return false;
+        }
+
+        if ((UcMotherInfo2.ParentNID != UcNotifierInfo1.NotifierNID) && UcNotifierInfo1.NotifierRelation == 2)
+        {
+            MHOCommon.ShowMessage("لقد قمت بادخال الرقم القومى للمبلغ مختلف عن بيانات الأم فى حين ان المبلغ الأم", this.Page);
+            return false;
+        }
+
+        if (UcNotifierInfo1.NotifierRelation == 2 || UcNotifierInfo1.NotifierRelation == 4 || UcNotifierInfo1.NotifierRelation == 10)
+        {
+            if (!MHOCommon.ValidateNationalIDInput(UcNotifierInfo1.NotifierNID, true))
+            {
+                MHOCommon.ShowMessage(MHOCommon.NIDValidationMessage + "\\nبيانات المبلغ", this.Page);
+                return false;
+            }
+        }
+        else
+        {
+            if (!MHOCommon.ValidateNationalIDInput(UcNotifierInfo1.NotifierNID, false))
+            {
+                MHOCommon.ShowMessage(MHOCommon.NIDValidationMessage + "\\nبيانات المبلغ", this.Page);
+                return false;
+            }
+        }
         
 
         if (UcMotherInfo2.ParentNID == "0")

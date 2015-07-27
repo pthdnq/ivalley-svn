@@ -102,8 +102,11 @@
                                     <asp:Button ID="btnSearch" name="btnSearchParent" ValidationGroup="nationalId" 
                                         runat="server" Text="بحث"
                                         OnClick="btnSearch_Click" Width="35px" />
-                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator" runat="server" ControlToValidate="txtNationalId" 
+                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator" runat="server" ControlToValidate="txtNationalId" ValidationGroup="GenralValidate"
                                         ErrorMessage="أدخل رقم قومى صحيح" ValidationExpression="^([0])|(\d{14})$" Display="Dynamic"></asp:RegularExpressionValidator>
+                                    <asp:RequiredFieldValidator runat="server" Display="Dynamic" SetFocusOnError="true"
+                        ValidationGroup="GenralValidate" ID="RequiredFieldValidator9" ControlToValidate="txtNationalId"
+                        ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
                                 </td>
                                 <td>
                                 <asp:UpdateProgress runat="server" AssociatedUpdatePanelID="updatePnlParents" DisplayAfter="1" ID="progParents">
