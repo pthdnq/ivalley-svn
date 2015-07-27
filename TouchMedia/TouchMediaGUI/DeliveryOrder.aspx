@@ -44,7 +44,7 @@
     </ul>
     <div class="row-fluid">
         <div class="span12">
-            <div class="widget" id="widPurchaseReport" runat="server" aria-expanded="false" visible="false">
+            <div class="widget" id="widDeliveryReport" runat="server" aria-expanded="false" visible="false">
                 <div class="widget-title">
                     <h4><i class="icon-search"></i>طباعة أوامر النقل </h4>
                     <span class="tools">
@@ -56,7 +56,7 @@
                 <div class="widget-body">
                     <div class="row-fluid">
                         <div class="span12 clearfix" id="PanelReport" runat="server">
-                            <rsweb:ReportViewer Width="100%" Height="1000px" SizeToReportContent="true" ID="ReportViewer1" runat="server"></rsweb:ReportViewer>
+                            <rsweb:ReportViewer  Width="100%" Height="1000px" SizeToReportContent="true" ID="ReportViewer1" runat="server"></rsweb:ReportViewer>
                         </div>
                     </div>
                 </div>
@@ -455,6 +455,7 @@
                                         runat="server"></asp:RegularExpressionValidator>
                                 </div>
                             </div>
+                            
                             <div class="block-margin-bottom-5 span12 clearfix">
                                 <div class="span6">
                                     <label class="control-label">السعر</label>
@@ -469,6 +470,15 @@
                                 <div class="span6">
                                     <label class="control-label">الحالة</label>
                                     <asp:DropDownList runat="server" type="text" ID="drpStatusDetails" />
+                                </div>
+                            </div>
+                            <div class="block-margin-bottom-5 span12 clearfix">
+                                <div class="span6">
+                                    <label class="control-label">نوع النقل</label>
+                                    <asp:RadioButtonList runat="server"  RepeatDirection="Horizontal" CellPadding="10" ID="RadioDeliveryType">
+                                       <asp:ListItem ></asp:ListItem>
+                                        
+                                    </asp:RadioButtonList>
                                 </div>
                             </div>
 

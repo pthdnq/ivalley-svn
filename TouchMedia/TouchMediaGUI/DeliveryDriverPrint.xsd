@@ -50,6 +50,26 @@
               <Mapping SourceColumn="ClientID" DataSetColumn="ClientID" />
               <Mapping SourceColumn="ClientName" DataSetColumn="ClientName" />
               <Mapping SourceColumn="JobOrderCode" DataSetColumn="JobOrderCode" />
+              <Mapping SourceColumn="DeliveryOrderDetailsID" DataSetColumn="DeliveryOrderDetailsID" />
+              <Mapping SourceColumn="DeliveryOrderID1" DataSetColumn="DeliveryOrderID1" />
+              <Mapping SourceColumn="DeliveryOrderStatusID1" DataSetColumn="DeliveryOrderStatusID1" />
+              <Mapping SourceColumn="DeliveryFrom" DataSetColumn="DeliveryFrom" />
+              <Mapping SourceColumn="DeliveryTo" DataSetColumn="DeliveryTo" />
+              <Mapping SourceColumn="DateFrom" DataSetColumn="DateFrom" />
+              <Mapping SourceColumn="DateTo" DataSetColumn="DateTo" />
+              <Mapping SourceColumn="ReceivableName" DataSetColumn="ReceivableName" />
+              <Mapping SourceColumn="ReceivableTelephone" DataSetColumn="ReceivableTelephone" />
+              <Mapping SourceColumn="Price" DataSetColumn="Price" />
+              <Mapping SourceColumn="DeliveryOrderCode" DataSetColumn="DeliveryOrderCode" />
+              <Mapping SourceColumn="DeliveryOrderDetailsStatusID" DataSetColumn="DeliveryOrderDetailsStatusID" />
+              <Mapping SourceColumn="CreatedBy1" DataSetColumn="CreatedBy1" />
+              <Mapping SourceColumn="CreatedDate1" DataSetColumn="CreatedDate1" />
+              <Mapping SourceColumn="UpdatedBy1" DataSetColumn="UpdatedBy1" />
+              <Mapping SourceColumn="LastUpdatedDate1" DataSetColumn="LastUpdatedDate1" />
+              <Mapping SourceColumn="WatingHours1" DataSetColumn="WatingHours1" />
+              <Mapping SourceColumn="GeneralLookUpID" DataSetColumn="GeneralLookUpID" />
+              <Mapping SourceColumn="ClientID1" DataSetColumn="ClientID1" />
+              <Mapping SourceColumn="Name" DataSetColumn="Name" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -164,14 +184,66 @@
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+              <xs:element name="DeliveryOrderDetailsID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnDeliveryOrderDetailsID" msprop:Generator_ColumnPropNameInRow="DeliveryOrderDetailsID" msprop:Generator_ColumnPropNameInTable="DeliveryOrderDetailsIDColumn" msprop:Generator_UserColumnName="DeliveryOrderDetailsID" type="xs:int" />
+              <xs:element name="DeliveryOrderID1" msprop:Generator_ColumnVarNameInTable="columnDeliveryOrderID1" msprop:Generator_ColumnPropNameInRow="DeliveryOrderID1" msprop:Generator_ColumnPropNameInTable="DeliveryOrderID1Column" msprop:Generator_UserColumnName="DeliveryOrderID1" type="xs:int" minOccurs="0" />
+              <xs:element name="DeliveryOrderStatusID1" msprop:Generator_ColumnVarNameInTable="columnDeliveryOrderStatusID1" msprop:Generator_ColumnPropNameInRow="DeliveryOrderStatusID1" msprop:Generator_ColumnPropNameInTable="DeliveryOrderStatusID1Column" msprop:Generator_UserColumnName="DeliveryOrderStatusID1" type="xs:int" minOccurs="0" />
+              <xs:element name="DeliveryFrom" msprop:Generator_ColumnVarNameInTable="columnDeliveryFrom" msprop:Generator_ColumnPropNameInRow="DeliveryFrom" msprop:Generator_ColumnPropNameInTable="DeliveryFromColumn" msprop:Generator_UserColumnName="DeliveryFrom" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="300" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DeliveryTo" msprop:Generator_ColumnVarNameInTable="columnDeliveryTo" msprop:Generator_ColumnPropNameInRow="DeliveryTo" msprop:Generator_ColumnPropNameInTable="DeliveryToColumn" msprop:Generator_UserColumnName="DeliveryTo" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="300" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DateFrom" msprop:Generator_ColumnVarNameInTable="columnDateFrom" msprop:Generator_ColumnPropNameInRow="DateFrom" msprop:Generator_ColumnPropNameInTable="DateFromColumn" msprop:Generator_UserColumnName="DateFrom" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="DateTo" msprop:Generator_ColumnVarNameInTable="columnDateTo" msprop:Generator_ColumnPropNameInRow="DateTo" msprop:Generator_ColumnPropNameInTable="DateToColumn" msprop:Generator_UserColumnName="DateTo" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="ReceivableName" msprop:Generator_ColumnVarNameInTable="columnReceivableName" msprop:Generator_ColumnPropNameInRow="ReceivableName" msprop:Generator_ColumnPropNameInTable="ReceivableNameColumn" msprop:Generator_UserColumnName="ReceivableName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="300" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ReceivableTelephone" msprop:Generator_ColumnVarNameInTable="columnReceivableTelephone" msprop:Generator_ColumnPropNameInRow="ReceivableTelephone" msprop:Generator_ColumnPropNameInTable="ReceivableTelephoneColumn" msprop:Generator_UserColumnName="ReceivableTelephone" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Price" msprop:Generator_ColumnVarNameInTable="columnPrice" msprop:Generator_ColumnPropNameInRow="Price" msprop:Generator_ColumnPropNameInTable="PriceColumn" msprop:Generator_UserColumnName="Price" type="xs:double" minOccurs="0" />
+              <xs:element name="DeliveryOrderCode" msprop:Generator_ColumnVarNameInTable="columnDeliveryOrderCode" msprop:Generator_ColumnPropNameInRow="DeliveryOrderCode" msprop:Generator_ColumnPropNameInTable="DeliveryOrderCodeColumn" msprop:Generator_UserColumnName="DeliveryOrderCode" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="300" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DeliveryOrderDetailsStatusID" msprop:Generator_ColumnVarNameInTable="columnDeliveryOrderDetailsStatusID" msprop:Generator_ColumnPropNameInRow="DeliveryOrderDetailsStatusID" msprop:Generator_ColumnPropNameInTable="DeliveryOrderDetailsStatusIDColumn" msprop:Generator_UserColumnName="DeliveryOrderDetailsStatusID" type="xs:int" minOccurs="0" />
+              <xs:element name="CreatedBy1" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnCreatedBy1" msprop:Generator_ColumnPropNameInRow="CreatedBy1" msprop:Generator_ColumnPropNameInTable="CreatedBy1Column" msprop:Generator_UserColumnName="CreatedBy1" type="xs:string" minOccurs="0" />
+              <xs:element name="CreatedDate1" msprop:Generator_ColumnVarNameInTable="columnCreatedDate1" msprop:Generator_ColumnPropNameInRow="CreatedDate1" msprop:Generator_ColumnPropNameInTable="CreatedDate1Column" msprop:Generator_UserColumnName="CreatedDate1" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="UpdatedBy1" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnUpdatedBy1" msprop:Generator_ColumnPropNameInRow="UpdatedBy1" msprop:Generator_ColumnPropNameInTable="UpdatedBy1Column" msprop:Generator_UserColumnName="UpdatedBy1" type="xs:string" minOccurs="0" />
+              <xs:element name="LastUpdatedDate1" msprop:Generator_ColumnVarNameInTable="columnLastUpdatedDate1" msprop:Generator_ColumnPropNameInRow="LastUpdatedDate1" msprop:Generator_ColumnPropNameInTable="LastUpdatedDate1Column" msprop:Generator_UserColumnName="LastUpdatedDate1" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="WatingHours1" msprop:Generator_ColumnVarNameInTable="columnWatingHours1" msprop:Generator_ColumnPropNameInRow="WatingHours1" msprop:Generator_ColumnPropNameInTable="WatingHours1Column" msprop:Generator_UserColumnName="WatingHours1" type="xs:double" minOccurs="0" />
+              <xs:element name="GeneralLookUpID" msprop:Generator_ColumnVarNameInTable="columnGeneralLookUpID" msprop:Generator_ColumnPropNameInRow="GeneralLookUpID" msprop:Generator_ColumnPropNameInTable="GeneralLookUpIDColumn" msprop:Generator_UserColumnName="GeneralLookUpID" type="xs:int" minOccurs="0" />
+              <xs:element name="ClientID1" msprop:Generator_ColumnVarNameInTable="columnClientID1" msprop:Generator_ColumnPropNameInRow="ClientID1" msprop:Generator_ColumnPropNameInTable="ClientID1Column" msprop:Generator_UserColumnName="ClientID1" type="xs:int" minOccurs="0" />
+              <xs:element name="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_UserColumnName="Name" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="300" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
       </xs:choice>
     </xs:complexType>
-    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
-      <xs:selector xpath=".//mstns:DeliveryDriverPrint" />
-      <xs:field xpath="mstns:DeliveryOrderID" />
-    </xs:unique>
   </xs:element>
 </xs:schema>
