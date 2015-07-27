@@ -108,14 +108,19 @@ namespace Flights_GUI.Intranet
         }
 
         private void LoadCircularsPublic()
-        {
+        {            DateTime DateFrom,DateTo;
+                if (!DateTime.TryParseExact(txtDateFrom.Text, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out DateFrom))
+                    DateFrom = Convert.ToDateTime("01/01/1900");
+                if (!DateTime.TryParseExact(txtDateTo.Text, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out DateTo))
+                    DateTo = Convert.ToDateTime("01/01/2500");
+
             Announcement all = new Announcement();
             if (uiDropDownListUserGroups.SelectedValue == "-1")
-                all.GetAllBlogsPublicAndGroups(new Guid(Membership.GetUser(Page.User.Identity.Name).ProviderUserKey.ToString()),txtSearch.Text);
+                all.GetAllBlogsPublicAndGroups(new Guid(Membership.GetUser(Page.User.Identity.Name).ProviderUserKey.ToString()), txtSearch.Text, DateFrom, DateTo);
             else if (uiDropDownListUserGroups.SelectedValue == "0")
-                all.GetAllBlogsPublic(txtSearch.Text);
+                all.GetAllBlogsPublic(txtSearch.Text,DateFrom,DateTo);
             else
-                all.GetAllBlogsGroups(Convert.ToInt32(uiDropDownListUserGroups.SelectedValue),txtSearch.Text);
+                all.GetAllBlogsGroups(Convert.ToInt32(uiDropDownListUserGroups.SelectedValue), txtSearch.Text, DateFrom, DateTo);
             uiRadListViewCircularsPublic.DataSource = all.DefaultView;
             uiRadListViewCircularsPublic.DataBind();
         }

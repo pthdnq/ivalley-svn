@@ -13,7 +13,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:Panel runat="server" ID="uiPanelViewAll">
-       <%-- <div id="tabs" class="tabs">
+        <%-- <div id="tabs" class="tabs">
             <ul>
                 <li class="active"><a href="#"><i class="fa fa-globe"></i>Public Bulletins</a></li>
                 <li><a href="#"><i class="fa fa-group"></i>
@@ -22,52 +22,50 @@
             </ul>
             <div class="tabs-pane">
                 <div class="tab-panel active">--%>
-                    <div class="blog-thumbs no-bar">
-                        <div class="toolsBar">
-                            <div class="products-filter-top">
-                                <div class="left" style="margin-left: 15px">
-                                    <span>View bulletins published to : </span>
-                                    <asp:DropDownList ID="uiDropDownListUserGroups" runat="server" AutoPostBack="True" OnSelectedIndexChanged="uiDropDownListUserGroups_SelectedIndexChanged">
-                                    </asp:DropDownList>
-                                </div>
-                                <div style="position: absolute; right: 250px">
-                                    <span>Search : </span>
-                                    <asp:TextBox ID="txtSearch" runat="server"></asp:TextBox>
-                                    <asp:LinkButton ID="btnSearch" OnClick="btnSearch_Click" CssClass="btn btn-small" runat="server">Search <i class="fa fa-search"></i></asp:LinkButton>
-                                </div>
-                            </div>
+        <div class="blog-thumbs no-bar">
+            <div class="toolsBar">
+                <div class="products-filter-top">
+                    <div class="left" style="margin-left: 15px">
+                        <span>View bulletins published to : </span>
+                        <asp:DropDownList ID="uiDropDownListUserGroups" runat="server" AutoPostBack="True" OnSelectedIndexChanged="uiDropDownListUserGroups_SelectedIndexChanged">
+                        </asp:DropDownList>
+                    </div>
+                    <div style="position: absolute; right: 250px">
+                        <span>Search : </span>
+                        <asp:TextBox ID="txtSearch" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtDateFrom" Style="display: none" placeholder="Date From" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtDateTo" Style="display: none" placeholder="Date To" runat="server"></asp:TextBox>
+                        <asp:LinkButton ID="btnSearch" OnClick="btnSearch_Click" CssClass="btn btn-small" runat="server">Search <i class="fa fa-search"></i></asp:LinkButton>
+                    </div>
+                </div>
 
 
-                        </div>
-                        <div class="blog-posts">
-                            <telerik:RadListView ID="uiRadListViewCircularsPublic" runat="server" ItemPlaceholderID="CircularsContainer" AllowPaging="true" OnPageIndexChanged="uiRadListViewCircularsPublic_PageIndexChanged">
-                                <LayoutTemplate>
-                                    <asp:PlaceHolder ID="CircularsContainer" runat="server"></asp:PlaceHolder>
-                                    <telerik:RadDataPager ID="uiRadDataPager" runat="server" PagedControlID="uiRadListViewCircularsPublic" PageSize="5" CssClass="pagination pagination-centered">
-                                        <Fields>
-                                            <telerik:RadDataPagerButtonField FieldType="FirstPrev"></telerik:RadDataPagerButtonField>
-                                            <telerik:RadDataPagerButtonField FieldType="Numeric" PageButtonCount="6"></telerik:RadDataPagerButtonField>
-                                            <telerik:RadDataPagerButtonField FieldType="NextLast"></telerik:RadDataPagerButtonField>
-                                            <telerik:RadDataPagerPageSizeField PageSizeComboWidth="60" PageSizeText="Page size: "></telerik:RadDataPagerPageSizeField>
-                                            <telerik:RadDataPagerGoToPageField CurrentPageText="Page: " TotalPageText="of" SubmitButtonText="Go"
-                                                TextBoxWidth="25"></telerik:RadDataPagerGoToPageField>
-                                        </Fields>
-                                    </telerik:RadDataPager>
-                                </LayoutTemplate>
-                                <ItemTemplate>
-                                    <div class="post-item " data-animate="fadeInLeft">
-                                        <div class="post-image">
-                                            <a href='Bulletins.aspx?cid=<%# Eval("AnnouncementID") %>'>
-                                                <div class="mask"></div>
-                                                <div class="post-lft-info">
-                                                    <div class="main-bg">
-                                                        <%# Convert.ToDateTime(Eval("createdDate").ToString()).ToString("dd") %><br>
-                                                        <%# Convert.ToDateTime(Eval("createdDate").ToString()).ToString("MMM") %><br>
-                                                        <%# Convert.ToDateTime(Eval("createdDate").ToString()).ToString("yyyy") %>
-                                                    </div>
-                                                </div>
-                                                <img src='<%# (string.IsNullOrEmpty(Eval("MainPic").ToString()) ? "../img/nesma.png" : "../common/thumb.aspx?Image=" + Eval("MainPic")) %>' alt="" style="max-height: 177px; max-width: 300px; width: 300px; margin: 0 auto 10px; display: block">
-                                            </a>
+            </div>
+            <div class="blog-posts">
+                <telerik:RadListView ID="uiRadListViewCircularsPublic" runat="server" ItemPlaceholderID="CircularsContainer" AllowPaging="true" OnPageIndexChanged="uiRadListViewCircularsPublic_PageIndexChanged">
+                    <LayoutTemplate>
+                        <asp:PlaceHolder ID="CircularsContainer" runat="server"></asp:PlaceHolder>
+                        <telerik:RadDataPager ID="uiRadDataPager" runat="server" PagedControlID="uiRadListViewCircularsPublic" PageSize="5" CssClass="pagination pagination-centered">
+                            <Fields>
+                                <telerik:RadDataPagerButtonField FieldType="FirstPrev"></telerik:RadDataPagerButtonField>
+                                <telerik:RadDataPagerButtonField FieldType="Numeric" PageButtonCount="6"></telerik:RadDataPagerButtonField>
+                                <telerik:RadDataPagerButtonField FieldType="NextLast"></telerik:RadDataPagerButtonField>
+                                <telerik:RadDataPagerPageSizeField PageSizeComboWidth="60" PageSizeText="Page size: "></telerik:RadDataPagerPageSizeField>
+                                <telerik:RadDataPagerGoToPageField CurrentPageText="Page: " TotalPageText="of" SubmitButtonText="Go"
+                                    TextBoxWidth="25"></telerik:RadDataPagerGoToPageField>
+                            </Fields>
+                        </telerik:RadDataPager>
+                    </LayoutTemplate>
+                    <ItemTemplate>
+                        <div class="post-item " data-animate="fadeInLeft">
+                            <div class="post-image">
+                                <a href='Bulletins.aspx?cid=<%# Eval("AnnouncementID") %>'>
+                                    <div class="mask"></div>
+                                    <div class="post-lft-info">
+                                        <div class="main-bg">
+                                            <%# Convert.ToDateTime(Eval("createdDate").ToString()).ToString("dd") %><br>
+                                            <%# Convert.ToDateTime(Eval("createdDate").ToString()).ToString("MMM") %><br>
+                                            <%# Convert.ToDateTime(Eval("createdDate").ToString()).ToString("yyyy") %>
                                         </div>
                                         <article class="post-content">
                                             <div class="post-info-container">
@@ -85,15 +83,34 @@
                                         </article>
 
                                     </div>
+                                    <img src='<%# (string.IsNullOrEmpty(Eval("MainPic").ToString()) ? "../img/nesma.png" : "../common/thumb.aspx?Image=" + Eval("MainPic")) %>' alt="" style="max-height: 177px; max-width: 300px; width: 300px; margin: 0 auto 10px; display: block">
+                                </a>
+                            </div>
+                            <article class="post-content">
+                                <div class="post-info-container">
+                                    <div class="post-info">
+                                        <h2><a class="main-color" href='Bulletins.aspx?cid=<%# Eval("AnnouncementID") %>'><%# Eval("Title").ToString() %></a></h2>
+                                        <ul class="post-meta">
+                                            <li class="meta-user"><i class="fa fa-user"></i>By: <a href="../Account/Profile.aspx?uid=<%# Eval("UserID") %>" target="_blank"><%# Eval("UserName").ToString() %></a></li>
+                                            <li><i class="fa fa-folder-open"></i>Published to: <span style="color: #777"><%# Eval("Groups") %></span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <p>
+                                    <%# Eval("Brief").ToString() %> <a class="read-more" href='Bulletins.aspx?cid=<%# Eval("AnnouncementID") %>'>Read more</a>
+                                </p>
+                            </article>
 
-                                </ItemTemplate>
-                                <ItemSeparatorTemplate>
-                                    <hr />
-                                </ItemSeparatorTemplate>
-                            </telerik:RadListView>
                         </div>
-                    </div>
-                <%--</div>
+
+                    </ItemTemplate>
+                    <ItemSeparatorTemplate>
+                        <hr />
+                    </ItemSeparatorTemplate>
+                </telerik:RadListView>
+            </div>
+        </div>
+        <%--</div>
                 <div class="tab-panel">
                     <div class="blog-thumbs no-bar">
                         <div class="blog-posts">
