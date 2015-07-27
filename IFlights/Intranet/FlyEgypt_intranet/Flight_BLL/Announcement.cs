@@ -3,6 +3,9 @@
 
 using System;
 using Flight_DAL;
+using System.Collections.Specialized;
+using System.Data.SqlClient;
+using System.Data;
 namespace Flight_BLL
 {
 	public class Announcement : _Announcement
@@ -17,65 +20,33 @@ namespace Flight_BLL
             return LoadFromRawSql(@"select A.*, U.UserName, U.UserID from Announcement A Left join aspnet_users U on A.createdby = u.UserID where (IsBulletin is null or IsBulletin <> 1 ) and (IsBlog is null or IsBlog <> 1 ) and (isDeleted is null or isDeleted <> 1 ) order by CreatedDate desc");            
         }
 
-        public virtual bool GetAllCircularsPublic(string query)
+        public virtual bool GetAllCircularsPublic(string query, DateTime dateFrom, DateTime dateTo)
         {
-            string qry = string.Format(@"select A.*, U.UserName, U.UserID, 'Public' as Groups from Announcement A 
-                                    left join AnnouncementGroup G on A.AnnouncementID = G.AnnouncementID                                                 
-                                    Left join aspnet_users U on A.createdby = u.UserID 
-                                    where (IsBulletin is null or IsBulletin <> 1 ) and 
-                                          (IsBlog is null or IsBlog <> 1 ) and
-										  G.AnnouncementID is null 
-                                          and (isDeleted is null or isDeleted <> 1 )
-                                          AND ((A.Title LIKE '%{0}%') OR (A.Code LIKE '%{0}%'))
-                                    order by CreatedDate desc", query);
-            return LoadFromRawSql(qry);
+            ListDictionary parameters = new ListDictionary();
+            parameters.Add(new SqlParameter("@query", SqlDbType.NVarChar, 50), query);
+            parameters.Add(new SqlParameter("@FromDate", SqlDbType.DateTime, 0), dateFrom);
+            parameters.Add(new SqlParameter("@ToDate", SqlDbType.DateTime, 0), dateTo);
+            return LoadFromSql("GetAllCircularsPublic", parameters);
         }
 
-        public virtual bool GetAllCircularsPublicAndGroups(Guid UserID, string query)
+        public virtual bool GetAllCircularsPublicAndGroups(Guid UserID, string query, DateTime dateFrom, DateTime dateTo)
         {
-            string qry = string.Format(@"select A.*, U.UserName, U.UserID, 'Public' as Groups from Announcement A 
-                                    left join AnnouncementGroup G on A.AnnouncementID = G.AnnouncementID                                                 
-                                    Left join aspnet_users U on A.createdby = u.UserID 
-                                    where (IsBulletin is null or IsBulletin <> 1 ) and 
-                                            (IsBlog is null or IsBlog <> 1 ) and
-		                                    G.AnnouncementID is null 
-                                            and (isDeleted is null or isDeleted <> 1 )
-                                            AND ((A.Title LIKE '%{1}%') OR (A.Code LIKE '%{1}%'))
-
-                                    union 
-
-                                    select distinct A.*, U.UserName, U.UserID, 
-									Stuff((select ' , ' + GroupName from groups gs left join AnnouncementGroup G on gs.GroupID = G.GroupID where g.AnnouncementID = a.AnnouncementID for XML path('')),1,3,'')                                    
-                                    from Announcement A 
-                                    left join AnnouncementGroup G2 on A.AnnouncementID = G2.AnnouncementID
-                                    Left join aspnet_users U on A.createdby = u.UserID 
-                                    where (IsBulletin is null or IsBulletin <> 1 ) and 
-                                            (IsBlog is null or IsBlog <> 1 ) and
-		                                    G2.GroupID in (select groupid from usergroup where userid = '{0}')
-                                            and (isDeleted is null or isDeleted <> 1 )
-                                            AND ((A.Title LIKE '%{1}%') OR (A.Code LIKE '%{1}%'))
-                                    order by CreatedDate desc", UserID, query);
-
-            return LoadFromRawSql(qry);
+            ListDictionary parameters = new ListDictionary();
+            parameters.Add(new SqlParameter("@UserID", SqlDbType.UniqueIdentifier, 0), UserID);
+            parameters.Add(new SqlParameter("@query", SqlDbType.NVarChar, 50), query);
+            parameters.Add(new SqlParameter("@FromDate", SqlDbType.DateTime, 0), dateFrom);
+            parameters.Add(new SqlParameter("@ToDate", SqlDbType.DateTime, 0), dateTo);
+            return LoadFromSql("GetAllCircularsPublicAndGroups", parameters);
         }
 
-
-        public virtual bool GetAllCircularsGroups(int groupID,string query)
+        public virtual bool GetAllCircularsGroups(int groupID, string query, DateTime dateFrom, DateTime dateTo)
         {
-            string qry = string.Format(@"select Announcement.*, U.UserName, U.UserID, G.GroupName as Groups
-                                    from Announcement inner join AnnouncementGroup
-                                    on Announcement.AnnouncementID = AnnouncementGroup.AnnouncementID
-                                    inner join Groups G on AnnouncementGroup.GroupID = G.GroupID  
-                                    Left join aspnet_users U on Announcement.createdby = u.UserID 
-                                    where (IsBulletin is null or IsBulletin <> 1 ) 
-                                    and (IsBlog is null or IsBlog <> 1 )
-                                    and AnnouncementGroup.GroupID = {0}
-                                    and (isDeleted is null or isDeleted <> 1 )
-                                    AND ((Announcement.Title LIKE '%{1}%') OR (Announcement.Code LIKE '%{1}%'))
-                                    order by CreatedDate desc", groupID, query);
-
-            return LoadFromRawSql(qry);
-                                    
+            ListDictionary parameters = new ListDictionary();
+            parameters.Add(new SqlParameter("@groupID", SqlDbType.Int, 0), groupID);
+            parameters.Add(new SqlParameter("@query", SqlDbType.NVarChar, 50), query);
+            parameters.Add(new SqlParameter("@FromDate", SqlDbType.DateTime, 0), dateFrom);
+            parameters.Add(new SqlParameter("@ToDate", SqlDbType.DateTime, 0), dateTo);
+            return LoadFromSql("GetAllCircularsGroups", parameters);
         }
         //--------------------
 
