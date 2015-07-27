@@ -630,7 +630,7 @@ select M.*, U.username UpdatedByName , C.username CreatedByName ,
 										  M.EndDate >= isnull(@To, '01/01/2500') 
                                     order by CreatedDate desc
 
-//Modifications..
+
 
 If Exists (select Name 
 		   from sysobjects 
@@ -724,3 +724,181 @@ select A.*, U.UserName, U.UserID, 'Public' as Groups from Announcement A
 Go
 
 
+
+If Exists (select Name 
+		   from sysobjects 
+		   where name = 'GetAllBulletinsPublicAndGroups' and
+		        xtype = 'P')
+Drop Procedure GetAllBulletinsPublicAndGroups
+Go
+
+Create Procedure GetAllBulletinsPublicAndGroups @UserID uniqueidentifier,
+									@query nvarchar(50),
+									@FromDate DateTime = null,
+									@ToDate DateTime = null
+as
+select A.*, U.UserName, U.UserID, 'Public' as Groups from Announcement A 
+                                    left join AnnouncementGroup G on A.AnnouncementID = G.AnnouncementID                                                 
+                                    Left join aspnet_users U on A.createdby = u.UserID 
+                                    where (IsBulletin = 1 ) and                                             
+		                                    G.AnnouncementID is null 
+                                            and (isDeleted is null or isDeleted <> 1 )
+                                            AND ((A.Title LIKE '%'+@query+'%') OR (A.Code LIKE '%'+@query+'%'))
+											AND createdDate >= ISNULL(@FromDate, '01/01/1900')
+											AND createdDate <= ISNULL(@ToDate, '01/01/2500')
+
+                                    union 
+
+                                    select distinct A.*, U.UserName, U.UserID, 
+									Stuff((select ' , ' + GroupName from groups gs left join AnnouncementGroup G on gs.GroupID = G.GroupID where g.AnnouncementID = a.AnnouncementID for XML path('')),1,3,'')                                    
+                                    from Announcement A 
+                                    left join AnnouncementGroup G2 on A.AnnouncementID = G2.AnnouncementID                                                 
+                                    Left join aspnet_users U on A.createdby = u.UserID 
+                                    where (IsBulletin = 1 ) and                                             
+		                                    G2.GroupID in (select groupid from usergroup where userid = @UserID)
+                                            and (isDeleted is null or isDeleted <> 1 )
+                                            AND ((A.Title LIKE '%'+@query+'%') OR (A.Code LIKE '%'+@query+'%'))
+											AND createdDate >= ISNULL(@FromDate, '01/01/1900')
+											AND createdDate <= ISNULL(@ToDate, '01/01/2500')
+                                    order by CreatedDate desc
+GO
+
+If Exists (select Name 
+		   from sysobjects 
+		   where name = 'GetAllBulletinsPublic' and
+		        xtype = 'P')
+Drop Procedure GetAllBulletinsPublic
+Go
+
+Create Procedure GetAllBulletinsPublic
+									@query nvarchar(50),
+									@FromDate DateTime = null,
+									@ToDate DateTime = null
+as
+select A.*, U.UserName, U.UserID, 'Public' as groups from Announcement A 
+                                    left join AnnouncementGroup G on A.AnnouncementID = G.AnnouncementID
+                                    Left join aspnet_users U on A.createdby = u.UserID 
+                                    where (IsBulletin = 1 ) and
+										  G.AnnouncementID is null 
+                                          and (isDeleted is null or isDeleted <> 1 )
+                                          AND ((A.Title LIKE '%'+@query+'%') OR (A.Code LIKE '%'+@query+'%'))
+										  AND createdDate >= ISNULL(@FromDate, '01/01/1900')
+											AND createdDate <= ISNULL(@ToDate, '01/01/2500')
+                                    order by CreatedDate desc
+GO
+
+
+
+
+
+If Exists (select Name 
+		   from sysobjects 
+		   where name = 'GetAllBulletinsGroups' and
+		        xtype = 'P')
+Drop Procedure GetAllBulletinsGroups
+Go
+
+Create Procedure GetAllBulletinsGroups
+									@groupID int,
+									@query nvarchar(50),
+									@FromDate DateTime = null,
+									@ToDate DateTime = null
+as
+select Announcement.*, U.UserName, U.UserID, G.GroupName as Groups from Announcement 
+inner join AnnouncementGroup on Announcement.AnnouncementID = AnnouncementGroup.AnnouncementID 
+inner join Groups G on AnnouncementGroup.GroupID = G.GroupID
+Left join aspnet_users U on Announcement.createdby = u.UserID where IsBulletin = 1
+and AnnouncementGroup.GroupID = @groupID
+and (isDeleted is null or isDeleted <> 1 )
+AND ((Announcement.Title LIKE '%'+@query+'%') OR (Announcement.Code LIKE '%'+@query+'%')) 
+AND createdDate >= ISNULL(@FromDate, '01/01/1900')
+AND createdDate <= ISNULL(@ToDate, '01/01/2500')
+order by CreatedDate desc
+GO
+
+
+
+If Exists (select Name 
+		   from sysobjects 
+		   where name = 'GetAllBlogsPublicAndGroups' and
+		        xtype = 'P')
+Drop Procedure GetAllBlogsPublicAndGroups
+Go
+
+Create Procedure GetAllBlogsPublicAndGroups
+									 @UserID uniqueidentifier,
+									@query nvarchar(50),
+									@FromDate DateTime = null,
+									@ToDate DateTime = null
+as
+select A.*, U.UserName, U.UserID, 'Public' as Groups from Announcement A 
+                                    left join AnnouncementGroup G on A.AnnouncementID = G.AnnouncementID                                                 
+                                    Left join aspnet_users U on A.createdby = u.UserID 
+                                    where  (IsBlog = 1 ) and
+		                                    G.AnnouncementID is null 
+                                            and (isDeleted is null or isDeleted <> 1 )
+                                            AND ((A.Title LIKE '%'+@query+'%') OR (A.Code LIKE '%'+@query+'%'))
+											AND createdDate >= ISNULL(@FromDate, '01/01/1900')
+AND createdDate <= ISNULL(@ToDate, '01/01/2500')
+                                    union 
+
+                                    select distinct A.*, U.UserName, U.UserID ,
+                                    Stuff((select ' , ' + GroupName from groups gs left join AnnouncementGroup G on gs.GroupID = G.GroupID where g.AnnouncementID = a.AnnouncementID for XML path('')),1,3,'')                                    
+                                    from Announcement A 
+                                    left join AnnouncementGroup G2 on A.AnnouncementID = G2.AnnouncementID                                                 
+                                    Left join aspnet_users U on A.createdby = u.UserID 
+                                    where (IsBlog = 1 ) and
+		                                    G2.GroupID in (select groupid from usergroup where userid = @UserID)
+                                            and (isDeleted is null or isDeleted <> 1 )
+                                            AND ((A.Title LIKE '%'+@query+'%') OR (A.Code LIKE '%'+@query+'%'))
+											AND createdDate >= ISNULL(@FromDate, '01/01/1900')
+AND createdDate <= ISNULL(@ToDate, '01/01/2500')
+                                    order by CreatedDate desc
+GO
+
+If Exists (select Name 
+		   from sysobjects 
+		   where name = 'GetAllBlogsPublic' and
+		        xtype = 'P')
+Drop Procedure GetAllBlogsPublic
+Go
+
+Create Procedure GetAllBlogsPublic
+									@query nvarchar(50),
+									@FromDate DateTime = null,
+									@ToDate DateTime = null
+as
+select A.*, U.UserName, U.UserID, 'Public' as Groups from Announcement A 
+                                    left join AnnouncementGroup G on A.AnnouncementID = G.AnnouncementID                                                 
+                                    Left join aspnet_users U on A.createdby = u.UserID 
+                                    where (IsBlog = 1 ) and
+										  G.AnnouncementID is null 
+                                          and (isDeleted is null or isDeleted <> 1 )
+                                          AND ((A.Title LIKE '%'+@query+'%') OR (A.Code LIKE '%'+@query+'%'))
+										  AND createdDate >= ISNULL(@FromDate, '01/01/1900')
+AND createdDate <= ISNULL(@ToDate, '01/01/2500')
+                                    order by CreatedDate desc
+GO
+
+
+If Exists (select Name 
+		   from sysobjects 
+		   where name = 'GetAllBlogsGroups' and
+		        xtype = 'P')
+Drop Procedure GetAllBlogsGroups
+Go
+
+Create Procedure GetAllBlogsGroups @groupID int,
+									@query nvarchar(50),
+									@FromDate DateTime = null,
+									@ToDate DateTime = null
+as
+select Announcement.*, U.UserName, U.UserID, G.GroupName as Groups 
+from Announcement inner join AnnouncementGroup on Announcement.AnnouncementID = AnnouncementGroup.AnnouncementID 
+inner join Groups G on AnnouncementGroup.GroupID = G.GroupID  Left join aspnet_users U on Announcement.createdby = u.UserID 
+where IsBlog = 1 and AnnouncementGroup.GroupID = @groupID and (isDeleted is null or isDeleted <> 1 ) 
+AND ((Announcement.Title LIKE '%'+@query+'%') OR (Announcement.Code LIKE '%'+@query+'%'))
+AND createdDate >= ISNULL(@FromDate, '01/01/1900')
+AND createdDate <= ISNULL(@ToDate, '01/01/2500')
+order by CreatedDate desc
+GO

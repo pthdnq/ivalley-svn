@@ -31,7 +31,6 @@
                         </asp:DropDownList>
                     </div>
                     <div style="position: absolute; right: 250px">
-
                         <span>Search : </span>
                         <asp:TextBox ID="txtSearch" runat="server"></asp:TextBox>
                         <asp:TextBox ID="txtDateFrom" style="display:none" placeholder="Date From" runat="server"></asp:TextBox>
