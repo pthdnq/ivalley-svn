@@ -114,11 +114,11 @@ namespace Flights_GUI.Intranet
         {
             Announcement all = new Announcement();
             if (uiDropDownListUserGroups.SelectedValue == "-1")
-                all.GetAllBulletinsPublicAndGroups(new Guid(Membership.GetUser(Page.User.Identity.Name).ProviderUserKey.ToString()));
+                all.GetAllBulletinsPublicAndGroups(new Guid(Membership.GetUser(Page.User.Identity.Name).ProviderUserKey.ToString()),txtSearch.Text);
             else if (uiDropDownListUserGroups.SelectedValue == "0")
-                all.GetAllBulletinsPublic();
+                all.GetAllBulletinsPublic(txtSearch.Text);
             else
-                all.GetAllBulletinsGroups(Convert.ToInt32(uiDropDownListUserGroups.SelectedValue));
+                all.GetAllBulletinsGroups(Convert.ToInt32(uiDropDownListUserGroups.SelectedValue),txtSearch.Text);
             uiRadListViewCircularsPublic.DataSource = all.DefaultView;
             uiRadListViewCircularsPublic.DataBind();
         }
@@ -152,6 +152,11 @@ namespace Flights_GUI.Intranet
         {
             UsersNofications userNotif = new UsersNofications();
             userNotif.MarkNotificationsReadByNotificationType((new Guid(Membership.GetUser(Page.User.Identity.Name).ProviderUserKey.ToString())), 2);
+        }
+
+        protected void btnSearch_Click(object sender, EventArgs e)
+        {
+            LoadCircularsPublic();
         }
 
     }

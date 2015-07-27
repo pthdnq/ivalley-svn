@@ -111,11 +111,11 @@ namespace Flights_GUI.Intranet
         {
             Announcement all = new Announcement();
             if (uiDropDownListUserGroups.SelectedValue == "-1")
-                all.GetAllCircularsPublicAndGroups(new Guid(Membership.GetUser(Page.User.Identity.Name).ProviderUserKey.ToString()));
+                all.GetAllCircularsPublicAndGroups(new Guid(Membership.GetUser(Page.User.Identity.Name).ProviderUserKey.ToString()),txtSearch.Text);
             else if (uiDropDownListUserGroups.SelectedValue == "0")
-                all.GetAllCircularsPublic();
+                all.GetAllCircularsPublic(txtSearch.Text);
             else
-                all.GetAllCircularsGroups(Convert.ToInt32(uiDropDownListUserGroups.SelectedValue));
+                all.GetAllCircularsGroups(Convert.ToInt32(uiDropDownListUserGroups.SelectedValue),txtSearch.Text);
             uiRadListViewCircularsPublic.DataSource = all.DefaultView;
             uiRadListViewCircularsPublic.DataBind();
         }
@@ -141,6 +141,11 @@ namespace Flights_GUI.Intranet
         }
 
         protected void uiDropDownListUserGroups_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadCircularsPublic();
+        }
+
+        protected void btnSearch_Click(object sender, EventArgs e)
         {
             LoadCircularsPublic();
         }

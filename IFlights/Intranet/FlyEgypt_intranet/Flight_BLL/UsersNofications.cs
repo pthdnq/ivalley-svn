@@ -99,5 +99,30 @@ namespace Flight_BLL
         {
             return LoadFromRawSql("SELECT FromVersionID FROM UsersNofications WHERE UserID = {0} AND FormID = {1} AND FromVersionID is not null AND IsRead = 0 AND ManualVersionID is null", UserID,FormID);
         }
+        public virtual bool markDeletedManualNotificationsRead(int ManualID)
+        {
+            return LoadFromRawSql("UPDATE UsersNofications SET IsRead = 1 WHERE ManualID = {0} AND FormID is null AND ManualVersionID is null AND FromVersionID is null AND ScheduleID is null AND ScheduleVersionID is null", ManualID);
+        }
+        public virtual bool markDeletedManualVersionNotificationsRead(int ManualVersionID)
+        {
+            return LoadFromRawSql("UPDATE UsersNofications SET IsRead = 1 WHERE ManualVersionID = {0} AND FormID is null AND FromVersionID is null AND ScheduleID is null AND ScheduleVersionID is null", ManualVersionID);
+        }
+        public virtual bool markDeletedFormNotificationsRead(int FormID)
+        {
+            return LoadFromRawSql("UPDATE UsersNofications SET IsRead = 1 WHERE FormID = {0} AND FromVersionID is null AND ScheduleID is null AND ScheduleVersionID is null", FormID);
+        }
+        public virtual bool markDeletedFormVersionNotificationsRead(int FormVersionID)
+        {
+            return LoadFromRawSql("UPDATE UsersNofications SET IsRead = 1 WHERE FromVersionID = {0} AND ScheduleID is null AND ScheduleVersionID is null", FormVersionID);
+        }
+        public virtual bool markDeletedScheduleNotificationsRead(int ScheduleID)
+        {
+            return LoadFromRawSql("UPDATE UsersNofications SET IsRead = 1 WHERE ScheduleID = {0} AND ScheduleVersionID is null", ScheduleID);
+        }
+        public virtual bool markDeletedScheduleVersionNotificationsRead(int ScheduleVersionID)
+        {
+            return LoadFromRawSql("UPDATE UsersNofications SET IsRead = 1 WHERE ScheduleVersionID = {0}", ScheduleVersionID);
+        }
+
     }
 }

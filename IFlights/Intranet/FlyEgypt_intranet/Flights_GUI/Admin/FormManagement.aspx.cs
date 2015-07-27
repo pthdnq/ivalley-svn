@@ -120,7 +120,10 @@ namespace Flights_GUI.Admin
                 mlog.UserID = new Guid(Membership.GetUser().ProviderUserKey.ToString());
                 mlog.ActionID = 3; //delete
                 mlog.Save();
-                
+
+                UsersNofications objDataNotification = new UsersNofications();
+                objDataNotification.markDeletedFormNotificationsRead(forms.ManualFormID);
+
                 BindData();
             }
         }
@@ -293,6 +296,9 @@ namespace Flights_GUI.Admin
                 mlog.LogDate = config.GetDateTimeUsingLocalZone();
                 mlog.UserID = new Guid(Membership.GetUser().ProviderUserKey.ToString());
                 mlog.Save();
+
+                UsersNofications objDataNotification = new UsersNofications();
+                objDataNotification.markDeletedFormVersionNotificationsRead(versions.FromVersionID);
 
                 BindData_Versions();
             }

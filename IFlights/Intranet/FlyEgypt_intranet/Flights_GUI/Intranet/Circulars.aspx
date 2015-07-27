@@ -32,8 +32,8 @@
                     </div>
                     <div style="position: absolute; right: 250px">
                         <span>Search : </span>
-                        <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
-                        <asp:LinkButton ID="LinkButton1" CssClass="btn btn-small" runat="server">Search <i class="fa fa-search"></i></asp:LinkButton>
+                        <asp:TextBox ID="txtSearch" runat="server"></asp:TextBox>
+                        <asp:LinkButton ID="btnSearch" OnClick="btnSearch_Click" CssClass="btn btn-small" runat="server">Search <i class="fa fa-search"></i></asp:LinkButton>
                     </div>
                 </div>
             </div>
