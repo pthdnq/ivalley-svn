@@ -604,3 +604,28 @@ select M.*, U.username UpdatedByName , C.username CreatedByName from FromVersion
 										  M.Title like '%'+ @filterText +'%' OR
 										  @filterText = '')
 									  order by CreatedDate desc
+
+Go
+
+
+
+If Exists (select Name 
+		   from sysobjects 
+		   where name = 'GetAllSchedules' and
+		        xtype = 'P')
+Drop Procedure GetAllSchedules
+Go
+Create Procedure GetAllSchedules @filterText nvarchar(50),
+								 @From DateTime = null,
+								 @To DateTime = null
+as
+select M.*, U.username UpdatedByName , C.username CreatedByName ,
+                                    (Select Top 1 path from scheduleVersion MV where MV.scheduleID = M.scheduleID Order by MV.LastUpdatedDate desc) VersionPath       
+                                    from schedule M
+                                    Left join aspnet_users U on M.UpdatedBy = U.UserID
+                                    Left join aspnet_users C on M.CreatedBy = C.UserID 
+                                    WHERE (isDeleted is null or isDeleted <> 1 ) and 
+										  (M.Name like '%'+@filterText+'%' or @filterText = '') and 
+										  M.StartDate >= isnull(@From, '01/01/1950') and 
+										  M.EndDate >= isnull(@To, '01/01/2500') 
+                                    order by CreatedDate desc
