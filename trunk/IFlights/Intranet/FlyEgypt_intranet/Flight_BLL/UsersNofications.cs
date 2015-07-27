@@ -101,23 +101,23 @@ namespace Flight_BLL
         }
         public virtual bool markDeletedManualNotificationsRead(int ManualID)
         {
-            return LoadFromRawSql("UPDATE UsersNofications SET IsRead = 1 WHERE ManualID = {0} AND FormID is null AND ManualVersionID is null AND FromVersionID is null AND ScheduleID is null AND ScheduleVersionID is null", ManualID);
+            return LoadFromRawSql("UPDATE UsersNofications SET IsRead = 1 WHERE ManualID = {0}", ManualID);
         }
         public virtual bool markDeletedManualVersionNotificationsRead(int ManualVersionID)
         {
-            return LoadFromRawSql("UPDATE UsersNofications SET IsRead = 1 WHERE ManualVersionID = {0} AND FormID is null AND FromVersionID is null AND ScheduleID is null AND ScheduleVersionID is null", ManualVersionID);
+            return LoadFromRawSql("UPDATE UsersNofications SET IsRead = 1 WHERE ManualVersionID = {0}", ManualVersionID);
         }
         public virtual bool markDeletedFormNotificationsRead(int FormID)
         {
-            return LoadFromRawSql("UPDATE UsersNofications SET IsRead = 1 WHERE FormID = {0} AND FromVersionID is null AND ScheduleID is null AND ScheduleVersionID is null", FormID);
+            return LoadFromRawSql("UPDATE UsersNofications SET IsRead = 1 WHERE FormID = {0}", FormID);
         }
         public virtual bool markDeletedFormVersionNotificationsRead(int FormVersionID)
         {
-            return LoadFromRawSql("UPDATE UsersNofications SET IsRead = 1 WHERE FromVersionID = {0} AND ScheduleID is null AND ScheduleVersionID is null", FormVersionID);
+            return LoadFromRawSql("UPDATE UsersNofications SET IsRead = 1 WHERE FromVersionID = {0}", FormVersionID);
         }
         public virtual bool markDeletedScheduleNotificationsRead(int ScheduleID)
         {
-            return LoadFromRawSql("UPDATE UsersNofications SET IsRead = 1 WHERE ScheduleID = {0} AND ScheduleVersionID is null", ScheduleID);
+            return LoadFromRawSql("UPDATE UsersNofications SET IsRead = 1 WHERE ScheduleID = {0}", ScheduleID);
         }
         public virtual bool markDeletedScheduleVersionNotificationsRead(int ScheduleVersionID)
         {
