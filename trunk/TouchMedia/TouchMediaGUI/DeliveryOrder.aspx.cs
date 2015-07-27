@@ -28,7 +28,7 @@ namespace TouchMediaGUI
                     BLL.DeliveryOrder EditDO = new BLL.DeliveryOrder();
                     EditDO.LoadByPrimaryKey(getQueryString_DeliveryOrder);
                     txtCarNumber.Text = EditDO.CarNumber;
-                    drpClientName.Text = (EditDO.ClientID).ToString();
+                    drpClientName.Text = EditDO.ClientID.ToString();
                     txtkiloMeterAfter.Text = EditDO.KilometerCounterAfter.ToString();
                     txtKiloMeterBefore.Text = EditDO.KilometerCounterBefore.ToString();
                     txtTotalPrice.Text = EditDO.TotalPrice.ToString();
@@ -71,21 +71,21 @@ namespace TouchMediaGUI
                         ReportViewer1.LocalReport.DataSources.Add(rds);
                         ReportViewer1.LocalReport.Refresh();
 
-                        PanelReport.Visible = true;
+                        widDeliveryReport.Visible = true;
                         //PanelPurchaseOrdersGrid.Visible = false;
                         //PanelPurchaseOrderGeneral.Visible = false;
                         //PanelGrdPurcahseOrderDetails.Visible = false;
                         //PanelPurchaseOrderDetails.Visible = false;
-                        widSearchDeliveryOrder.Visible = true;
-                        WidGrdGeneralDeliveryOrder.Visible = true;
-                        widPurchaseReport.Visible = true;
+                        widSearchDeliveryOrder.Visible = false;
+                        WidGrdGeneralDeliveryOrder.Visible = false;
+                        WidEditDeliveryOrder.Visible = false;
                     }
                     catch (Exception ex)
                     {
                         throw;
                     }
 
-
+                   
                 }
                 if (getQueryString_DeliveryOrderDetails > 0)
                 {
@@ -108,7 +108,7 @@ namespace TouchMediaGUI
                         txtWatingHours.Text = DODEdit.WatingHours.ToString();
                     else
                         txtWatingHours.Text = "0";
-
+                    RadioDeliveryType.SelectedValue = DODEdit.GeneralLookUpID.ToString();
                 }
 
                 BLL.DeliveryOrderStatus DOS = new DeliveryOrderStatus();
@@ -163,6 +163,15 @@ namespace TouchMediaGUI
 
 
                 DeliveryOrderBind();
+
+                GeneralLookup G = new GeneralLookup();
+                G.LoadByCategoryID(Category.DeliveryType);
+                RadioDeliveryType.DataTextField = GeneralLookup.ColumnNames.Name;
+                RadioDeliveryType.DataValueField = GeneralLookup.ColumnNames.GeneralLookupID;
+                RadioDeliveryType.DataSource = G.DefaultView;
+                RadioDeliveryType.DataBind();
+
+
             }
         }
         protected void addDeliveryOrderDetailsGrd_Click(object sender, EventArgs e)
@@ -201,6 +210,7 @@ namespace TouchMediaGUI
             Dodd.DeliveryOrderStatusID = int.Parse(drpStatusDetails.SelectedItem.Value);
             Dodd.UpdatedBy = new Guid(Membership.GetUser().ProviderUserKey.ToString());
             Dodd.LastUpdatedDate = DateTime.Now;
+            Dodd.GeneralLookUpID = int.Parse(RadioDeliveryType.SelectedValue);
             Dodd.DeliveryOrderID = getQueryString_DeliveryOrder;
             Dodd.Save();
             DeliveryOrderDetailsBind();
@@ -219,6 +229,7 @@ namespace TouchMediaGUI
             txtDeliveryOrderCode.Text = "";
             txtWatingHours.Text = "";
             txtPrice.Text = "";
+            RadioDeliveryType.ClearSelection();
 
         }
 
@@ -436,7 +447,7 @@ namespace TouchMediaGUI
         protected void btnCancelDeliveryOrderDetails_Click(object sender, EventArgs e)
         {
             ClearGrdDetails();
-
+            Response.Redirect("DeliveryOrder.aspx?DeliveryOrderID=" + getQueryString_DeliveryOrder);
         }
 
         protected void btnCancelDeliveryOrderGrid_Click(object sender, EventArgs e)

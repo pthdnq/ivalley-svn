@@ -123,10 +123,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Admin\AfterPrinting.ascx" />
+    <Content Include="Admin\ManageAfterPurchase.aspx" />
+    <Content Include="Admin\ManageClients.aspx" />
     <Content Include="Admin\ManageDeliveryOrderStatus.aspx" />
     <Content Include="Admin\ManageDesigners.aspx" />
     <Content Include="Admin\ManageJobOrderStatus.aspx" />
+    <Content Include="Admin\ManageNeeds.aspx" />
+    <Content Include="Admin\ManagePrints.aspx" />
     <Content Include="Admin\ManageTransformationSupplier.aspx" />
+    <Content Include="Admin\PaperSize.ascx" />
+    <Content Include="Admin\PaperType.ascx" />
+    <Content Include="Admin\PrintingHouseUC.ascx" />
+    <Content Include="Admin\PrintingSuppliers.ascx" />
     <Content Include="Admin\UserManagement.aspx" />
     <Content Include="assets\bootstrap-colorpicker\css\colorpicker.css" />
     <Content Include="assets\bootstrap-colorpicker\img\alpha.png" />
@@ -2011,6 +2020,27 @@
     <Compile Include="Admin\admin.Master.designer.cs">
       <DependentUpon>admin.Master</DependentUpon>
     </Compile>
+    <Compile Include="Admin\AfterPrinting.ascx.cs">
+      <DependentUpon>AfterPrinting.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AfterPrinting.ascx.designer.cs">
+      <DependentUpon>AfterPrinting.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\ManageAfterPurchase.aspx.cs">
+      <DependentUpon>ManageAfterPurchase.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ManageAfterPurchase.aspx.designer.cs">
+      <DependentUpon>ManageAfterPurchase.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\ManageClients.aspx.cs">
+      <DependentUpon>ManageClients.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ManageClients.aspx.designer.cs">
+      <DependentUpon>ManageClients.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\ManageDeliveryOrderStatus.aspx.cs">
       <DependentUpon>ManageDeliveryOrderStatus.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2032,12 +2062,54 @@
     <Compile Include="Admin\ManageJobOrderStatus.aspx.designer.cs">
       <DependentUpon>ManageJobOrderStatus.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\ManageNeeds.aspx.cs">
+      <DependentUpon>ManageNeeds.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ManageNeeds.aspx.designer.cs">
+      <DependentUpon>ManageNeeds.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\ManagePrints.aspx.cs">
+      <DependentUpon>ManagePrints.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ManagePrints.aspx.designer.cs">
+      <DependentUpon>ManagePrints.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\ManageTransformationSupplier.aspx.cs">
       <DependentUpon>ManageTransformationSupplier.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Admin\ManageTransformationSupplier.aspx.designer.cs">
       <DependentUpon>ManageTransformationSupplier.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\PaperSize.ascx.cs">
+      <DependentUpon>PaperSize.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\PaperSize.ascx.designer.cs">
+      <DependentUpon>PaperSize.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\PaperType.ascx.cs">
+      <DependentUpon>PaperType.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\PaperType.ascx.designer.cs">
+      <DependentUpon>PaperType.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\PrintingHouseUC.ascx.cs">
+      <DependentUpon>PrintingHouseUC.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\PrintingHouseUC.ascx.designer.cs">
+      <DependentUpon>PrintingHouseUC.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\PrintingSuppliers.ascx.cs">
+      <DependentUpon>PrintingSuppliers.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\PrintingSuppliers.ascx.designer.cs">
+      <DependentUpon>PrintingSuppliers.ascx</DependentUpon>
     </Compile>
     <Compile Include="Admin\UserManagement.aspx.cs">
       <DependentUpon>UserManagement.aspx</DependentUpon>
@@ -2051,6 +2123,11 @@
     <Compile Include="common\commonMethods.asmx.cs">
       <DependentUpon>commonMethods.asmx</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DeliveryDriverPrint.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DeliveryDriverPrint.xsd</DependentUpon>
     </Compile>
     <Compile Include="FilterbyStatus.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -2530,6 +2607,17 @@
     <Content Include="DeliveryOrderReports.xsc">
       <DependentUpon>DeliveryOrderReports.xsd</DependentUpon>
     </Content>
+    <Content Include="DeliveryDriverPrint.xsc">
+      <DependentUpon>DeliveryDriverPrint.xsd</DependentUpon>
+    </Content>
+    <None Include="DeliveryDriverPrint.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DeliveryDriverPrint.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="DeliveryDriverPrint.xss">
+      <DependentUpon>DeliveryDriverPrint.xsd</DependentUpon>
+    </Content>
     <None Include="DeliveryOrderReports.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
@@ -2563,6 +2651,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Reports\DeliveryDriverPrint.rdlc" />
     <EmbeddedResource Include="Reports\DeliveryReport.rdlc" />
     <EmbeddedResource Include="Reports\DeliveryReportByStatus.rdlc" />
     <EmbeddedResource Include="Reports\PurchasePrintReport.rdlc" />
@@ -2580,7 +2669,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>1899</DevelopmentServerPort>
+          <DevelopmentServerPort>50933</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

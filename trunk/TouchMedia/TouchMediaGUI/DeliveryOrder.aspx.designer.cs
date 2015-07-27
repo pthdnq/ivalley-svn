@@ -22,13 +22,13 @@ namespace TouchMediaGUI {
         protected global::System.Web.UI.ScriptManager ScriptManager1;
         
         /// <summary>
-        /// widPurchaseReport control.
+        /// widDeliveryReport control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl widPurchaseReport;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl widDeliveryReport;
         
         /// <summary>
         /// PanelReport control.
@@ -560,6 +560,15 @@ namespace TouchMediaGUI {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList drpStatusDetails;
+        
+        /// <summary>
+        /// RadioDeliveryType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButtonList RadioDeliveryType;
         
         /// <summary>
         /// addDeliveryOrderDetailsGrd control.
