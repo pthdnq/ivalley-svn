@@ -27,6 +27,7 @@
                 <MasterTableView>
 
                     <Columns>
+                        <telerik:GridBoundColumn DataField="Code" HeaderText="Code"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="Title" HeaderText="Title"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="UserName" HeaderText="Created By"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="createdDate" HeaderText="Created Date" DataFormatString="{0:dd/MM/yyyy}"></telerik:GridBoundColumn>
@@ -55,6 +56,14 @@
             <div class="cell-4">
                 <asp:TextBox ID="uiTextBoxTitle" runat="server"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="add" ControlToValidate="uiTextBoxTitle"></asp:RequiredFieldValidator>
+            </div>
+        </div>
+        <div style="clear: both; height: 5px;"></div>
+        <div class="cell-12 clearfix">
+            <div class="cell-2">Code</div>
+            <div class="cell-4">
+                <asp:TextBox ID="uiTextBoxCode" runat="server"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="add" ControlToValidate="uiTextBoxCode"></asp:RequiredFieldValidator>
             </div>
         </div>
         <div style="clear: both; height: 5px;"></div>
