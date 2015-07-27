@@ -707,6 +707,8 @@ public class MHOCommon
     /// <returns>Date Of Birth</returns>
     public static DateTime? GetDateFromNID(string nid)
     {
+        try
+        {
         int century = Convert.ToInt32(nid.Substring(0, 1));
         int year = Convert.ToInt32(nid.Substring(1, 2));
         int month = Convert.ToInt32(nid.Substring(3, 2));
@@ -718,8 +720,7 @@ public class MHOCommon
         else if(century == 3)
             yearValue = "20" + nid.Substring(1, 2);
 
-        try
-        {
+        
             return DateTime.Parse(yearValue + "-" + month.ToString() + "-" + day.ToString());
         }
         catch (Exception ex)

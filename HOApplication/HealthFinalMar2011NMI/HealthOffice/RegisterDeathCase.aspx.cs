@@ -257,6 +257,10 @@ public partial class RegisterDeathCase : System.Web.UI.Page
         {
             UcDeathInfo2.EventDeadNID = "0";
             UcDeathInfo2.TxtNIDEnabledStatus = false;
+            DecisionControl1.ValidateDescisionNo = false;
+            DecisionControl1.ValidatereqName = false;
+            DecisionControl1.DecisionDate = DateTime.Now;
+            DivDecision.Style.Add("display", "none");
         }
     }
 
@@ -389,7 +393,7 @@ public partial class RegisterDeathCase : System.Web.UI.Page
             uiLabelRegisterNo.Text = obj.RegisterCode;
             txtRecordNumber.Text = objDead.RegisterNo.ToString();
             uiLabelRecordNo.Text = objDead.RegisterNo.ToString();
-            if (IsLostCase)
+            if (IsLostCase && rdTypeList.SelectedValue != "3")
             {
               
                 DecisionControl1.NotesValue = objDead.DeadDecisionNotes;
@@ -425,7 +429,7 @@ public partial class RegisterDeathCase : System.Web.UI.Page
         objDead.ProveText = UcDeathInfo2.ProveType;
         objDead.ProveNumber = UcDeathInfo2.ProveNo;
         objDead.IsUnKown = false;
-        if (IsLostCase)
+        if (IsLostCase && rdTypeList.SelectedValue != "3")
         {
             if (DecisionControl1.DecisionNumber != string.Empty)
             {
@@ -554,7 +558,7 @@ public partial class RegisterDeathCase : System.Web.UI.Page
                 //objDead.DieSection = 43;
                 //objDead.DieArea = 19;
 
-                if (IsLostCase)
+                if (IsLostCase && rdTypeList.SelectedValue != "3")
                 {
                     if (DecisionControl1.DecisionNumber != string.Empty)
                     {
@@ -674,6 +678,14 @@ public partial class RegisterDeathCase : System.Web.UI.Page
                 }
             }
         }
+        else
+        {
+            if (!IsLostCase)
+            {
+                MHOCommon.ShowMessage("الرقم القومى غير صحيح. يجب أن يكون مكون من 14 رقم", this.Page);
+                return false;
+            }
+        }
 
 
         try
@@ -699,7 +711,31 @@ public partial class RegisterDeathCase : System.Web.UI.Page
 
         #endregion
 
-        
+
+
+        if (!MHOCommon.ValidateNationalIDInput(UcMotherInfo2.ParentNID, true))
+        {
+            MHOCommon.ShowMessage(MHOCommon.NIDValidationMessage + "\\nبيانات الأم", this.Page);
+            return false;
+        }
+
+        if (UcNotifierInfo2.NotifierRelation == 2 || UcNotifierInfo2.NotifierRelation == 4 || UcNotifierInfo2.NotifierRelation == 10)
+        {
+            if (!MHOCommon.ValidateNationalIDInput(UcNotifierInfo2.NotifierNID, true))
+            {
+                MHOCommon.ShowMessage(MHOCommon.NIDValidationMessage + "\\nبيانات المبلغ", this.Page);
+                return false;
+            }
+        }
+        else
+        {
+            if (!MHOCommon.ValidateNationalIDInput(UcNotifierInfo2.NotifierNID, false))
+            {
+                MHOCommon.ShowMessage(MHOCommon.NIDValidationMessage + "\\nبيانات المبلغ", this.Page);
+                return false;
+            }
+        }
+
         if (!IsLostCase && DeadEventIDParameter == null)
         {
             //if (DateTime.Today.AddDays(-3) > DateTime.Parse(UcGeneralDeathInfo1.EventDeadDieDate))
@@ -746,6 +782,15 @@ public partial class RegisterDeathCase : System.Web.UI.Page
             return false;
         }
 
+        if ((UcMotherInfo2.ParentNID != UcNotifierInfo2.NotifierNID) && UcNotifierInfo2.NotifierRelation == 2)
+        {
+            MHOCommon.ShowMessage("لقد قمت بادخال الرقم القومى للمبلغ مختلف عن بيانات الأم فى حين ان المبلغ الأم", this.Page);
+            return false;
+        }
+
+
+
+
         
         if ((DateTime.Now.Year - DateTime.Parse(UcDeathInfo2.EventDeadBirthDate).Year < 18 ) && UcDeathInfo2.EventDeadCardType == 2)
         {
@@ -758,8 +803,8 @@ public partial class RegisterDeathCase : System.Web.UI.Page
             MHOCommon.ShowMessage(MHOCommon.NIDValidationMessage + "\\nبيانات المتوفى", this.Page);
             return false;
         }
-        
-        if (IsLostCase)
+
+        if (IsLostCase && rdTypeList.SelectedValue != "3")
         {
             health_office objHealthOffice = new health_office();
             if (DeadEventIDParameter != null)

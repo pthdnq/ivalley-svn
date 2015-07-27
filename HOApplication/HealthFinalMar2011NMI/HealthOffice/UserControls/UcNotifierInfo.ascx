@@ -62,7 +62,7 @@
                 <td>
                     <asp:RegularExpressionValidator ID="RegularExpressionValidator5" runat="server" ValidationGroup="GenralValidate"
                         ControlToValidate="txtNationalId" ErrorMessage="أدخل رقم قومى صحيح" Display="Dynamic"
-                        ValidationExpression="^(0|\d{14})$"></asp:RegularExpressionValidator>
+                        ValidationExpression="^([0])|(\d{14})$"></asp:RegularExpressionValidator>
                     <asp:RequiredFieldValidator runat="server" Display="Dynamic" SetFocusOnError="true"
                         ValidationGroup="GenralValidate" ID="RequiredFieldValidator1" ControlToValidate="txtNationalId"
                         ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>

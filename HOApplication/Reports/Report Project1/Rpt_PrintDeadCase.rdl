@@ -4276,7 +4276,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>تاريخ الوفاه:</Value>
+                <Value>سن المتوفى :</Value>
                 <Style>
                   <FontSize>14pt</FontSize>
                   <FontWeight>Bold</FontWeight>
@@ -4328,9 +4328,9 @@
         </Paragraphs>
         <rd:DefaultName>DeadDieDate</rd:DefaultName>
         <Top>7.79166cm</Top>
-        <Left>5.60351cm</Left>
+        <Left>6.58769cm</Left>
         <Height>0.6cm</Height>
-        <Width>2.75284cm</Width>
+        <Width>1.76866cm</Width>
         <ZIndex>108</ZIndex>
         <Style>
           <Border>
@@ -4494,6 +4494,44 @@
         <Height>0.55621cm</Height>
         <Width>1.14991in</Width>
         <ZIndex>112</ZIndex>
+        <Style>
+          <Border />
+          <VerticalAlign>Middle</VerticalAlign>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+          <Direction>RTL</Direction>
+        </Style>
+      </Textbox>
+      <Textbox Name="textbox93">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>سنة</Value>
+                <Style>
+                  <FontSize>14pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                  <Language>ar</Language>
+                  <NumeralLanguage>ar</NumeralLanguage>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <LeftIndent>0cm</LeftIndent>
+            <HangingIndent>0cm</HangingIndent>
+            <Style>
+              <TextAlign>Right</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <Top>3.06758in</Top>
+        <Left>2.11591in</Left>
+        <Height>0.55621cm</Height>
+        <Width>0.39575in</Width>
+        <ZIndex>113</ZIndex>
         <Style>
           <Border />
           <VerticalAlign>Middle</VerticalAlign>
