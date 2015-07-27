@@ -80,7 +80,7 @@
                                         <article class="post-content">
                                             <div class="post-info-container">
                                                 <div class="post-info">
-                                                    <h2><a class="main-color" href='Circulars.aspx?cid=<%# Eval("AnnouncementID") %>'><%# Eval("Title").ToString() %></a></h2>
+                                                    <h2><a class="main-color" href='Circulars.aspx?cid=<%# Eval("AnnouncementID") %>'><%# Eval("Code").ToString() + " " + Eval("Title").ToString() %></a></h2>
                                                     <ul class="post-meta">
                                                         <li class="meta-user"><i class="fa fa-user"></i>By: <a href="../Account/Profile.aspx?uid=<%# Eval("UserID") %>" target="_blank"><%# Eval("UserName").ToString() %></a></li>
                                                         <li><i class="fa fa-folder-open"></i>Published to: <span style="color:#777"><%# Eval("Groups") %></span></li>

@@ -89,7 +89,7 @@ namespace Flights_GUI.Intranet
             Announcement current = new Announcement();
             if (current.LoadByPrimaryKey(CurrentAnnouncement))
             {
-                uiLabelTitle.Text = current.Title;
+                uiLabelTitle.Text = current.Code + " " + current.Title;
                 uiLabelDate.Text = current.CreatedDate.ToString("dd MMM yyyy");
                 if (!current.IsColumnNull(Announcement.ColumnNames.CreatedBy))
                     uiLabelCreator.Text = Membership.GetUser(new Guid(current.CreatedBy.ToString())).UserName;
