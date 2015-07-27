@@ -33,6 +33,8 @@
                     <div style="position: absolute; right: 250px">
                         <span>Search : </span>
                         <asp:TextBox ID="txtSearch" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtDateFrom" style="display:none" placeholder="Date From" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtDateTo" style="display:none" placeholder="Date To" runat="server"></asp:TextBox>
                         <asp:LinkButton ID="btnSearch" OnClick="btnSearch_Click" CssClass="btn btn-small" runat="server">Search <i class="fa fa-search"></i></asp:LinkButton>
                     </div>
                 </div>
