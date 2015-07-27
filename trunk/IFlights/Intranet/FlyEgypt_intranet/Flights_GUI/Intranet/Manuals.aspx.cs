@@ -99,10 +99,23 @@ namespace Flights_GUI.Intranet
         protected void MarkNotificationsAsRead()
         {
             UsersNofications userNotif = new UsersNofications();
-            if(currentManualCat != 12)
-                userNotif.MarkNotificationsReadByManualCategoryID((new Guid(Membership.GetUser(Page.User.Identity.Name).ProviderUserKey.ToString())), 3,currentManualCat);
+            ManualCategory mosttop = new ManualCategory();
+            mosttop.GetTopMostParent(currentManualCat);
+
+            if (!mosttop.IsColumnNull(ManualCategory.ColumnNames.ParentCategoryID))
+            {
+                if (mosttop.ParentCategoryID == 12)
+                    userNotif.MarkNotificationsReadByManualCategoryID((new Guid(Membership.GetUser(Page.User.Identity.Name).ProviderUserKey.ToString())), 5, currentManualCat);
+                else
+                    userNotif.MarkNotificationsReadByManualCategoryID((new Guid(Membership.GetUser(Page.User.Identity.Name).ProviderUserKey.ToString())), 3, currentManualCat);
+            }
             else
-                userNotif.MarkNotificationsReadByManualCategoryID((new Guid(Membership.GetUser(Page.User.Identity.Name).ProviderUserKey.ToString())), 5, currentManualCat);
+            {
+                if (mosttop.ManualCategoryID == 12)
+                    userNotif.MarkNotificationsReadByManualCategoryID((new Guid(Membership.GetUser(Page.User.Identity.Name).ProviderUserKey.ToString())), 5, currentManualCat);
+                else
+                    userNotif.MarkNotificationsReadByManualCategoryID((new Guid(Membership.GetUser(Page.User.Identity.Name).ProviderUserKey.ToString())), 3, currentManualCat);
+            }
         }
         public void LogManualsRead()
         {
