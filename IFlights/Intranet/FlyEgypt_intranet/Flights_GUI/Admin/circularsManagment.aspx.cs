@@ -50,6 +50,7 @@ namespace Flights_GUI.Admin
                 objData.LoadByPrimaryKey(Convert.ToInt32(e.CommandArgument.ToString()));
 
                 uiTextBoxTitle.Text = objData.Title;
+                uiTextBoxCode.Text = objData.Code;
                 uiRadEditorContnet.Content = Server.HtmlDecode(objData.Content);
                 //uiTextBoxCreatedBy.Text = objData.CreatedBy;
                 if (!objData.IsColumnNull(Announcement.ColumnNames.MainPic))
@@ -153,6 +154,7 @@ namespace Flights_GUI.Admin
             }
             objdata.Title = uiTextBoxTitle.Text;
             objdata.Brief = uiTextBoxBrief.Text;
+            objdata.Code = uiTextBoxCode.Text;
 
 
             //objdata.CreatedBy = uiTextBoxCreatedBy.Text;
