@@ -240,13 +240,19 @@ namespace Flights_GUI.Admin
             currentManualCat = Convert.ToInt32(e.Node.Value);
             BindData();
         }
+
+
+        protected void btnSearch_Click(object sender, EventArgs e)
+        {
+            BindData();
+        }
         #endregion
 
         #region Methods
         private void BindData()
         {
             Manual objdata = new Manual();
-            objdata.GetManualsByCatID(currentManualCat);
+            objdata.GetManualsByCatID(currentManualCat, txtSearch.Text);
             uiRadGridmanuals.DataSource = objdata.DefaultView;
             uiRadGridmanuals.DataBind();
 
@@ -439,7 +445,7 @@ namespace Flights_GUI.Admin
         private void BindData_Versions()
         {
             ManualVersion objdata = new ManualVersion();
-            objdata.GetVersionsByManualID(CurrentManual.ManualID);
+            objdata.GetVersionsByManualID(CurrentManual.ManualID,uiTextBoxSearchversions.Text);
             uiRadGridVersions.DataSource = objdata.DefaultView;
             uiRadGridVersions.DataBind();
 
@@ -454,6 +460,11 @@ namespace Flights_GUI.Admin
             uiTextBoxNotes.Text = "";
         }
         #endregion
+
+        protected void uiLinkButtonSearch_Click(object sender, EventArgs e)
+        {
+
+        }
 
 
 

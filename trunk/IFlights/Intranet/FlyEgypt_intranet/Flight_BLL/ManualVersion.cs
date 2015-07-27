@@ -3,6 +3,9 @@
 
 using System;
 using Flight_DAL;
+using System.Collections.Specialized;
+using System.Data.SqlClient;
+using System.Data;
 namespace Flight_BLL
 {
 	public class ManualVersion : _ManualVersion
@@ -12,13 +15,14 @@ namespace Flight_BLL
 		
 		}
 
-        public bool GetVersionsByManualID(int ManualID)
+        public bool GetVersionsByManualID(int ManualID, string filterText)
         {
+            ListDictionary parameters = new ListDictionary();
 
-            return LoadFromRawSql(@"select M.*, U.username UpdatedByName , C.username CreatedByName from ManualVersion M
-                                    Left join aspnet_users U on M.UpdatedBy = U.UserID
-                                    Left join aspnet_users C on M.CreatedBy = C.UserID
-                                    where ManualID = {0} and (isDeleted is null or isDeleted <> 1 ) order by CreatedDate desc", ManualID);            
+            parameters.Add(new SqlParameter("@ManualID", SqlDbType.Int, 0), ManualID);
+            parameters.Add(new SqlParameter("@filterText", SqlDbType.NVarChar, 50), filterText);
+
+            return LoadFromSql("GetVersionsByManualID", parameters);
         }
 	}
 }

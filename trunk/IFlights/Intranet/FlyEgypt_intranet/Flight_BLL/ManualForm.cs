@@ -3,6 +3,9 @@
 
 using System;
 using Flight_DAL;
+using System.Collections.Specialized;
+using System.Data.SqlClient;
+using System.Data;
 namespace Flight_BLL
 {
 	public class ManualForm : _ManualForm
@@ -12,38 +15,25 @@ namespace Flight_BLL
 		
 		}
 
-        public bool GetFormsByManualID(int p)
+        public bool GetFormsByManualID(int ManualID, string filterText)
         {
-            return LoadFromRawSql(@"select M.*, U.username UpdatedByName , C.username CreatedByName,
-                                    (Select Top 1 path from FromVersion MV where MV.ManualFromID = M.ManualFormID Order by MV.LastUpdatedDate desc) VersionPath 
-                                    from ManualForm M
-                                    Left join aspnet_users U on M.UpdatedBy = U.UserID
-                                    Left join aspnet_users C on M.CreatedBy = C.UserID
-                                    where ManualID = {0} and (isDeleted is null or isDeleted <> 1 ) order by CreatedDate desc", p);            
-        }
+            ListDictionary parameters = new ListDictionary();
+
+            parameters.Add(new SqlParameter("@ManualID", SqlDbType.Int, 0), ManualID);
+            parameters.Add(new SqlParameter("@filterText", SqlDbType.NVarChar, 50), filterText);            
+            return LoadFromSql("GetFormsByManualID_Admin", parameters);
+       }
 
 
-        public bool GetFormsByManualID(int ManualID, Guid UserID)
+        public bool GetFormsByManualID(int ManualID, Guid UserID,string filterText)
         {
-            return LoadFromRawSql(@"select M.*, U.username UpdatedByName , C.username CreatedByName,
-                                    (Select Top 1 path from FromVersion MV where MV.ManualFromID = M.ManualFormID Order by MV.LastUpdatedDate desc) VersionPath,                                    
-                                    (Select Top 1 FromVersionID from FromVersion MV where MV.ManualFromID = M.ManualFormID Order by MV.LastUpdatedDate desc) FromVersionID,                                    
-                                    (select isnull(sum(case when UF.UserNotificationID is not null then 1 else 0 end),0)  from UsersNofications UF where M.ManualID = UF.ManualID and 
-								                                     UF.FormID is not null and 
-								                                     UF.ManualVersionID is null and 
-								                                     UF.FromVersionID is null and 
-								                                     (UF.IsRead is null OR UF.IsRead <> 1) and
-								                                     UF.UserID = {1}) ManualFormUpdates, 
-                                    (select isnull(sum(case when UFV.UserNotificationID is not null then 1 else 0 end),0)  from UsersNofications UFV where M.ManualID = UFV.ManualID and 
-								                                     UFV.FormID is not null and 								 
-								                                     UFV.FromVersionID is not null and 
-								                                     UFV.ManualVersionID is null and
-								                                     (UFV.IsRead is null OR UFV.IsRead <> 1) and
-								                                     UFV.UserID = {1}) ManualFormVersionUpdates	 
-                                    from ManualForm M
-                                    Left join aspnet_users U on M.UpdatedBy = U.UserID
-                                    Left join aspnet_users C on M.CreatedBy = C.UserID
-                                    where ManualID = {0} and (isDeleted is null or isDeleted <> 1 ) order by CreatedDate desc", ManualID, UserID);
+            ListDictionary parameters = new ListDictionary();
+
+            parameters.Add(new SqlParameter("@ManualID", SqlDbType.Int, 0), ManualID);
+            parameters.Add(new SqlParameter("@filterText", SqlDbType.NVarChar, 50), filterText);
+            parameters.Add(new SqlParameter("@UserID", SqlDbType.UniqueIdentifier, 0), UserID);
+            return LoadFromSql("GetFormsByManualID_User", parameters);
+
         }
     }
 }

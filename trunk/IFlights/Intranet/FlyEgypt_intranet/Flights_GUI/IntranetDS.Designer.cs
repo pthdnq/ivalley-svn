@@ -5321,6 +5321,8 @@ namespace Flights_GUI {
             
             private global::System.Data.DataColumn columnCreator;
             
+            private global::System.Data.DataColumn columnCode;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public GetAnnouncementByIDDataTable() {
@@ -5460,6 +5462,14 @@ namespace Flights_GUI {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn CodeColumn {
+                get {
+                    return this.columnCode;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -5495,7 +5505,7 @@ namespace Flights_GUI {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GetAnnouncementByIDRow AddGetAnnouncementByIDRow(string Title, string Content, System.Guid CreatedBy, System.DateTime createdDate, string MainPic, string Brief, bool IsBulletin, bool IsBlog, string UploadedFile, int GroupID, bool isDeleted, string Creator) {
+            public GetAnnouncementByIDRow AddGetAnnouncementByIDRow(string Title, string Content, System.Guid CreatedBy, System.DateTime createdDate, string MainPic, string Brief, bool IsBulletin, bool IsBlog, string UploadedFile, int GroupID, bool isDeleted, string Creator, string Code) {
                 GetAnnouncementByIDRow rowGetAnnouncementByIDRow = ((GetAnnouncementByIDRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -5510,7 +5520,8 @@ namespace Flights_GUI {
                         UploadedFile,
                         GroupID,
                         isDeleted,
-                        Creator};
+                        Creator,
+                        Code};
                 rowGetAnnouncementByIDRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowGetAnnouncementByIDRow);
                 return rowGetAnnouncementByIDRow;
@@ -5546,6 +5557,7 @@ namespace Flights_GUI {
                 this.columnGroupID = base.Columns["GroupID"];
                 this.columnisDeleted = base.Columns["isDeleted"];
                 this.columnCreator = base.Columns["Creator"];
+                this.columnCode = base.Columns["Code"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5577,6 +5589,8 @@ namespace Flights_GUI {
                 base.Columns.Add(this.columnisDeleted);
                 this.columnCreator = new global::System.Data.DataColumn("Creator", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCreator);
+                this.columnCode = new global::System.Data.DataColumn("Code", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCode);
                 this.columnAnnouncementID.AutoIncrement = true;
                 this.columnAnnouncementID.AutoIncrementSeed = -1;
                 this.columnAnnouncementID.AutoIncrementStep = -1;
@@ -5589,6 +5603,7 @@ namespace Flights_GUI {
                 this.columnUploadedFile.MaxLength = 500;
                 this.columnCreator.AllowDBNull = false;
                 this.columnCreator.MaxLength = 256;
+                this.columnCode.MaxLength = 50;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -14632,6 +14647,22 @@ namespace Flights_GUI {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Code {
+                get {
+                    try {
+                        return ((string)(this[this.tableGetAnnouncementByID.CodeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Code\' in table \'GetAnnouncementByID\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableGetAnnouncementByID.CodeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsTitleNull() {
                 return this.IsNull(this.tableGetAnnouncementByID.TitleColumn);
             }
@@ -14760,6 +14791,18 @@ namespace Flights_GUI {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetisDeletedNull() {
                 this[this.tableGetAnnouncementByID.isDeletedColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsCodeNull() {
+                return this.IsNull(this.tableGetAnnouncementByID.CodeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetCodeNull() {
+                this[this.tableGetAnnouncementByID.CodeColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -22320,6 +22363,7 @@ namespace Flights_GUI.IntranetDSTableAdapters {
             tableMapping.ColumnMappings.Add("GroupID", "GroupID");
             tableMapping.ColumnMappings.Add("isDeleted", "isDeleted");
             tableMapping.ColumnMappings.Add("Creator", "Creator");
+            tableMapping.ColumnMappings.Add("Code", "Code");
             this._adapter.TableMappings.Add(tableMapping);
         }
         

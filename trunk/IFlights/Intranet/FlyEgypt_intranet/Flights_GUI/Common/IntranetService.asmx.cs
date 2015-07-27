@@ -47,7 +47,7 @@ namespace Flights_GUI.Common
         public void GetManualVersions(int ID)
         {
             ManualVersion versions = new ManualVersion();
-            versions.GetVersionsByManualID(ID);
+            versions.GetVersionsByManualID(ID, "");
 
             List<Version> AllVersions = versions.DefaultView.Table.AsEnumerable().Select(row =>
             {
@@ -167,7 +167,7 @@ namespace Flights_GUI.Common
         public void GetFormVersions(int ID)
         {
             FromVersion versions = new FromVersion();
-            versions.GetVersionsByFormID(ID);
+            versions.GetVersionsByFormID(ID, "");
 
             List<Version> AllVersions = versions.DefaultView.Table.AsEnumerable().Select(row =>
             {

@@ -23,7 +23,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
-        <Top>0.33479cm</Top>
+        <Top>0.139cm</Top>
         <Left>11.39101cm</Left>
         <Height>0.81167cm</Height>
         <Width>7.23604cm</Width>
@@ -59,7 +59,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
-        <Top>2.56829cm</Top>
+        <Top>2.3725cm</Top>
         <Left>5.10146cm</Left>
         <Height>1.12917cm</Height>
         <Width>8.79708cm</Width>
@@ -79,7 +79,7 @@
         <Value>=First(Fields!LogoPath.Value, "AppConfigDataSet")</Value>
         <MIMEType>image/png</MIMEType>
         <Sizing>FitProportional</Sizing>
-        <Top>0.33479cm</Top>
+        <Top>0.139cm</Top>
         <Left>0.37294cm</Left>
         <Height>2.00271cm</Height>
         <Width>5.73522cm</Width>
@@ -357,7 +357,7 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>LogDetailsDataSet</DataSetName>
-        <Top>5.99871cm</Top>
+        <Top>6.25271cm</Top>
         <Left>0.37294cm</Left>
         <Height>1.2cm</Height>
         <Width>18.25411cm</Width>
@@ -386,7 +386,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Title</rd:DefaultName>
-        <Top>4.03966cm</Top>
+        <Top>3.72216cm</Top>
         <Left>4.09258cm</Left>
         <Height>0.6cm</Height>
         <Width>14.53448cm</Width>
@@ -419,7 +419,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Creator</rd:DefaultName>
-        <Top>4.97099cm</Top>
+        <Top>4.55824cm</Top>
         <Left>4.09258cm</Left>
         <Height>0.6cm</Height>
         <Width>4.14042cm</Width>
@@ -452,7 +452,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>createdDate</rd:DefaultName>
-        <Top>4.97099cm</Top>
+        <Top>4.52649cm</Top>
         <Left>14.52753cm</Left>
         <Height>0.6cm</Height>
         <Width>4.09953cm</Width>
@@ -486,7 +486,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Title</rd:DefaultName>
-        <Top>4.03966cm</Top>
+        <Top>3.72216cm</Top>
         <Left>0.73583cm</Left>
         <Height>0.6cm</Height>
         <Width>2.87696cm</Width>
@@ -520,7 +520,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Creator</rd:DefaultName>
-        <Top>4.97099cm</Top>
+        <Top>4.55824cm</Top>
         <Left>0.73583cm</Left>
         <Height>0.6cm</Height>
         <Width>2.87696cm</Width>
@@ -554,7 +554,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>createdDate</rd:DefaultName>
-        <Top>4.97099cm</Top>
+        <Top>4.52649cm</Top>
         <Left>10.93266cm</Left>
         <Height>0.6cm</Height>
         <Width>3.32676cm</Width>
@@ -569,8 +569,75 @@
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
+      <Textbox Name="createdDate3">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!Code.Value, "AnnouncementDataSet")</Value>
+                <Style>
+                  <FontFamily>verdana</FontFamily>
+                  <FontSize>11pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>createdDate</rd:DefaultName>
+        <Top>5.33168cm</Top>
+        <Left>4.10845cm</Left>
+        <Height>0.6cm</Height>
+        <Width>4.09953cm</Width>
+        <ZIndex>10</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="createdDate4">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Code</Value>
+                <Style>
+                  <FontFamily>verdana</FontFamily>
+                  <FontSize>12pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>createdDate</rd:DefaultName>
+        <Top>5.33168cm</Top>
+        <Left>0.73583cm</Left>
+        <Height>0.6cm</Height>
+        <Width>2.87696cm</Width>
+        <ZIndex>11</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
     </ReportItems>
-    <Height>7.42625cm</Height>
+    <Height>7.51621cm</Height>
     <Style />
   </Body>
   <Width>19cm</Width>
@@ -771,6 +838,10 @@
         </Field>
         <Field Name="Creator">
           <DataField>Creator</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Code">
+          <DataField>Code</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>

@@ -141,6 +141,17 @@
         <small>Please, select a category to see its manuals.</small>
         <h5>Current category :
             <asp:Label ID="uiLabelCat" runat="server"></asp:Label></h5>
+        <asp:Panel runat="server" DefaultButton="btnSearch">
+         <div class="toolsBar">
+                    <div class="products-filter-top">                                
+                        <div class="left">
+                            <span>Search : </span>
+                            <asp:TextBox ID="txtSearch" runat="server" style="vertical-align:middle;"></asp:TextBox>
+                            <asp:LinkButton ID="btnSearch" OnClick="btnSearch_Click" CssClass="btn" runat="server" style="height:24px;line-height:normal;line-height:initial;padding-top:5px;">Search <i class="fa fa-search"></i></asp:LinkButton>
+                        </div>
+                    </div>
+                </div>
+            </asp:Panel>
         <telerik:RadGrid ID="uiRadGridmanuals" runat="server" AllowPaging="True"
             AutoGenerateColumns="False" CellSpacing="0"
             HorizontalAlign="Center" Width="100%"

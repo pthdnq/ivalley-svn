@@ -92,7 +92,7 @@ namespace Flights_GUI.Intranet
         private void BindData()
         {
             Manual objdata = new Manual();
-            objdata.GetManualsByCatID(currentManualCat, new Guid(Membership.GetUser().ProviderUserKey.ToString()));
+            objdata.GetManualsByCatID(currentManualCat, new Guid(Membership.GetUser().ProviderUserKey.ToString()), txtSearch.Text);
             uiRadGridmanuals.DataSource = objdata.DefaultView;
             uiRadGridmanuals.DataBind();
         }
@@ -130,6 +130,11 @@ namespace Flights_GUI.Intranet
                 }
             }
 
+        }
+
+        protected void btnSearch_Click(object sender, EventArgs e)
+        {
+            BindData();
         }
     }
 }

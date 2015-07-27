@@ -108,7 +108,7 @@ namespace Flights_GUI.Intranet
         private void BindData()
         {
             ManualForm objdata = new ManualForm();
-            objdata.GetFormsByManualID(CurrentManual, new Guid(Membership.GetUser().ProviderUserKey.ToString()));
+            objdata.GetFormsByManualID(CurrentManual, new Guid(Membership.GetUser().ProviderUserKey.ToString()), uiTextBoxSearch.Text);
             uiRadGridmanuals.DataSource = objdata.DefaultView;
             uiRadGridmanuals.DataBind();
 
@@ -118,6 +118,11 @@ namespace Flights_GUI.Intranet
         {
             UsersNofications userNotif = new UsersNofications();
             userNotif.MarkNotificationReadByFormID((new Guid(Membership.GetUser(Page.User.Identity.Name).ProviderUserKey.ToString())),CurrentManual);
+        }
+
+        protected void uiLinkButtonSearch_Click(object sender, EventArgs e)
+        {
+            BindData();
         }
     }
 }

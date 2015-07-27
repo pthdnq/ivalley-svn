@@ -435,3 +435,172 @@ left join aspnet_Users us on us.UserId = an.CreatedBy
 where L.CertificateID = @CertificateID or L.CertificateID is null
 order by L.LogDate desc
 Go
+
+
+
+
+
+If Exists (select Name 
+		   from sysobjects 
+		   where name = 'GetManualsByCatID_Admin' and
+		        xtype = 'P')
+Drop Procedure GetManualsByCatID_Admin
+Go
+Create Procedure GetManualsByCatID_Admin @CatID int, 
+										 @filterText nvarchar(50)
+as
+
+select M.*, U.username UpdatedByName , C.username CreatedByName ,
+                                    (Select Top 1 path from ManualVersion MV where MV.ManualID = M.ManualID Order by MV.LastUpdatedDate desc) VersionPath
+                                    from Manual M
+                                    Left join aspnet_users U on M.UpdatedBy = U.UserID
+                                    Left join aspnet_users C on M.CreatedBy = C.UserID                                    
+                                    where ManualCategoryID = @CatID and (isDeleted is null or isDeleted <> 1 ) and 
+                                         (M.Title like '%'+@filterText+'%' or @filterText = '')
+                                    order by CreatedDate desc
+Go
+
+
+
+If Exists (select Name 
+		   from sysobjects 
+		   where name = 'GetManualsByCatID_User' and
+		        xtype = 'P')
+Drop Procedure GetManualsByCatID_User
+Go
+Create Procedure GetManualsByCatID_User @CatID int, 
+										@UserID uniqueidentifier,
+										 @filterText nvarchar(50)
+as
+select M.*, U.username UpdatedByName , C.username CreatedByName ,-- ,sum(case when UMV.UserNotificationID is not null then 1 else 0 end) ManualVersionUpdates ,
+                                    (Select Top 1 path from ManualVersion MV where MV.ManualID = M.ManualID Order by MV.LastUpdatedDate desc) VersionPath   ,
+                                    (Select Top 1 ManualVersionID from ManualVersion MV where MV.ManualID = M.ManualID Order by MV.LastUpdatedDate desc) ManualVersionID   ,
+                                    (select isnull(sum(case when UM.UserNotificationID is not null then 1 else 0 end),0)  from UsersNofications UM where M.ManualID = UM.ManualID and 
+								                                     UM.FormID is null and 
+								                                     UM.ManualVersionID is null and 
+								                                     UM.FromVersionID is null and 
+								                                     (UM.IsRead is null OR UM.IsRead <> 1) and
+								                                     UM.UserID = @UserID) ManualUpdates, 
+                                    (select isnull(sum(case when UMV.UserNotificationID is not null then 1 else 0 end),0)  from UsersNofications UMV where M.ManualID = UMV.ManualID and 
+								                                     UMV.FormID is null and 								 
+								                                     UMV.FromVersionID is null and 
+								                                     UMV.ManualVersionID is not null and
+								                                     (UMV.IsRead is null OR UMV.IsRead <> 1) and
+								                                     UMV.UserID = @UserID) ManualVersionUpdates,
+                                    (select isnull(sum(case when UF.UserNotificationID is not null then 1 else 0 end),0)  from UsersNofications UF where M.ManualID = UF.ManualID and 
+								                                     UF.FormID is not null and 
+								                                     UF.ManualVersionID is null and 
+								                                     UF.FromVersionID is null and 
+								                                     (UF.IsRead is null OR UF.IsRead <> 1) and
+								                                     UF.UserID = @UserID) ManualFormUpdates, 
+                                    (select isnull(sum(case when UFV.UserNotificationID is not null then 1 else 0 end),0)  from UsersNofications UFV where M.ManualID = UFV.ManualID and 
+								                                     UFV.FormID is not null and 								 
+								                                     UFV.FromVersionID is not null and 
+								                                     UFV.ManualVersionID is null and
+								                                     (UFV.IsRead is null OR UFV.IsRead <> 1) and
+								                                     UFV.UserID = @UserID) ManualFormVersionUpdates										 								    
+                                    from Manual M
+                                    Left join aspnet_users U on M.UpdatedBy = U.UserID
+                                    Left join aspnet_users C on M.CreatedBy = C.UserID     
+                                    where ManualCategoryID = @CatID and (isDeleted is null or isDeleted <> 1 )and 
+                                          (M.Title like '%'+@filterText+'%' or @filterText = '')
+                                    order by CreatedDate desc
+GO
+
+
+If Exists (select Name 
+		   from sysobjects 
+		   where name = 'GetVersionsByManualID' and
+		        xtype = 'P')
+Drop Procedure GetVersionsByManualID
+Go
+Create Procedure GetVersionsByManualID @ManualID int, 
+									   @filterText nvarchar(50)
+as
+select M.*, U.username UpdatedByName , C.username CreatedByName from ManualVersion M
+                                    Left join aspnet_users U on M.UpdatedBy = U.UserID
+                                    Left join aspnet_users C on M.CreatedBy = C.UserID
+                                    where ManualID = @ManualID and (isDeleted is null or isDeleted <> 1 ) and 
+									     (M.IssueNumber like '%'+ @filterText +'%' OR
+										  M.RevisionNumber like '%'+ @filterText +'%' OR
+										  M.Title like '%'+ @filterText +'%' OR
+										  @filterText = '')
+										  order by CreatedDate desc
+Go
+
+
+
+If Exists (select Name 
+		   from sysobjects 
+		   where name = 'GetFormsByManualID_User' and
+		        xtype = 'P')
+Drop Procedure GetFormsByManualID_User
+Go
+Create Procedure GetFormsByManualID_User @ManualID int, 
+										@UserID uniqueidentifier,
+										 @filterText nvarchar(50)
+as
+
+select M.*, U.username UpdatedByName , C.username CreatedByName,
+                                    (Select Top 1 path from FromVersion MV where MV.ManualFromID = M.ManualFormID Order by MV.LastUpdatedDate desc) VersionPath,                                    
+                                    (Select Top 1 FromVersionID from FromVersion MV where MV.ManualFromID = M.ManualFormID Order by MV.LastUpdatedDate desc) FromVersionID,                                    
+                                    (select isnull(sum(case when UF.UserNotificationID is not null then 1 else 0 end),0)  from UsersNofications UF where M.ManualID = UF.ManualID and 
+								                                     UF.FormID is not null and 
+								                                     UF.ManualVersionID is null and 
+								                                     UF.FromVersionID is null and 
+								                                     (UF.IsRead is null OR UF.IsRead <> 1) and
+								                                     UF.UserID = @UserID) ManualFormUpdates, 
+                                    (select isnull(sum(case when UFV.UserNotificationID is not null then 1 else 0 end),0)  from UsersNofications UFV where M.ManualID = UFV.ManualID and 
+								                                     UFV.FormID is not null and 								 
+								                                     UFV.FromVersionID is not null and 
+								                                     UFV.ManualVersionID is null and
+								                                     (UFV.IsRead is null OR UFV.IsRead <> 1) and
+								                                     UFV.UserID = @UserID) ManualFormVersionUpdates	 
+                                    from ManualForm M
+                                    Left join aspnet_users U on M.UpdatedBy = U.UserID
+                                    Left join aspnet_users C on M.CreatedBy = C.UserID
+                                    where ManualID = @ManualID and (isDeleted is null or isDeleted <> 1 ) and 
+										(M.Name like '%'+ @filterText+'%' or @filterText = '') 
+order by CreatedDate desc
+GO
+
+
+If Exists (select Name 
+		   from sysobjects 
+		   where name = 'GetFormsByManualID_Admin' and
+		        xtype = 'P')
+Drop Procedure GetFormsByManualID_Admin
+Go
+Create Procedure GetFormsByManualID_Admin @ManualID int, 
+										 @filterText nvarchar(50)
+as
+select M.*, U.username UpdatedByName , C.username CreatedByName,
+                                    (Select Top 1 path from FromVersion MV where MV.ManualFromID = M.ManualFormID Order by MV.LastUpdatedDate desc) VersionPath 
+                                    from ManualForm M
+                                    Left join aspnet_users U on M.UpdatedBy = U.UserID
+                                    Left join aspnet_users C on M.CreatedBy = C.UserID
+                                    where ManualID = @ManualID and (isDeleted is null or isDeleted <> 1 ) 
+									and (M.Name like '%'+@filterText+'%' or @filterText = '') 
+									order by CreatedDate desc
+Go
+
+
+
+If Exists (select Name 
+		   from sysobjects 
+		   where name = 'GetVersionsByFormID' and
+		        xtype = 'P')
+Drop Procedure GetVersionsByFormID
+Go
+Create Procedure GetVersionsByFormID @FormID int, 
+										 @filterText nvarchar(50)
+as
+select M.*, U.username UpdatedByName , C.username CreatedByName from FromVersion M
+                                    Left join aspnet_users U on M.UpdatedBy = U.UserID
+                                    Left join aspnet_users C on M.CreatedBy = C.UserID
+                                    where ManualFromID = @FormID and (isDeleted is null or isDeleted <> 1 )
+									 and (M.IssueNumber like '%'+ @filterText +'%' OR
+										  M.RevisionNumber like '%'+ @filterText +'%' OR
+										  M.Title like '%'+ @filterText +'%' OR
+										  @filterText = '')
+									  order by CreatedDate desc
