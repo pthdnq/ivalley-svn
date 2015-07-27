@@ -629,3 +629,98 @@ select M.*, U.username UpdatedByName , C.username CreatedByName ,
 										  M.StartDate >= isnull(@From, '01/01/1950') and 
 										  M.EndDate >= isnull(@To, '01/01/2500') 
                                     order by CreatedDate desc
+
+//Modifications..
+
+If Exists (select Name 
+		   from sysobjects 
+		   where name = 'GetAllCircularsGroups' and
+		        xtype = 'P')
+Drop Procedure GetAllCircularsGroups
+Go
+Create Procedure GetAllCircularsGroups @groupID int,
+									 @query nvarchar(50),
+									@FromDate DateTime = null,
+									@ToDate DateTime = null
+as
+select Announcement.*, U.UserName, U.UserID, G.GroupName as Groups
+                                    from Announcement inner join AnnouncementGroup
+                                    on Announcement.AnnouncementID = AnnouncementGroup.AnnouncementID
+                                    inner join Groups G on AnnouncementGroup.GroupID = G.GroupID  
+                                    Left join aspnet_users U on Announcement.createdby = u.UserID 
+                                    where (IsBulletin is null or IsBulletin <> 1 ) 
+                                    and (IsBlog is null or IsBlog <> 1 )
+                                    and AnnouncementGroup.GroupID = @groupID
+                                    and (isDeleted is null or isDeleted <> 1 )
+                                    AND ((Announcement.Title LIKE '%'+@query+'%') OR (Announcement.Code LIKE '%'+@query+'%'))
+											AND createdDate >= ISNULL(@FromDate, '01/01/1900')
+											AND createdDate <= ISNULL(@ToDate, '01/01/2500')
+                                    order by CreatedDate desc
+GO
+
+If Exists (select Name 
+		   from sysobjects 
+		   where name = 'GetAllCircularsPublic' and
+		        xtype = 'P')
+Drop Procedure GetAllCircularsPublic
+Go
+Create Procedure GetAllCircularsPublic @query nvarchar(50),
+									@FromDate DateTime = null,
+									@ToDate DateTime = null
+as
+select A.*, U.UserName, U.UserID, 'Public' as Groups from Announcement A 
+                                    left join AnnouncementGroup G on A.AnnouncementID = G.AnnouncementID                                                 
+                                    Left join aspnet_users U on A.createdby = u.UserID 
+                                    where (IsBulletin is null or IsBulletin <> 1 ) and 
+                                          (IsBlog is null or IsBlog <> 1 ) and
+										  G.AnnouncementID is null 
+                                          and (isDeleted is null or isDeleted <> 1 )
+                                          AND ((A.Title LIKE '%'+@query+'%') OR (A.Code LIKE '%'+@query+'%'))
+											AND createdDate >= ISNULL(@FromDate, '01/01/1900')
+											AND createdDate <= ISNULL(@ToDate, '01/01/2500')
+                                    order by CreatedDate desc
+GO
+
+
+
+If Exists (select Name 
+		   from sysobjects 
+		   where name = 'GetAllCircularsPublicAndGroups' and
+		        xtype = 'P')
+Drop Procedure GetAllCircularsPublicAndGroups
+Go
+Create Procedure GetAllCircularsPublicAndGroups @UserID uniqueidentifier,
+									@query nvarchar(50),
+									@FromDate DateTime = null,
+									@ToDate DateTime = null
+as
+
+select A.*, U.UserName, U.UserID, 'Public' as Groups from Announcement A 
+                                    left join AnnouncementGroup G on A.AnnouncementID = G.AnnouncementID                                                 
+                                    Left join aspnet_users U on A.createdby = u.UserID 
+                                    where (IsBulletin is null or IsBulletin <> 1 ) and 
+                                            (IsBlog is null or IsBlog <> 1 ) and
+		                                    G.AnnouncementID is null 
+                                            and (isDeleted is null or isDeleted <> 1 )
+                                            AND ((A.Title LIKE '%'+@query+'%') OR (A.Code LIKE '%'+@query+'%'))
+											AND createdDate >= ISNULL(@FromDate, '01/01/1900')
+											AND createdDate <= ISNULL(@ToDate, '01/01/2500')
+
+                                    union 
+
+                                    select distinct A.*, U.UserName, U.UserID, 
+									Stuff((select ' , ' + GroupName from groups gs left join AnnouncementGroup G on gs.GroupID = G.GroupID where g.AnnouncementID = a.AnnouncementID for XML path('')),1,3,'')                                    
+                                    from Announcement A 
+                                    left join AnnouncementGroup G2 on A.AnnouncementID = G2.AnnouncementID
+                                    Left join aspnet_users U on A.createdby = u.UserID 
+                                    where (IsBulletin is null or IsBulletin <> 1 ) and 
+                                            (IsBlog is null or IsBlog <> 1 ) and
+		                                    G2.GroupID in (select groupid from usergroup where userid = @UserID)
+                                            and (isDeleted is null or isDeleted <> 1 )
+                                            AND ((A.Title LIKE '%'+@query+'%') OR (A.Code LIKE '%'+@query+'%'))
+											AND createdDate >= ISNULL(@FromDate, '01/01/1900')
+											AND createdDate <= ISNULL(@ToDate, '01/01/2500')
+                                    order by CreatedDate desc
+Go
+
+
