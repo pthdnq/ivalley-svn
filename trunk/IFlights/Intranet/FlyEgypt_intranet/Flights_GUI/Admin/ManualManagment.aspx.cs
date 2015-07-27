@@ -43,7 +43,6 @@ namespace Flights_GUI.Admin
                 Session["CurrentManual"] = value;
             }
         }
-
         public ManualVersion CurrentManualVersion
         {
             get
@@ -85,8 +84,6 @@ namespace Flights_GUI.Admin
                 uiPanelEditVersions.Visible = false;
             }
         }
-
-
         protected void uiRadGridmanuals_ItemCommand(object sender, Telerik.Web.UI.GridCommandEventArgs e)
         {
             if (e.CommandName == "EditManual")
@@ -142,16 +139,16 @@ namespace Flights_GUI.Admin
                 mlog.UserID = new Guid(Membership.GetUser().ProviderUserKey.ToString());
                 mlog.Save();
 
+                UsersNofications objDataNofications = new UsersNofications();
+                objDataNofications.markDeletedManualNotificationsRead(objData.ManualID);
                 BindData();
             }
         }
-
         protected void uiRadGridmanuals_PageIndexChanged(object sender, Telerik.Web.UI.GridPageChangedEventArgs e)
         {
             uiRadGridmanuals.CurrentPageIndex = e.NewPageIndex;
             BindData();
         }
-
         protected void uiLinkButtonAdd_Click(object sender, EventArgs e)
         {
             CurrentManual = null;
@@ -162,7 +159,6 @@ namespace Flights_GUI.Admin
             uiLinkButtonEditForms.Visible = false;
             ClearFields();
         }
-
         protected void uiButtonSave_Click(object sender, EventArgs e)
         {
             ManualLog mlog = new ManualLog();
@@ -229,7 +225,6 @@ namespace Flights_GUI.Admin
                     SendingNotifications.sendNotif(3, CurrentManual.ManualCategoryID, CurrentManual.ManualID, null, null, null, null, null);
             }
         }
-
         protected void uiLinkButtonCancel_Click(object sender, EventArgs e)
         {
             CurrentManual = null;
@@ -240,17 +235,14 @@ namespace Flights_GUI.Admin
             uiPanelEdit.Visible = false;
             ClearFields();
         }
-
         protected void uiRadTreeViewCats_NodeClick(object sender, Telerik.Web.UI.RadTreeNodeEventArgs e)
         {
             currentManualCat = Convert.ToInt32(e.Node.Value);
             BindData();
         }
-
         #endregion
 
         #region Methods
-
         private void BindData()
         {
             Manual objdata = new Manual();
@@ -259,8 +251,6 @@ namespace Flights_GUI.Admin
             uiRadGridmanuals.DataBind();
 
         }
-
-
         private void ClearFields()
         {
             uiTextBoxTitle.Text = "";
@@ -271,8 +261,6 @@ namespace Flights_GUI.Admin
             uiRadDatePickerIssueDate.SelectedDate = null;
             uiRadDatePickerRevisionDate.SelectedDate = null;*/
         }
-
-
         private void LoadCats()
         {
             ManualCategory cats = new ManualCategory();
@@ -287,7 +275,6 @@ namespace Flights_GUI.Admin
         }
         #endregion
 
-
         #region Versions
         protected void uiLinkButtonAddVersion_Click(object sender, EventArgs e)
         {
@@ -298,7 +285,6 @@ namespace Flights_GUI.Admin
             uiPanelEditVersions.Visible = true;
             ClearFields_Versions();
         }
-
         protected void uiRadGridVersions_ItemCommand(object sender, Telerik.Web.UI.GridCommandEventArgs e)
         {
             if (e.CommandName == "EditManualVersion")
@@ -340,16 +326,17 @@ namespace Flights_GUI.Admin
                 mlog.LogDate = config.GetDateTimeUsingLocalZone();
                 mlog.Save();
 
+                UsersNofications objDataNotifications = new UsersNofications();
+                objDataNotifications.markDeletedManualVersionNotificationsRead(versions.ManualVersionID);
+
                 BindData_Versions();
             }
         }
-
         protected void uiRadGridVersions_PageIndexChanged(object sender, Telerik.Web.UI.GridPageChangedEventArgs e)
         {
             uiRadGridVersions.CurrentPageIndex = e.NewPageIndex;
             BindData_Versions();
         }
-
         protected void uiButtonSaveVersion_Click(object sender, EventArgs e)
         {
             ManualLog mlog = new ManualLog();
@@ -436,7 +423,6 @@ namespace Flights_GUI.Admin
 
 
         }
-
         protected void uiLinkButtonCancelVersion_Click(object sender, EventArgs e)
         {
             CurrentManualVersion = null;
@@ -446,12 +432,10 @@ namespace Flights_GUI.Admin
             uiPanelEdit.Visible = true;
             ClearFields_Versions();
         }
-
         protected void uiLinkButtonEditForms_Click(object sender, EventArgs e)
         {
             Response.Redirect("FormManagement.aspx");
         }
-
         private void BindData_Versions()
         {
             ManualVersion objdata = new ManualVersion();
@@ -460,7 +444,6 @@ namespace Flights_GUI.Admin
             uiRadGridVersions.DataBind();
 
         }
-
         private void ClearFields_Versions()
         {
             uiTextBoxVersionTitle.Text = "";

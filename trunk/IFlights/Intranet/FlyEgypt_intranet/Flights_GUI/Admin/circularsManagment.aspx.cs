@@ -110,6 +110,7 @@ namespace Flights_GUI.Admin
                 //objData.MarkAsDeleted();
                 objData.IsDeleted = true;
                 objData.Save();
+
                 LogCircular(objData.AnnouncementID, 3);
                 BindData();
             }

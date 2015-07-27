@@ -17,27 +17,30 @@ namespace Flight_BLL
             return LoadFromRawSql(@"select A.*, U.UserName, U.UserID from Announcement A Left join aspnet_users U on A.createdby = u.UserID where (IsBulletin is null or IsBulletin <> 1 ) and (IsBlog is null or IsBlog <> 1 ) and (isDeleted is null or isDeleted <> 1 ) order by CreatedDate desc");            
         }
 
-        public virtual bool GetAllCircularsPublic()
+        public virtual bool GetAllCircularsPublic(string query)
         {
-            return LoadFromRawSql(@"select A.*, U.UserName, U.UserID, 'Public' as Groups from Announcement A 
+            string qry = string.Format(@"select A.*, U.UserName, U.UserID, 'Public' as Groups from Announcement A 
                                     left join AnnouncementGroup G on A.AnnouncementID = G.AnnouncementID                                                 
                                     Left join aspnet_users U on A.createdby = u.UserID 
                                     where (IsBulletin is null or IsBulletin <> 1 ) and 
                                           (IsBlog is null or IsBlog <> 1 ) and
 										  G.AnnouncementID is null 
                                           and (isDeleted is null or isDeleted <> 1 )
-                                    order by CreatedDate desc");
+                                          AND ((A.Title LIKE '%{0}%') OR (A.Code LIKE '%{0}%'))
+                                    order by CreatedDate desc", query);
+            return LoadFromRawSql(qry);
         }
 
-        public virtual bool GetAllCircularsPublicAndGroups(Guid UserID)
+        public virtual bool GetAllCircularsPublicAndGroups(Guid UserID, string query)
         {
-            return LoadFromRawSql(@"select A.*, U.UserName, U.UserID, 'Public' as Groups from Announcement A 
+            string qry = string.Format(@"select A.*, U.UserName, U.UserID, 'Public' as Groups from Announcement A 
                                     left join AnnouncementGroup G on A.AnnouncementID = G.AnnouncementID                                                 
                                     Left join aspnet_users U on A.createdby = u.UserID 
                                     where (IsBulletin is null or IsBulletin <> 1 ) and 
                                             (IsBlog is null or IsBlog <> 1 ) and
 		                                    G.AnnouncementID is null 
                                             and (isDeleted is null or isDeleted <> 1 )
+                                            AND ((A.Title LIKE '%{1}%') OR (A.Code LIKE '%{1}%'))
 
                                     union 
 
@@ -48,15 +51,30 @@ namespace Flight_BLL
                                     Left join aspnet_users U on A.createdby = u.UserID 
                                     where (IsBulletin is null or IsBulletin <> 1 ) and 
                                             (IsBlog is null or IsBlog <> 1 ) and
-		                                    G2.GroupID in (select groupid from usergroup where userid = {0})
+		                                    G2.GroupID in (select groupid from usergroup where userid = '{0}')
                                             and (isDeleted is null or isDeleted <> 1 )
-                                    order by CreatedDate desc", UserID);
+                                            AND ((A.Title LIKE '%{1}%') OR (A.Code LIKE '%{1}%'))
+                                    order by CreatedDate desc", UserID, query);
+
+            return LoadFromRawSql(qry);
         }
 
 
-        public virtual bool GetAllCircularsGroups(int groupID)
+        public virtual bool GetAllCircularsGroups(int groupID,string query)
         {
-            return LoadFromRawSql(@"select Announcement.*, U.UserName, U.UserID, G.GroupName as Groups from Announcement inner join AnnouncementGroup on Announcement.AnnouncementID = AnnouncementGroup.AnnouncementID inner join Groups G on AnnouncementGroup.GroupID = G.GroupID  Left join aspnet_users U on Announcement.createdby = u.UserID where (IsBulletin is null or IsBulletin <> 1 ) and (IsBlog is null or IsBlog <> 1 ) and AnnouncementGroup.GroupID = {0} and (isDeleted is null or isDeleted <> 1 ) order by CreatedDate desc", groupID);
+            string qry = string.Format(@"select Announcement.*, U.UserName, U.UserID, G.GroupName as Groups
+                                    from Announcement inner join AnnouncementGroup
+                                    on Announcement.AnnouncementID = AnnouncementGroup.AnnouncementID
+                                    inner join Groups G on AnnouncementGroup.GroupID = G.GroupID  
+                                    Left join aspnet_users U on Announcement.createdby = u.UserID 
+                                    where (IsBulletin is null or IsBulletin <> 1 ) 
+                                    and (IsBlog is null or IsBlog <> 1 )
+                                    and AnnouncementGroup.GroupID = {0}
+                                    and (isDeleted is null or isDeleted <> 1 )
+                                    AND ((Announcement.Title LIKE '%{1}%') OR (Announcement.Code LIKE '%{1}%'))
+                                    order by CreatedDate desc", groupID, query);
+
+            return LoadFromRawSql(qry);
                                     
         }
         //--------------------
@@ -66,31 +84,37 @@ namespace Flight_BLL
             return LoadFromRawSql(@"select A.*, U.UserName, U.UserID from Announcement A Left join aspnet_users U on A.createdby = u.UserID where (IsBulletin = 1 ) and (isDeleted is null or isDeleted <> 1 ) order by CreatedDate desc");            
         }
 
-        public virtual bool GetAllBulletinsPublic()
+        public virtual bool GetAllBulletinsPublic(string query)
         {
-            return LoadFromRawSql(@"select A.*, U.UserName, U.UserID, 'Public' as groups from Announcement A 
+            string qry = string.Format(@"select A.*, U.UserName, U.UserID, 'Public' as groups from Announcement A 
                                     left join AnnouncementGroup G on A.AnnouncementID = G.AnnouncementID                                                 
                                     Left join aspnet_users U on A.createdby = u.UserID 
                                     where (IsBulletin = 1 ) and
 										  G.AnnouncementID is null 
                                           and (isDeleted is null or isDeleted <> 1 )
-                                    order by CreatedDate desc");
+                                          AND ((A.Title LIKE '%{0}%') OR (A.Code LIKE '%{0}%'))
+                                    order by CreatedDate desc", query);
+
+            return LoadFromRawSql(qry);
         }
 
-        public virtual bool GetAllBulletinsGroups(int groupID)
+        public virtual bool GetAllBulletinsGroups(int groupID, string query)
         {
-            return LoadFromRawSql(@"select Announcement.*, U.UserName, U.UserID, G.GroupName as Groups from Announcement inner join AnnouncementGroup on Announcement.AnnouncementID = AnnouncementGroup.AnnouncementID inner join Groups G on AnnouncementGroup.GroupID = G.GroupID Left join aspnet_users U on Announcement.createdby = u.UserID where IsBulletin = 1 and AnnouncementGroup.GroupID = {0} and (isDeleted is null or isDeleted <> 1 ) order by CreatedDate desc", groupID);
+            string qry = string.Format(@"select Announcement.*, U.UserName, U.UserID, G.GroupName as Groups from Announcement inner join AnnouncementGroup on Announcement.AnnouncementID = AnnouncementGroup.AnnouncementID inner join Groups G on AnnouncementGroup.GroupID = G.GroupID Left join aspnet_users U on Announcement.createdby = u.UserID where IsBulletin = 1 and AnnouncementGroup.GroupID = {0} and (isDeleted is null or isDeleted <> 1 ) AND ((Announcement.Title LIKE '%{1}%') OR (Announcement.Code LIKE '%{1}%')) order by CreatedDate desc", groupID, query);
+
+            return LoadFromRawSql(qry);
                                     
         }
 
-        public virtual bool GetAllBulletinsPublicAndGroups(Guid UserID)
+        public virtual bool GetAllBulletinsPublicAndGroups(Guid UserID, string query)
         {
-            return LoadFromRawSql(@"select A.*, U.UserName, U.UserID, 'Public' as Groups from Announcement A 
+            string qry = string.Format(@"select A.*, U.UserName, U.UserID, 'Public' as Groups from Announcement A 
                                     left join AnnouncementGroup G on A.AnnouncementID = G.AnnouncementID                                                 
                                     Left join aspnet_users U on A.createdby = u.UserID 
                                     where (IsBulletin = 1 ) and                                             
 		                                    G.AnnouncementID is null 
                                             and (isDeleted is null or isDeleted <> 1 )
+                                            AND ((A.Title LIKE '%{1}%') OR (A.Code LIKE '%{1}%'))
 
                                     union 
 
@@ -100,9 +124,12 @@ namespace Flight_BLL
                                     left join AnnouncementGroup G2 on A.AnnouncementID = G2.AnnouncementID                                                 
                                     Left join aspnet_users U on A.createdby = u.UserID 
                                     where (IsBulletin = 1 ) and                                             
-		                                    G2.GroupID in (select groupid from usergroup where userid = {0})
+		                                    G2.GroupID in (select groupid from usergroup where userid = '{0}')
                                             and (isDeleted is null or isDeleted <> 1 )
-                                    order by CreatedDate desc", UserID);
+                                            AND ((A.Title LIKE '%{1}%') OR (A.Code LIKE '%{1}%'))
+                                    order by CreatedDate desc", UserID,query);
+
+            return LoadFromRawSql(qry);
         }
         //--------------------
 
@@ -158,20 +185,23 @@ namespace Flight_BLL
             return LoadFromRawSql(@"select A.*, U.UserName, U.UserID from Announcement A Left join aspnet_users U on A.createdby = u.UserID where (IsBlog = 1 ) and (isDeleted is null or isDeleted <> 1 ) order by CreatedDate desc");
         }
 
-        public virtual bool GetAllBlogsPublic()
+        public virtual bool GetAllBlogsPublic(string query)
         {
-            return LoadFromRawSql(@"select A.*, U.UserName, U.UserID, 'Public' as Groups from Announcement A 
+            string qry = string.Format(@"select A.*, U.UserName, U.UserID, 'Public' as Groups from Announcement A 
                                     left join AnnouncementGroup G on A.AnnouncementID = G.AnnouncementID                                                 
                                     Left join aspnet_users U on A.createdby = u.UserID 
                                     where (IsBlog = 1 ) and
 										  G.AnnouncementID is null 
                                           and (isDeleted is null or isDeleted <> 1 )
-                                    order by CreatedDate desc");
+                                          AND ((A.Title LIKE '%{0}%') OR (A.Code LIKE '%{0}%'))
+                                    order by CreatedDate desc", query);
+            return LoadFromRawSql(qry);
         }
 
-        public virtual bool GetAllBlogsGroups(int groupID)
+        public virtual bool GetAllBlogsGroups(int groupID, string query)
         {
-            return LoadFromRawSql(@"select Announcement.*, U.UserName, U.UserID, G.GroupName as Groups from Announcement inner join AnnouncementGroup on Announcement.AnnouncementID = AnnouncementGroup.AnnouncementID inner join Groups G on AnnouncementGroup.GroupID = G.GroupID  Left join aspnet_users U on Announcement.createdby = u.UserID where IsBlog = 1 and AnnouncementGroup.GroupID = {0} and (isDeleted is null or isDeleted <> 1 ) order by CreatedDate desc", groupID);
+            string qry = string.Format(@"select Announcement.*, U.UserName, U.UserID, G.GroupName as Groups from Announcement inner join AnnouncementGroup on Announcement.AnnouncementID = AnnouncementGroup.AnnouncementID inner join Groups G on AnnouncementGroup.GroupID = G.GroupID  Left join aspnet_users U on Announcement.createdby = u.UserID where IsBlog = 1 and AnnouncementGroup.GroupID = {0} and (isDeleted is null or isDeleted <> 1 ) AND ((Announcement.Title LIKE '%{1}%') OR (Announcement.Code LIKE '%{1}%')) order by CreatedDate desc", groupID, query);
+            return LoadFromRawSql(qry);
         }
 
         public virtual bool GetTopBlogs(Guid UserID)
@@ -196,15 +226,15 @@ namespace Flight_BLL
                                     ) as a order by CreatedDate desc", UserID);
         }
 
-        public virtual bool GetAllBlogsPublicAndGroups(Guid UserID)
+        public virtual bool GetAllBlogsPublicAndGroups(Guid UserID,string query)
         {
-            return LoadFromRawSql(@"select A.*, U.UserName, U.UserID, 'Public' as Groups from Announcement A 
+            string qry = string.Format(@"select A.*, U.UserName, U.UserID, 'Public' as Groups from Announcement A 
                                     left join AnnouncementGroup G on A.AnnouncementID = G.AnnouncementID                                                 
                                     Left join aspnet_users U on A.createdby = u.UserID 
                                     where  (IsBlog = 1 ) and
 		                                    G.AnnouncementID is null 
                                             and (isDeleted is null or isDeleted <> 1 )
-
+                                            AND ((A.Title LIKE '%{1}%') OR (A.Code LIKE '%{1}%'))
                                     union 
 
                                     select distinct A.*, U.UserName, U.UserID ,
@@ -213,9 +243,12 @@ namespace Flight_BLL
                                     left join AnnouncementGroup G2 on A.AnnouncementID = G2.AnnouncementID                                                 
                                     Left join aspnet_users U on A.createdby = u.UserID 
                                     where (IsBlog = 1 ) and
-		                                    G2.GroupID in (select groupid from usergroup where userid = {0})
+		                                    G2.GroupID in (select groupid from usergroup where userid = '{0}')
                                             and (isDeleted is null or isDeleted <> 1 )
-                                    order by CreatedDate desc", UserID);
+                                            AND ((A.Title LIKE '%{1}%') OR (A.Code LIKE '%{1}%'))
+                                    order by CreatedDate desc", UserID,query);
+
+            return LoadFromRawSql(qry);
         }
 	}
 }

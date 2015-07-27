@@ -104,6 +104,9 @@ namespace Flights_GUI.Admin
                 slog.UserID = new Guid(Membership.GetUser().ProviderUserKey.ToString());
                 slog.Save();
 
+                UsersNofications objDataNotification = new UsersNofications();
+                objDataNotification.markDeletedScheduleNotificationsRead(objData.ScheduleID);
+
                 BindData();
             }
         }
@@ -284,6 +287,9 @@ namespace Flights_GUI.Admin
                 slog.UserID = new Guid(Membership.GetUser().ProviderUserKey.ToString());
                 slog.LogDate = config.GetDateTimeUsingLocalZone();
                 slog.Save();
+
+                UsersNofications objDataNotification = new UsersNofications();
+                objDataNotification.markDeletedScheduleVersionNotificationsRead(versions.ScheduleVersionID);
 
                 BindData_Versions();
             }

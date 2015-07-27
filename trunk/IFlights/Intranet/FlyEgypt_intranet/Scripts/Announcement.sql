@@ -1,8 +1,8 @@
 
-USE [Intranetdb]
+USE [Intranetdb_dod]
 GO
 
-/****** Object:  StoredProcedure [proc_AnnouncementLoadByPrimaryKey]    Script Date: 24/06/2015 4:37:08 PM ******/
+/****** Object:  StoredProcedure [proc_AnnouncementLoadByPrimaryKey]    Script Date: 27/07/2015 10:53:30 AM ******/
 IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[proc_AnnouncementLoadByPrimaryKey]') AND OBJECTPROPERTY(id,N'IsProcedure') = 1)
     DROP PROCEDURE [proc_AnnouncementLoadByPrimaryKey];
 GO
@@ -27,7 +27,9 @@ BEGIN
 		[IsBulletin],
 		[IsBlog],
 		[UploadedFile],
-		[GroupID]
+		[GroupID],
+		[isDeleted],
+		[Code]
 	FROM [Announcement]
 	WHERE
 		([AnnouncementID] = @AnnouncementID)
@@ -44,7 +46,7 @@ IF (@@Error = 0) PRINT 'Procedure Creation: proc_AnnouncementLoadByPrimaryKey Su
 ELSE PRINT 'Procedure Creation: proc_AnnouncementLoadByPrimaryKey Error on Creation'
 GO
 
-/****** Object:  StoredProcedure [proc_AnnouncementLoadAll]    Script Date: 24/06/2015 4:37:08 PM ******/
+/****** Object:  StoredProcedure [proc_AnnouncementLoadAll]    Script Date: 27/07/2015 10:53:30 AM ******/
 IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[proc_AnnouncementLoadAll]') AND OBJECTPROPERTY(id,N'IsProcedure') = 1)
     DROP PROCEDURE [proc_AnnouncementLoadAll];
 GO
@@ -67,7 +69,9 @@ BEGIN
 		[IsBulletin],
 		[IsBlog],
 		[UploadedFile],
-		[GroupID]
+		[GroupID],
+		[isDeleted],
+		[Code]
 	FROM [Announcement]
 
 	SET @Err = @@Error
@@ -82,7 +86,7 @@ IF (@@Error = 0) PRINT 'Procedure Creation: proc_AnnouncementLoadAll Succeeded'
 ELSE PRINT 'Procedure Creation: proc_AnnouncementLoadAll Error on Creation'
 GO
 
-/****** Object:  StoredProcedure [proc_AnnouncementUpdate]    Script Date: 24/06/2015 4:37:08 PM ******/
+/****** Object:  StoredProcedure [proc_AnnouncementUpdate]    Script Date: 27/07/2015 10:53:30 AM ******/
 IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[proc_AnnouncementUpdate]') AND OBJECTPROPERTY(id,N'IsProcedure') = 1)
     DROP PROCEDURE [proc_AnnouncementUpdate];
 GO
@@ -99,7 +103,9 @@ CREATE PROCEDURE [proc_AnnouncementUpdate]
 	@IsBulletin bit = NULL,
 	@IsBlog bit = NULL,
 	@UploadedFile nvarchar(500) = NULL,
-	@GroupID int = NULL
+	@GroupID int = NULL,
+	@isDeleted bit = NULL,
+	@Code nvarchar(50) = NULL
 )
 AS
 BEGIN
@@ -118,7 +124,9 @@ BEGIN
 		[IsBulletin] = @IsBulletin,
 		[IsBlog] = @IsBlog,
 		[UploadedFile] = @UploadedFile,
-		[GroupID] = @GroupID
+		[GroupID] = @GroupID,
+		[isDeleted] = @isDeleted,
+		[Code] = @Code
 	WHERE
 		[AnnouncementID] = @AnnouncementID
 
@@ -139,7 +147,7 @@ GO
 
 
 
-/****** Object:  StoredProcedure [proc_AnnouncementInsert]    Script Date: 24/06/2015 4:37:08 PM ******/
+/****** Object:  StoredProcedure [proc_AnnouncementInsert]    Script Date: 27/07/2015 10:53:30 AM ******/
 IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[proc_AnnouncementInsert]') AND OBJECTPROPERTY(id,N'IsProcedure') = 1)
     DROP PROCEDURE [proc_AnnouncementInsert];
 GO
@@ -156,7 +164,9 @@ CREATE PROCEDURE [proc_AnnouncementInsert]
 	@IsBulletin bit = NULL,
 	@IsBlog bit = NULL,
 	@UploadedFile nvarchar(500) = NULL,
-	@GroupID int = NULL
+	@GroupID int = NULL,
+	@isDeleted bit = NULL,
+	@Code nvarchar(50) = NULL
 )
 AS
 BEGIN
@@ -176,7 +186,9 @@ BEGIN
 		[IsBulletin],
 		[IsBlog],
 		[UploadedFile],
-		[GroupID]
+		[GroupID],
+		[isDeleted],
+		[Code]
 	)
 	VALUES
 	(
@@ -189,7 +201,9 @@ BEGIN
 		@IsBulletin,
 		@IsBlog,
 		@UploadedFile,
-		@GroupID
+		@GroupID,
+		@isDeleted,
+		@Code
 	)
 
 	SET @Err = @@Error
@@ -206,7 +220,7 @@ IF (@@Error = 0) PRINT 'Procedure Creation: proc_AnnouncementInsert Succeeded'
 ELSE PRINT 'Procedure Creation: proc_AnnouncementInsert Error on Creation'
 GO
 
-/****** Object:  StoredProcedure [proc_AnnouncementDelete]    Script Date: 24/06/2015 4:37:08 PM ******/
+/****** Object:  StoredProcedure [proc_AnnouncementDelete]    Script Date: 27/07/2015 10:53:30 AM ******/
 IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[proc_AnnouncementDelete]') AND OBJECTPROPERTY(id,N'IsProcedure') = 1)
     DROP PROCEDURE [proc_AnnouncementDelete];
 GO

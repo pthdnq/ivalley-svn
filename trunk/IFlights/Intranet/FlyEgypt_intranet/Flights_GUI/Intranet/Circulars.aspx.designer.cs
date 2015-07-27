@@ -31,22 +31,22 @@ namespace Flights_GUI.Intranet {
         protected global::System.Web.UI.WebControls.DropDownList uiDropDownListUserGroups;
         
         /// <summary>
-        /// TextBox1 control.
+        /// txtSearch control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.TextBox txtSearch;
         
         /// <summary>
-        /// LinkButton1 control.
+        /// btnSearch control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkButton1;
+        protected global::System.Web.UI.WebControls.LinkButton btnSearch;
         
         /// <summary>
         /// uiRadListViewCircularsPublic control.
