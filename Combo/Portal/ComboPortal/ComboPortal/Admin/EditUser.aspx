@@ -218,8 +218,8 @@
                                                 <asp:Panel ID="PanelAttachment" Visible="false" runat="server">
                                                     <hr />
                                                     <img id="imgAttachment" runat="server" style="max-height:200px" visible="false" src="#" />
-                                                    <audio id="audioAttachment" runat="server" visible="false" src="#" />
-                                                    <video id="videoAttachment" runat="server" style="max-height:200px" visible="false" src="#" />
+                                                    <audio id="audioAttachment" runat="server" visible="false" src="#" controls="controls"/>
+                                                    <video id="videoAttachment" runat="server" style="max-height:200px" visible="false" src="#" controls="controls"/>
                                                 </asp:Panel>
                                             </span>
                                         </div>

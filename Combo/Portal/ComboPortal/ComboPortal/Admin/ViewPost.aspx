@@ -27,8 +27,8 @@
                                     <asp:Panel ID="PanelAttachment" Visible="false" runat="server">
                                         <hr />
                                         <img id="imgAttachment" runat="server" style="max-height: 200px" visible="false" src="#" />
-                                        <audio id="audioAttachment" controls runat="server" visible="false" src="#" />
-                                        <video id="videoAttachment" controls runat="server" style="max-height:200px" visible="false" src="#" />
+                                        <audio id="audioAttachment" controls="controls" runat="server" visible="false" src="#" />
+                                        <video id="videoAttachment" controls="controls" runat="server" style="max-height:200px" visible="false" src="#" />
                                     </asp:Panel>
                                 </div>
                             </li>
@@ -62,7 +62,7 @@
                                                     </asp:Panel>
                                                 </span>
                                             </div>
-                                        </li>
+                                        </li> 
                                     </ul>
                                 </div>
                             </ItemTemplate>
