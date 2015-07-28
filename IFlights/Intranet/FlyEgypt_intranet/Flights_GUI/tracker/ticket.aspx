@@ -3,8 +3,10 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <a href="default.aspx" class="btn btn-success pull-right" >Back to tickets</a>      
+    <a href="default.aspx" class="btn btn-success pull-right" >Back to tickets</a>  
+     <h3>Ticket details </h3>    
     <div class="cell-12">
+        
         <div class="cell-2 bold">
             Title
         </div>
@@ -62,7 +64,7 @@
     </div>
     <div style="clear:both;height:5px"></div>
     <hr />
-    <h2>Add comment </h2>
+    <h3>Add comment </h3>
 
     <div class="cell-12 form-horizontal">        
         <div class="cell-2 bold">
@@ -94,7 +96,7 @@
     </div>
     <div style="clear:both;height:5px"></div>
     <hr />
-    <h4>Recent comments</h4>
+    <h3>Recent comments</h3>
     <div class="cell-12 ">
         <asp:GridView ID="uiGridViewComments" CssClass="table table-bordered table-condensed" runat="server" AllowPaging="True" AutoGenerateColumns="False" OnPageIndexChanging="uiGridViewComments_PageIndexChanging">
         <Columns>
