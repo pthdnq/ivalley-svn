@@ -24,20 +24,20 @@
                 <div class="tab-panel active">--%>
         <div class="blog-thumbs no-bar">
             <div class="toolsBar">
-                <div class="products-filter-top">
+                <div class="products-filter-top" style="float:right !important;width:100% !important">
                     <div class="left" style="margin-left: 15px">
                         <span>View bulletins published to : </span>
                         <asp:DropDownList ID="uiDropDownListUserGroups" runat="server" AutoPostBack="True" OnSelectedIndexChanged="uiDropDownListUserGroups_SelectedIndexChanged">
                         </asp:DropDownList>
                     </div>
-                    <asp:Panel ID="PanelSearch" DefaultButton="btnSearch" runat="server">
-                        <div style="position: absolute; right: 250px">
+                    <asp:Panel ID="PanelSearch" DefaultButton="btnSearch" runat="server"  CssClass="right">
+                        
                             <span>Search : </span>
                             <asp:TextBox ID="txtSearch" runat="server"></asp:TextBox>
-                            <asp:TextBox ID="txtDateFrom" Style="display: none" placeholder="Date From" runat="server"></asp:TextBox>
-                            <asp:TextBox ID="txtDateTo" Style="display: none" placeholder="Date To" runat="server"></asp:TextBox>
+                             <telerik:RadDatePicker ID="txtDateFrom" runat="server"></telerik:RadDatePicker>
+                            <telerik:RadDatePicker ID="txtDateTo" runat="server"></telerik:RadDatePicker> 
                             <asp:LinkButton ID="btnSearch" OnClick="btnSearch_Click" CssClass="btn btn-small" runat="server">Search <i class="fa fa-search"></i></asp:LinkButton>
-                        </div>
+                        
                     </asp:Panel>
                 </div>
 
