@@ -5120,7 +5120,8 @@ img.loader{
 	min-height: 200px;
 	right: 0;
     border-width: 6px;
-    border-style:solid
+    border-style:solid;
+    color:#000 !important;
 }
 .cart-popup .empty {
 	line-height: 160px;

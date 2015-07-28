@@ -30,15 +30,28 @@
                         <asp:DropDownList ID="uiDropDownListUserGroups" runat="server" AutoPostBack="True" OnSelectedIndexChanged="uiDropDownListUserGroups_SelectedIndexChanged">
                         </asp:DropDownList>
                     </div>
-                    <asp:Panel ID="PanelSearch" DefaultButton="btnSearch" runat="server" CssClass="right">
-                        
-                            <span>Search : </span>
-                            <asp:TextBox ID="txtSearch" runat="server"></asp:TextBox>
-                             <telerik:RadDatePicker ID="txtDateFrom" runat="server"></telerik:RadDatePicker>
-                            <telerik:RadDatePicker ID="txtDateTo" runat="server"></telerik:RadDatePicker>
-                            <asp:LinkButton ID="btnSearch" OnClick="btnSearch_Click" CssClass="btn btn-small" runat="server">Search <i class="fa fa-search"></i></asp:LinkButton>
+                    <div class="cart-icon fx animated fadeInRight" data-animate="fadeInRight">
+									<div class="cart-heading">
+										<i class="fa fa-search"></i> Search
+									</div>
+									<div class="cart-popup" style="display: none;">
+										<asp:Panel ID="PanelSearch" DefaultButton="btnSearch" runat="server" CssClass="row-fluid cell-12">
+                            <div class="cell-3" style="padding-left:0px; padding-right:5px;">Search :</div>
+                                            <div class="cell-8" style="padding-left:0px; padding-right:5px;"><asp:TextBox ID="txtSearch" runat="server"></asp:TextBox></div>
+                                            <div class="margin-bottom-10"></div>
+                                            <div class="cell-3" style="padding-left:0px; padding-right:5px;">From :</div>
+                                            <div class="cell-8" style="padding-left:0px; padding-right:5px;"><telerik:RadDatePicker ID="txtDateFrom" runat="server"></telerik:RadDatePicker></div>
+                                            <div class="margin-bottom-10"></div>
+                                            <div class="cell-3" style="padding-left:0px; padding-right:5px;">To:</div>
+                                            <div class="cell-8" style="padding-left:0px; padding-right:5px;"><telerik:RadDatePicker ID="txtDateTo" runat="server"></telerik:RadDatePicker>   </div>
+                                            <div class="margin-bottom-10"></div>
+                            <div class="cell-3" style="padding-left:0px; padding-right:5px;"></div>
+                                <div class="cell-8" style="padding-left:0px; padding-right:5px;"><asp:LinkButton ID="btnSearch" OnClick="btnSearch_Click" CssClass="btn btn-small" runat="server">Search <i class="fa fa-search"></i></asp:LinkButton>
+                                </div>
                         
                     </asp:Panel>
+									</div>
+								</div>
                 </div>
 
 

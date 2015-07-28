@@ -55,7 +55,7 @@ namespace Flights_GUI.Admin {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDateFrom;
+        protected global::Telerik.Web.UI.RadDatePicker txtDateFrom;
         
         /// <summary>
         /// txtDateTo control.
@@ -64,7 +64,7 @@ namespace Flights_GUI.Admin {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDateTo;
+        protected global::Telerik.Web.UI.RadDatePicker txtDateTo;
         
         /// <summary>
         /// btnSearch control.

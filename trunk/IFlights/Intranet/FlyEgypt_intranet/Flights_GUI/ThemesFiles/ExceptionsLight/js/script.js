@@ -768,11 +768,11 @@
 	
 	/* ================= top shopping cart box =============== */
 	$('.cart-heading').click(function(){
-		$(this).parent().find('.cart-popup').show();
+		$(this).parent().find('.cart-popup').slideToggle();
 	});
-	$('.cart-icon').mouseleave(function(){
+	/*$('.cart-icon').mouseleave(function(){
 		$(this).find('.cart-popup').hide();
-	});
+	});*/
 	if($('.cart-icon').length > 0){
 		$('.add-cart').each(function(){
 			$(this).click(function(){
