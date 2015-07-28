@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <a href="home.aspx" class="btn btn-success pull-right" >Back to tickets</a>
+    <a href="default.aspx" class="btn btn-success pull-right" >Back to tickets</a>
     <div class="cell-12">
         <div class="cell-2 ">
             Title

@@ -24,8 +24,8 @@
                         <div class="cell-12">
                             <span>Search : </span>
                             <asp:TextBox ID="txtSearch" runat="server"></asp:TextBox>
-                            <asp:TextBox ID="txtDateFrom" Style="display: none" placeholder="Date From" runat="server"></asp:TextBox>
-                            <asp:TextBox ID="txtDateTo" Style="display: none" placeholder="Date To" runat="server"></asp:TextBox>
+                            &nbsp; From : <telerik:RadDatePicker ID="txtDateFrom" runat="server"></telerik:RadDatePicker>
+                            &nbsp; To :<telerik:RadDatePicker ID="txtDateTo" runat="server"></telerik:RadDatePicker>  
                             <asp:LinkButton ID="btnSearch" OnClick="btnSearch_Click" CssClass="btn" runat="server" Style="height: 24px; line-height: normal; line-height: initial; padding-top: 5px;">Search <i class="fa fa-search"></i></asp:LinkButton>
                         </div>
                     </div>
