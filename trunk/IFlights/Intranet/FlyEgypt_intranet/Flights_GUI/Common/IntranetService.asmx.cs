@@ -232,13 +232,17 @@ namespace Flights_GUI.Common
                 objData.Rewind();
                 for (int i = 0; i < objData.RowCount; i++)
                 {
-                    ScheduleLog objDataSchedule = new ScheduleLog();
-                    objDataSchedule.AddNew();
-                    objDataSchedule.UserID = new Guid(Membership.GetUser(Context.User.Identity.Name).ProviderUserKey.ToString());
-                    objDataSchedule.ScheduleVersionID = objData.ScheduleVersionID;
-                    objDataSchedule.ActionID = 4;
-                    objDataSchedule.LogDate = config.GetDateTimeUsingLocalZone();
-                    objDataSchedule.Save();
+                    ScheduleVersion sversion = new ScheduleVersion();
+                    if (sversion.LoadByPrimaryKey(objData.ScheduleVersionID))
+                    {
+                        ScheduleLog objDataSchedule = new ScheduleLog();
+                        objDataSchedule.AddNew();
+                        objDataSchedule.UserID = new Guid(Membership.GetUser(Context.User.Identity.Name).ProviderUserKey.ToString());
+                        objDataSchedule.ScheduleVersionID = objData.ScheduleVersionID;
+                        objDataSchedule.ActionID = 4;
+                        objDataSchedule.LogDate = config.GetDateTimeUsingLocalZone();
+                        objDataSchedule.Save();
+                    }
 
                     objData.MoveNext();
                 }
@@ -256,13 +260,17 @@ namespace Flights_GUI.Common
                 objData.Rewind();
                 for (int i = 0; i < objData.RowCount; i++)
                 {
-                    ManualLog objDataManual = new ManualLog();
-                    objDataManual.AddNew();
-                    objDataManual.UserID = new Guid(Membership.GetUser(Context.User.Identity.Name).ProviderUserKey.ToString());
-                    objDataManual.ManualVersionID = objData.ManualVersionID;
-                    objDataManual.ActionID = 4;
-                    objDataManual.LogDate = config.GetDateTimeUsingLocalZone();
-                    objDataManual.Save();
+                    ManualVersion manualversion = new ManualVersion();
+                    if (manualversion.LoadByPrimaryKey(objData.ManualVersionID))
+                    {
+                        ManualLog objDataManual = new ManualLog();
+                        objDataManual.AddNew();
+                        objDataManual.UserID = new Guid(Membership.GetUser(Context.User.Identity.Name).ProviderUserKey.ToString());
+                        objDataManual.ManualVersionID = objData.ManualVersionID;
+                        objDataManual.ActionID = 4;
+                        objDataManual.LogDate = config.GetDateTimeUsingLocalZone();
+                        objDataManual.Save();
+                    }
 
                     objData.MoveNext();
                 }
@@ -280,14 +288,17 @@ namespace Flights_GUI.Common
                 objData.Rewind();
                 for (int i = 0; i < objData.RowCount; i++)
                 {
-                    ManualLog objDataManual = new ManualLog();
-                    objDataManual.AddNew();
-                    objDataManual.UserID = new Guid(Membership.GetUser(Context.User.Identity.Name).ProviderUserKey.ToString());
-                    objDataManual.FromVersionID = objData.FromVersionID;
-                    objDataManual.ActionID = 4;
-                    objDataManual.LogDate = config.GetDateTimeUsingLocalZone();
-                    objDataManual.Save();
-
+                    FromVersion formversion = new FromVersion();
+                    if (formversion.LoadByPrimaryKey(objData.FromVersionID))
+                    {
+                        ManualLog objDataManual = new ManualLog();
+                        objDataManual.AddNew();
+                        objDataManual.UserID = new Guid(Membership.GetUser(Context.User.Identity.Name).ProviderUserKey.ToString());
+                        objDataManual.FromVersionID = objData.FromVersionID;
+                        objDataManual.ActionID = 4;
+                        objDataManual.LogDate = config.GetDateTimeUsingLocalZone();
+                        objDataManual.Save();
+                    }
                     objData.MoveNext();
                 }
             }
