@@ -16,6 +16,7 @@ namespace ComboPortal
             {
                 uiPanelsuccess.Visible = false;
                 uiPanelReset.Visible = true;
+                uiPanelError.Visible = false;
             }
         }
 
