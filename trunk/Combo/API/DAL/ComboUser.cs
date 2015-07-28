@@ -315,6 +315,22 @@ namespace Combo.DAL
 				}
 			}
 			
+			public static SqlParameter IsVerified
+			{
+				get
+				{
+					return new SqlParameter("@IsVerified", SqlDbType.Bit, 0);
+				}
+			}
+			
+			public static SqlParameter CreatedDate
+			{
+				get
+				{
+					return new SqlParameter("@CreatedDate", SqlDbType.DateTime, 0);
+				}
+			}
+			
 		}
 		#endregion		
 	
@@ -348,6 +364,8 @@ namespace Combo.DAL
             public const string CountryID = "CountryID";
             public const string Location = "Location";
             public const string IsPrivateAccount = "IsPrivateAccount";
+            public const string IsVerified = "IsVerified";
+            public const string CreatedDate = "CreatedDate";
 
 			static public string ToPropertyName(string columnName)
 			{
@@ -382,6 +400,8 @@ namespace Combo.DAL
 					ht[CountryID] = _ComboUser.PropertyNames.CountryID;
 					ht[Location] = _ComboUser.PropertyNames.Location;
 					ht[IsPrivateAccount] = _ComboUser.PropertyNames.IsPrivateAccount;
+					ht[IsVerified] = _ComboUser.PropertyNames.IsVerified;
+					ht[CreatedDate] = _ComboUser.PropertyNames.CreatedDate;
 
 				}
 				return (string)ht[columnName];
@@ -421,6 +441,8 @@ namespace Combo.DAL
             public const string CountryID = "CountryID";
             public const string Location = "Location";
             public const string IsPrivateAccount = "IsPrivateAccount";
+            public const string IsVerified = "IsVerified";
+            public const string CreatedDate = "CreatedDate";
 
 			static public string ToColumnName(string propertyName)
 			{
@@ -455,6 +477,8 @@ namespace Combo.DAL
 					ht[CountryID] = _ComboUser.ColumnNames.CountryID;
 					ht[Location] = _ComboUser.ColumnNames.Location;
 					ht[IsPrivateAccount] = _ComboUser.ColumnNames.IsPrivateAccount;
+					ht[IsVerified] = _ComboUser.ColumnNames.IsVerified;
+					ht[CreatedDate] = _ComboUser.ColumnNames.CreatedDate;
 
 				}
 				return (string)ht[propertyName];
@@ -494,6 +518,8 @@ namespace Combo.DAL
             public const string CountryID = "s_CountryID";
             public const string Location = "s_Location";
             public const string IsPrivateAccount = "s_IsPrivateAccount";
+            public const string IsVerified = "s_IsVerified";
+            public const string CreatedDate = "s_CreatedDate";
 
 		}
 		#endregion		
@@ -821,6 +847,30 @@ namespace Combo.DAL
 			set
 	        {
 				base.Setbool(ColumnNames.IsPrivateAccount, value);
+			}
+		}
+
+		public virtual bool IsVerified
+	    {
+			get
+	        {
+				return base.Getbool(ColumnNames.IsVerified);
+			}
+			set
+	        {
+				base.Setbool(ColumnNames.IsVerified, value);
+			}
+		}
+
+		public virtual DateTime CreatedDate
+	    {
+			get
+	        {
+				return base.GetDateTime(ColumnNames.CreatedDate);
+			}
+			set
+	        {
+				base.SetDateTime(ColumnNames.CreatedDate, value);
 			}
 		}
 
@@ -1234,6 +1284,36 @@ namespace Combo.DAL
 			}
 		}
 
+		public virtual string s_IsVerified
+	    {
+			get
+	        {
+				return this.IsColumnNull(ColumnNames.IsVerified) ? string.Empty : base.GetboolAsString(ColumnNames.IsVerified);
+			}
+			set
+	        {
+				if(string.Empty == value)
+					this.SetColumnNull(ColumnNames.IsVerified);
+				else
+					this.IsVerified = base.SetboolAsString(ColumnNames.IsVerified, value);
+			}
+		}
+
+		public virtual string s_CreatedDate
+	    {
+			get
+	        {
+				return this.IsColumnNull(ColumnNames.CreatedDate) ? string.Empty : base.GetDateTimeAsString(ColumnNames.CreatedDate);
+			}
+			set
+	        {
+				if(string.Empty == value)
+					this.SetColumnNull(ColumnNames.CreatedDate);
+				else
+					this.CreatedDate = base.SetDateTimeAsString(ColumnNames.CreatedDate, value);
+			}
+		}
+
 
 		#endregion		
 	
@@ -1532,6 +1612,26 @@ namespace Combo.DAL
 					get
 					{
 							WhereParameter where = new WhereParameter(ColumnNames.IsPrivateAccount, Parameters.IsPrivateAccount);
+							this._clause._entity.Query.AddWhereParameter(where);
+							return where;
+					}
+				}
+
+				public WhereParameter IsVerified
+				{
+					get
+					{
+							WhereParameter where = new WhereParameter(ColumnNames.IsVerified, Parameters.IsVerified);
+							this._clause._entity.Query.AddWhereParameter(where);
+							return where;
+					}
+				}
+
+				public WhereParameter CreatedDate
+				{
+					get
+					{
+							WhereParameter where = new WhereParameter(ColumnNames.CreatedDate, Parameters.CreatedDate);
 							this._clause._entity.Query.AddWhereParameter(where);
 							return where;
 					}
@@ -1866,6 +1966,30 @@ namespace Combo.DAL
 				}
 			}
 
+			public WhereParameter IsVerified
+		    {
+				get
+		        {
+					if(_IsVerified_W == null)
+	        	    {
+						_IsVerified_W = TearOff.IsVerified;
+					}
+					return _IsVerified_W;
+				}
+			}
+
+			public WhereParameter CreatedDate
+		    {
+				get
+		        {
+					if(_CreatedDate_W == null)
+	        	    {
+						_CreatedDate_W = TearOff.CreatedDate;
+					}
+					return _CreatedDate_W;
+				}
+			}
+
 			private WhereParameter _ComboUserID_W = null;
 			private WhereParameter _UserName_W = null;
 			private WhereParameter _DisplayName_W = null;
@@ -1893,6 +2017,8 @@ namespace Combo.DAL
 			private WhereParameter _CountryID_W = null;
 			private WhereParameter _Location_W = null;
 			private WhereParameter _IsPrivateAccount_W = null;
+			private WhereParameter _IsVerified_W = null;
+			private WhereParameter _CreatedDate_W = null;
 
 			public void WhereClauseReset()
 			{
@@ -1923,6 +2049,8 @@ namespace Combo.DAL
 				_CountryID_W = null;
 				_Location_W = null;
 				_IsPrivateAccount_W = null;
+				_IsVerified_W = null;
+				_CreatedDate_W = null;
 
 				this._entity.Query.FlushWhereParameters();
 
@@ -2244,6 +2372,26 @@ namespace Combo.DAL
 					get
 					{
 							AggregateParameter aggregate = new AggregateParameter(ColumnNames.IsPrivateAccount, Parameters.IsPrivateAccount);
+							this._clause._entity.Query.AddAggregateParameter(aggregate);
+							return aggregate;
+					}
+				}
+
+				public AggregateParameter IsVerified
+				{
+					get
+					{
+							AggregateParameter aggregate = new AggregateParameter(ColumnNames.IsVerified, Parameters.IsVerified);
+							this._clause._entity.Query.AddAggregateParameter(aggregate);
+							return aggregate;
+					}
+				}
+
+				public AggregateParameter CreatedDate
+				{
+					get
+					{
+							AggregateParameter aggregate = new AggregateParameter(ColumnNames.CreatedDate, Parameters.CreatedDate);
 							this._clause._entity.Query.AddAggregateParameter(aggregate);
 							return aggregate;
 					}
@@ -2578,6 +2726,30 @@ namespace Combo.DAL
 				}
 			}
 
+			public AggregateParameter IsVerified
+		    {
+				get
+		        {
+					if(_IsVerified_W == null)
+	        	    {
+						_IsVerified_W = TearOff.IsVerified;
+					}
+					return _IsVerified_W;
+				}
+			}
+
+			public AggregateParameter CreatedDate
+		    {
+				get
+		        {
+					if(_CreatedDate_W == null)
+	        	    {
+						_CreatedDate_W = TearOff.CreatedDate;
+					}
+					return _CreatedDate_W;
+				}
+			}
+
 			private AggregateParameter _ComboUserID_W = null;
 			private AggregateParameter _UserName_W = null;
 			private AggregateParameter _DisplayName_W = null;
@@ -2605,6 +2777,8 @@ namespace Combo.DAL
 			private AggregateParameter _CountryID_W = null;
 			private AggregateParameter _Location_W = null;
 			private AggregateParameter _IsPrivateAccount_W = null;
+			private AggregateParameter _IsVerified_W = null;
+			private AggregateParameter _CreatedDate_W = null;
 
 			public void AggregateClauseReset()
 			{
@@ -2635,6 +2809,8 @@ namespace Combo.DAL
 				_CountryID_W = null;
 				_Location_W = null;
 				_IsPrivateAccount_W = null;
+				_IsVerified_W = null;
+				_CreatedDate_W = null;
 
 				this._entity.Query.FlushAggregateParameters();
 
@@ -2815,6 +2991,14 @@ namespace Combo.DAL
 
 			p = cmd.Parameters.Add(Parameters.IsPrivateAccount);
 			p.SourceColumn = ColumnNames.IsPrivateAccount;
+			p.SourceVersion = DataRowVersion.Current;
+
+			p = cmd.Parameters.Add(Parameters.IsVerified);
+			p.SourceColumn = ColumnNames.IsVerified;
+			p.SourceVersion = DataRowVersion.Current;
+
+			p = cmd.Parameters.Add(Parameters.CreatedDate);
+			p.SourceColumn = ColumnNames.CreatedDate;
 			p.SourceVersion = DataRowVersion.Current;
 
 

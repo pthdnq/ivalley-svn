@@ -13,13 +13,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/12/2015 13:53:49</publishTime>
     </File>
     <File Include="bin/BLL.dll">
-      <publishTime>04/15/2015 19:45:28</publishTime>
+      <publishTime>07/28/2015 12:49:36</publishTime>
     </File>
     <File Include="bin/Combo.dll">
-      <publishTime>04/15/2015 19:45:29</publishTime>
+      <publishTime>07/28/2015 12:49:39</publishTime>
     </File>
     <File Include="bin/DAL.dll">
-      <publishTime>04/15/2015 19:38:05</publishTime>
+      <publishTime>07/17/2015 21:23:53</publishTime>
     </File>
     <File Include="bin/MyGeneration.dOOdads.dll">
       <publishTime>03/12/2015 13:57:00</publishTime>
@@ -817,7 +817,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/09/2015 10:40:56</publishTime>
     </File>
     <File Include="index.html">
-      <publishTime>04/07/2015 17:42:25</publishTime>
+      <publishTime>07/15/2015 13:18:52</publishTime>
     </File>
     <File Include="js/jquery-1.11.1.min.js">
       <publishTime>03/12/2015 13:53:56</publishTime>
@@ -841,7 +841,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/12/2015 13:53:49</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>04/07/2015 16:46:26</publishTime>
+      <publishTime>07/17/2015 21:23:59</publishTime>
     </File>
   </ItemGroup>
 </Project>

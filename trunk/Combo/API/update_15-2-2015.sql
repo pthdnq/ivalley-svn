@@ -333,3 +333,23 @@ where CU.Username like '%'  + @FilterText +  '%' and (CU.IsDeactivated <> 1 or C
 
 order by OrderField
 Go 
+
+
+
+If Exists (select Name 
+		   from sysobjects 
+		   where name = 'ComboUserReport' and
+		        xtype = 'U')
+Drop Table ComboUserReport
+Go
+Create Table ComboUserReport
+(
+	ComboUserReportID int not null
+			identity(1,1)
+			Primary Key,	
+	ComboUserID int foreign key references ComboUser(ComboUserID),
+	ComboReportedUserID int foreign key references ComboUser(ComboUserID),
+	ReportText Nvarchar(200),
+	ReportDate DateTime
+)
+Go 	
