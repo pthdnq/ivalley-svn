@@ -16,15 +16,29 @@
             <asp:LinkButton ID="uiLinkButtonAdd" runat="server" CssClass="btn btn-primary" OnClick="uiLinkButtonAdd_Click">Add new circular</asp:LinkButton>
             <div class="clearfix">&nbsp;  </div>
         </div>
+            <asp:Panel ID="uiPanelSearch" runat="server" DefaultButton="btnSearch" CssClass="cell-12 clearfix">
+                <div class="cell-12 clearfix" style="padding-left:0px !important">
+                    <div class="toolsBar">
+                        <div class="products-filter-top">
+                            <div class="cell-12">
+                                <span>Search : </span>
+                                <asp:TextBox ID="txtSearch" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="txtDateFrom" Style="display: none" placeholder="Date From" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="txtDateTo" Style="display: none" placeholder="Date To" runat="server"></asp:TextBox>
+                                <asp:LinkButton ID="btnSearch" OnClick="btnSearch_Click" CssClass="btn" runat="server" Style="height: 24px; line-height: normal; line-height: initial; padding-top: 5px;">Search <i class="fa fa-search"></i></asp:LinkButton>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </asp:Panel>
         <div class="cell-12 clearfix">
             <telerik:RadGrid ID="uiRadGridcirculars" runat="server" AllowPaging="True"
                 AutoGenerateColumns="False" CellSpacing="0"
-                HorizontalAlign="Center" EnableEmbeddedSkins="False" Width="90%"
+                HorizontalAlign="Center" EnableEmbeddedSkins="False" Width="100%"
                 OnPageIndexChanged="uiRadGridcirculars_PageIndexChanged"
                 OnItemCommand="uiRadGridcirculars_ItemCommand">
                 <AlternatingItemStyle HorizontalAlign="Center" />
                 <MasterTableView>
-
                     <Columns>
                         <telerik:GridBoundColumn DataField="Code" HeaderText="Code"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="Title" HeaderText="Title"></telerik:GridBoundColumn>
@@ -45,7 +59,6 @@
                 </MasterTableView>
                 <HeaderStyle HorizontalAlign="Center" />
                 <ItemStyle HorizontalAlign="Center" />
-
             </telerik:RadGrid>
         </div>
     </asp:Panel>

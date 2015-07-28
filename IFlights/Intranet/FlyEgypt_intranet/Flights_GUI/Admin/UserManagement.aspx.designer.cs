@@ -40,15 +40,6 @@ namespace Flights_GUI.Admin {
         protected global::System.Web.UI.WebControls.Panel uiPanelSearch;
         
         /// <summary>
-        /// Label5 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label5;
-        
-        /// <summary>
         /// uiTextBoxSearch control.
         /// </summary>
         /// <remarks>
@@ -58,6 +49,33 @@ namespace Flights_GUI.Admin {
         protected global::System.Web.UI.WebControls.TextBox uiTextBoxSearch;
         
         /// <summary>
+        /// btnSearch control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btnSearch;
+        
+        /// <summary>
+        /// txtDateFrom control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtDateFrom;
+        
+        /// <summary>
+        /// txtDateTo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtDateTo;
+        
+        /// <summary>
         /// uiButtonSearch control.
         /// </summary>
         /// <remarks>
@@ -65,15 +83,6 @@ namespace Flights_GUI.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button uiButtonSearch;
-        
-        /// <summary>
-        /// uiLinkButtonSearch control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton uiLinkButtonSearch;
         
         /// <summary>
         /// uiRadGridUsers control.

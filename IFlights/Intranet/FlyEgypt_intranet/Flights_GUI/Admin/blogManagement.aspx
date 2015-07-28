@@ -17,9 +17,22 @@
             <div class="clearfix">&nbsp;  </div>
         </div>
         <div class="cell-12 clearfix">
+            <asp:Panel ID="PanelSearch" DefaultButton="btnSearch" runat="server">
+                <div class="toolsBar">
+                    <div class="products-filter-top">
+                        <div class="cell-12">
+                            <span>Search : </span>
+                            <asp:TextBox ID="txtSearch" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtDateFrom" Style="display: none" placeholder="Date From" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtDateTo" Style="display: none" placeholder="Date To" runat="server"></asp:TextBox>
+                            <asp:LinkButton ID="btnSearch" OnClick="btnSearch_Click" CssClass="btn" runat="server" Style="height: 24px; line-height: normal; line-height: initial; padding-top: 5px;">Search <i class="fa fa-search"></i></asp:LinkButton>
+                        </div>
+                    </div>
+                </div>
+            </asp:Panel>
             <telerik:RadGrid ID="uiRadGridcirculars" runat="server" AllowPaging="True"
                 AutoGenerateColumns="False" CellSpacing="0"
-                HorizontalAlign="Center" EnableEmbeddedSkins="False" Width="90%"
+                HorizontalAlign="Center" EnableEmbeddedSkins="False" Width="100%"
                 OnPageIndexChanged="uiRadGridcirculars_PageIndexChanged"
                 OnItemCommand="uiRadGridcirculars_ItemCommand">
                 <AlternatingItemStyle HorizontalAlign="Center" />
@@ -38,7 +51,8 @@
                                     <asp:LinkButton ID="uiLinkButtonDelete" runat="server" CommandArgument='<%# Eval("AnnouncementID") %>' Visible='<%# (Membership.GetUser().ProviderUserKey.ToString() == Eval("CreatedBy").ToString()) %>'
                                         CommandName="DeleteCircular" OnClientClick="return confirm('Are you want to delete this record? ');"><img src="../images/delete.png" alt="Delete" title="Delete" style="border:0;float:none;" /></asp:LinkButton>
                                 &nbsp;
-                                    <a href='/BI/reporting.aspx?t=a&aid=<%# Eval("AnnouncementID") %>'><img src="../images/bar_chart1.png" alt="View report" title="View report" style="border:0;float:none;max-width:24px;" /></a>
+                                    <a href='/BI/reporting.aspx?t=a&aid=<%# Eval("AnnouncementID") %>'>
+                                        <img src="../images/bar_chart1.png" alt="View report" title="View report" style="border: 0; float: none; max-width: 24px;" /></a>
                             </ItemTemplate>
                         </telerik:GridTemplateColumn>
                     </Columns>
@@ -88,7 +102,6 @@
             <div class="cell-2">Group :</div>
             <div class="cell-10">
                 <asp:CheckBoxList ID="CheckBoxListGroups" RepeatDirection="Horizontal" RepeatColumns="5" runat="server">
-
                 </asp:CheckBoxList>
             </div>
         </div>
@@ -111,7 +124,7 @@
                 <iframe src="../uiUpload.html" style="border: 0; width: 80%; overflow: hidden; height: 100px;"></iframe>
             </div>
         </div>
-         <div style="clear: both; height: 5px;"></div>
+        <div style="clear: both; height: 5px;"></div>
         <div class="cell-12 clearfix" style="margin-left: 0;">
             <div class="cell-2">Notify members via mail</div>
             <div class="cell-4">

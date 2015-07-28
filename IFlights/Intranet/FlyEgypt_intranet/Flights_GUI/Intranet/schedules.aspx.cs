@@ -53,8 +53,14 @@ namespace Flights_GUI.Intranet
         }
         private void BindData()
         {
+            DateTime DateFrom, DateTo;
+            if (!DateTime.TryParseExact(txtDateFrom.Text, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out DateFrom))
+                DateFrom = Convert.ToDateTime("01/01/1900");
+            if (!DateTime.TryParseExact(txtDateTo.Text, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out DateTo))
+                DateTo = Convert.ToDateTime("01/01/2500");
+
             Schedule objdata = new Schedule();
-            objdata.GetSchedulesByUserID(new Guid(Membership.GetUser().ProviderUserKey.ToString()));
+            objdata.GetSchedulesByUserID(new Guid(Membership.GetUser().ProviderUserKey.ToString()),txtSearch.Text,DateFrom,DateTo);
             uiRadGridmanuals.DataSource = objdata.DefaultView;
             uiRadGridmanuals.DataBind();
         }
@@ -64,6 +70,11 @@ namespace Flights_GUI.Intranet
             UsersNofications userNotif = new UsersNofications();
             //userNotif.MarkNotificationsReadByNotificationType((new Guid(Membership.GetUser(Page.User.Identity.Name).ProviderUserKey.ToString())), 8);
             userNotif.MarkSchedulesNotificationsRead((new Guid(Membership.GetUser(Page.User.Identity.Name).ProviderUserKey.ToString())), 8);
+        }
+
+        protected void btnSearch_Click(object sender, EventArgs e)
+        {
+            BindData();
         }
     }
 }

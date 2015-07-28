@@ -99,7 +99,7 @@ namespace Flights_GUI.Common
             LogScheduleVersionsView();
 
             ScheduleVersion versions = new ScheduleVersion();
-            versions.GetVersionsByScheduleID(ID);
+            versions.GetVersionsByScheduleID(ID, "", Convert.ToDateTime("01/01/1900"), Convert.ToDateTime("01/01/2500"));
 
             List<Version> AllVersions = versions.DefaultView.Table.AsEnumerable().Select(row =>
             {

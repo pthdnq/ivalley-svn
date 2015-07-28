@@ -153,7 +153,7 @@ namespace Flights_GUI.Admin
         private void BindData()
         {
             Certificate objdata = new Certificate();
-            objdata.GetAllCertificates();
+            objdata.GetAllCertificatesSearch(txtSearch.Text);
             uiRadGridcirculars.DataSource = objdata.DefaultView;
             uiRadGridcirculars.DataBind();
         }
@@ -192,5 +192,10 @@ namespace Flights_GUI.Admin
         }
 
         #endregion
+
+        protected void btnSearch_Click(object sender, EventArgs e)
+        {
+            BindData();
+        }
     }
 }

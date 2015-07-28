@@ -10,19 +10,19 @@
             <div class="clearfix">&nbsp;  </div>
         </div>
         <div class="cell-12 clearfix">            
-           <%--  <asp:Panel runat="server" DefaultButton="uiLinkButtonSearch">
-
+             <asp:Panel runat="server" DefaultButton="btnSearch">
                     <div class="toolsBar">
                         <div class="products-filter-top">                                
                             <div class="cell-12">
                                 <span>Search : </span>
-                                <asp:TextBox ID="uiTextBoxSearch" runat="server" style="vertical-align:middle;"></asp:TextBox>
-                                <asp:LinkButton ID="uiLinkButtonSearch" OnClick="uiLinkButtonSearch_Click" CssClass="btn" runat="server" style="height:24px;line-height:normal;line-height:initial;padding-top:5px;">Search <i class="fa fa-search"></i></asp:LinkButton>
+                            <asp:TextBox ID="txtSearch" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtDateFrom" Style="display: none" placeholder="Date From" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtDateTo" Style="display: none" placeholder="Date To" runat="server"></asp:TextBox>
+                            <asp:LinkButton ID="btnSearch" OnClick="uiLinkButtonSearch_Click" CssClass="btn" runat="server" Style="height: 24px; line-height: normal; line-height: initial; padding-top: 5px;">Search <i class="fa fa-search"></i></asp:LinkButton>
                             </div>
                         </div>
                     </div>
-                
-                </asp:Panel>--%>
+                </asp:Panel>
                 <telerik:RadGrid ID="uiRadGridmanuals" runat="server" AllowPaging="True"
                     AutoGenerateColumns="False" CellSpacing="0"
                     HorizontalAlign="Center" EnableEmbeddedSkins="False" Width="100%"
@@ -121,25 +121,25 @@
 
     </asp:Panel>
     <asp:Panel ID="uiPanelVersions" runat="server" GroupingText="Schedule versions">
-
         <div class="cell-2">
             <asp:LinkButton ID="uiLinkButtonAddVersion" runat="server" CssClass="btn btn-primary" OnClick="uiLinkButtonAddVersion_Click">Add new version</asp:LinkButton>
             <div class="clearfix">&nbsp;  </div>
         </div>
         <div class="cell-10">
-             <%--<asp:Panel runat="server" DefaultButton="uiLinkButtonSearchVersions">
-
+             <asp:Panel runat="server" DefaultButton="btnSearchVersions">
                     <div class="toolsBar">
                         <div class="products-filter-top">                                
                             <div class="cell-12">
                                 <span>Search : </span>
-                                <asp:TextBox ID="uiTextBoxSearchVersions" runat="server" style="vertical-align:middle;"></asp:TextBox>
-                                <asp:LinkButton ID="uiLinkButtonSearchVersions" OnClick="uiLinkButtonSearchVersions_Click" CssClass="btn" runat="server" style="height:24px;line-height:normal;line-height:initial;padding-top:5px;">Search <i class="fa fa-search"></i></asp:LinkButton>
+                            <asp:TextBox ID="txtSearchVersions" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtDateFromVersions" Style="display: none" placeholder="Date From" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtDateToVersions" Style="display: none" placeholder="Date To" runat="server"></asp:TextBox>
+                            <asp:LinkButton ID="btnSearchVersions" OnClick="btnSearchVersions_Click" CssClass="btn" runat="server" Style="height: 24px; line-height: normal; line-height: initial; padding-top: 5px;">Search <i class="fa fa-search"></i></asp:LinkButton>
                             </div>
                         </div>
                     </div>
-                
-                </asp:Panel>--%>
+                </asp:Panel>
+
         </div>
         <div class="cell-12 clearfix">
             <telerik:RadGrid ID="uiRadGridVersions" runat="server" AllowPaging="True"

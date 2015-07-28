@@ -239,8 +239,14 @@ namespace Flights_GUI.Admin
 
         private void BindData()
         {
+            DateTime DateFrom, DateTo;
+            if (!DateTime.TryParseExact(txtDateFrom.Text, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out DateFrom))
+                DateFrom = Convert.ToDateTime("01/01/1900");
+            if (!DateTime.TryParseExact(txtDateTo.Text, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out DateTo))
+                DateTo = Convert.ToDateTime("01/01/2500");
+
             Announcement objdata = new Announcement();
-            objdata.GetAllCirculars();
+            objdata.GetAllCirculars(txtSearch.Text, DateFrom, DateTo);
             uiRadGridcirculars.DataSource = objdata.DefaultView;
             uiRadGridcirculars.DataBind();
         }
@@ -294,6 +300,11 @@ namespace Flights_GUI.Admin
         }
 
         #endregion
+
+        protected void btnSearch_Click(object sender, EventArgs e)
+        {
+            BindData();
+        }
 
     }
 }

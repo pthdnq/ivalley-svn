@@ -902,3 +902,195 @@ AND createdDate >= ISNULL(@FromDate, '01/01/1900')
 AND createdDate <= ISNULL(@ToDate, '01/01/2500')
 order by CreatedDate desc
 GO
+
+If Exists (select Name 
+		   from sysobjects 
+		   where name = 'GetAllCirculars' and
+		        xtype = 'P')
+Drop Procedure GetAllCirculars
+Go
+
+Create Procedure GetAllCirculars
+									@query nvarchar(50),
+									@FromDate DateTime = null,
+									@ToDate DateTime = null
+as
+select A.*, U.UserName, U.UserID 
+from Announcement A Left join aspnet_users U on A.createdby = u.UserID 
+where (IsBulletin is null or IsBulletin <> 1 ) 
+and (IsBlog is null or IsBlog <> 1 ) 
+and (isDeleted is null or isDeleted <> 1 )
+AND ((A.Title LIKE '%'+@query+'%') OR (A.Code LIKE '%'+@query+'%'))
+AND createdDate >= ISNULL(@FromDate, '01/01/1900')
+AND createdDate <= ISNULL(@ToDate, '01/01/2500')
+order by CreatedDate desc
+GO
+
+
+If Exists (select Name 
+		   from sysobjects 
+		   where name = 'GetAllBulletins' and
+		        xtype = 'P')
+Drop Procedure GetAllBulletins
+Go
+
+Create Procedure GetAllBulletins
+									@query nvarchar(50),
+									@FromDate DateTime = null,
+									@ToDate DateTime = null
+as
+select A.*, U.UserName, U.UserID 
+from Announcement A Left join aspnet_users U on A.createdby = u.UserID 
+where (IsBulletin = 1 ) and (isDeleted is null or isDeleted <> 1 ) 
+AND ((A.Title LIKE '%'+@query+'%') OR (A.Code LIKE '%'+@query+'%'))
+AND createdDate >= ISNULL(@FromDate, '01/01/1900')
+AND createdDate <= ISNULL(@ToDate, '01/01/2500')
+order by CreatedDate desc
+GO
+
+
+If Exists (select Name 
+		   from sysobjects 
+		   where name = 'GetAllBlogs' and
+		        xtype = 'P')
+Drop Procedure GetAllBlogs
+Go
+
+Create Procedure GetAllBlogs
+									@query nvarchar(50),
+									@FromDate DateTime = null,
+									@ToDate DateTime = null
+as
+select A.*, U.UserName, U.UserID 
+from Announcement A Left join aspnet_users U on A.createdby = u.UserID 
+where (IsBlog = 1 ) and (isDeleted is null or isDeleted <> 1 ) 
+AND ((A.Title LIKE '%'+@query+'%') OR (A.Code LIKE '%'+@query+'%'))
+AND createdDate >= ISNULL(@FromDate, '01/01/1900')
+AND createdDate <= ISNULL(@ToDate, '01/01/2500')
+order by CreatedDate desc
+GO
+
+
+
+
+If Exists (select Name 
+		   from sysobjects 
+		   where name = 'GetAllCertificates' and
+		        xtype = 'P')
+Drop Procedure GetAllCertificates
+Go
+
+Create Procedure GetAllCertificates
+as
+select A.*, U.UserName, U.UserID 
+from certificate A Left join aspnet_users U on A.createdby = u.UserID 
+WHERE (A.isDeleted is null or A.isDeleted <> 1 ) 
+order by CreatedDate desc
+GO
+
+If Exists (select Name 
+		   from sysobjects 
+		   where name = 'GetAllCertificatesSearch' and
+		        xtype = 'P')
+Drop Procedure GetAllCertificatesSearch
+Go
+
+Create Procedure GetAllCertificatesSearch
+									@query nvarchar(50)
+
+as
+select A.*, U.UserName, U.UserID 
+from certificate A Left join aspnet_users U on A.createdby = u.UserID 
+WHERE (A.isDeleted is null or A.isDeleted <> 1 ) 
+AND (A.Name LIKE '%'+@query+'%')
+order by CreatedDate desc
+GO
+
+If Exists (select Name 
+		   from sysobjects 
+		   where name = 'GetAllSchedules' and
+		        xtype = 'P')
+Drop Procedure GetAllSchedules
+Go
+
+Create Procedure GetAllSchedules
+									@query nvarchar(50),
+									@FromDate DateTime = null,
+									@ToDate DateTime = null
+as
+select M.*, U.username UpdatedByName , C.username CreatedByName ,
+                                    (Select Top 1 path from scheduleVersion MV where MV.scheduleID = M.scheduleID Order by MV.LastUpdatedDate desc) VersionPath       
+                                    from schedule M
+                                    Left join aspnet_users U on M.UpdatedBy = U.UserID
+                                    Left join aspnet_users C on M.CreatedBy = C.UserID 
+                                    WHERE (isDeleted is null or isDeleted <> 1 )
+									AND (M.Name LIKE '%'+@query+'%')
+									AND createdDate >= ISNULL(@FromDate, '01/01/1900')
+									AND createdDate <= ISNULL(@ToDate, '01/01/2500')
+                                    order by CreatedDate desc
+GO
+
+If Exists (select Name 
+		   from sysobjects 
+		   where name = 'GetSchedulesByUserID' and
+		        xtype = 'P')
+Drop Procedure GetSchedulesByUserID
+Go
+
+Create Procedure GetSchedulesByUserID @UserID uniqueidentifier,
+									@query nvarchar(50),
+									@FromDate DateTime = null,
+									@ToDate DateTime = null
+as
+select M.*, U.username UpdatedByName , C.username CreatedByName ,-- ,sum(case when UMV.UserNotificationID is not null then 1 else 0 end) ManualVersionUpdates ,
+                                    (Select Top 1 path from ScheduleVersion MV where MV.ScheduleID = M.ScheduleID Order by MV.LastUpdatedDate desc) VersionPath   ,
+                                    (Select Top 1 ScheduleVersionID from ScheduleVersion MV where MV.ScheduleID = M.ScheduleID Order by MV.LastUpdatedDate desc) ScheduleVersionID   ,
+                                    (select isnull(sum(case when UM.UserNotificationID is not null then 1 else 0 end),0)  from UsersNofications UM where M.ScheduleID = UM.ScheduleID and 
+								                                     UM.FormID is null and 
+								                                     UM.ManualVersionID is null and 
+								                                     UM.FromVersionID is null and 
+                                                                     UM.ScheduleID is not null and
+                                                                     UM.ScheduleVersionID is null and
+								                                     (UM.IsRead is null OR UM.IsRead <> 1) and
+								                                     UM.UserID = @UserID) ManualUpdates, 
+                                    (select isnull(sum(case when UMV.UserNotificationID is not null then 1 else 0 end),0)  from UsersNofications UMV where M.ScheduleID = UMV.ScheduleID and 
+								                                     UMV.FormID is null and 								 
+								                                     UMV.FromVersionID is null and 
+								                                     UMV.ManualVersionID is null and
+                                                                     UMV.ScheduleID is not null and
+                                                                     UMV.ScheduleVersionID is not null and
+								                                     (UMV.IsRead is null OR UMV.IsRead <> 1) and
+								                                     UMV.UserID = @UserID) ManualVersionUpdates
+                                    from Schedule M
+                                    Left join aspnet_users U on M.UpdatedBy = U.UserID
+                                    Left join aspnet_users C on M.CreatedBy = C.UserID
+                                    WHERE (isDeleted is null or isDeleted <> 1 )
+									AND (M.Name LIKE '%'+@query+'%')
+									AND createdDate >= ISNULL(@FromDate, '01/01/1900')
+									AND createdDate <= ISNULL(@ToDate, '01/01/2500')
+                                    order by CreatedDate desc
+GO
+
+
+If Exists (select Name 
+		   from sysobjects 
+		   where name = 'GetVersionsByScheduleID' and
+		        xtype = 'P')
+Drop Procedure GetVersionsByScheduleID
+Go
+
+Create Procedure GetVersionsByScheduleID @ScheduleID int,
+									@query nvarchar(50),
+									@FromDate DateTime = null,
+									@ToDate DateTime = null
+as
+select M.*, U.username UpdatedByName , C.username CreatedByName from ScheduleVersion M
+                                    Left join aspnet_users U on M.UpdatedBy = U.UserID
+                                    Left join aspnet_users C on M.CreatedBy = C.UserID
+                                    where ScheduleID = @ScheduleID and (isDeleted is null or isDeleted <> 1 ) 
+									AND (M.Title LIKE '%'+@query+'%')
+									AND createdDate >= ISNULL(@FromDate, '01/01/1900')
+									AND createdDate <= ISNULL(@ToDate, '01/01/2500')
+									order by CreatedDate desc
+GO
+

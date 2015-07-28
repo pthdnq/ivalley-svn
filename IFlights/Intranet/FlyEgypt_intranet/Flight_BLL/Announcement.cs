@@ -15,9 +15,13 @@ namespace Flight_BLL
 		
 		}
 
-        public virtual bool GetAllCirculars()
+        public virtual bool GetAllCirculars(string query, DateTime dateFrom, DateTime dateTo)
         {
-            return LoadFromRawSql(@"select A.*, U.UserName, U.UserID from Announcement A Left join aspnet_users U on A.createdby = u.UserID where (IsBulletin is null or IsBulletin <> 1 ) and (IsBlog is null or IsBlog <> 1 ) and (isDeleted is null or isDeleted <> 1 ) order by CreatedDate desc");            
+            ListDictionary parameters = new ListDictionary();
+            parameters.Add(new SqlParameter("@query", SqlDbType.NVarChar, 50), query);
+            parameters.Add(new SqlParameter("@FromDate", SqlDbType.DateTime, 0), dateFrom);
+            parameters.Add(new SqlParameter("@ToDate", SqlDbType.DateTime, 0), dateTo);
+            return LoadFromSql("GetAllCirculars", parameters);
         }
 
         public virtual bool GetAllCircularsPublic(string query, DateTime dateFrom, DateTime dateTo)
@@ -50,9 +54,13 @@ namespace Flight_BLL
         }
         //--------------------
 
-        public virtual bool GetAllBulletins()
+        public virtual bool GetAllBulletins(string query, DateTime dateFrom, DateTime dateTo)
         {
-            return LoadFromRawSql(@"select A.*, U.UserName, U.UserID from Announcement A Left join aspnet_users U on A.createdby = u.UserID where (IsBulletin = 1 ) and (isDeleted is null or isDeleted <> 1 ) order by CreatedDate desc");            
+            ListDictionary parameters = new ListDictionary();
+            parameters.Add(new SqlParameter("@query", SqlDbType.NVarChar, 50), query);
+            parameters.Add(new SqlParameter("@FromDate", SqlDbType.DateTime, 0), dateFrom);
+            parameters.Add(new SqlParameter("@ToDate", SqlDbType.DateTime, 0), dateTo);
+            return LoadFromSql("GetAllBulletins", parameters);
         }
 
         public virtual bool GetAllBulletinsPublic(string query, DateTime dateFrom, DateTime dateTo)
@@ -132,9 +140,13 @@ namespace Flight_BLL
                                     ) as a order by CreatedDate desc", UserID);
         }
 
-        public virtual bool GetAllBlogs()
+        public virtual bool GetAllBlogs(string query, DateTime dateFrom, DateTime dateTo)
         {
-            return LoadFromRawSql(@"select A.*, U.UserName, U.UserID from Announcement A Left join aspnet_users U on A.createdby = u.UserID where (IsBlog = 1 ) and (isDeleted is null or isDeleted <> 1 ) order by CreatedDate desc");
+            ListDictionary parameters = new ListDictionary();
+            parameters.Add(new SqlParameter("@query", SqlDbType.NVarChar, 50), query);
+            parameters.Add(new SqlParameter("@FromDate", SqlDbType.DateTime, 0), dateFrom);
+            parameters.Add(new SqlParameter("@ToDate", SqlDbType.DateTime, 0), dateTo);
+            return LoadFromSql("GetAllBlogs", parameters);
         }
 
         public virtual bool GetAllBlogsPublic(string query ,DateTime dateFrom, DateTime dateTo)

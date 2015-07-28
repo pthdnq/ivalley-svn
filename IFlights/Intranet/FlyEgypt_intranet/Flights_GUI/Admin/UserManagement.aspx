@@ -38,25 +38,26 @@
             </div>
 
             <asp:Panel ID="uiPanelSearch" runat="server" DefaultButton="uiButtonSearch" CssClass="cell-12 clearfix margin-bottom-10">
-
-                <div class="cell-1" style="padding-left:0px !important;padding-top:7px;">
-                    <asp:Label ID="Label5" runat="server" Text="Search : " CssClass="Label"></asp:Label>
+                <div class="cell-12 clearfix" style="padding-left:0px !important">
+                    <div class="toolsBar">
+                        <div class="products-filter-top">
+                            <div>
+                                <span>Search : </span>
+                                <asp:TextBox ID="uiTextBoxSearch" runat="server"></asp:TextBox>
+                                <asp:LinkButton ID="btnSearch" OnClick="uiButtonSearch_Click" CssClass="btn" runat="server" Style="height: 24px; line-height: normal; line-height: initial; padding-top: 5px;">Search <i class="fa fa-search"></i></asp:LinkButton>
+                                <asp:TextBox ID="txtDateFrom" Style="display: none" placeholder="Date From" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="txtDateTo" Style="display: none" placeholder="Date To" runat="server"></asp:TextBox>
+                                <asp:Button ID="uiButtonSearch" runat="server" Text="بحث" OnClick="uiButtonSearch_Click"
+                                    Width="60px" Style="display: none;" />
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="cell-4">
-                    <asp:TextBox ID="uiTextBoxSearch" runat="server" style="padding:5px;width:95%"></asp:TextBox>
-                </div>
-                <div class="cell-1">
-                    <asp:Button ID="uiButtonSearch" runat="server" Text="بحث" OnClick="uiButtonSearch_Click"
-                        Width="60px" Style="display: none;" />
-
-                    <asp:LinkButton ID="uiLinkButtonSearch" runat="server" OnClick="uiButtonSearch_Click" CssClass="btn btn-primary">Search</asp:LinkButton>
-
-                </div>
-
             </asp:Panel>
+            
             <div class="cell-12 clearfix">
                 <telerik:RadGrid ID="uiRadGridUsers" runat="server" AllowPaging="True" AutoGenerateColumns="False"
-                    CellSpacing="0" HorizontalAlign="Center" EnableEmbeddedSkins="False" Width="90%"
+                    CellSpacing="0" HorizontalAlign="Center" EnableEmbeddedSkins="False" Width="100%"
                     OnPageIndexChanged="uiRadGridUsers_PageIndexChanged" OnPageSizeChanged="uiRadGridUsers_PageSizeChanged" OnItemCommand="uiRadGridUsers_ItemCommand">
                     <AlternatingItemStyle HorizontalAlign="Center" />
                     <MasterTableView>
@@ -75,7 +76,6 @@
                             <telerik:GridBoundColumn DataField="lastactivitydate" HeaderText="Last login date" DataFormatString="{0:dd/MM/yyyy HH:mm}">
                             </telerik:GridBoundColumn>
                             
-
                             <telerik:GridTemplateColumn HeaderText="Actions">
                                 <ItemTemplate>
                                     <asp:LinkButton ID="uiLinkButtonEdit" runat="server" CommandArgument='<%# Eval("UserName") %>'
