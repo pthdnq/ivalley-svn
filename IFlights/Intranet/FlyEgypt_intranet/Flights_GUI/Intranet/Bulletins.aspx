@@ -67,6 +67,11 @@
                                             <%# Convert.ToDateTime(Eval("createdDate").ToString()).ToString("MMM") %><br>
                                             <%# Convert.ToDateTime(Eval("createdDate").ToString()).ToString("yyyy") %>
                                         </div>
+
+                                    </div>
+                                    <img src='<%# (string.IsNullOrEmpty(Eval("MainPic").ToString()) ? "../img/flyegypt.png" : "../common/thumb.aspx?Image=" + Eval("MainPic")) %>' alt="" style="max-height: 177px; max-width: 300px; width: 300px; margin: 0 auto 10px; display: block">
+                                </a>
+                                </div> 
                                         <article class="post-content">
                                             <div class="post-info-container">
                                                 <div class="post-info">
@@ -82,25 +87,10 @@
                                             </p>
                                         </article>
 
-                                    </div>
-                                    <img src='<%# (string.IsNullOrEmpty(Eval("MainPic").ToString()) ? "../img/nesma.png" : "../common/thumb.aspx?Image=" + Eval("MainPic")) %>' alt="" style="max-height: 177px; max-width: 300px; width: 300px; margin: 0 auto 10px; display: block">
-                                </a>
-                            </div>
-                            <article class="post-content">
-                                <div class="post-info-container">
-                                    <div class="post-info">
-                                        <h2><a class="main-color" href='Bulletins.aspx?cid=<%# Eval("AnnouncementID") %>'><%# Eval("Title").ToString() %></a></h2>
-                                        <ul class="post-meta">
-                                            <li class="meta-user"><i class="fa fa-user"></i>By: <a href="../Account/Profile.aspx?uid=<%# Eval("UserID") %>" target="_blank"><%# Eval("UserName").ToString() %></a></li>
-                                            <li><i class="fa fa-folder-open"></i>Published to: <span style="color: #777"><%# Eval("Groups") %></span></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <p>
-                                    <%# Eval("Brief").ToString() %> <a class="read-more" href='Bulletins.aspx?cid=<%# Eval("AnnouncementID") %>'>Read more</a>
-                                </p>
-                            </article>
-
+                                   
+                                    
+                            
+                           
                         </div>
 
                     </ItemTemplate>
