@@ -1824,6 +1824,9 @@
     <Content Include="ThemesFiles\ExceptionsLight\rs-plugin\js\jquery.themepunch.revolution.js" />
     <Content Include="ThemesFiles\ExceptionsLight\rs-plugin\js\jquery.themepunch.revolution.min.js" />
     <Content Include="ThemesFiles\ExceptionsLight\rs-plugin\js\jquery.themepunch.tools.min.js" />
+    <Content Include="tracker\addticket.aspx" />
+    <Content Include="tracker\default.aspx" />
+    <Content Include="tracker\ticket.aspx" />
     <Content Include="uiUpload.html" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -2258,6 +2261,27 @@
     <Compile Include="Test\generaltest\WebForm1.aspx.designer.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
+    <Compile Include="tracker\addticket.aspx.cs">
+      <DependentUpon>addticket.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="tracker\addticket.aspx.designer.cs">
+      <DependentUpon>addticket.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="tracker\default.aspx.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="tracker\default.aspx.designer.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="tracker\ticket.aspx.cs">
+      <DependentUpon>ticket.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="tracker\ticket.aspx.designer.cs">
+      <DependentUpon>ticket.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2265,6 +2289,7 @@
     <Folder Include="FileUploads\Circulars\" />
     <Folder Include="FileUploads\Manuals\" />
     <Folder Include="FileUploads\ProfilePics\" />
+    <Folder Include="tracker\attachments\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Account\Web.config" />
@@ -2816,23 +2841,45 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Reports\GD.rdlc" />
+    <Content Include="Reports\GD.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Admin\App_LocalResources\NotificationsManagement.aspx.resx" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Admin\Report1.rdlc" />
-    <Content Include="Reports\intranet\NotLoggedUsers.rdlc" />
-    <Content Include="Reports\intranet\UserLogin.rdlc" />
-    <Content Include="Reports\intranet\AnnouncementReport.rdlc" />
-    <Content Include="Reports\intranet\CertificateReport.rdlc" />
-    <Content Include="Reports\intranet\FormReport.rdlc" />
-    <Content Include="Reports\intranet\FormVersionReport.rdlc" />
-    <Content Include="Reports\intranet\ScheduleReport.rdlc" />
-    <Content Include="Reports\intranet\ScheduleVersionReport.rdlc" />
-    <Content Include="Reports\intranet\ManualVersionReport.rdlc" />
-    <Content Include="Reports\intranet\ManualReport.rdlc" />
+    <Content Include="Reports\intranet\NotLoggedUsers.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\intranet\UserLogin.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\intranet\AnnouncementReport.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\intranet\CertificateReport.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\intranet\FormReport.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\intranet\FormVersionReport.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\intranet\ScheduleReport.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\intranet\ScheduleVersionReport.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\intranet\ManualVersionReport.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\intranet\ManualReport.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
