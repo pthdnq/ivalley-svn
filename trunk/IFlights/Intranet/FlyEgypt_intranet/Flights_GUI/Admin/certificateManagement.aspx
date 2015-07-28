@@ -10,9 +10,21 @@
             <div class="clearfix">&nbsp;  </div>
         </div>
         <div class="cell-12 clearfix">
+            <asp:Panel ID="PanelSearch" DefaultButton="btnSearch" runat="server">
+                <div class="toolsBar">
+                    <div class="products-filter-top">
+                        <div class="cell-12">
+                            <span>Search : </span>
+                            <asp:TextBox ID="txtSearch" runat="server"></asp:TextBox>
+                            <asp:LinkButton ID="btnSearch" OnClick="btnSearch_Click" CssClass="btn" runat="server" Style="height: 24px; line-height: normal; line-height: initial; padding-top: 5px;">Search <i class="fa fa-search"></i></asp:LinkButton>
+                        </div>
+                    </div>
+                </div>
+            </asp:Panel>
+
             <telerik:RadGrid ID="uiRadGridcirculars" runat="server" AllowPaging="True"
                 AutoGenerateColumns="False" CellSpacing="0"
-                HorizontalAlign="Center" EnableEmbeddedSkins="False" Width="90%"
+                HorizontalAlign="Center" EnableEmbeddedSkins="False" Width="100%"
                 OnPageIndexChanged="uiRadGridcirculars_PageIndexChanged"
                 OnItemCommand="uiRadGridcirculars_ItemCommand">
                 <AlternatingItemStyle HorizontalAlign="Center" />

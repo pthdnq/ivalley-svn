@@ -214,8 +214,14 @@ namespace Flights_GUI.Admin
 
         private void BindData()
         {
+            DateTime DateFrom, DateTo;
+            if (!DateTime.TryParseExact(txtDateFrom.Text, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out DateFrom))
+                DateFrom = Convert.ToDateTime("01/01/1900");
+            if (!DateTime.TryParseExact(txtDateTo.Text, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out DateTo))
+                DateTo = Convert.ToDateTime("01/01/2500");
+
             Schedule objdata = new Schedule();
-            objdata.GetAllSchedules();
+            objdata.GetAllSchedules(txtSearch.Text,DateFrom,DateTo);
             uiRadGridmanuals.DataSource = objdata.DefaultView;
             uiRadGridmanuals.DataBind();
 
@@ -405,11 +411,16 @@ namespace Flights_GUI.Admin
 
         private void BindData_Versions()
         {
+            DateTime DateFrom, DateTo;
+            if (!DateTime.TryParseExact(txtDateFromVersions.Text, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out DateFrom))
+                DateFrom = Convert.ToDateTime("01/01/1900");
+            if (!DateTime.TryParseExact(txtDateToVersions.Text, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out DateTo))
+                DateTo = Convert.ToDateTime("01/01/2500");
+
             ScheduleVersion objdata = new ScheduleVersion();
-            objdata.GetVersionsByScheduleID(CurrentSchedule.ScheduleID);
+            objdata.GetVersionsByScheduleID(CurrentSchedule.ScheduleID, txtSearchVersions.Text, DateFrom, DateTo);
             uiRadGridVersions.DataSource = objdata.DefaultView;
             uiRadGridVersions.DataBind();
-
         }
 
         private void ClearFields_Versions()
@@ -422,5 +433,15 @@ namespace Flights_GUI.Admin
             uiTextBoxNotes.Text = "";
         }
         #endregion
+
+        protected void uiLinkButtonSearch_Click(object sender, EventArgs e)
+        {
+            BindData();
+        }
+
+        protected void btnSearchVersions_Click(object sender, EventArgs e)
+        {
+            BindData_Versions();
+        }
     }
 }

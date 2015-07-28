@@ -3,6 +3,9 @@
 
 using System;
 using Flight_DAL;
+using System.Collections.Specialized;
+using System.Data.SqlClient;
+using System.Data;
 namespace Flight_BLL
 {
 	public class Schedule : _Schedule
@@ -12,42 +15,22 @@ namespace Flight_BLL
 		
 		}
 
-        public bool GetAllSchedules()
+        public bool GetAllSchedules(string query, DateTime dateFrom, DateTime dateTo)
         {
-            return LoadFromRawSql(@"select M.*, U.username UpdatedByName , C.username CreatedByName ,
-                                    (Select Top 1 path from scheduleVersion MV where MV.scheduleID = M.scheduleID Order by MV.LastUpdatedDate desc) VersionPath       
-                                    from schedule M
-                                    Left join aspnet_users U on M.UpdatedBy = U.UserID
-                                    Left join aspnet_users C on M.CreatedBy = C.UserID 
-                                    WHERE (isDeleted is null or isDeleted <> 1 )                                   
-                                    order by CreatedDate desc");  
+            ListDictionary parameters = new ListDictionary();
+            parameters.Add(new SqlParameter("@query", SqlDbType.NVarChar, 50), query);
+            parameters.Add(new SqlParameter("@FromDate", SqlDbType.DateTime, 0), dateFrom);
+            parameters.Add(new SqlParameter("@ToDate", SqlDbType.DateTime, 0), dateTo);
+            return LoadFromSql("GetAllSchedules", parameters);
         }
-        public virtual bool GetSchedulesByUserID(Guid UserID)
+        public virtual bool GetSchedulesByUserID(Guid UserID, string query, DateTime dateFrom, DateTime dateTo)
         {
-            return LoadFromRawSql(@"select M.*, U.username UpdatedByName , C.username CreatedByName ,-- ,sum(case when UMV.UserNotificationID is not null then 1 else 0 end) ManualVersionUpdates ,
-                                    (Select Top 1 path from ScheduleVersion MV where MV.ScheduleID = M.ScheduleID Order by MV.LastUpdatedDate desc) VersionPath   ,
-                                    (Select Top 1 ScheduleVersionID from ScheduleVersion MV where MV.ScheduleID = M.ScheduleID Order by MV.LastUpdatedDate desc) ScheduleVersionID   ,
-                                    (select isnull(sum(case when UM.UserNotificationID is not null then 1 else 0 end),0)  from UsersNofications UM where M.ScheduleID = UM.ScheduleID and 
-								                                     UM.FormID is null and 
-								                                     UM.ManualVersionID is null and 
-								                                     UM.FromVersionID is null and 
-                                                                     UM.ScheduleID is not null and
-                                                                     UM.ScheduleVersionID is null and
-								                                     (UM.IsRead is null OR UM.IsRead <> 1) and
-								                                     UM.UserID = {0}) ManualUpdates, 
-                                    (select isnull(sum(case when UMV.UserNotificationID is not null then 1 else 0 end),0)  from UsersNofications UMV where M.ScheduleID = UMV.ScheduleID and 
-								                                     UMV.FormID is null and 								 
-								                                     UMV.FromVersionID is null and 
-								                                     UMV.ManualVersionID is null and
-                                                                     UMV.ScheduleID is not null and
-                                                                     UMV.ScheduleVersionID is not null and
-								                                     (UMV.IsRead is null OR UMV.IsRead <> 1) and
-								                                     UMV.UserID = {0}) ManualVersionUpdates
-                                    from Schedule M
-                                    Left join aspnet_users U on M.UpdatedBy = U.UserID
-                                    Left join aspnet_users C on M.CreatedBy = C.UserID
-                                    WHERE (isDeleted is null or isDeleted <> 1 )
-                                    order by CreatedDate desc", UserID);
+            ListDictionary parameters = new ListDictionary();
+            parameters.Add(new SqlParameter("@UserID", SqlDbType.UniqueIdentifier, 0), UserID);
+            parameters.Add(new SqlParameter("@query", SqlDbType.NVarChar, 50), query);
+            parameters.Add(new SqlParameter("@FromDate", SqlDbType.DateTime, 0), dateFrom);
+            parameters.Add(new SqlParameter("@ToDate", SqlDbType.DateTime, 0), dateTo);
+            return LoadFromSql("GetSchedulesByUserID", parameters);
         }
 	}
 }

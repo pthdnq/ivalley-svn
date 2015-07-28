@@ -30,13 +30,15 @@
                         <asp:DropDownList ID="uiDropDownListUserGroups" runat="server" AutoPostBack="True" OnSelectedIndexChanged="uiDropDownListUserGroups_SelectedIndexChanged">
                         </asp:DropDownList>
                     </div>
-                    <div style="position: absolute; right: 250px">
-                        <span>Search : </span>
-                        <asp:TextBox ID="txtSearch" runat="server"></asp:TextBox>
-                        <asp:TextBox ID="txtDateFrom" style="display:none" placeholder="Date From" runat="server"></asp:TextBox>
-                        <asp:TextBox ID="txtDateTo" style="display:none" placeholder="Date To" runat="server"></asp:TextBox>
-                        <asp:LinkButton ID="btnSearch" OnClick="btnSearch_Click" CssClass="btn btn-small" runat="server">Search <i class="fa fa-search"></i></asp:LinkButton>
-                    </div>
+                    <asp:Panel ID="PanelSearch" DefaultButton="btnSearch" runat="server">
+                        <div style="position: absolute; right: 250px">
+                            <span>Search : </span>
+                            <asp:TextBox ID="txtSearch" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtDateFrom" Style="display: none" placeholder="Date From" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtDateTo" Style="display: none" placeholder="Date To" runat="server"></asp:TextBox>
+                            <asp:LinkButton ID="btnSearch" OnClick="btnSearch_Click" CssClass="btn btn-small" runat="server">Search <i class="fa fa-search"></i></asp:LinkButton>
+                        </div>
+                    </asp:Panel>
                 </div>
             </div>
 <%--            <div class="toolsBar">

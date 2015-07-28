@@ -3,6 +3,9 @@
 
 using System;
 using Flight_DAL;
+using System.Collections.Specialized;
+using System.Data.SqlClient;
+using System.Data;
 namespace Flight_BLL
 {
 	public class ScheduleVersion : _ScheduleVersion
@@ -12,12 +15,14 @@ namespace Flight_BLL
 		
 		}
 
-        public bool GetVersionsByScheduleID(int ScheduleID)
+        public bool GetVersionsByScheduleID(int ScheduleID, string query, DateTime dateFrom, DateTime dateTo)
         {
-            return LoadFromRawSql(@"select M.*, U.username UpdatedByName , C.username CreatedByName from ScheduleVersion M
-                                    Left join aspnet_users U on M.UpdatedBy = U.UserID
-                                    Left join aspnet_users C on M.CreatedBy = C.UserID
-                                    where ScheduleID = {0} and (isDeleted is null or isDeleted <> 1 ) order by CreatedDate desc", ScheduleID);
+            ListDictionary parameters = new ListDictionary();
+            parameters.Add(new SqlParameter("@ScheduleID", SqlDbType.Int, 0), ScheduleID);
+            parameters.Add(new SqlParameter("@query", SqlDbType.NVarChar, 50), query);
+            parameters.Add(new SqlParameter("@FromDate", SqlDbType.DateTime, 0), dateFrom);
+            parameters.Add(new SqlParameter("@ToDate", SqlDbType.DateTime, 0), dateTo);
+            return LoadFromSql("GetVersionsByScheduleID", parameters);
         }
 	}
 }

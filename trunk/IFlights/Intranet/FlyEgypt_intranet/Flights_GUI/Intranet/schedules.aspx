@@ -111,6 +111,21 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <asp:Panel ID="PanelSearch" DefaultButton="btnSearch" runat="server">
+    <div class="cell-12 clearfix">
+        <div class="toolsBar">
+            <div class="products-filter-top">
+                <div class="left">
+                    <span>Search : </span>
+                    <asp:TextBox ID="txtSearch" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtDateFrom" Style="display: none" placeholder="Date From" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtDateTo" Style="display: none" placeholder="Date To" runat="server"></asp:TextBox>
+                    <asp:LinkButton ID="btnSearch" runat="server" OnClick="btnSearch_Click"  CssClass="btn" style="height:24px;line-height:normal;line-height:initial;padding-top:5px;" >Search <i class="fa fa-search"></i></asp:LinkButton>
+                </div>
+            </div>
+        </div>
+        </div>
+    </asp:Panel>
     <div class="cell-12 clearfix">
         <telerik:RadGrid ID="uiRadGridmanuals" runat="server" AllowPaging="True"
             AutoGenerateColumns="False" CellSpacing="0"

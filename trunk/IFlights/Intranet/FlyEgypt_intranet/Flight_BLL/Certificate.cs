@@ -3,6 +3,9 @@
 
 using System;
 using Flight_DAL;
+using System.Collections.Specialized;
+using System.Data.SqlClient;
+using System.Data;
 namespace Flight_BLL
 {
 	public class Certificate : _Certificate
@@ -14,7 +17,15 @@ namespace Flight_BLL
 
         public bool GetAllCertificates()
         {
-            return LoadFromRawSql(@"select A.*, U.UserName, U.UserID from certificate A Left join aspnet_users U on A.createdby = u.UserID WHERE (A.isDeleted is null or A.isDeleted <> 1 ) order by CreatedDate desc");
+            ListDictionary parameters = new ListDictionary();
+            return LoadFromSql("GetAllCertificates", parameters);
+        }
+
+        public bool GetAllCertificatesSearch(string query)
+        {
+            ListDictionary parameters = new ListDictionary();
+            parameters.Add(new SqlParameter("@query", SqlDbType.NVarChar, 50), query);
+            return LoadFromSql("GetAllCertificatesSearch", parameters);
         }
 	}
 }
