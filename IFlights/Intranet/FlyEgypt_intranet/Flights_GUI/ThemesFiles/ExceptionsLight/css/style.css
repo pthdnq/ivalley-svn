@@ -445,7 +445,7 @@ th, td, caption {
     border-left-color:#A0A0A0
 }
 .top-bar a:hover {
-	text-decoration: underline;
+	text-decoration: none;
 }
 .top-bar li {
 	float: left;

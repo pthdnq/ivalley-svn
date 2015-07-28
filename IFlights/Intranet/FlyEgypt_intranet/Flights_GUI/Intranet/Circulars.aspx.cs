@@ -11,6 +11,7 @@ namespace Flights_GUI.Intranet
 {
     public partial class Circulars : System.Web.UI.Page
     {
+
         public int CurrentAnnouncement
         {
             get

@@ -47,11 +47,29 @@
     <Compile Include="AnnouncementGroup.cs" />
     <Compile Include="AnnouncementLog.cs" />
     <Compile Include="AppConfig.cs" />
+    <Compile Include="Attachment.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Certificate.cs" />
     <Compile Include="CertificateLog.cs" />
+    <Compile Include="Comment.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CommentAttachment.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="DbLog.cs" />
     <Compile Include="FromVersion.cs" />
     <Compile Include="Groups.cs" />
+    <Compile Include="Issue.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="IssueAttachment.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="IssueType.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="LoginLog.cs" />
     <Compile Include="Manual.cs" />
     <Compile Include="ManualCategory.cs" />
@@ -63,6 +81,9 @@
     <Compile Include="Schedule.cs" />
     <Compile Include="ScheduleLog.cs" />
     <Compile Include="ScheduleVersion.cs" />
+    <Compile Include="Status.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="TimeZone.cs" />
     <Compile Include="UsefulLink.cs" />
     <Compile Include="UserGroup.cs" />

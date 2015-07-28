@@ -163,7 +163,8 @@
                                 
                             </div>
                             <div class="cell-7 right-bar">
-                                <div class="right cell-10" style="text-align:right;">
+                                
+                                <div class="cell-12" style="text-align:right;padding-left:15px;padding-right:0px;float:right;">
 
                                     <div style="width:auto;">
                                         <asp:LoginView ID="uiLoginView" runat="server">
@@ -172,6 +173,8 @@
                                             </AnonymousTemplate>
                                             <LoggedInTemplate>
                                                 <asp:LoginStatus OnLoggingOut="LoginStatus2_LoggingOut" ID="LoginStatus2" runat="server" CssClass="right" LogoutText="<i class='fa fa-unlock-alt'></i> Logout"/>
+                                                <span class="right">|</span>
+                                                <a href="../tracker/default.aspx" class="right"> <i class="fa fa-exclamation-circle red"></i> Report a porblem</a>
                                                 <span class="right">|</span>
                                                 <a href="../Account/Profile.aspx" class=""> <asp:LoginName ID="LoginName1" runat="server" CssClass="right" /></a>
                                                 <span class="right">Welcome</span>
