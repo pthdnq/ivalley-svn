@@ -51,6 +51,7 @@ namespace Combo.Models
         public bool IsFollowingRequestSent { get; set; }
         public bool IsFollowerRequestSent { get; set; }
         public bool IsBlocked { get; set; }
-
+        public bool IsVerified { get; set; }
+        public DateTime CreatedDate { get; set; } 
     }
 }

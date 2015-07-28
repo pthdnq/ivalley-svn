@@ -380,6 +380,7 @@
     <Compile Include="Models\Country.cs" />
     <Compile Include="Models\FollowRequest.cs" />
     <Compile Include="Models\FriendRequest.cs" />
+    <Compile Include="Models\GeneralLookupModel.cs" />
     <Compile Include="Models\HashTag.cs" />
     <Compile Include="Models\NotificationUserSetting.cs" />
     <Compile Include="Models\PostHashTag.cs" />

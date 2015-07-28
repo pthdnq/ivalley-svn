@@ -59,7 +59,7 @@ namespace Combo.BLL
                                                                  CC.ComboUserID = {0}
                                     Left join ComboPostShare CPS on CPS.ComboPostID = P.ComboPostID and 
                                                                     CPS.ComboUserID = {0}
-                                    Where P.ComboUserID in (select ComboUserID from ProfileFollower PF where PF.ComboFollowerID = {0}) and 
+                                    Where P.ComboUserID in (select ComboUserID from ProfileFollower PF where PF.ComboFollowerID = {0} and PF.IsRequestApproved = 1) and 
                                     (P.IsDeleted <> 1 or P.IsDeleted is null) and 
                                     P.ComboUserID not in (select BlockedUserID from BlockedUser where ComboUserID = {0}) and 
                                     P.ComboUserID not in (select ComboUserID from BlockedUser where BlockedUserID = {0})
@@ -206,7 +206,7 @@ namespace Combo.BLL
                                     Left join ComboUserSettings S on P.ComboUserID = S.ComboUserID
                                     Left join ComboPostFav PV on P.ComboPostID = PV.ComboPostID and PV.ComboUserID = {0}
                                     Left join ComboPostLike PL on P.ComboPostID = PL.ComboPostID and PL.ComboUserID = {0}
-                                    Where P.ComboUserID in (select ComboUserID from ProfileFollower PF where PF.ComboFollowerID = {0}) and 
+                                    Where P.ComboUserID in (select ComboUserID from ProfileFollower PF where PF.ComboFollowerID = {0} and PF.IsRequestApproved = 1) and 
                                     (P.IsDeleted <> 1 or P.IsDeleted is null) and 
                                     P.ComboUserID not in (select BlockedUserID from BlockedUser where ComboUserID = {0}) and 
                                     P.ComboUserID not in (select ComboUserID from BlockedUser where BlockedUserID = {0})

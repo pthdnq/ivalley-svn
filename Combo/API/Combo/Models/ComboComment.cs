@@ -22,5 +22,6 @@ namespace Combo.Models
         public object HashTags { get; set; }
         public object UserTags { get; set; }
         public object PostAttachemnts { get; set; }
+        public int PostCreatorID { get; set; }
     }
 }

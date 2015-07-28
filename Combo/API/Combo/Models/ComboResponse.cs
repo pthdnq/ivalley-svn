@@ -26,6 +26,7 @@ namespace Combo.Models
         /// 21 - no file found
         /// 30 - no user id
         /// 31 - no post id
+        /// 40 - comment doesnot exists
         /// 9999 - General Error
         /// </summary>
         public int ErrorCode { get; set; }

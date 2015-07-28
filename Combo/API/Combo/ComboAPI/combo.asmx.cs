@@ -64,7 +64,8 @@ namespace Combo.ComboAPI
                     ActivationCode = row.IsNull("ActivationCode") ? Guid.Empty : new Guid(row["ActivationCode"].ToString()),
                     PassResetCode = row.IsNull("PassResetCode") ? Guid.Empty : new Guid(row["PassResetCode"].ToString()),
                     UserRankID = Convert.ToInt32(row["UserRankID"]),
-                    Location = row["Location"].ToString()
+                    Location = row["Location"].ToString(),
+                    IsVerified = row.IsNull("IsVerified") ? false : Convert.ToBoolean(row["IsVerified"].ToString()),
                 };
             }).ToList();
 
@@ -136,7 +137,8 @@ namespace Combo.ComboAPI
                     IsPrivateAccount = row.IsNull("IsPrivateAccount") ? false : Convert.ToBoolean(row["IsPrivateAccount"]),
                     IsFollowingRequestSent = Convert.ToBoolean(row["IsFollowingRequestSent"]),
                     IsFollowerRequestSent = Convert.ToBoolean(row["IsFollowerRequestSent"]),
-                    IsBlocked = Convert.ToBoolean(row["IsBlocked"])
+                    IsBlocked = Convert.ToBoolean(row["IsBlocked"]),
+                    IsVerified = row.IsNull("IsVerified") ? false : Convert.ToBoolean(row["IsVerified"].ToString()),
                 };
             }).ToList();
 
@@ -205,7 +207,8 @@ namespace Combo.ComboAPI
                     CountryFlagPath = row["CountryFlagPath"].ToString(),
                     Location = row["Location"].ToString(),
                     TotalActivityDays = log.RowCount > 0 ? Convert.ToInt32(log.GetColumn("TotalActivityDays")) : 0,
-                    CommentsCount = Convert.ToInt32(comments.GetColumn("TotalCount"))
+                    CommentsCount = Convert.ToInt32(comments.GetColumn("TotalCount")),
+                    IsVerified = row.IsNull("IsVerified") ? false : Convert.ToBoolean(row["IsVerified"].ToString()),
                 };
             }).ToList();
 
@@ -382,7 +385,7 @@ namespace Combo.ComboAPI
             {
                 
             }
-
+            newUser.CreatedDate = DateTime.Now;
             newUser.Save();
 
             user.ComboUserID = newUser.ComboUserID;
@@ -534,6 +537,59 @@ namespace Combo.ComboAPI
             return;
         }
 
+
+        [WebMethod]
+        /// <summary>
+        /// Logout Combo user from db
+        /// </summary>
+        /// <param name="user">Combo user object to be added</param>
+        /// <returns>ComboResponse object with updated User object</returns>
+        public void Logout(int ComboUserID)
+        {
+            Models.ComboResponse _response = new Models.ComboResponse();
+            _response.bool_result = true;
+            _response.ErrorCode = 0;
+            _response.ErrorMsg = "";
+
+            BLL.ComboUser newUser = new ComboUser();
+            newUser.GetUserByUserId(ComboUserID);
+
+            newUser.SetColumnNull("DeviceID");
+
+            newUser.Save();
+
+            List<Models.ComboUser> Users = newUser.DefaultView.Table.AsEnumerable().Select(row =>
+            {
+                return new Models.ComboUser
+                {
+                    ComboUserID = Convert.ToInt32(row["ComboUserID"]),
+                    UserName = row["UserName"].ToString(),
+                    DisplayName = row["DisplayName"].ToString(),
+                    Password = row["Password"].ToString(),
+                    Email = row["Email"].ToString(),
+                    Bio = row["Bio"].ToString(),
+                    ProfileImgID = row.IsNull("ProfileImgID") ? 0 : Convert.ToInt32(row["ProfileImgID"]),
+                    CoverImgID = row.IsNull("CoverImgID") ? 0 : Convert.ToInt32(row["CoverImgID"]),
+                    GenderID = row.IsNull("GenderID") ? 0 : Convert.ToInt32(row["GenderID"]),
+                    IsActivated = row.IsNull("IsActivated") ? false : Convert.ToBoolean(row["IsActivated"]),
+                    ExternalIDType = row.IsNull("ExternalIDType") ? 0 : Convert.ToInt32(row["ExternalIDType"]),
+                    ExternalID = row["ExternalID"].ToString(),
+                    DeviceID = row.IsNull("DeviceID") ? null : row["DeviceID"].ToString(),
+                    ActivationCode = row.IsNull("ActivationCode") ? Guid.Empty : new Guid(row["ActivationCode"].ToString()),
+                    PassResetCode = row.IsNull("PassResetCode") ? Guid.Empty : new Guid(row["PassResetCode"].ToString()),
+                    SecurityQuestion = row["SecurityQuestion"].ToString(),
+                    SecurityAnswer = row["SecurityAnswer"].ToString(),
+                    UserRankID = Convert.ToInt32(row["UserRankID"]),
+                    SecurityWord = row["SecurityWord"].ToString(),
+                    Location = row["Location"].ToString()
+                };
+            }).ToList();
+
+            _response.Entity = Users;
+
+            SetContentResult(_response);
+            return;
+        }
 
         [WebMethod]
         /// <summary>
@@ -787,6 +843,34 @@ namespace Combo.ComboAPI
 
         }
 
+        [WebMethod]
+        /// <summary>
+        /// Report user 
+        /// </summary>
+        /// <param name="UserID">UserID </param>
+        /// <param name="FollowerID">reported User ID</param>
+        /// <returns>ComboResponse object with result</returns>
+        public void ReportUser(int userId, int ReportedUserID, string ReportText)
+        {
+            Models.ComboResponse _response = new Models.ComboResponse();
+            _response.bool_result = true;
+            _response.ErrorCode = 0;
+            _response.ErrorMsg = "";
+
+            ComboUserReport blocked = new ComboUserReport();
+            
+            blocked.AddNew();
+            blocked.ComboReportedUserID = ReportedUserID;
+            blocked.ComboUserID = userId;
+            blocked.ReportText = ReportText;
+            blocked.ReportDate = DateTime.UtcNow;
+            blocked.Save();
+            
+            _response.Entity = null;
+            SetContentResult(_response);
+
+        }
+
         private void UpdateUserRank(int UserID)
         {
             ComboUser user = new ComboUser();
@@ -989,6 +1073,7 @@ namespace Combo.ComboAPI
                             ProfilePic = r["ProfilePic"].ToString(),
                             CommentText = r["CommentText"].ToString(),
                             CommentDate = Convert.ToDateTime(r["CommentDate"].ToString()).Subtract(new DateTime(1970, 1, 1)).TotalSeconds,
+                            PostCreatorID = item.ComboUserID
                         };
                     }).ToList();
 
@@ -2792,6 +2877,7 @@ namespace Combo.ComboAPI
                             ProfilePic = r["ProfilePic"].ToString(),
                             CommentText = r["CommentText"].ToString(),
                             CommentDate = Convert.ToDateTime(r["CommentDate"].ToString()).Subtract(new DateTime(1970, 1, 1)).TotalSeconds,
+                            PostCreatorID = post.ComboUserID,
                         };
                     }).Skip(CommentPage * CommentsPageSize).Take(CommentsPageSize).ToList(),
                     Attachments = attachments.DefaultView.Table.AsEnumerable().Select(r =>
@@ -3892,7 +3978,7 @@ namespace Combo.ComboAPI
         /// </summary>
         /// <param name="ID">ID of Post</param>
         /// <returns>ComboResponse object </returns>
-        public void ReportPost(int id, string description)
+        public void ReportPost(int id,int userID, string description)
         {
             Models.ComboResponse _response = new Models.ComboResponse();
             _response.bool_result = true;
@@ -3902,6 +3988,7 @@ namespace Combo.ComboAPI
             ComboPostReport post = new ComboPostReport();
             post.AddNew();
             post.ComboPostID = id;
+            post.ComboUserID = userID;
             post.ReportDate = DateTime.UtcNow;
             post.ReportText = description;
             post.Save();
@@ -4070,7 +4157,7 @@ namespace Combo.ComboAPI
                     ComboPostID = Convert.ToInt32(r["ComboPostID"]),
                     ComboUserID = Convert.ToInt32(r["ComboUserID"]),
                     UserName = r["UserName"].ToString(),
-                    IsFollowing = Convert.ToBoolean(r["IsFollwoing"])
+                    IsFollowing = Convert.ToBoolean(r["IsFollowing"])
                 };
             }).ToList();
             _response.Entity = allLikes;
@@ -4102,7 +4189,7 @@ namespace Combo.ComboAPI
                     ComboPostID = Convert.ToInt32(r["ComboPostID"]),
                     ComboUserID = Convert.ToInt32(r["ComboUserID"]),
                     ComboUserName = r["UserName"].ToString(),
-                    IsFollowing = Convert.ToBoolean(r["IsFollwoing"])
+                    IsFollowing = Convert.ToBoolean(r["IsFollowing"])
                 };
             }).ToList();
             _response.Entity = allShares;
@@ -4377,9 +4464,17 @@ namespace Combo.ComboAPI
             _response.ErrorMsg = "";
 
             ComboComment comment = new ComboComment();
-            comment.LoadByPrimaryKey(id);
-            comment.IsDeleted = true;
-            comment.Save();
+            if (comment.LoadByPrimaryKey(id))
+            {
+                comment.IsDeleted = true;
+                comment.Save();
+            }
+            else
+            {
+                _response.bool_result = false;
+                _response.ErrorCode = 40;
+                _response.ErrorMsg = "Comment doesn't exists";
+            }
             _response.Entity = null;
             SetContentResult(_response);
 
@@ -4392,7 +4487,7 @@ namespace Combo.ComboAPI
         /// </summary>
         /// <param name="ID">ID of comment</param>
         /// <returns>ComboResponse object </returns>
-        public void ReportComment(int id, string description)
+        public void ReportComment(int id,int userID, string description)
         {
             Models.ComboResponse _response = new Models.ComboResponse();
             _response.bool_result = true;
@@ -4402,6 +4497,7 @@ namespace Combo.ComboAPI
             ComboCommentReport comment = new ComboCommentReport();
             comment.AddNew();
             comment.ComboCommentID = id;
+            comment.ComboUserID = userID;
             comment.ReportDate = DateTime.UtcNow;
             comment.ReportText = description;
             comment.Save();
@@ -6425,6 +6521,71 @@ namespace Combo.ComboAPI
 
 
             _response.Entity = Tags;
+            SetContentResult(_response);
+            //return _response;
+
+        }
+        #endregion
+
+        #region GeneralLookup
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        /// <summary>
+        /// Get Terms
+        /// </summary>
+        /// <returns>ComboResponse object with Terms of Services</returns>
+        public void GetTermsOfService()
+        {
+            Models.ComboResponse _response = new Models.ComboResponse();
+            _response.bool_result = true;
+            _response.ErrorCode = 0;
+            _response.ErrorMsg = "";
+
+            GeneralLookup terms = new GeneralLookup();
+            terms.LoadByPrimaryKey(1);
+
+            List<Models.GeneralLookupModel> termsofservice = terms.DefaultView.Table.AsEnumerable().Select(row =>
+            {
+                return new Models.GeneralLookupModel
+                {
+                    GeneralLookupID = Convert.ToInt32(row["GeneralLookupID"]),
+                    GeneralLookupText = row["GeneralLookupText"].ToString()
+                };
+            }).ToList();
+          
+            _response.Entity = termsofservice;
+            SetContentResult(_response);
+            //return _response;
+
+        }
+
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        /// <summary>
+        /// Get Privacy policy
+        /// </summary>
+        /// <returns>ComboResponse object with Privacy policy</returns>
+        public void GetPrivacyPolicy()
+        {
+            Models.ComboResponse _response = new Models.ComboResponse();
+            _response.bool_result = true;
+            _response.ErrorCode = 0;
+            _response.ErrorMsg = "";
+
+            GeneralLookup privacy = new GeneralLookup();
+            privacy.LoadByPrimaryKey(2);
+
+            List<Models.GeneralLookupModel> privacyPolicy = privacy.DefaultView.Table.AsEnumerable().Select(row =>
+            {
+                return new Models.GeneralLookupModel
+                {
+                    GeneralLookupID = Convert.ToInt32(row["GeneralLookupID"]),
+                    GeneralLookupText = row["GeneralLookupText"].ToString()
+                };
+            }).ToList();
+
+            
+            _response.Entity = privacyPolicy;
             SetContentResult(_response);
             //return _response;
 
