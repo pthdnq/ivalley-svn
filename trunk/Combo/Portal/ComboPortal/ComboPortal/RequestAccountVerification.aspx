@@ -259,16 +259,17 @@
             <h4>
                 Request result
             </h4>
-            <div class="span12 no-margin no-padding alert alert-success" id="accepted" runat="server">
+            <div class="span12 no-margin alert alert-success" id="accepted" runat="server">
                 Your account has been verified.
             </div>
-            <div class="span12 no-margin no-padding alert alert-success" id="rejected" runat="server">
+            <div class="span12 no-margin alert alert-danger" id="rejected" runat="server">
                 Your request has been rejected.
-                <p>
+                <p> "
                     <asp:Literal ID="uiLiteralReason" runat="server"></asp:Literal>
+                    "
                 </p>
             </div>
-            <div class="span12 no-margin no-padding alert alert-info" id="noresult" runat="server">
+            <div class="span12 no-margin alert alert-info" id="noresult" runat="server">
                 Your request is under reviewing.
             </div>
         </div>

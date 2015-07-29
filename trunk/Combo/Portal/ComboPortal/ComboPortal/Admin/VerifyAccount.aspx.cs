@@ -216,7 +216,7 @@ namespace ComboPortal.Admin
             objData.IsAccepted = false;
             objData.Description = txtResult.Text;
             objData.StatusDate = DateTime.Now;
-            objData.ReviewerName = Session["Admin"].ToString();
+            objData.ReviewerName = Page.User.Identity.Name;
             objData.Save();
 
             ComboUser objDataUser = new ComboUser();
@@ -232,7 +232,7 @@ namespace ComboPortal.Admin
             objData.IsAccepted = true;
             objData.Description = txtResult.Text;
             objData.StatusDate = DateTime.Now;
-            objData.ReviewerName = Session["Admin"].ToString();
+            objData.ReviewerName = Page.User.Identity.Name;
             objData.Save();
 
             ComboUser objDataUser = new ComboUser();
