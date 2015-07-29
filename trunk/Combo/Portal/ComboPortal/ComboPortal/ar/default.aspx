@@ -159,7 +159,7 @@
                             <img src="../img/portal/play-store.png" style="border:2px solid #48157C;border-radius:10px;-moz-border-radius:10px;-webkit-border-radius:10px;-ms-border-radius:10px;"/>
                         </div>
                         </div>
-            <span class="ub center span4" style="margin:0 auto;float:none;padding-top:2%;"> جميع الحقوق محفوظة.2015 &copy; I-Valley.</span>
+            <span class="ub center span4" style="margin:0 auto;float:none;padding-top:2%;"> جميع الحقوق محفوظة.2015 &copy; COMBO.</span>
             <div class="span4 no-margin no-padding" style="font-size:30px;font-weight:bold;color:#fff;float:left">
                         combomobile.com
                     </div>

@@ -23,7 +23,7 @@
             <div class="navbar-inner">
                 <div class="container-fluid">
                     <!-- BEGIN LOGO -->
-                    <a class="brand ub" href="UserManagement.aspx" style="display: block; font-weight: bold">OMBO<img src="../img/portal/logo.png" style="max-width: 30%" />
+                    <a class="brand ub" href="Default.aspx" style="display: block; font-weight: bold">OMBO<img src="../img/portal/logo.png" style="max-width: 30%" />
                     </a>
                     <!-- END LOGO -->
                     <!-- BEGIN RESPONSIVE MENU TOGGLER -->
