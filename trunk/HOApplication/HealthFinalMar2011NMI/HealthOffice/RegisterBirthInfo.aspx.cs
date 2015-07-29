@@ -750,7 +750,7 @@ public partial class RegisterBirthdayInfo : System.Web.UI.Page
                 return false;
             }
         }
-        else
+        else if (UcNotifierInfo1.NotifierRelation != 8)
         {
             if (!MHOCommon.ValidateNationalIDInput(UcNotifierInfo1.NotifierNID, false))
             {
@@ -758,7 +758,14 @@ public partial class RegisterBirthdayInfo : System.Web.UI.Page
                 return false;
             }
         }
-        
+        else if (UcNotifierInfo1.NotifierRelation == 8)
+        {
+            if (!MHOCommon.ValidateNationalIDInput(UcNotifierInfo1.NotifierNID, null))
+            {
+                MHOCommon.ShowMessage(MHOCommon.NIDValidationMessage + "\\nبيانات المبلغ", this.Page);
+                return false;
+            }
+        }
 
         if (UcMotherInfo2.ParentNID == "0")
         {
