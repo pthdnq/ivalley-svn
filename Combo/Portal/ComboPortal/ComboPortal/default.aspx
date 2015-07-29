@@ -136,13 +136,13 @@
                 </div>
                 <div class="span4 pull-right" style="position:relative;min-height:100%;right:0">
                     <div class="span12 no-margin no-padding" style="min-height:100px;">
-                    <img src="img/portal/hand.png" style="max-width:105%;"/>
-                        <div id="slider" class="span12 no-margin no-padding" style="position:absolute;z-index:-1;left:12%;top:6.5%;">
-                        <img src="img/portal/slider/1.jpg" style="max-width:45%"/>                     
-                        <img src="img/portal/slider/2.jpg" style="max-width:45%"/>
-                        <img src="img/portal/slider/3.jpg" style="max-width:45%"/>
-                        <img src="img/portal/slider/4.jpg" style="max-width:45%"/>
-                        <img src="img/portal/slider/5.jpg" style="max-width:45%"/>
+                    <img src="img/portal/GalaxyS62.png" style="max-width:100%;"/>
+                        <div id="slider" class="span12 no-margin no-padding" style="position:absolute;z-index:-1;left:12%;top:7%;">
+                        <img src="img/portal/slider/1.jpg" style="max-width:49%"/>                     
+                        <img src="img/portal/slider/2.jpg" style="max-width:49%"/>
+                        <img src="img/portal/slider/3.jpg" style="max-width:49%"/>
+                        <img src="img/portal/slider/4.jpg" style="max-width:49%"/>
+                        <img src="img/portal/slider/5.jpg" style="max-width:49%"/>
                     </div>
                         </div>
                     
