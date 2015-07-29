@@ -131,12 +131,12 @@
                 <div class="span4" style="position:relative;min-height:100%;right:0;float:left;">
                     <div class="span12 no-margin no-padding" style="min-height:100px;">
                     <img src="../img/portal/hand_rtl.png" style="max-width:105%;"/>
-                        <div id="slider" class="span12 no-margin no-padding" style="position:absolute;z-index:-1;left:38%;top:5%;">
-                        <img src="../img/portal/slider/homeDoo.jpg" style="max-width:50%"/>                     
-                        <img src="../img/portal/slider/homeDoo2.jpg" style="max-width:50%"/>
-                        <img src="../img/portal/slider/homeDoo3.jpg" style="max-width:50%"/>
-                        <img src="../img/portal/slider/homeDoo4.jpg" style="max-width:50%"/>
-                        <img src="../img/portal/slider/homeDoo5.jpg" style="max-width:50%"/>
+                        <div id="slider" class="span12 no-margin no-padding" style="position:absolute;z-index:-1;left:41.5%;top:6.5%;">
+                        <img src="../img/portal/slider/1.jpg" style="max-width:45%"/>                     
+                        <img src="../img/portal/slider/2.jpg" style="max-width:45%"/>
+                        <img src="../img/portal/slider/3.jpg" style="max-width:45%"/>
+                        <img src="../img/portal/slider/4.jpg" style="max-width:45%"/>
+                        <img src="../img/portal/slider/5.jpg" style="max-width:45%"/>
                     </div>
                         </div>
                     
