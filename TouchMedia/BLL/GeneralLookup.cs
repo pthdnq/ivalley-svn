@@ -31,5 +31,6 @@ namespace BLL
         OffsetPrintingGSM = 7,
         OffsetPrintingFinishingSupplier = 8,
         OffsetPrintingFinishType = 9,
+        DeliveryType = 13
     }
 }

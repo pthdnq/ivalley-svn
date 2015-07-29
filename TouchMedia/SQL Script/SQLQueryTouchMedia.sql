@@ -46,6 +46,10 @@ LastUpdatedDate Datetime
 )
 GO
 
+
+alter table joborder
+add  constraint  FK_Joborder_joborderstatus  foreign key(joborderstatusid ) references JobOrderStatus(JobOrderStatusID)
+
 create table DesignDetails
 (
 DesignDetailsID int not null identity(1,1) Primary key , 

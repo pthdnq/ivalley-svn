@@ -1594,6 +1594,7 @@
     <Content Include="img\trns-bg.png" />
     <Content Include="img\vector-lab.jpg" />
     <Content Include="JobOrders.aspx" />
+    <Content Include="Job_Order.aspx" />
     <Content Include="js\demo.gmaps.js" />
     <Content Include="js\excanvas.js" />
     <Content Include="js\gmaps.js" />
@@ -2008,6 +2009,9 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Splash.aspx" />
+    <Content Include="usercontrols\ucJobOrderPrinting.ascx" />
+    <Content Include="usercontrols\ucJobOrderProduction.ascx" />
+    <Content Include="usercontrols\ucPurchaseOrder.ascx" />
     <Content Include="usercontrols\ucEditJO.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
@@ -2170,6 +2174,13 @@
     <Compile Include="JobOrders.aspx.designer.cs">
       <DependentUpon>JobOrders.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Job_Order.aspx.cs">
+      <DependentUpon>Job_Order.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Job_Order.aspx.designer.cs">
+      <DependentUpon>Job_Order.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2214,6 +2225,27 @@
     </Compile>
     <Compile Include="Splash.aspx.designer.cs">
       <DependentUpon>Splash.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="usercontrols\ucJobOrderPrinting.ascx.cs">
+      <DependentUpon>ucJobOrderPrinting.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="usercontrols\ucJobOrderPrinting.ascx.designer.cs">
+      <DependentUpon>ucJobOrderPrinting.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="usercontrols\ucJobOrderProduction.ascx.cs">
+      <DependentUpon>ucJobOrderProduction.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="usercontrols\ucJobOrderProduction.ascx.designer.cs">
+      <DependentUpon>ucJobOrderProduction.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="usercontrols\ucPurchaseOrder.ascx.cs">
+      <DependentUpon>ucPurchaseOrder.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="usercontrols\ucPurchaseOrder.ascx.designer.cs">
+      <DependentUpon>ucPurchaseOrder.ascx</DependentUpon>
     </Compile>
     <Compile Include="usercontrols\ucEditJO.ascx.cs">
       <DependentUpon>ucEditJO.ascx</DependentUpon>
