@@ -121,6 +121,8 @@ namespace ComboPortal.Admin
 
             txtUserName.Text = objData.UserName;
             txtDisplayName.Text = objData.DisplayName;
+            txtPassword.Text = objData.Password;
+            txtSecWord.Text = objData.SecurityWord;
             txtEmail.Text = objData.Email;
             if (!objData.IsColumnNull(ComboUser.ColumnNames.GenderID))
                 drpDwnGender.SelectedValue = objData.GenderID.ToString();
@@ -295,6 +297,8 @@ namespace ComboPortal.Admin
             objData.UserName = txtUserName.Text;
             objData.DisplayName = txtDisplayName.Text;
             objData.Email = txtEmail.Text;
+            objData.Password = txtPassword.Text;
+            objData.SecurityWord = txtSecWord.Text;
 
             if (drpDwnGender.SelectedValue.ToString() != "0")
                 objData.GenderID = int.Parse(drpDwnGender.SelectedValue.ToString());

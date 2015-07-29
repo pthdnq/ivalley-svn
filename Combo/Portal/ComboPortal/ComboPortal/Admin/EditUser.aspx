@@ -67,10 +67,10 @@
                             </li>
                             <li>
                                 <asp:LinkButton ID="btnViewPosts" OnClick="btnViewPosts_Click" runat="server"><i class="icon-list-ul"></i>  عرض البوستات  </asp:LinkButton></li>
-                            <li class="">
+<%--                            <li class="">
                                 <asp:LinkButton ID="btnResetPass" OnClick="btnResetPass_Click" runat="server"><i class="icon-refresh"></i>  استرجاع كلمة المرور </asp:LinkButton></li>
                             <li>
-                                <asp:LinkButton ID="btnResetSecureWord" OnClick="btnResetSecureWord_Click" runat="server"><i class="icon-refresh"></i>  استرجاع الكلمة السرية  </asp:LinkButton></li>
+                                <asp:LinkButton ID="btnResetSecureWord" OnClick="btnResetSecureWord_Click" runat="server"><i class="icon-refresh"></i>  استرجاع كلمة الامان  </asp:LinkButton></li>--%>
                             <li class="disabled">
                                 <asp:LinkButton ID="btnBan" Enabled="false" runat="server"><i class="icon-ban-circle"></i> حظر </asp:LinkButton>
                             </li>
@@ -95,6 +95,18 @@
                                     <td class="span3">الاسم الظاهر :</td>
                                     <td>
                                         <asp:TextBox ID="txtDisplayName" runat="server" Text=""></asp:TextBox>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="span3">كلمة المرور :</td>
+                                    <td>
+                                        <asp:TextBox ID="txtPassword" runat="server" Text=""/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="span3">كلمة الامان :</td>
+                                    <td>
+                                        <asp:TextBox ID="txtSecWord" runat="server" Text="" />
                                     </td>
                                 </tr>
                                 <tr>
@@ -272,7 +284,7 @@
     <asp:Panel ID="PanelResetSecretWord" Visible="false" runat="server">
         <div class="widget">
             <div class="widget-title">
-                <h4><i class="icon-refresh"></i>استرجاع الكلمة السرية : <asp:Label ID="lblSecWordUserName" runat="server" Text=""/></h4>
+                <h4><i class="icon-refresh"></i>استرجاع كلمة الامان : <asp:Label ID="lblSecWordUserName" runat="server" Text=""/></h4>
                 <span class="tools">
                     <asp:LinkButton ID="btnBack3" OnClick="btnBack_Click" CssClass="btn btn-mini" runat="server"><i class="icon-arrow-right"></i> رجوع الى البيانات </asp:LinkButton>
                     <a href="javascript:;" class="icon-chevron-down"></a>
@@ -281,7 +293,7 @@
             <div class="widget-body clearfix">
                 <div class="span12">
                     <div class="span2 clearfix">
-                        الكلمة السرية
+                        كلمة الامان
                     </div>
                     <div class="span5 clearfix">
                         <asp:TextBox ID="txtSecretWord" CssClass="form" TextMode="Password" runat="server"></asp:TextBox>
@@ -290,12 +302,12 @@
                 </div>
                 <div class="span12" style="margin-right: 0px">
                     <div class="span2 clearfix">
-                        تأكيد الكلمة السرية
+                        تأكيد كلمة الامان
                     </div>
                     <div class="span5 clearfix">
                         <asp:TextBox ID="txtConfirmSecretWord" TextMode="Password" runat="server"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator4" ValidationGroup="resetSecretWord" Font-Bold="true" ControlToValidate="txtConfirmSecretWord" runat="server" ForeColor="Red" ErrorMessage="*"></asp:RequiredFieldValidator>
-                        <asp:CompareValidator ID="CompareValidator2" runat="server" ValidationGroup="resetSecretWord" ForeColor="Red" ControlToValidate="txtConfirmSecretWord" ControlToCompare="txtSecretWord" ErrorMessage="الكلمة السرية غير متوافقة"></asp:CompareValidator>
+                        <asp:CompareValidator ID="CompareValidator2" runat="server" ValidationGroup="resetSecretWord" ForeColor="Red" ControlToValidate="txtConfirmSecretWord" ControlToCompare="txtSecretWord" ErrorMessage="كلمة الامان غير متوافقة"></asp:CompareValidator>
                     </div>
                 </div>
                 <div class="span12" style="margin-right: 0px">

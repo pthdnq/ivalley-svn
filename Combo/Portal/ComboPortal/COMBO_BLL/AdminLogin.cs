@@ -11,5 +11,11 @@ namespace COMBO_BLL
 		{
 		
 		}
+
+        public virtual bool getAllAdmins(string query)
+        {
+            string qry = string.Format("SELECT * FROM aspnet_Users WHERE UserName LIKE '%{0}%'",query);
+            return LoadFromRawSql(qry);
+        }
 	}
 }

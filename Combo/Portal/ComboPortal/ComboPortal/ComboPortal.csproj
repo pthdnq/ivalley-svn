@@ -148,6 +148,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Admin\AdminsManagement.aspx" />
     <Content Include="Admin\assets\bootstrap-colorpicker\css\colorpicker.css" />
     <Content Include="Admin\assets\bootstrap-colorpicker\img\alpha.png" />
     <Content Include="Admin\assets\bootstrap-colorpicker\img\hue.png" />
@@ -815,6 +816,7 @@
     <Content Include="Admin\css\style_navy-blue.css" />
     <Content Include="Admin\css\style_purple.css" />
     <Content Include="Admin\css\style_responsive.css" />
+    <Content Include="Admin\Default.aspx" />
     <Content Include="Admin\EditLookup.aspx" />
     <Content Include="Admin\EditUser.aspx" />
     <Content Include="Admin\font\JF-Flat-regular.svg" />
@@ -1117,19 +1119,15 @@
     <Content Include="img\overlay-icon.png" />
     <Content Include="img\portal\comboText.jpg" />
     <Content Include="img\portal\comboTitle.png" />
-    <Content Include="img\portal\Egypt.png" />
     <Content Include="img\portal\hand.png" />
     <Content Include="img\portal\hand_rtl.png" />
     <Content Include="img\portal\logo.png" />
     <Content Include="img\portal\play-store.png" />
-    <Content Include="img\portal\play-store2.png" />
-    <Content Include="img\portal\Saudi Arabia.png" />
     <Content Include="img\portal\slider\homeDoo.jpg" />
     <Content Include="img\portal\slider\homeDoo2.jpg" />
     <Content Include="img\portal\slider\homeDoo3.jpg" />
     <Content Include="img\portal\slider\homeDoo4.jpg" />
     <Content Include="img\portal\slider\homeDoo5.jpg" />
-    <Content Include="img\portal\United Kingdom%28Great Britain%29.png" />
     <Content Include="img\product1.jpg" />
     <Content Include="img\product2.png" />
     <Content Include="img\product3.png" />
@@ -1502,6 +1500,20 @@
     </Compile>
     <Compile Include="Admin\AdminMasterAr.Master.designer.cs">
       <DependentUpon>AdminMasterAr.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AdminsManagement.aspx.cs">
+      <DependentUpon>AdminsManagement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AdminsManagement.aspx.designer.cs">
+      <DependentUpon>AdminsManagement.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\EditLookup.aspx.cs">
       <DependentUpon>EditLookup.aspx</DependentUpon>

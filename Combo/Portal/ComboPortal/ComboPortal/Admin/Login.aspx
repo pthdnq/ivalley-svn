@@ -40,7 +40,6 @@
 </head>
 <body id="login-body">
     <form id="form1" runat="server">
-
         <div class="login-header">
             <!-- BEGIN LOGO -->
             <div id="logo" class="center ub">
@@ -56,7 +55,9 @@
                 <div class="lock">
                     <i class="icon-lock"></i>
                 </div>
-                <div class="control-wrap">
+           <asp:Login ID="Login1" runat="server" OnLoggedIn="Login1_LoggedIn">
+                    <LayoutTemplate>
+                        <div class="control-wrap">
                     <h4>تسجيل الدخول</h4>
 
                     <div class="control-group">
@@ -64,9 +65,9 @@
                             <div class="input-prepend">
                                 <span class="add-on"><i class="icon-user"></i></span>
                                 <asp:TextBox ID="UserName" runat="server" placeholder="اسم المستخدم"></asp:TextBox>
-                                <asp:RequiredFieldValidator ID="UserNameRequired" runat="server"
-                                    ControlToValidate="UserName" ErrorMessage="*" Font-Bold="true"
-                                    ToolTip="User Name is required." ValidationGroup="Login1" ForeColor="Red">*</asp:RequiredFieldValidator>
+                                <asp:RequiredFieldValidator ID="UserNameRequired" runat="server" 
+                                        ControlToValidate="UserName" ErrorMessage="User Name is required." 
+                                        ToolTip="User Name is required." ValidationGroup="Login1" ForeColor="Red">*</asp:RequiredFieldValidator>
                             </div>
                         </div>
                     </div>
@@ -76,19 +77,20 @@
                                 <span class="add-on"><i class="icon-key"></i></span>
                                 <asp:TextBox ID="Password" runat="server" TextMode="Password" placeholder="كلمة المرور"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="PasswordRequired" runat="server"
-                                    ControlToValidate="Password" ErrorMessage="*" Font-Bold="true"
+                                    ControlToValidate="Password" ErrorMessage="Password is required."
                                     ToolTip="Password is required." ValidationGroup="Login1" ForeColor="Red">*</asp:RequiredFieldValidator>
                             </div>
                             <div class="clearfix space5"></div>
                         </div>
                     </div>
                 </div>
-                <asp:Button ID="LoginButton" runat="server" OnClick="LoginButton_Click" Text="دخول" ValidationGroup="Login1" CssClass="btn btn-block login-btn" />
-
-            </div>
+                        <asp:Button ID="LoginButton" runat="server" CommandName="Login" Text="دخول" ValidationGroup="Login1" CssClass="btn btn-block login-btn"/>
+                    </LayoutTemplate>
+                </asp:Login>
+                </div>
         </div>
         <div id="login-copyright">
-            2015 &copy; I-Valley. All rights reserved
+            2015 &copy; COMBO. All rights reserved
         </div>
     </form>
     <script src="js/jquery-1.8.3.min.js"></script>

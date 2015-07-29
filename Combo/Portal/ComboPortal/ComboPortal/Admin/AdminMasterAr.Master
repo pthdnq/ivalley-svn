@@ -17,14 +17,13 @@
     </asp:ContentPlaceHolder>
 </head>
 <body class="fixed-top JF purplebg">
-    <form id="form1" runat="server" style="margin:0 !important;">
+    <form id="form1" runat="server" style="margin: 0 !important;">
         <div id="header" class="navbar navbar-inverse navbar-fixed-top">
             <!-- BEGIN TOP NAVIGATION BAR -->
             <div class="navbar-inner">
                 <div class="container-fluid">
                     <!-- BEGIN LOGO -->
-                    <a class="brand ub" href="../default.aspx" style="display:block;font-weight:bold">
-                        OMBO<img src="../img/portal/logo.png" style="max-width:30%"/>
+                    <a class="brand ub" href="UserManagement.aspx" style="display: block; font-weight: bold">OMBO<img src="../img/portal/logo.png" style="max-width: 30%" />
                     </a>
                     <!-- END LOGO -->
                     <!-- BEGIN RESPONSIVE MENU TOGGLER -->
@@ -42,13 +41,14 @@
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     <span class="username">مرحباً ،
-                                   <asp:Label ID="LoginName" runat="server" CssClass="ub" />
+                                        <asp:LoginName ID="LoginName1" runat="server" />
                                     </span>
                                     <b class="caret"></b>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li>
-                                        <asp:LinkButton ID="btnLogOut" OnClick="btnLogOut_Click" runat="server" Text="<i class='icon-key'></i> خروج" /></li>
+                                        <asp:LoginStatus ID="LoginStatus1" LogoutPageUrl="~/Admin/Login.aspx" LogoutText="<i class='icon-key'></i> خروج" runat="server" />
+                                    </li>
                                 </ul>
                             </li>
 
@@ -73,6 +73,8 @@
                 <!-- END RESPONSIVE QUICK SEARCH FORM -->
                 <!-- BEGIN SIDEBAR MENU -->
                 <ul class="sidebar-menu">
+                    <% if (Roles.IsUserInRole("مدير النظام") || Roles.IsUserInRole("ادارة المستخدمين"))
+                       { %>
                     <li>
                         <a href="UserManagement.aspx">
                             <span class="icon-box">
@@ -81,6 +83,9 @@
                             ادارة المستخدمين
                         </a>
                     </li>
+                    <% } %>
+                    <% if (Roles.IsUserInRole("مدير النظام") || Roles.IsUserInRole("البلاغات"))
+                       { %>
                     <li>
                         <a href="PostsReports.aspx">
                             <span class="icon-box">
@@ -89,6 +94,10 @@
                             البلاغات 
                         </a>
                     </li>
+                    <% } %>
+                    <% if (Roles.IsUserInRole("مدير النظام") || Roles.IsUserInRole("تعديل سياسة الخصوصية و شروط الخدمة"))
+                       { %>
+
                     <li>
                         <a href="EditLookup.aspx?id=1">
                             <span class="icon-box">
@@ -97,6 +106,10 @@
                             سياسة الخصوصية
                         </a>
                     </li>
+                    <% } %>
+                    <% if (Roles.IsUserInRole("مدير النظام") || Roles.IsUserInRole("تعديل سياسة الخصوصية و شروط الخدمة"))
+                       { %>
+
                     <li>
                         <a href="EditLookup.aspx?id=2">
                             <span class="icon-box">
@@ -105,6 +118,10 @@
                             شروط الخدمة
                         </a>
                     </li>
+                    <% } %>
+                    <% if (Roles.IsUserInRole("مدير النظام") || Roles.IsUserInRole("توثيق الحسابات"))
+                       { %>
+
                     <li>
                         <a href="VerifyAccount.aspx">
                             <span class="icon-box">
@@ -113,6 +130,19 @@
                             توثيق الحسابات
                         </a>
                     </li>
+                    <% } %>
+                    <% if (Roles.IsUserInRole("مدير النظام"))
+                       { %>
+
+                    <li>
+                        <a href="AdminsManagement.aspx">
+                            <span class="icon-box">
+                                <i class="icon-star"></i>
+                            </span>
+                            ادارة المديرين
+                        </a>
+                    </li>
+                    <% } %>
                 </ul>
                 <!-- END SIDEBAR MENU -->
             </div>
@@ -128,7 +158,7 @@
         </div>
 
         <div id="footer">
-            <span class="ub">2015 &copy; I-Valley. All rights reserved.</span>
+            <span class="ub">2015 &copy; COMBO. All rights reserved.</span>
             <div class="span pull-left">
                 <span class="go-top"><i class="icon-arrow-up"></i></span>
             </div>
