@@ -156,7 +156,7 @@
                         NotifierFName.value = MotherFName.value;
                         NotifierHdnFName.value = MotherFName.value;
                         NotifierSName.value = MotherSName.value + ' ' + Mother3Name.value;
-                        NotifierHdnSName.value = FatherSName.value + ' ' + Father3Name.value;
+                        NotifierHdnSName.value = MotherSName.value + ' ' + Mother3Name.value;
                     }
                 }
             }

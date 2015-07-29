@@ -727,9 +727,17 @@ public partial class RegisterDeathCase : System.Web.UI.Page
                 return false;
             }
         }
-        else
+        else if (UcNotifierInfo2.NotifierRelation != 8)
         {
             if (!MHOCommon.ValidateNationalIDInput(UcNotifierInfo2.NotifierNID, false))
+            {
+                MHOCommon.ShowMessage(MHOCommon.NIDValidationMessage + "\\nبيانات المبلغ", this.Page);
+                return false;
+            }
+        }
+        else if (UcNotifierInfo2.NotifierRelation == 8)
+        {
+            if (!MHOCommon.ValidateNationalIDInput(UcNotifierInfo2.NotifierNID, null))
             {
                 MHOCommon.ShowMessage(MHOCommon.NIDValidationMessage + "\\nبيانات المبلغ", this.Page);
                 return false;
@@ -852,9 +860,9 @@ public partial class RegisterDeathCase : System.Web.UI.Page
                     MHOCommon.ShowMessage("تاريخ ميلاد المتوفى غير صحيح", this.Page);
                     return false;
                 }
-               
 
-                if (DateTime.Today.AddDays(-1).Date <= DateTime.Parse(UcGeneralDeathInfo1.EventDeadDieDate))
+
+                if (DateTime.Today.AddDays(-1).Date <= DateTime.Parse(UcGeneralDeathInfo1.EventDeadDieDate) && rdTypeList.SelectedValue != "2")
                 {
                     MHOCommon.ShowMessage("تاريخ تسجيل الوفاة غير صحيح", this.Page);
                     return false;
@@ -862,8 +870,8 @@ public partial class RegisterDeathCase : System.Web.UI.Page
 
                 //TimeSpan dateDiff = UcBornInfo1.EventBirthDate.Subtract(DecisionControl1.DecisionDate);
                 //if (dateDiff.Days < 15)
-                if (DecisionControl1.DecisionDate.Value.AddDays(-1).Date < DateTime.Parse(UcGeneralDeathInfo1.EventDeadDieDate) ||
-                    DateTime.Parse(UcDeathInfo2.EventDeadBirthDate) > DateTime.Parse(UcGeneralDeathInfo1.EventDeadDieDate))
+                if ((DecisionControl1.DecisionDate.Value.AddDays(-1).Date < DateTime.Parse(UcGeneralDeathInfo1.EventDeadDieDate) ||
+                    DateTime.Parse(UcDeathInfo2.EventDeadBirthDate) > DateTime.Parse(UcGeneralDeathInfo1.EventDeadDieDate)) && rdTypeList.SelectedValue != "2")
                 {
                     MHOCommon.ShowMessage("تاريخ القرار غير صحيح", this.Page);
                     return false;
