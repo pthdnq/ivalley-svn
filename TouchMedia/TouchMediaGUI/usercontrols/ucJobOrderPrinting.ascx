@@ -1,13 +1,11 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ucJobOrderPrinting.ascx.cs" Inherits="TouchMediaGUI.usercontrols.ucJobOrderPrinting" %>
 <div class="span12">
     <div class="form-horizontal">
-
         <div class="block-margin-bottom-5 span12 clearfix" style="margin-right: 0">
             <div class="span6">
                 <label class="control-label">أسم المطبعة</label>
                 <asp:DropDownList runat="server" ID="drpPrintingHouseName"></asp:DropDownList>
             </div>
-
         </div>
         <div class="block-margin-bottom-5 span12 clearfix" style="margin-right: 0">
             <label class="control-label">وصف العملية</label>
@@ -17,7 +15,6 @@
             <div class="span6">
                 <label class="control-label">مقاس الطباعة</label>
                 <asp:DropDownList runat="server" ID="drpPrintingSize"></asp:DropDownList>
-
             </div>
             <div class="span6">
                 <asp:RadioButtonList runat="server" CssClass="checkSections" CellPadding="2" RepeatDirection="Horizontal" ID="RadioRRV">
@@ -34,33 +31,23 @@
         </div>
         <div class="block-margin-bottom-5 span12 clearfix" style="margin-right: 0">
             <div class="span6">
-
                 <label class="control-label">نوع الورق</label>
                 <asp:DropDownList runat="server" ID="drpPrintingPaperType"></asp:DropDownList>
-
             </div>
-
-
-
             <div class="span6">
                 <label class="control-label">كمية الورق</label>
                 <asp:TextBox runat="server" ID="txtPrintingPaperQuantity"></asp:TextBox>
             </div>
         </div>
         <div class="block-margin-bottom-5 span12 clearfix " style="margin-right: 0">
-            <div class="span4">
+            <div class="span6">
                 <label class="control-label">رصيد</label>
-                <asp:TextBox runat="server" ID="txtTotalQuantity"></asp:TextBox>
+                <asp:Label runat="server" CssClass="label-def span4" Text="fadfdafadf" ID="txtTotalQuantity"></asp:Label>
             </div>
-            <div class="span4">
-                <label class="control-label">الكمية المستخدمة</label>
-                <asp:TextBox runat="server" ID="txtUsedQuantity"></asp:TextBox>
-            </div>
-            <div class="span4">
+            <div class="span6">
                 <label class="control-label">الباقي</label>
-                <asp:TextBox runat="server" ID="txtOnHandQuantity"></asp:TextBox>
+                <asp:Label runat="server" CssClass="label-def span4" Text="fadfdafadf" ID="lblOnHandQuantity"></asp:Label>
             </div>
-
         </div>
         <div class="block-margin-bottom-5 span12 clearfix" style="margin-right: 0">
             <div class="span6">
@@ -80,13 +67,9 @@
         </div>
         <div class="block-margin-bottom-5 span12 clearfix" style="margin-right: 0">
             <div class="span6">
-
-
                 <label class="control-label">الكمية</label>
                 <asp:TextBox runat="server" ID="txtAfterPrintingQuantity"></asp:TextBox>
             </div>
         </div>
-
-
     </div>
 </div>

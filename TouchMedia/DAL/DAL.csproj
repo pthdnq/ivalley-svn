@@ -57,7 +57,9 @@
     <Compile Include="InAndOutDoorDetails.cs" />
     <Compile Include="JobOrder.cs" />
     <Compile Include="JobOrderStatus.cs" />
+    <Compile Include="needs.cs" />
     <Compile Include="OffsetPrintingDetails.cs" />
+    <Compile Include="PrintingPapers.cs" />
     <Compile Include="Production.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PurchaseOrder.cs" />

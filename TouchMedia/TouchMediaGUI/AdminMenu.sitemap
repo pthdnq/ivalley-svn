@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
     <siteMapNode url="" title="root" icon="" description="" roles="*" titleAr="">
-      <siteMapNode url="~/JobOrders.aspx" icon="icon-briefcase" title="Job Orders" titleAr="اوامر الشغل"  description="" />
+      <siteMapNode url="~/Job_Order.aspx" icon="icon-briefcase" title="Job Orders" titleAr="اوامر الشغل"  description="" />
       <siteMapNode url="~/DeliveryOrder.aspx" icon="icon-truck" title="Delivery Orders" titleAr="اوامر تشغيل السيارات"  description="" />
       <siteMapNode url="~/PurchaseOrder.aspx" icon="icon-shopping-cart" title="Purchase Orders" titleAr="اوامر الشراء"  description="" />
       <siteMapNode url="~/admin/" title="Admin" icon="icon-cogs" titleAr="ادارة">

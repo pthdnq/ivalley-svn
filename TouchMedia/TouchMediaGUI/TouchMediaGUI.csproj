@@ -78,7 +78,7 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.ReportViewer.WebForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files (x86)\Microsoft Visual Studio 11.0\ReportViewer\Microsoft.ReportViewer.WebForms.dll</HintPath>
+      <HintPath>C:\Program Files (x86)\Microsoft Visual Studio 12.0\ReportViewer\Microsoft.ReportViewer.WebForms.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.ScriptManager.MSAjax">
       <HintPath>..\lib\Microsoft.ScriptManager.MSAjax.dll</HintPath>
@@ -2013,7 +2013,9 @@
     <Content Include="usercontrols\ucJobOrderProduction.ascx" />
     <Content Include="usercontrols\ucPurchaseOrder.ascx" />
     <Content Include="usercontrols\ucEditJO.ascx" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Bundle.config" />
   </ItemGroup>
   <ItemGroup>
@@ -2126,7 +2128,6 @@
     <Compile Include="App_Start\AuthConfig.cs" />
     <Compile Include="common\commonMethods.asmx.cs">
       <DependentUpon>commonMethods.asmx</DependentUpon>
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="DeliveryDriverPrint.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -2197,7 +2198,13 @@
     </Compile>
     <Compile Include="Models\DesignDetail.cs" />
     <Compile Include="Models\Designer.cs" />
+    <Compile Include="Models\DigitalPrintDetail.cs" />
     <Compile Include="Models\GeneralLookup.cs" />
+    <Compile Include="Models\InOutDoorPrintDetail.cs" />
+    <Compile Include="Models\JobOrder.cs" />
+    <Compile Include="Models\JOResponse.cs" />
+    <Compile Include="Models\OffsetPrintDetail.cs" />
+    <Compile Include="Models\Production.cs" />
     <Compile Include="Models\StatusModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PurchaseDateSet.Designer.cs">

@@ -66,7 +66,6 @@
                                         <div class="controls">
                                             <asp:TextBox runat="server" TextMode="Password" type="text" class="span3 " ID="txtPassword" />
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ControlToValidate="txtPassword" ValidationGroup="UserEdit" runat="server" Font-Bold="true" ErrorMessage="*"/>
-
                                         </div>
                                     </div>
                                     <div class="control-group">
