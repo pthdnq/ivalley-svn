@@ -13,13 +13,13 @@ namespace TouchMediaGUI {
     public partial class Job_Order {
         
         /// <summary>
-        /// PanelPurchaseOrdersGrid control.
+        /// PanelJobOrdersGrid control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel PanelPurchaseOrdersGrid;
+        protected global::System.Web.UI.WebControls.Panel PanelJobOrdersGrid;
         
         /// <summary>
         /// btnAddNewJobOrder control.
@@ -38,6 +38,24 @@ namespace TouchMediaGUI {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView GrdViewJobOrders;
+        
+        /// <summary>
+        /// btnBackToGrid control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btnBackToGrid;
+        
+        /// <summary>
+        /// PanelJobOrderMasterDetails control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel PanelJobOrderMasterDetails;
         
         /// <summary>
         /// txtJobOrderCode control.
@@ -94,6 +112,15 @@ namespace TouchMediaGUI {
         protected global::System.Web.UI.WebControls.LinkButton btnCancelMasterJobOrder;
         
         /// <summary>
+        /// PanelJobOrderDetails control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel PanelJobOrderDetails;
+        
+        /// <summary>
         /// ucJobOrderProduction control.
         /// </summary>
         /// <remarks>
@@ -119,5 +146,14 @@ namespace TouchMediaGUI {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::TouchMediaGUI.ucPurchaseOrder ucPurchaseOrder;
+        
+        /// <summary>
+        /// btnSaveJobOrder control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btnSaveJobOrder;
     }
 }

@@ -13,40 +13,68 @@ namespace TouchMediaGUI
         {
             if (!Page.IsPostBack)
             {
-                if (getQueryString_JobOrder > 0)
-                {
-                    JobOrder J = new JobOrder();
-                    J.LoadByPrimaryKey(getQueryString_JobOrder);
-                    txtJobOrderCode.Text = J.JobOrderCode;
-                    txtGeneralOperationName.Text = J.JobOrderName;
-                    drpClientName.SelectedValue = J.ClientID.ToString();
-                    drpGeneralStatus.SelectedValue = J.JobOrderStatusID.ToString();
-                    grdGeneralBind();
-                }
                 grdGeneralBind();
+                loadClients();
+                loadJobOrderStatus();
 
-                Clients C = new Clients();
-                C.LoadAll();
-                drpClientName.DataSource = C.DefaultView;
-                drpClientName.DataTextField = Clients.ColumnNames.ClientName;
-                drpClientName.DataValueField = Clients.ColumnNames.ClientID;
-                drpClientName.DataBind();
-
-                JobOrderStatus JS = new JobOrderStatus();
-                JS.LoadAll();
-                drpGeneralStatus.DataSource = JS.DefaultView;
-                drpGeneralStatus.DataTextField = JobOrderStatus.ColumnNames.JobOrderStatusNameAr;
-                drpGeneralStatus.DataValueField = JobOrderStatus.ColumnNames.JobOrderStatusID;
-                drpGeneralStatus.DataBind();
+                if (NewJobOrder == 1)
+                {
+                    PanelJobOrdersGrid.Visible = false;
+                    PanelJobOrderDetails.Visible = false;
+                    PanelJobOrderMasterDetails.Visible = true;
+                }
+                else if (CurrentJobOrder > 0)
+                {
+                    editJobOrder();
+                    btnCancelMasterJobOrder.Visible = false;
+                    btnBackToGrid.Visible = true;
+                    PanelJobOrdersGrid.Visible = false;
+                    PanelJobOrderDetails.Visible = true;
+                    PanelJobOrderMasterDetails.Visible = true;
+                }
+                else
+                {
+                    PanelJobOrdersGrid.Visible = true;
+                    PanelJobOrderDetails.Visible = false;
+                    PanelJobOrderMasterDetails.Visible = false;
+                }
             }
         }
+        public void loadClients()
+        {
+            Clients C = new Clients();
+            C.LoadAll();
+            drpClientName.DataSource = C.DefaultView;
+            drpClientName.DataTextField = Clients.ColumnNames.ClientName;
+            drpClientName.DataValueField = Clients.ColumnNames.ClientID;
+            drpClientName.DataBind();
+        }
+        public void editJobOrder()
+        {
+            JobOrder objDataJobOrder = new JobOrder();
+            objDataJobOrder.LoadByPrimaryKey(CurrentJobOrder);
+            txtJobOrderCode.Text = objDataJobOrder.JobOrderCode;
+            txtGeneralOperationName.Text = objDataJobOrder.JobOrderName;
+            drpClientName.SelectedValue = objDataJobOrder.ClientID.ToString();
+            drpGeneralStatus.SelectedValue = objDataJobOrder.JobOrderStatusID.ToString();
 
+            //Load remaining details..
+        }
+        public void loadJobOrderStatus()
+        {
+            JobOrderStatus JS = new JobOrderStatus();
+            JS.LoadAll();
+            drpGeneralStatus.DataSource = JS.DefaultView;
+            drpGeneralStatus.DataTextField = JobOrderStatus.ColumnNames.JobOrderStatusNameAr;
+            drpGeneralStatus.DataValueField = JobOrderStatus.ColumnNames.JobOrderStatusID;
+            drpGeneralStatus.DataBind();
+        }
         protected void btnSaveMasterJobOrder_Click(object sender, EventArgs e)
         {
             JobOrder jo = new JobOrder();
-            if (getQueryString_JobOrder > 0)
+            if (CurrentJobOrder > 0)
             {
-                jo.LoadByPrimaryKey(getQueryString_JobOrder);
+                jo.LoadByPrimaryKey(CurrentJobOrder);
             }
             else
             {
@@ -57,26 +85,35 @@ namespace TouchMediaGUI
             jo.JobOrderCode = txtJobOrderCode.Text;
             jo.JobOrderName = txtGeneralOperationName.Text;
             jo.Save();
-            grdGeneralBind();
-            ClearFields();
-        }
 
+            Response.Redirect("Job_Order.aspx?JobOrderID=" + jo.JobOrderID);
+        }
         protected void btnCancelMasterJobOrder_Click(object sender, EventArgs e)
         {
-            ClearFields();
+            Response.Redirect("Job_Order.aspx");
         }
-
         protected void btnAddNewJobOrder_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("Job_Order.aspx?NewJO=1");
         }
-
         protected void GrdViewJobOrders_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-
+            switch (e.CommandName)
+            {
+                case "editJobOrder":
+                    Response.Redirect("Job_Order.aspx?JobOrderID=" + e.CommandArgument);
+                    break;
+                case "deleteJobOrder":
+                    // isDeleted !!
+                    break;
+                case "PrintPurchase":
+                    //report
+                    break;
+                default:
+                    break;
+            }
         }
-
-        private int getQueryString_JobOrder
+        private int CurrentJobOrder
         {
             get
             {
@@ -88,6 +125,16 @@ namespace TouchMediaGUI
                 {
                     return 0;
                 }
+            }
+        }
+        private int NewJobOrder
+        {
+            get
+            {
+                if (!string.IsNullOrEmpty(Request.QueryString["NewJO"]))
+                    return 1;
+                else
+                    return 0;
             }
         }
         private void grdGeneralBind()
@@ -104,6 +151,9 @@ namespace TouchMediaGUI
             drpClientName.ClearSelection();
             drpGeneralStatus.ClearSelection();
         }
-       
+        protected void btnBackToGrid_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Job_Order.aspx");
+        }
     }
 }

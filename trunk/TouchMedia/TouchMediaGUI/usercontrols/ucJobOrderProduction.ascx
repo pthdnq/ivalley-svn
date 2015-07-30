@@ -12,7 +12,6 @@
             </div>
         </div>
         <div class="block-margin-bottom-5 span12 clearfix" style="margin-right: 0">
-
             <label class="control-label">الخامات</label>
             <asp:CheckBoxList CssClass="checkSections" runat="server" type="text" CellPadding="2" ID="chkProductionMaterials" RepeatDirection="Horizontal">
                 <asp:ListItem Text="Item1"></asp:ListItem>
@@ -20,8 +19,6 @@
                 <asp:ListItem Text="Item1"></asp:ListItem>
                 <asp:ListItem Text="Item1"></asp:ListItem>
             </asp:CheckBoxList>
-
-
         </div>
         <div class="block-margin-bottom-5 span12 clearfix" style="margin-right: 0">
             <div class="span6">

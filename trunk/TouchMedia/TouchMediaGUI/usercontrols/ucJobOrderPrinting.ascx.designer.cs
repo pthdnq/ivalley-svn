@@ -82,25 +82,16 @@ namespace TouchMediaGUI.usercontrols {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTotalQuantity;
+        protected global::System.Web.UI.WebControls.Label txtTotalQuantity;
         
         /// <summary>
-        /// txtUsedQuantity control.
+        /// lblOnHandQuantity control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtUsedQuantity;
-        
-        /// <summary>
-        /// txtOnHandQuantity control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtOnHandQuantity;
+        protected global::System.Web.UI.WebControls.Label lblOnHandQuantity;
         
         /// <summary>
         /// txtNotes control.
