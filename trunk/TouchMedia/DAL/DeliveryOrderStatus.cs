@@ -131,6 +131,14 @@ namespace DAL
 				}
 			}
 			
+			public static SqlParameter IsDeleted
+			{
+				get
+				{
+					return new SqlParameter("@IsDeleted", SqlDbType.Bit, 0);
+				}
+			}
+			
 		}
 		#endregion		
 	
@@ -141,6 +149,7 @@ namespace DAL
             public const string DeliveryOrderStatusName = "DeliveryOrderStatusName";
             public const string DeliveryOrderStatusNameAr = "DeliveryOrderStatusNameAr";
             public const string StatusClass = "StatusClass";
+            public const string IsDeleted = "isDeleted";
 
 			static public string ToPropertyName(string columnName)
 			{
@@ -152,6 +161,7 @@ namespace DAL
 					ht[DeliveryOrderStatusName] = _DeliveryOrderStatus.PropertyNames.DeliveryOrderStatusName;
 					ht[DeliveryOrderStatusNameAr] = _DeliveryOrderStatus.PropertyNames.DeliveryOrderStatusNameAr;
 					ht[StatusClass] = _DeliveryOrderStatus.PropertyNames.StatusClass;
+					ht[IsDeleted] = _DeliveryOrderStatus.PropertyNames.IsDeleted;
 
 				}
 				return (string)ht[columnName];
@@ -168,6 +178,7 @@ namespace DAL
             public const string DeliveryOrderStatusName = "DeliveryOrderStatusName";
             public const string DeliveryOrderStatusNameAr = "DeliveryOrderStatusNameAr";
             public const string StatusClass = "StatusClass";
+            public const string IsDeleted = "IsDeleted";
 
 			static public string ToColumnName(string propertyName)
 			{
@@ -179,6 +190,7 @@ namespace DAL
 					ht[DeliveryOrderStatusName] = _DeliveryOrderStatus.ColumnNames.DeliveryOrderStatusName;
 					ht[DeliveryOrderStatusNameAr] = _DeliveryOrderStatus.ColumnNames.DeliveryOrderStatusNameAr;
 					ht[StatusClass] = _DeliveryOrderStatus.ColumnNames.StatusClass;
+					ht[IsDeleted] = _DeliveryOrderStatus.ColumnNames.IsDeleted;
 
 				}
 				return (string)ht[propertyName];
@@ -195,6 +207,7 @@ namespace DAL
             public const string DeliveryOrderStatusName = "s_DeliveryOrderStatusName";
             public const string DeliveryOrderStatusNameAr = "s_DeliveryOrderStatusNameAr";
             public const string StatusClass = "s_StatusClass";
+            public const string IsDeleted = "s_IsDeleted";
 
 		}
 		#endregion		
@@ -246,6 +259,18 @@ namespace DAL
 			set
 	        {
 				base.Setstring(ColumnNames.StatusClass, value);
+			}
+		}
+
+		public virtual bool IsDeleted
+	    {
+			get
+	        {
+				return base.Getbool(ColumnNames.IsDeleted);
+			}
+			set
+	        {
+				base.Setbool(ColumnNames.IsDeleted, value);
 			}
 		}
 
@@ -311,6 +336,21 @@ namespace DAL
 					this.SetColumnNull(ColumnNames.StatusClass);
 				else
 					this.StatusClass = base.SetstringAsString(ColumnNames.StatusClass, value);
+			}
+		}
+
+		public virtual string s_IsDeleted
+	    {
+			get
+	        {
+				return this.IsColumnNull(ColumnNames.IsDeleted) ? string.Empty : base.GetboolAsString(ColumnNames.IsDeleted);
+			}
+			set
+	        {
+				if(string.Empty == value)
+					this.SetColumnNull(ColumnNames.IsDeleted);
+				else
+					this.IsDeleted = base.SetboolAsString(ColumnNames.IsDeleted, value);
 			}
 		}
 
@@ -387,6 +427,16 @@ namespace DAL
 					}
 				}
 
+				public WhereParameter IsDeleted
+				{
+					get
+					{
+							WhereParameter where = new WhereParameter(ColumnNames.IsDeleted, Parameters.IsDeleted);
+							this._clause._entity.Query.AddWhereParameter(where);
+							return where;
+					}
+				}
+
 
 				private WhereClause _clause;
 			}
@@ -440,10 +490,23 @@ namespace DAL
 				}
 			}
 
+			public WhereParameter IsDeleted
+		    {
+				get
+		        {
+					if(_IsDeleted_W == null)
+	        	    {
+						_IsDeleted_W = TearOff.IsDeleted;
+					}
+					return _IsDeleted_W;
+				}
+			}
+
 			private WhereParameter _DeliveryOrderStatusID_W = null;
 			private WhereParameter _DeliveryOrderStatusName_W = null;
 			private WhereParameter _DeliveryOrderStatusNameAr_W = null;
 			private WhereParameter _StatusClass_W = null;
+			private WhereParameter _IsDeleted_W = null;
 
 			public void WhereClauseReset()
 			{
@@ -451,6 +514,7 @@ namespace DAL
 				_DeliveryOrderStatusName_W = null;
 				_DeliveryOrderStatusNameAr_W = null;
 				_StatusClass_W = null;
+				_IsDeleted_W = null;
 
 				this._entity.Query.FlushWhereParameters();
 
@@ -547,6 +611,16 @@ namespace DAL
 					}
 				}
 
+				public AggregateParameter IsDeleted
+				{
+					get
+					{
+							AggregateParameter aggregate = new AggregateParameter(ColumnNames.IsDeleted, Parameters.IsDeleted);
+							this._clause._entity.Query.AddAggregateParameter(aggregate);
+							return aggregate;
+					}
+				}
+
 
 				private AggregateClause _clause;
 			}
@@ -600,10 +674,23 @@ namespace DAL
 				}
 			}
 
+			public AggregateParameter IsDeleted
+		    {
+				get
+		        {
+					if(_IsDeleted_W == null)
+	        	    {
+						_IsDeleted_W = TearOff.IsDeleted;
+					}
+					return _IsDeleted_W;
+				}
+			}
+
 			private AggregateParameter _DeliveryOrderStatusID_W = null;
 			private AggregateParameter _DeliveryOrderStatusName_W = null;
 			private AggregateParameter _DeliveryOrderStatusNameAr_W = null;
 			private AggregateParameter _StatusClass_W = null;
+			private AggregateParameter _IsDeleted_W = null;
 
 			public void AggregateClauseReset()
 			{
@@ -611,6 +698,7 @@ namespace DAL
 				_DeliveryOrderStatusName_W = null;
 				_DeliveryOrderStatusNameAr_W = null;
 				_StatusClass_W = null;
+				_IsDeleted_W = null;
 
 				this._entity.Query.FlushAggregateParameters();
 
@@ -699,6 +787,10 @@ namespace DAL
 
 			p = cmd.Parameters.Add(Parameters.StatusClass);
 			p.SourceColumn = ColumnNames.StatusClass;
+			p.SourceVersion = DataRowVersion.Current;
+
+			p = cmd.Parameters.Add(Parameters.IsDeleted);
+			p.SourceColumn = ColumnNames.IsDeleted;
 			p.SourceVersion = DataRowVersion.Current;
 
 

@@ -5,9 +5,9 @@ using System;
 using DAL;
 namespace BLL
 {
-	public class DigitalPrintingDetails : _DigitalPrintingDetails
+	public class PrintDetails : _PrintDetails
 	{
-		public DigitalPrintingDetails()
+		public PrintDetails()
 		{
 		
 		}

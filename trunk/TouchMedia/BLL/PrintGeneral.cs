@@ -5,9 +5,9 @@ using System;
 using DAL;
 namespace BLL
 {
-	public class OffsetPrintingDetails : _OffsetPrintingDetails
+	public class PrintGeneral : _PrintGeneral
 	{
-		public OffsetPrintingDetails()
+		public PrintGeneral()
 		{
 		
 		}

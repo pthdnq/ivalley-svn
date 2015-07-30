@@ -1,5 +1,5 @@
 
-/****** Object:  StoredProcedure [proc_needsLoadByPrimaryKey]    Script Date: 7/23/2015 12:52:38 PM ******/
+/****** Object:  StoredProcedure [proc_needsLoadByPrimaryKey]    Script Date: 30/07/2015 1:07:20 PM ******/
 IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[proc_needsLoadByPrimaryKey]') AND OBJECTPROPERTY(id,N'IsProcedure') = 1)
     DROP PROCEDURE [proc_needsLoadByPrimaryKey];
 GO
@@ -21,7 +21,8 @@ BEGIN
 		[NeedQuantity],
 		[IsNew],
 		[IsAvalible],
-		[IsMaintenance]
+		[IsMaintenance],
+		[isDeleted]
 	FROM [needs]
 	WHERE
 		([NeedID] = @NeedID)
@@ -38,7 +39,7 @@ IF (@@Error = 0) PRINT 'Procedure Creation: proc_needsLoadByPrimaryKey Succeeded
 ELSE PRINT 'Procedure Creation: proc_needsLoadByPrimaryKey Error on Creation'
 GO
 
-/****** Object:  StoredProcedure [proc_needsLoadAll]    Script Date: 7/23/2015 12:52:38 PM ******/
+/****** Object:  StoredProcedure [proc_needsLoadAll]    Script Date: 30/07/2015 1:07:20 PM ******/
 IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[proc_needsLoadAll]') AND OBJECTPROPERTY(id,N'IsProcedure') = 1)
     DROP PROCEDURE [proc_needsLoadAll];
 GO
@@ -58,7 +59,8 @@ BEGIN
 		[NeedQuantity],
 		[IsNew],
 		[IsAvalible],
-		[IsMaintenance]
+		[IsMaintenance],
+		[isDeleted]
 	FROM [needs]
 
 	SET @Err = @@Error
@@ -73,7 +75,7 @@ IF (@@Error = 0) PRINT 'Procedure Creation: proc_needsLoadAll Succeeded'
 ELSE PRINT 'Procedure Creation: proc_needsLoadAll Error on Creation'
 GO
 
-/****** Object:  StoredProcedure [proc_needsUpdate]    Script Date: 7/23/2015 12:52:38 PM ******/
+/****** Object:  StoredProcedure [proc_needsUpdate]    Script Date: 30/07/2015 1:07:20 PM ******/
 IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[proc_needsUpdate]') AND OBJECTPROPERTY(id,N'IsProcedure') = 1)
     DROP PROCEDURE [proc_needsUpdate];
 GO
@@ -87,7 +89,8 @@ CREATE PROCEDURE [proc_needsUpdate]
 	@NeedQuantity nvarchar(300) = NULL,
 	@IsNew bit = NULL,
 	@IsAvalible bit = NULL,
-	@IsMaintenance bit = NULL
+	@IsMaintenance bit = NULL,
+	@isDeleted bit = NULL
 )
 AS
 BEGIN
@@ -103,7 +106,8 @@ BEGIN
 		[NeedQuantity] = @NeedQuantity,
 		[IsNew] = @IsNew,
 		[IsAvalible] = @IsAvalible,
-		[IsMaintenance] = @IsMaintenance
+		[IsMaintenance] = @IsMaintenance,
+		[isDeleted] = @isDeleted
 	WHERE
 		[NeedID] = @NeedID
 
@@ -124,7 +128,7 @@ GO
 
 
 
-/****** Object:  StoredProcedure [proc_needsInsert]    Script Date: 7/23/2015 12:52:38 PM ******/
+/****** Object:  StoredProcedure [proc_needsInsert]    Script Date: 30/07/2015 1:07:20 PM ******/
 IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[proc_needsInsert]') AND OBJECTPROPERTY(id,N'IsProcedure') = 1)
     DROP PROCEDURE [proc_needsInsert];
 GO
@@ -138,7 +142,8 @@ CREATE PROCEDURE [proc_needsInsert]
 	@NeedQuantity nvarchar(300) = NULL,
 	@IsNew bit = NULL,
 	@IsAvalible bit = NULL,
-	@IsMaintenance bit = NULL
+	@IsMaintenance bit = NULL,
+	@isDeleted bit = NULL
 )
 AS
 BEGIN
@@ -155,7 +160,8 @@ BEGIN
 		[NeedQuantity],
 		[IsNew],
 		[IsAvalible],
-		[IsMaintenance]
+		[IsMaintenance],
+		[isDeleted]
 	)
 	VALUES
 	(
@@ -165,7 +171,8 @@ BEGIN
 		@NeedQuantity,
 		@IsNew,
 		@IsAvalible,
-		@IsMaintenance
+		@IsMaintenance,
+		@isDeleted
 	)
 
 	SET @Err = @@Error
@@ -182,7 +189,7 @@ IF (@@Error = 0) PRINT 'Procedure Creation: proc_needsInsert Succeeded'
 ELSE PRINT 'Procedure Creation: proc_needsInsert Error on Creation'
 GO
 
-/****** Object:  StoredProcedure [proc_needsDelete]    Script Date: 7/23/2015 12:52:38 PM ******/
+/****** Object:  StoredProcedure [proc_needsDelete]    Script Date: 30/07/2015 1:07:20 PM ******/
 IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[proc_needsDelete]') AND OBJECTPROPERTY(id,N'IsProcedure') = 1)
     DROP PROCEDURE [proc_needsDelete];
 GO

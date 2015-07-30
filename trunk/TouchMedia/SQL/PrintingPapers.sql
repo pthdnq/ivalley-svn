@@ -1,5 +1,5 @@
 
-/****** Object:  StoredProcedure [proc_PrintingPapersLoadByPrimaryKey]    Script Date: 7/23/2015 12:52:38 PM ******/
+/****** Object:  StoredProcedure [proc_PrintingPapersLoadByPrimaryKey]    Script Date: 30/07/2015 1:07:20 PM ******/
 IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[proc_PrintingPapersLoadByPrimaryKey]') AND OBJECTPROPERTY(id,N'IsProcedure') = 1)
     DROP PROCEDURE [proc_PrintingPapersLoadByPrimaryKey];
 GO
@@ -17,7 +17,8 @@ BEGIN
 		[PrintingPapersID],
 		[PrintingPaperName],
 		[PurchasePaperDate],
-		[PurcahsePaperQuantity]
+		[PurcahsePaperQuantity],
+		[isDeleted]
 	FROM [PrintingPapers]
 	WHERE
 		([PrintingPapersID] = @PrintingPapersID)
@@ -34,7 +35,7 @@ IF (@@Error = 0) PRINT 'Procedure Creation: proc_PrintingPapersLoadByPrimaryKey 
 ELSE PRINT 'Procedure Creation: proc_PrintingPapersLoadByPrimaryKey Error on Creation'
 GO
 
-/****** Object:  StoredProcedure [proc_PrintingPapersLoadAll]    Script Date: 7/23/2015 12:52:38 PM ******/
+/****** Object:  StoredProcedure [proc_PrintingPapersLoadAll]    Script Date: 30/07/2015 1:07:20 PM ******/
 IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[proc_PrintingPapersLoadAll]') AND OBJECTPROPERTY(id,N'IsProcedure') = 1)
     DROP PROCEDURE [proc_PrintingPapersLoadAll];
 GO
@@ -50,7 +51,8 @@ BEGIN
 		[PrintingPapersID],
 		[PrintingPaperName],
 		[PurchasePaperDate],
-		[PurcahsePaperQuantity]
+		[PurcahsePaperQuantity],
+		[isDeleted]
 	FROM [PrintingPapers]
 
 	SET @Err = @@Error
@@ -65,7 +67,7 @@ IF (@@Error = 0) PRINT 'Procedure Creation: proc_PrintingPapersLoadAll Succeeded
 ELSE PRINT 'Procedure Creation: proc_PrintingPapersLoadAll Error on Creation'
 GO
 
-/****** Object:  StoredProcedure [proc_PrintingPapersUpdate]    Script Date: 7/23/2015 12:52:38 PM ******/
+/****** Object:  StoredProcedure [proc_PrintingPapersUpdate]    Script Date: 30/07/2015 1:07:20 PM ******/
 IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[proc_PrintingPapersUpdate]') AND OBJECTPROPERTY(id,N'IsProcedure') = 1)
     DROP PROCEDURE [proc_PrintingPapersUpdate];
 GO
@@ -75,7 +77,8 @@ CREATE PROCEDURE [proc_PrintingPapersUpdate]
 	@PrintingPapersID int,
 	@PrintingPaperName nvarchar(500) = NULL,
 	@PurchasePaperDate datetime = NULL,
-	@PurcahsePaperQuantity int = NULL
+	@PurcahsePaperQuantity int = NULL,
+	@isDeleted bit = NULL
 )
 AS
 BEGIN
@@ -87,7 +90,8 @@ BEGIN
 	SET
 		[PrintingPaperName] = @PrintingPaperName,
 		[PurchasePaperDate] = @PurchasePaperDate,
-		[PurcahsePaperQuantity] = @PurcahsePaperQuantity
+		[PurcahsePaperQuantity] = @PurcahsePaperQuantity,
+		[isDeleted] = @isDeleted
 	WHERE
 		[PrintingPapersID] = @PrintingPapersID
 
@@ -108,7 +112,7 @@ GO
 
 
 
-/****** Object:  StoredProcedure [proc_PrintingPapersInsert]    Script Date: 7/23/2015 12:52:38 PM ******/
+/****** Object:  StoredProcedure [proc_PrintingPapersInsert]    Script Date: 30/07/2015 1:07:20 PM ******/
 IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[proc_PrintingPapersInsert]') AND OBJECTPROPERTY(id,N'IsProcedure') = 1)
     DROP PROCEDURE [proc_PrintingPapersInsert];
 GO
@@ -118,7 +122,8 @@ CREATE PROCEDURE [proc_PrintingPapersInsert]
 	@PrintingPapersID int = NULL output,
 	@PrintingPaperName nvarchar(500) = NULL,
 	@PurchasePaperDate datetime = NULL,
-	@PurcahsePaperQuantity int = NULL
+	@PurcahsePaperQuantity int = NULL,
+	@isDeleted bit = NULL
 )
 AS
 BEGIN
@@ -131,13 +136,15 @@ BEGIN
 	(
 		[PrintingPaperName],
 		[PurchasePaperDate],
-		[PurcahsePaperQuantity]
+		[PurcahsePaperQuantity],
+		[isDeleted]
 	)
 	VALUES
 	(
 		@PrintingPaperName,
 		@PurchasePaperDate,
-		@PurcahsePaperQuantity
+		@PurcahsePaperQuantity,
+		@isDeleted
 	)
 
 	SET @Err = @@Error
@@ -154,7 +161,7 @@ IF (@@Error = 0) PRINT 'Procedure Creation: proc_PrintingPapersInsert Succeeded'
 ELSE PRINT 'Procedure Creation: proc_PrintingPapersInsert Error on Creation'
 GO
 
-/****** Object:  StoredProcedure [proc_PrintingPapersDelete]    Script Date: 7/23/2015 12:52:38 PM ******/
+/****** Object:  StoredProcedure [proc_PrintingPapersDelete]    Script Date: 30/07/2015 1:07:20 PM ******/
 IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[proc_PrintingPapersDelete]') AND OBJECTPROPERTY(id,N'IsProcedure') = 1)
     DROP PROCEDURE [proc_PrintingPapersDelete];
 GO

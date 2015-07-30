@@ -115,6 +115,14 @@ namespace DAL
 				}
 			}
 			
+			public static SqlParameter IsDeleted
+			{
+				get
+				{
+					return new SqlParameter("@IsDeleted", SqlDbType.Bit, 0);
+				}
+			}
+			
 		}
 		#endregion		
 	
@@ -123,6 +131,7 @@ namespace DAL
 		{  
             public const string DepartmentID = "DepartmentID";
             public const string DepartmentName = "DepartmentName";
+            public const string IsDeleted = "isDeleted";
 
 			static public string ToPropertyName(string columnName)
 			{
@@ -132,6 +141,7 @@ namespace DAL
 					
 					ht[DepartmentID] = _Department.PropertyNames.DepartmentID;
 					ht[DepartmentName] = _Department.PropertyNames.DepartmentName;
+					ht[IsDeleted] = _Department.PropertyNames.IsDeleted;
 
 				}
 				return (string)ht[columnName];
@@ -146,6 +156,7 @@ namespace DAL
 		{  
             public const string DepartmentID = "DepartmentID";
             public const string DepartmentName = "DepartmentName";
+            public const string IsDeleted = "IsDeleted";
 
 			static public string ToColumnName(string propertyName)
 			{
@@ -155,6 +166,7 @@ namespace DAL
 					
 					ht[DepartmentID] = _Department.ColumnNames.DepartmentID;
 					ht[DepartmentName] = _Department.ColumnNames.DepartmentName;
+					ht[IsDeleted] = _Department.ColumnNames.IsDeleted;
 
 				}
 				return (string)ht[propertyName];
@@ -169,6 +181,7 @@ namespace DAL
 		{  
             public const string DepartmentID = "s_DepartmentID";
             public const string DepartmentName = "s_DepartmentName";
+            public const string IsDeleted = "s_IsDeleted";
 
 		}
 		#endregion		
@@ -196,6 +209,18 @@ namespace DAL
 			set
 	        {
 				base.Setstring(ColumnNames.DepartmentName, value);
+			}
+		}
+
+		public virtual bool IsDeleted
+	    {
+			get
+	        {
+				return base.Getbool(ColumnNames.IsDeleted);
+			}
+			set
+	        {
+				base.Setbool(ColumnNames.IsDeleted, value);
 			}
 		}
 
@@ -231,6 +256,21 @@ namespace DAL
 					this.SetColumnNull(ColumnNames.DepartmentName);
 				else
 					this.DepartmentName = base.SetstringAsString(ColumnNames.DepartmentName, value);
+			}
+		}
+
+		public virtual string s_IsDeleted
+	    {
+			get
+	        {
+				return this.IsColumnNull(ColumnNames.IsDeleted) ? string.Empty : base.GetboolAsString(ColumnNames.IsDeleted);
+			}
+			set
+	        {
+				if(string.Empty == value)
+					this.SetColumnNull(ColumnNames.IsDeleted);
+				else
+					this.IsDeleted = base.SetboolAsString(ColumnNames.IsDeleted, value);
 			}
 		}
 
@@ -287,6 +327,16 @@ namespace DAL
 					}
 				}
 
+				public WhereParameter IsDeleted
+				{
+					get
+					{
+							WhereParameter where = new WhereParameter(ColumnNames.IsDeleted, Parameters.IsDeleted);
+							this._clause._entity.Query.AddWhereParameter(where);
+							return where;
+					}
+				}
+
 
 				private WhereClause _clause;
 			}
@@ -316,13 +366,27 @@ namespace DAL
 				}
 			}
 
+			public WhereParameter IsDeleted
+		    {
+				get
+		        {
+					if(_IsDeleted_W == null)
+	        	    {
+						_IsDeleted_W = TearOff.IsDeleted;
+					}
+					return _IsDeleted_W;
+				}
+			}
+
 			private WhereParameter _DepartmentID_W = null;
 			private WhereParameter _DepartmentName_W = null;
+			private WhereParameter _IsDeleted_W = null;
 
 			public void WhereClauseReset()
 			{
 				_DepartmentID_W = null;
 				_DepartmentName_W = null;
+				_IsDeleted_W = null;
 
 				this._entity.Query.FlushWhereParameters();
 
@@ -399,6 +463,16 @@ namespace DAL
 					}
 				}
 
+				public AggregateParameter IsDeleted
+				{
+					get
+					{
+							AggregateParameter aggregate = new AggregateParameter(ColumnNames.IsDeleted, Parameters.IsDeleted);
+							this._clause._entity.Query.AddAggregateParameter(aggregate);
+							return aggregate;
+					}
+				}
+
 
 				private AggregateClause _clause;
 			}
@@ -428,13 +502,27 @@ namespace DAL
 				}
 			}
 
+			public AggregateParameter IsDeleted
+		    {
+				get
+		        {
+					if(_IsDeleted_W == null)
+	        	    {
+						_IsDeleted_W = TearOff.IsDeleted;
+					}
+					return _IsDeleted_W;
+				}
+			}
+
 			private AggregateParameter _DepartmentID_W = null;
 			private AggregateParameter _DepartmentName_W = null;
+			private AggregateParameter _IsDeleted_W = null;
 
 			public void AggregateClauseReset()
 			{
 				_DepartmentID_W = null;
 				_DepartmentName_W = null;
+				_IsDeleted_W = null;
 
 				this._entity.Query.FlushAggregateParameters();
 
@@ -515,6 +603,10 @@ namespace DAL
 
 			p = cmd.Parameters.Add(Parameters.DepartmentName);
 			p.SourceColumn = ColumnNames.DepartmentName;
+			p.SourceVersion = DataRowVersion.Current;
+
+			p = cmd.Parameters.Add(Parameters.IsDeleted);
+			p.SourceColumn = ColumnNames.IsDeleted;
 			p.SourceVersion = DataRowVersion.Current;
 
 

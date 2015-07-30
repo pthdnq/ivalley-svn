@@ -1,5 +1,5 @@
 
-/****** Object:  StoredProcedure [proc_GeneralLookupLoadByPrimaryKey]    Script Date: 7/23/2015 12:52:37 PM ******/
+/****** Object:  StoredProcedure [proc_GeneralLookupLoadByPrimaryKey]    Script Date: 30/07/2015 1:07:20 PM ******/
 IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[proc_GeneralLookupLoadByPrimaryKey]') AND OBJECTPROPERTY(id,N'IsProcedure') = 1)
     DROP PROCEDURE [proc_GeneralLookupLoadByPrimaryKey];
 GO
@@ -19,7 +19,8 @@ BEGIN
 		[Name],
 		[Address],
 		[Telephone],
-		[Email]
+		[Email],
+		[isDeleted]
 	FROM [GeneralLookup]
 	WHERE
 		([GeneralLookupID] = @GeneralLookupID)
@@ -36,7 +37,7 @@ IF (@@Error = 0) PRINT 'Procedure Creation: proc_GeneralLookupLoadByPrimaryKey S
 ELSE PRINT 'Procedure Creation: proc_GeneralLookupLoadByPrimaryKey Error on Creation'
 GO
 
-/****** Object:  StoredProcedure [proc_GeneralLookupLoadAll]    Script Date: 7/23/2015 12:52:37 PM ******/
+/****** Object:  StoredProcedure [proc_GeneralLookupLoadAll]    Script Date: 30/07/2015 1:07:20 PM ******/
 IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[proc_GeneralLookupLoadAll]') AND OBJECTPROPERTY(id,N'IsProcedure') = 1)
     DROP PROCEDURE [proc_GeneralLookupLoadAll];
 GO
@@ -54,7 +55,8 @@ BEGIN
 		[Name],
 		[Address],
 		[Telephone],
-		[Email]
+		[Email],
+		[isDeleted]
 	FROM [GeneralLookup]
 
 	SET @Err = @@Error
@@ -69,7 +71,7 @@ IF (@@Error = 0) PRINT 'Procedure Creation: proc_GeneralLookupLoadAll Succeeded'
 ELSE PRINT 'Procedure Creation: proc_GeneralLookupLoadAll Error on Creation'
 GO
 
-/****** Object:  StoredProcedure [proc_GeneralLookupUpdate]    Script Date: 7/23/2015 12:52:37 PM ******/
+/****** Object:  StoredProcedure [proc_GeneralLookupUpdate]    Script Date: 30/07/2015 1:07:20 PM ******/
 IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[proc_GeneralLookupUpdate]') AND OBJECTPROPERTY(id,N'IsProcedure') = 1)
     DROP PROCEDURE [proc_GeneralLookupUpdate];
 GO
@@ -81,7 +83,8 @@ CREATE PROCEDURE [proc_GeneralLookupUpdate]
 	@Name nvarchar(300) = NULL,
 	@Address nvarchar(300) = NULL,
 	@Telephone nvarchar(300) = NULL,
-	@Email nvarchar(300) = NULL
+	@Email nvarchar(300) = NULL,
+	@isDeleted bit = NULL
 )
 AS
 BEGIN
@@ -95,7 +98,8 @@ BEGIN
 		[Name] = @Name,
 		[Address] = @Address,
 		[Telephone] = @Telephone,
-		[Email] = @Email
+		[Email] = @Email,
+		[isDeleted] = @isDeleted
 	WHERE
 		[GeneralLookupID] = @GeneralLookupID
 
@@ -116,7 +120,7 @@ GO
 
 
 
-/****** Object:  StoredProcedure [proc_GeneralLookupInsert]    Script Date: 7/23/2015 12:52:37 PM ******/
+/****** Object:  StoredProcedure [proc_GeneralLookupInsert]    Script Date: 30/07/2015 1:07:20 PM ******/
 IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[proc_GeneralLookupInsert]') AND OBJECTPROPERTY(id,N'IsProcedure') = 1)
     DROP PROCEDURE [proc_GeneralLookupInsert];
 GO
@@ -128,7 +132,8 @@ CREATE PROCEDURE [proc_GeneralLookupInsert]
 	@Name nvarchar(300) = NULL,
 	@Address nvarchar(300) = NULL,
 	@Telephone nvarchar(300) = NULL,
-	@Email nvarchar(300) = NULL
+	@Email nvarchar(300) = NULL,
+	@isDeleted bit = NULL
 )
 AS
 BEGIN
@@ -143,7 +148,8 @@ BEGIN
 		[Name],
 		[Address],
 		[Telephone],
-		[Email]
+		[Email],
+		[isDeleted]
 	)
 	VALUES
 	(
@@ -151,7 +157,8 @@ BEGIN
 		@Name,
 		@Address,
 		@Telephone,
-		@Email
+		@Email,
+		@isDeleted
 	)
 
 	SET @Err = @@Error
@@ -168,7 +175,7 @@ IF (@@Error = 0) PRINT 'Procedure Creation: proc_GeneralLookupInsert Succeeded'
 ELSE PRINT 'Procedure Creation: proc_GeneralLookupInsert Error on Creation'
 GO
 
-/****** Object:  StoredProcedure [proc_GeneralLookupDelete]    Script Date: 7/23/2015 12:52:37 PM ******/
+/****** Object:  StoredProcedure [proc_GeneralLookupDelete]    Script Date: 30/07/2015 1:07:20 PM ******/
 IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[proc_GeneralLookupDelete]') AND OBJECTPROPERTY(id,N'IsProcedure') = 1)
     DROP PROCEDURE [proc_GeneralLookupDelete];
 GO

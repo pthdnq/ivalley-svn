@@ -41,12 +41,12 @@ using MyGeneration.dOOdads;
 
 namespace DAL
 {
-	public abstract class _TransformationSupplier : SqlClientEntity
+	public abstract class _PrintDetails : SqlClientEntity
 	{
-		public _TransformationSupplier()
+		public _PrintDetails()
 		{
-			this.QuerySource = "TransformationSupplier";
-			this.MappingName = "TransformationSupplier";
+			this.QuerySource = "PrintDetails";
+			this.MappingName = "PrintDetails";
 
 		}	
 
@@ -78,7 +78,7 @@ namespace DAL
 		{
 			ListDictionary parameters = null;
 			
-			return base.LoadFromSql("[" + this.SchemaStoredProcedure + "proc_TransformationSupplierLoadAll]", parameters);
+			return base.LoadFromSql("[" + this.SchemaStoredProcedure + "proc_PrintDetailsLoadAll]", parameters);
 		}
 	
 		//=================================================================
@@ -86,48 +86,56 @@ namespace DAL
 		//=================================================================
 		//  Loads a single row of via the primary key
 		//=================================================================
-		public virtual bool LoadByPrimaryKey(int TransformationSupplierID)
+		public virtual bool LoadByPrimaryKey(int PrintDetailsID)
 		{
 			ListDictionary parameters = new ListDictionary();
-			parameters.Add(Parameters.TransformationSupplierID, TransformationSupplierID);
+			parameters.Add(Parameters.PrintDetailsID, PrintDetailsID);
 
 		
-			return base.LoadFromSql("[" + this.SchemaStoredProcedure + "proc_TransformationSupplierLoadByPrimaryKey]", parameters);
+			return base.LoadFromSql("[" + this.SchemaStoredProcedure + "proc_PrintDetailsLoadByPrimaryKey]", parameters);
 		}
 		
 		#region Parameters
 		protected class Parameters
 		{
 			
-			public static SqlParameter TransformationSupplierID
+			public static SqlParameter PrintDetailsID
 			{
 				get
 				{
-					return new SqlParameter("@TransformationSupplierID", SqlDbType.Int, 0);
+					return new SqlParameter("@PrintDetailsID", SqlDbType.Int, 0);
 				}
 			}
 			
-			public static SqlParameter TransformationSupplierName
+			public static SqlParameter PrintGeneralID
 			{
 				get
 				{
-					return new SqlParameter("@TransformationSupplierName", SqlDbType.NVarChar, 300);
+					return new SqlParameter("@PrintGeneralID", SqlDbType.Int, 0);
 				}
 			}
 			
-			public static SqlParameter TransformationSupplierTelephone
+			public static SqlParameter AfterPrintingJob
 			{
 				get
 				{
-					return new SqlParameter("@TransformationSupplierTelephone", SqlDbType.NVarChar, 50);
+					return new SqlParameter("@AfterPrintingJob", SqlDbType.Int, 0);
 				}
 			}
 			
-			public static SqlParameter TransformationSupplierAddress
+			public static SqlParameter Supplier
 			{
 				get
 				{
-					return new SqlParameter("@TransformationSupplierAddress", SqlDbType.NVarChar, 500);
+					return new SqlParameter("@Supplier", SqlDbType.NVarChar, 50);
+				}
+			}
+			
+			public static SqlParameter Quantity
+			{
+				get
+				{
+					return new SqlParameter("@Quantity", SqlDbType.Int, 0);
 				}
 			}
 			
@@ -145,10 +153,11 @@ namespace DAL
 		#region ColumnNames
 		public class ColumnNames
 		{  
-            public const string TransformationSupplierID = "TransformationSupplierID";
-            public const string TransformationSupplierName = "TransformationSupplierName";
-            public const string TransformationSupplierTelephone = "TransformationSupplierTelephone";
-            public const string TransformationSupplierAddress = "TransformationSupplierAddress";
+            public const string PrintDetailsID = "PrintDetailsID";
+            public const string PrintGeneralID = "PrintGeneralID";
+            public const string AfterPrintingJob = "AfterPrintingJob";
+            public const string Supplier = "Supplier";
+            public const string Quantity = "Quantity";
             public const string IsDeleted = "isDeleted";
 
 			static public string ToPropertyName(string columnName)
@@ -157,11 +166,12 @@ namespace DAL
 				{
 					ht = new Hashtable();
 					
-					ht[TransformationSupplierID] = _TransformationSupplier.PropertyNames.TransformationSupplierID;
-					ht[TransformationSupplierName] = _TransformationSupplier.PropertyNames.TransformationSupplierName;
-					ht[TransformationSupplierTelephone] = _TransformationSupplier.PropertyNames.TransformationSupplierTelephone;
-					ht[TransformationSupplierAddress] = _TransformationSupplier.PropertyNames.TransformationSupplierAddress;
-					ht[IsDeleted] = _TransformationSupplier.PropertyNames.IsDeleted;
+					ht[PrintDetailsID] = _PrintDetails.PropertyNames.PrintDetailsID;
+					ht[PrintGeneralID] = _PrintDetails.PropertyNames.PrintGeneralID;
+					ht[AfterPrintingJob] = _PrintDetails.PropertyNames.AfterPrintingJob;
+					ht[Supplier] = _PrintDetails.PropertyNames.Supplier;
+					ht[Quantity] = _PrintDetails.PropertyNames.Quantity;
+					ht[IsDeleted] = _PrintDetails.PropertyNames.IsDeleted;
 
 				}
 				return (string)ht[columnName];
@@ -174,10 +184,11 @@ namespace DAL
 		#region PropertyNames
 		public class PropertyNames
 		{  
-            public const string TransformationSupplierID = "TransformationSupplierID";
-            public const string TransformationSupplierName = "TransformationSupplierName";
-            public const string TransformationSupplierTelephone = "TransformationSupplierTelephone";
-            public const string TransformationSupplierAddress = "TransformationSupplierAddress";
+            public const string PrintDetailsID = "PrintDetailsID";
+            public const string PrintGeneralID = "PrintGeneralID";
+            public const string AfterPrintingJob = "AfterPrintingJob";
+            public const string Supplier = "Supplier";
+            public const string Quantity = "Quantity";
             public const string IsDeleted = "IsDeleted";
 
 			static public string ToColumnName(string propertyName)
@@ -186,11 +197,12 @@ namespace DAL
 				{
 					ht = new Hashtable();
 					
-					ht[TransformationSupplierID] = _TransformationSupplier.ColumnNames.TransformationSupplierID;
-					ht[TransformationSupplierName] = _TransformationSupplier.ColumnNames.TransformationSupplierName;
-					ht[TransformationSupplierTelephone] = _TransformationSupplier.ColumnNames.TransformationSupplierTelephone;
-					ht[TransformationSupplierAddress] = _TransformationSupplier.ColumnNames.TransformationSupplierAddress;
-					ht[IsDeleted] = _TransformationSupplier.ColumnNames.IsDeleted;
+					ht[PrintDetailsID] = _PrintDetails.ColumnNames.PrintDetailsID;
+					ht[PrintGeneralID] = _PrintDetails.ColumnNames.PrintGeneralID;
+					ht[AfterPrintingJob] = _PrintDetails.ColumnNames.AfterPrintingJob;
+					ht[Supplier] = _PrintDetails.ColumnNames.Supplier;
+					ht[Quantity] = _PrintDetails.ColumnNames.Quantity;
+					ht[IsDeleted] = _PrintDetails.ColumnNames.IsDeleted;
 
 				}
 				return (string)ht[propertyName];
@@ -203,10 +215,11 @@ namespace DAL
 		#region StringPropertyNames
 		public class StringPropertyNames
 		{  
-            public const string TransformationSupplierID = "s_TransformationSupplierID";
-            public const string TransformationSupplierName = "s_TransformationSupplierName";
-            public const string TransformationSupplierTelephone = "s_TransformationSupplierTelephone";
-            public const string TransformationSupplierAddress = "s_TransformationSupplierAddress";
+            public const string PrintDetailsID = "s_PrintDetailsID";
+            public const string PrintGeneralID = "s_PrintGeneralID";
+            public const string AfterPrintingJob = "s_AfterPrintingJob";
+            public const string Supplier = "s_Supplier";
+            public const string Quantity = "s_Quantity";
             public const string IsDeleted = "s_IsDeleted";
 
 		}
@@ -214,51 +227,63 @@ namespace DAL
 		
 		#region Properties
 	
-		public virtual int TransformationSupplierID
+		public virtual int PrintDetailsID
 	    {
 			get
 	        {
-				return base.Getint(ColumnNames.TransformationSupplierID);
+				return base.Getint(ColumnNames.PrintDetailsID);
 			}
 			set
 	        {
-				base.Setint(ColumnNames.TransformationSupplierID, value);
+				base.Setint(ColumnNames.PrintDetailsID, value);
 			}
 		}
 
-		public virtual string TransformationSupplierName
+		public virtual int PrintGeneralID
 	    {
 			get
 	        {
-				return base.Getstring(ColumnNames.TransformationSupplierName);
+				return base.Getint(ColumnNames.PrintGeneralID);
 			}
 			set
 	        {
-				base.Setstring(ColumnNames.TransformationSupplierName, value);
+				base.Setint(ColumnNames.PrintGeneralID, value);
 			}
 		}
 
-		public virtual string TransformationSupplierTelephone
+		public virtual int AfterPrintingJob
 	    {
 			get
 	        {
-				return base.Getstring(ColumnNames.TransformationSupplierTelephone);
+				return base.Getint(ColumnNames.AfterPrintingJob);
 			}
 			set
 	        {
-				base.Setstring(ColumnNames.TransformationSupplierTelephone, value);
+				base.Setint(ColumnNames.AfterPrintingJob, value);
 			}
 		}
 
-		public virtual string TransformationSupplierAddress
+		public virtual string Supplier
 	    {
 			get
 	        {
-				return base.Getstring(ColumnNames.TransformationSupplierAddress);
+				return base.Getstring(ColumnNames.Supplier);
 			}
 			set
 	        {
-				base.Setstring(ColumnNames.TransformationSupplierAddress, value);
+				base.Setstring(ColumnNames.Supplier, value);
+			}
+		}
+
+		public virtual int Quantity
+	    {
+			get
+	        {
+				return base.Getint(ColumnNames.Quantity);
+			}
+			set
+	        {
+				base.Setint(ColumnNames.Quantity, value);
 			}
 		}
 
@@ -279,63 +304,78 @@ namespace DAL
 		
 		#region String Properties
 	
-		public virtual string s_TransformationSupplierID
+		public virtual string s_PrintDetailsID
 	    {
 			get
 	        {
-				return this.IsColumnNull(ColumnNames.TransformationSupplierID) ? string.Empty : base.GetintAsString(ColumnNames.TransformationSupplierID);
+				return this.IsColumnNull(ColumnNames.PrintDetailsID) ? string.Empty : base.GetintAsString(ColumnNames.PrintDetailsID);
 			}
 			set
 	        {
 				if(string.Empty == value)
-					this.SetColumnNull(ColumnNames.TransformationSupplierID);
+					this.SetColumnNull(ColumnNames.PrintDetailsID);
 				else
-					this.TransformationSupplierID = base.SetintAsString(ColumnNames.TransformationSupplierID, value);
+					this.PrintDetailsID = base.SetintAsString(ColumnNames.PrintDetailsID, value);
 			}
 		}
 
-		public virtual string s_TransformationSupplierName
+		public virtual string s_PrintGeneralID
 	    {
 			get
 	        {
-				return this.IsColumnNull(ColumnNames.TransformationSupplierName) ? string.Empty : base.GetstringAsString(ColumnNames.TransformationSupplierName);
+				return this.IsColumnNull(ColumnNames.PrintGeneralID) ? string.Empty : base.GetintAsString(ColumnNames.PrintGeneralID);
 			}
 			set
 	        {
 				if(string.Empty == value)
-					this.SetColumnNull(ColumnNames.TransformationSupplierName);
+					this.SetColumnNull(ColumnNames.PrintGeneralID);
 				else
-					this.TransformationSupplierName = base.SetstringAsString(ColumnNames.TransformationSupplierName, value);
+					this.PrintGeneralID = base.SetintAsString(ColumnNames.PrintGeneralID, value);
 			}
 		}
 
-		public virtual string s_TransformationSupplierTelephone
+		public virtual string s_AfterPrintingJob
 	    {
 			get
 	        {
-				return this.IsColumnNull(ColumnNames.TransformationSupplierTelephone) ? string.Empty : base.GetstringAsString(ColumnNames.TransformationSupplierTelephone);
+				return this.IsColumnNull(ColumnNames.AfterPrintingJob) ? string.Empty : base.GetintAsString(ColumnNames.AfterPrintingJob);
 			}
 			set
 	        {
 				if(string.Empty == value)
-					this.SetColumnNull(ColumnNames.TransformationSupplierTelephone);
+					this.SetColumnNull(ColumnNames.AfterPrintingJob);
 				else
-					this.TransformationSupplierTelephone = base.SetstringAsString(ColumnNames.TransformationSupplierTelephone, value);
+					this.AfterPrintingJob = base.SetintAsString(ColumnNames.AfterPrintingJob, value);
 			}
 		}
 
-		public virtual string s_TransformationSupplierAddress
+		public virtual string s_Supplier
 	    {
 			get
 	        {
-				return this.IsColumnNull(ColumnNames.TransformationSupplierAddress) ? string.Empty : base.GetstringAsString(ColumnNames.TransformationSupplierAddress);
+				return this.IsColumnNull(ColumnNames.Supplier) ? string.Empty : base.GetstringAsString(ColumnNames.Supplier);
 			}
 			set
 	        {
 				if(string.Empty == value)
-					this.SetColumnNull(ColumnNames.TransformationSupplierAddress);
+					this.SetColumnNull(ColumnNames.Supplier);
 				else
-					this.TransformationSupplierAddress = base.SetstringAsString(ColumnNames.TransformationSupplierAddress, value);
+					this.Supplier = base.SetstringAsString(ColumnNames.Supplier, value);
+			}
+		}
+
+		public virtual string s_Quantity
+	    {
+			get
+	        {
+				return this.IsColumnNull(ColumnNames.Quantity) ? string.Empty : base.GetintAsString(ColumnNames.Quantity);
+			}
+			set
+	        {
+				if(string.Empty == value)
+					this.SetColumnNull(ColumnNames.Quantity);
+				else
+					this.Quantity = base.SetintAsString(ColumnNames.Quantity, value);
 			}
 		}
 
@@ -387,41 +427,51 @@ namespace DAL
 				}
 				
 				
-				public WhereParameter TransformationSupplierID
+				public WhereParameter PrintDetailsID
 				{
 					get
 					{
-							WhereParameter where = new WhereParameter(ColumnNames.TransformationSupplierID, Parameters.TransformationSupplierID);
+							WhereParameter where = new WhereParameter(ColumnNames.PrintDetailsID, Parameters.PrintDetailsID);
 							this._clause._entity.Query.AddWhereParameter(where);
 							return where;
 					}
 				}
 
-				public WhereParameter TransformationSupplierName
+				public WhereParameter PrintGeneralID
 				{
 					get
 					{
-							WhereParameter where = new WhereParameter(ColumnNames.TransformationSupplierName, Parameters.TransformationSupplierName);
+							WhereParameter where = new WhereParameter(ColumnNames.PrintGeneralID, Parameters.PrintGeneralID);
 							this._clause._entity.Query.AddWhereParameter(where);
 							return where;
 					}
 				}
 
-				public WhereParameter TransformationSupplierTelephone
+				public WhereParameter AfterPrintingJob
 				{
 					get
 					{
-							WhereParameter where = new WhereParameter(ColumnNames.TransformationSupplierTelephone, Parameters.TransformationSupplierTelephone);
+							WhereParameter where = new WhereParameter(ColumnNames.AfterPrintingJob, Parameters.AfterPrintingJob);
 							this._clause._entity.Query.AddWhereParameter(where);
 							return where;
 					}
 				}
 
-				public WhereParameter TransformationSupplierAddress
+				public WhereParameter Supplier
 				{
 					get
 					{
-							WhereParameter where = new WhereParameter(ColumnNames.TransformationSupplierAddress, Parameters.TransformationSupplierAddress);
+							WhereParameter where = new WhereParameter(ColumnNames.Supplier, Parameters.Supplier);
+							this._clause._entity.Query.AddWhereParameter(where);
+							return where;
+					}
+				}
+
+				public WhereParameter Quantity
+				{
+					get
+					{
+							WhereParameter where = new WhereParameter(ColumnNames.Quantity, Parameters.Quantity);
 							this._clause._entity.Query.AddWhereParameter(where);
 							return where;
 					}
@@ -442,51 +492,63 @@ namespace DAL
 			}
 			#endregion
 		
-			public WhereParameter TransformationSupplierID
+			public WhereParameter PrintDetailsID
 		    {
 				get
 		        {
-					if(_TransformationSupplierID_W == null)
+					if(_PrintDetailsID_W == null)
 	        	    {
-						_TransformationSupplierID_W = TearOff.TransformationSupplierID;
+						_PrintDetailsID_W = TearOff.PrintDetailsID;
 					}
-					return _TransformationSupplierID_W;
+					return _PrintDetailsID_W;
 				}
 			}
 
-			public WhereParameter TransformationSupplierName
+			public WhereParameter PrintGeneralID
 		    {
 				get
 		        {
-					if(_TransformationSupplierName_W == null)
+					if(_PrintGeneralID_W == null)
 	        	    {
-						_TransformationSupplierName_W = TearOff.TransformationSupplierName;
+						_PrintGeneralID_W = TearOff.PrintGeneralID;
 					}
-					return _TransformationSupplierName_W;
+					return _PrintGeneralID_W;
 				}
 			}
 
-			public WhereParameter TransformationSupplierTelephone
+			public WhereParameter AfterPrintingJob
 		    {
 				get
 		        {
-					if(_TransformationSupplierTelephone_W == null)
+					if(_AfterPrintingJob_W == null)
 	        	    {
-						_TransformationSupplierTelephone_W = TearOff.TransformationSupplierTelephone;
+						_AfterPrintingJob_W = TearOff.AfterPrintingJob;
 					}
-					return _TransformationSupplierTelephone_W;
+					return _AfterPrintingJob_W;
 				}
 			}
 
-			public WhereParameter TransformationSupplierAddress
+			public WhereParameter Supplier
 		    {
 				get
 		        {
-					if(_TransformationSupplierAddress_W == null)
+					if(_Supplier_W == null)
 	        	    {
-						_TransformationSupplierAddress_W = TearOff.TransformationSupplierAddress;
+						_Supplier_W = TearOff.Supplier;
 					}
-					return _TransformationSupplierAddress_W;
+					return _Supplier_W;
+				}
+			}
+
+			public WhereParameter Quantity
+		    {
+				get
+		        {
+					if(_Quantity_W == null)
+	        	    {
+						_Quantity_W = TearOff.Quantity;
+					}
+					return _Quantity_W;
 				}
 			}
 
@@ -502,18 +564,20 @@ namespace DAL
 				}
 			}
 
-			private WhereParameter _TransformationSupplierID_W = null;
-			private WhereParameter _TransformationSupplierName_W = null;
-			private WhereParameter _TransformationSupplierTelephone_W = null;
-			private WhereParameter _TransformationSupplierAddress_W = null;
+			private WhereParameter _PrintDetailsID_W = null;
+			private WhereParameter _PrintGeneralID_W = null;
+			private WhereParameter _AfterPrintingJob_W = null;
+			private WhereParameter _Supplier_W = null;
+			private WhereParameter _Quantity_W = null;
 			private WhereParameter _IsDeleted_W = null;
 
 			public void WhereClauseReset()
 			{
-				_TransformationSupplierID_W = null;
-				_TransformationSupplierName_W = null;
-				_TransformationSupplierTelephone_W = null;
-				_TransformationSupplierAddress_W = null;
+				_PrintDetailsID_W = null;
+				_PrintGeneralID_W = null;
+				_AfterPrintingJob_W = null;
+				_Supplier_W = null;
+				_Quantity_W = null;
 				_IsDeleted_W = null;
 
 				this._entity.Query.FlushWhereParameters();
@@ -571,41 +635,51 @@ namespace DAL
 				}
 				
 				
-				public AggregateParameter TransformationSupplierID
+				public AggregateParameter PrintDetailsID
 				{
 					get
 					{
-							AggregateParameter aggregate = new AggregateParameter(ColumnNames.TransformationSupplierID, Parameters.TransformationSupplierID);
+							AggregateParameter aggregate = new AggregateParameter(ColumnNames.PrintDetailsID, Parameters.PrintDetailsID);
 							this._clause._entity.Query.AddAggregateParameter(aggregate);
 							return aggregate;
 					}
 				}
 
-				public AggregateParameter TransformationSupplierName
+				public AggregateParameter PrintGeneralID
 				{
 					get
 					{
-							AggregateParameter aggregate = new AggregateParameter(ColumnNames.TransformationSupplierName, Parameters.TransformationSupplierName);
+							AggregateParameter aggregate = new AggregateParameter(ColumnNames.PrintGeneralID, Parameters.PrintGeneralID);
 							this._clause._entity.Query.AddAggregateParameter(aggregate);
 							return aggregate;
 					}
 				}
 
-				public AggregateParameter TransformationSupplierTelephone
+				public AggregateParameter AfterPrintingJob
 				{
 					get
 					{
-							AggregateParameter aggregate = new AggregateParameter(ColumnNames.TransformationSupplierTelephone, Parameters.TransformationSupplierTelephone);
+							AggregateParameter aggregate = new AggregateParameter(ColumnNames.AfterPrintingJob, Parameters.AfterPrintingJob);
 							this._clause._entity.Query.AddAggregateParameter(aggregate);
 							return aggregate;
 					}
 				}
 
-				public AggregateParameter TransformationSupplierAddress
+				public AggregateParameter Supplier
 				{
 					get
 					{
-							AggregateParameter aggregate = new AggregateParameter(ColumnNames.TransformationSupplierAddress, Parameters.TransformationSupplierAddress);
+							AggregateParameter aggregate = new AggregateParameter(ColumnNames.Supplier, Parameters.Supplier);
+							this._clause._entity.Query.AddAggregateParameter(aggregate);
+							return aggregate;
+					}
+				}
+
+				public AggregateParameter Quantity
+				{
+					get
+					{
+							AggregateParameter aggregate = new AggregateParameter(ColumnNames.Quantity, Parameters.Quantity);
 							this._clause._entity.Query.AddAggregateParameter(aggregate);
 							return aggregate;
 					}
@@ -626,51 +700,63 @@ namespace DAL
 			}
 			#endregion
 		
-			public AggregateParameter TransformationSupplierID
+			public AggregateParameter PrintDetailsID
 		    {
 				get
 		        {
-					if(_TransformationSupplierID_W == null)
+					if(_PrintDetailsID_W == null)
 	        	    {
-						_TransformationSupplierID_W = TearOff.TransformationSupplierID;
+						_PrintDetailsID_W = TearOff.PrintDetailsID;
 					}
-					return _TransformationSupplierID_W;
+					return _PrintDetailsID_W;
 				}
 			}
 
-			public AggregateParameter TransformationSupplierName
+			public AggregateParameter PrintGeneralID
 		    {
 				get
 		        {
-					if(_TransformationSupplierName_W == null)
+					if(_PrintGeneralID_W == null)
 	        	    {
-						_TransformationSupplierName_W = TearOff.TransformationSupplierName;
+						_PrintGeneralID_W = TearOff.PrintGeneralID;
 					}
-					return _TransformationSupplierName_W;
+					return _PrintGeneralID_W;
 				}
 			}
 
-			public AggregateParameter TransformationSupplierTelephone
+			public AggregateParameter AfterPrintingJob
 		    {
 				get
 		        {
-					if(_TransformationSupplierTelephone_W == null)
+					if(_AfterPrintingJob_W == null)
 	        	    {
-						_TransformationSupplierTelephone_W = TearOff.TransformationSupplierTelephone;
+						_AfterPrintingJob_W = TearOff.AfterPrintingJob;
 					}
-					return _TransformationSupplierTelephone_W;
+					return _AfterPrintingJob_W;
 				}
 			}
 
-			public AggregateParameter TransformationSupplierAddress
+			public AggregateParameter Supplier
 		    {
 				get
 		        {
-					if(_TransformationSupplierAddress_W == null)
+					if(_Supplier_W == null)
 	        	    {
-						_TransformationSupplierAddress_W = TearOff.TransformationSupplierAddress;
+						_Supplier_W = TearOff.Supplier;
 					}
-					return _TransformationSupplierAddress_W;
+					return _Supplier_W;
+				}
+			}
+
+			public AggregateParameter Quantity
+		    {
+				get
+		        {
+					if(_Quantity_W == null)
+	        	    {
+						_Quantity_W = TearOff.Quantity;
+					}
+					return _Quantity_W;
 				}
 			}
 
@@ -686,18 +772,20 @@ namespace DAL
 				}
 			}
 
-			private AggregateParameter _TransformationSupplierID_W = null;
-			private AggregateParameter _TransformationSupplierName_W = null;
-			private AggregateParameter _TransformationSupplierTelephone_W = null;
-			private AggregateParameter _TransformationSupplierAddress_W = null;
+			private AggregateParameter _PrintDetailsID_W = null;
+			private AggregateParameter _PrintGeneralID_W = null;
+			private AggregateParameter _AfterPrintingJob_W = null;
+			private AggregateParameter _Supplier_W = null;
+			private AggregateParameter _Quantity_W = null;
 			private AggregateParameter _IsDeleted_W = null;
 
 			public void AggregateClauseReset()
 			{
-				_TransformationSupplierID_W = null;
-				_TransformationSupplierName_W = null;
-				_TransformationSupplierTelephone_W = null;
-				_TransformationSupplierAddress_W = null;
+				_PrintDetailsID_W = null;
+				_PrintGeneralID_W = null;
+				_AfterPrintingJob_W = null;
+				_Supplier_W = null;
+				_Quantity_W = null;
 				_IsDeleted_W = null;
 
 				this._entity.Query.FlushAggregateParameters();
@@ -730,14 +818,10 @@ namespace DAL
 		
 			SqlCommand cmd = new SqlCommand();
 			cmd.CommandType = CommandType.StoredProcedure;
-			cmd.CommandText = "[" + this.SchemaStoredProcedure + "proc_TransformationSupplierInsert]";
+			cmd.CommandText = "[" + this.SchemaStoredProcedure + "proc_PrintDetailsInsert]";
 	
 			CreateParameters(cmd);
-			
-			SqlParameter p;
-			p = cmd.Parameters[Parameters.TransformationSupplierID.ParameterName];
-			p.Direction = ParameterDirection.Output;
-    
+			    
 			return cmd;
 		}
 	
@@ -746,7 +830,7 @@ namespace DAL
 		
 			SqlCommand cmd = new SqlCommand();
 			cmd.CommandType = CommandType.StoredProcedure;
-			cmd.CommandText = "[" + this.SchemaStoredProcedure + "proc_TransformationSupplierUpdate]";
+			cmd.CommandText = "[" + this.SchemaStoredProcedure + "proc_PrintDetailsUpdate]";
 	
 			CreateParameters(cmd);
 			      
@@ -758,11 +842,11 @@ namespace DAL
 		
 			SqlCommand cmd = new SqlCommand();
 			cmd.CommandType = CommandType.StoredProcedure;
-			cmd.CommandText = "[" + this.SchemaStoredProcedure + "proc_TransformationSupplierDelete]";
+			cmd.CommandText = "[" + this.SchemaStoredProcedure + "proc_PrintDetailsDelete]";
 	
 			SqlParameter p;
-			p = cmd.Parameters.Add(Parameters.TransformationSupplierID);
-			p.SourceColumn = ColumnNames.TransformationSupplierID;
+			p = cmd.Parameters.Add(Parameters.PrintDetailsID);
+			p.SourceColumn = ColumnNames.PrintDetailsID;
 			p.SourceVersion = DataRowVersion.Current;
 
   
@@ -773,20 +857,24 @@ namespace DAL
 		{
 			SqlParameter p;
 		
-			p = cmd.Parameters.Add(Parameters.TransformationSupplierID);
-			p.SourceColumn = ColumnNames.TransformationSupplierID;
+			p = cmd.Parameters.Add(Parameters.PrintDetailsID);
+			p.SourceColumn = ColumnNames.PrintDetailsID;
 			p.SourceVersion = DataRowVersion.Current;
 
-			p = cmd.Parameters.Add(Parameters.TransformationSupplierName);
-			p.SourceColumn = ColumnNames.TransformationSupplierName;
+			p = cmd.Parameters.Add(Parameters.PrintGeneralID);
+			p.SourceColumn = ColumnNames.PrintGeneralID;
 			p.SourceVersion = DataRowVersion.Current;
 
-			p = cmd.Parameters.Add(Parameters.TransformationSupplierTelephone);
-			p.SourceColumn = ColumnNames.TransformationSupplierTelephone;
+			p = cmd.Parameters.Add(Parameters.AfterPrintingJob);
+			p.SourceColumn = ColumnNames.AfterPrintingJob;
 			p.SourceVersion = DataRowVersion.Current;
 
-			p = cmd.Parameters.Add(Parameters.TransformationSupplierAddress);
-			p.SourceColumn = ColumnNames.TransformationSupplierAddress;
+			p = cmd.Parameters.Add(Parameters.Supplier);
+			p.SourceColumn = ColumnNames.Supplier;
+			p.SourceVersion = DataRowVersion.Current;
+
+			p = cmd.Parameters.Add(Parameters.Quantity);
+			p.SourceColumn = ColumnNames.Quantity;
 			p.SourceVersion = DataRowVersion.Current;
 
 			p = cmd.Parameters.Add(Parameters.IsDeleted);

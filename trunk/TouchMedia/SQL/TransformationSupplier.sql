@@ -1,5 +1,5 @@
 
-/****** Object:  StoredProcedure [proc_TransformationSupplierLoadByPrimaryKey]    Script Date: 7/23/2015 12:52:38 PM ******/
+/****** Object:  StoredProcedure [proc_TransformationSupplierLoadByPrimaryKey]    Script Date: 30/07/2015 1:07:20 PM ******/
 IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[proc_TransformationSupplierLoadByPrimaryKey]') AND OBJECTPROPERTY(id,N'IsProcedure') = 1)
     DROP PROCEDURE [proc_TransformationSupplierLoadByPrimaryKey];
 GO
@@ -17,7 +17,8 @@ BEGIN
 		[TransformationSupplierID],
 		[TransformationSupplierName],
 		[TransformationSupplierTelephone],
-		[TransformationSupplierAddress]
+		[TransformationSupplierAddress],
+		[isDeleted]
 	FROM [TransformationSupplier]
 	WHERE
 		([TransformationSupplierID] = @TransformationSupplierID)
@@ -34,7 +35,7 @@ IF (@@Error = 0) PRINT 'Procedure Creation: proc_TransformationSupplierLoadByPri
 ELSE PRINT 'Procedure Creation: proc_TransformationSupplierLoadByPrimaryKey Error on Creation'
 GO
 
-/****** Object:  StoredProcedure [proc_TransformationSupplierLoadAll]    Script Date: 7/23/2015 12:52:38 PM ******/
+/****** Object:  StoredProcedure [proc_TransformationSupplierLoadAll]    Script Date: 30/07/2015 1:07:20 PM ******/
 IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[proc_TransformationSupplierLoadAll]') AND OBJECTPROPERTY(id,N'IsProcedure') = 1)
     DROP PROCEDURE [proc_TransformationSupplierLoadAll];
 GO
@@ -50,7 +51,8 @@ BEGIN
 		[TransformationSupplierID],
 		[TransformationSupplierName],
 		[TransformationSupplierTelephone],
-		[TransformationSupplierAddress]
+		[TransformationSupplierAddress],
+		[isDeleted]
 	FROM [TransformationSupplier]
 
 	SET @Err = @@Error
@@ -65,7 +67,7 @@ IF (@@Error = 0) PRINT 'Procedure Creation: proc_TransformationSupplierLoadAll S
 ELSE PRINT 'Procedure Creation: proc_TransformationSupplierLoadAll Error on Creation'
 GO
 
-/****** Object:  StoredProcedure [proc_TransformationSupplierUpdate]    Script Date: 7/23/2015 12:52:38 PM ******/
+/****** Object:  StoredProcedure [proc_TransformationSupplierUpdate]    Script Date: 30/07/2015 1:07:20 PM ******/
 IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[proc_TransformationSupplierUpdate]') AND OBJECTPROPERTY(id,N'IsProcedure') = 1)
     DROP PROCEDURE [proc_TransformationSupplierUpdate];
 GO
@@ -75,7 +77,8 @@ CREATE PROCEDURE [proc_TransformationSupplierUpdate]
 	@TransformationSupplierID int,
 	@TransformationSupplierName nvarchar(300) = NULL,
 	@TransformationSupplierTelephone nvarchar(50) = NULL,
-	@TransformationSupplierAddress nvarchar(500) = NULL
+	@TransformationSupplierAddress nvarchar(500) = NULL,
+	@isDeleted bit = NULL
 )
 AS
 BEGIN
@@ -87,7 +90,8 @@ BEGIN
 	SET
 		[TransformationSupplierName] = @TransformationSupplierName,
 		[TransformationSupplierTelephone] = @TransformationSupplierTelephone,
-		[TransformationSupplierAddress] = @TransformationSupplierAddress
+		[TransformationSupplierAddress] = @TransformationSupplierAddress,
+		[isDeleted] = @isDeleted
 	WHERE
 		[TransformationSupplierID] = @TransformationSupplierID
 
@@ -108,7 +112,7 @@ GO
 
 
 
-/****** Object:  StoredProcedure [proc_TransformationSupplierInsert]    Script Date: 7/23/2015 12:52:38 PM ******/
+/****** Object:  StoredProcedure [proc_TransformationSupplierInsert]    Script Date: 30/07/2015 1:07:20 PM ******/
 IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[proc_TransformationSupplierInsert]') AND OBJECTPROPERTY(id,N'IsProcedure') = 1)
     DROP PROCEDURE [proc_TransformationSupplierInsert];
 GO
@@ -118,7 +122,8 @@ CREATE PROCEDURE [proc_TransformationSupplierInsert]
 	@TransformationSupplierID int = NULL output,
 	@TransformationSupplierName nvarchar(300) = NULL,
 	@TransformationSupplierTelephone nvarchar(50) = NULL,
-	@TransformationSupplierAddress nvarchar(500) = NULL
+	@TransformationSupplierAddress nvarchar(500) = NULL,
+	@isDeleted bit = NULL
 )
 AS
 BEGIN
@@ -131,13 +136,15 @@ BEGIN
 	(
 		[TransformationSupplierName],
 		[TransformationSupplierTelephone],
-		[TransformationSupplierAddress]
+		[TransformationSupplierAddress],
+		[isDeleted]
 	)
 	VALUES
 	(
 		@TransformationSupplierName,
 		@TransformationSupplierTelephone,
-		@TransformationSupplierAddress
+		@TransformationSupplierAddress,
+		@isDeleted
 	)
 
 	SET @Err = @@Error
@@ -154,7 +161,7 @@ IF (@@Error = 0) PRINT 'Procedure Creation: proc_TransformationSupplierInsert Su
 ELSE PRINT 'Procedure Creation: proc_TransformationSupplierInsert Error on Creation'
 GO
 
-/****** Object:  StoredProcedure [proc_TransformationSupplierDelete]    Script Date: 7/23/2015 12:52:38 PM ******/
+/****** Object:  StoredProcedure [proc_TransformationSupplierDelete]    Script Date: 30/07/2015 1:07:20 PM ******/
 IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[proc_TransformationSupplierDelete]') AND OBJECTPROPERTY(id,N'IsProcedure') = 1)
     DROP PROCEDURE [proc_TransformationSupplierDelete];
 GO

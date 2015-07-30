@@ -1,5 +1,5 @@
 
-/****** Object:  StoredProcedure [proc_ClientsLoadByPrimaryKey]    Script Date: 7/23/2015 12:52:37 PM ******/
+/****** Object:  StoredProcedure [proc_ClientsLoadByPrimaryKey]    Script Date: 30/07/2015 1:07:19 PM ******/
 IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[proc_ClientsLoadByPrimaryKey]') AND OBJECTPROPERTY(id,N'IsProcedure') = 1)
     DROP PROCEDURE [proc_ClientsLoadByPrimaryKey];
 GO
@@ -18,7 +18,8 @@ BEGIN
 		[ClientName],
 		[ClientPhone],
 		[ClientEmail],
-		[ClientCode]
+		[ClientCode],
+		[isDeleted]
 	FROM [Clients]
 	WHERE
 		([ClientID] = @ClientID)
@@ -35,7 +36,7 @@ IF (@@Error = 0) PRINT 'Procedure Creation: proc_ClientsLoadByPrimaryKey Succeed
 ELSE PRINT 'Procedure Creation: proc_ClientsLoadByPrimaryKey Error on Creation'
 GO
 
-/****** Object:  StoredProcedure [proc_ClientsLoadAll]    Script Date: 7/23/2015 12:52:37 PM ******/
+/****** Object:  StoredProcedure [proc_ClientsLoadAll]    Script Date: 30/07/2015 1:07:19 PM ******/
 IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[proc_ClientsLoadAll]') AND OBJECTPROPERTY(id,N'IsProcedure') = 1)
     DROP PROCEDURE [proc_ClientsLoadAll];
 GO
@@ -52,7 +53,8 @@ BEGIN
 		[ClientName],
 		[ClientPhone],
 		[ClientEmail],
-		[ClientCode]
+		[ClientCode],
+		[isDeleted]
 	FROM [Clients]
 
 	SET @Err = @@Error
@@ -67,7 +69,7 @@ IF (@@Error = 0) PRINT 'Procedure Creation: proc_ClientsLoadAll Succeeded'
 ELSE PRINT 'Procedure Creation: proc_ClientsLoadAll Error on Creation'
 GO
 
-/****** Object:  StoredProcedure [proc_ClientsUpdate]    Script Date: 7/23/2015 12:52:37 PM ******/
+/****** Object:  StoredProcedure [proc_ClientsUpdate]    Script Date: 30/07/2015 1:07:19 PM ******/
 IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[proc_ClientsUpdate]') AND OBJECTPROPERTY(id,N'IsProcedure') = 1)
     DROP PROCEDURE [proc_ClientsUpdate];
 GO
@@ -78,7 +80,8 @@ CREATE PROCEDURE [proc_ClientsUpdate]
 	@ClientName nvarchar(300) = NULL,
 	@ClientPhone nvarchar(50) = NULL,
 	@ClientEmail nvarchar(300) = NULL,
-	@ClientCode nvarchar(300) = NULL
+	@ClientCode nvarchar(300) = NULL,
+	@isDeleted bit = NULL
 )
 AS
 BEGIN
@@ -91,7 +94,8 @@ BEGIN
 		[ClientName] = @ClientName,
 		[ClientPhone] = @ClientPhone,
 		[ClientEmail] = @ClientEmail,
-		[ClientCode] = @ClientCode
+		[ClientCode] = @ClientCode,
+		[isDeleted] = @isDeleted
 	WHERE
 		[ClientID] = @ClientID
 
@@ -112,7 +116,7 @@ GO
 
 
 
-/****** Object:  StoredProcedure [proc_ClientsInsert]    Script Date: 7/23/2015 12:52:37 PM ******/
+/****** Object:  StoredProcedure [proc_ClientsInsert]    Script Date: 30/07/2015 1:07:19 PM ******/
 IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[proc_ClientsInsert]') AND OBJECTPROPERTY(id,N'IsProcedure') = 1)
     DROP PROCEDURE [proc_ClientsInsert];
 GO
@@ -123,7 +127,8 @@ CREATE PROCEDURE [proc_ClientsInsert]
 	@ClientName nvarchar(300) = NULL,
 	@ClientPhone nvarchar(50) = NULL,
 	@ClientEmail nvarchar(300) = NULL,
-	@ClientCode nvarchar(300) = NULL
+	@ClientCode nvarchar(300) = NULL,
+	@isDeleted bit = NULL
 )
 AS
 BEGIN
@@ -137,14 +142,16 @@ BEGIN
 		[ClientName],
 		[ClientPhone],
 		[ClientEmail],
-		[ClientCode]
+		[ClientCode],
+		[isDeleted]
 	)
 	VALUES
 	(
 		@ClientName,
 		@ClientPhone,
 		@ClientEmail,
-		@ClientCode
+		@ClientCode,
+		@isDeleted
 	)
 
 	SET @Err = @@Error
@@ -161,7 +168,7 @@ IF (@@Error = 0) PRINT 'Procedure Creation: proc_ClientsInsert Succeeded'
 ELSE PRINT 'Procedure Creation: proc_ClientsInsert Error on Creation'
 GO
 
-/****** Object:  StoredProcedure [proc_ClientsDelete]    Script Date: 7/23/2015 12:52:37 PM ******/
+/****** Object:  StoredProcedure [proc_ClientsDelete]    Script Date: 30/07/2015 1:07:19 PM ******/
 IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[proc_ClientsDelete]') AND OBJECTPROPERTY(id,N'IsProcedure') = 1)
     DROP PROCEDURE [proc_ClientsDelete];
 GO

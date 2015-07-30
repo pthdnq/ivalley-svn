@@ -1,5 +1,5 @@
 
-/****** Object:  StoredProcedure [proc_ProductionLoadByPrimaryKey]    Script Date: 7/23/2015 12:52:38 PM ******/
+/****** Object:  StoredProcedure [proc_ProductionLoadByPrimaryKey]    Script Date: 30/07/2015 1:07:20 PM ******/
 IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[proc_ProductionLoadByPrimaryKey]') AND OBJECTPROPERTY(id,N'IsProcedure') = 1)
     DROP PROCEDURE [proc_ProductionLoadByPrimaryKey];
 GO
@@ -22,16 +22,18 @@ BEGIN
 		[DeliveryDate],
 		[SupplierID],
 		[DeliveryTo],
+		[DeliveryAddress],
 		[ISRemovable],
 		[RemovableDate],
 		[installationDate],
 		[ProductStatusID],
-		[InstallStationID],
+		[InstallStatusID],
 		[Note],
 		[CreatedBy],
 		[CreatedDate],
 		[UpdatedBy],
-		[LastUpdatedDate]
+		[LastUpdatedDate],
+		[isDeleted]
 	FROM [Production]
 	WHERE
 		([ProductionID] = @ProductionID)
@@ -48,7 +50,7 @@ IF (@@Error = 0) PRINT 'Procedure Creation: proc_ProductionLoadByPrimaryKey Succ
 ELSE PRINT 'Procedure Creation: proc_ProductionLoadByPrimaryKey Error on Creation'
 GO
 
-/****** Object:  StoredProcedure [proc_ProductionLoadAll]    Script Date: 7/23/2015 12:52:38 PM ******/
+/****** Object:  StoredProcedure [proc_ProductionLoadAll]    Script Date: 30/07/2015 1:07:20 PM ******/
 IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[proc_ProductionLoadAll]') AND OBJECTPROPERTY(id,N'IsProcedure') = 1)
     DROP PROCEDURE [proc_ProductionLoadAll];
 GO
@@ -69,16 +71,18 @@ BEGIN
 		[DeliveryDate],
 		[SupplierID],
 		[DeliveryTo],
+		[DeliveryAddress],
 		[ISRemovable],
 		[RemovableDate],
 		[installationDate],
 		[ProductStatusID],
-		[InstallStationID],
+		[InstallStatusID],
 		[Note],
 		[CreatedBy],
 		[CreatedDate],
 		[UpdatedBy],
-		[LastUpdatedDate]
+		[LastUpdatedDate],
+		[isDeleted]
 	FROM [Production]
 
 	SET @Err = @@Error
@@ -93,7 +97,7 @@ IF (@@Error = 0) PRINT 'Procedure Creation: proc_ProductionLoadAll Succeeded'
 ELSE PRINT 'Procedure Creation: proc_ProductionLoadAll Error on Creation'
 GO
 
-/****** Object:  StoredProcedure [proc_ProductionUpdate]    Script Date: 7/23/2015 12:52:38 PM ******/
+/****** Object:  StoredProcedure [proc_ProductionUpdate]    Script Date: 30/07/2015 1:07:20 PM ******/
 IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[proc_ProductionUpdate]') AND OBJECTPROPERTY(id,N'IsProcedure') = 1)
     DROP PROCEDURE [proc_ProductionUpdate];
 GO
@@ -107,17 +111,19 @@ CREATE PROCEDURE [proc_ProductionUpdate]
 	@MaterialID int = NULL,
 	@DeliveryDate datetime = NULL,
 	@SupplierID int = NULL,
-	@DeliveryTo nvarchar(500) = NULL,
+	@DeliveryTo nvarchar(50) = NULL,
+	@DeliveryAddress nvarchar(500) = NULL,
 	@ISRemovable bit = NULL,
 	@RemovableDate datetime = NULL,
 	@installationDate datetime = NULL,
 	@ProductStatusID int = NULL,
-	@InstallStationID int = NULL,
+	@InstallStatusID int = NULL,
 	@Note nvarchar(500) = NULL,
 	@CreatedBy uniqueidentifier = NULL,
 	@CreatedDate datetime = NULL,
 	@UpdatedBy uniqueidentifier = NULL,
-	@LastUpdatedDate datetime = NULL
+	@LastUpdatedDate datetime = NULL,
+	@isDeleted bit = NULL
 )
 AS
 BEGIN
@@ -134,16 +140,18 @@ BEGIN
 		[DeliveryDate] = @DeliveryDate,
 		[SupplierID] = @SupplierID,
 		[DeliveryTo] = @DeliveryTo,
+		[DeliveryAddress] = @DeliveryAddress,
 		[ISRemovable] = @ISRemovable,
 		[RemovableDate] = @RemovableDate,
 		[installationDate] = @installationDate,
 		[ProductStatusID] = @ProductStatusID,
-		[InstallStationID] = @InstallStationID,
+		[InstallStatusID] = @InstallStatusID,
 		[Note] = @Note,
 		[CreatedBy] = @CreatedBy,
 		[CreatedDate] = @CreatedDate,
 		[UpdatedBy] = @UpdatedBy,
-		[LastUpdatedDate] = @LastUpdatedDate
+		[LastUpdatedDate] = @LastUpdatedDate,
+		[isDeleted] = @isDeleted
 	WHERE
 		[ProductionID] = @ProductionID
 
@@ -164,7 +172,7 @@ GO
 
 
 
-/****** Object:  StoredProcedure [proc_ProductionInsert]    Script Date: 7/23/2015 12:52:38 PM ******/
+/****** Object:  StoredProcedure [proc_ProductionInsert]    Script Date: 30/07/2015 1:07:20 PM ******/
 IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[proc_ProductionInsert]') AND OBJECTPROPERTY(id,N'IsProcedure') = 1)
     DROP PROCEDURE [proc_ProductionInsert];
 GO
@@ -178,17 +186,19 @@ CREATE PROCEDURE [proc_ProductionInsert]
 	@MaterialID int = NULL,
 	@DeliveryDate datetime = NULL,
 	@SupplierID int = NULL,
-	@DeliveryTo nvarchar(500) = NULL,
+	@DeliveryTo nvarchar(50) = NULL,
+	@DeliveryAddress nvarchar(500) = NULL,
 	@ISRemovable bit = NULL,
 	@RemovableDate datetime = NULL,
 	@installationDate datetime = NULL,
 	@ProductStatusID int = NULL,
-	@InstallStationID int = NULL,
+	@InstallStatusID int = NULL,
 	@Note nvarchar(500) = NULL,
 	@CreatedBy uniqueidentifier = NULL,
 	@CreatedDate datetime = NULL,
 	@UpdatedBy uniqueidentifier = NULL,
-	@LastUpdatedDate datetime = NULL
+	@LastUpdatedDate datetime = NULL,
+	@isDeleted bit = NULL
 )
 AS
 BEGIN
@@ -206,16 +216,18 @@ BEGIN
 		[DeliveryDate],
 		[SupplierID],
 		[DeliveryTo],
+		[DeliveryAddress],
 		[ISRemovable],
 		[RemovableDate],
 		[installationDate],
 		[ProductStatusID],
-		[InstallStationID],
+		[InstallStatusID],
 		[Note],
 		[CreatedBy],
 		[CreatedDate],
 		[UpdatedBy],
-		[LastUpdatedDate]
+		[LastUpdatedDate],
+		[isDeleted]
 	)
 	VALUES
 	(
@@ -226,16 +238,18 @@ BEGIN
 		@DeliveryDate,
 		@SupplierID,
 		@DeliveryTo,
+		@DeliveryAddress,
 		@ISRemovable,
 		@RemovableDate,
 		@installationDate,
 		@ProductStatusID,
-		@InstallStationID,
+		@InstallStatusID,
 		@Note,
 		@CreatedBy,
 		@CreatedDate,
 		@UpdatedBy,
-		@LastUpdatedDate
+		@LastUpdatedDate,
+		@isDeleted
 	)
 
 	SET @Err = @@Error
@@ -252,7 +266,7 @@ IF (@@Error = 0) PRINT 'Procedure Creation: proc_ProductionInsert Succeeded'
 ELSE PRINT 'Procedure Creation: proc_ProductionInsert Error on Creation'
 GO
 
-/****** Object:  StoredProcedure [proc_ProductionDelete]    Script Date: 7/23/2015 12:52:38 PM ******/
+/****** Object:  StoredProcedure [proc_ProductionDelete]    Script Date: 30/07/2015 1:07:20 PM ******/
 IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[proc_ProductionDelete]') AND OBJECTPROPERTY(id,N'IsProcedure') = 1)
     DROP PROCEDURE [proc_ProductionDelete];
 GO

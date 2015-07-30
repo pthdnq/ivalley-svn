@@ -163,6 +163,14 @@ namespace DAL
 				}
 			}
 			
+			public static SqlParameter IsDeleted
+			{
+				get
+				{
+					return new SqlParameter("@IsDeleted", SqlDbType.Bit, 0);
+				}
+			}
+			
 		}
 		#endregion		
 	
@@ -177,6 +185,7 @@ namespace DAL
             public const string IsNew = "IsNew";
             public const string IsAvalible = "IsAvalible";
             public const string IsMaintenance = "IsMaintenance";
+            public const string IsDeleted = "isDeleted";
 
 			static public string ToPropertyName(string columnName)
 			{
@@ -192,6 +201,7 @@ namespace DAL
 					ht[IsNew] = _needs.PropertyNames.IsNew;
 					ht[IsAvalible] = _needs.PropertyNames.IsAvalible;
 					ht[IsMaintenance] = _needs.PropertyNames.IsMaintenance;
+					ht[IsDeleted] = _needs.PropertyNames.IsDeleted;
 
 				}
 				return (string)ht[columnName];
@@ -212,6 +222,7 @@ namespace DAL
             public const string IsNew = "IsNew";
             public const string IsAvalible = "IsAvalible";
             public const string IsMaintenance = "IsMaintenance";
+            public const string IsDeleted = "IsDeleted";
 
 			static public string ToColumnName(string propertyName)
 			{
@@ -227,6 +238,7 @@ namespace DAL
 					ht[IsNew] = _needs.ColumnNames.IsNew;
 					ht[IsAvalible] = _needs.ColumnNames.IsAvalible;
 					ht[IsMaintenance] = _needs.ColumnNames.IsMaintenance;
+					ht[IsDeleted] = _needs.ColumnNames.IsDeleted;
 
 				}
 				return (string)ht[propertyName];
@@ -247,6 +259,7 @@ namespace DAL
             public const string IsNew = "s_IsNew";
             public const string IsAvalible = "s_IsAvalible";
             public const string IsMaintenance = "s_IsMaintenance";
+            public const string IsDeleted = "s_IsDeleted";
 
 		}
 		#endregion		
@@ -346,6 +359,18 @@ namespace DAL
 			set
 	        {
 				base.Setbool(ColumnNames.IsMaintenance, value);
+			}
+		}
+
+		public virtual bool IsDeleted
+	    {
+			get
+	        {
+				return base.Getbool(ColumnNames.IsDeleted);
+			}
+			set
+	        {
+				base.Setbool(ColumnNames.IsDeleted, value);
 			}
 		}
 
@@ -474,6 +499,21 @@ namespace DAL
 			}
 		}
 
+		public virtual string s_IsDeleted
+	    {
+			get
+	        {
+				return this.IsColumnNull(ColumnNames.IsDeleted) ? string.Empty : base.GetboolAsString(ColumnNames.IsDeleted);
+			}
+			set
+	        {
+				if(string.Empty == value)
+					this.SetColumnNull(ColumnNames.IsDeleted);
+				else
+					this.IsDeleted = base.SetboolAsString(ColumnNames.IsDeleted, value);
+			}
+		}
+
 
 		#endregion		
 	
@@ -587,6 +627,16 @@ namespace DAL
 					}
 				}
 
+				public WhereParameter IsDeleted
+				{
+					get
+					{
+							WhereParameter where = new WhereParameter(ColumnNames.IsDeleted, Parameters.IsDeleted);
+							this._clause._entity.Query.AddWhereParameter(where);
+							return where;
+					}
+				}
+
 
 				private WhereClause _clause;
 			}
@@ -688,6 +738,18 @@ namespace DAL
 				}
 			}
 
+			public WhereParameter IsDeleted
+		    {
+				get
+		        {
+					if(_IsDeleted_W == null)
+	        	    {
+						_IsDeleted_W = TearOff.IsDeleted;
+					}
+					return _IsDeleted_W;
+				}
+			}
+
 			private WhereParameter _NeedID_W = null;
 			private WhereParameter _JobOrderID_W = null;
 			private WhereParameter _NeedName_W = null;
@@ -696,6 +758,7 @@ namespace DAL
 			private WhereParameter _IsNew_W = null;
 			private WhereParameter _IsAvalible_W = null;
 			private WhereParameter _IsMaintenance_W = null;
+			private WhereParameter _IsDeleted_W = null;
 
 			public void WhereClauseReset()
 			{
@@ -707,6 +770,7 @@ namespace DAL
 				_IsNew_W = null;
 				_IsAvalible_W = null;
 				_IsMaintenance_W = null;
+				_IsDeleted_W = null;
 
 				this._entity.Query.FlushWhereParameters();
 
@@ -843,6 +907,16 @@ namespace DAL
 					}
 				}
 
+				public AggregateParameter IsDeleted
+				{
+					get
+					{
+							AggregateParameter aggregate = new AggregateParameter(ColumnNames.IsDeleted, Parameters.IsDeleted);
+							this._clause._entity.Query.AddAggregateParameter(aggregate);
+							return aggregate;
+					}
+				}
+
 
 				private AggregateClause _clause;
 			}
@@ -944,6 +1018,18 @@ namespace DAL
 				}
 			}
 
+			public AggregateParameter IsDeleted
+		    {
+				get
+		        {
+					if(_IsDeleted_W == null)
+	        	    {
+						_IsDeleted_W = TearOff.IsDeleted;
+					}
+					return _IsDeleted_W;
+				}
+			}
+
 			private AggregateParameter _NeedID_W = null;
 			private AggregateParameter _JobOrderID_W = null;
 			private AggregateParameter _NeedName_W = null;
@@ -952,6 +1038,7 @@ namespace DAL
 			private AggregateParameter _IsNew_W = null;
 			private AggregateParameter _IsAvalible_W = null;
 			private AggregateParameter _IsMaintenance_W = null;
+			private AggregateParameter _IsDeleted_W = null;
 
 			public void AggregateClauseReset()
 			{
@@ -963,6 +1050,7 @@ namespace DAL
 				_IsNew_W = null;
 				_IsAvalible_W = null;
 				_IsMaintenance_W = null;
+				_IsDeleted_W = null;
 
 				this._entity.Query.FlushAggregateParameters();
 
@@ -1067,6 +1155,10 @@ namespace DAL
 
 			p = cmd.Parameters.Add(Parameters.IsMaintenance);
 			p.SourceColumn = ColumnNames.IsMaintenance;
+			p.SourceVersion = DataRowVersion.Current;
+
+			p = cmd.Parameters.Add(Parameters.IsDeleted);
+			p.SourceColumn = ColumnNames.IsDeleted;
 			p.SourceVersion = DataRowVersion.Current;
 
 

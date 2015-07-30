@@ -32,6 +32,12 @@ namespace TouchMediaGUI
                     PanelJobOrderDetails.Visible = true;
                     PanelJobOrderMasterDetails.Visible = true;
                 }
+                else if (CurrentPurchaseOrder>0)
+                {
+                    PanelJobOrderDetails.Visible = true;
+                    btnBackToGrid.Visible = false;
+                    btnCancelMasterJobOrder.Visible = true;                    
+                }
                 else
                 {
                     PanelJobOrdersGrid.Visible = true;
@@ -143,6 +149,20 @@ namespace TouchMediaGUI
             JO.GetAllJos();
             GrdViewJobOrders.DataSource = JO.DefaultView;
             GrdViewJobOrders.DataBind();
+        }
+        private int CurrentPurchaseOrder
+        {
+            get
+            {
+                if (!string.IsNullOrEmpty(Request.QueryString["PurchaseOrderID"]))
+                {
+                    return int.Parse(Request.QueryString["PurchaseOrderID"].ToString());
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
         private void ClearFields()
         {
