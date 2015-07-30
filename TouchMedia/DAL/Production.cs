@@ -159,7 +159,15 @@ namespace DAL
 			{
 				get
 				{
-					return new SqlParameter("@DeliveryTo", SqlDbType.NVarChar, 500);
+					return new SqlParameter("@DeliveryTo", SqlDbType.NVarChar, 50);
+				}
+			}
+			
+			public static SqlParameter DeliveryAddress
+			{
+				get
+				{
+					return new SqlParameter("@DeliveryAddress", SqlDbType.NVarChar, 500);
 				}
 			}
 			
@@ -195,11 +203,11 @@ namespace DAL
 				}
 			}
 			
-			public static SqlParameter InstallStationID
+			public static SqlParameter InstallStatusID
 			{
 				get
 				{
-					return new SqlParameter("@InstallStationID", SqlDbType.Int, 0);
+					return new SqlParameter("@InstallStatusID", SqlDbType.Int, 0);
 				}
 			}
 			
@@ -243,6 +251,14 @@ namespace DAL
 				}
 			}
 			
+			public static SqlParameter IsDeleted
+			{
+				get
+				{
+					return new SqlParameter("@IsDeleted", SqlDbType.Bit, 0);
+				}
+			}
+			
 		}
 		#endregion		
 	
@@ -257,16 +273,18 @@ namespace DAL
             public const string DeliveryDate = "DeliveryDate";
             public const string SupplierID = "SupplierID";
             public const string DeliveryTo = "DeliveryTo";
+            public const string DeliveryAddress = "DeliveryAddress";
             public const string ISRemovable = "ISRemovable";
             public const string RemovableDate = "RemovableDate";
             public const string InstallationDate = "installationDate";
             public const string ProductStatusID = "ProductStatusID";
-            public const string InstallStationID = "InstallStationID";
+            public const string InstallStatusID = "InstallStatusID";
             public const string Note = "Note";
             public const string CreatedBy = "CreatedBy";
             public const string CreatedDate = "CreatedDate";
             public const string UpdatedBy = "UpdatedBy";
             public const string LastUpdatedDate = "LastUpdatedDate";
+            public const string IsDeleted = "isDeleted";
 
 			static public string ToPropertyName(string columnName)
 			{
@@ -282,16 +300,18 @@ namespace DAL
 					ht[DeliveryDate] = _Production.PropertyNames.DeliveryDate;
 					ht[SupplierID] = _Production.PropertyNames.SupplierID;
 					ht[DeliveryTo] = _Production.PropertyNames.DeliveryTo;
+					ht[DeliveryAddress] = _Production.PropertyNames.DeliveryAddress;
 					ht[ISRemovable] = _Production.PropertyNames.ISRemovable;
 					ht[RemovableDate] = _Production.PropertyNames.RemovableDate;
 					ht[InstallationDate] = _Production.PropertyNames.InstallationDate;
 					ht[ProductStatusID] = _Production.PropertyNames.ProductStatusID;
-					ht[InstallStationID] = _Production.PropertyNames.InstallStationID;
+					ht[InstallStatusID] = _Production.PropertyNames.InstallStatusID;
 					ht[Note] = _Production.PropertyNames.Note;
 					ht[CreatedBy] = _Production.PropertyNames.CreatedBy;
 					ht[CreatedDate] = _Production.PropertyNames.CreatedDate;
 					ht[UpdatedBy] = _Production.PropertyNames.UpdatedBy;
 					ht[LastUpdatedDate] = _Production.PropertyNames.LastUpdatedDate;
+					ht[IsDeleted] = _Production.PropertyNames.IsDeleted;
 
 				}
 				return (string)ht[columnName];
@@ -312,16 +332,18 @@ namespace DAL
             public const string DeliveryDate = "DeliveryDate";
             public const string SupplierID = "SupplierID";
             public const string DeliveryTo = "DeliveryTo";
+            public const string DeliveryAddress = "DeliveryAddress";
             public const string ISRemovable = "ISRemovable";
             public const string RemovableDate = "RemovableDate";
             public const string InstallationDate = "InstallationDate";
             public const string ProductStatusID = "ProductStatusID";
-            public const string InstallStationID = "InstallStationID";
+            public const string InstallStatusID = "InstallStatusID";
             public const string Note = "Note";
             public const string CreatedBy = "CreatedBy";
             public const string CreatedDate = "CreatedDate";
             public const string UpdatedBy = "UpdatedBy";
             public const string LastUpdatedDate = "LastUpdatedDate";
+            public const string IsDeleted = "IsDeleted";
 
 			static public string ToColumnName(string propertyName)
 			{
@@ -337,16 +359,18 @@ namespace DAL
 					ht[DeliveryDate] = _Production.ColumnNames.DeliveryDate;
 					ht[SupplierID] = _Production.ColumnNames.SupplierID;
 					ht[DeliveryTo] = _Production.ColumnNames.DeliveryTo;
+					ht[DeliveryAddress] = _Production.ColumnNames.DeliveryAddress;
 					ht[ISRemovable] = _Production.ColumnNames.ISRemovable;
 					ht[RemovableDate] = _Production.ColumnNames.RemovableDate;
 					ht[InstallationDate] = _Production.ColumnNames.InstallationDate;
 					ht[ProductStatusID] = _Production.ColumnNames.ProductStatusID;
-					ht[InstallStationID] = _Production.ColumnNames.InstallStationID;
+					ht[InstallStatusID] = _Production.ColumnNames.InstallStatusID;
 					ht[Note] = _Production.ColumnNames.Note;
 					ht[CreatedBy] = _Production.ColumnNames.CreatedBy;
 					ht[CreatedDate] = _Production.ColumnNames.CreatedDate;
 					ht[UpdatedBy] = _Production.ColumnNames.UpdatedBy;
 					ht[LastUpdatedDate] = _Production.ColumnNames.LastUpdatedDate;
+					ht[IsDeleted] = _Production.ColumnNames.IsDeleted;
 
 				}
 				return (string)ht[propertyName];
@@ -367,16 +391,18 @@ namespace DAL
             public const string DeliveryDate = "s_DeliveryDate";
             public const string SupplierID = "s_SupplierID";
             public const string DeliveryTo = "s_DeliveryTo";
+            public const string DeliveryAddress = "s_DeliveryAddress";
             public const string ISRemovable = "s_ISRemovable";
             public const string RemovableDate = "s_RemovableDate";
             public const string InstallationDate = "s_InstallationDate";
             public const string ProductStatusID = "s_ProductStatusID";
-            public const string InstallStationID = "s_InstallStationID";
+            public const string InstallStatusID = "s_InstallStatusID";
             public const string Note = "s_Note";
             public const string CreatedBy = "s_CreatedBy";
             public const string CreatedDate = "s_CreatedDate";
             public const string UpdatedBy = "s_UpdatedBy";
             public const string LastUpdatedDate = "s_LastUpdatedDate";
+            public const string IsDeleted = "s_IsDeleted";
 
 		}
 		#endregion		
@@ -479,6 +505,18 @@ namespace DAL
 			}
 		}
 
+		public virtual string DeliveryAddress
+	    {
+			get
+	        {
+				return base.Getstring(ColumnNames.DeliveryAddress);
+			}
+			set
+	        {
+				base.Setstring(ColumnNames.DeliveryAddress, value);
+			}
+		}
+
 		public virtual bool ISRemovable
 	    {
 			get
@@ -527,15 +565,15 @@ namespace DAL
 			}
 		}
 
-		public virtual int InstallStationID
+		public virtual int InstallStatusID
 	    {
 			get
 	        {
-				return base.Getint(ColumnNames.InstallStationID);
+				return base.Getint(ColumnNames.InstallStatusID);
 			}
 			set
 	        {
-				base.Setint(ColumnNames.InstallStationID, value);
+				base.Setint(ColumnNames.InstallStatusID, value);
 			}
 		}
 
@@ -596,6 +634,18 @@ namespace DAL
 			set
 	        {
 				base.SetDateTime(ColumnNames.LastUpdatedDate, value);
+			}
+		}
+
+		public virtual bool IsDeleted
+	    {
+			get
+	        {
+				return base.Getbool(ColumnNames.IsDeleted);
+			}
+			set
+	        {
+				base.Setbool(ColumnNames.IsDeleted, value);
 			}
 		}
 
@@ -724,6 +774,21 @@ namespace DAL
 			}
 		}
 
+		public virtual string s_DeliveryAddress
+	    {
+			get
+	        {
+				return this.IsColumnNull(ColumnNames.DeliveryAddress) ? string.Empty : base.GetstringAsString(ColumnNames.DeliveryAddress);
+			}
+			set
+	        {
+				if(string.Empty == value)
+					this.SetColumnNull(ColumnNames.DeliveryAddress);
+				else
+					this.DeliveryAddress = base.SetstringAsString(ColumnNames.DeliveryAddress, value);
+			}
+		}
+
 		public virtual string s_ISRemovable
 	    {
 			get
@@ -784,18 +849,18 @@ namespace DAL
 			}
 		}
 
-		public virtual string s_InstallStationID
+		public virtual string s_InstallStatusID
 	    {
 			get
 	        {
-				return this.IsColumnNull(ColumnNames.InstallStationID) ? string.Empty : base.GetintAsString(ColumnNames.InstallStationID);
+				return this.IsColumnNull(ColumnNames.InstallStatusID) ? string.Empty : base.GetintAsString(ColumnNames.InstallStatusID);
 			}
 			set
 	        {
 				if(string.Empty == value)
-					this.SetColumnNull(ColumnNames.InstallStationID);
+					this.SetColumnNull(ColumnNames.InstallStatusID);
 				else
-					this.InstallStationID = base.SetintAsString(ColumnNames.InstallStationID, value);
+					this.InstallStatusID = base.SetintAsString(ColumnNames.InstallStatusID, value);
 			}
 		}
 
@@ -871,6 +936,21 @@ namespace DAL
 					this.SetColumnNull(ColumnNames.LastUpdatedDate);
 				else
 					this.LastUpdatedDate = base.SetDateTimeAsString(ColumnNames.LastUpdatedDate, value);
+			}
+		}
+
+		public virtual string s_IsDeleted
+	    {
+			get
+	        {
+				return this.IsColumnNull(ColumnNames.IsDeleted) ? string.Empty : base.GetboolAsString(ColumnNames.IsDeleted);
+			}
+			set
+	        {
+				if(string.Empty == value)
+					this.SetColumnNull(ColumnNames.IsDeleted);
+				else
+					this.IsDeleted = base.SetboolAsString(ColumnNames.IsDeleted, value);
 			}
 		}
 
@@ -987,6 +1067,16 @@ namespace DAL
 					}
 				}
 
+				public WhereParameter DeliveryAddress
+				{
+					get
+					{
+							WhereParameter where = new WhereParameter(ColumnNames.DeliveryAddress, Parameters.DeliveryAddress);
+							this._clause._entity.Query.AddWhereParameter(where);
+							return where;
+					}
+				}
+
 				public WhereParameter ISRemovable
 				{
 					get
@@ -1027,11 +1117,11 @@ namespace DAL
 					}
 				}
 
-				public WhereParameter InstallStationID
+				public WhereParameter InstallStatusID
 				{
 					get
 					{
-							WhereParameter where = new WhereParameter(ColumnNames.InstallStationID, Parameters.InstallStationID);
+							WhereParameter where = new WhereParameter(ColumnNames.InstallStatusID, Parameters.InstallStatusID);
 							this._clause._entity.Query.AddWhereParameter(where);
 							return where;
 					}
@@ -1082,6 +1172,16 @@ namespace DAL
 					get
 					{
 							WhereParameter where = new WhereParameter(ColumnNames.LastUpdatedDate, Parameters.LastUpdatedDate);
+							this._clause._entity.Query.AddWhereParameter(where);
+							return where;
+					}
+				}
+
+				public WhereParameter IsDeleted
+				{
+					get
+					{
+							WhereParameter where = new WhereParameter(ColumnNames.IsDeleted, Parameters.IsDeleted);
 							this._clause._entity.Query.AddWhereParameter(where);
 							return where;
 					}
@@ -1188,6 +1288,18 @@ namespace DAL
 				}
 			}
 
+			public WhereParameter DeliveryAddress
+		    {
+				get
+		        {
+					if(_DeliveryAddress_W == null)
+	        	    {
+						_DeliveryAddress_W = TearOff.DeliveryAddress;
+					}
+					return _DeliveryAddress_W;
+				}
+			}
+
 			public WhereParameter ISRemovable
 		    {
 				get
@@ -1236,15 +1348,15 @@ namespace DAL
 				}
 			}
 
-			public WhereParameter InstallStationID
+			public WhereParameter InstallStatusID
 		    {
 				get
 		        {
-					if(_InstallStationID_W == null)
+					if(_InstallStatusID_W == null)
 	        	    {
-						_InstallStationID_W = TearOff.InstallStationID;
+						_InstallStatusID_W = TearOff.InstallStatusID;
 					}
-					return _InstallStationID_W;
+					return _InstallStatusID_W;
 				}
 			}
 
@@ -1308,6 +1420,18 @@ namespace DAL
 				}
 			}
 
+			public WhereParameter IsDeleted
+		    {
+				get
+		        {
+					if(_IsDeleted_W == null)
+	        	    {
+						_IsDeleted_W = TearOff.IsDeleted;
+					}
+					return _IsDeleted_W;
+				}
+			}
+
 			private WhereParameter _ProductionID_W = null;
 			private WhereParameter _JobOrderID_W = null;
 			private WhereParameter _ItemID_W = null;
@@ -1316,16 +1440,18 @@ namespace DAL
 			private WhereParameter _DeliveryDate_W = null;
 			private WhereParameter _SupplierID_W = null;
 			private WhereParameter _DeliveryTo_W = null;
+			private WhereParameter _DeliveryAddress_W = null;
 			private WhereParameter _ISRemovable_W = null;
 			private WhereParameter _RemovableDate_W = null;
 			private WhereParameter _InstallationDate_W = null;
 			private WhereParameter _ProductStatusID_W = null;
-			private WhereParameter _InstallStationID_W = null;
+			private WhereParameter _InstallStatusID_W = null;
 			private WhereParameter _Note_W = null;
 			private WhereParameter _CreatedBy_W = null;
 			private WhereParameter _CreatedDate_W = null;
 			private WhereParameter _UpdatedBy_W = null;
 			private WhereParameter _LastUpdatedDate_W = null;
+			private WhereParameter _IsDeleted_W = null;
 
 			public void WhereClauseReset()
 			{
@@ -1337,16 +1463,18 @@ namespace DAL
 				_DeliveryDate_W = null;
 				_SupplierID_W = null;
 				_DeliveryTo_W = null;
+				_DeliveryAddress_W = null;
 				_ISRemovable_W = null;
 				_RemovableDate_W = null;
 				_InstallationDate_W = null;
 				_ProductStatusID_W = null;
-				_InstallStationID_W = null;
+				_InstallStatusID_W = null;
 				_Note_W = null;
 				_CreatedBy_W = null;
 				_CreatedDate_W = null;
 				_UpdatedBy_W = null;
 				_LastUpdatedDate_W = null;
+				_IsDeleted_W = null;
 
 				this._entity.Query.FlushWhereParameters();
 
@@ -1483,6 +1611,16 @@ namespace DAL
 					}
 				}
 
+				public AggregateParameter DeliveryAddress
+				{
+					get
+					{
+							AggregateParameter aggregate = new AggregateParameter(ColumnNames.DeliveryAddress, Parameters.DeliveryAddress);
+							this._clause._entity.Query.AddAggregateParameter(aggregate);
+							return aggregate;
+					}
+				}
+
 				public AggregateParameter ISRemovable
 				{
 					get
@@ -1523,11 +1661,11 @@ namespace DAL
 					}
 				}
 
-				public AggregateParameter InstallStationID
+				public AggregateParameter InstallStatusID
 				{
 					get
 					{
-							AggregateParameter aggregate = new AggregateParameter(ColumnNames.InstallStationID, Parameters.InstallStationID);
+							AggregateParameter aggregate = new AggregateParameter(ColumnNames.InstallStatusID, Parameters.InstallStatusID);
 							this._clause._entity.Query.AddAggregateParameter(aggregate);
 							return aggregate;
 					}
@@ -1578,6 +1716,16 @@ namespace DAL
 					get
 					{
 							AggregateParameter aggregate = new AggregateParameter(ColumnNames.LastUpdatedDate, Parameters.LastUpdatedDate);
+							this._clause._entity.Query.AddAggregateParameter(aggregate);
+							return aggregate;
+					}
+				}
+
+				public AggregateParameter IsDeleted
+				{
+					get
+					{
+							AggregateParameter aggregate = new AggregateParameter(ColumnNames.IsDeleted, Parameters.IsDeleted);
 							this._clause._entity.Query.AddAggregateParameter(aggregate);
 							return aggregate;
 					}
@@ -1684,6 +1832,18 @@ namespace DAL
 				}
 			}
 
+			public AggregateParameter DeliveryAddress
+		    {
+				get
+		        {
+					if(_DeliveryAddress_W == null)
+	        	    {
+						_DeliveryAddress_W = TearOff.DeliveryAddress;
+					}
+					return _DeliveryAddress_W;
+				}
+			}
+
 			public AggregateParameter ISRemovable
 		    {
 				get
@@ -1732,15 +1892,15 @@ namespace DAL
 				}
 			}
 
-			public AggregateParameter InstallStationID
+			public AggregateParameter InstallStatusID
 		    {
 				get
 		        {
-					if(_InstallStationID_W == null)
+					if(_InstallStatusID_W == null)
 	        	    {
-						_InstallStationID_W = TearOff.InstallStationID;
+						_InstallStatusID_W = TearOff.InstallStatusID;
 					}
-					return _InstallStationID_W;
+					return _InstallStatusID_W;
 				}
 			}
 
@@ -1804,6 +1964,18 @@ namespace DAL
 				}
 			}
 
+			public AggregateParameter IsDeleted
+		    {
+				get
+		        {
+					if(_IsDeleted_W == null)
+	        	    {
+						_IsDeleted_W = TearOff.IsDeleted;
+					}
+					return _IsDeleted_W;
+				}
+			}
+
 			private AggregateParameter _ProductionID_W = null;
 			private AggregateParameter _JobOrderID_W = null;
 			private AggregateParameter _ItemID_W = null;
@@ -1812,16 +1984,18 @@ namespace DAL
 			private AggregateParameter _DeliveryDate_W = null;
 			private AggregateParameter _SupplierID_W = null;
 			private AggregateParameter _DeliveryTo_W = null;
+			private AggregateParameter _DeliveryAddress_W = null;
 			private AggregateParameter _ISRemovable_W = null;
 			private AggregateParameter _RemovableDate_W = null;
 			private AggregateParameter _InstallationDate_W = null;
 			private AggregateParameter _ProductStatusID_W = null;
-			private AggregateParameter _InstallStationID_W = null;
+			private AggregateParameter _InstallStatusID_W = null;
 			private AggregateParameter _Note_W = null;
 			private AggregateParameter _CreatedBy_W = null;
 			private AggregateParameter _CreatedDate_W = null;
 			private AggregateParameter _UpdatedBy_W = null;
 			private AggregateParameter _LastUpdatedDate_W = null;
+			private AggregateParameter _IsDeleted_W = null;
 
 			public void AggregateClauseReset()
 			{
@@ -1833,16 +2007,18 @@ namespace DAL
 				_DeliveryDate_W = null;
 				_SupplierID_W = null;
 				_DeliveryTo_W = null;
+				_DeliveryAddress_W = null;
 				_ISRemovable_W = null;
 				_RemovableDate_W = null;
 				_InstallationDate_W = null;
 				_ProductStatusID_W = null;
-				_InstallStationID_W = null;
+				_InstallStatusID_W = null;
 				_Note_W = null;
 				_CreatedBy_W = null;
 				_CreatedDate_W = null;
 				_UpdatedBy_W = null;
 				_LastUpdatedDate_W = null;
+				_IsDeleted_W = null;
 
 				this._entity.Query.FlushAggregateParameters();
 
@@ -1949,6 +2125,10 @@ namespace DAL
 			p.SourceColumn = ColumnNames.DeliveryTo;
 			p.SourceVersion = DataRowVersion.Current;
 
+			p = cmd.Parameters.Add(Parameters.DeliveryAddress);
+			p.SourceColumn = ColumnNames.DeliveryAddress;
+			p.SourceVersion = DataRowVersion.Current;
+
 			p = cmd.Parameters.Add(Parameters.ISRemovable);
 			p.SourceColumn = ColumnNames.ISRemovable;
 			p.SourceVersion = DataRowVersion.Current;
@@ -1965,8 +2145,8 @@ namespace DAL
 			p.SourceColumn = ColumnNames.ProductStatusID;
 			p.SourceVersion = DataRowVersion.Current;
 
-			p = cmd.Parameters.Add(Parameters.InstallStationID);
-			p.SourceColumn = ColumnNames.InstallStationID;
+			p = cmd.Parameters.Add(Parameters.InstallStatusID);
+			p.SourceColumn = ColumnNames.InstallStatusID;
 			p.SourceVersion = DataRowVersion.Current;
 
 			p = cmd.Parameters.Add(Parameters.Note);
@@ -1987,6 +2167,10 @@ namespace DAL
 
 			p = cmd.Parameters.Add(Parameters.LastUpdatedDate);
 			p.SourceColumn = ColumnNames.LastUpdatedDate;
+			p.SourceVersion = DataRowVersion.Current;
+
+			p = cmd.Parameters.Add(Parameters.IsDeleted);
+			p.SourceColumn = ColumnNames.IsDeleted;
 			p.SourceVersion = DataRowVersion.Current;
 
 

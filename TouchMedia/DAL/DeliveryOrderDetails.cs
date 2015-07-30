@@ -251,6 +251,14 @@ namespace DAL
 				}
 			}
 			
+			public static SqlParameter IsDeleted
+			{
+				get
+				{
+					return new SqlParameter("@IsDeleted", SqlDbType.Bit, 0);
+				}
+			}
+			
 		}
 		#endregion		
 	
@@ -276,6 +284,7 @@ namespace DAL
             public const string WatingHours = "WatingHours";
             public const string GeneralLookUpID = "GeneralLookUpID";
             public const string ClientID = "ClientID";
+            public const string IsDeleted = "isDeleted";
 
 			static public string ToPropertyName(string columnName)
 			{
@@ -302,6 +311,7 @@ namespace DAL
 					ht[WatingHours] = _DeliveryOrderDetails.PropertyNames.WatingHours;
 					ht[GeneralLookUpID] = _DeliveryOrderDetails.PropertyNames.GeneralLookUpID;
 					ht[ClientID] = _DeliveryOrderDetails.PropertyNames.ClientID;
+					ht[IsDeleted] = _DeliveryOrderDetails.PropertyNames.IsDeleted;
 
 				}
 				return (string)ht[columnName];
@@ -333,6 +343,7 @@ namespace DAL
             public const string WatingHours = "WatingHours";
             public const string GeneralLookUpID = "GeneralLookUpID";
             public const string ClientID = "ClientID";
+            public const string IsDeleted = "IsDeleted";
 
 			static public string ToColumnName(string propertyName)
 			{
@@ -359,6 +370,7 @@ namespace DAL
 					ht[WatingHours] = _DeliveryOrderDetails.ColumnNames.WatingHours;
 					ht[GeneralLookUpID] = _DeliveryOrderDetails.ColumnNames.GeneralLookUpID;
 					ht[ClientID] = _DeliveryOrderDetails.ColumnNames.ClientID;
+					ht[IsDeleted] = _DeliveryOrderDetails.ColumnNames.IsDeleted;
 
 				}
 				return (string)ht[propertyName];
@@ -390,6 +402,7 @@ namespace DAL
             public const string WatingHours = "s_WatingHours";
             public const string GeneralLookUpID = "s_GeneralLookUpID";
             public const string ClientID = "s_ClientID";
+            public const string IsDeleted = "s_IsDeleted";
 
 		}
 		#endregion		
@@ -621,6 +634,18 @@ namespace DAL
 			set
 	        {
 				base.Setint(ColumnNames.ClientID, value);
+			}
+		}
+
+		public virtual bool IsDeleted
+	    {
+			get
+	        {
+				return base.Getbool(ColumnNames.IsDeleted);
+			}
+			set
+	        {
+				base.Setbool(ColumnNames.IsDeleted, value);
 			}
 		}
 
@@ -914,6 +939,21 @@ namespace DAL
 			}
 		}
 
+		public virtual string s_IsDeleted
+	    {
+			get
+	        {
+				return this.IsColumnNull(ColumnNames.IsDeleted) ? string.Empty : base.GetboolAsString(ColumnNames.IsDeleted);
+			}
+			set
+	        {
+				if(string.Empty == value)
+					this.SetColumnNull(ColumnNames.IsDeleted);
+				else
+					this.IsDeleted = base.SetboolAsString(ColumnNames.IsDeleted, value);
+			}
+		}
+
 
 		#endregion		
 	
@@ -1132,6 +1172,16 @@ namespace DAL
 					get
 					{
 							WhereParameter where = new WhereParameter(ColumnNames.ClientID, Parameters.ClientID);
+							this._clause._entity.Query.AddWhereParameter(where);
+							return where;
+					}
+				}
+
+				public WhereParameter IsDeleted
+				{
+					get
+					{
+							WhereParameter where = new WhereParameter(ColumnNames.IsDeleted, Parameters.IsDeleted);
 							this._clause._entity.Query.AddWhereParameter(where);
 							return where;
 					}
@@ -1370,6 +1420,18 @@ namespace DAL
 				}
 			}
 
+			public WhereParameter IsDeleted
+		    {
+				get
+		        {
+					if(_IsDeleted_W == null)
+	        	    {
+						_IsDeleted_W = TearOff.IsDeleted;
+					}
+					return _IsDeleted_W;
+				}
+			}
+
 			private WhereParameter _DeliveryOrderDetailsID_W = null;
 			private WhereParameter _DeliveryOrderID_W = null;
 			private WhereParameter _DeliveryOrderStatusID_W = null;
@@ -1389,6 +1451,7 @@ namespace DAL
 			private WhereParameter _WatingHours_W = null;
 			private WhereParameter _GeneralLookUpID_W = null;
 			private WhereParameter _ClientID_W = null;
+			private WhereParameter _IsDeleted_W = null;
 
 			public void WhereClauseReset()
 			{
@@ -1411,6 +1474,7 @@ namespace DAL
 				_WatingHours_W = null;
 				_GeneralLookUpID_W = null;
 				_ClientID_W = null;
+				_IsDeleted_W = null;
 
 				this._entity.Query.FlushWhereParameters();
 
@@ -1657,6 +1721,16 @@ namespace DAL
 					}
 				}
 
+				public AggregateParameter IsDeleted
+				{
+					get
+					{
+							AggregateParameter aggregate = new AggregateParameter(ColumnNames.IsDeleted, Parameters.IsDeleted);
+							this._clause._entity.Query.AddAggregateParameter(aggregate);
+							return aggregate;
+					}
+				}
+
 
 				private AggregateClause _clause;
 			}
@@ -1890,6 +1964,18 @@ namespace DAL
 				}
 			}
 
+			public AggregateParameter IsDeleted
+		    {
+				get
+		        {
+					if(_IsDeleted_W == null)
+	        	    {
+						_IsDeleted_W = TearOff.IsDeleted;
+					}
+					return _IsDeleted_W;
+				}
+			}
+
 			private AggregateParameter _DeliveryOrderDetailsID_W = null;
 			private AggregateParameter _DeliveryOrderID_W = null;
 			private AggregateParameter _DeliveryOrderStatusID_W = null;
@@ -1909,6 +1995,7 @@ namespace DAL
 			private AggregateParameter _WatingHours_W = null;
 			private AggregateParameter _GeneralLookUpID_W = null;
 			private AggregateParameter _ClientID_W = null;
+			private AggregateParameter _IsDeleted_W = null;
 
 			public void AggregateClauseReset()
 			{
@@ -1931,6 +2018,7 @@ namespace DAL
 				_WatingHours_W = null;
 				_GeneralLookUpID_W = null;
 				_ClientID_W = null;
+				_IsDeleted_W = null;
 
 				this._entity.Query.FlushAggregateParameters();
 
@@ -2079,6 +2167,10 @@ namespace DAL
 
 			p = cmd.Parameters.Add(Parameters.ClientID);
 			p.SourceColumn = ColumnNames.ClientID;
+			p.SourceVersion = DataRowVersion.Current;
+
+			p = cmd.Parameters.Add(Parameters.IsDeleted);
+			p.SourceColumn = ColumnNames.IsDeleted;
 			p.SourceVersion = DataRowVersion.Current;
 
 

@@ -64,7 +64,7 @@ namespace TouchMediaGUI.usercontrols {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList drpDeliveryTo;
+        protected global::System.Web.UI.HtmlControls.HtmlSelect drpDeliveryTo;
         
         /// <summary>
         /// txtDeliveryToClientAddress control.
@@ -76,13 +76,31 @@ namespace TouchMediaGUI.usercontrols {
         protected global::System.Web.UI.WebControls.TextBox txtDeliveryToClientAddress;
         
         /// <summary>
-        /// ChkIsRemoval control.
+        /// drpProductionInstallStatus control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox ChkIsRemoval;
+        protected global::System.Web.UI.WebControls.DropDownList drpProductionInstallStatus;
+        
+        /// <summary>
+        /// txtInstallationDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtInstallationDate;
+        
+        /// <summary>
+        /// checkBoxProductionIsRemoved control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox checkBoxProductionIsRemoved;
         
         /// <summary>
         /// TextBox1 control.
@@ -101,15 +119,6 @@ namespace TouchMediaGUI.usercontrols {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList drpProductionStatus;
-        
-        /// <summary>
-        /// drpProductionInstallStatus control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList drpProductionInstallStatus;
         
         /// <summary>
         /// txtProductionNotes control.

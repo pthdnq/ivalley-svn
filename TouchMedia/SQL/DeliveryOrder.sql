@@ -1,5 +1,5 @@
 
-/****** Object:  StoredProcedure [proc_DeliveryOrderLoadByPrimaryKey]    Script Date: 7/23/2015 12:52:37 PM ******/
+/****** Object:  StoredProcedure [proc_DeliveryOrderLoadByPrimaryKey]    Script Date: 30/07/2015 1:07:19 PM ******/
 IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[proc_DeliveryOrderLoadByPrimaryKey]') AND OBJECTPROPERTY(id,N'IsProcedure') = 1)
     DROP PROCEDURE [proc_DeliveryOrderLoadByPrimaryKey];
 GO
@@ -39,7 +39,8 @@ BEGIN
 		[CarType],
 		[DepartmentID],
 		[JobOrderID],
-		[ClientID]
+		[ClientID],
+		[isDeleted]
 	FROM [DeliveryOrder]
 	WHERE
 		([DeliveryOrderID] = @DeliveryOrderID)
@@ -56,7 +57,7 @@ IF (@@Error = 0) PRINT 'Procedure Creation: proc_DeliveryOrderLoadByPrimaryKey S
 ELSE PRINT 'Procedure Creation: proc_DeliveryOrderLoadByPrimaryKey Error on Creation'
 GO
 
-/****** Object:  StoredProcedure [proc_DeliveryOrderLoadAll]    Script Date: 7/23/2015 12:52:37 PM ******/
+/****** Object:  StoredProcedure [proc_DeliveryOrderLoadAll]    Script Date: 30/07/2015 1:07:19 PM ******/
 IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[proc_DeliveryOrderLoadAll]') AND OBJECTPROPERTY(id,N'IsProcedure') = 1)
     DROP PROCEDURE [proc_DeliveryOrderLoadAll];
 GO
@@ -94,7 +95,8 @@ BEGIN
 		[CarType],
 		[DepartmentID],
 		[JobOrderID],
-		[ClientID]
+		[ClientID],
+		[isDeleted]
 	FROM [DeliveryOrder]
 
 	SET @Err = @@Error
@@ -109,7 +111,7 @@ IF (@@Error = 0) PRINT 'Procedure Creation: proc_DeliveryOrderLoadAll Succeeded'
 ELSE PRINT 'Procedure Creation: proc_DeliveryOrderLoadAll Error on Creation'
 GO
 
-/****** Object:  StoredProcedure [proc_DeliveryOrderUpdate]    Script Date: 7/23/2015 12:52:37 PM ******/
+/****** Object:  StoredProcedure [proc_DeliveryOrderUpdate]    Script Date: 30/07/2015 1:07:19 PM ******/
 IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[proc_DeliveryOrderUpdate]') AND OBJECTPROPERTY(id,N'IsProcedure') = 1)
     DROP PROCEDURE [proc_DeliveryOrderUpdate];
 GO
@@ -141,7 +143,8 @@ CREATE PROCEDURE [proc_DeliveryOrderUpdate]
 	@CarType nvarchar(300) = NULL,
 	@DepartmentID int = NULL,
 	@JobOrderID int = NULL,
-	@ClientID int = NULL
+	@ClientID int = NULL,
+	@isDeleted bit = NULL
 )
 AS
 BEGIN
@@ -175,7 +178,8 @@ BEGIN
 		[CarType] = @CarType,
 		[DepartmentID] = @DepartmentID,
 		[JobOrderID] = @JobOrderID,
-		[ClientID] = @ClientID
+		[ClientID] = @ClientID,
+		[isDeleted] = @isDeleted
 	WHERE
 		[DeliveryOrderID] = @DeliveryOrderID
 
@@ -196,7 +200,7 @@ GO
 
 
 
-/****** Object:  StoredProcedure [proc_DeliveryOrderInsert]    Script Date: 7/23/2015 12:52:37 PM ******/
+/****** Object:  StoredProcedure [proc_DeliveryOrderInsert]    Script Date: 30/07/2015 1:07:19 PM ******/
 IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[proc_DeliveryOrderInsert]') AND OBJECTPROPERTY(id,N'IsProcedure') = 1)
     DROP PROCEDURE [proc_DeliveryOrderInsert];
 GO
@@ -228,7 +232,8 @@ CREATE PROCEDURE [proc_DeliveryOrderInsert]
 	@CarType nvarchar(300) = NULL,
 	@DepartmentID int = NULL,
 	@JobOrderID int = NULL,
-	@ClientID int = NULL
+	@ClientID int = NULL,
+	@isDeleted bit = NULL
 )
 AS
 BEGIN
@@ -263,7 +268,8 @@ BEGIN
 		[CarType],
 		[DepartmentID],
 		[JobOrderID],
-		[ClientID]
+		[ClientID],
+		[isDeleted]
 	)
 	VALUES
 	(
@@ -291,7 +297,8 @@ BEGIN
 		@CarType,
 		@DepartmentID,
 		@JobOrderID,
-		@ClientID
+		@ClientID,
+		@isDeleted
 	)
 
 	SET @Err = @@Error
@@ -308,7 +315,7 @@ IF (@@Error = 0) PRINT 'Procedure Creation: proc_DeliveryOrderInsert Succeeded'
 ELSE PRINT 'Procedure Creation: proc_DeliveryOrderInsert Error on Creation'
 GO
 
-/****** Object:  StoredProcedure [proc_DeliveryOrderDelete]    Script Date: 7/23/2015 12:52:37 PM ******/
+/****** Object:  StoredProcedure [proc_DeliveryOrderDelete]    Script Date: 30/07/2015 1:07:19 PM ******/
 IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[proc_DeliveryOrderDelete]') AND OBJECTPROPERTY(id,N'IsProcedure') = 1)
     DROP PROCEDURE [proc_DeliveryOrderDelete];
 GO

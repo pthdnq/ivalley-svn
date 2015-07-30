@@ -30,10 +30,6 @@ namespace TouchMediaGUI
                     txtPurchaseOrderDate.Text = PoG.PurchaseOrderDate.ToString("dd/MM/yyyy");
                     txtManagement.Text = PoG.Management;
 
-                    //if(CheckBoxList1.Items.IndexOf(0)
-                    //{
-
-                    //}
                     txtDeliveryDate.Text = PoG.DeliveryDate.ToString("dd/MM/yyyy");
                     txtDeliveryPlace.Text = PoG.DeliveryPlace;
                     txtPaymentRequirement.Text = PoG.PaymentRequierment;

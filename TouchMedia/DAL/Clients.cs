@@ -139,6 +139,14 @@ namespace DAL
 				}
 			}
 			
+			public static SqlParameter IsDeleted
+			{
+				get
+				{
+					return new SqlParameter("@IsDeleted", SqlDbType.Bit, 0);
+				}
+			}
+			
 		}
 		#endregion		
 	
@@ -150,6 +158,7 @@ namespace DAL
             public const string ClientPhone = "ClientPhone";
             public const string ClientEmail = "ClientEmail";
             public const string ClientCode = "ClientCode";
+            public const string IsDeleted = "isDeleted";
 
 			static public string ToPropertyName(string columnName)
 			{
@@ -162,6 +171,7 @@ namespace DAL
 					ht[ClientPhone] = _Clients.PropertyNames.ClientPhone;
 					ht[ClientEmail] = _Clients.PropertyNames.ClientEmail;
 					ht[ClientCode] = _Clients.PropertyNames.ClientCode;
+					ht[IsDeleted] = _Clients.PropertyNames.IsDeleted;
 
 				}
 				return (string)ht[columnName];
@@ -179,6 +189,7 @@ namespace DAL
             public const string ClientPhone = "ClientPhone";
             public const string ClientEmail = "ClientEmail";
             public const string ClientCode = "ClientCode";
+            public const string IsDeleted = "IsDeleted";
 
 			static public string ToColumnName(string propertyName)
 			{
@@ -191,6 +202,7 @@ namespace DAL
 					ht[ClientPhone] = _Clients.ColumnNames.ClientPhone;
 					ht[ClientEmail] = _Clients.ColumnNames.ClientEmail;
 					ht[ClientCode] = _Clients.ColumnNames.ClientCode;
+					ht[IsDeleted] = _Clients.ColumnNames.IsDeleted;
 
 				}
 				return (string)ht[propertyName];
@@ -208,6 +220,7 @@ namespace DAL
             public const string ClientPhone = "s_ClientPhone";
             public const string ClientEmail = "s_ClientEmail";
             public const string ClientCode = "s_ClientCode";
+            public const string IsDeleted = "s_IsDeleted";
 
 		}
 		#endregion		
@@ -271,6 +284,18 @@ namespace DAL
 			set
 	        {
 				base.Setstring(ColumnNames.ClientCode, value);
+			}
+		}
+
+		public virtual bool IsDeleted
+	    {
+			get
+	        {
+				return base.Getbool(ColumnNames.IsDeleted);
+			}
+			set
+	        {
+				base.Setbool(ColumnNames.IsDeleted, value);
 			}
 		}
 
@@ -351,6 +376,21 @@ namespace DAL
 					this.SetColumnNull(ColumnNames.ClientCode);
 				else
 					this.ClientCode = base.SetstringAsString(ColumnNames.ClientCode, value);
+			}
+		}
+
+		public virtual string s_IsDeleted
+	    {
+			get
+	        {
+				return this.IsColumnNull(ColumnNames.IsDeleted) ? string.Empty : base.GetboolAsString(ColumnNames.IsDeleted);
+			}
+			set
+	        {
+				if(string.Empty == value)
+					this.SetColumnNull(ColumnNames.IsDeleted);
+				else
+					this.IsDeleted = base.SetboolAsString(ColumnNames.IsDeleted, value);
 			}
 		}
 
@@ -437,6 +477,16 @@ namespace DAL
 					}
 				}
 
+				public WhereParameter IsDeleted
+				{
+					get
+					{
+							WhereParameter where = new WhereParameter(ColumnNames.IsDeleted, Parameters.IsDeleted);
+							this._clause._entity.Query.AddWhereParameter(where);
+							return where;
+					}
+				}
+
 
 				private WhereClause _clause;
 			}
@@ -502,11 +552,24 @@ namespace DAL
 				}
 			}
 
+			public WhereParameter IsDeleted
+		    {
+				get
+		        {
+					if(_IsDeleted_W == null)
+	        	    {
+						_IsDeleted_W = TearOff.IsDeleted;
+					}
+					return _IsDeleted_W;
+				}
+			}
+
 			private WhereParameter _ClientID_W = null;
 			private WhereParameter _ClientName_W = null;
 			private WhereParameter _ClientPhone_W = null;
 			private WhereParameter _ClientEmail_W = null;
 			private WhereParameter _ClientCode_W = null;
+			private WhereParameter _IsDeleted_W = null;
 
 			public void WhereClauseReset()
 			{
@@ -515,6 +578,7 @@ namespace DAL
 				_ClientPhone_W = null;
 				_ClientEmail_W = null;
 				_ClientCode_W = null;
+				_IsDeleted_W = null;
 
 				this._entity.Query.FlushWhereParameters();
 
@@ -621,6 +685,16 @@ namespace DAL
 					}
 				}
 
+				public AggregateParameter IsDeleted
+				{
+					get
+					{
+							AggregateParameter aggregate = new AggregateParameter(ColumnNames.IsDeleted, Parameters.IsDeleted);
+							this._clause._entity.Query.AddAggregateParameter(aggregate);
+							return aggregate;
+					}
+				}
+
 
 				private AggregateClause _clause;
 			}
@@ -686,11 +760,24 @@ namespace DAL
 				}
 			}
 
+			public AggregateParameter IsDeleted
+		    {
+				get
+		        {
+					if(_IsDeleted_W == null)
+	        	    {
+						_IsDeleted_W = TearOff.IsDeleted;
+					}
+					return _IsDeleted_W;
+				}
+			}
+
 			private AggregateParameter _ClientID_W = null;
 			private AggregateParameter _ClientName_W = null;
 			private AggregateParameter _ClientPhone_W = null;
 			private AggregateParameter _ClientEmail_W = null;
 			private AggregateParameter _ClientCode_W = null;
+			private AggregateParameter _IsDeleted_W = null;
 
 			public void AggregateClauseReset()
 			{
@@ -699,6 +786,7 @@ namespace DAL
 				_ClientPhone_W = null;
 				_ClientEmail_W = null;
 				_ClientCode_W = null;
+				_IsDeleted_W = null;
 
 				this._entity.Query.FlushAggregateParameters();
 
@@ -791,6 +879,10 @@ namespace DAL
 
 			p = cmd.Parameters.Add(Parameters.ClientCode);
 			p.SourceColumn = ColumnNames.ClientCode;
+			p.SourceVersion = DataRowVersion.Current;
+
+			p = cmd.Parameters.Add(Parameters.IsDeleted);
+			p.SourceColumn = ColumnNames.IsDeleted;
 			p.SourceVersion = DataRowVersion.Current;
 
 

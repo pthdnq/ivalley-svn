@@ -307,6 +307,14 @@ namespace DAL
 				}
 			}
 			
+			public static SqlParameter IsDeleted
+			{
+				get
+				{
+					return new SqlParameter("@IsDeleted", SqlDbType.Bit, 0);
+				}
+			}
+			
 		}
 		#endregion		
 	
@@ -339,6 +347,7 @@ namespace DAL
             public const string DepartmentID = "DepartmentID";
             public const string JobOrderID = "JobOrderID";
             public const string ClientID = "ClientID";
+            public const string IsDeleted = "isDeleted";
 
 			static public string ToPropertyName(string columnName)
 			{
@@ -372,6 +381,7 @@ namespace DAL
 					ht[DepartmentID] = _DeliveryOrder.PropertyNames.DepartmentID;
 					ht[JobOrderID] = _DeliveryOrder.PropertyNames.JobOrderID;
 					ht[ClientID] = _DeliveryOrder.PropertyNames.ClientID;
+					ht[IsDeleted] = _DeliveryOrder.PropertyNames.IsDeleted;
 
 				}
 				return (string)ht[columnName];
@@ -410,6 +420,7 @@ namespace DAL
             public const string DepartmentID = "DepartmentID";
             public const string JobOrderID = "JobOrderID";
             public const string ClientID = "ClientID";
+            public const string IsDeleted = "IsDeleted";
 
 			static public string ToColumnName(string propertyName)
 			{
@@ -443,6 +454,7 @@ namespace DAL
 					ht[DepartmentID] = _DeliveryOrder.ColumnNames.DepartmentID;
 					ht[JobOrderID] = _DeliveryOrder.ColumnNames.JobOrderID;
 					ht[ClientID] = _DeliveryOrder.ColumnNames.ClientID;
+					ht[IsDeleted] = _DeliveryOrder.ColumnNames.IsDeleted;
 
 				}
 				return (string)ht[propertyName];
@@ -481,6 +493,7 @@ namespace DAL
             public const string DepartmentID = "s_DepartmentID";
             public const string JobOrderID = "s_JobOrderID";
             public const string ClientID = "s_ClientID";
+            public const string IsDeleted = "s_IsDeleted";
 
 		}
 		#endregion		
@@ -796,6 +809,18 @@ namespace DAL
 			set
 	        {
 				base.Setint(ColumnNames.ClientID, value);
+			}
+		}
+
+		public virtual bool IsDeleted
+	    {
+			get
+	        {
+				return base.Getbool(ColumnNames.IsDeleted);
+			}
+			set
+	        {
+				base.Setbool(ColumnNames.IsDeleted, value);
 			}
 		}
 
@@ -1194,6 +1219,21 @@ namespace DAL
 			}
 		}
 
+		public virtual string s_IsDeleted
+	    {
+			get
+	        {
+				return this.IsColumnNull(ColumnNames.IsDeleted) ? string.Empty : base.GetboolAsString(ColumnNames.IsDeleted);
+			}
+			set
+	        {
+				if(string.Empty == value)
+					this.SetColumnNull(ColumnNames.IsDeleted);
+				else
+					this.IsDeleted = base.SetboolAsString(ColumnNames.IsDeleted, value);
+			}
+		}
+
 
 		#endregion		
 	
@@ -1482,6 +1522,16 @@ namespace DAL
 					get
 					{
 							WhereParameter where = new WhereParameter(ColumnNames.ClientID, Parameters.ClientID);
+							this._clause._entity.Query.AddWhereParameter(where);
+							return where;
+					}
+				}
+
+				public WhereParameter IsDeleted
+				{
+					get
+					{
+							WhereParameter where = new WhereParameter(ColumnNames.IsDeleted, Parameters.IsDeleted);
 							this._clause._entity.Query.AddWhereParameter(where);
 							return where;
 					}
@@ -1804,6 +1854,18 @@ namespace DAL
 				}
 			}
 
+			public WhereParameter IsDeleted
+		    {
+				get
+		        {
+					if(_IsDeleted_W == null)
+	        	    {
+						_IsDeleted_W = TearOff.IsDeleted;
+					}
+					return _IsDeleted_W;
+				}
+			}
+
 			private WhereParameter _DeliveryOrderID_W = null;
 			private WhereParameter _KilometerCounterBefore_W = null;
 			private WhereParameter _KilometerCounterAfter_W = null;
@@ -1830,6 +1892,7 @@ namespace DAL
 			private WhereParameter _DepartmentID_W = null;
 			private WhereParameter _JobOrderID_W = null;
 			private WhereParameter _ClientID_W = null;
+			private WhereParameter _IsDeleted_W = null;
 
 			public void WhereClauseReset()
 			{
@@ -1859,6 +1922,7 @@ namespace DAL
 				_DepartmentID_W = null;
 				_JobOrderID_W = null;
 				_ClientID_W = null;
+				_IsDeleted_W = null;
 
 				this._entity.Query.FlushWhereParameters();
 
@@ -2170,6 +2234,16 @@ namespace DAL
 					get
 					{
 							AggregateParameter aggregate = new AggregateParameter(ColumnNames.ClientID, Parameters.ClientID);
+							this._clause._entity.Query.AddAggregateParameter(aggregate);
+							return aggregate;
+					}
+				}
+
+				public AggregateParameter IsDeleted
+				{
+					get
+					{
+							AggregateParameter aggregate = new AggregateParameter(ColumnNames.IsDeleted, Parameters.IsDeleted);
 							this._clause._entity.Query.AddAggregateParameter(aggregate);
 							return aggregate;
 					}
@@ -2492,6 +2566,18 @@ namespace DAL
 				}
 			}
 
+			public AggregateParameter IsDeleted
+		    {
+				get
+		        {
+					if(_IsDeleted_W == null)
+	        	    {
+						_IsDeleted_W = TearOff.IsDeleted;
+					}
+					return _IsDeleted_W;
+				}
+			}
+
 			private AggregateParameter _DeliveryOrderID_W = null;
 			private AggregateParameter _KilometerCounterBefore_W = null;
 			private AggregateParameter _KilometerCounterAfter_W = null;
@@ -2518,6 +2604,7 @@ namespace DAL
 			private AggregateParameter _DepartmentID_W = null;
 			private AggregateParameter _JobOrderID_W = null;
 			private AggregateParameter _ClientID_W = null;
+			private AggregateParameter _IsDeleted_W = null;
 
 			public void AggregateClauseReset()
 			{
@@ -2547,6 +2634,7 @@ namespace DAL
 				_DepartmentID_W = null;
 				_JobOrderID_W = null;
 				_ClientID_W = null;
+				_IsDeleted_W = null;
 
 				this._entity.Query.FlushAggregateParameters();
 
@@ -2723,6 +2811,10 @@ namespace DAL
 
 			p = cmd.Parameters.Add(Parameters.ClientID);
 			p.SourceColumn = ColumnNames.ClientID;
+			p.SourceVersion = DataRowVersion.Current;
+
+			p = cmd.Parameters.Add(Parameters.IsDeleted);
+			p.SourceColumn = ColumnNames.IsDeleted;
 			p.SourceVersion = DataRowVersion.Current;
 
 
